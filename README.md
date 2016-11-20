@@ -38,9 +38,9 @@ Initial Release.
 
 ###Screenshot
 
-![](https://github.com/xizon/Uix-Products/blob/master/assets/screenshot-1.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-1.jpg)
 
-![](https://github.com/xizon/Uix-Products/blob/master/assets/screenshot-2.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-2.jpg)
 
 
 
