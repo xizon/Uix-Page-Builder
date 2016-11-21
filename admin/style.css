@@ -13,44 +13,61 @@
 }
 
 .uix-page-builder-gridster-widget {
-	border: 3px dashed #DFDFDF;
-	padding: 15px;
-	background-color: #F7F7F7;
+	border: 3px dashed #ED9D9E;
+	background-color: #FFF4F5;
 	position: relative;
-	
+	padding: 15px;
 }
-
 
 .uix-page-builder-gridster-widget .content-box {
 	width: calc( 100% - 80px );
 	height: 80px;
-	margin-top: 15px;
+	margin-top: 35px;
 }
 
+/* Drag Area*/
+.uix-page-builder-gridster-drag {
+	background: #FCE8E8;
+	height: 30px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
 /* Remove Button */
-.remove-gridster-widget {
+.remove-gridster-widget,
+.edit-gridster-widget {
 	border: none;
 	outline: none;
 	background: #C71013;
 	padding: 3px;
-	font-size: 12px;
+	font-size: 10px;
 	color: #fff;
 	position: absolute;
 	right: -13px;
-	top: 20px;
+	top: 70px;
 	z-index: 5;
 	cursor: pointer;
 	display: block;
-	width: 20px;
+	width: 25px;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px;
 }
-.remove-gridster-widget:after {
-	content: '';
-	display: block;
-	width: 100%;
-}
+
 
 .remove-gridster-widget:hover {
 	background: #DF2629;
+}
+
+.edit-gridster-widget {
+	background: #0085BA;
+	top: 42px;
+}
+.edit-gridster-widget:hover {
+	background: #2886DA;
 }
 
 

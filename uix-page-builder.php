@@ -75,7 +75,7 @@ class UixPageBuilder {
 			  
 				if ( is_admin()) {
 						wp_enqueue_script( self::PREFIX . '-gridster', self::plug_directory() .'admin/jquery.gridster.min.js', array( 'jquery' ), '0.5.6', true );	
-						wp_enqueue_style( self::PREFIX . '-gridster', self::plug_directory() .'admin/jquery.gridster.min.css', false, '0.5.6', 'all');
+						wp_enqueue_style( self::PREFIX . '-gridster', self::plug_directory() .'admin/jquery.gridster.css', false, '0.5.6', 'all');
 						wp_enqueue_style( self::PREFIX . '-page-builder', self::plug_directory() .'admin/style.css', false, self::ver(), 'all');
 
 				}
