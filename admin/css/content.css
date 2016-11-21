@@ -1,0 +1,9 @@
+pre {
+	background: #F6F6F6;
+	border-left: 5px solid #a2bf2f;
+	margin-bottom: 1.5em;
+	padding: .3em .7em;
+	min-height: 1.5em;
+	font-size:12px;
+	line-height:1.2em;
+}

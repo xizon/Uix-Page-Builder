@@ -1,0 +1,293 @@
+/*
+
+	 Uix Page Builder
+	 Plugin URI: https://uiux.cc/wp-plugins/uix-page-builder/
+	 Author: UIUX Lab
+	 Author URI: https://uiux.cc
+	 License: GPLv2 or later
+	
+	
+	TABLE OF CONTENTS
+	---------------------------
+	
+	1. Basic
+	2. Container    
+	3. Features
+	     
+
+
+*/
+
+
+/* ====================================================== 
+   1. Basic                               
+/* ====================================================== */
+.uix-pb-row {
+
+}
+
+.uix-pb-row:before,
+.uix-pb-row:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.uix-pb-row:after {
+  clear: both;
+}
+
+	/* 
+	 * Common uix-pb-col-umns definitions
+	 */
+	.uix-pb-col-1, .uix-pb-col-2, .uix-pb-col-3, .uix-pb-col-4, .uix-pb-col-5, .uix-pb-col-6, .uix-pb-col-7, .uix-pb-col-8, .uix-pb-col-9, .uix-pb-col-10, .uix-pb-col-11, .uix-pb-col-12 {
+		float: left;
+		margin: 0 3% 0 0;
+	}
+	
+	.uix-pb-col-1.uix-pb-col-last, .uix-pb-col-2.uix-pb-col-last, .uix-pb-col-3.uix-pb-col-last, .uix-pb-col-4.uix-pb-col-last, .uix-pb-col-5.uix-pb-col-last, .uix-pb-col-6.uix-pb-col-last, .uix-pb-col-7.uix-pb-col-last, .uix-pb-col-8.uix-pb-col-last, .uix-pb-col-9.uix-pb-col-last, .uix-pb-col-10.uix-pb-col-last, .uix-pb-col-11.uix-pb-col-last, .uix-pb-col-12 {
+		margin: 0;
+	}
+	
+	.uix-pb-col-1 {
+		width: 5.5%;
+	}
+	
+	.uix-pb-col-2 {
+		width: 14%;
+	}
+	
+	.uix-pb-col-3 {
+		width: 22.5%;
+	}
+	
+	.uix-pb-col-4 {
+		width: 31%;
+	}
+	
+	.uix-pb-col-5 {
+		width: 39.5%;
+	}
+	
+	.uix-pb-col-6 {
+		width: 48%;
+	}
+	
+	.uix-pb-col-7 {
+		width: 56.5%;
+	}
+	
+	.uix-pb-col-8 {
+		width: 65%;
+	}
+	
+	.uix-pb-col-9 {
+		width: 73.5%;
+	}
+	
+	.uix-pb-col-10 {
+		width: 82%;
+	}
+	
+	.uix-pb-col-11 {
+		width: 90.5%;
+	}
+	
+	.uix-pb-col-12 {
+		width: 99%;
+		margin: 0;
+	}
+		
+		.uix-pb-col-1 img, .uix-pb-col-2 img, .uix-pb-col-3 img, .uix-pb-col-4 img, .uix-pb-col-5 img, .uix-pb-col-6 img, .uix-pb-col-7 img, .uix-pb-col-8 img, .uix-pb-col-9 img, .uix-pb-col-10 img, .uix-pb-col-11 img, .uix-pb-col-12 img {
+			max-width: 100%;
+			height: auto;
+			
+		}
+
+
+/* 
+ * Small devices
+ */
+@media all and (max-width: 768px) {
+	
+	.uix-pb-col-1, .uix-pb-col-2, .uix-pb-col-3, .uix-pb-col-4, .uix-pb-col-5, .uix-pb-col-6, .uix-pb-col-7, .uix-pb-col-8, .uix-pb-col-9, .uix-pb-col-10, .uix-pb-col-11 {
+		float: none;
+		width: 99%;
+	}
+}
+	
+
+
+.uix-pb-gray img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+	filter: gray; /* IE7-9 */
+	
+	-moz-transition: .2s ease-in-out; 
+	-o-transition: .2s ease-in-out;
+	-webkit-transition: .2s ease-in-out; 
+	transition: .2s ease-in-out;
+
+	
+}
+
+.uix-pb-gray:hover img{
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+	filter: none; /* IE7-9 */
+}
+
+img.uix-pb-img,
+.uix-pb-img img{
+	max-width: 100%;
+}
+
+.uix-pb-tc{
+	text-align: center;
+}
+
+.uix-pb-tl{
+	text-align: left;
+}
+
+.uix-pb-tr{
+	text-align: right;
+}
+
+
+.uix-pb-hr{
+	margin: 1.5em auto;
+	border: 0;
+	border-bottom: 1px solid #DDD;
+}
+
+
+
+.uix-pb-feature:before,
+.uix-pb-feature:after {
+  display: table;
+  content: "";
+  line-height: 0;
+  padding-top: 1.5em;
+}
+
+.uix-pb-feature:after {
+	padding-top: 0;
+	clear: both;
+}
+
+
+/* ====================================================== 
+   2. Container                               
+/* ====================================================== */
+.uix-pb-container{
+	margin: 0 auto;
+	max-width: 100%;
+	width: 1200px;
+	position: relative;
+	overflow: hidden;
+}
+.uix-pb-container:after,
+.uix-pb-container:before {
+	display: table;
+	content: "";
+	line-height: 0;
+}
+.uix-pb-container:after {
+	clear: both;
+}
+
+.uix-pb-container.uix-pb-container-fullwidth {
+	max-width: none;
+	width: 100%;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1199px) {
+   .uix-pb-container.uix-pb-container-boxed{
+	   max-width: 980px!important;
+	   width: calc(100% - 7vw) !important;
+   } 
+}
+
+@media screen and (min-width: 767px) and (max-width: 980px) {
+   .uix-pb-container.uix-pb-container-boxed{
+	   max-width: 755px!important;
+	   width: calc(100% - 7vw) !important;
+   }
+}
+
+@media (max-width: 768px){
+   .uix-pb-container.uix-pb-container-boxed{
+	   max-width: none !important;
+	   width: calc(100% - 7vw) !important;
+   }  	
+}
+
+
+/* Vertical Center. ( If ".uix-pb-container-table" height is "auto", ".uix-pb-container-content-box" should not print. ) */
+.uix-pb-container .uix-pb-container-table {
+	height: 250px;
+}
+	.uix-pb-container .uix-pb-container-table .uix-pb-container-content-box {
+		position: relative;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+
+
+/* ====================================================== 
+   3. Features                              
+/* ====================================================== */
+.uix-pb-feature{
+
+}
+
+.uix-pb-feature.uix-pb-tc{
+	padding: 1.5em 0 0 0;
+}
+
+	.uix-pb-feature-icon {
+		font-size: 32px;
+
+	}
+	
+		.uix-pb-feature-icon i {
+			border: 1px #090909 solid;
+			-webkit-border-radius: 100%; 
+			-moz-border-radius: 100%; 
+			border-radius: 100%;
+			width: 80px;
+			height: 80px;
+			line-height: 80px;
+			
+		}
+		
+	
+	.uix-pb-feature-icon-side i {
+		
+		margin-right: .4em;
+	}
+	
+	.uix-pb-feature-li{
+		
+	}
+	
+	.uix-pb-feature-title{
+		font-size: 18px;
+		letter-spacing: 0;
+	}
+	
+	.uix-pb-feature-desc{
+		margin: 0;
+		padding: 0;
+		font-size: 13px;
+		line-height: 1.6;
+		padding: .2em 0;
+	}
+	
+	.uix-pb-feature-desc.uix-pb-feature-desc-singlerow{
+		padding-bottom: 1.5em;
+	
+	}
+

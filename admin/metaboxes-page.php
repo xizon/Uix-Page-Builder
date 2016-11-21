@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
 
+
 /*
  * Display the Correct Metabox at the Correct Time
  * 
@@ -179,7 +180,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 			jQuery( function(){
 				jQuery( '.gridster ul' ).gridster({
-					widget_base_dimensions : [ gridsterWidth, 200 ],
+					widget_base_dimensions : [ gridsterWidth, 80 ],
 					widget_margins         : [10, 15],
 					resize                 : {
 						enabled: false
@@ -195,7 +196,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 							row: wgd.row, 
 							size_x: wgd.size_x, 
 							size_y: wgd.size_y, 
-							content: jQuery( $w[0] ).find( '.content-box' ).val().replace(/\n/g, '<br>')
+							content: jQuery( $w[0] ).find( '.content-box' ).val().replace(/\n/g, '<br>'),
+							title: jQuery( $w[0] ).find( '.title-box' ).val()
 						} ;
 						return obj;
 					}
@@ -209,7 +211,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				for(var iii = 0; iii < saved_data.length; iii++) {
 					
-					gridster.add_widget( '<li class="uix-page-builder-gridster-widget" data-id="'+iii+'" data-row="'+saved_data[iii].row+'" data-col="'+saved_data[iii].col+'" data-sizex="'+saved_data[iii].size_x+'" data-sizey="'+saved_data[iii].size_y+'"><div class="uix-page-builder-gridster-drag"></div><button class="remove-gridster-widget" onclick="remove_widget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="content-data-'+iii+'" onclick="edit_widget(event);"><i class="dashicons dashicons-edit"></i></button><span class="debugging">[<?php _e( 'Row', 'uix-page-builder' ); ?>='+saved_data[iii].row+'][<?php _e( 'Content', 'uix-page-builder' ); ?>:<span class="content-data">'+saved_data[iii].content+'</span>]</span><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box content-data-'+iii+'" id="content-data-'+iii+'">'+htmlUnescape( saved_data[iii].content )+'</textarea></li>', 1, 1 );
+					var num = 'content-data-'+iii,
+					    num2 = 'title-data-'+iii;
+					
+					gridster.add_widget( '<li class="uix-page-builder-gridster-widget" data-id="'+iii+'" data-row="'+saved_data[iii].row+'" data-col="'+saved_data[iii].col+'" data-sizex="'+saved_data[iii].size_x+'" data-sizey="'+saved_data[iii].size_y+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+num2+'" id="'+num2+'" value="'+ saved_data[iii].title +'"></div><button class="remove-gridster-widget" onclick="remove_widget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target='+num+'" onclick="edit_widget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+num+'" id="'+num+'">'+htmlUnescape( saved_data[iii].content )+'</textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 );
 					     
 				}
 				
@@ -222,9 +227,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			function add_widget() {
 				
 				var gLi = jQuery( '.gridster ul > li' ).length;
-				gLi = gLi + 1;
+				    gLi = gLi + 1,
+					num = 'content-data-'+gLi,
+					num2 = 'title-data-'+gLi;
 				
-				gridster.add_widget( '<li class="uix-page-builder-gridster-widget" data-id="'+gLi+'"><div class="uix-page-builder-gridster-drag"></div><button class="remove-gridster-widget" onclick="remove_widget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="content-data-'+gLi+'" onclick="edit_widget(event);"><i class="dashicons dashicons-edit"></i></button><span class="debugging">[<?php _e( 'Row', 'uix-page-builder' ); ?>='+gLi+'][<?php _e( 'Content', 'uix-page-builder' ); ?>:<span class="content-data"></span>]</span><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box content-data-'+gLi+'" id="content-data-'+gLi+'"></textarea></li>', 1, 1 ).fadeIn( 100, function() {
+				gridster.add_widget( '<li class="uix-page-builder-gridster-widget" data-id="'+gLi+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+num2+'" id="'+num2+'" value="<?php _e( 'Title', 'uix-page-builder' ); ?>"></div><button class="remove-gridster-widget" onclick="remove_widget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="'+num+'" onclick="edit_widget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+num+'" id="'+num+'"></textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 ).fadeIn( 100, function() {
 						inputsave();
 				});
 				save();
@@ -248,7 +255,24 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			function save(){
 				var json_str = JSON.stringify( gridster.serialize() );
 				document.getElementById( 'uix-page-builder-layoutdata' ).value = json_str;
+				widget_status();
+				
 			}
+			function widget_status(){
+				jQuery( document ).ready( function() {  
+					jQuery( '.gridster ul > li' ).each( function() {
+						var $this = jQuery( this );
+						if ( $this.find( '.content-box' ).val() != '') {
+							$this.addClass( 'active' );
+						} else {
+							$this.removeClass( 'active' );
+						}
+					});
+				
+				});
+				
+			}	
+			
 			
             function edit_widget(e) {
 				jQuery( function(){
@@ -257,7 +281,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						thisID        = thisWidget.data( 'id' ),
 						oldValue      = htmlEscape( thisWidget.find( '.content-data-'+thisID ).val() ); 
 					
-					thisWidget.find( '.content-data-'+thisID ).focus();
+					thisWidget.find( '.content-data-'+thisID ).focus().show();
+					
 	
 				} );
                 e.preventDefault();
@@ -269,7 +294,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				jQuery( document ).ready( function() {  
 					jQuery( '.gridster ul > li' ).each( function() {
 						var $this = jQuery( this );
-						$this.find( '.content-box' ).on( 'input change keyup', function() {
+						$this.find( '.content-box, .title-box' ).on( 'input change keyup', function() {
 							$this.find( 'content-data' ).html( jQuery( this ).val() );
 							save();
 						});
@@ -304,8 +329,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					.replace(/&/g, '&amp;');
 			}
 			
-			
 			inputsave();	
+			widget_status();
+			
 
 
         </script>
