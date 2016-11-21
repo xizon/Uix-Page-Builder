@@ -29,10 +29,10 @@ get_header(); ?>
 				$size_x  = $value->size_x;
 			
 			
-			   $pagebuilder_echo .=  "<div style='border: 3px dashed #DFDFDF;padding: 15px; background-color: #F7F7F7;margin:20px;'>". $con . "</div>";
+			   $pagebuilder_echo .=  '<div class="uix-page-builder-section" id="uix-page-builder-section-'.$row.'">'.$con.'</div>';
 			}
 			
-			$pagebuilder_echo .=  "</div>"; 
+			$pagebuilder_echo .=  '</div>'; 
 			
 			echo $pagebuilder_echo;
 	

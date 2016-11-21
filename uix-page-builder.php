@@ -309,12 +309,10 @@ class UixPageBuilder {
 			    $data 
 			    ) ) );
 			   
-		return $data;
+		return do_shortcode( $data );
 		
 	}		
 		
-		
-	
 
 	
 }
