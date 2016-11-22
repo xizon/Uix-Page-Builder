@@ -16,21 +16,13 @@ $section_id = ( isset( $_COOKIE[ 'uix-page-section-cur' ] ) ) ? $_COOKIE[ 'uix-p
 global $post;
 
 // Page Builder
-$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $post->ID, 'uix-page-builder-layoutdata', true ) );
+$cursectionData    = UixPageBuilder::pagebuilder_output( json_decode( get_post_meta( $post->ID, 'uix-page-builder-layoutdata', true ), true )[$section_id]['content'] );
+$item              = [];
 
-if ( $builder_content && is_array( $builder_content ) ) {
-	foreach ( $builder_content as $key => $value ) {
-		$con     = UixPageBuilder::pagebuilder_output( $value->content );
+if ( $cursectionData && is_array( $cursectionData ) ) {
+	foreach ( $cursectionData as $key ) {
 		
-		$item = [];
-		if ( $con && is_array( $con ) ) {
-			foreach ( $con as $key ) {
-				
-				$$key[ 0 ] = $key[ 1 ];
-				$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
-			}	
-		}
-
-	}
-
+		$$key[ 0 ] = $key[ 1 ];
+		$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+	}	
 }

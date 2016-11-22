@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_ShortUnitsText {
+class UixFormType_ShortUnitsText {
 	
 	public static function add( $args, $_output ) {
 		

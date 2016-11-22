@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Toggle {
+class UixFormType_Toggle {
 	
 	public static function add( $args, $_output ) {
 		

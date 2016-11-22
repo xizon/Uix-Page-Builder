@@ -509,7 +509,7 @@ class UixFormCore {
 	 */
 	public static function form_before() {
 		
-		return '<div class="uixform-alert"><div class="uixform-table-wrapper"><form method="post">';
+		return '<div class="uixform-alert"><div class="uixform-table-wrapper"><form method="post"><input type="hidden" name="section-id"  value="$___$+form[ $___$sectionID$___$ ]+$___$">';
 
 	}
 	
@@ -537,9 +537,11 @@ class UixFormCore {
 		
 		{$form_js}
 		
+		var sid = ( $.cookie( 'uix-page-section-cur' ) == null ) ? 0 : $.cookie( 'uix-page-section-cur' );	
 		$( document ).uixFormPop({   
 			trigger: '{$formid}',
 			title: '{$title}',
+			pageSectionID: '{sid}',
 			initFunction: function( form ) {
 				var code = '{$form_html}';
 				if ( $( '#' + form[ 'thisModalID' ] ).length < 1 ) {
@@ -548,8 +550,6 @@ class UixFormCore {
 				}
 			},
 			startFunction: function( widgets ) {
-				{$form_js_vars}
-				
 				setTimeout( function() {
 					/*-- Icon list with the jQuery AJAX method --*/
 					$( '.icon-selector' ).uixform_iconSelector();
@@ -668,8 +668,6 @@ class UixFormCore {
 							$before = '
 							 '.self::form_before().'
 								<table class="uixform-table">
-									<!-- Automatically repair display issues that readability of UixForm.  -->
-									<input type="hidden" style="display:none"><!-- Required -->
 							'."\n";
 							
 							
@@ -688,9 +686,6 @@ class UixFormCore {
 							 
 								 <div class="uixform-table-cols-wrapper uixform-table-col-2">
 									<table class="uixform-table-list">
-										<!-- Automatically repair display issues that readability of UixForm.  -->
-										<input type="hidden" style="display:none"><!-- Required -->
-										
 										
 										<tr class="item">
 											<th colspan="2" scope="col">
@@ -716,10 +711,7 @@ class UixFormCore {
 							 
 								 <div class="uixform-table-cols-wrapper uixform-table-col-3">
 									<table class="uixform-table-list">
-										<!-- Automatically repair display issues that readability of UixForm.  -->
-										<input type="hidden" style="display:none"><!-- Required -->
-										
-										
+									
 										<tr class="item">
 											<th colspan="2" scope="col">
 											'.$wrapper_name.'
@@ -743,10 +735,7 @@ class UixFormCore {
 							 
 								 <div class="uixform-table-cols-wrapper uixform-table-col-4">
 									<table class="uixform-table-list">
-										<!-- Automatically repair display issues that readability of UixForm.  -->
-										<input type="hidden" style="display:none"><!-- Required -->
-										
-										
+									
 										<tr class="item">
 											<th colspan="2" scope="col">
 											'.$wrapper_name.'
@@ -800,95 +789,95 @@ class UixFormCore {
 			
 				
 				//icon
-				$field .= UixPageBuilderForm_Icon::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Icon::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Icon::add( $args, 'js_vars' );
+				$field .= UixFormType_Icon::add( $args, 'html' );
+				$jscode .= UixFormType_Icon::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Icon::add( $args, 'js_vars' );
 	
 				//radio
-				$field .= UixPageBuilderForm_Radio::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Radio::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Radio::add( $args, 'js_vars' );
+				$field .= UixFormType_Radio::add( $args, 'html' );
+				$jscode .= UixFormType_Radio::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Radio::add( $args, 'js_vars' );
 				
 				//radio image
-				$field .= UixPageBuilderForm_RadioImage::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_RadioImage::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_RadioImage::add( $args, 'js_vars' );			
+				$field .= UixFormType_RadioImage::add( $args, 'html' );
+				$jscode .= UixFormType_RadioImage::add( $args, 'js' );
+				$jscode_vars .= UixFormType_RadioImage::add( $args, 'js_vars' );			
 				
 				//multiple selector
-				$field .= UixPageBuilderForm_MultiSelector::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_MultiSelector::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_MultiSelector::add( $args, 'js_vars' );			
+				$field .= UixFormType_MultiSelector::add( $args, 'html' );
+				$jscode .= UixFormType_MultiSelector::add( $args, 'js' );
+				$jscode_vars .= UixFormType_MultiSelector::add( $args, 'js_vars' );			
 	
 				//slider
-				$field .= UixPageBuilderForm_Slider::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Slider::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Slider::add( $args, 'js_vars' );
+				$field .= UixFormType_Slider::add( $args, 'html' );
+				$jscode .= UixFormType_Slider::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Slider::add( $args, 'js_vars' );
 				
 				//margin
-				$field .= UixPageBuilderForm_Margin::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Margin::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Margin::add( $args, 'js_vars' );
+				$field .= UixFormType_Margin::add( $args, 'html' );
+				$jscode .= UixFormType_Margin::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Margin::add( $args, 'js_vars' );
 				
 				
 				//text
-				$field .= UixPageBuilderForm_Text::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Text::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Text::add( $args, 'js_vars' );
+				$field .= UixFormType_Text::add( $args, 'html' );
+				$jscode .= UixFormType_Text::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Text::add( $args, 'js_vars' );
 	
 	
 				//textarea
-				$field .= UixPageBuilderForm_Textarea::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Textarea::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Textarea::add( $args, 'js_vars' );
+				$field .= UixFormType_Textarea::add( $args, 'html' );
+				$jscode .= UixFormType_Textarea::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Textarea::add( $args, 'js_vars' );
 	
 	
 				//short text
-				$field .= UixPageBuilderForm_ShortText::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_ShortText::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_ShortText::add( $args, 'js_vars' );
+				$field .= UixFormType_ShortText::add( $args, 'html' );
+				$jscode .= UixFormType_ShortText::add( $args, 'js' );
+				$jscode_vars .= UixFormType_ShortText::add( $args, 'js_vars' );
 				
 				//short units text
-				$field .= UixPageBuilderForm_ShortUnitsText::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_ShortUnitsText::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_ShortUnitsText::add( $args, 'js_vars' );	
+				$field .= UixFormType_ShortUnitsText::add( $args, 'html' );
+				$jscode .= UixFormType_ShortUnitsText::add( $args, 'js' );
+				$jscode_vars .= UixFormType_ShortUnitsText::add( $args, 'js_vars' );	
 	
 				//checkbox
-				$field .= UixPageBuilderForm_Checkbox::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Checkbox::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Checkbox::add( $args, 'js_vars' );
+				$field .= UixFormType_Checkbox::add( $args, 'html' );
+				$jscode .= UixFormType_Checkbox::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Checkbox::add( $args, 'js_vars' );
 	
 				//color
-				$field .= UixPageBuilderForm_Color::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Color::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Color::add( $args, 'js_vars' );
+				$field .= UixFormType_Color::add( $args, 'html' );
+				$jscode .= UixFormType_Color::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Color::add( $args, 'js_vars' );
 				
 				//colormap
-				$field .= UixPageBuilderForm_ColorMap::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_ColorMap::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_ColorMap::add( $args, 'js_vars' );
+				$field .= UixFormType_ColorMap::add( $args, 'html' );
+				$jscode .= UixFormType_ColorMap::add( $args, 'js' );
+				$jscode_vars .= UixFormType_ColorMap::add( $args, 'js_vars' );
 					
 				
 	
 				//select
-				$field .= UixPageBuilderForm_Select::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Select::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Select::add( $args, 'js_vars' );
+				$field .= UixFormType_Select::add( $args, 'html' );
+				$jscode .= UixFormType_Select::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Select::add( $args, 'js_vars' );
 	
 				//image
-				$field .= UixPageBuilderForm_Image::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Image::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Image::add( $args, 'js_vars' );
+				$field .= UixFormType_Image::add( $args, 'html' );
+				$jscode .= UixFormType_Image::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Image::add( $args, 'js_vars' );
 	
 	
 				//toggle 1
-				$field .= UixPageBuilderForm_Toggle::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_Toggle::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_Toggle::add( $args, 'js_vars' );
+				$field .= UixFormType_Toggle::add( $args, 'html' );
+				$jscode .= UixFormType_Toggle::add( $args, 'js' );
+				$jscode_vars .= UixFormType_Toggle::add( $args, 'js_vars' );
 	
 				//list 1
-				$field .= UixPageBuilderForm_ListClone::add( $args, 'html' );
-				$jscode .= UixPageBuilderForm_ListClone::add( $args, 'js' );
-				$jscode_vars .= UixPageBuilderForm_ListClone::add( $args, 'js_vars' );
+				$field .= UixFormType_ListClone::add( $args, 'html' );
+				$jscode .= UixFormType_ListClone::add( $args, 'js' );
+				$jscode_vars .= UixFormType_ListClone::add( $args, 'js_vars' );
 	
 	
 

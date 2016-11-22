@@ -14,6 +14,7 @@
 		var settings=$.extend({
 			'title'             : '',
 			'trigger'           : '',
+			'pageSectionID'     : '',
 			'initFunction'      : function(){ },	 //Callback: function( form ){ alert( form[ 'formID' ] ); }
 			'startFunction'     : function(){ }	 //Callback: function( widgets ){ alert( widgets[ 'contentID' ] ); }
 		}
@@ -23,6 +24,7 @@
 			var $this               = $( this ),
 			    $ID                 = settings.trigger.replace( '.', '' ).replace( '#', '' ),
 				$title              = settings.title,
+				$pageSectionID      = settings.pageSectionID,
 				$trigger            = settings.trigger,
 				dataID              = 'uixform-modal-open-' + $ID,
 				formID              = $trigger.replace( '.', '' ).replace( '#', '' ),
@@ -49,8 +51,14 @@
 				
 				$obj.find( '.content' ).animate( {scrollTop: 10 }, 100 );
 				
+				/*-- Current section id -- */
+				$obj.find( 'form input[name="section-id"]' ).val( widget_ID );
+				var curSectionID = $obj.find( 'form input[name="section-id"]' ).val();
+				
+				
 				/*-- Save section id -- */
 				$.cookie( 'uix-page-section-cur', widget_ID );
+				
 				
 				/*-- Callback -- */
 				settings.startFunction( widgets );
@@ -103,8 +111,8 @@
 				});	
 				
 				uixform_insertCodes( formID, JSON.stringify( settings ), contentID, pageSectionID );
-				$( '.uixform-modal-box .close-uixform-modal' ).trigger( 'click' );
 				
+				$( '.uixform-modal-box .close-uixform-modal' ).trigger( 'click' );
 				
 				
 			});

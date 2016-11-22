@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Radio {
+class UixFormType_Radio {
 	
 	public static function add( $args, $_output ) {
 		

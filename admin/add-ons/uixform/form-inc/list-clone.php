@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_ListClone {
+class UixFormType_ListClone {
 	
 	public static function add( $args, $_output ) {
 		

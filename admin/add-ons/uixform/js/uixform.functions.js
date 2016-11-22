@@ -39,19 +39,6 @@
 				
 			});
 			
-		    
-			//Click event for icon type: Flaticon
-			jQuery( document ).on( 'click', '#' + listContainerID + ' .b.flaticon', function( e ) {
-				var _v = jQuery(this).find( '.flaticon' ).attr( 'class' );
-				jQuery( '.b.flaticon' ).removeClass( 'active' );
-				jQuery( this ).addClass( 'active' );
-				
-				
-				_v = _v.replace( 'flaticon ', '' );
-				jQuery( targetID ).val( _v );
-				jQuery( previewID ).html( '<i class="flaticon '+_v+'"></i>' );
-			
-			});	
 			
 	
  

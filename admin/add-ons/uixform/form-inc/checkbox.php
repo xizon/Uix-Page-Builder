@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Checkbox {
+class UixFormType_Checkbox {
 	
 	public static function add( $args, $_output ) {
 		

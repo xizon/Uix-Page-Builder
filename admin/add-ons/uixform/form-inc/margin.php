@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Margin {
+class UixFormType_Margin {
 	
 	public static function add( $args, $_output ) {
 		

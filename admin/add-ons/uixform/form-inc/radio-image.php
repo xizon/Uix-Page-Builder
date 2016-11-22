@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_RadioImage {
+class UixFormType_RadioImage {
 	
 	public static function add( $args, $_output ) {
 		

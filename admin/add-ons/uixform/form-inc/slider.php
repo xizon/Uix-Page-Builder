@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Slider {
+class UixFormType_Slider {
 	
 	public static function add( $args, $_output ) {
 		

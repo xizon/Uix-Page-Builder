@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Icon {
+class UixFormType_Icon {
 	
 	public static function add( $args, $_output ) {
 		

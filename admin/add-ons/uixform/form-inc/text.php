@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Text {
+class UixFormType_Text {
 	
 	public static function add( $args, $_output ) {
 		

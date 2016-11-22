@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_MultiSelector {
+class UixFormType_MultiSelector {
 	
 	public static function add( $args, $_output ) {
 		

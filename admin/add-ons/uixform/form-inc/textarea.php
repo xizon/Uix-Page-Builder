@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Textarea {
+class UixFormType_Textarea {
 	
 	public static function add( $args, $_output ) {
 		

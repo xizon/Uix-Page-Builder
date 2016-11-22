@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Image {
+class UixFormType_Image {
 	
 	public static function add( $args, $_output ) {
 		

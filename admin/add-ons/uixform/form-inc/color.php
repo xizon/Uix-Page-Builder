@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Color {
+class UixFormType_Color {
 	
 	public static function add( $args, $_output ) {
 		
