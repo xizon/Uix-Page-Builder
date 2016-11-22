@@ -12,7 +12,7 @@
 	
 	1. Basic
 	2. Container    
-	3. Features
+	3. Author Card  
 	     
 
 
@@ -162,19 +162,6 @@ img.uix-pb-img,
 
 
 
-.uix-pb-feature:before,
-.uix-pb-feature:after {
-  display: table;
-  content: "";
-  line-height: 0;
-  padding-top: 1.5em;
-}
-
-.uix-pb-feature:after {
-	padding-top: 0;
-	clear: both;
-}
-
 
 /* ====================================================== 
    2. Container                               
@@ -237,57 +224,106 @@ img.uix-pb-img,
 
 
 /* ====================================================== 
-   3. Features                              
+   3. Author Card                                
 /* ====================================================== */
-.uix-pb-feature{
-
+.uix-pb-authorcard {
+    margin: 0 auto;
+    border: 1px solid #eaeaea;
+    position: relative;
+	border-top: 3px solid #a2bf2f;
+	margin-bottom: 1em;
 }
 
-.uix-pb-feature.uix-pb-tc{
-	padding: 1.5em 0 0 0;
+.uix-pb-authorcard-top {
+	min-height: 2.38461538462em;
+    background: #fff;
+    padding: .75em 2em 0 2em;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
-	.uix-pb-feature-icon {
-		font-size: 32px;
-
+	.uix-pb-authorcard-top .uix-pb-authorcard-title {
+		margin: 0;
+		padding: 0;
+		font-size: 18px;
+		line-height: 1.7;
 	}
-	
-		.uix-pb-feature-icon i {
-			border: 1px #090909 solid;
+
+	.uix-pb-authorcard-top .uix-pb-authorcard-text {
+		margin-top: .5em;
+		padding-left: 1em;
+		float: left;
+		width: calc(100% - 105px );
+	}
+
+		.uix-pb-authorcard-top .uix-pb-authorcard-text a {
+			font-size: 14px;
+			margin: 0 0 0 .7em;
+			filter: alpha(opacity=50);  
+			-moz-opacity: 0.5;   
+			opacity: 0.5; 
+		}
+			
+	.uix-pb-authorcard-top .uix-pb-authorcard-pic {
+		position: relative;
+		top: .2em;
+		height: 5em;
+		width: 5em;
+		float: right;
+		width: 100px;
+		height: 100px;
+	}
+		
+		.uix-pb-authorcard-top .uix-pb-authorcard-pic img {
+			width: 90px !important;
+			height: 90px !important;
+			margin: 5px 0 0 5px;
+			border: 1px solid #eaeaea;
 			-webkit-border-radius: 100%; 
 			-moz-border-radius: 100%; 
 			border-radius: 100%;
-			width: 80px;
-			height: 80px;
-			line-height: 80px;
-			
 		}
-		
+
+.uix-pb-authorcard-middle {
+    background: #fff;
+    padding: 2em 2em 0 1em;
+	line-height: 1.5;
+}
+
+.uix-pb-authorcard-middle:after {
+    content: '';
+    position: relative;
+    height: 0;
+    width: 0;
+    border-left: .5em solid transparent;
+    border-right: .5em solid transparent;
+    border-top: .5em solid #fff;
+    position: absolute;
+    bottom: 25px;
+    left: 2em;
+}
 	
-	.uix-pb-feature-icon-side i {
-		
-		margin-right: .4em;
-	}
-	
-	.uix-pb-feature-li{
-		
-	}
-	
-	.uix-pb-feature-title{
-		font-size: 18px;
-		letter-spacing: 0;
-	}
-	
-	.uix-pb-feature-desc{
-		margin: 0;
-		padding: 0;
-		font-size: 13px;
-		line-height: 1.6;
-		padding: .2em 0;
-	}
-	
-	.uix-pb-feature-desc.uix-pb-feature-desc-singlerow{
-		padding-bottom: 1.5em;
-	
+	.uix-pb-authorcard-middle p {
+		margin-top: 1em;
+		padding: 0 1em 0 2em;
 	}
 
+.uix-pb-authorcard-final {
+    height: 30px;
+    font-size: 12px;
+    display: block;
+    background: #F6F6F6;
+    padding: .6em 2.5em;
+	text-align: right;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    -webkit-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+	color: #BDBDBD;
+}
+
+	.uix-pb-authorcard-final .uix-pb-authorcard-text {
+		color: #fff;
+		margin-left: .5em;
+	}	  
+		  

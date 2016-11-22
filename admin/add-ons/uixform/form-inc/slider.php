@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_MultiSelector {
+class UixPageBuilderForm_Slider {
 	
 	public static function add( $args, $_output ) {
 		
@@ -12,68 +12,52 @@ class UixPageBuilderForm_MultiSelector {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
 		$jscode = '';
 		$jscode_vars = '';
 		
-
-        if ( $type == 'multiselect' ) {
+		
+        if ( $type == 'slider' ) {
             
-            $optionlist = '';
-            if ( is_array( $default ) && !empty( $default ) ) {
-                $optionloop = 1;
-				$radiofirst = '';
-                foreach ( $default as $select_key => $select_value ) {
-					
-					//multiple checkboxes
-					if ( is_array( $value ) ) {
-						
-						$selected = '  class="multi"';
-						
-						foreach ( $value as $v ) {
-							
-								if ( $optionloop == $v ) {
-									$selected = '  class="multi active"'; 
-									$radiofirst .= $select_key.',';	
-									
-									break;
-								} 
-						
-						}
-					
-					}
-					
-					$optionlist .= '<span data-value="'.$select_key.'" '.$selected.'>'.$select_value.'<i class="fa fa-check no"></i></span>'."\n";	
-			        
-                    $optionloop ++;
-                }	
-            }
+            $units = '';
+			$min = '';
+			$max = '';
+			$step = '';
+			$units_id = '';
 			
-			if ( !is_array( $value ) ) {
-				$optionlist = __( 'Must use the array for "value".', 'uix-page-builder' );
-			} 
+            if ( is_array( $default ) && !empty( $default ) ) {
+				$min = $default[ 'min' ];
+				$max = $default[ 'max' ];
+				$step = $default[ 'step' ];
+				$units = ( isset( $default[ 'units' ] ) ) ? $default[ 'units' ] : '';
+				$units_id = ( isset( $default[ 'units_id' ] ) ) ? $default[ 'units_id' ] : '';
+            }
 	
-	
+            
             $field = '
                     <tr'.$class.'>
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						
-						    <div class="sweet-box">
+						    <div class="uixform-box">
                                
-								  <div class="radio" id="radio-selector-'.$id.'">	
-								   '.$optionlist.' 
-								   </div>
+								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" value="'.$units.'">' : '' ).' 
+								   
+								   '.( !empty( $id ) ? '
+									<div class="uixform-range-container">
+										<input type="range" class="uixform-normal uixform-range" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" value="'.$value.'" min="'.$min.'" max="'.$max.'" step="'.$step.'" oninput="uixform_rangeSlider(this.id, \'slider_output_'.$id.'\', \''.$units.'\' )">
+										<output class="uixform-range-txt" id="slider_output_'.$id.'">'.$value.''.$units.'</output>
+									</div>
+								   ' : '' ).' 
 							   
-								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" value="'.rtrim( $radiofirst, ',' ).'">' : '' ).' 
-						   
+									
 								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 								  
-								
-							</div>
+							  </div>
+                            
                         </td>
                     </tr> 
                 '."\n";	
@@ -81,30 +65,12 @@ class UixPageBuilderForm_MultiSelector {
 				
             $jscode_vars = '
 				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
+				'.( !empty( $units_id ) ? 'var '.$units_id.' = $( "#'.$units_id.'" ).val();'."\n" : '' ).'
             ';		
-			
-            $jscode = '
-
-                /*-- Radio --*/
-                $( document ).uix_pb_multipleSelector({
-                    containerID: "#radio-selector-'.$id.'",
-                    targetID: "#'.$id.'"
-                });
-	
-          ';
-		  
-		  
-
-			
- 
-		  
+		
             
 
         }
-		
-		
-		
-		
 			
 		//output code
 		if ( $_output == 'html' ) return $field;

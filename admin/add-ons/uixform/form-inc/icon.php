@@ -12,7 +12,7 @@ class UixPageBuilderForm_Icon {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -25,14 +25,14 @@ class UixPageBuilderForm_Icon {
 		if ( $type == 'icon' ) {
 			
 			$social = false;
-			$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixPageBuilder::plug_directory().'admin/add-ons/'.$iconselector.'" target-id="'.$id.'" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'"></span>';
+			$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixFormCore::plug_directory().''.$iconselector.'" target-id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'"></span>';
 			if ( is_array( $default ) && !empty( $default ) ) {
 				$social = $default[ 'social' ];
 				
 				if ( $social ) $iconselector = 'fontawesome/font-awesome-social.php';
 				
 				if ( $social ) {
-					$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixPageBuilder::plug_directory().'admin/add-ons/'.$iconselector.'" target-id="'.$id.'" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'-social"></span>';
+					$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixFormCore::plug_directory().''.$iconselector.'" target-id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'-social"></span>';
 				} 
 			}
 			
@@ -40,11 +40,11 @@ class UixPageBuilderForm_Icon {
 					<tr'.$class.'>
 						<th scope="row"><label>'.$title.'</label></th>
 						<td>
-						    <div class="sweet-box">
+						    <div class="uixform-box">
 						
-								<div class="sweet-icon-selector-label">'.$tips.'</div>
-								<div class="sweet-icon-selector-icon-preview" id="'.$id.'-preview"></div>
-								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" class="sweet-normal sweet-input-text" value="'.$value.'">' : '' ).'
+								<div class="uixform-icon-selector-label">'.$tips.'</div>
+								<div class="uixform-icon-selector-icon-preview" id="'.$id.'-preview"></div>
+								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text" value="'.$value.'">' : '' ).'
 								'.$iconlist.'
 							
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 

@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_Slider {
+class UixPageBuilderForm_ShortText {
 	
 	public static function add( $args, $_output ) {
 		
@@ -12,7 +12,7 @@ class UixPageBuilderForm_Slider {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -20,54 +20,38 @@ class UixPageBuilderForm_Slider {
 		$jscode_vars = '';
 		
 		
-        if ( $type == 'slider' ) {
+        if ( $type == 'short-text' ) {
             
             $units = '';
-			$min = '';
-			$max = '';
-			$step = '';
-			$units_id = '';
-			
             if ( is_array( $default ) && !empty( $default ) ) {
-				$min = $default[ 'min' ];
-				$max = $default[ 'max' ];
-				$step = $default[ 'step' ];
-				$units = ( isset( $default[ 'units' ] ) ) ? $default[ 'units' ] : '';
-				$units_id = ( isset( $default[ 'units_id' ] ) ) ? $default[ 'units_id' ] : '';
+                $units = $default[ 'units' ];
             }
-	
             
             $field = '
                     <tr'.$class.'>
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
-						
-						    <div class="sweet-box">
-                               
-								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" value="'.$units.'">' : '' ).' 
+						    <div class="uixform-box">
 								   
-								   '.( !empty( $id ) ? '
-									<div class="sweet-range-container">
-										<input type="range" class="sweet-normal sweet-range" id="'.$id.'" value="'.$value.'" min="'.$min.'" max="'.$max.'" step="'.$step.'" oninput="uix_pb_rangeSlider(this.id, \'slider_output_'.$id.'\', \''.$units.'\' )">
-										<output class="sweet-range-txt" id="slider_output_'.$id.'">'.$value.''.$units.'</output>
-									</div>
-								   ' : '' ).' 
-							   
-									
-								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
-								  
-							  </div>
+								<div class="uixform-input-text-short uixform-input-text-short-units">
+			
+								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
+								   
+								   <span class="units units-short">'.$units.'</span>
+								   
+								</div>
+								
+								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+								
+							</div>
                             
                         </td>
                     </tr> 
                 '."\n";	
                 
-				
             $jscode_vars = '
-				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
-				'.( !empty( $units_id ) ? 'var '.$units_id.' = $( "#'.$units_id.'" ).val();'."\n" : '' ).'
+                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
             ';		
-		
             
 
         }

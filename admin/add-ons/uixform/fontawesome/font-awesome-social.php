@@ -117,7 +117,7 @@ $icons_show = '
 
 //Social
 echo '
-<div class="sweet-icon-selector sweet-icon-selector-s">
+<div class="uixform-icon-selector uixform-icon-selector-s">
 	'.$icons_show.'
 </div>
 

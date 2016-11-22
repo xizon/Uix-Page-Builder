@@ -12,7 +12,7 @@ class UixPageBuilderForm_Margin {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -34,15 +34,15 @@ class UixPageBuilderForm_Margin {
 						<th scope="row"><label>'.$title.'</label></th>
 						<td>	
 						    
-							<div class="sweet-box">
+							<div class="uixform-box">
 							   
-							   <div class="sweet-input-text-margin-container">
+							   <div class="uixform-input-text-margin-container">
 							
 								   '.( !empty( $id ) ? '
-								   <div class="dir top"><label><em>&uarr;</em><input type="text" id="'.$id.'_top" class="sweet-normal sweet-input-text sweet-input-text-margin" value="'.$value[ 'top' ].'"></label></div>
-								   <div class="dir right"><label><em>&rarr;</em><input type="text" id="'.$id.'_right" class="sweet-normal sweet-input-text sweet-input-text-margin" value="'.$value[ 'right' ].'"></label></div>
-								   <div class="dir bottom"><label><em>&darr;</em><input type="text" id="'.$id.'_bottom" class="sweet-normal sweet-input-text sweet-input-text-margin" value="'.$value[ 'bottom' ].'"></label></div>
-								   <div class="dir left"><label><em>&larr;</em><input type="text" id="'.$id.'_left" class="sweet-normal sweet-input-text sweet-input-text-margin" value="'.$value[ 'left' ].'"></label></div>
+								   <div class="dir top"><label><em>&uarr;</em><input type="text" id="'.$id.'_top" class="uixform-normal uixform-input-text uixform-input-text-margin" value="'.$value[ 'top' ].'"></label></div>
+								   <div class="dir right"><label><em>&rarr;</em><input type="text" id="'.$id.'_right" class="uixform-normal uixform-input-text uixform-input-text-margin" value="'.$value[ 'right' ].'"></label></div>
+								   <div class="dir bottom"><label><em>&darr;</em><input type="text" id="'.$id.'_bottom" class="uixform-normal uixform-input-text uixform-input-text-margin" value="'.$value[ 'bottom' ].'"></label></div>
+								   <div class="dir left"><label><em>&larr;</em><input type="text" id="'.$id.'_left" class="uixform-normal uixform-input-text uixform-input-text-margin" value="'.$value[ 'left' ].'"></label></div>
 								   ' : '' ).' 	
 								   
 								   <div class="desc">

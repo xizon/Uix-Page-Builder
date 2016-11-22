@@ -12,7 +12,7 @@ class UixPageBuilderForm_Radio {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -65,7 +65,7 @@ class UixPageBuilderForm_Radio {
 							$target_id .= '.'.$tid_value.','; 	
 						}
 						
-						$toggleForRadioJS .= '$( document ).uix_pb_divToggle( { checkbox: 1, checkboxToggleClass: ".'.$toggleForRadioClass.'", btnID: "#'.$toggle_trigger_id.'", targetID: "'.rtrim( $target_id, ',' ).'" } );'."\n";
+						$toggleForRadioJS .= '$( document ).uixform_divToggle( { checkbox: 1, checkboxToggleClass: ".'.$toggleForRadioClass.'", btnID: "#'.$toggle_trigger_id.'", targetID: "'.rtrim( $target_id, ',' ).'" } );'."\n";
 		
 					}
 					/* ------------  */	
@@ -77,7 +77,7 @@ class UixPageBuilderForm_Radio {
             }
 	
 			//inscure browser
-			if( UixPageBuilder::is_IE() && UixPageBuilder::is_dynamic_input( $class ) ) {
+			if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
 				$new_class = str_replace( 'dynamic-row', 'isMSIE dynamic-row', $class );
 			} else {
 				$new_class = $class;
@@ -90,13 +90,13 @@ class UixPageBuilderForm_Radio {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						
-						    <div class="sweet-box">
+						    <div class="uixform-box">
                                
 								  <div class="radio" id="radio-selector-'.$id.'">	
 								   '.$optionlist.' 
 								   </div>
 							   
-								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" value="'.$radiofirst.'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" value="'.$radiofirst.'">' : '' ).' 
 						   
 								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 								  
@@ -120,7 +120,7 @@ class UixPageBuilderForm_Radio {
 				';	
 				
 				//inscure browser
-				if( UixPageBuilder::is_IE() && UixPageBuilder::is_dynamic_input( $class ) ) {
+				if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
 					$jscode_tog = '';
 				}
 						
@@ -130,7 +130,7 @@ class UixPageBuilderForm_Radio {
             $jscode = '
 
                 /*-- Radio --*/
-                $( document ).uix_pb_radioSelector({
+                $( document ).uixform_radioSelector({
                     containerID: "#radio-selector-'.$id.'",
                     targetID: "#'.$id.'"
                 });

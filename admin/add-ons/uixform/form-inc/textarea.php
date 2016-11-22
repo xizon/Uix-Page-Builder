@@ -12,7 +12,7 @@ class UixPageBuilderForm_Textarea {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -35,7 +35,7 @@ class UixPageBuilderForm_Textarea {
 				
 				
 				if ( $format ) {
-					$the_var = 'var '.$id.' = uix_pb_formatTextarea( $( "#'.$id.'" ).val() );';
+					$the_var = 'var '.$id.' = uixform_formatTextarea( $( "#'.$id.'" ).val() );';
 				} else {
 					$the_var = 'var '.$id.' = $( "#'.$id.'" ).val();';
 				}
@@ -45,9 +45,9 @@ class UixPageBuilderForm_Textarea {
 					<tr'.$class.'>
 						<th scope="row"><label>'.$title.'</label></th>
 						<td>	
-						    <div class="sweet-box">
+						    <div class="uixform-box">
 						
-							   '.( !empty( $id ) ? '<textarea rows="'.$row.'"  class="sweet-normal sweet-input-text" id="'.$id.'" placeholder="'.$placeholder.'">'.$value.'</textarea>' : '' ).' 					   	   
+							   '.( !empty( $id ) ? '<textarea rows="'.$row.'"  class="uixform-normal uixform-input-text" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" placeholder="'.$placeholder.'">'.$value.'</textarea>' : '' ).' 					   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
 							</div>
@@ -63,7 +63,7 @@ class UixPageBuilderForm_Textarea {
 				$jscode = '
 	
 					/*-- Textarea --*/
-				   $( document ).uix_pb_enterTextareaValue({
+				   $( document ).uixform_enterTextareaValue({
 						ID: "#'.$id.'",
 						value: "'.preg_replace( '/(<br.*?>)+/', '\\n', str_replace( '"', '\\"', $value ) ).'",
 						clearIntervalID :  "#'.$default_value_trigger.'"

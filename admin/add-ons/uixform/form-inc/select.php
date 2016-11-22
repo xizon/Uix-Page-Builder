@@ -12,7 +12,7 @@ class UixPageBuilderForm_Select {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -42,9 +42,9 @@ class UixPageBuilderForm_Select {
                     <tr'.$class.'>
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>	
-						   <div class="sweet-box">	
+						   <div class="uixform-box">	
                               
-                              '.( !empty( $id ) ? '<select class="sweet-normal" id="'.$id.'">'.$optionlist.'</select>' : '' ).' 
+                              '.( !empty( $id ) ? '<select class="uixform-normal" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']">'.$optionlist.'</select>' : '' ).' 
 
                                '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   

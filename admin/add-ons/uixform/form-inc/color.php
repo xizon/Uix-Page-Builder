@@ -1,5 +1,5 @@
 <?php
-class UixPageBuilderForm_ShortText {
+class UixPageBuilderForm_Color {
 	
 	public static function add( $args, $_output ) {
 		
@@ -12,47 +12,55 @@ class UixPageBuilderForm_ShortText {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
 		$jscode = '';
 		$jscode_vars = '';
 		
-		
-        if ( $type == 'short-text' ) {
+        if ( $type == 'color' ) {
             
-            $units = '';
+            $colorlist = '';
             if ( is_array( $default ) && !empty( $default ) ) {
-                $units = $default[ 'units' ];
+                foreach ( $default as $color_value ) {
+					
+					( $value == $color_value ) ? $active = ' class="active"' : $active = '' ;
+					
+                    $colorlist .= '<span '.$active.' style="background:'.$color_value.'" data-value="'.$color_value.'"></span>'."\n";	
+                }	
             }
             
             $field = '
                     <tr'.$class.'>
                         <th scope="row"><label>'.$title.'</label></th>
-                        <td>
-						    <div class="sweet-box">
-								   
-								<div class="sweet-input-text-short sweet-input-text-short-units">
-			
-								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" class="sweet-normal sweet-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
-								   
-								   <span class="units units-short">'.$units.'</span>
-								   
-								</div>
-								
-								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
-								
-							</div>
-                            
+                        <td>		
+						    
+							<div class="uixform-box">
+								  <div class="uixform-color-selector" id="trigger_id_'.$id.'">	
+								   '.$colorlist.' 
+								   </div>
+								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" value="'.$value.'">' : '' ).' 
+	
+								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+							 </div> 
                         </td>
                     </tr> 
                 '."\n";	
                 
+                
+                
             $jscode_vars = '
                 '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
-            ';		
-            
+            ';
+            $jscode = '
+
+                /*-- Color Selector --*/
+                $( document ).uixform_radioSelector({
+                    containerID: "#trigger_id_'.$id.'",
+                    targetID: "#'.$id.'"
+                });
+            ';
 
         }
 			

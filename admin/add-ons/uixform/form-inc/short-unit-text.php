@@ -12,7 +12,7 @@ class UixPageBuilderForm_ShortUnitsText {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -42,11 +42,11 @@ class UixPageBuilderForm_ShortUnitsText {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						
-						    <div class="sweet-box">
+						    <div class="uixform-box">
                                
-								<div class="sweet-input-text-short">
+								<div class="uixform-input-text-short">
 			
-								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" class="sweet-normal sweet-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
 								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" value="'.$unitsfirst.'">' : '' ).' 
 								   
 								   <span class="units units-short units-selector" id="units-selector-'.$unitsid.'">'.$unitslist.'</span>
@@ -70,7 +70,7 @@ class UixPageBuilderForm_ShortUnitsText {
             $jscode = '
 
                 /*-- Units Selector --*/
-                $( document ).uix_pb_radioSelector({
+                $( document ).uixform_radioSelector({
                     containerID: "#units-selector-'.$unitsid.'",
                     targetID: "#'.$unitsid.'"
                 });

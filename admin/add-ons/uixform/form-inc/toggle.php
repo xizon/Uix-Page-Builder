@@ -12,7 +12,7 @@ class UixPageBuilderForm_Toggle {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		
@@ -41,7 +41,7 @@ class UixPageBuilderForm_Toggle {
 			
 			
 			//inscure browser
-			if( UixPageBuilder::is_IE() && UixPageBuilder::is_dynamic_input( $class ) ) {
+			if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
 				$new_class = str_replace( 'dynamic-row', 'isMSIE dynamic-row', $class );
 			} else {
 				$new_class = $class;
@@ -54,7 +54,7 @@ class UixPageBuilderForm_Toggle {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						
-						   <div class="sweet-box">
+						   <div class="uixform-box">
 								<a href="javascript:" id="trigger_id_'.$id.'" class="'.$link_class.'">'.$btn_text.'</a>
 		
 								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 	
@@ -75,11 +75,11 @@ class UixPageBuilderForm_Toggle {
 			
             $jscode = '
 			    /*-- Toggle  --*/
-                $( document ).uix_pb_divToggle( { btnID: "#trigger_id_'.$id.'", targetID: "'.rtrim( $target_id, ',' ).'" } );
+                $( document ).uixform_divToggle( { btnID: "#trigger_id_'.$id.'", targetID: "'.rtrim( $target_id, ',' ).'" } );
             ';	
 			
 			//inscure browser
-			if( UixPageBuilder::is_IE() && UixPageBuilder::is_dynamic_input( $class ) ) {
+			if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
 				$jscode = '';
 			}
                 

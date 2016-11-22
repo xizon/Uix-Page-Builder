@@ -12,7 +12,7 @@ class UixPageBuilderForm_ListClone {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -54,24 +54,24 @@ class UixPageBuilderForm_ListClone {
 					//-----
 					if ( $tid_value[ 'type' ] == 'image' ) {
 						
-						$media_js .= '$( document ).uix_pb_uploadMediaCustom( { btnID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", closebtnID: "#"+j_'.$id.'+"-drop_trigger_id_'.$loop_trigger_id.'" } );'."\n";
+						$media_js .= '$( document ).uixform_uploadMediaCustom( { btnID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", closebtnID: "#"+j_'.$id.'+"-drop_trigger_id_'.$loop_trigger_id.'" } );'."\n";
 					}	
 					
 					//-----
 					if ( $tid_value[ 'type' ] == 'radio' ) {
 						
-						$media_js .= '$( document ).uix_pb_radioSelector( { containerID: "#"+j_'.$id.'+"-radio-selector-'.$loop_trigger_id.'", targetID: "#"+j_'.$id.'+"-'.$loop_trigger_id.'" } );'."\n";
+						$media_js .= '$( document ).uixform_radioSelector( { containerID: "#"+j_'.$id.'+"-radio-selector-'.$loop_trigger_id.'", targetID: "#"+j_'.$id.'+"-'.$loop_trigger_id.'" } );'."\n";
 					}
 						
 					
 					//-----
 					if ( $tid_value[ 'type' ] == 'color' ) {
 						
-						$media_js .= '$( document ).uix_pb_radioSelector( { containerID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", targetID: "#"+j_'.$id.'+"-'.$loop_trigger_id.'" } );'."\n";
+						$media_js .= '$( document ).uixform_radioSelector( { containerID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", targetID: "#"+j_'.$id.'+"-'.$loop_trigger_id.'" } );'."\n";
 					}		
 					
 					//-----
-					if ( $tid_value[ 'type' ] == 'toggle' && !UixPageBuilder::is_IE() ) {
+					if ( $tid_value[ 'type' ] == 'toggle' && !UixFormCore::is_IE() ) {
 						
 						//Toggle id
 						$toggle_target_id = '';
@@ -83,7 +83,7 @@ class UixPageBuilderForm_ListClone {
 						}	
 						
 						$toggle_target_id = '"'.rtrim( $toggle_target_id, ',' ).'"';
-						$media_js .= '$( document ).uix_pb_divToggle( { btnID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", targetID: '.$toggle_target_id.', list: 1 } );'."\n";
+						$media_js .= '$( document ).uixform_divToggle( { btnID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", targetID: '.$toggle_target_id.', list: 1 } );'."\n";
 					}						
 					
 					
@@ -104,11 +104,11 @@ class UixPageBuilderForm_ListClone {
                     <th scope="row"><label>'.$title.'</label></th>
                     <td>
 					
-						<div class="sweet-box">
+						<div class="uixform-box">
 						   <a href="javascript:" class="addrow addrow-'.$id.' table-link" data-index="2">'.$btn_text.'</a>
 						 </div>
 					
-					    <div class="sweet-box">
+					    <div class="uixform-box">
                    
 								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							  
@@ -134,7 +134,7 @@ class UixPageBuilderForm_ListClone {
                 /*-- Dynamic Adding Input  --*/
 
 
-                $( document ).uix_pb_dynamicAddinginput({
+                $( document ).uixform_dynamicAddinginput({
                     btnID: ".addrow-'.$id.'",
                     removebtnClass: "delrow-'.$id.'",
                     appendID: "#'.$append_box_id.'",

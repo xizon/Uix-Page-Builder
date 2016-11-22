@@ -463,7 +463,7 @@ $icons_show = '
 ';
 
 echo '
-<div class="sweet-icon-selector">
+<div class="uixform-icon-selector">
 	'.$icons_show.'
 </div>
 

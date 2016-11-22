@@ -12,7 +12,7 @@ class UixPageBuilderForm_Checkbox {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -75,7 +75,7 @@ class UixPageBuilderForm_Checkbox {
             }
 			
 			//inscure browser
-			if( UixPageBuilder::is_IE() && UixPageBuilder::is_dynamic_input( $class ) ) {
+			if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
 				$new_class = str_replace( 'dynamic-row', 'isMSIE dynamic-row', $class );
 			} else {
 				$new_class = $class;
@@ -86,11 +86,11 @@ class UixPageBuilderForm_Checkbox {
                     <tr'.$new_class.'>
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
-						    <div class="sweet-box">
+						    <div class="uixform-box">
                         
-                             <span class="sweet-checkbox">
+                             <span class="uixform-checkbox">
                                  
-                                 '.( !empty( $id ) ? '<input id="'.$id.'" value="'.$value.'" type="checkbox" class="sweet-normal sweet-check" '.$checked_txt.'>' : '' ).' 
+                                 '.( !empty( $id ) ? '<input id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" value="'.$value.'" type="checkbox" class="uixform-normal uixform-check" '.$checked_txt.'>' : '' ).' 
 
                              </span>
                              
@@ -111,11 +111,11 @@ class UixPageBuilderForm_Checkbox {
 			if ( !empty( $toggle_class ) ) {
 				$jscode_tog = '
 					/*-- Toggle for checkbox  --*/
-					$( document ).uix_pb_divToggle( { checkbox: 1, checkboxToggleClass: ".'.$toggleForRadioClass.'", btnID: "#'.$toggle_trigger_id.'", targetID: "'.rtrim( $target_id, ',' ).'" '.$toggle_no_js.' } );
+					$( document ).uixform_divToggle( { checkbox: 1, checkboxToggleClass: ".'.$toggleForRadioClass.'", btnID: "#'.$toggle_trigger_id.'", targetID: "'.rtrim( $target_id, ',' ).'" '.$toggle_no_js.' } );
 				';	
 				
 				//inscure browser
-				if( UixPageBuilder::is_IE() && UixPageBuilder::is_dynamic_input( $class ) ) {
+				if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
 					$jscode_tog = '';
 				}
 						

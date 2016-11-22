@@ -12,7 +12,7 @@ class UixPageBuilderForm_Image {
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPageBuilder::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -47,17 +47,17 @@ class UixPageBuilderForm_Image {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						    
-							<div class="sweet-box">
+							<div class="uixform-box">
 							
 							  
-								<div class="sweet-upbtn-container">
+								<div class="uixform-upbtn-container">
 									
-									'.( !empty( $id ) ? '<input type="text" id="'.$id.'" class="sweet-normal sweet-input-text sweet-input-upload-text"  value="'.$value.'" placeholder="'.$placeholder.'" />' : '' ).' 
+									'.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text uixform-input-upload-text"  value="'.$value.'" placeholder="'.$placeholder.'" />' : '' ).' 
 									'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 									
 									
-									<input type="button" class="button sweet-upbtn" id="trigger_id_'.$id.'" data-insert-img="'.$id.'" data-insert-preview="'.$id.'_preview" value="'.$upload_btn_text.'" />
-									<a href="javascript:" id="drop_trigger_id_'.$id.'" data-insert-img="'.$id.'" data-insert-preview="'.$id.'_preview" style="display:none">'.$remove_btn_text.'</a>
+									<input type="button" class="button uixform-upbtn" id="trigger_id_'.$id.'" data-insert-img="'.$id.'" data-insert-preview="'.$id.'_preview" value="'.$upload_btn_text.'" />
+									<a class="removeimg" href="javascript:" id="drop_trigger_id_'.$id.'" data-insert-img="'.$id.'" data-insert-preview="'.$id.'_preview" style="display:none">'.$remove_btn_text.'</a>
 									'.( !empty( $value ) ? '<div id="'.$id.'_preview" class="field_img_preview" style="display:block"><img src="'.$value.'" alt=""></div>' : '<div id="'.$id.'_preview" class="field_img_preview"><img src="" alt=""></div>' ).' 
 									
 												
@@ -78,7 +78,7 @@ class UixPageBuilderForm_Image {
 							<th scope="row"><label>'.__( 'Background Repeat', 'uix-page-builder' ).'</label></th>
 							<td>
 							
-								<div class="sweet-box">
+								<div class="uixform-box">
 								   
 									  <div class="radio" id="radio-selector-'.$id.'_repeat">	
 										  <span data-value="no-repeat" class="active">'.__( 'No Repeat', 'uix-page-builder' ).'</span>
@@ -93,7 +93,7 @@ class UixPageBuilderForm_Image {
 						</tr> 
 					'."\n";	
 				$jscode .= '
-				$( document ).uix_pb_radioSelector({
+				$( document ).uixform_radioSelector({
 						containerID: "#radio-selector-'.$id.'_repeat",
 						targetID: "#'.$id.'_repeat"
 					});		
@@ -107,7 +107,7 @@ class UixPageBuilderForm_Image {
 							<th scope="row"><label>'.__( 'Background Position', 'uix-page-builder' ).'</label></th>
 							<td>
 							
-								<div class="sweet-box">
+								<div class="uixform-box">
 								   
 									  <div class="radio" id="radio-selector-'.$id.'_position">	
 										  <span data-value="left" class="active">'.__( 'Left', 'uix-page-builder' ).'</span>
@@ -121,7 +121,7 @@ class UixPageBuilderForm_Image {
 						</tr> 
 					'."\n";	
 				$jscode .= '
-				$( document ).uix_pb_radioSelector({
+				$( document ).uixform_radioSelector({
 						containerID: "#radio-selector-'.$id.'_position",
 						targetID: "#'.$id.'_position"
 					});		
@@ -135,7 +135,7 @@ class UixPageBuilderForm_Image {
 							<th scope="row"><label>'.__( 'Background Attachment', 'uix-page-builder' ).'</label></th>
 							<td>
 							
-								<div class="sweet-box">
+								<div class="uixform-box">
 								   
 									  <div class="radio" id="radio-selector-'.$id.'_attachment">	
 										  <span data-value="scroll" class="active">'.__( 'Scroll', 'uix-page-builder' ).'</span>
@@ -148,7 +148,7 @@ class UixPageBuilderForm_Image {
 						</tr> 
 					'."\n";	
 				$jscode .= '
-				$( document ).uix_pb_radioSelector({
+				$( document ).uixform_radioSelector({
 						containerID: "#radio-selector-'.$id.'_attachment",
 						targetID: "#'.$id.'_attachment"
 					});		
@@ -162,7 +162,7 @@ class UixPageBuilderForm_Image {
 							<th scope="row"><label>'.__( 'Background Size', 'uix-page-builder' ).'</label></th>
 							<td>
 							
-								<div class="sweet-box">
+								<div class="uixform-box">
 								   
 									  <div class="radio" id="radio-selector-'.$id.'_size">	
 									      <span data-value="cover" class="active">'.__( 'Cover', 'uix-page-builder' ).'</span>
@@ -176,7 +176,7 @@ class UixPageBuilderForm_Image {
 						</tr> 
 					'."\n";	
 				$jscode .= '
-				$( document ).uix_pb_radioSelector({
+				$( document ).uixform_radioSelector({
 						containerID: "#radio-selector-'.$id.'_size",
 						targetID: "#'.$id.'_size"
 					});		
@@ -198,7 +198,7 @@ class UixPageBuilderForm_Image {
             $jscode .= '
 
                 /*-- Insert media  --*/
-                $( document ).uix_pb_uploadMediaCustom( { '.( $image_prop ? 'prop: true,' : '' ).'btnID: "#trigger_id_'.$id.'", closebtnID: "#drop_trigger_id_'.$id.'" } );
+                $( document ).uixform_uploadMediaCustom( { '.( $image_prop ? 'prop: true,' : '' ).'btnID: "#trigger_id_'.$id.'", closebtnID: "#drop_trigger_id_'.$id.'" } );
             ';	
                 
 
