@@ -11,6 +11,7 @@ class UixFormType_ShortUnitsText {
 		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
+		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -46,7 +47,7 @@ class UixFormType_ShortUnitsText {
                                
 								<div class="uixform-input-text-short">
 			
-								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
 								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" value="'.$unitsfirst.'">' : '' ).' 
 								   
 								   <span class="units units-short units-selector" id="units-selector-'.$unitsid.'">'.$unitslist.'</span>

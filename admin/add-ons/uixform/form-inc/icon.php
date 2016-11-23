@@ -11,6 +11,7 @@ class UixFormType_Icon {
 		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
+		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -25,14 +26,14 @@ class UixFormType_Icon {
 		if ( $type == 'icon' ) {
 			
 			$social = false;
-			$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixFormCore::plug_directory().''.$iconselector.'" target-id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'"></span>';
+			$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixFormCore::plug_filepath().'/admin/add-ons/uixform/'.$iconselector.'" target-id="'.$id.'" name="'.$name.'" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'"></span>';
 			if ( is_array( $default ) && !empty( $default ) ) {
 				$social = $default[ 'social' ];
 				
 				if ( $social ) $iconselector = 'fontawesome/font-awesome-social.php';
 				
 				if ( $social ) {
-					$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixFormCore::plug_directory().''.$iconselector.'" target-id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'-social"></span>';
+					$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixFormCore::plug_filepath().'/admin/add-ons/uixform/'.$iconselector.'" target-id="'.$id.'" name="'.$name.'" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'-social"></span>';
 				} 
 			}
 			
@@ -43,8 +44,8 @@ class UixFormType_Icon {
 						    <div class="uixform-box">
 						
 								<div class="uixform-icon-selector-label">'.$tips.'</div>
-								<div class="uixform-icon-selector-icon-preview" id="'.$id.'-preview"></div>
-								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text" value="'.$value.'">' : '' ).'
+								<div class="uixform-icon-selector-icon-preview" id="'.$id.'-preview">'.( ( !empty( $value ) ) ? '<i class="fa fa-'.$value.'"></i>' : '' ).'</div>
+								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" class="uixform-normal uixform-input-text" value="'.$value.'">' : '' ).'
 								'.$iconlist.'
 							
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 

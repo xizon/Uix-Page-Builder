@@ -8,6 +8,7 @@
 class UixFormCore {
 	
 	const PREFIX = 'uix';
+	const CUSTOMTEMP = 'uix-page-builder-sections/sections/';
 
 	
 	/**
@@ -19,6 +20,10 @@ class UixFormCore {
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_form_core' ) );
 		add_filter( 'mce_css', array( __CLASS__, 'mce_css' ) );
+		add_action( 'wp_ajax_nopriv_uixform_ajax_sections', array( __CLASS__, 'load_uixform_ajax_sections' ) );
+		add_action( 'wp_ajax_uixform_ajax_sections', array( __CLASS__, 'load_uixform_ajax_sections' ) );
+		add_action( 'wp_ajax_nopriv_uixform_ajax_iconlist', array( __CLASS__, 'load_uixform_ajax_iconlist' ) );
+		add_action( 'wp_ajax_uixform_ajax_iconlist', array( __CLASS__, 'load_uixform_ajax_iconlist' ) );		
 		
 	}
 	
@@ -59,6 +64,13 @@ class UixFormCore {
 						wp_enqueue_style( 'wp-color-picker' );
 						wp_enqueue_script( 'wp-color-picker' );
 						
+						//Ajax
+						wp_enqueue_script( 'uixform-ajax-sections',  self::plug_directory() .'js/uixform.ajax.js', array( 'jquery' ), '1.0.0', true );
+						wp_localize_script( 'uixform-ajax-sections', 'uixform_ajax', array(
+							'ajaxurl' => admin_url( 'admin-ajax.php' )
+						));					
+
+
 
 				}
 		  }
@@ -98,11 +110,91 @@ class UixFormCore {
 
 	}
 	
+	/*
+	 * Callback the plugin file path
+	 *
+	 *
+	 */
+	public static function plug_filepath() {
+
+	  return WP_PLUGIN_DIR .'/'.self::get_slug();
+
+	}	
+	
+	
+	/*
+	 * Callback this plugin slug
+	 *
+	 *
+	 */
+	public static function get_slug() {
+		$curslug = '';
+		$plugin_array = get_plugins();
+	
+		// First check if we have plugins, else return false
+		if ( empty( $plugin_array ) )
+			return false;
+	
+		// Define our variable as an empty array to avoid bugs if $plugin_array is empty
+		$slugs = [];
+	
+		foreach ( $plugin_array as $plugin_slug=>$values ){
+			$slugs[] = basename(
+					$plugin_slug, // Get the key which holds the folder/file name
+					'.php' // Strip away the .php part
+				);
+		}
 		
+		foreach ( $slugs as $value ){
+			if( self::inc_str( dirname( plugin_basename( __FILE__ ) ), $value ) ) { 
+			    $curslug = $value;
+			    break;	
+			}
+		}	
+		
+		return $curslug;
+	}
+	
+	
+
 	/*
 	 * ========================================================================================================================================
 	 * ========================================================================================================================================
 	 */			
+
+	
+	/*
+	 * Checks whether a template folder or directory exists
+	 *
+	 *
+	 */
+	public static function tempfolder_exists() {
+
+	      if( is_dir( get_stylesheet_directory() . '/uix-page-builder-sections' ) ) {
+			  return true;
+		  } else {
+			  return false;
+		  }
+
+	}
+	
+	
+	
+	/*
+	 * Call the specified page sections
+	 *
+	 *
+	 */
+	public static function call_ajax_sections_tempfilepath( $name ) {
+		
+		if ( self::tempfolder_exists() ) {
+			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."{$name}.php";
+
+		} else {
+			include self::plug_filepath(). "/".self::CUSTOMTEMP."{$name}.php";
+		}
+		
+	}
 	
 
 	/*
@@ -490,26 +582,26 @@ class UixFormCore {
 	public static function format_formcode( $str ) {
 
 		$str = str_replace( '$___$', "'",
-		       str_replace( '\'', '&apos;',
+			   str_replace( '\'', '&apos;',
 			   self::str_compression( $str )
 			   ) );
 	
-
+	
 		return $str;
 
-
+	
+		
 	}
 	
 
-	
 	/*
 	 * Callback before tag of form
 	 *
 	 *
 	 */
-	public static function form_before() {
+	public static function form_before( $section_row, $form_id ) {
 		
-		return '<div class="uixform-alert"><div class="uixform-table-wrapper"><form method="post"><input type="hidden" name="section-id"  value="$___$+form[ $___$sectionID$___$ ]+$___$">';
+		return '<div class="uixform-alert"><div class="uixform-table-wrapper"><form method="post"><div class="uixform-modal-buttons"><input type="button" class="close-uixform-modal uixform-modal-button uixform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-page-builder' ).'" /><input type="submit" class="uixform-modal-button uixform-modal-button-primary uixform-modal-save-btn" value="'.__( 'Save', 'uix-page-builder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'">';
 
 	}
 	
@@ -525,36 +617,55 @@ class UixFormCore {
 	}
 	
 	/*
+	 * Callback uixform sections with ajax
+	 *
+	 *
+	 */
+	public static function load_uixform_ajax_sections() {
+		
+		$tempID = isset( $_POST['tempID'] ) ? $_POST[ 'tempID' ] : '';
+		self::call_ajax_sections_tempfilepath( $tempID );
+		die();
+	}
+
+	/*
+	 * Callback uixform icons list with ajax
+	 *
+	 *
+	 */
+	public static function load_uixform_ajax_iconlist() {
+		
+		$iconURL  = isset( $_POST['iconURL'] ) ? $_POST[ 'iconURL' ] : '';
+		include $iconURL;
+		
+		die();
+	}
+
+
+	
+	
+	/*
 	 * Callback before javascript of uixform
 	 *
 	 *
 	 */
-	public static function uixform_callback( $form_js, $form_html, $form_js_vars, $form_id, $title ) {
+	public static function uixform_callback( $form_js, $form_js_vars, $form_id, $title ) {
 		
-	    $formid = '.'.$form_id.'';
+		global $post;
+		$old_formid = $form_id;
+	    $formid     = '.'.$old_formid.'';
+		$postid     = $post->ID;
 		  
 		return "
 		
 		{$form_js}
 		
-		var sid = ( $.cookie( 'uix-page-section-cur' ) == null ) ? 0 : $.cookie( 'uix-page-section-cur' );	
 		$( document ).uixFormPop({   
-			trigger: '{$formid}',
-			title: '{$title}',
-			pageSectionID: '{sid}',
-			initFunction: function( form ) {
-				var code = '{$form_html}';
-				if ( $( '#' + form[ 'thisModalID' ] ).length < 1 ) {
-					
-					$( 'body' ).prepend( '<div class=\"uixform-modal-box\" id=\"'+form[ 'thisModalID' ]+'\"><a href=\"javascript:void(0)\" class=\"close-btn close-uixform-modal\">×</a><div class=\"content\"><h2>'+form[ 'title' ]+'</h2>'+code+'<div class=\"uixform-modal-buttons\"><input type=\"button\" class=\"close-uixform-modal uixform-modal-button uixform-modal-cancel-btn\" value=\"".__( 'Cancel', 'uix-page-builder' )."\" /><input type=\"submit\" class=\"uixform-modal-button uixform-modal-button-primary uixform-modal-save-btn\" data-formID=\"'+form[ 'thisFormName' ]+'\" value=\"".__( 'Save', 'uix-page-builder' )."\" /></div></div></div>' );
-				}
-			},
-			startFunction: function( widgets ) {
-				setTimeout( function() {
-					/*-- Icon list with the jQuery AJAX method --*/
-					$( '.icon-selector' ).uixform_iconSelector();
-					$( '.wp-color-input' ).wpColorPicker();
-				}, 1 );	
+		    postID            : '{$postid}',
+			trigger           : '{$formid}',
+			title             : '{$title}',
+			startFunction     : function( widgets ) {
+
 			}
 		});
 
@@ -627,7 +738,7 @@ class UixFormCore {
 	 * 
 	 */
 	 
-	public static function add_form( $config_id, $arr1 = null, $arr2 = null, $code = 'html', $wrapper_name = '' ) {
+	public static function add_form( $section_row = -1, $config_id, $arr1 = null, $arr2 = null, $code = 'html', $wrapper_name = '' ) {
 		
 		$section_args = array();
 		$field_total = array();
@@ -666,7 +777,7 @@ class UixFormCore {
 					if ( $arr1[ 'list' ] == false ) {
 		
 							$before = '
-							 '.self::form_before().'
+							 '.self::form_before( $section_row, $config_id ).'
 								<table class="uixform-table">
 							'."\n";
 							
@@ -764,15 +875,16 @@ class UixFormCore {
 	
 			foreach ( $field_total as $key) {
 		
-				$_title = ( isset( $key['title'] ) ) ? $key['title'] : '';
-				$_desc = ( isset( $key['desc'] ) ) ? $key['desc'] : '';
+				$_title   = ( isset( $key['title'] ) ) ? $key['title'] : '';
+				$_desc    = ( isset( $key['desc'] ) ) ? $key['desc'] : '';
 				$_default = ( isset( $key['default'] ) ) ? $key['default'] : '';
-				$_value = ( isset( $key['value'] ) ) ? $key['value'] : '';
-				$_ph = ( isset( $key['placeholder'] ) ) ? $key['placeholder'] : '';
-				$_id = ( isset( $key['id'] ) ) ? $key['id'] : '';
-				$_type = ( isset( $key['type'] ) ) ? $key['type'] : 'text';
-				$_class = ( isset( $key['class'] ) ) ? $key['class'] : '';
-				$_toggle = ( isset( $key['toggle'] ) ) ? $key['toggle'] : '';
+				$_value   = ( isset( $key['value'] ) ) ? $key['value'] : '';
+				$_ph      = ( isset( $key['placeholder'] ) ) ? $key['placeholder'] : '';
+				$_id      = ( isset( $key['id'] ) ) ? $key['id'] : '';
+				$_name    = ( isset( $key['name'] ) ) ? $key['name'] : '';
+				$_type    = ( isset( $key['type'] ) ) ? $key['type'] : 'text';
+				$_class   = ( isset( $key['class'] ) ) ? $key['class'] : '';
+				$_toggle  = ( isset( $key['toggle'] ) ) ? $key['toggle'] : '';
 				
 				$args = [
 					'title'             => $_title,
@@ -781,9 +893,10 @@ class UixFormCore {
 					'value'             => $_value,
 					'placeholder'       => $_ph,
 					'id'                => $_id,
+					'name'              => $_name,
 					'type'              => $_type,
-					'class'              => $_class,
-					'toggle'              => $_toggle
+					'class'             => $_class,
+					'toggle'            => $_toggle
 
 				];
 			

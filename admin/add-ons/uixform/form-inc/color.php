@@ -11,6 +11,7 @@ class UixFormType_Color {
 		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
+		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -40,7 +41,7 @@ class UixFormType_Color {
 								  <div class="uixform-color-selector" id="trigger_id_'.$id.'">	
 								   '.$colorlist.' 
 								   </div>
-								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" value="'.$value.'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'">' : '' ).' 
 	
 								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							 </div> 

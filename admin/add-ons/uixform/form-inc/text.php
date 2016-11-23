@@ -11,6 +11,7 @@ class UixFormType_Text {
 		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
+		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -28,7 +29,7 @@ class UixFormType_Text {
 						    
 							<div class="uixform-box">
 							
-							   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
+							   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
 			   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   

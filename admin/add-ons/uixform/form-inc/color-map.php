@@ -11,6 +11,7 @@ class UixFormType_ColorMap {
 		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
+		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -42,7 +43,7 @@ class UixFormType_ColorMap {
 				                <div class="uixform-color-selector-onlybutton">
 								        
 										<div class="uixform-color-selector-toggles">
-											<input type="text" class="wp-color-input" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" value="'.$value.'">
+											<input type="text" class="wp-color-input" id="'.$id.'" name="'.$name.'" value="'.$value.'">
 										</div>	
 										<span class="uixform-color-selector-label">'.( !empty( $desc ) ? $desc : __( 'Add Custom Color', 'uix-page-builder' ) ).'</span>		
 								
@@ -56,7 +57,7 @@ class UixFormType_ColorMap {
 				$field .= ' 
 				                <div class="uixform-input-text-short">
 				
-									   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="$___$+form[ $___$thisFormName$___$ ]+$___$|['.$id.']" class="uixform-normal uixform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixFormCore::readable_color( $value ).'"' : '' ).' value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+									   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixform-normal uixform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixFormCore::readable_color( $value ).'"' : '' ).' value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
 									   
 									  
 								</div>

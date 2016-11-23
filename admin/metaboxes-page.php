@@ -141,7 +141,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 
     ?>
    
-        <a class="button button-primary" href="javascript:add_widget();"><?php _e( 'Add Section', 'uix-page-builder' ); ?></a>
+        <a class="button button-primary" href="javascript:gridsterAddWidget();"><?php _e( 'Add Section', 'uix-page-builder' ); ?></a>
 
         <div class="gridster uix-page-builder-gridster">
             <ul><?php
@@ -187,7 +187,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					},
 					draggable: {
 						stop: function() {
-						    save();	
+						    uixFormDataSave();	
 						}
 					},
 					serialize_params: function( $w, wgd ){ 
@@ -211,11 +211,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				for(var iii = 0; iii < saved_data.length; iii++) {
 					
-					var titleid = 'title-data-'+iii,
-					    contentid = 'content-data-'+iii,
-						uid  = iii;
+					var uid       = gridsterContentID( saved_data[iii].content ),
+					    titleid   = 'title-data-'+uid,
+					    contentid = 'content-data-'+uid;
 					
-					gridster.add_widget( '<li class="uix-page-builder-gridster-widget" data-id="'+iii+'" data-row="'+saved_data[iii].row+'" data-col="'+saved_data[iii].col+'" data-sizex="'+saved_data[iii].size_x+'" data-sizey="'+saved_data[iii].size_y+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ saved_data[iii].title +'"></div><button class="remove-gridster-widget" onclick="remove_widget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="edit_widget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+htmlUnescape( saved_data[iii].content )+'</textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 );
+					gridster.gridsterAddWidget( '<li class="uix-page-builder-gridster-widget" data-id="'+uid+'" data-row="'+saved_data[iii].row+'" data-col="'+saved_data[iii].col+'" data-sizex="'+saved_data[iii].size_x+'" data-sizey="'+saved_data[iii].size_y+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ saved_data[iii].title +'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+gridsterHtmlUnescape( saved_data[iii].content )+'</textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 );
 					     
 				}
 				
@@ -225,7 +225,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 
 
 			
-			function add_widget() {
+			function gridsterAddWidget() {
 				
 				var gLi = jQuery( '.gridster ul > li' ).length;
 				    gLi = gLi + 1,
@@ -233,35 +233,35 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					contentid = 'content-data-'+gLi,
 					uid  = gLi;
 				
-				gridster.add_widget( '<li class="uix-page-builder-gridster-widget" data-id="'+gLi+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Title', 'uix-page-builder' ); ?>"></div><button class="remove-gridster-widget" onclick="remove_widget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="edit_widget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 ).fadeIn( 100, function() {
-						inputsave();
+				gridster.gridsterAddWidget( '<li class="uix-page-builder-gridster-widget" data-id="'+gLi+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Title', 'uix-page-builder' ); ?> '+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 ).fadeIn( 100, function() {
+						gridsterInputsave();
 				});
-				save();
+				uixFormDataSave();
 				gridsterWidgetsInit();
 				jQuery( '#uix-page-builder-layoutdata-none' ).hide();
 			}
 
-			function remove_widget(e){
+			function gridsterRemoveWidget(e){
 				jQuery( function(){
 					currently_removing = e.srcElement.parentNode;
 					var thisWidget    = jQuery( currently_removing ).parent( '.uix-page-builder-gridster-widget' ); 
 						
-					gridster.remove_widget( thisWidget );
+					gridster.gridsterRemoveWidget( thisWidget );
 						
-					save();
+					uixFormDataSave();
 	
 				} );
 				e.preventDefault();
 			}
 
-			function save(){
+			function uixFormDataSave(){
 				var json_str = JSON.stringify( gridster.serialize() );
 				json_str = json_str.replace(/\\n/g, '<br>' ).replace(/\\r/g, '' ).replace(/\\/g, '' );
 				document.getElementById( 'uix-page-builder-layoutdata' ).value = json_str;
-				widget_status();
+				gridsterWidgetStatus();
 				
 			}
-			function widget_status(){
+			function gridsterWidgetStatus(){
 				jQuery( document ).ready( function() {  
 					jQuery( '.gridster ul > li' ).each( function() {
 						var $this = jQuery( this );
@@ -277,12 +277,12 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			}	
 			
 			
-            function edit_widget(e) {
+            function gridsterEditWidget(e) {
 				jQuery( function(){
 					currently_editing = e.srcElement.parentNode;
 					var thisWidget    = jQuery( currently_editing ).parent( '.uix-page-builder-gridster-widget' ),
 						thisID        = thisWidget.data( 'id' ),
-						oldValue      = htmlEscape( thisWidget.find( '.content-data-'+thisID ).val() ); 
+						oldValue      = gridsterHtmlUnescape( thisWidget.find( '.content-data-'+thisID ).val() ); 
 					
 					thisWidget.find( '.content-data-'+thisID ).focus().show();
 					
@@ -293,13 +293,13 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 
            
 			
-			function inputsave(){
+			function gridsterInputsave(){
 				jQuery( document ).ready( function() {  
 					jQuery( '.gridster ul > li' ).each( function() {
 						var $this = jQuery( this );
 						$this.find( '.content-box, .title-box' ).on( 'input change keyup', function() {
 							$this.find( 'content-data' ).html( jQuery( this ).val() );
-							save();
+							uixFormDataSave();
 						});
 	
 					});
@@ -313,7 +313,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				jQuery( '.uix-page-builder-gridster-widget' ).css( 'width', jQuery( '.uix-page-builder-gridster' ).width() - 80 + 'px' );
 			}
 
-			function htmlUnescape( str ){
+			function gridsterHtmlUnescape( str ){
 				return str
 					.replace(/&quot;/g, '"')
 					.replace(/&#39;/g, "'")
@@ -323,7 +323,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					
 					
 			}
-			function htmlEscape( str ){
+			function gridsterHtmlUnescape( str ){
 				return str
 					.replace(/"/g, '&quot;')
 					.replace(/'/g, "&#39;")
@@ -332,8 +332,22 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					.replace(/&/g, '&amp;');
 			}
 			
-			inputsave();	
-			widget_status();
+		    function gridsterContentID( str ){
+				var nstr = str
+				           .replace(/\$__\$/g, '"');
+						   
+				var tmpStr  = nstr.match("\"row\",\"(.*)\"]");
+				
+				if( Object.prototype.toString.call( tmpStr ) === '[object Array]' && str.length > 0){
+					return tmpStr[1][0];
+				} else {
+					return 0;
+				}
+				
+			}
+			
+			gridsterInputsave();	
+			gridsterWidgetStatus();
 			
 
 

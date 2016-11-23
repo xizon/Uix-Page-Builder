@@ -21,6 +21,7 @@ class UixPageBuilder {
 	const PREFIX = 'uix';
 	const HELPER = 'uix-page-builder-helper';
 	const NOTICEID = 'uix-page-builder-helper-tip';
+	const CUSTOMTEMP = 'uix-page-builder-sections/sections/';
 
 	
 	/**
@@ -319,13 +320,14 @@ class UixPageBuilder {
 		$data = 	str_replace( '$__$', '"',
 				str_replace( '$___$', '&#039;',
 				str_replace( '$____$', '&quot;',
+				str_replace( '$_br_$', '<br>',
 		        str_replace( '&#039;', "'",
 		        str_replace( '&quot;', '"',
 			    str_replace( '&apos;', "'",
 
 				
 			    $data 
-			    ) ) ) ) ) );
+			    ) ) ) ) ) ) );
 			   
 		return json_decode( $data, true );
 		
@@ -341,11 +343,7 @@ class UixPageBuilder {
 		}
 			
 		
-		$result = str_replace( '[', '',
-		        str_replace( ']', '',
-			    $result 
-			    ) );
-		 
+	
 			   
 		return $result;
 		
@@ -378,15 +376,15 @@ class UixPageBuilder {
 		if( get_post_type() == 'page' ) {
 			
 			if ( self::tempfolder_exists() ) {
-				include get_stylesheet_directory(). "/uix-page-builder-sections/sections/config.php";
+				include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
 				foreach ( $uix_pb_config as $key ) {
-					include get_stylesheet_directory(). "/uix-page-builder-sections/sections/".$key[ 'id' ].".php";
+					include get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
 				}
 
 			} else {
-				include self::plug_filepath(). "/uix-page-builder-sections/sections/config.php";
+				include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
 				foreach ( $uix_pb_config as $key ) {
-					include self::plug_filepath(). "/uix-page-builder-sections/sections/".$key[ 'id' ].".php";
+					include self::plug_filepath(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
 				}
 			}
 		
@@ -398,13 +396,15 @@ class UixPageBuilder {
 	public static function call_sections_frontend() {
 		
 		if ( self::tempfolder_exists() ) {
-			include get_stylesheet_directory(). "/uix-page-builder-sections/sections/config.php";
+			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
 
 		} else {
-			include self::plug_filepath(). "/uix-page-builder-sections/sections/config.php";
+			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
 		}
 		
 	}
+	
+	
 	
 	/**
 	 * List buttons of page sections 
@@ -413,9 +413,9 @@ class UixPageBuilder {
 	public static function list_page_buttons() {
 	
 		if ( self::tempfolder_exists() ) {
-			include get_stylesheet_directory(). "/uix-page-builder-sections/sections/config.php";
+			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
 		} else {
-			include self::plug_filepath(). "/uix-page-builder-sections/sections/config.php";
+			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
 		}
 		
 		foreach ( $uix_pb_config as $key ) {
@@ -427,6 +427,16 @@ class UixPageBuilder {
 		
 		
 	/*
+	 * Returns form name
+	 *
+	 *
+	 */
+	public static function fname( $form_id, $field ) {
+		return $form_id.'|['.$field.']{index}';
+	}
+			
+		
+	/*
 	 * Uix Form Core
 	 *
 	 *
@@ -436,7 +446,9 @@ class UixPageBuilder {
 		require_once 'admin/add-ons/uixform/init.php';
 
 	}
-		
+	
+	
+
 
 	
 }
