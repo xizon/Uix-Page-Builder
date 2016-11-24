@@ -485,20 +485,8 @@ if ( !class_exists( 'UixFormCore' ) ) {
 			$formid     = '.'.$old_formid.'';
 			$postid     = $post->ID;
 			  
-			return "
-			
-			{$form_js}
-			
-			$( document ).uixFormPop({   
-				postID            : '{$postid}',
-				trigger           : '{$formid}',
-				title             : '{$title}',
-				startFunction     : function( widgets ) {
-	
-				}
-			});
-	
-			";
+			return "{$form_js}
+			$(document).uixFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'});";
 	
 		}
 		
