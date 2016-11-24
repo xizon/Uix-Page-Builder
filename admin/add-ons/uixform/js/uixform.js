@@ -55,7 +55,8 @@
 				e.preventDefault();
 				
 				var widget_ID       = $( this ).data( 'id' ),
-				    widgets         = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'thisModalID': dataID, 'sectionID': widget_ID },
+				    widget_name     = $( this ).data( 'name' ),
+				    widgets         = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID },
 				    code            = '',
 					$obj            = $( '.uixform-modal-box#'+dataID );
 				
@@ -69,6 +70,7 @@
 							action    : 'uixform_ajax_sections',
 							tempID    : formID,
 							sectionID : widget_ID,
+							widgetName: widget_name,
 							postID    : $postID
 						},
 						success   : function( result ){
@@ -131,12 +133,14 @@
 				var $form         = $( this ).closest( 'form' ),
 				    formID        = $form.find( '[name="section"]' ).val(),
 				    rowID         = $form.find( '[name="row"]' ).val(),
+					widgetName    = $form.find( '[name="widgetname"]' ).val(),
 				    settings      = [];
 					
 					
 				var fields = $( "[name^='"+formID+"']" ).serializeArray();
 				settings.push( [ 'section', formID ] );
 				settings.push( [ 'row', rowID ] );
+				settings.push( [ 'widgetname', widgetName ] );
 				
 				$.each( fields, function( i, field ) {
 					var v = htmlPagebuilderEscape( field.value ),
@@ -144,9 +148,17 @@
 					settings.push( [ n, v ] );
 				});	
 				
-				
+				//Save
 				uixform_insertCodes( formID, JSON.stringify( settings ), 'content-data-' + rowID, rowID );
+	
+				//Add widget name
+				var oldname = $( '#title-data-' + rowID ).val();
+				if ( oldname.indexOf( widgetName ) < 0 ) {
+					$( '#title-data-' + rowID ).val( widgetName );
+				}
 				
+				
+				//Close window
 				$( '.uixform-modal-box .close-uixform-modal' ).trigger( 'click' );
 				
 				

@@ -1046,6 +1046,7 @@
 	margin:4px 0;
 	float:left;
 	overflow-y: auto;
+	z-index: 559902;
 }
 .uixform-icon-selector.uixform-icon-selector-s{
 	height:50px !important;

@@ -16,43 +16,59 @@ if ( !function_exists( 'uix_page_builder_metaboxes_display_script' ) ) {
 			?>
 			<script type="text/javascript">
 			( function( $ ) {
-			    
-				var formats = { 
-					'uix-page-builder-status1': 'uix_page_builder_page_meta_pagerbuilder_container', 
-					'uix-page-builder-status2': 'postdivrich',
-					
-					
-				};
-				var ids = '#uix_page_builder_page_meta_pagerbuilder_container,#postdivrich';
-				
-				function displayMetaboxes() {
-					// Hide all post format metaboxes
-					$(ids).slideUp( 300 );
-					// Get current post format
-					var selectedElt = $("input[name='uix-page-builder-status']:checked").attr("id");
-	 
-					// If exists, fade in current post format metabox
-					if ( formats[selectedElt] ) {
-						
-						$( "#" + formats[selectedElt] ).slideDown( 300 ).css( 'width', '100%' );
-						$( 'html, body' ).animate( {scrollTop: 10 }, 100 );
-						$( 'html, body' ).delay( 300 ).animate( {scrollTop: 5 }, 100 );
-						
-						
-					}
-					
-					
-
-				}
 	 
 				$(function() {
-					// Show/hide metaboxes on page load
-					displayMetaboxes();
-	 
-					// Show/hide metaboxes on change event
-					$("input[name='uix-page-builder-status']").change(function() {
-						displayMetaboxes();
+					
+					
+					var hidedivs    = [ '#postdivrich' ],
+					    hideID      = '',
+						selectedElt = $( "input[name='uix-page-builder-status']:checked" ).attr( 'id' ),
+						pbID        = '#uix_page_builder_page_meta_pagerbuilder_container';
+					$( '.postbox' ).each( function()  {
+						if ( $( this ).attr( 'id' ).indexOf( 'dis_pagebuilder' ) >= 0 ) {
+							hidedivs.push( '#' + $( this ).attr( 'id' ) );
+						}
+						
 					});
+					
+					for (var i = 0, len = hidedivs.length; i < len; i++ ) {	
+						hideID += hidedivs[ i ] + ',';
+					}
+					hideID = hideID.substring( 0, hideID.length-1 );
+					
+					
+					if ( selectedElt == 'uix-page-builder-status2' ) {
+						uixpagebuilderHide();
+					} else {
+						uixpagebuilderShow();
+					}
+					
+					$( '#uix-page-builder-status1' ).on( 'click', function() {
+						uixpagebuilderShow();
+					});
+					$( '#uix-page-builder-status2' ).on( 'click', function() {
+						uixpagebuilderHide();
+					});
+					
+					
+					
+					function uixpagebuilderHide() {
+					    $( hideID ).slideDown( 300 ).css( 'width', '100%' );
+						$( pbID ).slideUp( 300 );	
+						uixpagebuilderInit();
+					}
+					function uixpagebuilderShow() {
+					    $( hideID ).slideUp( 300 );
+						$( pbID ).slideDown( 300 ).css( 'width', '100%' );
+						uixpagebuilderInit();
+					}				
+					function uixpagebuilderInit() {
+						$( 'html, body' ).animate( {scrollTop: 10 }, 100 );
+						$( 'html, body' ).delay( 300 ).animate( {scrollTop: 5 }, 100 );
+						$( '.uix-page-builder-gridster ul' ).css( 'width', '100%' );
+					}				
+								
+					
 				});
 			
 			} )( jQuery );
@@ -62,16 +78,13 @@ if ( !function_exists( 'uix_page_builder_metaboxes_display_script' ) ) {
 	}		
 	
 }
-
-
-
 if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type' ) ) {
 	
 	add_action( 'admin_init', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type' );  
 	function uix_page_builder_page_ex_metaboxes_pagerbuilder_type(){  
 		add_meta_box( 
 			'uix_page_builder_page_meta_pagerbuilder_type', 
-			__( '<i class="dashicons dashicons-editor-kitchensink"></i>&nbsp;&nbsp;Uix Page Builder', 'uix-page-builder' ), 
+			__( '<i class="dashicons dashicons-editor-kitchensink"></i>&nbsp;&nbsp;Uix Page Builder Attributes', 'uix-page-builder' ), 
 			'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_options', 
 			'page', 
 			'side', 
@@ -79,33 +92,61 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type' ) 
 			null
 		);  
 	}  
-
 }
    
-
 if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_options' ) ) {
 	
 	function uix_page_builder_page_ex_metaboxes_pagerbuilder_type_options( $object ) {  
 	
-		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce' );
-
+		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-pagebuilder' );
     ?>
 
-
-    <label for="uix-page-builder-status">
-        <input name="uix-page-builder-status" id="uix-page-builder-status1" type="radio" value="enable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-status', true ) == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-page-builder' ); ?>
-    </label>
+    <div class="uix-metabox-group">
+        <h3><?php _e( 'Page Builder Editor', 'uix-page-builder' ); ?></h3>
+        <div class="uix-metabox-con">
+            <p>
+                 <label for="uix-page-builder-status">
+                    <input name="uix-page-builder-status" id="uix-page-builder-status1" type="radio" value="enable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-status', true ) == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-page-builder' ); ?>
+                </label>
+                
+                <label for="uix-page-builder-status2">
+                    <input name="uix-page-builder-status" id="uix-page-builder-status2" type="radio" value="disable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-status', true ) == 'disable'  || empty( get_post_meta( $object->ID, 'uix-page-builder-status', true ) )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-page-builder' ); ?>
+                </label>  
     
-    <label for="uix-page-builder-status2">
-        <input name="uix-page-builder-status" id="uix-page-builder-status2" type="radio" value="disable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-status', true ) == 'disable'  || empty( get_post_meta( $object->ID, 'uix-page-builder-status', true ) )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-page-builder' ); ?>
-    </label>  
+            </p>
+        </div>
 
+    </div>
+    
+    <div class="uix-metabox-group">
+        <h3><?php _e( 'Automatically Generated Menu', 'uix-page-builder' ); ?></h3>
+        <div class="uix-metabox-con">
+            <p>
+                
+                <label for="uix-page-builder-nav">
+                    <input name="uix-page-builder-nav" type="radio" value="enable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-nav', true ) == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-page-builder' ); ?>
+                </label>
+                
+                <label for="uix-page-builder-nav2">
+                    <input name="uix-page-builder-nav" type="radio" value="disable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-nav', true ) == 'disable'  || empty( get_post_meta( $object->ID, 'uix-page-builder-nav', true ) )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-page-builder' ); ?>
+                </label>  
+        
+            </p>
+            <p class="uix-metabox-note">
+               <?php _e( 'If you have it enabled, this page menu anchor links will be generated automatically.', 'uix-page-builder' ); ?>
+            </p>
+
+        </div>
 
     
+    </div>
+
+
         
 <?php  
 	}  
 }
+
 
 /*
  * Page Builder
@@ -134,7 +175,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 	
 	function uix_page_builder_page_ex_metaboxes_pagerbuilder_container_options( $object ) {  
 	
-		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce' );
+		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-pagebuilder' );
 	
 		$old_layoutdata = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $object->ID, 'uix-page-builder-layoutdata', true ) );
 		
@@ -162,8 +203,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			var gridsterWidth = 0;
 	
 			jQuery( function(){
-			    gridsterWidth = jQuery( '.uix-page-builder-gridster' ).width();	
-
+			    gridsterWidth = jQuery( '#titlediv .inside' ).width() - 80;
+				gridsterWidgetsInit();
 				jQuery( window ).on( 'resize', function() {
 					gridsterWidgetsInit();
 		
@@ -232,6 +273,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					titleid = 'title-data-'+gLi,
 					contentid = 'content-data-'+gLi,
 					uid  = gLi;
+				
 				
 				gridster.gridsterAddWidget( '<li class="uix-page-builder-gridster-widget" data-id="'+gLi+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Title', 'uix-page-builder' ); ?> '+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 ).fadeIn( 100, function() {
 						gridsterInputsave();
@@ -310,8 +352,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 	
 			function gridsterWidgetsInit() {
-				jQuery( '.uix-page-builder-gridster-widget' ).css( 'width', jQuery( '.uix-page-builder-gridster' ).width() - 80 + 'px' );
+				jQuery( '.uix-page-builder-gridster-widget' ).css( 'width', jQuery( '#titlediv .inside' ).width() - 80 + 'px' );
 			}
+			
 
 			function gridsterHtmlUnescape( str ){
 				return str
@@ -367,7 +410,7 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 	
 	add_action( 'save_post', 'uix_page_builder_page_save_custom_meta_box', 10, 3);
 	function uix_page_builder_page_save_custom_meta_box( $post_id, $post, $update ) {
-		if ( !isset( $_POST[ 'meta-box-nonce' ] ) || !wp_verify_nonce($_POST[ 'meta-box-nonce' ], basename( __FILE__ ) ) ) return $post_id;
+		if ( !isset( $_POST[ 'meta-box-nonce-pagebuilder' ] ) || !wp_verify_nonce($_POST[ 'meta-box-nonce-pagebuilder' ], basename( __FILE__ ) ) ) return $post_id;
 		if( !current_user_can( 'edit_post', $post_id ) )return $post_id;
 		if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return $post_id;
 		
@@ -376,15 +419,23 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 		
 	
 		$layoutdata 	                         = wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] );
+		$buildernav 	                         = sanitize_text_field( $_POST[ 'uix-page-builder-nav' ] );
 		$builderstatus 	                     = sanitize_text_field( $_POST[ 'uix-page-builder-status' ] );
 		
 		
-		if( isset( $_POST[ 'uix-page-builder-status' ] ) ) update_post_meta( $post_id, 'uix-page-builder-status', $builderstatus );
 		if( isset( $_POST[ 'uix-page-builder-layoutdata' ] ) ) update_post_meta( $post_id, 'uix-page-builder-layoutdata', $layoutdata );
-			
+		if( isset( $_POST[ 'uix-page-builder-nav' ] ) ) update_post_meta( $post_id, 'uix-page-builder-nav', $buildernav );
+		if( isset( $_POST[ 'uix-page-builder-status' ] ) ) update_post_meta( $post_id, 'uix-page-builder-status', $builderstatus );
+		
+		
 	
 	}
 
 }
 
 
+
+
+
+
+ 

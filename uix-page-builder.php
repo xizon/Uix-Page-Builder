@@ -30,10 +30,11 @@ class UixPageBuilder {
 	 */
 	public static function init() {
 	
-		self::meta_boxes();
+	    self::setup_constants();
+		self::includes();
 		self::uixform_core();
 		
-	
+		
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
@@ -42,9 +43,40 @@ class UixPageBuilder {
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
-		
 	
 	}
+	
+	/**
+	 * Setup plugin constants.
+	 *
+	 */
+	public static  function setup_constants() {
+
+		// Plugin Folder Path.
+		if ( ! defined( 'UIX_PAGE_BUILDER_PLUGIN_DIR' ) ) {
+			define( 'UIX_PAGE_BUILDER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		}
+
+		// Plugin Folder URL.
+		if ( ! defined( 'UIX_PAGE_BUILDER_PLUGIN_URL' ) ) {
+			define( 'UIX_PAGE_BUILDER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		}
+
+		// Plugin Root File.
+		if ( ! defined( 'UIX_PAGE_BUILDER_PLUGIN_FILE' ) ) {
+			define( 'UIX_PAGE_BUILDER_PLUGIN_FILE', __FILE__ );
+		}
+	}
+
+	/*
+	 * Include required files.
+	 *
+	 *
+	 */
+	public static function includes() {
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
+	}
+	
 	
 	
 	/*
@@ -172,7 +204,7 @@ class UixPageBuilder {
 	 */
 	 public static function load_helper() {
 		 
-		 require_once 'helper/settings.php';
+		 require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'helper/settings.php';
 	 }
 	
 	
@@ -199,17 +231,6 @@ class UixPageBuilder {
 	
 	}
 	
-	
-	/*
-	 * Custom Metaboxes and Fields
-	 *
-	 *
-	 */
-	public static function meta_boxes() {
-	
-		require_once 'admin/metaboxes-page.php';
-
-	}
 	
 
 	/*
@@ -419,7 +440,7 @@ class UixPageBuilder {
 		}
 		
 		foreach ( $uix_pb_config as $key ) {
-			echo "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-id=\"'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
+			echo "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
 		}	
 
 
@@ -443,13 +464,10 @@ class UixPageBuilder {
 	 */
 	public static function uixform_core() {
 	
-		require_once 'admin/add-ons/uixform/init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/add-ons/uixform/init.php';
 
 	}
 	
-	
-
-
 	
 }
 

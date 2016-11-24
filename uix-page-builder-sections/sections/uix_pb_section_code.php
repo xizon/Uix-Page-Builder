@@ -8,6 +8,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Title', 'uix-page-builder' );
 $item    = '';
 
 
@@ -77,9 +78,9 @@ $args =
 	]
 ;
 
-$form_html = UixFormCore::add_form( $sid, $form_id, $form_type, $args, 'html' );
-$form_js = UixFormCore::add_form( $sid, $form_id, $form_type, $args, 'js' );
-$form_js_vars = UixFormCore::add_form( $sid, $form_id, $form_type, $args, 'js_vars' );
+$form_html = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'html' );
+$form_js = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js' );
+$form_js_vars = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
 
@@ -91,7 +92,7 @@ if ( $sid == -1 && is_admin() ) {
 	if( get_post_type() == 'page' ) {
 		if ( is_admin()) {
 			
-			echo UixFormCore::add_form( $sid, $form_id, '', '', 'active_btn' );
+			echo UixFormCore::add_form( $wname, $sid, $form_id, '', '', 'active_btn' );
 			?>
 			<script type="text/javascript">
 			( function($) {

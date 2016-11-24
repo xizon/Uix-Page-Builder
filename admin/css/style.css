@@ -1,4 +1,26 @@
-/* Gridster COntainer */
+/* Metaboxes Style */
+.uix-metabox-group {
+	padding: 10px;
+	background: #FFFEEE;
+	border: 1px solid #EEECCE;
+	margin-bottom: 8px;
+}
+
+.uix-metabox-group > h3 {
+	font-size: 12px;
+	margin: 0;
+	padding: 8px 0;
+	border-bottom: 1px dashed #EEECCE;
+	display: block;
+	color: #A39954;
+}
+
+.uix-metabox-note {
+	color: #A3A3A3;
+}
+
+
+/* Gridster Container */
 .uix-page-builder-gridster {
 	cursor: move;
 	padding: 20px 0;

@@ -8,6 +8,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Title', 'uix-page-builder' );
 $item    = '';
 
 
@@ -153,7 +154,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_1_icon' ),
 			'title'          => '',
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_1_icon]['.$sid.']' ] : 'twitter-square',
+			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_1_icon]['.$sid.']' ] : '',
 			'placeholder'    => __( 'Choose Social Icon 1', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
@@ -221,9 +222,9 @@ $args =
 	]
 ;
 
-$form_html = UixFormCore::add_form( $sid, $form_id, $form_type, $args, 'html' );
-$form_js = UixFormCore::add_form( $sid, $form_id, $form_type, $args, 'js' );
-$form_js_vars = UixFormCore::add_form( $sid, $form_id, $form_type, $args, 'js_vars' );
+$form_html = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'html' );
+$form_js = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js' );
+$form_js_vars = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
 
@@ -235,7 +236,7 @@ if ( $sid == -1 && is_admin() ) {
 	if( get_post_type() == 'page' ) {
 		if ( is_admin()) {
 			
-			echo UixFormCore::add_form( $sid, $form_id, '', '', 'active_btn' );
+			echo UixFormCore::add_form( $wname, $sid, $form_id, '', '', 'active_btn' );
 			?>
 			<script type="text/javascript">
 			( function($) {

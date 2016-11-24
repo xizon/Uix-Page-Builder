@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Uix Page Builder
+ * Template Name: Uix Page Builder Template
  *
  * The template for displaying all pages with Uix Page Builder.
  *
