@@ -64,7 +64,7 @@
 				if ( $obj.length > 0 ) {
 					
 					$.ajax({
-						url       : uixform_ajax.ajaxurl,
+						url       : ajaxurl,
 						type      : 'POST',
 						data: {
 							action    : 'uixform_ajax_sections',
@@ -95,7 +95,7 @@
 						    $obj.find( '.ajax-temp' ).html( $errorInfo );
 						},
 						beforeSend: function() {
-							$obj.find( '.ajax-temp' ).html( 'loading...' );
+							$obj.find( '.ajax-temp' ).html( '<span class="uixform-loading"></span>' );
 							//console.log( 'loading...' );
 
 						}

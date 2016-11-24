@@ -19,7 +19,7 @@
 			
 			//Icon list with the jQuery AJAX method.
 			jQuery.ajax({
-				url       : uixform_ajax.ajaxurl,
+				url       : ajaxurl,
 				type      : 'POST',
 				data: {
 					action      : 'uixform_ajax_iconlist',
@@ -29,6 +29,10 @@
 				success   : function( result ){
 					jQuery( containerID ).html( '<div id="' + listContainerID + '">' + result + '</div>' );
 					
+				},
+				beforeSend: function() {
+					jQuery( containerID ).html( '<span class="uixform-loading icon"></span>' );
+
 				}
 			});
 			

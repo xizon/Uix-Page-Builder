@@ -176,6 +176,21 @@
 	background: #b50d14;
 }
 
+
+
+/* Loading
+-------------------------------------------------------------- */
+.uixform-loading {
+	background:url(../images/loading.gif) no-repeat;
+	display: block;
+	width: 18px;
+	height: 15px;
+	margin: 8px 0;
+}
+.uixform-loading.icon {
+	margin-left: 225px;
+}
+
 /* Form Buttons
 -------------------------------------------------------------- */
 .uixform-modal-buttons {

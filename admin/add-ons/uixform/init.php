@@ -71,13 +71,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 					
 							//Colorpicker
 							wp_enqueue_style( 'wp-color-picker' );
-							wp_enqueue_script( 'wp-color-picker' );
-							
-							//Ajax
-							wp_enqueue_script( 'uixform-ajax-sections',  self::plug_directory() .'js/uixform.ajax.js', array( 'jquery' ), '1.0.0', true );
-							wp_localize_script( 'uixform-ajax-sections', 'uixform_ajax', array(
-								'ajaxurl' => admin_url( 'admin-ajax.php' )
-							));					
+							wp_enqueue_script( 'wp-color-picker' );	
 	
 	
 	
@@ -484,6 +478,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 			$old_formid = $form_id;
 			$formid     = '.'.$old_formid.'';
 			$postid     = $post->ID;
+			$title      = esc_attr( $title );
 			  
 			return "{$form_js}
 			$(document).uixFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'});";
