@@ -165,13 +165,6 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		}
 		
 		
-	
-		/*
-		 * ========================================================================================================================================
-		 * ========================================================================================================================================
-		 */			
-	
-		
 		/*
 		 * Checks whether a template folder or directory exists
 		 *
@@ -217,136 +210,6 @@ if ( !class_exists( 'UixFormCore' ) ) {
 			}	 
 		 }
 		
-		
-		/*
-		 * Get current URI
-		 *
-		 */
-		public static function cur_uri() {
-	
-			$protocol = strpos( strtolower( $_SERVER['SERVER_PROTOCOL'] ), 'https' )  === false ? 'http' : 'https';
-			$thisURL = $protocol.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-			$weburl = $protocol.'://'.$_SERVER['HTTP_HOST'];
-			
-			if ( isset( $_SERVER['REQUEST_URI'] ) ) {
-				$uri = $_SERVER['REQUEST_URI'];
-			} else {
-				if ( isset($_SERVER['argv'] ) ) {
-					$uri = $_SERVER['PHP_SELF'] .'?'. $_SERVER['argv'][0];
-				} else {
-					$uri = $_SERVER['PHP_SELF'] .'?'. $_SERVER['QUERY_STRING'];
-				}
-			}
-			return $weburl.$uri;
-	
-	
-		}
-		
-		
-		/*
-		 * Get page URI
-		 *
-		 */
-		
-		public static function page_uri() {
-	
-			global $post;
-			$_c = '';
-		
-			if ( is_single() || is_page() ) {
-				$_c = get_permalink( get_the_ID() );
-			}
-			if ( is_home() ) {
-				$_c = home_url('/');
-			}
-			if ( is_category() || is_category() && is_paged() ) {
-				$_c = get_category_link(get_query_var( 'cat' ) );
-			}
-			if ( is_tag() || is_tag() && is_paged() ) {
-				$_c = get_term_link(get_query_var( 'tag' ), 'post_tag' );
-			}
-			if ( is_search() || is_search() && is_paged() ) {
-				$_c = get_search_link(get_query_var( 'search' ) );
-			}
-			if ( is_author() ) {
-				$_c = esc_url(get_author_posts_url(get_the_author_meta( 'ID' ) ));
-			}
-			if ( is_date() ) {
-				$_c = get_day_link( get_the_time('Y'), get_the_time('m'), get_the_time('d'));
-			}
-			
-			if ( $_c == '' ) {
-				$cururl = self::cur_uri();
-				if ( is_paged() ) {
-					
-					if ( strpos( $cururl, '&paged=') ){
-						$cururl_new = explode( '&paged=', $cururl );
-						$cururl = $cururl_new[0];
-						
-					}
-					
-					
-					if ( strpos( $cururl, '/page') ){
-						$cururl_new = explode( '/page', $cururl );
-						$cururl = $cururl_new[0];
-					}
-					
-			
-				}
-				$_c = $cururl;
-			}
-			
-			return $_c;
-	
-		}
-	
-	
-	
-		
-		/*
-		 * Transform string to slug for filterable categories
-		 *
-		 *
-		 */
-		public static function transform_slug( $str ) {
-		
-			return str_replace( ' ', '-', strtolower( $str ) );
-	
-		}
-	
-		/*
-		 * Display categories on page
-		 *
-		 *
-		 */
-		public static function cat_list( $str, $classprefix = 'uix-pb-portfolio-' ) {
-	
-			$list = array();  
-			$c = preg_match_all( '/\<div class="'.$classprefix.'type">(.*?)\<\/div\>/', $str, $m ); 
-			$code = '';
-			if( count( $m[1] ) > 0 ) { 
-				for( $i=0; $i < $c; $i++ ) { 
-				
-					$new = !empty($m[1][$i]) ? $m[1][$i] : '';
-					array_push( $list, array(
-						'slug' => self::transform_slug( $new ),
-						'name' => $new
-					));
-					
-				}  
-				
-				foreach ( $list as $key ) {
-					$code .= '<li><a href="javascript:" data-group="'.$key[ 'slug' ].'">'.$key[ 'name' ].'</a></li>';
-				}	
-				
-				return $code;
-	
-			} else {
-				return '';
-			}
-		
-		}
-	
 	
 		
 		/*
@@ -538,49 +401,6 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		}	
 			
 		
-		/*
-		 * Decode template
-		 *
-		 *
-		 */
-		public static function decode( $str ) {
-	
-	
-			 if ( $str ) {
-				 $restr = str_replace( '&#8217;', '\'',
-						   str_replace( '&#8221;', '"',
-						   str_replace( '&apos;', '\'',
-						   str_replace( '&quot;', '"',
-						   wp_specialchars_decode( $str )
-						   ))));
-						   
-		 
-			 } else {
-				$restr = $str;
-			 }
-			 
-			 return $restr;
-	
-		}
-		
-		
-		
-		/*
-		 * Get sub tags
-		 *
-		 *
-		 */
-		public static function get_subtags( $str, $content = null ) {
-	
-			 if ( $str ) {
-				 preg_match_all( '/\['.$str.'\](.*?)\[\/'.$str.'\]/si', $content , $match );
-				 return $match[1][0];
-			 } else {
-				return '';
-			 }
-		
-		}
-	
 		
 		
 		/*
