@@ -1,6 +1,6 @@
 <?php
 /**
- * UixForm
+ * Uix Form
  *
  * @class 		: UixForm
  * @version		: 0.0.1

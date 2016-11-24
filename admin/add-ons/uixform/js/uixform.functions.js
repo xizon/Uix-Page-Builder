@@ -498,6 +498,9 @@ function uixform_formatTextarea( str ) {
 	if ( str != undefined ) {
 		str = uixform_getHTML( str );
 		str = str.toString().replace(/\s/g," ").replace(/\"/g,"&quot;").replace(/\'/g,"&apos;");
+		str = str.replace(/<br\w*\/*>/g,"&lt;br&gt;");
+		str = str.replace(/<p>/g,"&lt;p&gt;");
+		str = str.replace(/<\/p>/g,"&lt;\/p&gt;");
 		
 	}
 	
@@ -520,25 +523,6 @@ function uixform_getHTML( str ) {
 
 }
 
-
-/*! 
- * ************************************
- * HTML Encode
- *************************************
- */	
-function uixform_htmlencodeFormat( str ) {
-	
-	return (typeof str != "string") ? str :
-	  str.replace(/'/g,'"').replace(/“/g,'"').replace(/<|>/g,
-				function($0){
-					var c = $0.charCodeAt(0), r = ["&#"];
-					c = (c == 0x20) ? 0xA0 : c;
-					r.push(c); r.push(";");
-					return r.join("");
-				});
-
-
-}
 
 /*! 
  * ************************************
@@ -620,33 +604,16 @@ function uixform_html_listTran( str, type ) {
 	if ( str != undefined ) {
 		
 		//checking for "undefined" in replace-regexp
-		str = str.toString().replace(/(\r)*\n/g,"[/li][li]").replace(/<br>/g,"[/li][li]");
+		str = str.toString().replace(/(\r)*\n/g,"&lt;/li&gt;&lt;li&gt;").replace(/<br>/g,"&lt;/li&gt;&lt;li&gt;");
 		
-		newStr = '[li]'+str+'[/li]';
-		newStr = newStr.replace('[li][/li]','');
-		newStr = '['+type+']'+newStr+'[/'+type+']';
+		newStr = '&lt;li&gt;'+str+'&lt;/li&gt;';
+		newStr = newStr.replace('&lt;li&gt;&lt;/li&gt;','');
+		newStr = '&lt;'+type+'&gt;'+newStr+'&lt;/'+type+'&gt;';
 	}
 	
 	if ( str == '' ) newStr = '';
 	return newStr;
         
-};
-
-/*! 
- * ************************************
- * HTML Encode form textarea
- *************************************
- */	
-function uixform_htmlEncode( s ) {
-	
-      return (typeof s != "string") ? s :  
-          s.replace(/"|&|'|<|>|[\x00-\x20]|[\x7F-\xFF]|[\u0100-\u2700]/g,  
-                    function($0){  
-                        var c = $0.charCodeAt(0), r = ["&#"];  
-                        c = (c == 0x20) ? 0xA0 : c;  
-                        r.push(c); r.push(";");  
-                        return r.join("");  
-                    });  
 };
 
 
