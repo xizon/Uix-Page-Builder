@@ -130,6 +130,8 @@ class UixFormType_ListClone {
 
                 '."\n";	
                 
+			$media_js_all = ( !empty( $media_js ) ) ? 'for ( var j_'.$id.'=1;j_'.$id.'<='.$max.';j_'.$id.'++ ){'.$media_js.'}' : '';
+			
             $jscode = '
 
                 /*-- Dynamic Adding Input  --*/
@@ -142,11 +144,7 @@ class UixFormType_ListClone {
                     cloneContent: '.$clone_content_js_var.',
                     maxInput: '.$max.'
                 });
-				for ( var j_'.$id.'=1;j_'.$id.'<='.$max.';j_'.$id.'++ ){
-					'.$media_js.'
-					
-					
-				}
+				'.$media_js_all.'
 
             ';	
                 
