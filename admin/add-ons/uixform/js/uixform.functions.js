@@ -40,6 +40,7 @@
 			
 			//Click event for icon type: Font Awesome
 			jQuery( document ).on( 'click', '#' + listContainerID + ' .b.fontawesome', function( e ) {
+				e.preventDefault();
 				var _v = jQuery(this).find( '.fa' ).attr( 'class' );
 				jQuery( '.b.fontawesome' ).removeClass('active');
 				jQuery( this ).addClass( 'active' );
@@ -77,6 +78,7 @@
 		return this.each( function() {
 			
 			jQuery( document ).on( 'click', settings.clearIntervalID, function( e ) {
+				e.preventDefault();
 				jQuery( settings.ID ).val( settings.value );
 			});　				
 
@@ -208,19 +210,20 @@
 				if ( settings.checkbox == 1 ) { 
 				
 				    jQuery( document ).on( 'click', settings.checkboxToggleClass, function( e ) {
+						e.preventDefault();
 						
-							if ( settings.list == 1 ) {
+						if ( settings.list == 1 ) {
+						
+							jQuery( settings.targetID ).parent().parent( '.toggle-row' ).hide();
+							jQuery( settings.targetID ).parent().parent( '.toggle-row' ).find( '.uixform-box' ).hide();
+
+						} else {
 							
-								jQuery( settings.targetID ).parent().parent( '.toggle-row' ).hide();
-								jQuery( settings.targetID ).parent().parent( '.toggle-row' ).find( '.uixform-box' ).hide();
-	
-							} else {
-								
-								jQuery( settings.targetID ).hide();
-								jQuery( settings.targetID ).find( 'th' ).find( 'label' ).hide();
-								jQuery( settings.targetID ).find( 'td' ).find( '.uixform-box' ).hide();
-						
-							}
+							jQuery( settings.targetID ).hide();
+							jQuery( settings.targetID ).find( 'th' ).find( 'label' ).hide();
+							jQuery( settings.targetID ).find( 'td' ).find( '.uixform-box' ).hide();
+					
+						}
 	
 					});
 
@@ -229,6 +232,7 @@
 			
 			
 	            jQuery( document ).on( 'click', settings.btnID, function( e ) {
+					e.preventDefault();
 					
 					// if checkbox
 					if ( settings.checkbox == 1 ) { 
@@ -326,6 +330,7 @@
 	        
 			
 			jQuery( document ).on( 'click', settings.containerID + ' span', function( e ) {
+				e.preventDefault();
 	
 				var _curValue = jQuery( this ).attr( 'data-value' ),
 				    _tarValue = jQuery( settings.targetID ).val() + ',',
@@ -365,6 +370,7 @@
 	        
 			
 			jQuery( document ).on( 'click', settings.containerID + ' span', function( e ) {
+				e.preventDefault();
 				var _curValue = jQuery( this ).attr( 'data-value' );
 				jQuery( settings.containerID ).find( 'span' ).removeClass( 'active' );
 				jQuery( settings.targetID ).val( _curValue );
@@ -455,6 +461,7 @@
 				 //Delete pictrue   
 				 if ( settings.closebtnID ){
 					jQuery( document ).on( 'click', settings.closebtnID, function( e ) {
+						e.preventDefault();
 						var _targetImgContainer = jQuery( this ).attr( "data-insert-img" );
 						var _targetPreviewContainer = jQuery( this ).attr( "data-insert-preview" );
 						
