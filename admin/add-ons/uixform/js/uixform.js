@@ -136,6 +136,13 @@
 					widgetName    = $form.find( '[name="widgetname"]' ).val(),
 				    settings      = [];
 					
+				//Add widget name
+				var oldname = $( '#title-data-' + rowID ).val();
+				if ( oldname.indexOf( widgetName ) < 0 ) {
+					$( '#title-data-' + rowID ).val( widgetName );
+				} else {
+					widgetName = oldname;
+				}
 					
 				var fields = $( "[name^='"+formID+"']" ).serializeArray();
 				settings.push( [ 'section', formID ] );
@@ -151,11 +158,7 @@
 				//Save
 				uixform_insertCodes( formID, JSON.stringify( settings ), 'content-data-' + rowID, rowID );
 	
-				//Add widget name
-				var oldname = $( '#title-data-' + rowID ).val();
-				if ( oldname.indexOf( widgetName ) < 0 ) {
-					$( '#title-data-' + rowID ).val( widgetName );
-				}
+
 				
 				
 				//Close window
