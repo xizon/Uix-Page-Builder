@@ -158,11 +158,10 @@
 				//Save
 				uixform_insertCodes( formID, JSON.stringify( settings ), 'content-data-' + rowID, rowID );
 	
-
-				
-				
 				//Close window
-				$( '.uixform-modal-box .close-uixform-modal' ).trigger( 'click' );
+				$( '.uixform-modal-box' ).removeClass( 'active' );
+				$( '.uixform-modal-mask' ).fadeOut( 'fast' );
+				$( 'html' ).css( 'overflow-y', 'auto' );
 				
 				
 			});
