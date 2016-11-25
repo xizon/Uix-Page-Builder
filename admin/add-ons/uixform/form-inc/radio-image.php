@@ -94,7 +94,7 @@ class UixFormType_RadioImage {
                         <td>
 						
 						    <div class="uixform-box">
-                               
+                                  <div class="uixform-form-clear"></div>
 								  <div class="radio" id="radio-selector-'.$id.'">	
 								   '.$optionlist.' 
 								   </div>

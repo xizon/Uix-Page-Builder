@@ -28,10 +28,11 @@
 				},
 				success   : function( result ){
 					jQuery( containerID ).html( '<div id="' + listContainerID + '">' + result + '</div>' );
+					jQuery( '.uixform-loading.icon' ).hide();
 					
 				},
 				beforeSend: function() {
-					jQuery( containerID ).html( '<span class="uixform-loading icon"></span>' );
+					jQuery( '.uixform-loading.icon' ).css( 'visibility', 'visible' );
 
 				}
 			});
@@ -138,7 +139,7 @@
 						  
 					 
 					//focus
-					var srow = '.uixform-alert .dynamic-row';
+					var srow = '.uixform-form-container .dynamic-row';
 					$( srow ).mouseenter(function() {
 						$( srow ).animate( { opacity: 0.3 }, 0 );
 						$( this ).animate( { opacity: 1 }, 0 );

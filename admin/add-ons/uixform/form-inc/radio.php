@@ -93,6 +93,7 @@ class UixFormType_Radio {
 						
 						    <div class="uixform-box">
                                
+							      <div class="uixform-form-clear"></div>
 								  <div class="radio" id="radio-selector-'.$id.'">	
 								   '.$optionlist.' 
 								   </div>

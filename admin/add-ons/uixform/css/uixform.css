@@ -229,13 +229,13 @@
   
 }
 
-.uixform-alert {
+.uixform-form-container {
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
  }
  
  
 /* Note */
-.uixform-alert .info{
+.uixform-form-container .info{
 	font-size:12px;
 	padding:7px 0;
 	color:#AF7342;
@@ -245,21 +245,21 @@
 	
 }
 
-.uixform-alert .info.info-checkbox{
+.uixform-form-container .info.info-checkbox{
 	position:absolute;
 	top:2px;
 	left:30px;
 }
 
 .uixform-table-cols-wrapper .info,
-.uixform-alert .info.info-margin{
+.uixform-form-container .info.info-margin{
 	width:auto;
 }
 
 
 
 /* Code */
-.uixform-alert code{
+.uixform-form-container code{
 	color:#333;
 	display:inline-block;
 	margin:2px;
@@ -268,7 +268,7 @@
 
 
 /* Units text */
-.uixform-alert .units{
+.uixform-form-container .units{
 	position:absolute;
 	margin-left:5px;
 	top:10px;
@@ -276,13 +276,13 @@
 	color:#B1B1B1;
 }
 
-.uixform-alert .units-short{
+.uixform-form-container .units-short{
 	left:120px;
 	right:auto;
 	
 }
 
-.uixform-alert .units-selector span{
+.uixform-form-container .units-selector span{
 	display:inline-block;
 	margin:0 4px;
 	border:1px solid #C3C3C3;
@@ -300,8 +300,8 @@
 	transition:.1s ease-in-out;
 	
 }
-.uixform-alert .units-selector span:hover,
-.uixform-alert .units-selector span.active
+.uixform-form-container .units-selector span:hover,
+.uixform-form-container .units-selector span.active
 {
 	border-color:#333;
 	color:#333;
@@ -310,13 +310,13 @@
 
 /* Radio */
 
-.uixform-alert .radio{
+.uixform-form-container .radio{
 	height:30px;
 	display:inline-block;
 	max-width:780px;
 	margin-left:-4px;
 }
-.uixform-alert .radio span{
+.uixform-form-container .radio span{
 	display:inline-block;
 	margin:3px 4px;
 	border:1px solid #C3C3C3;
@@ -337,14 +337,14 @@
 }
 
 
-.uixform-alert .radio span.multi{
+.uixform-form-container .radio span.multi{
 	margin-right:12px;
 	padding-right:12px;
 }
 
 
-.uixform-alert .radio span:hover,
-.uixform-alert .radio span.active
+.uixform-form-container .radio span:hover,
+.uixform-form-container .radio span.active
 {
 	border-color:#d7d7d7;
 	color:#4E4E4E;
@@ -357,7 +357,7 @@
 
 }
 
-.uixform-alert .radio span.img{
+.uixform-form-container .radio span.img{
 	border:none;
 	margin:0;
 	padding:0;
@@ -366,7 +366,7 @@
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
-.uixform-alert .radio span.img img{
+.uixform-form-container .radio span.img img{
 	margin:0 3px 3px 0;
 	border:3px solid #fff;
 	cursor:pointer;
@@ -376,11 +376,11 @@
 	transition:.1s ease-in-out;
 }
 
-.uixform-alert .radio span.img:hover img{
+.uixform-form-container .radio span.img:hover img{
 	border-color:#DEDEDE;
 }
 
-.uixform-alert .radio span.img.active img{
+.uixform-form-container .radio span.img.active img{
 	border-color:#C33;
 	animation: imgscale .3s 1;
 	-moz-animation: imgscale .3s 1;
@@ -463,7 +463,7 @@
   }
 }
 
-.uixform-alert .radio span .fa{
+.uixform-form-container .radio span .fa{
 	font-size:12px;
 	position:absolute;
 	top:-5px;
@@ -471,11 +471,11 @@
 	background:#F1F1F1;
 	border:1px solid #E0E0E0;
 }
-.uixform-alert .radio span .fa.no{
+.uixform-form-container .radio span .fa.no{
 	color:#C8C8C8;
 }
 
-.uixform-alert .radio span.active .fa.no{
+.uixform-form-container .radio span.active .fa.no{
 	color:#FFFFFF;
 	background:#7CD450;
 	border-color:#76BE61;
@@ -484,12 +484,12 @@
 	
 
 /* range */
-.uixform-alert .uixform-range-container{
+.uixform-form-container .uixform-range-container{
 	position:relative;
 	
 }
 
-.uixform-alert .uixform-range{
+.uixform-form-container .uixform-range{
 	border:none;
 	width:92%;
 	background:#F8F8F8;
@@ -497,25 +497,25 @@
     
 	
 }
-.uixform-alert .uixform-range:focus{
+.uixform-form-container .uixform-range:focus{
 	background:#fff;
 }
 
 /*
-.uixform-alert .uixform-range:before { 
+.uixform-form-container .uixform-range:before { 
 	content: attr(min);
 	margin-left:-10px;
 	background:#fff;
 	padding-right:10px;
 }
-.uixform-alert .uixform-range:after { 
+.uixform-form-container .uixform-range:after { 
 	content: attr(max); 
 	margin-right:-10px;
 	background:#fff;
 	padding-left:10px;
 }
 */
-.uixform-alert .uixform-range-txt{
+.uixform-form-container .uixform-range-txt{
 	display:block;
 	position:absolute;
 	top:2px;
@@ -530,22 +530,22 @@
 
 
 /* Input & Textarea */
-.uixform-alert .uixform-input-text:before,
-.uixform-alert .uixform-input-text:after {
+.uixform-form-container .uixform-input-text:before,
+.uixform-form-container .uixform-input-text:after {
   display: table;
   content: "";
   line-height: 0;
 }
-.uixform-alert .uixform-input-text:after {
+.uixform-form-container .uixform-input-text:after {
   clear: both;
 }
 
-.uixform-alert .uixform-input-text{
+.uixform-form-container .uixform-input-text{
   width:605px;
   background:#F8F8F8;
 }
 
-.uixform-alert .uixform-input-text-margin-container{
+.uixform-form-container .uixform-input-text-margin-container{
 	clear:both;
 	position:relative;
 	height:110px;
@@ -562,7 +562,7 @@
 	
 }
 
-.uixform-alert .uixform-input-text-margin-container .desc{
+.uixform-form-container .uixform-input-text-margin-container .desc{
 	position:absolute;
 	top:15px;
 	height:50px;
@@ -571,7 +571,7 @@
 	
 }
 
-.uixform-alert .uixform-input-text-margin-container label{
+.uixform-form-container .uixform-input-text-margin-container label{
 	position:relative;
 	width:60px;
 	float:left;
@@ -580,28 +580,28 @@
 	
 }
 
-.uixform-alert .uixform-input-text-margin-container div.dir{
+.uixform-form-container .uixform-input-text-margin-container div.dir{
 	position:absolute;
 }
 
-.uixform-alert .uixform-input-text-margin-container div.top{
+.uixform-form-container .uixform-input-text-margin-container div.top{
 	top:8px;
 	left:75px;
 }
-.uixform-alert .uixform-input-text-margin-container div.right{
+.uixform-form-container .uixform-input-text-margin-container div.right{
 	top:36px;
 	left:140px;
 }
-.uixform-alert .uixform-input-text-margin-container div.bottom{
+.uixform-form-container .uixform-input-text-margin-container div.bottom{
 	top:64px;
 	left:75px;
 }
-.uixform-alert .uixform-input-text-margin-container div.left{
+.uixform-form-container .uixform-input-text-margin-container div.left{
 	top:36px;
 	left:8px;
 }
 
-.uixform-alert .uixform-input-text-margin-container em{
+.uixform-form-container .uixform-input-text-margin-container em{
 	line-height:25px;
 	display:inline-block;
 	font-size:10px;
@@ -621,17 +621,17 @@
 	left:3px;
 }
 
-.uixform-alert .uixform-input-text.uixform-input-text-margin{
+.uixform-form-container .uixform-input-text.uixform-input-text-margin{
   width:100%;
   text-align:right;
   background:#fff;
 }
 
-.uixform-alert select{
+.uixform-form-container select{
   background:#F8F8F8;
 }
 
-.uixform-alert .uixform-input-text:focus{
+.uixform-form-container .uixform-input-text:focus{
 	background:#fff;
 	outline: none;
 	border: 1px solid #b4dbed;
@@ -641,13 +641,13 @@
 
 }
 
-.uixform-alert .uixform-input-text-short.uixform-input-text-short-units{
+.uixform-form-container .uixform-input-text-short.uixform-input-text-short-units{
 	position:relative;
 	line-height:10px;
 }
 
-.uixform-alert .uixform-input-text-short,
-.uixform-alert .uixform-input-text-short .uixform-input-text
+.uixform-form-container .uixform-input-text-short,
+.uixform-form-container .uixform-input-text-short .uixform-input-text
 {
 	width:110px;
 }
@@ -655,7 +655,7 @@
 
 
 /* Delete block */
-.uixform-alert .delrow-container{
+.uixform-form-container .delrow-container{
 	padding:1px 3px;
 	margin-bottom:10px;
 	border-bottom:2px dashed #E9B5B1;
@@ -664,7 +664,7 @@
 	
 }
 
-.uixform-alert a.delrow{
+.uixform-form-container a.delrow{
 	color:#fff;
 	background:red;
 	-webkit-border-radius: 100%; 
@@ -682,12 +682,12 @@
 	margin-top:3px;
 }
 
-.uixform-alert a.delrow:hover{
+.uixform-form-container a.delrow:hover{
 	background:#C00;
 }
 
 
-.uixform-alert .dynamic-addnow .delrow-container{
+.uixform-form-container .dynamic-addnow .delrow-container{
     background: #F9EBF2; 
      -webkit-transition: background-color 1000ms linear;
      -moz-transition: background-color 1000ms linear;
@@ -729,11 +729,11 @@
 
 
 /* Checkbox */
-.uixform-alert .uixform-checkbox{
+.uixform-form-container .uixform-checkbox{
 	height:30px;
 	display:inline-block;	
 }
-.uixform-alert .uixform-checkbox .uixform-check{
+.uixform-form-container .uixform-checkbox .uixform-check{
 	padding:0;
 	margin:0;
 	width:15px;
@@ -741,20 +741,25 @@
 	margin-top:8px;
 	background:#F8F8F8;
 }
-.uixform-alert .uixform-checkbox .uixform-check:focus{
+.uixform-form-container .uixform-checkbox .uixform-check:focus{
 	background:#fff;
+}
+.uixform-form-container .uixform-checkbox .uixform-check.checknow{
+	width: 50px;
+	height: 50px;
 }
 
 
+
 /*Upload*/
-.uixform-alert .uixform-upbtn-container{
+.uixform-form-container .uixform-upbtn-container{
 	position:relative;
 	width:98%;
 }
 
 
 
-.uixform-alert .uixform-upbtn-container:before {
+.uixform-form-container .uixform-upbtn-container:before {
 	display:block;
 	content: "";
 	/*Fixed upload input width*/
@@ -763,7 +768,7 @@
 }
 
 
-.uixform-alert .button.uixform-upbtn{
+.uixform-form-container .button.uixform-upbtn{
   width:100px;
   -webkit-border-radius: 3px; 
   -moz-border-radius: 3px; 
@@ -777,17 +782,17 @@
   
 }
 
-.uixform-alert .uixform-input-upload-text{
+.uixform-form-container .uixform-input-upload-text{
   width:495px;  
 }
 
-.uixform-alert .field_img_preview{
+.uixform-form-container .field_img_preview{
 	display:none;
 	margin:6px 0;
 }
 
 
-.uixform-alert .field_img_preview a:hover img{
+.uixform-form-container .field_img_preview a:hover img{
 	border:1px solid #666;
 	-webkit-box-shadow: 0 1px 15px rgba(0,0,0,.5);
 	-moz-box-shadow: 0 1px 15px rgba(0,0,0,.5);
@@ -796,7 +801,7 @@
 }
 
 
-.uixform-alert .field_img_preview img{
+.uixform-form-container .field_img_preview img{
 	max-width:100%;
 	max-height:70px;
 	
@@ -804,27 +809,27 @@
 
 
 /* Dynamic Clone Form */
-.uixform-alert .dynamic-wrapper{
+.uixform-form-container .dynamic-wrapper{
 	display:none;
 }
 
 
-.uixform-alert .dynamic-row{
+.uixform-form-container .dynamic-row{
 	display:block;
 }
 
 
-.uixform-alert .dynamic-row .uixform-input-text
+.uixform-form-container .dynamic-row .uixform-input-text
 {
 	margin-bottom:12px;
 }
-.uixform-alert .dynamic-row .info{
+.uixform-form-container .dynamic-row .info{
 	color:#AF7342;
 	padding:3px 0 5px 0;
 }
 
 
-.uixform-alert .dynamic-addnow .uixform-input-text{
+.uixform-form-container .dynamic-addnow .uixform-input-text{
 	display:block;
     background: #F8F8F8; 
      -webkit-transition: background-color 1000ms linear;
@@ -871,11 +876,11 @@
 
 /* Links 
 -------------------------------------------------------------- */
-.uixform-alert .list-add-link{
+.uixform-form-container .list-add-link{
 	height:20px;
 	overflow:hidden;
 }
-.uixform-alert a.table-link{
+.uixform-form-container a.table-link{
 	line-height:28px;
 	text-decoration:none;
 	font-size:12px;
@@ -888,18 +893,18 @@
 	border-bottom:#868686 3px solid;
 	
 }
-.uixform-alert a.table-link:focus{
+.uixform-form-container a.table-link:focus{
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
 
 
-.uixform-alert a.table-link:hover{
+.uixform-form-container a.table-link:hover{
 	background:#323232;
 }
 
-.uixform-alert a.table-link.disable{
+.uixform-form-container a.table-link.disable{
 	background:#E9E9E9;
 	color:#909090;
 	cursor:not-allowed;
@@ -907,12 +912,12 @@
 	-moz-opacity:0.5;   
 	opacity: 0.5; 
 }
-.uixform-alert a.table-link.disable:hover{
+.uixform-form-container a.table-link.disable:hover{
 	background:#E9E9E9;
 	color:#909090;
 }
 
-.uixform-alert a.table-link-attr{
+.uixform-form-container a.table-link-attr{
 	color: #8c96a0;
 	text-shadow:1px 1px 1px #fff;
 	border:1px solid #dce1e6;
@@ -929,13 +934,13 @@
 	line-height:28px;
 }
 
-.uixform-alert a.table-link-attr:hover{
+.uixform-form-container a.table-link-attr:hover{
 	background:#FBFBFB;
 }
 
 
 
-.uixform-alert a.table-link-normal{
+.uixform-form-container a.table-link-normal{
 	margin:4px 0;
 	display:block;
 
@@ -945,24 +950,24 @@
 /* Trigger
 -------------------------------------------------------------- */
 
-.uixform-alert .toggle-btn{
+.uixform-form-container .toggle-btn{
 	padding-bottom: 12px;
 }
 
-.uixform-alert .toggle-row:not(.toggle-row-clone-list):not(.toggle-row-show){
+.uixform-form-container .toggle-row:not(.toggle-row-clone-list):not(.toggle-row-show){
 	display:none;
 }
 
-.uixform-alert .toggle-row:not(.toggle-row-show) label,
-.uixform-alert .toggle-row:not(.toggle-row-show) .uixform-box
+.uixform-form-container .toggle-row:not(.toggle-row-show) label,
+.uixform-form-container .toggle-row:not(.toggle-row-show) .uixform-box
 {
 	display:none;
 }
 
 
 
-.uixform-alert .uixform-input-text.active,
-.uixform-alert .toggle-row.active .uixform-input-text{
+.uixform-form-container .uixform-input-text.active,
+.uixform-form-container .toggle-row.active .uixform-input-text{
     background: #F8F8F8; 
      -webkit-transition: background-color 1000ms linear;
      -moz-transition: background-color 1000ms linear;
@@ -977,24 +982,24 @@
  
 }
 
-.uixform-alert .toggle-row .info{
+.uixform-form-container .toggle-row .info{
 	color:#AF7342;
 	display:block;
 	margin-top:-8px;
 }
 
 /* if IE*/
-.uixform-alert .toggle-row.isMSIE,
-.uixform-alert .toggle-row.toggle-row-clone-list.isMSIE,
-.uixform-alert .toggle-row.isMSIE label,
-.uixform-alert .toggle-row.isMSIE .uixform-box
+.uixform-form-container .toggle-row.isMSIE,
+.uixform-form-container .toggle-row.toggle-row-clone-list.isMSIE,
+.uixform-form-container .toggle-row.isMSIE label,
+.uixform-form-container .toggle-row.isMSIE .uixform-box
 {
 	display:block;
 	
 }
 
 
-.uixform-alert .toggle-btn.isMSIE{
+.uixform-form-container .toggle-btn.isMSIE{
 	display:none;
 }
 
@@ -1407,26 +1412,26 @@
 	/* Popup Window
 	-------------------------------------------------------------- */ 
 	/* Input & Textarea*/
-	.uixform-alert .uixform-input-text,
-	.uixform-alert .uixform-input-text-margin-container
+	.uixform-form-container .uixform-input-text,
+	.uixform-form-container .uixform-input-text-margin-container
 	{
 	  width:765px;  
 	}	
 	
 	/*Upload*/
-	.uixform-alert .uixform-input-upload-text{
+	.uixform-form-container .uixform-input-upload-text{
 		width:650px;
 	}
 	
 	/* Radio */
-	.uixform-alert .radio{
+	.uixform-form-container .radio{
 		max-width:650px;
 	}
 	
 	
 	/* Delete Block From Full Table
 	-------------------------------------------------------------- */
-	.uixform-alert .delrow-container{
+	.uixform-form-container .delrow-container{
 		width:760px;
 	}
 	
@@ -1462,23 +1467,23 @@
 		 
 	/*Upload*/	
 	
-	.uixform-alert .uixform-upbtn-container:before {
+	.uixform-form-container .uixform-upbtn-container:before {
 		width:615px;
 	}
 	 
 	/* Note */
-	.uixform-alert .info{
+	.uixform-form-container .info{
 		width:615px;
 	}
 	
 	.uixform-table-cols-wrapper .info,
-	.uixform-alert .info.info-margin{
+	.uixform-form-container .info.info-margin{
 		width:auto;
 	}
 		
 	 
 	/* Radio */
-	.uixform-alert .radio{
+	.uixform-form-container .radio{
 		max-width:615px;
 	}
 	
@@ -1532,32 +1537,32 @@
 	-------------------------------------------------------------- */
 		 
 	/* Note */
-	.uixform-alert .info{
+	.uixform-form-container .info{
 		width:265px;  
 	}	
 	
 	.uixform-table-cols-wrapper .info,
-	.uixform-alert .info.info-margin{
+	.uixform-form-container .info.info-margin{
 		width:auto;
 	}
 	
 	/* Radio */
-	.uixform-alert .radio{
+	.uixform-form-container .radio{
 		max-width:265px;
 	}
 	 
 		 
      /* Input & Textarea*/
-	.uixform-alert .uixform-input-text
+	.uixform-form-container .uixform-input-text
 	{
 	  width:265px;  
 	}	
 	
-	.uixform-alert .uixform-input-text-margin-container{
+	.uixform-form-container .uixform-input-text-margin-container{
 		width:265px;
 		height:180px;
 	}
-	.uixform-alert .uixform-input-text-margin-container .desc{
+	.uixform-form-container .uixform-input-text-margin-container .desc{
 		top:100px;
 		width:265px;
 		left:15px;
@@ -1568,46 +1573,46 @@
 	
 
 	/*Upload*/
-	.uixform-alert .uixform-upbtn-container{
+	.uixform-form-container .uixform-upbtn-container{
 		width:265px;
 	}
 	
 
-	.uixform-alert .uixform-input-upload-text{
+	.uixform-form-container .uixform-input-upload-text{
 		width:150px;
 	}
 	
 
-	.uixform-alert .uixform-upbtn-container:before {
+	.uixform-form-container .uixform-upbtn-container:before {
 		width:275px;
 	}
 	
 	
 		
 	/* Checkbox */
-	.uixform-alert .uixform-checkbox .uixform-check{
+	.uixform-form-container .uixform-checkbox .uixform-check{
 		width:20px;
 		height:20px;
 	}
 
 	
 	/* trigger */
-	.uixform-alert .toggle-row{
+	.uixform-form-container .toggle-row{
 		width:265px;
 	}
 		
 	/* range */
-	.uixform-alert .uixform-range{
+	.uixform-form-container .uixform-range{
 		width:225px;
 	}	
-	.uixform-alert .uixform-range-txt{
+	.uixform-form-container .uixform-range-txt{
 		left:235px;
 	}
 			
 	
 	/* Delete Block From Full Table
 	-------------------------------------------------------------- */
-	.uixform-alert .delrow-container{
+	.uixform-form-container .delrow-container{
 		width:260px;
 	}
 	
@@ -1684,23 +1689,23 @@
 	-------------------------------------------------------------- */
 	 
 	/* Note */
-	.uixform-alert .info{
+	.uixform-form-container .info{
 		width:260px;  
 	}	
 	
 	.uixform-table-cols-wrapper .info,
-	.uixform-alert .info.info-margin{
+	.uixform-form-container .info.info-margin{
 		width:auto;
 	}
 	 
 	/* Radio */
-	.uixform-alert .radio{
+	.uixform-form-container .radio{
 		max-width:260px;
 	} 
 	 
 
      /* Input & Textarea*/
-	.uixform-alert .uixform-input-text-margin-container
+	.uixform-form-container .uixform-input-text-margin-container
 	{
 	  width:260px;
 	}	
@@ -1739,7 +1744,7 @@
 	/* Delete Block From Table Column
 	-------------------------------------------------------------- */
 	
-	.uixform-alert .delrow-container{
+	.uixform-form-container .delrow-container{
 		width:260px;
 	}
 	
@@ -1761,7 +1766,7 @@
 --------------------------------------------------------------
 -------------------------------------------------------------- */ 
 
-.uixform-alert h2 {
+.uixform-form-container h2 {
 	color: #575757;
 	font-size: 30px;
 	text-align: center;
@@ -1773,7 +1778,7 @@
 	line-height: 40px;
 	display: block;
 }
-.uixform-alert p {
+.uixform-form-container p {
 	color: #797979;
 	font-size: 16px;
 	text-align: center;
@@ -1785,11 +1790,11 @@
 	padding: 0;
 	line-height: normal;
 }
-.uixform-alert fieldset {
+.uixform-form-container fieldset {
 	border: none;
 	position: relative;
 }
-.uixform-alert .sa-error-container {
+.uixform-form-container .sa-error-container {
 	background-color: #f1f1f1;
 	margin-left: -17px;
 	margin-right: -17px;
@@ -1799,13 +1804,13 @@
 	webkit-transition: padding 0.15s, max-height 0.15s;
 	transition: padding 0.15s, max-height 0.15s;
 }
-.uixform-alert .sa-error-container.show {
+.uixform-form-container .sa-error-container.show {
 	padding: 10px 0;
 	max-height: 100px;
 	webkit-transition: padding 0.2s, max-height 0.2s;
 	transition: padding 0.25s, max-height 0.25s;
 }
-.uixform-alert .sa-error-container .icon {
+.uixform-form-container .sa-error-container .icon {
 	display: inline-block;
 	width: 24px;
 	height: 24px;
@@ -1816,10 +1821,10 @@
 	text-align: center;
 	margin-right: 3px;
 }
-.uixform-alert .sa-error-container p {
+.uixform-form-container .sa-error-container p {
 	display: inline-block;
 }
-.uixform-alert .sa-input-error {
+.uixform-form-container .sa-input-error {
 	position: absolute;
 	top: 29px;
 	right: 26px;
@@ -1833,7 +1838,7 @@
 	-webkit-transition: all 0.1s;
 	transition: all 0.1s;
 }
-.uixform-alert .sa-input-error::before, .uixform-alert .sa-input-error::after {
+.uixform-form-container .sa-input-error::before, .uixform-form-container .sa-input-error::after {
 	content: "";
 	width: 20px;
 	height: 6px;
@@ -1845,20 +1850,20 @@
 	left: 50%;
 	margin-left: -9px;
 }
-.uixform-alert .sa-input-error::before {
+.uixform-form-container .sa-input-error::before {
 	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
-.uixform-alert .sa-input-error::after {
+.uixform-form-container .sa-input-error::after {
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
-.uixform-alert .sa-input-error.show {
+.uixform-form-container .sa-input-error.show {
 	opacity: 1;
 	-webkit-transform: scale(1);
 	transform: scale(1);
 }
-.uixform-alert input {
+.uixform-form-container input {
 	width: 90%;
 	box-sizing: border-box;
 	border: 1px solid #d7d7d7;
@@ -1869,7 +1874,7 @@
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 }
-.uixform-alert textarea {
+.uixform-form-container textarea {
 	width: 90%;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -1878,35 +1883,35 @@
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
 }
-.uixform-alert input:focus,
-.uixform-alert textarea:focus {
+.uixform-form-container input:focus,
+.uixform-form-container textarea:focus {
 
 }
-.uixform-alert input:focus::-moz-placeholder {
+.uixform-form-container input:focus::-moz-placeholder {
 	transition: opacity 0.3s 0.03s ease;
 	opacity: 0.5;
 }
-.uixform-alert input:focus:-ms-input-placeholder {
+.uixform-form-container input:focus:-ms-input-placeholder {
 	transition: opacity 0.3s 0.03s ease;
 	opacity: 0.5;
 }
-.uixform-alert input:focus::-webkit-input-placeholder {
+.uixform-form-container input:focus::-webkit-input-placeholder {
 	transition: opacity 0.3s 0.03s ease;
 	opacity: 0.5;
 }
-.uixform-alert input::-moz-placeholder {
+.uixform-form-container input::-moz-placeholder {
 	color: #bdbdbd;
 }
-.uixform-alert input:-ms-input-placeholder {
+.uixform-form-container input:-ms-input-placeholder {
 	color: #bdbdbd;
 }
-.uixform-alert input::-webkit-input-placeholder {
+.uixform-form-container input::-webkit-input-placeholder {
 	color: #bdbdbd;
 }
-.uixform-alert.show-input input {
+.uixform-form-container.show-input input {
 	display: block;
 }
-.uixform-alert button {
+.uixform-form-container button {
 	background-color: #AEDEF4;
 	color: white;
 	border: none;
@@ -1919,38 +1924,38 @@
 	margin: 26px 5px 0 5px;
 	cursor: pointer;
 }
-.uixform-alert button:focus {
+.uixform-form-container button:focus {
 	outline: none;
 	box-shadow: 0 0 2px rgba(128, 179, 235, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
-.uixform-alert button:hover {
+.uixform-form-container button:hover {
 	background-color: #a1d9f2;
 }
-.uixform-alert button:active {
+.uixform-form-container button:active {
 	background-color: #81ccee;
 }
-.uixform-alert button.cancel {
+.uixform-form-container button.cancel {
 	background-color: #D0D0D0;
 }
-.uixform-alert button.cancel:hover {
+.uixform-form-container button.cancel:hover {
 	background-color: #c8c8c8;
 }
-.uixform-alert button.cancel:active {
+.uixform-form-container button.cancel:active {
 	background-color: #b6b6b6;
 }
-.uixform-alert button.cancel:focus {
+.uixform-form-container button.cancel:focus {
 	box-shadow: rgba(197, 205, 211, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset !important;
 }
-.uixform-alert button::-moz-focus-inner {
+.uixform-form-container button::-moz-focus-inner {
 	border: 0;
 }
-.uixform-alert[data-has-cancel-button=false] button {
+.uixform-form-container[data-has-cancel-button=false] button {
 	box-shadow: none !important;
 }
-.uixform-alert[data-has-confirm-button=false][data-has-cancel-button=false] {
+.uixform-form-container[data-has-confirm-button=false][data-has-cancel-button=false] {
 	padding-bottom: 40px;
 }
-.uixform-alert .sa-icon {
+.uixform-form-container .sa-icon {
 	width: 80px;
 	height: 80px;
 	border: 4px solid gray;
@@ -1962,14 +1967,14 @@
 	position: relative;
 	box-sizing: content-box;
 }
-.uixform-alert .sa-icon.sa-error {
+.uixform-form-container .sa-icon.sa-error {
 	border-color: #F27474;
 }
-.uixform-alert .sa-icon.sa-error .sa-x-mark {
+.uixform-form-container .sa-icon.sa-error .sa-x-mark {
 	position: relative;
 	display: block;
 }
-.uixform-alert .sa-icon.sa-error .sa-line {
+.uixform-form-container .sa-icon.sa-error .sa-line {
 	position: absolute;
 	height: 5px;
 	width: 47px;
@@ -1978,20 +1983,20 @@
 	top: 37px;
 	border-radius: 2px;
 }
-.uixform-alert .sa-icon.sa-error .sa-line.sa-left {
+.uixform-form-container .sa-icon.sa-error .sa-line.sa-left {
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 	left: 17px;
 }
-.uixform-alert .sa-icon.sa-error .sa-line.sa-right {
+.uixform-form-container .sa-icon.sa-error .sa-line.sa-right {
 	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 	right: 16px;
 }
-.uixform-alert .sa-icon.sa-warning {
+.uixform-form-container .sa-icon.sa-warning {
 	border-color: #F8BB86;
 }
-.uixform-alert .sa-icon.sa-warning .sa-body {
+.uixform-form-container .sa-icon.sa-warning .sa-body {
 	position: absolute;
 	width: 5px;
 	height: 47px;
@@ -2002,7 +2007,7 @@
 	margin-left: -2px;
 	background-color: #F8BB86;
 }
-.uixform-alert .sa-icon.sa-warning .sa-dot {
+.uixform-form-container .sa-icon.sa-warning .sa-dot {
 	position: absolute;
 	width: 7px;
 	height: 7px;
@@ -2013,10 +2018,10 @@
 	bottom: 10px;
 	background-color: #F8BB86;
 }
-.uixform-alert .sa-icon.sa-info {
+.uixform-form-container .sa-icon.sa-info {
 	border-color: #C9DAE1;
 }
-.uixform-alert .sa-icon.sa-info::before {
+.uixform-form-container .sa-icon.sa-info::before {
 	content: "";
 	position: absolute;
 	width: 5px;
@@ -2027,7 +2032,7 @@
 	margin-left: -2px;
 	background-color: #C9DAE1;
 }
-.uixform-alert .sa-icon.sa-info::after {
+.uixform-form-container .sa-icon.sa-info::after {
 	content: "";
 	position: absolute;
 	width: 7px;
@@ -2037,10 +2042,10 @@
 	top: 19px;
 	background-color: #C9DAE1;
 }
-.uixform-alert .sa-icon.sa-success {
+.uixform-form-container .sa-icon.sa-success {
 	border-color: #A5DC86;
 }
-.uixform-alert .sa-icon.sa-success::before, .uixform-alert .sa-icon.sa-success::after {
+.uixform-form-container .sa-icon.sa-success::before, .uixform-form-container .sa-icon.sa-success::after {
 	content: '';
 	-webkit-border-radius: 40px;
 	border-radius: 40px;
@@ -2052,7 +2057,7 @@
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
-.uixform-alert .sa-icon.sa-success::before {
+.uixform-form-container .sa-icon.sa-success::before {
 	-webkit-border-radius: 120px 0 0 120px;
 	border-radius: 120px 0 0 120px;
 	top: -7px;
@@ -2062,7 +2067,7 @@
 	-webkit-transform-origin: 60px 60px;
 	transform-origin: 60px 60px;
 }
-.uixform-alert .sa-icon.sa-success::after {
+.uixform-form-container .sa-icon.sa-success::after {
 	-webkit-border-radius: 0 120px 120px 0;
 	border-radius: 0 120px 120px 0;
 	top: -11px;
@@ -2072,7 +2077,7 @@
 	-webkit-transform-origin: 0px 60px;
 	transform-origin: 0px 60px;
 }
-.uixform-alert .sa-icon.sa-success .sa-placeholder {
+.uixform-form-container .sa-icon.sa-success .sa-placeholder {
 	width: 80px;
 	height: 80px;
 	border: 4px solid rgba(165, 220, 134, 0.2);
@@ -2085,7 +2090,7 @@
 	top: -4px;
 	z-index: 2;
 }
-.uixform-alert .sa-icon.sa-success .sa-fix {
+.uixform-form-container .sa-icon.sa-success .sa-fix {
 	width: 5px;
 	height: 90px;
 	background-color: white;
@@ -2096,7 +2101,7 @@
 	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
-.uixform-alert .sa-icon.sa-success .sa-line {
+.uixform-form-container .sa-icon.sa-success .sa-line {
 	height: 5px;
 	background-color: #A5DC86;
 	display: block;
@@ -2104,21 +2109,21 @@
 	position: absolute;
 	z-index: 2;
 }
-.uixform-alert .sa-icon.sa-success .sa-line.sa-tip {
+.uixform-form-container .sa-icon.sa-success .sa-line.sa-tip {
 	width: 25px;
 	left: 14px;
 	top: 46px;
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
-.uixform-alert .sa-icon.sa-success .sa-line.sa-long {
+.uixform-form-container .sa-icon.sa-success .sa-line.sa-long {
 	width: 47px;
 	right: 8px;
 	top: 38px;
 	-webkit-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
-.uixform-alert .sa-icon.sa-custom {
+.uixform-form-container .sa-icon.sa-custom {
 	-webkit-background-size: contain;
 	-moz-background-size: contain;
 	background-size: contain;
@@ -2509,20 +2514,20 @@
 
 /* Internet Explorer 9 has some special quirks that are fixed here */
 /* The icons are not animated. */
-/* This file is automatically merged into uixform-alert.min.js through Gulp */
+/* This file is automatically merged into uixform-form-container.min.js through Gulp */
 /* Error icon */
-.uixform-alert .sa-icon.sa-error .sa-line.sa-left {
+.uixform-form-container .sa-icon.sa-error .sa-line.sa-left {
   -ms-transform: rotate(45deg) \9; }
 
-.uixform-alert .sa-icon.sa-error .sa-line.sa-right {
+.uixform-form-container .sa-icon.sa-error .sa-line.sa-right {
   -ms-transform: rotate(-45deg) \9; }
 
 /* Success icon */
-.uixform-alert .sa-icon.sa-success {
+.uixform-form-container .sa-icon.sa-success {
   border-color: transparent\9; }
 
-.uixform-alert .sa-icon.sa-success .sa-line.sa-tip {
+.uixform-form-container .sa-icon.sa-success .sa-line.sa-tip {
   -ms-transform: rotate(45deg) \9; }
 
-.uixform-alert .sa-icon.sa-success .sa-line.sa-long {
+.uixform-form-container .sa-icon.sa-success .sa-line.sa-long {
   -ms-transform: rotate(-45deg) \9; }

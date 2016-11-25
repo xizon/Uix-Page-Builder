@@ -236,7 +236,6 @@ if ( $sid == -1 && is_admin() ) {
 	if( get_post_type() == 'page' ) {
 		if ( is_admin()) {
 			
-			echo UixFormCore::add_form( $wname, $sid, $form_id, '', '', 'active_btn' );
 			?>
 			<script type="text/javascript">
 			( function($) {

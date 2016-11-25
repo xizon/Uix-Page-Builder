@@ -424,7 +424,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		 */
 		public static function form_before( $widget_name, $section_row, $form_id ) {
 			
-			return '<div class="uixform-alert"><div class="uixform-table-wrapper"><form method="post"><div class="uixform-modal-buttons"><input type="button" class="close-uixform-modal uixform-modal-button uixform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-page-builder' ).'" /><input type="submit" class="uixform-modal-button uixform-modal-button-primary uixform-modal-save-btn" value="'.__( 'Save', 'uix-page-builder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'">';
+			return '<div class="uixform-form-container"><div class="uixform-table-wrapper"><form method="post"><div class="uixform-modal-buttons"><input type="button" class="close-uixform-modal uixform-modal-button uixform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-page-builder' ).'" /><input type="submit" class="uixform-modal-button uixform-modal-button-primary uixform-modal-save-btn" value="'.__( 'Save', 'uix-page-builder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'">';
 	
 		}
 		
@@ -817,10 +817,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 				if ( $code == 'js' || $code == 'javascript' ) $output = $jscode;
 				
 				//Javascript vars output
-				if ( $code == 'js_vars' ) $output = $jscode_vars;		
-				
-				//Add simulation buttons
-				if ( $code == 'active_btn' ) $output = '';		
+				if ( $code == 'js_vars' ) $output = $jscode_vars;	
 	
 				
 			}
