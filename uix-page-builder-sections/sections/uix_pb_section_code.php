@@ -1,5 +1,5 @@
 <?php
-if ( !class_exists( 'UixFormCore' ) ) {
+if ( !class_exists( 'UixPBFormCore' ) ) {
     return;
 }
 
@@ -63,7 +63,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_code_info' ),
 			'title'          => __( 'Text', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_code_info]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_code_info', '' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -78,9 +78,9 @@ $args =
 	]
 ;
 
-$form_html = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'html' );
-$form_js = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js' );
-$form_js_vars = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
+$form_html = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'html' );
+$form_js = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js' );
+$form_js_vars = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
 
@@ -97,7 +97,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixFormCore::uixform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Code', 'uix-page-builder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Code', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

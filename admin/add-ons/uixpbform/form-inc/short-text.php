@@ -1,5 +1,5 @@
 <?php
-class UixFormType_Toggle {
+class UixPBFormType_ShortText {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,79 +13,49 @@ class UixFormType_Toggle {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
-		
 		
 		$field = '';
 		$jscode = '';
 		$jscode_vars = '';
 		
-        if ( $type == 'toggle' ) {
+		
+        if ( $type == 'short-text' ) {
             
-            $btn_text = '';
-			$target_id = '';
-			$link_class = '';
-
-	
+            $units = '';
             if ( is_array( $default ) && !empty( $default ) ) {
-                $btn_text = $default[ 'btn_text' ];
-				$link_class = ( isset( $default[ 'btn_textclass' ] ) && !empty( $default[ 'btn_textclass' ] ) ) ? $default[ 'btn_textclass' ] : 'table-link-normal';
-				
-				//Toggle id
-                foreach ( $default[ 'toggle_class' ] as $tid_value ) {
-					$target_id .= '.'.$tid_value.','; 		
-                }	
-		
-				
+                $units = $default[ 'units' ];
             }
-			
-			
-			//inscure browser
-			if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
-				$new_class = str_replace( 'dynamic-row', 'isMSIE dynamic-row', $class );
-			} else {
-				$new_class = $class;
-			}
-		
-		
-			
+            
             $field = '
-                    <tr'.$new_class.'>
+                    <tr'.$class.'>
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
-						
-						   <div class="uixform-box">
-								<a href="javascript:" id="trigger_id_'.$id.'" class="'.$link_class.'">'.$btn_text.'</a>
-		
-								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 	
+						    <div class="uixpbform-box">
+								   
+								<div class="uixpbform-input-text-short uixpbform-input-text-short-units">
+			
+								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
+								   
+								   <span class="units units-short">'.$units.'</span>
+								   
+								</div>
 								
-							</div>					
-
+								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+								
+							</div>
                             
                         </td>
                     </tr> 
                 '."\n";	
                 
-                
             $jscode_vars = '
                 '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
-            ';
-			
+            ';		
+            
 
-			
-            $jscode = '
-			    /*-- Toggle  --*/
-                $( document ).uixform_divToggle( { btnID: "#trigger_id_'.$id.'", targetID: "'.rtrim( $target_id, ',' ).'" } );
-            ';	
-			
-			//inscure browser
-			if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
-				$jscode = '';
-			}
-                
-
-        }	
+        }
 			
 		//output code
 		if ( $_output == 'html' ) return $field;

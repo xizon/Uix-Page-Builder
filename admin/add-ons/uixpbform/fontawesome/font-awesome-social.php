@@ -114,7 +114,7 @@ $icons = [
 '<a '.$href.'><i class="fa fa-yelp"></i></a>'
 ];
 
-echo '<div class="uixform-icon-selector uixform-icon-selector-s">';
+echo '<div class="uixpbform-icon-selector uixpbform-icon-selector-s">';
 foreach ( $icons as $value ) {
 	$v = str_replace( '"></i></a>', '', str_replace( '<a '.$href.'><i class="fa fa-', '', $value ) );
 	if ( $v == $iconName ) {

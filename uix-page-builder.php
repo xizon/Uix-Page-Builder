@@ -32,7 +32,7 @@ class UixPageBuilder {
 	
 	    self::setup_constants();
 		self::includes();
-		self::uixform_core();
+		self::uixpbform_core();
 		
 		
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
@@ -349,6 +349,10 @@ class UixPageBuilder {
 				
 			    $data 
 			    ) ) ) ) ) ) );
+				
+		if ( !is_admin() ) {
+			$data = 	str_replace( '&lt;br&gt;', '<br>', $data );	
+		}
 			   
 		return json_decode( $data, true );
 		
@@ -456,15 +460,48 @@ class UixPageBuilder {
 		return $form_id.'|['.$field.']{index}';
 	}
 			
+	/*
+	 * Returns form value
+	 *
+	 *
+	 */
+	public static function fvalue( $section_row, $arr, $field, $default, $clonemax = 0 ) {
+		
+		if ( array_key_exists( '['.$field.']['.$section_row.']', $arr ) ) {
+			return $arr[ '['.$field.']['.$section_row.']' ];
+		} else {
+			return $default;
+		}
+		
+		
+		//If it is clone list
+		if ( $clonemax > 0 ) {
+
+			for ( $i = 0; $i <= $clonemax; $i++ ) {
+				$uid = ( $i == 0 ) ? '' : $i.'-';
+				
+				if ( array_key_exists( '['.$uid.''.$field.']['.$section_row.']', $arr ) ) {
+					return $arr[ '['.$uid.''.$field.']['.$section_row.']' ];
+				} else {
+					return $default;
+				}
+				
+			}
+			
+	
+		}
+	
+	}
+				
 		
 	/*
 	 * Uix Form Core
 	 *
 	 *
 	 */
-	public static function uixform_core() {
+	public static function uixpbform_core() {
 	
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/add-ons/uixform/init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/add-ons/uixpbform/init.php';
 
 	}
 	

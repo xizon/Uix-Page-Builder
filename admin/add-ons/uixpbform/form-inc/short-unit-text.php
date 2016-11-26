@@ -1,5 +1,5 @@
 <?php
-class UixFormType_ShortUnitsText {
+class UixPBFormType_ShortUnitsText {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,7 +13,7 @@ class UixFormType_ShortUnitsText {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -43,14 +43,14 @@ class UixFormType_ShortUnitsText {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						
-						    <div class="uixform-box">
+						    <div class="uixpbform-box">
                                
-								<div class="uixform-input-text-short">
+								<div class="uixpbform-input-text-short">
 			
-								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
 								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" value="'.$unitsfirst.'">' : '' ).' 
 								   
-								   <span class="units units-short units-selector" id="units-selector-'.$unitsid.'">'.$unitslist.'</span>
+								   <span class="units units-short units-selector uixpbform_btn_trigger-radio" data-targetid="'.$unitsid.'">'.$unitslist.'</span>
 						
 								</div>
 								
@@ -68,14 +68,7 @@ class UixFormType_ShortUnitsText {
 				'.( !empty( $unitsid ) ? 'var '.$unitsid.' = $( "#'.$unitsid.'" ).val();'."\n" : '' ).'
             ';		
 			
-            $jscode = '
-
-                /*-- Units Selector --*/
-                $( document ).uixform_radioSelector({
-                    containerID: "#units-selector-'.$unitsid.'",
-                    targetID: "#'.$unitsid.'"
-                });
-            ';
+            $jscode = '';
             
 
         }

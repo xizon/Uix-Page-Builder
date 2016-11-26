@@ -1,10 +1,14 @@
 <?php
-class UixFormType_ListClone {
+class UixPBFormType_ListClone {
 	
-	public static function add( $args, $_output ) {
+	public static function add( $args, $_output, $section_row ) {
 		
 		if ( !is_array( $args ) ) return;
+		
+		//Section Row
+		$sid              = ( isset( $section_row ) ) ? $section_row : -1;
 			
+		//General
 		$title            = ( isset( $args[ 'title' ] ) ) ? $args[ 'title' ] : '';
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
@@ -13,7 +17,7 @@ class UixFormType_ListClone {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -31,18 +35,14 @@ class UixFormType_ListClone {
             $max = 3;
             $append_box_id = 'appendwrapper-'.$id;
 			$clone_id = '';
-			$media_js = '';
-			$clone_content_js_var = 'dynamic_append_box_content';
+			$clone_content_js_var = $id.'_clone_vars.value';
+			$toggle_target_id = ''; //Toggle id
 			
 			
 			
             if ( is_array( $default ) && !empty( $default ) ) {
                 $btn_text = $default[ 'btn_text' ];
                 $max = $default[ 'max' ];
-				
-				if ( isset( $default[ 'clone_content_js_var' ] ) ) {
-					$clone_content_js_var =  $default[ 'clone_content_js_var' ];
-				}
 				
 				
 				//clone id
@@ -53,45 +53,19 @@ class UixFormType_ListClone {
 					
 					
 					//-----
-					if ( $tid_value[ 'type' ] == 'image' ) {
-						
-						$media_js .= '$( document ).uixform_uploadMediaCustom( { btnID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", closebtnID: "#"+j_'.$id.'+"-drop_trigger_id_'.$loop_trigger_id.'" } );'."\n";
-					}	
-					
-					//-----
-					if ( $tid_value[ 'type' ] == 'radio' ) {
-						
-						$media_js .= '$( document ).uixform_radioSelector( { containerID: "#"+j_'.$id.'+"-radio-selector-'.$loop_trigger_id.'", targetID: "#"+j_'.$id.'+"-'.$loop_trigger_id.'" } );'."\n";
-					}
-						
-					
-					//-----
-					if ( $tid_value[ 'type' ] == 'color' ) {
-						
-						$media_js .= '$( document ).uixform_radioSelector( { containerID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", targetID: "#"+j_'.$id.'+"-'.$loop_trigger_id.'" } );'."\n";
-					}		
-					
-					//-----
-					if ( $tid_value[ 'type' ] == 'toggle' && !UixFormCore::is_IE() ) {
-						
-						//Toggle id
-						$toggle_target_id = '';
+					if ( $tid_value[ 'type' ] == 'toggle' ) {
 						
 						foreach ( $tid_value[ 'toggle_class' ] as $tid_value ) {
 							$tid_value = str_replace( 'dynamic-row-', '', $tid_value );
-							$toggle_target_id .= '#"+j_'.$id.'+"-'.$tid_value.','; 	
+							$toggle_target_id .= '#{dataID}'.$tid_value.','; 	
 							
 						}	
 						
-						$toggle_target_id = '"'.rtrim( $toggle_target_id, ',' ).'"';
-						$media_js .= '$( document ).uixform_divToggle( { btnID: "#"+j_'.$id.'+"-trigger_id_'.$loop_trigger_id.'", targetID: '.$toggle_target_id.', list: 1 } );'."\n";
+						$toggle_target_id = rtrim( $toggle_target_id, ',' );
 					}						
 					
 					
-					
-						
-					
-                }	
+                }
          
 				
             }
@@ -105,11 +79,11 @@ class UixFormType_ListClone {
                     <th scope="row"><label>'.$title.'</label></th>
                     <td>
 					
-						<div class="uixform-box">
-						   <a href="javascript:" class="addrow addrow-'.$id.' table-link" data-index="2">'.$btn_text.'</a>
+						<div class="uixpbform-box">
+						   <a href="javascript:" class="addrow table-link uixpbform_btn_trigger-clone" data-targetid="'.$id.'" data-max="'.$max.'" data-clonecontent="'.$clone_content_js_var.'" data-removeclass="delrow-'.$id.'" data-appendid="'.$append_box_id.'" data-toggle-targetid="'.$toggle_target_id.'" data-section-row="'.$sid.'"  data-index="2">'.$btn_text.'</a>
 						 </div>
 					
-					    <div class="uixform-box">
+					    <div class="uixpbform-box">
                    
 								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							  
@@ -129,24 +103,9 @@ class UixFormType_ListClone {
 				
 
                 '."\n";	
-                
-			$media_js_all = ( !empty( $media_js ) ) ? 'for ( var j_'.$id.'=1;j_'.$id.'<='.$max.';j_'.$id.'++ ){'.$media_js.'}' : '';
-			
-            $jscode = '
-
-                /*-- Dynamic Adding Input  --*/
-
-
-                $( document ).uixform_dynamicAddinginput({
-                    btnID: ".addrow-'.$id.'",
-                    removebtnClass: "delrow-'.$id.'",
-                    appendID: "#'.$append_box_id.'",
-                    cloneContent: '.$clone_content_js_var.',
-                    maxInput: '.$max.'
-                });
-				'.$media_js_all.'
-
-            ';	
+				
+			 
+            $jscode = '';	
                 
 
         }

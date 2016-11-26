@@ -1,8 +1,8 @@
 <?php
 /**
- * Uix Form
+ * Uix Page Builder Form
  *
- * @class 		: UixForm
+ * @class 		: UixPBForm
  * @version		: 0.0.1
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( !class_exists( 'UixFormCore' ) ) {
-	class UixFormCore {
+if ( !class_exists( 'UixPBFormCore' ) ) {
+	class UixPBFormCore {
 		
 		const PREFIX = 'uix';
 		const CUSTOMTEMP = 'uix-page-builder-sections/sections/';
@@ -29,10 +29,10 @@ if ( !class_exists( 'UixFormCore' ) ) {
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_form_core' ) );
 			add_filter( 'mce_css', array( __CLASS__, 'mce_css' ) );
-			add_action( 'wp_ajax_nopriv_uixform_ajax_sections', array( __CLASS__, 'load_uixform_ajax_sections' ) );
-			add_action( 'wp_ajax_uixform_ajax_sections', array( __CLASS__, 'load_uixform_ajax_sections' ) );
-			add_action( 'wp_ajax_nopriv_uixform_ajax_iconlist', array( __CLASS__, 'load_uixform_ajax_iconlist' ) );
-			add_action( 'wp_ajax_uixform_ajax_iconlist', array( __CLASS__, 'load_uixform_ajax_iconlist' ) );		
+			add_action( 'wp_ajax_nopriv_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
+			add_action( 'wp_ajax_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
+			add_action( 'wp_ajax_nopriv_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
+			add_action( 'wp_ajax_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
 			
 		}
 		
@@ -61,13 +61,16 @@ if ( !class_exists( 'UixFormCore' ) ) {
 				  
 					if ( is_admin()) {
 						
+							//Register clone vars
+							wp_register_script( 'uixpbform-functions-handle', self::plug_directory() .'js/uixpbform.debug.js' );
+						
 							//Add Icons
 							wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.css', array(), '4.5.0', 'all');
 									
 							//UixForm
-							wp_enqueue_style( 'uixform', self::plug_directory() .'css/uixform.css', false,'1.0.0', 'all');
-							wp_enqueue_script( 'uixform', self::plug_directory() .'js/uixform.js', array( 'jquery' ), '1.0.0' );
-							wp_enqueue_script( 'uixform-functions', self::plug_directory() .'js/uixform.functions.js', array( 'jquery' ), '1.0.0' );
+							wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false,'1.0.0', 'all');
+							wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), '1.0.0' );
+							wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), '1.0.0' );
 					
 							//Colorpicker
 							wp_enqueue_style( 'wp-color-picker' );
@@ -159,6 +162,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		}
 		
 		
+		
 		/*
 		 * Checks whether a template folder or directory exists
 		 *
@@ -174,7 +178,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 	
 		}
 		
-		
+	
 		
 		/*
 		 * Call the specified page sections
@@ -204,7 +208,26 @@ if ( !class_exists( 'UixFormCore' ) ) {
 			}	 
 		 }
 		
+		
 	
+		/*
+		 * ========================================================================================================================================
+		 * ========================================================================================================================================
+		 */			
+	
+		
+		/*
+		 * Register clone vars
+		 *
+		 *
+		 */	
+		public static function reg_clone_vars( $clone_id, $str ) {
+			wp_localize_script( 'uixpbform-functions-handle', $clone_id.'_clone_vars', array(
+				'value' => $str
+			) );
+			wp_enqueue_script( 'uixpbform-functions-handle' );
+		}
+		
 		
 		/*
 		 * Get attachment ID
@@ -329,7 +352,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		 *
 		 */
 		public static function mce_css( $wp ) {
-			$wp .= ',' . self::plug_directory() .'css/uixform.mce.css';
+			$wp .= ',' . self::plug_directory() .'css/uixpbform.mce.css';
 			return $wp;
 		}
 		
@@ -393,9 +416,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		
 		   return $hex; // returns the hex value including the number sign (#)
 		}	
-			
-		
-		
+	
 		
 		/*
 		 * Callback code of form
@@ -417,6 +438,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		}
 		
 	
+	
 		/*
 		 * Callback before tag of form
 		 *
@@ -424,7 +446,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		 */
 		public static function form_before( $widget_name, $section_row, $form_id ) {
 			
-			return '<div class="uixform-form-container"><div class="uixform-table-wrapper"><form method="post"><div class="uixform-modal-buttons"><input type="button" class="close-uixform-modal uixform-modal-button uixform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-page-builder' ).'" /><input type="submit" class="uixform-modal-button uixform-modal-button-primary uixform-modal-save-btn" value="'.__( 'Save', 'uix-page-builder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'">';
+			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-page-builder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-page-builder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'">';
 	
 		}
 		
@@ -440,11 +462,11 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		}
 		
 		/*
-		 * Callback uixform sections with ajax
+		 * Callback uixpbform sections with ajax
 		 *
 		 *
 		 */
-		public static function load_uixform_ajax_sections() {
+		public static function load_uixpbform_ajax_sections() {
 			
 			$tempID = isset( $_POST['tempID'] ) ? $_POST[ 'tempID' ] : '';
 			self::call_ajax_sections_tempfilepath( $tempID );
@@ -452,11 +474,11 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		}
 	
 		/*
-		 * Callback uixform icons list with ajax
+		 * Callback uixpbform icons list with ajax
 		 *
 		 *
 		 */
-		public static function load_uixform_ajax_iconlist() {
+		public static function load_uixpbform_ajax_iconlist() {
 			
 			$iconURL  = isset( $_POST['iconURL'] ) ? $_POST[ 'iconURL' ] : '';
 			include $iconURL;
@@ -465,14 +487,12 @@ if ( !class_exists( 'UixFormCore' ) ) {
 		}
 	
 	
-		
-		
 		/*
-		 * Callback before javascript of uixform
+		 * Callback before javascript of uixpbform
 		 *
 		 *
 		 */
-		public static function uixform_callback( $form_js, $form_js_vars, $form_id, $title ) {
+		public static function uixpbform_callback( $form_js, $form_js_vars, $form_id, $title ) {
 			
 			global $post;
 			$old_formid = $form_id;
@@ -481,9 +501,10 @@ if ( !class_exists( 'UixFormCore' ) ) {
 			$title      = esc_attr( $title );
 			  
 			return "{$form_js}
-			$(document).uixFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'});";
+			$(document).UixPBFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'});";
 	
 		}
+		
 		
 		 /*
 		 * Returns dynamic form
@@ -543,7 +564,6 @@ if ( !class_exists( 'UixFormCore' ) ) {
 	
 		}
 		
-		
 		/*
 		 * Callback form
 		 *
@@ -590,7 +610,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 			
 								$before = '
 								 '.self::form_before( $widget_name, $section_row, $config_id ).'
-									<table class="uixform-table">
+									<table class="uixpbform-table">
 								'."\n";
 								
 								
@@ -607,8 +627,8 @@ if ( !class_exists( 'UixFormCore' ) ) {
 						
 								$before = '
 								 
-									 <div class="uixform-table-cols-wrapper uixform-table-col-2">
-										<table class="uixform-table-list">
+									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-2">
+										<table class="uixpbform-table-list">
 											
 											<tr class="item">
 												<th colspan="2" scope="col">
@@ -621,7 +641,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 								
 								$after = '
 										</table>
-									</div><!-- /.uixform-table-cols-wrapper-->
+									</div><!-- /.uixpbform-table-cols-wrapper-->
 								 
 								'."\n";
 							
@@ -632,8 +652,8 @@ if ( !class_exists( 'UixFormCore' ) ) {
 						if ( $arr1[ 'list' ] == 3 ) {
 							$before = '
 								 
-									 <div class="uixform-table-cols-wrapper uixform-table-col-3">
-										<table class="uixform-table-list">
+									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-3">
+										<table class="uixpbform-table-list">
 										
 											<tr class="item">
 												<th colspan="2" scope="col">
@@ -646,7 +666,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 								
 								$after = '
 										</table>
-									</div><!-- /.uixform-table-cols-wrapper-->
+									</div><!-- /.uixpbform-table-cols-wrapper-->
 								 
 								'."\n";
 							
@@ -656,8 +676,8 @@ if ( !class_exists( 'UixFormCore' ) ) {
 						if ( $arr1[ 'list' ] == 4 ) {
 							$before = '
 								 
-									 <div class="uixform-table-cols-wrapper uixform-table-col-4">
-										<table class="uixform-table-list">
+									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-4">
+										<table class="uixpbform-table-list">
 										
 											<tr class="item">
 												<th colspan="2" scope="col">
@@ -670,7 +690,7 @@ if ( !class_exists( 'UixFormCore' ) ) {
 								
 								$after = '
 										</table>
-									</div><!-- /.uixform-table-cols-wrapper-->
+									</div><!-- /.uixpbform-table-cols-wrapper-->
 								 
 								'."\n";
 								
@@ -714,95 +734,95 @@ if ( !class_exists( 'UixFormCore' ) ) {
 				
 					
 					//icon
-					$field .= UixFormType_Icon::add( $args, 'html' );
-					$jscode .= UixFormType_Icon::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Icon::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Icon::add( $args, 'html' );
+					$jscode .= UixPBFormType_Icon::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Icon::add( $args, 'js_vars' );
 		
 					//radio
-					$field .= UixFormType_Radio::add( $args, 'html' );
-					$jscode .= UixFormType_Radio::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Radio::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Radio::add( $args, 'html' );
+					$jscode .= UixPBFormType_Radio::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Radio::add( $args, 'js_vars' );
 					
 					//radio image
-					$field .= UixFormType_RadioImage::add( $args, 'html' );
-					$jscode .= UixFormType_RadioImage::add( $args, 'js' );
-					$jscode_vars .= UixFormType_RadioImage::add( $args, 'js_vars' );			
+					$field .= UixPBFormType_RadioImage::add( $args, 'html' );
+					$jscode .= UixPBFormType_RadioImage::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_RadioImage::add( $args, 'js_vars' );			
 					
 					//multiple selector
-					$field .= UixFormType_MultiSelector::add( $args, 'html' );
-					$jscode .= UixFormType_MultiSelector::add( $args, 'js' );
-					$jscode_vars .= UixFormType_MultiSelector::add( $args, 'js_vars' );			
+					$field .= UixPBFormType_MultiSelector::add( $args, 'html' );
+					$jscode .= UixPBFormType_MultiSelector::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_MultiSelector::add( $args, 'js_vars' );			
 		
 					//slider
-					$field .= UixFormType_Slider::add( $args, 'html' );
-					$jscode .= UixFormType_Slider::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Slider::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Slider::add( $args, 'html' );
+					$jscode .= UixPBFormType_Slider::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Slider::add( $args, 'js_vars' );
 					
 					//margin
-					$field .= UixFormType_Margin::add( $args, 'html' );
-					$jscode .= UixFormType_Margin::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Margin::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Margin::add( $args, 'html' );
+					$jscode .= UixPBFormType_Margin::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Margin::add( $args, 'js_vars' );
 					
 					
 					//text
-					$field .= UixFormType_Text::add( $args, 'html' );
-					$jscode .= UixFormType_Text::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Text::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Text::add( $args, 'html' );
+					$jscode .= UixPBFormType_Text::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Text::add( $args, 'js_vars' );
 		
 		
 					//textarea
-					$field .= UixFormType_Textarea::add( $args, 'html' );
-					$jscode .= UixFormType_Textarea::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Textarea::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Textarea::add( $args, 'html' );
+					$jscode .= UixPBFormType_Textarea::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Textarea::add( $args, 'js_vars' );
 		
 		
 					//short text
-					$field .= UixFormType_ShortText::add( $args, 'html' );
-					$jscode .= UixFormType_ShortText::add( $args, 'js' );
-					$jscode_vars .= UixFormType_ShortText::add( $args, 'js_vars' );
+					$field .= UixPBFormType_ShortText::add( $args, 'html' );
+					$jscode .= UixPBFormType_ShortText::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_ShortText::add( $args, 'js_vars' );
 					
 					//short units text
-					$field .= UixFormType_ShortUnitsText::add( $args, 'html' );
-					$jscode .= UixFormType_ShortUnitsText::add( $args, 'js' );
-					$jscode_vars .= UixFormType_ShortUnitsText::add( $args, 'js_vars' );	
+					$field .= UixPBFormType_ShortUnitsText::add( $args, 'html' );
+					$jscode .= UixPBFormType_ShortUnitsText::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_ShortUnitsText::add( $args, 'js_vars' );	
 		
 					//checkbox
-					$field .= UixFormType_Checkbox::add( $args, 'html' );
-					$jscode .= UixFormType_Checkbox::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Checkbox::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Checkbox::add( $args, 'html' );
+					$jscode .= UixPBFormType_Checkbox::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Checkbox::add( $args, 'js_vars' );
 		
 					//color
-					$field .= UixFormType_Color::add( $args, 'html' );
-					$jscode .= UixFormType_Color::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Color::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Color::add( $args, 'html' );
+					$jscode .= UixPBFormType_Color::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Color::add( $args, 'js_vars' );
 					
 					//colormap
-					$field .= UixFormType_ColorMap::add( $args, 'html' );
-					$jscode .= UixFormType_ColorMap::add( $args, 'js' );
-					$jscode_vars .= UixFormType_ColorMap::add( $args, 'js_vars' );
+					$field .= UixPBFormType_ColorMap::add( $args, 'html' );
+					$jscode .= UixPBFormType_ColorMap::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_ColorMap::add( $args, 'js_vars' );
 						
 					
 		
 					//select
-					$field .= UixFormType_Select::add( $args, 'html' );
-					$jscode .= UixFormType_Select::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Select::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Select::add( $args, 'html' );
+					$jscode .= UixPBFormType_Select::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Select::add( $args, 'js_vars' );
 		
 					//image
-					$field .= UixFormType_Image::add( $args, 'html' );
-					$jscode .= UixFormType_Image::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Image::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Image::add( $args, 'html' );
+					$jscode .= UixPBFormType_Image::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Image::add( $args, 'js_vars' );
 		
 		
 					//toggle 1
-					$field .= UixFormType_Toggle::add( $args, 'html' );
-					$jscode .= UixFormType_Toggle::add( $args, 'js' );
-					$jscode_vars .= UixFormType_Toggle::add( $args, 'js_vars' );
+					$field .= UixPBFormType_Toggle::add( $args, 'html' );
+					$jscode .= UixPBFormType_Toggle::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Toggle::add( $args, 'js_vars' );
 		
 					//list 1
-					$field .= UixFormType_ListClone::add( $args, 'html' );
-					$jscode .= UixFormType_ListClone::add( $args, 'js' );
-					$jscode_vars .= UixFormType_ListClone::add( $args, 'js_vars' );
+					$field .= UixPBFormType_ListClone::add( $args, 'html', $section_row );
+					$jscode .= UixPBFormType_ListClone::add( $args, 'js', $section_row );
+					$jscode_vars .= UixPBFormType_ListClone::add( $args, 'js_vars', $section_row );
 		
 		
 	
@@ -837,4 +857,4 @@ if ( !class_exists( 'UixFormCore' ) ) {
 
 }
 
-UixFormCore::init();	
+UixPBFormCore::init();	

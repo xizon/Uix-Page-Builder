@@ -1,5 +1,5 @@
 <?php
-if ( !class_exists( 'UixFormCore' ) ) {
+if ( !class_exists( 'UixPBFormCore' ) ) {
     return;
 }
 
@@ -62,7 +62,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_primary_color' ),
 			'title'          => __( 'Primary Color', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_primary_color]['.$sid.']' ] : '#a2bf2f',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_primary_color', '#a2bf2f' ),
 			'placeholder'    => '',
 			'type'           => 'color',
 			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
@@ -74,7 +74,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_avatar' ),
 			'title'          => __( 'Author Picture', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_avatar]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_avatar', '' ),
 			'placeholder'    => __( 'Avatar URL', 'uix-page-builder' ),
 			'type'           => 'image',
 			'default'        => array(
@@ -91,7 +91,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_name' ),
 			'title'          => __( 'Author Name', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_name]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_name', '' ),
 			'placeholder'    => '',
 			'type'           => 'text'
 		
@@ -103,7 +103,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_intro' ),
 			'title'          => __( 'Biographical Info', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_intro]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_intro', '' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -119,7 +119,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_link_label' ),
 			'title'          => __( 'Link Text', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_link_label]['.$sid.']' ] : __( '&rarr;', 'uix-page-builder' ),
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_link_label', __( '&rarr;', 'uix-page-builder' ) ),
 			'placeholder'    => '',
 			'type'           => 'text'
 		
@@ -129,7 +129,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_link_link' ),
 			'title'          => __( 'Link URL', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_link_link]['.$sid.']' ] : '#',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_link_link', '#' ),
 			'placeholder'    => 'URL',
 			'type'           => 'text'
 		
@@ -142,7 +142,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_1_url' ),
 			'title'          => __( 'Social Network 1', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_1_url]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_1_url', '' ),
 			'placeholder'    => __( 'Your Social Network Page URL 1', 'uix-page-builder' ),
 			'type'           => 'text',
 			'default'        => ''
@@ -154,7 +154,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_1_icon' ),
 			'title'          => '',
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_1_icon]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_1_icon', '' ),
 			'placeholder'    => __( 'Choose Social Icon 1', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
@@ -169,7 +169,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_2_url' ),
 			'title'          => __( 'Social Network 2', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_2_url]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_2_url', '' ),
 			'placeholder'    => __( 'Your Social Network Page URL 2', 'uix-page-builder' ),
 			'type'           => 'text',
 			'default'        => ''
@@ -181,7 +181,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_2_icon' ),
 			'title'          => '',
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_2_icon]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_2_icon', '' ),
 			'placeholder'    => __( 'Choose Social Icon 2', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
@@ -196,7 +196,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_3_url' ),
 			'title'          => __( 'Social Network 3', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_3_url]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_3_url', '' ),
 			'placeholder'    => __( 'Your Social Network Page URL 3', 'uix-page-builder' ),
 			'type'           => 'text',
 			'default'        => ''
@@ -208,7 +208,7 @@ $args =
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_authorcard_3_icon' ),
 			'title'          => '',
 			'desc'           => '',
-			'value'          => ( $item && is_array( $item ) ) ? $item[ '[uix_pb_authorcard_3_icon]['.$sid.']' ] : '',
+			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_authorcard_3_icon', '' ),
 			'placeholder'    => __( 'Choose Social Icon 3', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
@@ -222,9 +222,9 @@ $args =
 	]
 ;
 
-$form_html = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'html' );
-$form_js = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js' );
-$form_js_vars = UixFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
+$form_html = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'html' );
+$form_js = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js' );
+$form_js_vars = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
 
@@ -241,7 +241,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixFormCore::uixform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert An Author Card', 'uix-page-builder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert An Author Card', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

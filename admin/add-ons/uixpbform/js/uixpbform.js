@@ -1,5 +1,5 @@
 /*
-	* Plugin: Uix Form
+	* Plugin: Uix Page Builder Form
 	* Version 1.0.0
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
@@ -10,7 +10,7 @@
 	* http://www.gnu.org/licenses/gpl.html
 */
 (function($){
-	$.fn.uixFormPop=function(options){
+	$.fn.UixPBFormPop=function(options){
 		var settings=$.extend({
 			'postID'            : '',
 			'title'             : '',
@@ -28,7 +28,7 @@
 				$postID             = settings.postID,
 				$trigger            = settings.trigger,
 				$errorInfo          = settings.errorInfo,
-				dataID              = 'uixform-modal-open-' + $ID,
+				dataID              = 'uixpbform-modal-open-' + $ID,
 				formID              = $trigger.replace( '.', '' ).replace( '#', '' );
 			
 				
@@ -37,12 +37,12 @@
 			//Prepend section templates
 			var form = { 'formID': formID, 'title': $title, 'thisModalID': dataID, 'thisFormName': $ID };
 			
-			if ( $( '.uixform-modal-mask' ).length < 1 ) {
-				$( 'body' ).prepend( '<div class="uixform-modal-mask"></div>' );
+			if ( $( '.uixpbform-modal-mask' ).length < 1 ) {
+				$( 'body' ).prepend( '<div class="uixpbform-modal-mask"></div>' );
 			}
 			
 			if ( $( '#' + form[ 'thisModalID' ] ).length < 1 ) {
-				$( 'body' ).prepend( '<div class="uixform-modal-box" id="'+form[ 'thisModalID' ]+'"><a href="javascript:void(0)" class="close-btn close-uixform-modal">×</a><div class="content"><h2>'+form[ 'title' ]+'</h2><span class="ajax-temp"></span></div></div>' );
+				$( 'body' ).prepend( '<div class="uixpbform-modal-box" id="'+form[ 'thisModalID' ]+'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'+form[ 'title' ]+'</h2><span class="ajax-temp"></span></div></div>' );
 				
 			}
 				
@@ -58,7 +58,7 @@
 				    widget_name     = $( this ).data( 'name' ),
 				    widgets         = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID },
 				    code            = '',
-					$obj            = $( '.uixform-modal-box#'+dataID );
+					$obj            = $( '.uixpbform-modal-box#'+dataID );
 				
 				//Open
 				if ( $obj.length > 0 ) {
@@ -67,7 +67,7 @@
 						url       : ajaxurl,
 						type      : 'POST',
 						data: {
-							action    : 'uixform_ajax_sections',
+							action    : 'uixpbform_ajax_sections',
 							tempID    : formID,
 							sectionID : widget_ID,
 							widgetName: widget_name,
@@ -79,14 +79,14 @@
 							
 							$obj.find( '.ajax-temp' ).html( result );
 							//Icon list with the jQuery AJAX method
-							$( '.icon-selector' ).uixform_iconSelector();
+							$( '.icon-selector' ).uixpbform_iconSelector();
 							$( '.wp-color-input' ).wpColorPicker();
 							
 							//Close
-							$( '.uixform-modal-box .close-uixform-modal' ).on( 'click', function( e ) {
+							$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 								e.preventDefault();
-								$( '.uixform-modal-box' ).removeClass( 'active' );
-								$( '.uixform-modal-mask' ).fadeOut( 'fast' );
+								$( '.uixpbform-modal-box' ).removeClass( 'active' );
+								$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 								$( 'html' ).css( 'overflow-y', 'auto' );
 							});	
 
@@ -95,14 +95,14 @@
 						    $obj.find( '.ajax-temp' ).html( $errorInfo );
 						},
 						beforeSend: function() {
-							$obj.find( '.ajax-temp' ).html( '<span class="uixform-loading"></span>' );
+							$obj.find( '.ajax-temp' ).html( '<span class="uixpbform-loading"></span>' );
 							//console.log( 'loading...' );
 
 						}
 					});
 			
 					
-					$( '.uixform-modal-mask' ).fadeIn( 'fast' );
+					$( '.uixpbform-modal-mask' ).fadeIn( 'fast' );
 					$obj.addClass( 'active' );
 					$obj.find( '.content' ).animate( {scrollTop: 10 }, 100 );
 					$( 'html' ).css( 'overflow-y', 'hidden' );
@@ -114,11 +114,11 @@
 				
 				
 				//Close
-				$( '.uixform-modal-box .close-uixform-modal' ).on( 'click', function( e ) {
+				$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 					e.preventDefault();
 					$( this ).parent().removeClass( 'active' );
-					$( '.uixform-modal-box' ).removeClass( 'active' );
-					$( '.uixform-modal-mask' ).fadeOut( 'fast' );
+					$( '.uixpbform-modal-box' ).removeClass( 'active' );
+					$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 					$( 'html' ).css( 'overflow-y', 'auto' );
 				});
 				
@@ -127,7 +127,7 @@
 			
 			
 			/*-- Save data -- */
-			$( document ).on( 'click', '.uixform-modal-save-btn', function( e ) {
+			$( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
 				e.preventDefault();
 				
 				var $form         = $( this ).closest( 'form' ),
@@ -150,17 +150,17 @@
 				settings.push( [ 'widgetname', widgetName ] );
 				
 				$.each( fields, function( i, field ) {
-					var v = htmlPagebuilderEscape( field.value ),
+					var v = uixpbform_htmlEscape( field.value ),
 					    n = field.name;
 					settings.push( [ n, v ] );
 				});	
 				
 				//Save
-				uixform_insertCodes( formID, JSON.stringify( settings ), 'content-data-' + rowID, rowID );
+				uixpbform_insertCodes( formID, JSON.stringify( settings ), 'content-data-' + rowID, rowID );
 	
 				//Close window
-				$( '.uixform-modal-box' ).removeClass( 'active' );
-				$( '.uixform-modal-mask' ).fadeOut( 'fast' );
+				$( '.uixpbform-modal-box' ).removeClass( 'active' );
+				$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 				$( 'html' ).css( 'overflow-y', 'auto' );
 				
 				
@@ -170,6 +170,4 @@
 		})
 	}
 })(jQuery);
-
-
 

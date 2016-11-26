@@ -1,5 +1,5 @@
 <?php
-class UixFormType_Slider {
+class UixPBFormType_Slider {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,7 +13,7 @@ class UixFormType_Slider {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -43,14 +43,14 @@ class UixFormType_Slider {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						
-						    <div class="uixform-box">
+						    <div class="uixpbform-box">
                                
 								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" value="'.$units.'">' : '' ).' 
 								   
 								   '.( !empty( $id ) ? '
-									<div class="uixform-range-container">
-										<input type="range" class="uixform-normal uixform-range" id="'.$id.'" name="'.$name.'" value="'.$value.'" min="'.$min.'" max="'.$max.'" step="'.$step.'" oninput="uixform_rangeSlider(this.id, \'slider_output_'.$id.'\', \''.$units.'\' )">
-										<output class="uixform-range-txt" id="slider_output_'.$id.'">'.$value.''.$units.'</output>
+									<div class="uixpbform-range-container">
+										<input type="range" class="uixpbform-normal uixpbform-range" id="'.$id.'" name="'.$name.'" value="'.$value.'" min="'.$min.'" max="'.$max.'" step="'.$step.'" oninput="uixpbform_rangeSlider(this.id, \'slider_output_'.$id.'\', \''.$units.'\' )">
+										<output class="uixpbform-range-txt" id="slider_output_'.$id.'">'.$value.''.$units.'</output>
 									</div>
 								   ' : '' ).' 
 							   

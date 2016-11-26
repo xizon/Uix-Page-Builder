@@ -1,5 +1,5 @@
 <?php
-class UixFormType_Radio {
+class UixPBFormType_RadioImage {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,41 +13,18 @@ class UixFormType_Radio {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
 		$jscode = '';
 		$jscode_vars = '';
 		
-		$toggleForRadioClass = 'toggle-radio-options-'.$id;
-		$toggleForRadioJS = '';
 		
 		
-        if ( $type == 'radio' ) {
+        if ( $type == 'radio-image' ) {
             
-            $optionlist = '';
-            if ( is_array( $default ) && !empty( $default ) ) {
-                $optionloop = 1;
-				$radiofirst = '';
-			
-                foreach ( $default as $select_key => $select_value ) {
-			        
-					$selected = ''; 
-					
-					if ( ( !empty( $value ) && $select_key == $value ) || ( empty( $value ) && $optionloop == 1 )  ) {
-                        $selected = '  active'; 
-						$radiofirst = $select_key;	
-					} 
-                 
-                    $optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'" class="'.$toggleForRadioClass.' '.$selected.'">'.$select_value.'</span>'."\n";	
-                    $optionloop ++;
-                }	
-		
-            }
-			
-			
-			//Toggle
+			//Toggle for radio options
 			$toggle_class = '';
 			$target_id = '';
 			$toggle_trigger_id = '';
@@ -56,7 +33,7 @@ class UixFormType_Radio {
              
 				foreach ( $toggle as $toggleArr ) {
 			
-					/* ------------  */
+			
 					$toggle_class = ( isset( $toggleArr[ 'toggle_class' ] ) ) ? $toggleArr[ 'toggle_class' ] : '';
 					$toggle_trigger_id = ( isset( $toggleArr[ 'trigger_id' ] ) ) ? $toggleArr[ 'trigger_id' ] : '';
 					$target_id = '';
@@ -65,24 +42,44 @@ class UixFormType_Radio {
 						foreach ( $toggleArr[ 'toggle_class' ] as $tid_value ) {
 							$target_id .= '.'.$tid_value.','; 	
 						}
-						
-						$toggleForRadioJS .= '$( document ).uixform_divToggle( { checkbox: 1, checkboxToggleClass: ".'.$toggleForRadioClass.'", btnID: "#'.$toggle_trigger_id.'", targetID: "'.rtrim( $target_id, ',' ).'" } );'."\n";
 		
 					}
-					/* ------------  */	
-					
-	
 					
 				}	
-				
+		
             }
+			
 	
 			//inscure browser
-			if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
+			if( UixPBFormCore::is_IE() && UixPBFormCore::is_dynamic_input( $class ) ) {
 				$new_class = str_replace( 'dynamic-row', 'isMSIE dynamic-row', $class );
 			} else {
 				$new_class = $class;
 			}
+			
+			//Options list
+            $optionlist = '';
+            if ( is_array( $default ) && !empty( $default ) ) {
+                $optionloop = 1;
+				$radiofirst = '';
+		
+                foreach ( $default as $select_key => $select_value ) {
+			        
+					$selected = ''; 
+					
+					if ( ( !empty( $value ) && $select_key == $value ) || ( empty( $value ) && $optionloop == 1 )  ) {
+                        $selected = '  active'; 
+						$radiofirst = $select_key;	
+					} 
+                  
+					
+                    $optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'"  class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" data-linked-btnid="'.$toggle_trigger_id.'"' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'."\n";	
+                    $optionloop ++;
+                }	
+			
+				
+            }
+			
 	
 	
             
@@ -91,10 +88,9 @@ class UixFormType_Radio {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>
 						
-						    <div class="uixform-box">
-                               
-							      <div class="uixform-form-clear"></div>
-								  <div class="radio" id="radio-selector-'.$id.'">	
+						    <div class="uixpbform-box">
+                                  <div class="uixpbform-form-clear"></div>
+								  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'">	
 								   '.$optionlist.' 
 								   </div>
 							   
@@ -111,35 +107,10 @@ class UixFormType_Radio {
 				
             $jscode_vars = '
 				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
-            ';		
+            ';	
 			
 			
-			$jscode_tog = '';
-			if ( !empty( $toggle_class ) ) {
-				$jscode_tog = '
-					/*-- Toggle for radio  --*/
-					'.$toggleForRadioJS.'
-				';	
-				
-				//inscure browser
-				if( UixFormCore::is_IE() && UixFormCore::is_dynamic_input( $class ) ) {
-					$jscode_tog = '';
-				}
-						
-	
-			}	
-			
-            $jscode = '
-
-                /*-- Radio --*/
-                $( document ).uixform_radioSelector({
-                    containerID: "#radio-selector-'.$id.'",
-                    targetID: "#'.$id.'"
-                });
-				
-				'.$jscode_tog.'
-	
-          ';
+            $jscode = '';
             
 
         }

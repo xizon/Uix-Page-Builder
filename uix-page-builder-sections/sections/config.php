@@ -13,5 +13,12 @@ $uix_pb_config = [
 		
 		),	
 		
+		array(
+			'title'           => __( 'Accordion', 'uix-page-builder' ),
+			'id'              => 'uix_pb_section_accordion'
+		
+		),		
+		
+		
 		
 ];

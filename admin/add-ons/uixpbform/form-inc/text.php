@@ -1,5 +1,5 @@
 <?php
-class UixFormType_Text {
+class UixPBFormType_Text {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,7 +13,7 @@ class UixFormType_Text {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -27,9 +27,9 @@ class UixFormType_Text {
 						<th scope="row"><label>'.$title.'</label></th>
 						<td>	
 						    
-							<div class="uixform-box">
+							<div class="uixpbform-box">
 							
-							   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixform-normal uixform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
+							   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
 			   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   

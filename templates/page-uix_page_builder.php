@@ -36,7 +36,7 @@ get_header(); ?>
 					}	
 				}
 				
-				if ( sizeof( $item ) > 3 ) :
+				if ( sizeof( $item ) > 3 && !empty( $value->content ) ) :
 					
 					$sid   = $item[ 'row' ];
 					$fid   = $item[ 'section' ];
@@ -48,7 +48,7 @@ get_header(); ?>
 					 */	 
 					 if ( $fid == 'uix_pb_section_authorcard' ) {
 						 
-						$avatarURL = ( !empty( $item[ '[uix_pb_authorcard_avatar]['.$sid.']' ] ) ) ? $item[ '[uix_pb_authorcard_avatar]['.$sid.']' ] : UixFormCore::plug_directory() .'images/no-photo.png';
+						$avatarURL = ( !empty( $item[ '[uix_pb_authorcard_avatar]['.$sid.']' ] ) ) ? $item[ '[uix_pb_authorcard_avatar]['.$sid.']' ] : UixPBFormCore::plug_directory() .'images/no-photo.png';
 						
 						$social_out_1 = ( !empty( $item[ '[uix_pb_authorcard_1_icon]['.$sid.']' ] ) ) ? '<a href=\''.$item[ '[uix_pb_authorcard_1_url]['.$sid.']' ].'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $item[ '[uix_pb_authorcard_1_icon]['.$sid.']' ] ) ? $item[ '[uix_pb_authorcard_1_icon]['.$sid.']' ] : 'link' ).'\'></i></a>' : '';
 						$social_out_2 = ( !empty( $item[ '[uix_pb_authorcard_2_icon]['.$sid.']' ] ) ) ? '<a href=\''.$item[ '[uix_pb_authorcard_2_url]['.$sid.']' ].'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $item[ '[uix_pb_authorcard_2_icon]['.$sid.']' ] ) ? $item[ '[uix_pb_authorcard_2_icon]['.$sid.']' ] : 'link' ).'\'></i></a>' : '';
@@ -64,7 +64,7 @@ get_header(); ?>
 									'.$social_out_3.'
 									</h3> 	 
 								</div>
-								<div class="uix-pb-authorcard-pic"><img src="'.$avatarURL.'" id="'.UixFormCore::get_attachment_id( $avatarURL ).'" alt="'.esc_attr( $item[ '[uix_pb_authorcard_name]['.$sid.']' ] ).'"></div>
+								<div class="uix-pb-authorcard-pic"><img src="'.$avatarURL.'" id="'.UixPBFormCore::get_attachment_id( $avatarURL ).'" alt="'.esc_attr( $item[ '[uix_pb_authorcard_name]['.$sid.']' ] ).'"></div>
 							</div>
 							<div class="uix-pb-authorcard-middle">'.$item[ '[uix_pb_authorcard_intro]['.$sid.']' ].'</div> 
 							<a class="uix-pb-authorcard-final" href="'.$item[ '[uix_pb_authorcard_link_link]['.$sid.']' ].'" rel="author">'.$item[ '[uix_pb_authorcard_link_label]['.$sid.']' ].'</a> 
@@ -89,6 +89,42 @@ get_header(); ?>
 						 
 					 }/*end section*/	  
 					 
+					 
+					 
+					/*====================================================================
+					 * Section Template : Accordion
+					 * ===================================================================
+					 */	 
+					 if ( $fid == 'uix_pb_section_accordion' ) {
+						 
+						
+						$list_accordion_item = '';
+						
+						for ( $i = 0; $i <= 30; $i++ ) {
+							$uid = ( $i == 0 ) ? '' : $i.'-';
+							
+							if ( array_key_exists( '['.$uid.'uix_pb_accordion_listitem_title]['.$sid.']', $item ) ) {
+								$list_accordion_item .= '
+									<h4>'.$item[ '['.$uid.'uix_pb_accordion_listitem_title]['.$sid.']' ].'</h4>
+									<p>'.$item[ '['.$uid.'uix_pb_accordion_listitem_con]['.$sid.']' ].'</p>	
+	
+								';
+							}
+							
+						}
+						
+						$section_temp = '
+						<div class="uix-pb-accordion">
+						    '.$list_accordion_item.'
+						</div>        
+						 ';
+						 
+					 }/*end section*/	  
+					 
+					 
+					 
+					 
+					 //====================================================================
 					 
 				
 					$pagebuilder_echo .=  '<div class="uix-page-builder-section" id="uix-page-builder-section-'.$row.'" data-name="'.$fid.'" data-row="'.$sid.'">'.$section_temp.'</div>'; 

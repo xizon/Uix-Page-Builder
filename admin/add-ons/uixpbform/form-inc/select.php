@@ -1,5 +1,5 @@
 <?php
-class UixFormType_Color {
+class UixPBFormType_Select {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,57 +13,53 @@ class UixFormType_Color {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
 		$jscode = '';
 		$jscode_vars = '';
 		
-        if ( $type == 'color' ) {
+        if ( $type == 'select' ) {
             
-            $colorlist = '';
+            $optionlist = '';
             if ( is_array( $default ) && !empty( $default ) ) {
-                foreach ( $default as $color_value ) {
+                $optionloop = 1;
+                foreach ( $default as $select_key => $select_value ) {
 					
-					( $value == $color_value ) ? $active = ' class="active"' : $active = '' ;
+					$selected = ''; 
 					
-                    $colorlist .= '<span '.$active.' style="background:'.$color_value.'" data-value="'.$color_value.'"></span>'."\n";	
+					if ( ( !empty( $value ) && $select_key == $value ) || ( empty( $value ) && $optionloop == 1 )  ) {
+						$selected = ' selected'; 
+					}
+                   
+                    
+                    $optionlist .= '<option value="'.$select_key.'" '.$selected.'>'.$select_value.'</option>'."\n";	
+                    $optionloop ++;
                 }	
             }
             
             $field = '
                     <tr'.$class.'>
                         <th scope="row"><label>'.$title.'</label></th>
-                        <td>		
-						    
-							<div class="uixform-box">
-								  <div class="uixform-color-selector" id="trigger_id_'.$id.'">	
-								   '.$colorlist.' 
-								   </div>
-								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'">' : '' ).' 
-	
-								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
-							 </div> 
+                        <td>	
+						   <div class="uixpbform-box">	
+                              
+                              '.( !empty( $id ) ? '<select class="uixpbform-normal" id="'.$id.'" name="'.$name.'">'.$optionlist.'</select>' : '' ).' 
+
+                               '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+							   
+							</div>
                         </td>
                     </tr> 
                 '."\n";	
                 
                 
-                
             $jscode_vars = '
                 '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
             ';
-            $jscode = '
 
-                /*-- Color Selector --*/
-                $( document ).uixform_radioSelector({
-                    containerID: "#trigger_id_'.$id.'",
-                    targetID: "#'.$id.'"
-                });
-            ';
-
-        }
+        }	
 			
 		//output code
 		if ( $_output == 'html' ) return $field;

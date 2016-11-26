@@ -1,5 +1,5 @@
 <?php
-class UixFormType_Textarea {
+class UixPBFormType_Textarea {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,7 +13,7 @@ class UixFormType_Textarea {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -25,18 +25,14 @@ class UixFormType_Textarea {
 			
 			$row = 5;
 			$format = true;
-			$default_value_htmlformat = false;
-			$default_value_trigger = '';
 			
 			if ( is_array( $default ) && !empty( $default ) ) {
 				$row = $default[ 'row' ];
 				$format = $default[ 'format' ];
-				$default_value_htmlformat = ( isset( $default[ 'default_value_htmlformat' ] ) ) ? $default[ 'default_value_htmlformat' ] : false;
-				$default_value_trigger = ( isset( $default[ 'default_value_trigger' ] ) ) ? $default[ 'default_value_trigger' ] : '';
 				
 				
 				if ( $format ) {
-					$the_var = 'var '.$id.' = uixform_formatTextarea( $( "#'.$id.'" ).val() );';
+					$the_var = 'var '.$id.' = uixpbform_formatTextarea( $( "#'.$id.'" ).val() );';
 				} else {
 					$the_var = 'var '.$id.' = $( "#'.$id.'" ).val();';
 				}
@@ -46,9 +42,9 @@ class UixFormType_Textarea {
 					<tr'.$class.'>
 						<th scope="row"><label>'.$title.'</label></th>
 						<td>	
-						    <div class="uixform-box">
+						    <div class="uixpbform-box">
 						
-							   '.( !empty( $id ) ? '<textarea rows="'.$row.'"  class="uixform-normal uixform-input-text" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'">'.$value.'</textarea>' : '' ).' 					   	   
+							   '.( !empty( $id ) ? '<textarea rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'">'.$value.'</textarea>' : '' ).' 					   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
 							</div>
@@ -60,19 +56,7 @@ class UixFormType_Textarea {
 				'.( !empty( $id ) ? ''.$the_var.''."\n" : '' ).'
 			';	
 			
-			if ( $default_value_htmlformat ) {
-				$jscode = '
-	
-					/*-- Textarea --*/
-				   $( document ).uixform_enterTextareaValue({
-						ID: "#'.$id.'",
-						value: "'.preg_replace( '/(<br.*?>)+/', '\\n', str_replace( '"', '\\"', $value ) ).'",
-						clearIntervalID :  "#'.$default_value_trigger.'"
-					});		
-	
-				';	
-	
-			}
+			$jscode = '';
 			
 			
 		

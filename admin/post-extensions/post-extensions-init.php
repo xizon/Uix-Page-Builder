@@ -228,7 +228,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					},
 					draggable: {
 						stop: function() {
-						    uixFormDataSave();	
+						    uixPBFormDataSave();	
 						}
 					},
 					serialize_params: function( $w, wgd ){ 
@@ -278,7 +278,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				gridster.gridsterAddWidget( '<li class="uix-page-builder-gridster-widget" data-id="'+gLi+'"><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Title', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Title', 'uix-page-builder' ); ?> '+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-trash"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><div class="widget-items-container"><?php UixPageBuilder::list_page_buttons();?></div></li>', 1, 1 ).fadeIn( 100, function() {
 						gridsterInputsave();
 				});
-				uixFormDataSave();
+				uixPBFormDataSave();
 				gridsterWidgetsInit();
 				jQuery( '#uix-page-builder-layoutdata-none' ).hide();
 			}
@@ -290,13 +290,13 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						
 					gridster.gridsterRemoveWidget( thisWidget );
 						
-					uixFormDataSave();
+					uixPBFormDataSave();
 	
 				} );
 				e.preventDefault();
 			}
 
-			function uixFormDataSave(){
+			function uixPBFormDataSave(){
 				var json_str = JSON.stringify( gridster.serialize() );
 				json_str = json_str.replace(/\\n/g, '<br>' ).replace(/\\r/g, '' ).replace(/\\/g, '' );
 				document.getElementById( 'uix-page-builder-layoutdata' ).value = json_str;
@@ -341,7 +341,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						var $this = jQuery( this );
 						$this.find( '.content-box, .title-box' ).on( 'input change keyup', function() {
 							$this.find( 'content-data' ).html( jQuery( this ).val() );
-							uixFormDataSave();
+							uixPBFormDataSave();
 						});
 	
 					});
@@ -361,8 +361,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					.replace(/&quot;/g, '"')
 					.replace(/&#39;/g, "'")
 					.replace(/&lt;/g, '<')
-					.replace(/&gt;/g, '>')
-					.replace(/&amp;/g, '&');
+					.replace(/&gt;/g, '>');
 					
 					
 			}
@@ -371,8 +370,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					.replace(/"/g, '&quot;')
 					.replace(/'/g, "&#39;")
 					.replace(/</g, '&lt;')
-					.replace(/>/g, '&gt;')
-					.replace(/&/g, '&amp;');
+					.replace(/>/g, '&gt;');
 			}
 			
 		    function gridsterContentID( str ){

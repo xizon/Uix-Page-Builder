@@ -459,7 +459,7 @@ $all_icons = [
 ];
 
 
-echo '<div class="uixform-icon-selector">';
+echo '<div class="uixpbform-icon-selector">';
 
 foreach ( $all_icons as $value ) {
 	$v = str_replace( '"></i></a>', '', str_replace( '<a '.$href.'><i class="fa fa-', '', $value ) );

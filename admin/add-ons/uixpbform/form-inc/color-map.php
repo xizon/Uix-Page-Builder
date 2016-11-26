@@ -1,5 +1,5 @@
 <?php
-class UixFormType_ColorMap {
+class UixPBFormType_ColorMap {
 	
 	public static function add( $args, $_output ) {
 		
@@ -13,7 +13,7 @@ class UixFormType_ColorMap {
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixFormCore::row_class( $args[ 'class' ] ).'"' : '';
+		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		
 		$field = '';
@@ -34,18 +34,18 @@ class UixFormType_ColorMap {
                         <th scope="row"><label>'.$title.'</label></th>
                         <td>	
 						
-						    <div class="uixform-box">
+						    <div class="uixpbform-box">
 								
 			';
 			
 			if ( $swatches == 1 ) {
 				$field .= ' 
-				                <div class="uixform-color-selector-onlybutton">
+				                <div class="uixpbform-color-selector-onlybutton">
 								        
-										<div class="uixform-color-selector-toggles">
+										<div class="uixpbform-color-selector-toggles">
 											<input type="text" class="wp-color-input" id="'.$id.'" name="'.$name.'" value="'.$value.'">
 										</div>	
-										<span class="uixform-color-selector-label">'.( !empty( $desc ) ? $desc : __( 'Add Custom Color', 'uix-page-builder' ) ).'</span>		
+										<span class="uixpbform-color-selector-label">'.( !empty( $desc ) ? $desc : __( 'Add Custom Color', 'uix-page-builder' ) ).'</span>		
 								
 								</div>
 
@@ -55,9 +55,9 @@ class UixFormType_ColorMap {
 			} else {
 			
 				$field .= ' 
-				                <div class="uixform-input-text-short">
+				                <div class="uixpbform-input-text-short">
 				
-									   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixform-normal uixform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixFormCore::readable_color( $value ).'"' : '' ).' value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+									   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixPBFormCore::readable_color( $value ).'"' : '' ).' value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
 									   
 									  
 								</div>
