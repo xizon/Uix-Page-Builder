@@ -54,16 +54,19 @@ $form_type = [
 ];
 
 
-//The maximum of clone form 
-$clone_max = 30;
+$clone_trigger_id        = 'uix_pb_accordion_list';  // ID of clone trigger 
+$clone_max               = 5;                       // Maximum of clone form 
+$clone_list_toggle_class = '';                       // Clone list of toggle class value
+
+
 
 $args = 
 	[
 	 
 		//------list begin
 		array(
-			'id'             => 'uix_pb_accordion_list',
-			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_accordion_list' ),
+			'id'             => $clone_trigger_id,
+			'name'           => UixPageBuilder::fname( $form_id, $clone_trigger_id ),
 			'title'          => __( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
@@ -133,7 +136,7 @@ $form_html = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args,
 $form_js = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js' );
 $form_js_vars = UixPBFormCore::add_form( $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
-
+$clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-uix_pb_accordion_listitem_title', $form_html ).UixPBFormCore::dynamic_form_code( 'dynamic-row-uix_pb_accordion_listitem_con', $form_html );
 
 /**
  * Returns actions of javascript
@@ -144,7 +147,7 @@ if ( $sid == -1 && is_admin() ) {
 		if ( is_admin()) {
 			
 		/* List Item - Register clone vars ( step 1) */
-		UixPBFormCore::reg_clone_vars( 'uix_pb_accordion_list', UixPBFormCore::dynamic_form_code( 'dynamic-row-uix_pb_accordion_listitem_title', $form_html ).UixPBFormCore::dynamic_form_code( 'dynamic-row-uix_pb_accordion_listitem_con', $form_html ) );
+		UixPBFormCore::reg_clone_vars( 'uix_pb_accordion_list', $clone_value );
 		
 			?>
 			<script type="text/javascript">
@@ -164,11 +167,35 @@ if ( $sid == -1 && is_admin() ) {
 	
 }
 
-
 /**
  * Returns forms with ajax
  */
 if ( $sid >= 0 && is_admin() ) {
 	echo $form_html;	
+	
+    /*-- Dynamic Adding Input ( Default Value ) --*/
+	for ( $i = 2; $i <= $clone_max; $i++ ) {
+		$uid = $i.'-';
+		$field = 'uix_pb_accordion_listitem_title';
+		if ( is_array( $item ) && array_key_exists( '['.$uid.''.$field.']['.$sid.']', $item ) ) {
+			
+			$cur_id        = $i;
+			$cur_form_id   = '#'.$uid.$field;
+			$value         =  [
+								array(
+									'replace'  => $item[ '[uix_pb_accordion_listitem_title]['.$sid.']' ],
+									'default'  => $item[ '['.$uid.'uix_pb_accordion_listitem_title]['.$sid.']' ]
+								),
+								array(
+									'replace'  => $item[ '[uix_pb_accordion_listitem_con]['.$sid.']' ],
+									'default'  => $item[ '['.$uid.'uix_pb_accordion_listitem_con]['.$sid.']' ]
+								),
+			                  ];
+							  
+			UixPageBuilder::push_cloneform( $clone_trigger_id, $cur_id, $clone_value, $sid, $value, $clone_list_toggle_class );
+	
+		} 
+	}
+	
 }
 

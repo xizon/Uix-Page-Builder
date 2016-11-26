@@ -107,6 +107,7 @@ jQuery( document ).ready( function() {
 	 * Dynamic Adding Input
 	 * ---------------------------------------------------
 	 */
+	/*-- Click Action --*/
 	jQuery( document ).on( 'click', '.uixpbform_btn_trigger-clone', function( e ) {
 		e.preventDefault();
 		
@@ -169,10 +170,8 @@ jQuery( document ).ready( function() {
 		//color picker
 		jQuery( '.wp-color-input' ).wpColorPicker();
 		
-		//Default value show
 		
 	
-			
 		
 		 //remove input
 		 if ( cur_removeClass ){
@@ -352,6 +351,86 @@ jQuery( document ).ready( function() {
 	});
 		
 });
+
+
+/*! 
+ * ************************************
+ * Re-initialize Dynamic Adding Input ( If there are some default values )
+ *************************************
+ */	
+( function( $ ) {
+  jQuery.fn.uixpbform_dynamicFormInit = function( options ) {
+	
+		var settings=$.extend( {
+			'cloneCode' : ''
+		}
+		,options );
+		return this.each( function() {
+	  
+			
+            jQuery( '.uixpbform_btn_trigger-clone' ).each( function()  {
+				
+				var cur_appendID      = '#' + jQuery( this ).attr( "data-appendid" ),
+				    show_count        = jQuery( this ).attr( "data-max" ),
+					cur_removeClass   = jQuery( this ).attr( "data-removeclass" ),
+					btnINdex          = parseFloat( jQuery( this ).attr( 'data-index' ) );
+				
+				if ( btnINdex <= show_count ) {
+					var cloneCode = '<?php echo $clone_code; ?>';
+					
+					jQuery( cur_appendID ).after( settings.cloneCode );
+					jQuery( this ).attr( 'data-index',btnINdex+1 );
+				}
+				
+				
+				if ( btnINdex == show_count ) {
+					jQuery( this ).addClass( 'disable' );
+				}
+				
+				//Icon list
+				jQuery( '.icon-selector' ).uixpbform_iconSelector();
+					  
+				//focus
+				var srow = '.uixpbform-form-container .dynamic-row';
+				jQuery( srow ).mouseenter(function() {
+					jQuery( srow ).animate( { opacity: 0.3 }, 0 );
+					jQuery( this ).animate( { opacity: 1 }, 0 );
+				});
+				jQuery( srow ).mouseleave(function() {
+					jQuery( srow ).animate( { opacity: 1 }, 0 );
+				});
+				
+				//color picker
+				jQuery( '.wp-color-input' ).wpColorPicker();
+				
+				 //remove input
+				 if ( cur_removeClass ){
+					 
+					 jQuery( document ).on( 'click', '.' + cur_removeClass, function( e ) {
+						e.preventDefault();
+						var btnINdex = parseFloat( jQuery( this ).attr( 'data-index' ) );
+				
+						if ( btnINdex <= 1 ) {
+							alert( "keep at least one." );
+						} else {
+							jQuery( this ).parent().parent().remove();
+							jQuery( this ).attr( 'data-index',btnINdex-1 );							
+						}
+				
+						jQuery( this ).removeClass( 'disable' );
+				
+						
+					} );		
+		
+				 }	
+                
+            });
+ 
+		} );
+	
+  };
+} )( jQuery );
+
 
 
 /*! 

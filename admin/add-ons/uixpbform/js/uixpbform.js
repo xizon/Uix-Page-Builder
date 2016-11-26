@@ -78,6 +78,7 @@
 							result = result.replace( /{index}/g, '\['+widget_ID+'\]' );
 							
 							$obj.find( '.ajax-temp' ).html( result );
+							
 							//Icon list with the jQuery AJAX method
 							$( '.icon-selector' ).uixpbform_iconSelector();
 							$( '.wp-color-input' ).wpColorPicker();
@@ -89,6 +90,8 @@
 								$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 								$( 'html' ).css( 'overflow-y', 'auto' );
 							});	
+							
+						
 
 						},
 						error: function(){

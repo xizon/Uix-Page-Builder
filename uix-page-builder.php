@@ -465,7 +465,7 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function fvalue( $section_row, $arr, $field, $default, $clonemax = 0 ) {
+	public static function fvalue( $section_row, $arr, $field, $default = '', $clonemax = 0 ) {
 		
 		if ( is_array( $arr ) && array_key_exists( '['.$field.']['.$section_row.']', $arr ) ) {
 			return $arr[ '['.$field.']['.$section_row.']' ];
@@ -492,6 +492,70 @@ class UixPageBuilder {
 		}
 	
 	}
+	
+	/*
+	 * Push the clone form of saved data
+	 *
+	 *
+	 */
+	public static function push_cloneform( $clone_trigger_id, $cur_id, $clone_value, $section_row, $value, $clone_list_toggle_class = '' ) {
+		
+		$toggle_target_ID  = str_replace( '{dataID}', ''.$cur_id.'-', $clone_list_toggle_class );
+		$widget_ID         = $section_row;
+		
+		//Clone content
+		$data = '<span class="dynamic-row dynamic-addnow">'.$clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'">&times;</a></div></span>';
+	
+		$data = str_replace( 'data-list="0"', 'data-list="1"',
+			   str_replace( 'toggle-row', 'toggle-row toggle-row-clone-list',
+			   $data 
+			   ) );
+			   
+		
+		//Clone code
+		$data = str_replace( '{index}', '['.$widget_ID.']',
+		       str_replace( 'data-id="', 'id="'.$cur_id.'-',
+			   str_replace( '|[', '|['.$cur_id.'-',
+			   str_replace( '{dataID}', ''.$cur_id.'-',
+			   str_replace( '{multID}', $toggle_target_ID,
+			   $data 
+			   ) ) ) ) );
+		
+		//Default value
+		if ( $value && is_array( $value ) ) {
+			foreach ( $value as $t_value ) {
+				$data = str_replace( $t_value[ 'replace' ], $t_value[ 'default' ], $data );
+			}	
+		}
+			   
+		echo "<script type='text/javascript'>jQuery(document).uixpbform_dynamicFormInit({cloneCode:'{$data}'});</script>";
+	}
+	
+			
+	/*
+	 * Returns the clone toggle target id
+	 *
+	 *
+	 */
+	public static function get_clone_toggle_target_id( $toggle_class ) {
+		
+		if ( $toggle_class && is_array( $toggle_class ) ) {
+			$toggle_target_id = '';
+			foreach ( $toggle_class as $tid_value ) {
+				$tid_value = str_replace( 'dynamic-row-', '', $tid_value );
+				$toggle_target_id .= '#{dataID}'.$tid_value.','; 	
+				
+			}	
+			
+			$toggle_target_id = rtrim( $toggle_target_id, ',' );
+				   
+			return $toggle_target_id;
+	
+		}
+		
+	}
+						
+			
 				
 		
 	/*
