@@ -74,6 +74,10 @@ function uix_page_builder_options_page(){
 		'title'   =>  __( 'Credits', 'uix-page-builder' )
 	];
 	
+	$tabs[] = [
+	    'tab'     =>  'temp', 
+		'title'   =>  __( 'Template Files', 'uix-page-builder' )
+	];
 	
 	?>
     <h2 class="nav-tab-wrapper">

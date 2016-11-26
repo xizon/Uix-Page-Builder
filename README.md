@@ -54,5 +54,32 @@ Initial Release.
 
 ###How to use?
 
-After activating your theme, you can see a prompt pointed out as absolutely critical. Go to **"Appearance -> Install Plugins"**.
+1.After activating your theme, you can see a prompt pointed out as absolutely critical. Go to **"Appearance -> Install Plugins"**.
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/plug.jpg)
+
+2.You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Page Builder template files path (`/wp-content/plugins/uix-page-builder/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  
+
+
+Please check if you have the **1** template files `page-uix_page_builder.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/"** to your templates directory.
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/temp.jpg)
+
+
+3.Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the **"Template"** for this page from the **"Attributes"** section. Enter page title like **"Custom One Page"**. Save the page and hit **"Preview"** to see how it looks. ( You should specify the template name, in this case I used `Uix Page Builder Template`. The "Template Name: Uix Page Builder Template" tells WordPress that this will be a custom page template. )
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/menu.jpg)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/add-page.jpg)
+
+
+4.You can pretty much custom every aspect of the look and feel of this page by modifying the `*.php` template files **(Access the path to the themes directory)**. **Best Practices for Editing WordPress Template Files:**
+
+　(1) WordPress comes with a theme and plugin editor as part of the core functionality. You can find it in your install by going to **"Appearance > Editor"** from your sidebar.
+  
+  ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/editor.jpg)
+
+　(2) You can connect to your site via an **FTP** client, download a copy of the file you want to change, make the changes and then upload the file back to the server, overwriting the file that’s on the server.
+
+

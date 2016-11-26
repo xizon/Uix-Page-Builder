@@ -43,6 +43,9 @@ class UixPageBuilder {
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
+		add_action( 'admin_notices', array( __CLASS__, 'template_notice_required' ) );
+		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
+		
 	
 	}
 	
@@ -556,6 +559,272 @@ class UixPageBuilder {
 	}
 						
 			
+	/*
+	 *  Add admin one-time notifications
+	 *
+	 *
+	 */
+	
+	public static function template_notice_required() {
+		
+		if( get_post_type() == 'page' ) {
+			if( !self::tempfile_exists() ) {
+				echo '
+					<div class="error notice">
+						<p>' . __( '<strong>You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel.</strong>', 'uix-page-builder' ) . ' <a class="button button-primary" href="' . admin_url( "admin.php?page=".self::HELPER."&tab=temp" ) . '">' . __( 'Create now!', 'uix-page-builder' ) . '</a><br>' . __( 'As a workaround you can use FTP, access the Uix Page Builder template files path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-page-builder' ) . '</p>
+					</div>
+				';
+		
+			}
+		}
+	
+	}	
+	
+	
+	public static function nag_ignore() {
+		    global $current_user;
+			$user_id = $current_user->ID;
+			
+			/* If user clicks to ignore the notice, add that to their user meta */
+			if ( isset( $_GET[ self::NOTICEID ]) && '0' == $_GET[ self::NOTICEID ] ) {
+				 add_user_meta( $user_id, self::NOTICEID, 'true', true);
+
+				if ( wp_get_referer() ) {
+					/* Redirects user to where they were before */
+					wp_safe_redirect( wp_get_referer() );
+				} else {
+					/* This will never happen, I can almost gurantee it, but we should still have it just in case*/
+					wp_safe_redirect( home_url() );
+				}
+		    }
+	}
+	
+	/*
+	 * Checks whether a template file or directory exists
+	 *
+	 *
+	 */
+	public static function tempfile_exists() {
+
+	      if( !file_exists( get_stylesheet_directory() . '/page-uix_page_builder.php' ) ) {
+			  return false;
+		  } else {
+			  return true;
+		  }
+
+	}	
+		
+		
+	
+	/*
+	 * Returns template files directory
+	 *
+	 *
+	 */
+	public static function list_templates_name( $show = 'plug' ){
+	
+		
+		$filenames = array();
+		$filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
+		$themepath = get_stylesheet_directory() . '/';
+		
+		foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
+		    $filenames[] = str_replace( dirname(__FILE__). "/theme_templates/", '', $file );
+		}	
+		
+		echo '<ul>';
+		
+		foreach ( $filenames as $filename ) {
+			$file1 = trailingslashit( $filepath ) . $filename;
+			
+			$file2 = trailingslashit( $themepath ) . $filename;	
+			
+			if ( $show == 'plug' ) {
+				echo '<li>'.trailingslashit( $filepath ) . $filename.'</li>';
+			} else {
+				echo '<li>'.trailingslashit( $themepath ) . $filename.'</li>';
+			}
+			
+		}	
+		
+		echo '</ul>';
+			
+	}	 
+
+	
+	
+	/*
+	 * Copy/Remove template files to your theme directory
+	 *
+	 *
+	 */
+	
+	public static function templates( $nonceaction, $nonce, $remove = false ){
+	
+		  global $wp_filesystem;
+			
+		  $filenames = array();
+		  $filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
+		  $themepath = get_stylesheet_directory() . '/';
+
+	      foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
+			$filenames[] = str_replace( dirname(__FILE__). "/theme_templates/", '', $file );
+		  }	
+		  
+
+		  $url = wp_nonce_url( $nonce, $nonceaction );
+		
+		  $contentdir = $filepath; 
+		  
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
+	
+				foreach ( $filenames as $filename ) {
+					
+				    // Copy
+					if ( ! file_exists( $themepath . $filename ) ) {
+						
+						$dir1 = $wp_filesystem->find_folder( $filepath );
+						$file1 = trailingslashit( $dir1 ) . $filename;
+						
+						$dir2 = $wp_filesystem->find_folder( $themepath );
+						$file2 = trailingslashit( $dir2 ) . $filename;
+									
+						$filecontent = $wp_filesystem->get_contents( $file1 );
+	
+						$wp_filesystem->put_contents( $file2, $filecontent, FS_CHMOD_FILE );
+						
+			
+					} 
+					
+					// Remove
+					if ( $remove ) {
+						if ( file_exists( $themepath . $filename ) ) {
+							
+							$dir = $wp_filesystem->find_folder( $themepath );
+							$file = trailingslashit( $dir ) . $filename;
+							
+							$wp_filesystem->delete( $file, false, FS_CHMOD_FILE );
+							
+				
+						} 
+						
+	
+					}
+				}
+				
+				if ( !$remove ) {
+					if ( self::tempfile_exists() ) {
+						return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-page-builder' );
+					} else {
+						return __( '<div class="notice notice-error"><p><strong>There was a problem copying your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-page-builder' );
+					}
+	
+				} else {
+					if ( self::tempfile_exists() ) {
+						return __( '<div class="notice notice-error"><p><strong>There was a problem removing your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-page-builder' );
+						
+					} else {
+						return __( '<div class="notice notice-success"><p>Remove successful!</p></div>', 'uix-page-builder' );
+					}	
+					
+				}
+				
+		
+				
+				
+		  } 
+	}	 
+
+
+
+	/**
+	 * Initialize the WP_Filesystem
+	 * 
+	 * Example:
+	 
+            $output = "";
+			$wpnonce_url = 'edit.php?post_type=uix_pagebuilder&page='.UixPageBuilder::HELPER;
+			$wpnonce_action = 'temp-filesystem-nonce';
+
+            if ( !empty( $_POST ) ) {
+				
+				
+                  $output = UixPageBuilder::wpfilesystem_write_file( $wpnonce_action, $wpnonce_url, 'helper/', 'debug.txt', 'This is test.' );
+				  echo $output;
+			
+            } else {
+				
+				wp_nonce_field( $wpnonce_action );
+				echo '<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__( 'Click This Button to Copy Files', 'uix-page-builder' ).'"  /></p>';
+				
+			}
+	 *
+	 */
+	public static function wpfilesystem_connect_fs( $url, $method, $context, $fields = null) {
+		  global $wp_filesystem;
+		  if ( false === ( $credentials = request_filesystem_credentials( $url, $method, false, $context, $fields) ) ) {
+			return false;
+		  }
+		
+		  //check if credentials are correct or not.
+		  if( !WP_Filesystem( $credentials ) ) {
+			request_filesystem_credentials( $url, $method, true, $context);
+			return false;
+		  }
+		
+		  return true;
+	}
+	
+	public static function wpfilesystem_write_file( $nonceaction, $nonce, $path, $pathname, $text ){
+		  global $wp_filesystem;
+		  
+		
+		  $url = wp_nonce_url( $nonce, $nonceaction );
+		
+		  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+		  
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
+			  
+				$dir = $wp_filesystem->find_folder( $contentdir );
+				$file = trailingslashit( $dir ) . $pathname;
+				$wp_filesystem->put_contents( $file, $text, FS_CHMOD_FILE );
+			
+				return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-page-builder' );
+				
+		  } 
+	}	
+	
+	 
+	public static function wpfilesystem_read_file( $nonceaction, $nonce, $path, $pathname, $type = 'plugin' ){
+		  global $wp_filesystem;
+		
+		  $url = wp_nonce_url( $nonce, $nonceaction );
+	
+		  if ( $type == 'plugin' ) {
+			  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+		  } 
+		  if ( $type == 'theme' ) {
+			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+		  } 	  
+		
+		  
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir ) ) {
+			  
+				$dir = $wp_filesystem->find_folder( $contentdir );
+				$file = trailingslashit( $dir ) . $pathname;
+				
+				
+				if( $wp_filesystem->exists( $file ) ) {
+					
+				    return $wp_filesystem->get_contents( $file );
+	
+				} else {
+					return '';
+				}
+		
+		
+		  } 
+	}	 	
 				
 		
 	/*
