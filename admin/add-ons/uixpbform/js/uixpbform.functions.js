@@ -5,8 +5,6 @@
  */	
 jQuery( document ).ready( function() {
 	
-
-	
     /*! 
 	 * 
 	 * Toggle of unidirectional display

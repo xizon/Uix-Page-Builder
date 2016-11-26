@@ -447,7 +447,7 @@ class UixPageBuilder {
 		}
 		
 		foreach ( $uix_pb_config as $key ) {
-			echo "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
+			echo "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
 		}	
 
 

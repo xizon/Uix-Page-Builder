@@ -90,37 +90,30 @@
 
 
 /* Remove Button */
-.remove-gridster-widget,
-.edit-gridster-widget {
+.remove-gridster-widget {
 	border: none;
 	outline: none;
-	background: #C71013;
-	padding: 3px;
-	font-size: 10px;
+	color: #fff !important;
+	font-size: 22px;
 	color: #fff;
 	position: absolute;
-	right: -13px;
-	top: 70px;
+	right: 5px;
+	top: 0;
 	z-index: 5;
 	cursor: pointer;
 	display: block;
-	width: 25px;
-	-webkit-border-radius: 3px; 
-	-moz-border-radius: 3px; 
-	border-radius: 3px;
+	background: none;
+	text-shadow: 0 2px rgba(0,0,0,.3);
+	
 }
 
-
 .remove-gridster-widget:hover {
-	background: #DF2629;
+	color: #DF2629 !important;
+	text-shadow: 0 2px #fff;
 }
 
 .edit-gridster-widget {
-	background: #0085BA;
-	top: 42px;
-}
-.edit-gridster-widget:hover {
-	background: #2886DA;
+	display: none;
 }
 
 
@@ -140,7 +133,7 @@
 }
 
 
-/* Items */
+/* Section Buttons */
 .widget-items-container {
 	position: absolute;
 	bottom: 0;
@@ -167,3 +160,41 @@
 	-moz-opacity: 0.9;   
 	opacity: 0.9; 
 }
+
+
+.widget-items-container .widget-item-btn.wait {
+	display: none;
+}
+
+.widget-items-container .widget-item-btn.wait-no-content {
+	display: inline-block;
+}
+
+.widget-items-container .widget-item-btn.used {
+	display: inline-block;
+	border: none;
+	outline: none;
+	background: #0085BA;
+	padding: 3px;
+	color: #fff;
+	cursor: pointer;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px;
+	padding-right: 7px;
+	font-weight: normal;
+}
+.widget-items-container .widget-item-btn.used:before {
+	display: inline-block;
+	content: "\f464";
+	font-family:dashicons;
+	font-size: 16px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+
+.widget-items-container .widget-item-btn.used:hover {
+	background: #2886DA;
+}
+
