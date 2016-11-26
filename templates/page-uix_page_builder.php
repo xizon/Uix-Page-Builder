@@ -103,7 +103,7 @@ get_header(); ?>
 						for ( $i = 0; $i <= 30; $i++ ) {
 							$uid = ( $i == 0 ) ? '' : $i.'-';
 							
-							if ( array_key_exists( '['.$uid.'uix_pb_accordion_listitem_title]['.$sid.']', $item ) ) {
+							if ( is_array( $item ) && array_key_exists( '['.$uid.'uix_pb_accordion_listitem_title]['.$sid.']', $item ) ) {
 								$list_accordion_item .= '
 									<h4>'.$item[ '['.$uid.'uix_pb_accordion_listitem_title]['.$sid.']' ].'</h4>
 									<p>'.$item[ '['.$uid.'uix_pb_accordion_listitem_con]['.$sid.']' ].'</p>	

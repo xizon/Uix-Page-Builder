@@ -467,7 +467,7 @@ class UixPageBuilder {
 	 */
 	public static function fvalue( $section_row, $arr, $field, $default, $clonemax = 0 ) {
 		
-		if ( array_key_exists( '['.$field.']['.$section_row.']', $arr ) ) {
+		if ( is_array( $arr ) && array_key_exists( '['.$field.']['.$section_row.']', $arr ) ) {
 			return $arr[ '['.$field.']['.$section_row.']' ];
 		} else {
 			return $default;
@@ -480,7 +480,7 @@ class UixPageBuilder {
 			for ( $i = 0; $i <= $clonemax; $i++ ) {
 				$uid = ( $i == 0 ) ? '' : $i.'-';
 				
-				if ( array_key_exists( '['.$uid.''.$field.']['.$section_row.']', $arr ) ) {
+				if ( is_array( $arr ) && array_key_exists( '['.$uid.''.$field.']['.$section_row.']', $arr ) ) {
 					return $arr[ '['.$uid.''.$field.']['.$section_row.']' ];
 				} else {
 					return $default;
