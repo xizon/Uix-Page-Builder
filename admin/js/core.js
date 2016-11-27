@@ -34,14 +34,19 @@ jQuery( document ).ready( function() {
 			uixpagebuilderShow();
 			
 			//Auto set page template
-			jQuery('[name="page_template"] option[value="page-uix_pagebuilder.php"]').attr( 'selected', 'selected' );
+			if ( uix_pagebuilder_layoutdata.send_string_tempfiles_exists == 1 ) {
+				jQuery('[name="page_template"] option[value="page-uix_pagebuilder.php"]').attr( 'selected', 'selected' );
+			}
 			
 		});
 		jQuery( '#uix-pagebuilder-status2' ).on( 'click', function() {
 			uixpagebuilderHide();
 			
 			//Restore set page template
-			jQuery('[name="page_template"] option[value="default"]').attr( 'selected', 'selected' );
+			if ( uix_pagebuilder_layoutdata.send_string_tempfiles_exists == 1 ) {
+				jQuery('[name="page_template"] option[value="default"]').attr( 'selected', 'selected' );
+			}
+			
 		});
 		
 		

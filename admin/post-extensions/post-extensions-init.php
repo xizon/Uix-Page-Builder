@@ -30,9 +30,15 @@ if ( !function_exists( 'uix_pagebuilder_save_script' ) ) {
 			wp_register_script( 'uix_pagebuilder_metaboxes_save_handle', UixPageBuilder::plug_directory() .'admin/js/core.js' );
 			
 			// Localize the script with new data
+			if ( UixPageBuilder::tempfile_exists() ) {
+				$tempfile_exists = 1;
+			} else {
+				$tempfile_exists = 0;
+			}
 			$translation_array = array(
-				'send_string_nonce' => wp_create_nonce( 'uix_pagebuilder_metaboxes_save_nonce' ),
-				'send_string_postid' => $post->ID
+				'send_string_nonce'            => wp_create_nonce( 'uix_pagebuilder_metaboxes_save_nonce' ),
+				'send_string_postid'           => $post->ID,
+				'send_string_tempfiles_exists' => $tempfile_exists
 			);
 			
 			
