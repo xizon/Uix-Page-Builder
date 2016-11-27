@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX = 'uix';
-		const CUSTOMTEMP = 'uix-page-builder-sections/sections/';
+		const CUSTOMTEMP = 'uix-pagebuilder-sections/sections/';
 	
 		
 		/**
@@ -170,7 +170,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function tempfolder_exists() {
 	
-			  if( is_dir( get_stylesheet_directory() . '/uix-page-builder-sections' ) ) {
+			  if( is_dir( get_stylesheet_directory() . '/uix-pagebuilder-sections' ) ) {
 				  return true;
 			  } else {
 				  return false;
@@ -446,7 +446,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function form_before( $widget_name, $section_row, $form_id ) {
 			
-			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-page-builder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-page-builder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'">';
+			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-pagebuilder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-pagebuilder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'">';
 	
 		}
 		

@@ -48,15 +48,15 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'pagebuilder-list' ) { ?>
         <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
         <?php wp_nonce_field( 'uix_pagebuilder_listfiles' ); ?>
         
-         <h3><?php _e( 'Create Uix Page Builder list files in this plugin directory:', 'uix-page-builder' ); ?></h3>
+         <h3><?php _e( 'Create Uix Page Builder list files in this plugin directory:', 'uix-pagebuilder' ); ?></h3>
  
          <div class="uix-plug-note">
-            <h4><?php _e( 'Themes list file\'s name:', 'uix-page-builder' ); ?></h4>
+            <h4><?php _e( 'Themes list file\'s name:', 'uix-pagebuilder' ); ?></h4>
             <?php echo UixPageBuilder::plug_directory().'live-demo/themes.js'; ?>  
             <br><br>
          </div>
          
-         <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr__( 'Click This Button to Create Uix Page Builder List Files', 'uix-page-builder' ); ?>"  /></p>
+         <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr__( 'Click This Button to Create Uix Page Builder List Files', 'uix-pagebuilder' ); ?>"  /></p>
          
     </form>
 

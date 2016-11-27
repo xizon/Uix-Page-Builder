@@ -5,7 +5,7 @@ Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Donate Me](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PYZLU7UZNQ6CE)
 
-[Plugin URI](https://uiux.cc/wp-plugins/uix-page-builder/)
+[Plugin URI](https://uiux.cc/wp-plugins/uix-pagebuilder/)
 
 ### Licensing
 
@@ -59,10 +59,10 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/plug.jpg)
 
-2.You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Page Builder template files path (`/wp-content/plugins/uix-page-builder/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  
+2.You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Page Builder template files path (`/wp-content/plugins/uix-pagebuilder/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  
 
 
-Please check if you have the **1** template files `page-uix_page_builder.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/"** to your templates directory.
+Please check if you have the **1** template files `page-uix_pagebuilder.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-pagebuilder/theme_templates/"** to your templates directory.
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/temp.jpg)
 

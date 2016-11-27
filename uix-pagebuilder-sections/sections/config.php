@@ -2,19 +2,19 @@
 $uix_pb_config = [
 	
 		array(
-			'title'           => __( 'Author Card', 'uix-page-builder' ),
+			'title'           => __( 'Author Card', 'uix-pagebuilder' ),
 			'id'              => 'uix_pb_section_authorcard'
 		
 		),	
 		
 		array(
-			'title'           => __( 'Code', 'uix-page-builder' ),
+			'title'           => __( 'Code', 'uix-pagebuilder' ),
 			'id'              => 'uix_pb_section_code'
 		
 		),	
 		
 		array(
-			'title'           => __( 'Accordion', 'uix-page-builder' ),
+			'title'           => __( 'Accordion', 'uix-pagebuilder' ),
 			'id'              => 'uix_pb_section_accordion'
 		
 		),		

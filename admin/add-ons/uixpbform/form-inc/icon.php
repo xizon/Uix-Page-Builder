@@ -20,7 +20,7 @@ class UixPBFormType_Icon {
 		$jscode = '';
 		$jscode_vars = '';
 		
-		$tips = ( !empty( $placeholder ) ) ? $placeholder : __( 'Select from the following list of icons: ', 'uix-page-builder' );
+		$tips = ( !empty( $placeholder ) ) ? $placeholder : __( 'Select from the following list of icons: ', 'uix-pagebuilder' );
 		$iconselector = 'fontawesome/font-awesome-custom.php';
 		$iconprefix   = 'fa fa-';
 		

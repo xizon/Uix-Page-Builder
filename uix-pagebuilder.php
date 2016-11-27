@@ -6,22 +6,22 @@
  *
  *
  * Plugin name: Uix Page Builder
- * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
+ * Plugin URI:  https://uiux.cc/wp-plugins/uix-pagebuilder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
  * Version:     1.0.0
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
- * Text Domain: uix-page-builder
+ * Text Domain: uix-pagebuilder
  * Domain Path: /languages
  */
 
 class UixPageBuilder {
 	
 	const PREFIX = 'uix';
-	const HELPER = 'uix-page-builder-helper';
-	const NOTICEID = 'uix-page-builder-helper-tip';
-	const CUSTOMTEMP = 'uix-page-builder-sections/sections/';
+	const HELPER = 'uix-pagebuilder-helper';
+	const NOTICEID = 'uix-pagebuilder-helper-tip';
+	const CUSTOMTEMP = 'uix-pagebuilder-sections/sections/';
 
 	
 	/**
@@ -56,18 +56,18 @@ class UixPageBuilder {
 	public static  function setup_constants() {
 
 		// Plugin Folder Path.
-		if ( ! defined( 'UIX_PAGE_BUILDER_PLUGIN_DIR' ) ) {
-			define( 'UIX_PAGE_BUILDER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		if ( ! defined( 'UIX_PAGEBUILDER_PLUGIN_DIR' ) ) {
+			define( 'UIX_PAGEBUILDER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 		}
 
 		// Plugin Folder URL.
-		if ( ! defined( 'UIX_PAGE_BUILDER_PLUGIN_URL' ) ) {
-			define( 'UIX_PAGE_BUILDER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		if ( ! defined( 'UIX_PAGEBUILDER_PLUGIN_URL' ) ) {
+			define( 'UIX_PAGEBUILDER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 		}
 
 		// Plugin Root File.
-		if ( ! defined( 'UIX_PAGE_BUILDER_PLUGIN_FILE' ) ) {
-			define( 'UIX_PAGE_BUILDER_PLUGIN_FILE', __FILE__ );
+		if ( ! defined( 'UIX_PAGEBUILDER_PLUGIN_FILE' ) ) {
+			define( 'UIX_PAGEBUILDER_PLUGIN_FILE', __FILE__ );
 		}
 	}
 
@@ -77,7 +77,7 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function includes() {
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
+		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
 	}
 	
 	
@@ -91,12 +91,12 @@ class UixPageBuilder {
 		
 		//Main stylesheets and scripts to Front-End
 		if ( self::tempfolder_exists() ) {
-			wp_enqueue_style( self::PREFIX . '-page-builder', get_template_directory_uri() .'/uix-page-builder-sections/css/uix-page-builder.css', false, self::ver(), 'all' );	
-			wp_enqueue_script( self::PREFIX . '-page-builder', get_template_directory_uri() .'/uix-page-builder-sections/js/uix-page-builder.js', array( 'jquery', 'masonry', 'shuffle', 'flexslider' ), self::ver(), true );	
+			wp_enqueue_style( self::PREFIX . '-pagebuilder', get_template_directory_uri() .'/uix-pagebuilder-sections/css/uix-pagebuilder.css', false, self::ver(), 'all' );	
+			wp_enqueue_script( self::PREFIX . '-pagebuilder', get_template_directory_uri() .'/uix-pagebuilder-sections/js/uix-pagebuilder.js', array( 'jquery', 'masonry', 'shuffle', 'flexslider' ), self::ver(), true );	
 				
 		} else {
-			wp_enqueue_style( self::PREFIX . '-page-builder', self::plug_directory() .'uix-page-builder-sections/css/uix-page-builder.css', false, self::ver(), 'all' );	
-			wp_enqueue_script( self::PREFIX . '-page-builder', self::plug_directory() .'uix-page-builder-sections/js/uix-page-builder.js', array( 'jquery', 'masonry', 'shuffle', 'flexslider' ), self::ver(), true );	
+			wp_enqueue_style( self::PREFIX . '-pagebuilder', self::plug_directory() .'uix-pagebuilder-sections/css/uix-pagebuilder.css', false, self::ver(), 'all' );	
+			wp_enqueue_script( self::PREFIX . '-pagebuilder', self::plug_directory() .'uix-pagebuilder-sections/js/uix-pagebuilder.js', array( 'jquery', 'masonry', 'shuffle', 'flexslider' ), self::ver(), true );	
 			
 
 		}
@@ -124,7 +124,7 @@ class UixPageBuilder {
 						wp_enqueue_style( self::PREFIX . '-gridster', self::plug_directory() .'admin/css/jquery.gridster.css', false, '0.5.6', 'all');
 						
 						//Main
-						wp_enqueue_style( self::PREFIX . '-page-builder', self::plug_directory() .'admin/css/style.css', false, self::ver(), 'all');
+						wp_enqueue_style( self::PREFIX . '-pagebuilder', self::plug_directory() .'admin/css/style.css', false, self::ver(), 'all');
 
 				}
 		  }
@@ -141,7 +141,7 @@ class UixPageBuilder {
 	public static function tc_i18n() {
 	
 	
-	    load_plugin_textdomain( 'uix-page-builder', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/'  );
+	    load_plugin_textdomain( 'uix-pagebuilder', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/'  );
 		
 
 	}
@@ -173,11 +173,11 @@ class UixPageBuilder {
 		 
 		//Add a top level menu page.
 		add_menu_page(
-			__( 'Uix Page Builder Settings', 'uix-page-builder' ),
-			__( 'Uix Page Builder', 'uix-page-builder' ),
+			__( 'Uix Page Builder Settings', 'uix-pagebuilder' ),
+			__( 'Uix Page Builder', 'uix-pagebuilder' ),
 			'manage_options',
 			self::HELPER,
-			'uix_page_builder_options_page',
+			'uix_pagebuilder_options_page',
 			'dashicons-editor-kitchensink',
 			'82.' . rand( 0, 99 )
 			
@@ -186,8 +186,8 @@ class UixPageBuilder {
         //Add sub links
 		add_submenu_page(
 			self::HELPER,
-			__( 'Helper', 'uix-page-builder' ),
-			__( 'Helper', 'uix-page-builder' ),
+			__( 'Helper', 'uix-pagebuilder' ),
+			__( 'Helper', 'uix-pagebuilder' ),
 			'manage_options',
 			'admin.php?page='.self::HELPER
 		);	
@@ -207,7 +207,7 @@ class UixPageBuilder {
 	 */
 	 public static function load_helper() {
 		 
-		 require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'helper/settings.php';
+		 require_once UIX_PAGEBUILDER_PLUGIN_DIR.'helper/settings.php';
 	 }
 	
 	
@@ -216,7 +216,7 @@ class UixPageBuilder {
 	 * Add plugin actions links
 	 */
 	public static function actions_links( $links ) {
-		$links[] = '<a href="' . admin_url( "admin.php?page=".self::HELPER."&tab=usage" ) . '">' . __( 'How to use?', 'uix-page-builder' ) . '</a>';
+		$links[] = '<a href="' . admin_url( "admin.php?page=".self::HELPER."&tab=usage" ) . '">' . __( 'How to use?', 'uix-pagebuilder' ) . '</a>';
 		return $links;
 	}
 	
@@ -285,9 +285,9 @@ class UixPageBuilder {
 	 */
 	public static function new_class( $classes ) {
 	
-	    global $uix_page_builder_temp;
-        if ( $uix_page_builder_temp === true ) { 
-			$classes[] = 'uix-page-builder-body';
+	    global $uix_pagebuilder_temp;
+        if ( $uix_pagebuilder_temp === true ) { 
+			$classes[] = 'uix-pagebuilder-body';
 		}
 		
 		return $classes;
@@ -384,7 +384,7 @@ class UixPageBuilder {
 	 */
 	public static function tempfolder_exists() {
 
-	      if( is_dir( get_stylesheet_directory() . '/uix-page-builder-sections' ) ) {
+	      if( is_dir( get_stylesheet_directory() . '/uix-pagebuilder-sections' ) ) {
 			  return true;
 		  } else {
 			  return false;
@@ -571,7 +571,7 @@ class UixPageBuilder {
 			if( !self::tempfile_exists() ) {
 				echo '
 					<div class="error notice">
-						<p>' . __( '<strong>You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel.</strong>', 'uix-page-builder' ) . ' <a class="button button-primary" href="' . admin_url( "admin.php?page=".self::HELPER."&tab=temp" ) . '">' . __( 'Create now!', 'uix-page-builder' ) . '</a><br>' . __( 'As a workaround you can use FTP, access the Uix Page Builder template files path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-page-builder' ) . '</p>
+						<p>' . __( '<strong>You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel.</strong>', 'uix-pagebuilder' ) . ' <a class="button button-primary" href="' . admin_url( "admin.php?page=".self::HELPER."&tab=temp" ) . '">' . __( 'Create now!', 'uix-pagebuilder' ) . '</a><br>' . __( 'As a workaround you can use FTP, access the Uix Page Builder template files path <code>/wp-content/plugins/uix-pagebuilder/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-pagebuilder' ) . '</p>
 					</div>
 				';
 		
@@ -606,7 +606,7 @@ class UixPageBuilder {
 	 */
 	public static function tempfile_exists() {
 
-	      if( !file_exists( get_stylesheet_directory() . '/page-uix_page_builder.php' ) ) {
+	      if( !file_exists( get_stylesheet_directory() . '/page-uix_pagebuilder.php' ) ) {
 			  return false;
 		  } else {
 			  return true;
@@ -714,17 +714,17 @@ class UixPageBuilder {
 				
 				if ( !$remove ) {
 					if ( self::tempfile_exists() ) {
-						return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-page-builder' );
+						return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-pagebuilder' );
 					} else {
-						return __( '<div class="notice notice-error"><p><strong>There was a problem copying your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-page-builder' );
+						return __( '<div class="notice notice-error"><p><strong>There was a problem copying your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-pagebuilder' );
 					}
 	
 				} else {
 					if ( self::tempfile_exists() ) {
-						return __( '<div class="notice notice-error"><p><strong>There was a problem removing your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-page-builder' );
+						return __( '<div class="notice notice-error"><p><strong>There was a problem removing your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-pagebuilder' );
 						
 					} else {
-						return __( '<div class="notice notice-success"><p>Remove successful!</p></div>', 'uix-page-builder' );
+						return __( '<div class="notice notice-success"><p>Remove successful!</p></div>', 'uix-pagebuilder' );
 					}	
 					
 				}
@@ -755,7 +755,7 @@ class UixPageBuilder {
             } else {
 				
 				wp_nonce_field( $wpnonce_action );
-				echo '<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__( 'Click This Button to Copy Files', 'uix-page-builder' ).'"  /></p>';
+				echo '<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__( 'Click This Button to Copy Files', 'uix-pagebuilder' ).'"  /></p>';
 				
 			}
 	 *
@@ -789,7 +789,7 @@ class UixPageBuilder {
 				$file = trailingslashit( $dir ) . $pathname;
 				$wp_filesystem->put_contents( $file, $text, FS_CHMOD_FILE );
 			
-				return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-page-builder' );
+				return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-pagebuilder' );
 				
 		  } 
 	}	
@@ -834,7 +834,7 @@ class UixPageBuilder {
 	 */
 	public static function uixpbform_core() {
 	
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/add-ons/uixpbform/init.php';
+		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/add-ons/uixpbform/init.php';
 
 	}
 	

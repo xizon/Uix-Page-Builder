@@ -1,10 +1,10 @@
 <?php
 
-function uix_page_builder_options_page(){
+function uix_pagebuilder_options_page(){
 	
     //must check that the user has the required capability 
     if ( !current_user_can( 'manage_options' ) ){
-      wp_die( __('You do not have sufficient permissions to access this page.', 'uix-page-builder') );
+      wp_die( __('You do not have sufficient permissions to access this page.', 'uix-pagebuilder') );
     }
 
   
@@ -48,7 +48,7 @@ function uix_page_builder_options_page(){
 
 <div class="wrap uix-bg-custom-wrapper">
     
-    <h2><?php _e( 'Uix Page Builder Helper', 'uix-page-builder' ); ?></h2>
+    <h2><?php _e( 'Uix Page Builder Helper', 'uix-pagebuilder' ); ?></h2>
     <?php
 	
 	if( !isset( $_GET[ 'tab' ] ) ) {
@@ -62,21 +62,21 @@ function uix_page_builder_options_page(){
 	$tabs = array();
 	$tabs[] = [
 	    'tab'     =>  'about', 
-		'title'   =>  __( 'About', 'uix-page-builder' )
+		'title'   =>  __( 'About', 'uix-pagebuilder' )
 	];
 	$tabs[] = [
 	    'tab'     =>  'usage', 
-		'title'   =>  __( 'How to use?', 'uix-page-builder' )
+		'title'   =>  __( 'How to use?', 'uix-pagebuilder' )
 	];
 	
 	$tabs[] = [
 	    'tab'     =>  'credits', 
-		'title'   =>  __( 'Credits', 'uix-page-builder' )
+		'title'   =>  __( 'Credits', 'uix-pagebuilder' )
 	];
 	
 	$tabs[] = [
 	    'tab'     =>  'temp', 
-		'title'   =>  __( 'Template Files', 'uix-page-builder' )
+		'title'   =>  __( 'Template Files', 'uix-pagebuilder' )
 	];
 	
 	?>

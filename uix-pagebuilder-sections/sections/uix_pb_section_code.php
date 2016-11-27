@@ -8,13 +8,13 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Title', 'uix-page-builder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Title', 'uix-pagebuilder' );
 $item    = '';
 
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) {
@@ -61,7 +61,7 @@ $args =
 		array(
 			'id'             => 'uix_pb_code_info',
 			'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_code_info' ),
-			'title'          => __( 'Text', 'uix-page-builder' ),
+			'title'          => __( 'Text', 'uix-pagebuilder' ),
 			'desc'           => '',
 			'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_code_info', '' ),
 			'placeholder'    => '',
@@ -97,7 +97,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Code', 'uix-page-builder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Code', 'uix-pagebuilder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

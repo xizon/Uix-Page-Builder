@@ -8,13 +8,13 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Title', 'uix-page-builder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Title', 'uix-pagebuilder' );
 $item    = '';
 
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) {
@@ -67,13 +67,13 @@ $args =
 		array(
 			'id'             => $clone_trigger_id,
 			'name'           => UixPageBuilder::fname( $form_id, $clone_trigger_id ),
-			'title'          => __( 'List Item', 'uix-page-builder' ),
+			'title'          => __( 'List Item', 'uix-pagebuilder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
+									'btn_text'                  => __( 'click here to add an item', 'uix-pagebuilder' ),
 									'clone_class'               => [ 
 										array(
 											'id'        => 'dynamic-row-uix_pb_accordion_listitem_title',
@@ -96,7 +96,7 @@ $args =
 				'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_accordion_listitem_title' ),
 				'title'          => '',
 				'desc'           => '',
-				'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_accordion_listitem_title', __( 'Accordion Title', 'uix-page-builder' ), $clone_max ),
+				'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_accordion_listitem_title', __( 'Accordion Title', 'uix-pagebuilder' ), $clone_max ),
 				'class'          => 'dynamic-row-uix_pb_accordion_listitem_title', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'text'
@@ -108,7 +108,7 @@ $args =
 				'name'           => UixPageBuilder::fname( $form_id, 'uix_pb_accordion_listitem_con' ),
 				'title'          => '',
 				'desc'           => '',
-				'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_accordion_listitem_con', __( 'Accordion content here.', 'uix-page-builder' ), $clone_max ),
+				'value'          => UixPageBuilder::fvalue( $sid, $item, 'uix_pb_accordion_listitem_con', __( 'Accordion content here.', 'uix-pagebuilder' ), $clone_max ),
 				'class'          => 'dynamic-row-uix_pb_accordion_listitem_con', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'textarea',
@@ -154,7 +154,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Accordion', 'uix-page-builder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Accordion', 'uix-pagebuilder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

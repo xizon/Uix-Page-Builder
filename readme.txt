@@ -2,7 +2,7 @@
 Contributors: uiuxlab
 Donate link: https://uiux.cc
 Author URI: https://uiux.cc
-Plugin URL: https://uiux.cc/wp-plugins/uix-page-builder/
+Plugin URL: https://uiux.cc/wp-plugins/uix-pagebuilder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.6
@@ -23,9 +23,9 @@ Uix Page Builder is a design system that it is simple content creation interface
 1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to "Appearance -> Install Plugins".
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
 
-2. You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Page Builder template files path (/wp-content/plugins/uix-page-builder/theme_templates/) and upload files to your theme templates directory (/wp-content/themes/{your-theme}/).  
+2. You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Page Builder template files path (/wp-content/plugins/uix-pagebuilder/theme_templates/) and upload files to your theme templates directory (/wp-content/themes/{your-theme}/).  
 
-	Please check if you have the 1 template files **'page-uix_page_builder.php'** in your templates directory. If you can't find these files, then just copy them from the directory '/wp-content/plugins/uix-page-builder/theme_templates/' to your templates directory.
+	Please check if you have the 1 template files **'page-uix_pagebuilder.php'** in your templates directory. If you can't find these files, then just copy them from the directory '/wp-content/plugins/uix-pagebuilder/theme_templates/' to your templates directory.
 
 3. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You should specify the template name, in this case I used **"Uix Page Builder Template"**. The "Template Name: Uix Page Builder Template" tells WordPress that this will be a custom page template. )
 

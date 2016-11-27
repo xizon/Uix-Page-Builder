@@ -470,7 +470,7 @@ foreach ( $all_icons as $value ) {
 	}
 }
 
-echo '<strong>'.__( 'Social:', 'uix-page-builder' ).'</strong>';
+echo '<strong>'.__( 'Social:', 'uix-pagebuilder' ).'</strong>';
 
 foreach ( $social_icons as $value ) {
 	$v = str_replace( '"></i></a>', '', str_replace( '<a '.$href.'><i class="fa fa-', '', $value ) );

@@ -16,7 +16,7 @@ get_header(); ?>
   
 		<?php
         // Page Builder
-		$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $post->ID, 'uix-page-builder-layoutdata', true ) );
+		$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $post->ID, 'uix-pagebuilder-layoutdata', true ) );
         $pagebuilder_echo  = '';
 		$item              = [];
 		
@@ -127,9 +127,9 @@ get_header(); ?>
 					 //====================================================================
 					 
 				
-					$pagebuilder_echo .=  '<div class="uix-page-builder-section" id="uix-page-builder-section-'.$row.'" data-name="'.$fid.'" data-row="'.$sid.'">'.$section_temp.'</div>'; 
+					$pagebuilder_echo .=  '<div class="uix-pagebuilder-section" id="uix-pagebuilder-section-'.$row.'" data-name="'.$fid.'" data-row="'.$sid.'">'.$section_temp.'</div>'; 
 					//WP menu title of anchor link
-					$pagebuilder_echo .= "\n".'<div data-pb-section-title="'.$wname.'"></div>'."\n<!-- ".uiuxlabtheme_wp_kses( __( 'End Section', 'uix-page-builder' ) )." -->\n\n";
+					$pagebuilder_echo .= "\n".'<div data-pb-section-title="'.$wname.'"></div>'."\n<!-- ".uiuxlabtheme_wp_kses( __( 'End Section', 'uix-pagebuilder' ) )." -->\n\n";
  
 					 
 				

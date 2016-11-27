@@ -21,39 +21,39 @@
 
 
 /* Gridster Container */
-.uix-page-builder-gridster {
+.uix-pagebuilder-gridster {
 	cursor: move;
 	padding: 20px 0;
 	margin-bottom: 20px;
 }
 
 /* Gridster Widgets */
-.uix-page-builder-gridster ul {
+.uix-pagebuilder-gridster ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-.uix-page-builder-gridster-widget {
+.uix-pagebuilder-gridster-widget {
 	border: 3px dashed #ED9D9E;
 	background-color: #FFF4F5;
 	position: relative;
 	padding: 15px;
 }
 
-.uix-page-builder-gridster-widget.active {
+.uix-pagebuilder-gridster-widget.active {
 	border: 3px dashed #C6E5BC;
 	background-color: #E6F5E9;
 }
 
-.uix-page-builder-gridster-widget .content-box {
+.uix-pagebuilder-gridster-widget .content-box {
 	width: calc( 100% - 80px );
 	height: 25px;
 	margin-top: 35px;
 	display: none;
 }
 
-.uix-page-builder-gridster-widget .title-box {
+.uix-pagebuilder-gridster-widget .title-box {
 	margin-left: 15px;
 	background: #FCE8E8;
 	border: none;
@@ -62,20 +62,20 @@
 	font-weight: bold;
 }
 
-.uix-page-builder-gridster-widget.active .title-box {
+.uix-pagebuilder-gridster-widget.active .title-box {
 	background: #DAEDBF;
 }
 
 
-.uix-page-builder-gridster-widget .title-box:hover,
-.uix-page-builder-gridster-widget .title-box:focus {
+.uix-pagebuilder-gridster-widget .title-box:hover,
+.uix-pagebuilder-gridster-widget .title-box:focus {
 	background: #fff;
 }
 
 
 
 /* Drag Area*/
-.uix-page-builder-gridster-drag {
+.uix-pagebuilder-gridster-drag {
 	background: #FCE8E8;
 	height: 30px;
 	width: 100%;
@@ -84,7 +84,7 @@
 	left: 0;
 }
 
-.uix-page-builder-gridster-widget.active .uix-page-builder-gridster-drag {
+.uix-pagebuilder-gridster-widget.active .uix-pagebuilder-gridster-drag {
 	background: #DAEDBF;
 }
 
@@ -118,7 +118,7 @@
 
 
 /* Gridster Data */
-#uix-page-builder-layoutdata {
+#uix-pagebuilder-layoutdata {
 	width:100%;
 	height: 100px;
 	margin: 10px 0;

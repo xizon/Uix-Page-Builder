@@ -76,16 +76,16 @@ class UixPBFormType_Image {
 			if ( $image_prop ) {	
 				$field .= '
 						<tr class="trigger_id_'.$id.'_repeat" style="display:none">
-							<th scope="row"><label>'.__( 'Background Repeat', 'uix-page-builder' ).'</label></th>
+							<th scope="row"><label>'.__( 'Background Repeat', 'uix-pagebuilder' ).'</label></th>
 							<td>
 							
 								<div class="uixpbform-box">
 								   
 									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_repeat">	
-										  <span data-value="no-repeat" class="active">'.__( 'No Repeat', 'uix-page-builder' ).'</span>
-										  <span data-value="repeat" >'.__( 'Tile', 'uix-page-builder' ).'</span>
-										  <span data-value="repeat-x" >'.__( 'Tile Horizontally', 'uix-page-builder' ).'</span>
-										  <span data-value="repeat-y" >'.__( 'Tile Vertically', 'uix-page-builder' ).'</span>
+										  <span data-value="no-repeat" class="active">'.__( 'No Repeat', 'uix-pagebuilder' ).'</span>
+										  <span data-value="repeat" >'.__( 'Tile', 'uix-pagebuilder' ).'</span>
+										  <span data-value="repeat-x" >'.__( 'Tile Horizontally', 'uix-pagebuilder' ).'</span>
+										  <span data-value="repeat-y" >'.__( 'Tile Vertically', 'uix-pagebuilder' ).'</span>
 									   </div>
 									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_repeat" value="no-repeat">' : '' ).' 
 								
@@ -99,15 +99,15 @@ class UixPBFormType_Image {
 				
 				$field .= '
 						<tr class="trigger_id_'.$id.'_position" style="display:none">
-							<th scope="row"><label>'.__( 'Background Position', 'uix-page-builder' ).'</label></th>
+							<th scope="row"><label>'.__( 'Background Position', 'uix-pagebuilder' ).'</label></th>
 							<td>
 							
 								<div class="uixpbform-box">
 								   
 									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_position">	
-										  <span data-value="left" class="active">'.__( 'Left', 'uix-page-builder' ).'</span>
-										  <span data-value="center" >'.__( 'Center', 'uix-page-builder' ).'</span>
-										  <span data-value="right" >'.__( 'Right', 'uix-page-builder' ).'</span>
+										  <span data-value="left" class="active">'.__( 'Left', 'uix-pagebuilder' ).'</span>
+										  <span data-value="center" >'.__( 'Center', 'uix-pagebuilder' ).'</span>
+										  <span data-value="right" >'.__( 'Right', 'uix-pagebuilder' ).'</span>
 									   </div>
 									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_position" value="left">' : '' ).' 
 								
@@ -121,14 +121,14 @@ class UixPBFormType_Image {
 				
 				$field .= '
 						<tr class="trigger_id_'.$id.'_attachment" style="display:none">
-							<th scope="row"><label>'.__( 'Background Attachment', 'uix-page-builder' ).'</label></th>
+							<th scope="row"><label>'.__( 'Background Attachment', 'uix-pagebuilder' ).'</label></th>
 							<td>
 							
 								<div class="uixpbform-box">
 								   
 									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_attachment">	
-										  <span data-value="scroll" class="active">'.__( 'Scroll', 'uix-page-builder' ).'</span>
-										  <span data-value="fixed" >'.__( 'Fixed', 'uix-page-builder' ).'</span>
+										  <span data-value="scroll" class="active">'.__( 'Scroll', 'uix-pagebuilder' ).'</span>
+										  <span data-value="fixed" >'.__( 'Fixed', 'uix-pagebuilder' ).'</span>
 									   </div>
 									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_attachment" value="scroll">' : '' ).' 
 								
@@ -142,15 +142,15 @@ class UixPBFormType_Image {
 				
 				$field .= '
 						<tr class="trigger_id_'.$id.'_size" style="display:none">
-							<th scope="row"><label>'.__( 'Background Size', 'uix-page-builder' ).'</label></th>
+							<th scope="row"><label>'.__( 'Background Size', 'uix-pagebuilder' ).'</label></th>
 							<td>
 							
 								<div class="uixpbform-box">
 								   
 									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_size">	
-									      <span data-value="cover" class="active">'.__( 'Cover', 'uix-page-builder' ).'</span>
-									      <span data-value="auto">'.__( 'Auto', 'uix-page-builder' ).'</span>
-										  <span data-value="contain">'.__( 'Contain', 'uix-page-builder' ).'</span>
+									      <span data-value="cover" class="active">'.__( 'Cover', 'uix-pagebuilder' ).'</span>
+									      <span data-value="auto">'.__( 'Auto', 'uix-pagebuilder' ).'</span>
+										  <span data-value="contain">'.__( 'Contain', 'uix-pagebuilder' ).'</span>
 									   </div>
 									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_size" value="cover">' : '' ).' 
 								

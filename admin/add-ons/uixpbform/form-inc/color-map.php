@@ -45,7 +45,7 @@ class UixPBFormType_ColorMap {
 										<div class="uixpbform-color-selector-toggles">
 											<input type="text" class="wp-color-input" id="'.$id.'" name="'.$name.'" value="'.$value.'">
 										</div>	
-										<span class="uixpbform-color-selector-label">'.( !empty( $desc ) ? $desc : __( 'Add Custom Color', 'uix-page-builder' ) ).'</span>		
+										<span class="uixpbform-color-selector-label">'.( !empty( $desc ) ? $desc : __( 'Add Custom Color', 'uix-pagebuilder' ) ).'</span>		
 								
 								</div>
 
