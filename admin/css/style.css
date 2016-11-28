@@ -21,11 +21,13 @@
 
 
 /* Gridster Container */
-.uix-pagebuilder-gridster {
-	cursor: move;
+.uix-pagebuilder-gridster,
+.uix-pagebuilder-gridster2 {
 	padding: 20px 0;
 	margin-bottom: 20px;
 }
+
+
 
 /* Gridster Widgets */
 .uix-pagebuilder-gridster ul {
@@ -33,6 +35,7 @@
 	margin: 0;
 	padding: 0;
 }
+
 
 .uix-pagebuilder-gridster-widget {
 	border: 3px dashed #ED9D9E;
@@ -53,6 +56,7 @@
 	display: none;
 }
 
+
 .uix-pagebuilder-gridster-widget .title-box {
 	margin-left: 15px;
 	background: #FCE8E8;
@@ -60,6 +64,10 @@
 	outline: none;
 	margin-top: 3px;
 	font-weight: bold;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	width: 120px;
 }
 
 .uix-pagebuilder-gridster-widget.active .title-box {
@@ -72,6 +80,11 @@
 	background: #fff;
 }
 
+/* Add button*/
+.uix-pagebuilder-gridster-addbtn {
+	margin: 10px 0 0 18px;
+}
+
 
 
 /* Drag Area*/
@@ -82,6 +95,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	cursor: move;
 }
 
 .uix-pagebuilder-gridster-widget.active .uix-pagebuilder-gridster-drag {
