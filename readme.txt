@@ -30,6 +30,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 3. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You should specify the template name, in this case I used **"Uix Page Builder Template"**. The "Template Name: Uix Page Builder Template" tells WordPress that this will be a custom page template. )
 
     Note: You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
+	
 
 4. You can pretty much custom every aspect of the look and feel of this page by modifying the "*.php" template files (Access the path to the themes directory) . Best Practices for Editing WordPress Template Files:
 
