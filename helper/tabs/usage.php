@@ -41,6 +41,14 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
            <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/menu.jpg" alt=""> <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/add-page.jpg" alt="">
         </p> 
         
+         <p>
+           <?php _e( '<p>You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.</p>', 'uix-pagebuilder' ); ?>
+        </p>   
+        <p>
+           <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/active.jpg" alt="">
+        </p> 
+                    
+        
         <p>
            <?php _e( '<h4 class="uix-bg-custom-title">4. You can pretty much custom every aspect of the look and feel of this page by modifying the <code>*.php</code> template files <strong>(Access the path to the themes directory)</strong> . Best Practices for Editing WordPress Template Files:</h4>', 'uix-pagebuilder' ); ?>
         </p> 
