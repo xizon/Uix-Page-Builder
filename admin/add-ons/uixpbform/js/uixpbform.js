@@ -47,7 +47,10 @@
 			}
 				
 		
-			settings.initFunction( form );
+		    if ( Object.prototype.toString.call( settings.initFunction ) == '[object Function]' ) {
+				settings.initFunction( form );
+			}
+			
 				
 			
 			/*-- Open Window -- */
@@ -56,7 +59,8 @@
 				
 				var widget_ID       = $( this ).data( 'id' ),
 				    widget_name     = $( this ).data( 'name' ),
-				    widgets         = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID },
+					widget_colID    = $( this ).data( 'col-textareaid' ),
+				    widgets         = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID, 'colID': widget_colID },
 				    code            = '',
 					$obj            = $( '.uixpbform-modal-box#'+dataID );
 				
@@ -70,6 +74,7 @@
 							action    : 'uixpbform_ajax_sections',
 							tempID    : formID,
 							sectionID : widget_ID,
+							colID     : widget_colID,
 							widgetName: widget_name,
 							postID    : $postID
 						},
@@ -113,7 +118,10 @@
 	
 				
 				//Callback API
-				settings.startFunction( widgets );
+				if ( Object.prototype.toString.call( settings.startFunction ) == '[object Function]' ) {
+					settings.startFunction( widgets );
+				}
+				
 				
 				
 				//Close
@@ -136,30 +144,41 @@
 				var $form         = $( this ).closest( 'form' ),
 				    formID        = $form.find( '[name="section"]' ).val(),
 				    rowID         = $form.find( '[name="row"]' ).val(),
-					widgetName    = $form.find( '[name="widgetname"]' ).val(),
+					colTextareaID = $form.find( '[name="colid"]' ).val(),
+					colContent    = [];
 				    settings      = [];
 					
-				//Add widget name
-				var oldname = $( '#title-data-' + rowID ).val();
-				if ( oldname.indexOf( widgetName ) < 0 ) {
-					$( '#title-data-' + rowID ).val( widgetName );
-				} else {
-					widgetName = oldname;
-				}
 					
-				var fields = $( "[name^='"+formID+"']" ).serializeArray();
+				//Returns column ID
+				var cols = colTextareaID.split( '---' );
+				var colID = cols[0].replace( 'col-item-', '' );
+			
+				var fields = $( "[name^='"+formID+"|["+colTextareaID+"]']" ).serializeArray();
+				colContent.push( [ 'col', colID ] );
 				settings.push( [ 'section', formID ] );
 				settings.push( [ 'row', rowID ] );
-				settings.push( [ 'widgetname', widgetName ] );
+				settings.push( [ 'widgetname', 'Section ' + rowID ] );
+				
+			
 				
 				$.each( fields, function( i, field ) {
 					var v = uixpbform_htmlEscape( field.value ),
 					    n = field.name;
-					settings.push( [ n, v ] );
-				});	
+						
+					colContent.push( [ n, v ] );
+					
+				});
 				
-				//Save
-				uixpbform_insertCodes( formID, JSON.stringify( settings ), 'content-data-' + rowID, rowID );
+
+				//Save Item Content
+				uixpbform_insertCodes( formID, JSON.stringify( colContent ), colTextareaID, rowID );
+				gridsterItemSave( rowID );
+				
+				//Save All content
+				settings.push( [ 'rowcontent', '{allcontent}' ] );
+				
+				
+				uixpbform_insertCodes( formID, JSON.stringify( settings ), 'cols-all-content-replace-' + rowID, rowID );
 	
 				//Close window
 				$( '.uixpbform-modal-box' ).removeClass( 'active' );

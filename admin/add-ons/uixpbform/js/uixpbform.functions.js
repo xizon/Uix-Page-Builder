@@ -727,7 +727,7 @@ function uixpbform_insertCodes( formid, code, conid, sid ) {
 		$( function() {
 			 
 			 code = code.replace( '[{', '[{"name":"section","value":"'+formid+'"},{"name":"row","value":"'+sid+'"},{' )
-			            .replace( /"/g, "$__$");
+			            .replace( /"/g, "{rqt:}");
 			 $( '#' + conid ).val( code );
 		} );
 		
@@ -740,6 +740,18 @@ function uixpbform_insertCodes( formid, code, conid, sid ) {
 	}
 };
 
+
+function uixpbform_formatAllCodes( code ) {
+	var stringValue = code.toString();
+	stringValue = stringValue.replace( /{rqt:}/g, "{rowqt:}")
+	                        .replace( /{cqt:}/g, "{rowcqt:}")
+							.replace( /{apo:}/g, "{rowcapo:}")
+	                        .replace( /"/g, "{rowqt:}");
+	return stringValue;
+
+};
+
+
 /*! 
  * ************************************
  * Page builder textarea format
@@ -747,8 +759,8 @@ function uixpbform_insertCodes( formid, code, conid, sid ) {
  */	
 function uixpbform_htmlEscape( str ){
 	return str
-		.replace(/"/g, '$____$')
-		.replace(/'/g, "$___$")
-		.replace(/\n/g, "$_br_$");
+		.replace(/"/g, '{cqt:}')
+		.replace(/'/g, "{apo:}")
+		.replace(/\n/g, "{br:}");
 }
 

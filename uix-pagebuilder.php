@@ -125,6 +125,10 @@ class UixPageBuilder {
 						
 						//Main
 						wp_enqueue_style( self::PREFIX . '-pagebuilder', self::plug_directory() .'admin/css/style.css', false, self::ver(), 'all');
+						
+						//Jquery UI
+						wp_enqueue_script( 'jquery-ui' );
+
 
 				}
 		  }
@@ -335,16 +339,31 @@ class UixPageBuilder {
 	}
 	
 	/*
+	 * Returns pre row content
+	 *
+	 *
+	 */
+	public static function prerow_value( $arr ) {
+		
+		if ( is_array( $arr ) && sizeof( $arr ) > 3 ) {
+			return $arr[ 'rowcontent' ];
+		} else {
+			return '';
+		}
+	}
+	
+	
+	/*
 	 * Output content of page builder
 	 *
 	 */	
 	public static function pagebuilder_output( $arr ) {
 		
 		$data = wp_specialchars_decode( $arr );
-		$data = 	str_replace( '$__$', '"',
-				str_replace( '$___$', '&#039;',
-				str_replace( '$____$', '&quot;',
-				str_replace( '$_br_$', '<br>',
+		$data = 	str_replace( '{rqt:}', '"',
+				str_replace( '{apo:}', '&#039;',
+				str_replace( '{cqt:}', '&quot;',
+				str_replace( '{br:}', '<br>',
 		        str_replace( '&#039;', "'",
 		        str_replace( '&quot;', '"',
 			    str_replace( '&apos;', "'",
@@ -361,6 +380,17 @@ class UixPageBuilder {
 		
 	}		
 		
+		
+	public static function pagebuilder_analysis_rowcontent( $str ) {
+		
+		$data = 	str_replace( '{rowqt:}', '"',
+			    $str 
+			    );
+		return json_decode( $data );
+		
+		
+	}		
+		
 	public static function pagebuilder_item_name( $str ) {
 		
 		if( self::inc_str( $str, '|' ) ) {
@@ -370,9 +400,7 @@ class UixPageBuilder {
 			$result  = $str;
 		}
 			
-		
-	
-			   
+		   
 		return $result;
 		
 	}			
@@ -438,7 +466,7 @@ class UixPageBuilder {
 	 * List buttons of page sections 
 	 * 
 	 */
-	public static function list_page_buttons() {
+	public static function list_page_sortable_li( $col = '' ) {
 	
 		if ( self::tempfolder_exists() ) {
 			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
@@ -446,12 +474,24 @@ class UixPageBuilder {
 			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
 		}
 		
+		$btns = '';
+		
 		foreach ( $uix_pb_config as $key ) {
-			echo "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
+			$btns .= "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
 		}	
+		
+		echo "<li class=\"row col-".$col."\"><div class=\"widget-items-container\">".$btns."</div><textarea id=\"col-item-".$col."---'+uid+'\">[[{rqt:}col{rqt:},{rqt:}".$col."{rqt:}],[{rqt:}uix_pb_section_undefined|[col-item-".$col."---'+uid+'][uix_pb_undefined]['+sid+']{rqt:},{rqt:}{rqt:}]]</textarea></li>";
 
 
 	}
+	
+		
+	public static function list_page_itembuttons() {
+	
+	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-pagebuilder' )."</button><div class=\"btnlist\"><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1__1\',\'\');\" class=\"widget-items-col widget-items-col-average-1\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2__1\',\'\');\" class=\"widget-items-col widget-items-col-average-2\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3__1\',\'\');\" class=\"widget-items-col widget-items-col-average-3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'4__1\',\'\');\" class=\"widget-items-col widget-items-col-average-4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_3\',\'\');\" class=\"widget-items-col widget-items-col-1_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2_3\',\'\');\" class=\"widget-items-col widget-items-col-2_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_4\',\'\');\" class=\"widget-items-col widget-items-col-1_4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3_4\',\'\');\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
+
+	}
+				
 		
 		
 	/*
@@ -459,22 +499,26 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function fname( $form_id, $field ) {
-		return $form_id.'|['.$field.']{index}';
+	public static function fname( $col_id, $form_id, $field ) {
+		return $form_id.'|['.$col_id.']['.$field.']{index}';
 	}
-			
+	
+		
 	/*
 	 * Returns form value
 	 *
 	 *
 	 */
-	public static function fvalue( $section_row, $arr, $field, $default = '', $clonemax = 0 ) {
+	public static function fvalue( $col_id, $section_row, $arr, $field, $default = '', $clonemax = 0 ) {
 		
-		if ( is_array( $arr ) && array_key_exists( '['.$field.']['.$section_row.']', $arr ) ) {
-			return $arr[ '['.$field.']['.$section_row.']' ];
+		$result = '';
+		if ( is_array( $arr ) && array_key_exists( '['.$col_id.']['.$field.']['.$section_row.']', $arr ) ) {
+			$result = $arr[ '['.$col_id.']['.$field.']['.$section_row.']' ];
 		} else {
-			return $default;
+			$result = $default;
 		}
+		
+		
 		
 		
 		//If it is clone list
@@ -483,16 +527,27 @@ class UixPageBuilder {
 			for ( $i = 0; $i <= $clonemax; $i++ ) {
 				$uid = ( $i == 0 ) ? '' : $i.'-';
 				
-				if ( is_array( $arr ) && array_key_exists( '['.$uid.''.$field.']['.$section_row.']', $arr ) ) {
-					return $arr[ '['.$uid.''.$field.']['.$section_row.']' ];
+				if ( is_array( $arr ) && array_key_exists( ''.$uid.'['.$col_id.']['.$field.']['.$section_row.']', $arr ) ) {
+					$result = $arr[ ''.$uid.'['.$col_id.']['.$field.']['.$section_row.']' ];
 				} else {
-					return $default;
+					$result = $default;
 				}
 				
 			}
 			
 	
 		}
+
+
+		$result = str_replace( '{rowcapo:}', '&#039;',
+			 	 str_replace( '{rowcqt:}', '&quot;',
+
+			    $result
+			    ) );	
+				
+				
+		return $result;
+		
 	
 	}
 	

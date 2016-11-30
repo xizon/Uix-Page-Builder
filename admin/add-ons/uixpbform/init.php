@@ -69,8 +69,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 									
 							//UixForm
 							wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false,'1.0.0', 'all');
-							wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), '1.0.0' );
-							wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), '1.0.0' );
+							wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), '1.0.0', true );
+							wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), '1.0.0', true );
 					
 							//Colorpicker
 							wp_enqueue_style( 'wp-color-picker' );
@@ -425,7 +425,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function format_formcode( $str ) {
 	
-			$str = str_replace( '$___$', "'",
+			$str = str_replace( '{apo:}', "'",
 				   str_replace( '\'', '&apos;',
 				   self::str_compression( $str )
 				   ) );
@@ -444,9 +444,9 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 *
 		 *
 		 */
-		public static function form_before( $widget_name, $section_row, $form_id ) {
+		public static function form_before( $widget_name, $section_row, $form_id, $widget_col_id ) {
 			
-			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-pagebuilder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-pagebuilder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'">';
+			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-pagebuilder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-pagebuilder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'"><input type="hidden" name="colid" value="'.$widget_col_id.'">';
 	
 		}
 		
@@ -570,7 +570,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 * 
 		 */
 		 
-		public static function add_form( $widget_name, $section_row = -1, $config_id, $arr1 = null, $arr2 = null, $code = 'html', $wrapper_name = '' ) {
+		public static function add_form( $widget_col_id, $widget_name, $section_row = -1, $config_id, $arr1 = null, $arr2 = null, $code = 'html', $wrapper_name = '' ) {
 			
 			$section_args = array();
 			$field_total = array();
@@ -609,7 +609,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 						if ( $arr1[ 'list' ] == false ) {
 			
 								$before = '
-								 '.self::form_before( $widget_name, $section_row, $config_id ).'
+								 '.self::form_before( $widget_name, $section_row, $config_id, $widget_col_id ).'
 									<table class="uixpbform-table">
 								'."\n";
 								

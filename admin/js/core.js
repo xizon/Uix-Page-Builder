@@ -1,5 +1,7 @@
 jQuery( document ).ready( function() {
 	
+	
+
     /*! 
 	 * 
 	 * Page Options
@@ -69,66 +71,86 @@ jQuery( document ).ready( function() {
 					
 		
 	});
-				
-	
-    /*! 
-	 * 
-	 * Section buttons
-	 * ---------------------------------------------------
-	 */
-	 
-	jQuery( document ).on( 'click', '.widget-items-container .widget-item-btn', function( e ) {
-		e.preventDefault();
-		
-		var $container  = jQuery( this ).closest( 'li' ),
-		    widget_name = jQuery( this ).data( 'name' );
-		
-		$container.find( '.widget-item-btn' ).hide();
-		jQuery( this )
-		             .show()
-					 .addClass( 'used' )
-					 .text( 'Edit' );
-					 
-	
-		//Add widget name
-		var oldname = $container.find( '.title-box' ).val();
-		if ( oldname.indexOf( widget_name ) < 0 ) {
-			$container.find( '.title-box' ).val( widget_name );		 
-		}		 
-					 
-					 
-		
-	} );	
-	
+
+   
+});
+
+
+/*! 
+ * 
+ * Per column section buttons
+ * ---------------------------------------------------
+ */
+function gridsterItemButtonsInit( uid ) {
 	jQuery( document ).ready( function() {
-		jQuery( '.widget-items-container .widget-item-btn' ).addClass( 'wait' );
-		jQuery( '.widget-items-container .widget-item-btn' ).each( function()  {
+		
+		jQuery( '.sortable-list-container-'+uid+' li' ).each( function()  {
 			
-			var $container        = jQuery( this ).closest( 'li' );
-				 cur_defaultvalue = $container.find( '.content-box' ).val(),
-				 cur_slug         = jQuery( this ).data( 'slug' ),
-				 cur_rowID        = jQuery( this ).data( 'id' );
-			
-			//console.log( cur_slug + ' : ' + cur_rowID );
-			if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 ) {
-				jQuery( this ).addClass( 'used' );
-				jQuery( this ).text( 'Edit' );
+			var $this            = jQuery( this ),
+			    $btn_container   = $this.find( '.widget-items-container' ),
+			    cur_defaultvalue = $this.find( 'textarea' ).val();
+					
+	
+			//--------click action
+			$btn_container.find( '.widget-item-btn' ).on( 'click', function( e ) {
+				e.preventDefault();
 				
+				var  cur_slug    = jQuery( this ).data( 'slug' ),
+				     widget_name = jQuery( this ).data( 'name' );
+				
+				
+				$btn_container.find( '.widget-item-btn' ).hide();
+				jQuery( this )
+							 .show()
+							 .addClass( 'used' )
+							 .text( widget_name );
+			
+							 
+			
+			} );	
+
+			
+			//--------status
+			if ( $this.find( 'textarea' ).length > 0 ) {
+				$btn_container.find( '.widget-item-btn' ).each( function()  {
+			
+					var  cur_slug         = jQuery( this ).data( 'slug' ),
+						 cur_rowID        = jQuery( this ).data( 'id' ),
+						 widget_name      = jQuery( this ).data( 'name' );
+					
+					//console.log( cur_slug + ' : ' + cur_rowID );
+					
+					if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 ) {
+						jQuery( this ).addClass( 'used' );
+						jQuery( this ).text( widget_name );
+						$this.addClass( 'used' );
+					} 
+				
+					
+				});
+	
 			}
+			
+			
 			
 		});
-		jQuery( '.uix-pagebuilder-gridster ul li' ).each( function()  {
+		
+		
+		//Per column section buttons status
+		jQuery( document ).ready( function() {
 			
-			var $container        = jQuery( this );
-				 cur_defaultvalue = $container.find( '.content-box' ).val();
-			
-			if ( cur_defaultvalue == '' ) {
-				$container.find( '.widget-item-btn' ).addClass( 'wait-no-content' );
-			}
+			jQuery( '.sortable-list-container li' ).each( function()  {
+				var $this = jQuery( this );
+				$this.find( '.widget-item-btn' ).each( function()  {
+					if ( !jQuery( this ).hasClass( 'used' ) ) {
+						jQuery( this ).hide();
+					}
+				});
+
+			});
 			
 		});
 		
 	
 	});
-		
-});
+}
