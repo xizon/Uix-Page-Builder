@@ -160,7 +160,7 @@
 	width:100%;
 	height: 100px;
 	margin: 10px 0;
-	display: non;
+	display: none;
 	
 }
 
@@ -178,7 +178,7 @@
 .uix-pagebuilder-gridster .temp-data-1 {
 	background: #A1BD63;
 	top: 35px;
-	display: non;
+	display: none;
 }
 /* per row replace data */
 .uix-pagebuilder-gridster .temp-data-2 {
