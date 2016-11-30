@@ -89,3 +89,8 @@ Please check if you have the **1** template files `page-uix_pagebuilder.php` in 
 　(2) You can connect to your site via an **FTP** client, download a copy of the file you want to change, make the changes and then upload the file back to the server, overwriting the file that’s on the server.
 
 
+5.Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
+
+Backend templates are in the `'uix-pagebuilder-sections'` folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory **"/wp-content/plugins/uix-pagebuilder/uix-pagebuilder-sections/"** to your theme directory **"/wp-content/themes/{your-theme}/"**.
+  
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/temp2.jpg)
