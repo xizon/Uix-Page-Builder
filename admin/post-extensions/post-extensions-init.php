@@ -274,6 +274,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					var conLen          = gridsterColsContent( allcontent, 'length', 1 ),
 						default_value   = [],
 						list_code       = '',
+						colid           = '',
 						cid             = [ '3_4', '1_4', '2_3', '1_3', '4__1', '4__2', '4__3', '4__4', '3__1', '3__2', '3__3', '2__1', '2__2', '1__1' ];
 							
 					
@@ -282,8 +283,56 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 						
 						for( var i in cid ) {
 							if ( gridsterColsContent( allcontent, 'content', k ).indexOf( 'col-item-'+cid[i] ) >= 0  ) {
+								colid  = cid[i];
 								list_code += gridsterItemAddRowPer( uid, contentid, cid[i] );
+								
+								if ( colid == '3_4' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '3_4' );?>
+								}
+								if ( colid == '1_4' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '1_4' );?>
+								}
+								if ( colid == '2_3' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '2_3' );?>
+								}
+								if ( colid == '1_3' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '1_3' );?>
+								}
+								if ( colid == '4__1' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '4__1' );?>
+								}
+								if ( colid == '4__2' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '4__2' );?>
+								}
+								if ( colid == '4__3' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '4__3' );?>
+								}
+								if ( colid == '4__4' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '4__4' );?>
+								}
+								if ( colid == '3__1' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '3__1' );?>
+								}
+								if ( colid == '3__2' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '3__2' );?>
+								}
+								if ( colid == '3__3' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '3__3' );?>
+								}
+								if ( colid == '2__1' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '2__1' );?>
+								}
+								if ( colid == '2__2' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '2__2' );?>
+								}
+								if ( colid == '1__1' ) {
+									<?php UixPageBuilder::list_page_sortable_li_btns( '1__1' );?>
+								}
+
+
+
 							}
+							
 						}
 
 						
@@ -291,7 +340,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					
 					
 					
-					list_code = '<div class="sortable-list-container sortable-list-container-'+uid+'" data-allcontent-tempid="cols-all-content-tempdata-'+uid+'" data-allcontent-replace-tempid="cols-all-content-replace-'+uid+'"  data-contentid="'+contentid+'"><ul class="sortable-list">'+list_code+'</ul></div>';
+					list_code = '<div class="sortable-list-container sortable-list-container-'+uid+'" data-elements-id="widget-items-elements-'+colid+'-'+uid+'" data-allcontent-tempid="cols-all-content-tempdata-'+uid+'" data-allcontent-replace-tempid="cols-all-content-replace-'+uid+'"  data-contentid="'+contentid+'"><ul class="sortable-list">'+list_code+'</ul></div>';
 					
 					gridsterItemAddRow( 1, uid, contentid, '', default_value, list_code );	
 	
@@ -324,19 +373,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					}, function ( response ) {
 						
 						//Per column section buttons status
-						jQuery( '.widget-item-btn' ).each( function()  {
-							var $container       = jQuery( this ).closest( '.sortable-list li' ),
-							    cur_slug         = jQuery( this ).data( 'slug' ),
-							    widget_name      = jQuery( this ).data( 'name' ),
-							    cur_defaultvalue = $container.find( 'textarea' ).val();
-								
-							if ( cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
-								jQuery( this ).addClass( 'used' );
-								jQuery( this ).text( widget_name );
-								$container.addClass( 'used' );
-							}
-							
-						});	
+						gridsterItemElementsBTStatus( 1 );
 						
 					});
 					
@@ -670,6 +707,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 			jQuery( document ).ready( function() {  
 				var result        = '',
 				    average_code  = '',
+					colid         = col,
 				    sid           = contentid.replace( 'content-data-', '' );
 				
 				
@@ -682,63 +720,69 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 				}
 				
 				if ( add == 0 ) {
-					result += '<div class="sortable-list-container sortable-list-container-'+uid+'" data-allcontent-tempid="cols-all-content-tempdata-'+uid+'" data-allcontent-replace-tempid="cols-all-content-replace-'+uid+'"  data-contentid="'+contentid+'"><ul class="sortable-list">';
+					result += '<div class="sortable-list-container sortable-list-container-'+uid+'" data-elements-id="widget-items-elements-'+col+'-'+uid+'" data-allcontent-tempid="cols-all-content-tempdata-'+uid+'" data-allcontent-replace-tempid="cols-all-content-replace-'+uid+'"  data-contentid="'+contentid+'"><ul class="sortable-list">';
 		
 					// 3_4-1_4 column
 					if ( col == '3_4' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '3_4' );?><?php UixPageBuilder::list_page_sortable_li( '1_4' );?>';
+						<?php UixPageBuilder::list_page_sortable_li_btns( '3_4' );?>
 					}	
 			
 					
 					// 1_4-3_4 column
 					if ( col == '1_4' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1_4' );?><?php UixPageBuilder::list_page_sortable_li( '3_4' );?>';
+						<?php UixPageBuilder::list_page_sortable_li_btns( '1_4' );?>
 		
 					}	
 					
 					// 2_3-1_3 column
 					if ( col == '2_3' ) {
-						result += '<?php UixPageBuilder::list_page_sortable_li( '2_3' );?><?php UixPageBuilder::list_page_sortable_li( '1_3' );?>';	
+						result += '<?php UixPageBuilder::list_page_sortable_li( '2_3' );?><?php UixPageBuilder::list_page_sortable_li( '1_3' );?>';
+						<?php UixPageBuilder::list_page_sortable_li_btns( '2_3' );?>	
 					}	
 					
 					
 					// 1_3-2_3 column
 					if ( col == '1_3' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1_3' );?><?php UixPageBuilder::list_page_sortable_li( '2_3' );?>';	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '1_3' );?>	
 					}		
 					
 					// 4 column
 					if ( col == '4__1' || col == '4__2' || col == '4__3' || col == '4__4' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '4__1' );?><?php UixPageBuilder::list_page_sortable_li( '4__2' );?><?php UixPageBuilder::list_page_sortable_li( '4__3' );?><?php UixPageBuilder::list_page_sortable_li( '4__4' );?>';	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '4__1' );?>
 					}	
 					
 					// 3 column
 					if ( col == '3__1' || col == '3__2' || col == '3__3' ) {
-						result += '<?php UixPageBuilder::list_page_sortable_li( '3__1' );?><?php UixPageBuilder::list_page_sortable_li( '3__2' );?><?php UixPageBuilder::list_page_sortable_li( '3__3' );?>';	
+						result += '<?php UixPageBuilder::list_page_sortable_li( '3__1' );?><?php UixPageBuilder::list_page_sortable_li( '3__2' );?><?php UixPageBuilder::list_page_sortable_li( '3__3' );?>';
+						<?php UixPageBuilder::list_page_sortable_li_btns( '3__1' );?>	
 					}
 					// 2 column
 					if ( col == '2__1' || col == '2__2' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '2__1' );?><?php UixPageBuilder::list_page_sortable_li( '2__2' );?>';	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '2__1' );?>	
 					}
 					
 					// 1 column
 					if ( col == '1__1' ) {	
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1__1' );?>';	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '1__1' );?>	
 					}
 					
 					result += '</ul></div>';	
 					
 					jQuery( '#cols-content-data-'+uid+'' ).html( result );
+					
 				}
 					
 
 					//re-sortable
 				gridsterItemSortableInit( uid );
-				gridsterItemButtonsInit( uid );
-
 				
 				setTimeout(function(){
-					
 					
 					//hide layout button
 					jQuery( '.uix-pagebuilder-gridster-widget' ).each( function() {
@@ -750,32 +794,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 						}
 						
 					} );	
-					
-					//Per column section buttons status
-					if ( add == 1 ) {
-						jQuery( '.widget-item-btn' ).each( function()  {
-							var cur_slug = jQuery( this ).data( 'slug' ),
-								cur_defaultvalue = jQuery( this ).closest( '.sortable-list li' ).find( 'textarea' ).val();
-							if ( cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) >= 0 ) {
-								jQuery( this ).css( 'display', 'inline-block' );
-							}
-							
-						});
-	
-					}
-					if ( add == 0 ) {
-						jQuery( '.widget-item-btn' ).each( function()  {
-							if ( !jQuery( this ).closest( 'li' ).hasClass( 'used' ) ) {
-								if ( !jQuery( this ).hasClass( 'used' ) ) {
-									jQuery( this ).css( 'display', 'inline-block' );
-								} 
-	
-							}
-							
-						});
-	
-					}
-
+				
 					
 					
 				}, 100);

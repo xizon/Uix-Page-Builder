@@ -481,9 +481,37 @@ class UixPageBuilder {
 			$btns .= "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
 		}	
 		
-		echo "<li class=\"row col-".$col."\"><div class=\"widget-items-container\">".$btns."</div><textarea id=\"col-item-".$col."---'+uid+'\">[[{rqt:}col{rqt:},{rqt:}".$col."{rqt:}],[{rqt:}uix_pb_section_undefined|[col-item-".$col."---'+uid+'][uix_pb_undefined]['+sid+']{rqt:},{rqt:}{rqt:}]]</textarea></li>";
-
-
+		$btncode = "<div class=\"widget-items-container\">".$btns."</div>";
+		$btncode = '';
+		
+		echo "<li class=\"row col-".$col."\" id=\"widget-items-elements-detail-".$col."-'+uid+'\"><a class=\"button add-elements-btn\" href=\"javascript:\" data-elements=\"widget-items-elements-".$col."-'+uid+'\">".__( 'Add content', 'uix-pagebuilder' )."</a>".$btncode."<textarea id=\"col-item-".$col."---'+uid+'\">[[{rqt:}col{rqt:},{rqt:}".$col."{rqt:}],[{rqt:}uix_pb_section_undefined|[col-item-".$col."---'+uid+'][uix_pb_undefined]['+sid+']{rqt:},{rqt:}{rqt:}]]</textarea></li>";
+		
+	}
+	
+	public static function list_page_sortable_li_btns( $col = '' ) {
+	
+		if ( self::tempfolder_exists() ) {
+			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
+		} else {
+			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
+		}
+		
+		$btns = '';
+		
+		foreach ( $uix_pb_config as $key ) {
+			$btns .= "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-'+colid+'-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
+		}	
+		
+		
+		echo '
+			if ( jQuery( \'#widget-items-elements-\'+colid+\'-\'+uid+\'\' ).length < 1 ) {
+				jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-\'+colid+\'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' );
+				
+			}
+	
+		';
+		
+				
 	}
 	
 		

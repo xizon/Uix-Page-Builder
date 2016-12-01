@@ -231,7 +231,7 @@
 }
 
 
-.used .widget-items-container .widget-item-btn.used {
+.widget-item-btn.used {
 	display: inline-block;
 	border: none;
 	outline: none;
@@ -244,10 +244,17 @@
 	border-radius: 3px;
 	padding-right: 7px;
 	font-weight: normal;
+	text-decoration: none;
+	margin: 7px;
 }
 
+.widget-item-btn.used:hover {
+	filter: alpha(opacity=90);  
+	-moz-opacity: 0.9;   
+	opacity: 0.9;	
+}
 
-.widget-items-container .widget-item-btn.used:before {
+.widget-item-btn.used:before {
 	display: inline-block;
 	content: "\f464";
 	font-family:dashicons;
@@ -277,6 +284,10 @@
 	margin-top: -20px;
 	margin-right: 10px;
 	
+}
+
+.sortable-list .row .add-elements-btn {
+	margin: 7px;
 }
 
 .sortable-list .row.used {

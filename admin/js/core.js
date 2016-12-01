@@ -1,5 +1,45 @@
 jQuery( document ).ready( function() {
 	
+   /*! 
+	 * 
+	 * Per column section buttons
+	 * ---------------------------------------------------
+	 */
+	 
+	 //--------click
+	jQuery( document ).on( 'click', '.widget-item-btn', function( e ) {
+		e.preventDefault();
+		
+		var  cur_slug         = jQuery( this ).data( 'slug' ),
+		     cur_rowID        = jQuery( this ).data( 'id' ),
+			 widget_name      = jQuery( this ).data( 'name' ),
+			 ele_target       = jQuery( this ).data( 'elements-target' ),
+			 ele_btn          = jQuery( '#' + ele_target ).find( '.add-elements-btn' ),
+			 cur_defaultvalue = jQuery( '#' + ele_target ).find( 'textarea' ).val();
+		
+		if ( ele_btn.css( 'display' ) != 'none' ) {
+			ele_btn.after( jQuery( this ).clone().addClass( 'used' ).text( widget_name ) ).hide();
+			
+			if ( jQuery( '#' + ele_target ).find( 'textarea' ).length > 0 ) {
+				
+				if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
+					jQuery( '#' + ele_target ).addClass( 'used' );
+				}
+			    
+			}
+		}
+		
+		
+		
+		//Elements close
+		gridsterItemElementsClose();
+	
+	
+	});	
+	
+    //--------status
+	gridsterItemElementsBTStatus( 0 );
+	
 	
 	
    /*! 
@@ -21,7 +61,32 @@ jQuery( document ).ready( function() {
 		jQuery( this ).parent().parent().hide();
 	});
 				
+   /*! 
+	 * 
+	 * Elements show
+	 * ---------------------------------------------------
+	 */	
+	jQuery( document ).on( 'click', '.add-elements-btn', function( e ) {
+		e.preventDefault();
 		
+		var modalID = '#' + jQuery( this ).data( 'elements' );
+		
+		jQuery( '.uixpbform-modal-mask' ).fadeIn( 'fast' );
+		jQuery( modalID ).addClass( 'active' );
+		jQuery( modalID ).find( '.content' ).animate( {scrollTop: 10 }, 100 );
+		jQuery( 'html' ).css( 'overflow-y', 'hidden' );
+		
+		
+		//Close
+		jQuery('.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
+			e.preventDefault();
+			gridsterItemElementsClose();
+		});	
+		
+					
+	});
+		
+			
 
     /*! 
 	 * 
@@ -96,81 +161,65 @@ jQuery( document ).ready( function() {
    
 });
 
+/*! 
+ * 
+ * Per column section buttons status
+ * ---------------------------------------------------
+ */	
+function gridsterItemElementsBTStatus( type ) {
+	jQuery( document ).ready( function() {
+		
+		setTimeout( function() {
+			jQuery( '.widget-item-btn' ).each( function()  {
+		
+				var  cur_slug         = jQuery( this ).data( 'slug' ),
+					 cur_rowID        = jQuery( this ).data( 'id' ),
+					 widget_name      = jQuery( this ).data( 'name' ),
+					 ele_target       = jQuery( this ).data( 'elements-target' ),
+					 $sort_container  = jQuery( '#' + ele_target ),
+					 ele_btn          = $sort_container.find( '.add-elements-btn' ),
+					 cur_defaultvalue = $sort_container.find( 'textarea' ).val();
+				
+				//console.log( cur_slug + ' : ' + cur_rowID );
+				if ( $sort_container.length > 0 ) {
+					
+					if ( $sort_container.find( 'textarea' ).length > 0 ) {
+						
+						if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
+							
+							if ( type == 0 ) {
+								ele_btn.after( jQuery( this ).clone().addClass( 'used' ).text( widget_name ) ).hide();
+							}
+							
+							$sort_container.addClass( 'used' );
+							
+						} 
+	
+					}
+				
+	
+				}
+				
+			
+			});
+	
+		}, 100 );
+    });	
+}
+
 
 /*! 
  * 
- * Per column section buttons
+ * Elements close
  * ---------------------------------------------------
- */
-function gridsterItemButtonsInit( uid ) {
+ */	
+function gridsterItemElementsClose() {
 	jQuery( document ).ready( function() {
-		
-		jQuery( '.sortable-list-container-'+uid+' li' ).each( function()  {
-			
-			var $this            = jQuery( this ),
-			    $btn_container   = $this.find( '.widget-items-container' ),
-			    cur_defaultvalue = $this.find( 'textarea' ).val();
-					
-	
-			//--------click action
-			$btn_container.find( '.widget-item-btn' ).on( 'click', function( e ) {
-				e.preventDefault();
-				
-				var  cur_slug    = jQuery( this ).data( 'slug' ),
-				     widget_name = jQuery( this ).data( 'name' );
-				
-				
-				$btn_container.find( '.widget-item-btn' ).hide();
-				jQuery( this )
-							 .show()
-							 .addClass( 'used' )
-							 .text( widget_name );
-			
-							 
-			
-			} );	
-
-			
-			//--------status
-			if ( $this.find( 'textarea' ).length > 0 ) {
-				$btn_container.find( '.widget-item-btn' ).each( function()  {
-			
-					var  cur_slug         = jQuery( this ).data( 'slug' ),
-						 cur_rowID        = jQuery( this ).data( 'id' ),
-						 widget_name      = jQuery( this ).data( 'name' );
-					
-					//console.log( cur_slug + ' : ' + cur_rowID );
-					
-					if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 ) {
-						jQuery( this ).addClass( 'used' );
-						jQuery( this ).text( widget_name );
-						$this.addClass( 'used' );
-					} 
-					
-				});
-	
-			}
-			
-			
-			
-		});
-		
-		
-		//Per column section buttons status
-		jQuery( document ).ready( function() {
-			
-			jQuery( '.sortable-list-container li' ).each( function()  {
-				var $this = jQuery( this );
-				$this.find( '.widget-item-btn' ).each( function()  {
-					if ( !jQuery( this ).hasClass( 'used' ) ) {
-						jQuery( this ).hide();
-					}
-				});
-
-			});
-			
-		});
-		
-	
-	});
+		jQuery( '.uixpbform-modal-box' ).removeClass( 'active' );
+		jQuery( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
+		jQuery( 'html' ).css( 'overflow-y', 'auto' );
+    });	
 }
+
+
+
