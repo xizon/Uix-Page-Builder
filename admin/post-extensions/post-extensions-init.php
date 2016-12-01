@@ -554,6 +554,14 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 				if ( type == 'name' ) {
 					result =  nstr[index][1][0];
 				}	
+				
+				if ( type == 'form_id' ) {
+					var r = nstr[index][1][0],
+					    a = r.split("|");
+						
+					result =  a[0];
+				}		
+				
 				if ( type == 'content' ) {
 					result =  '{'+nstr[index][0][1]+'}['+rescontent+']';	
 				}		

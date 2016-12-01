@@ -12,6 +12,16 @@ jQuery( document ).ready( function() {
 		
 	});
 		
+     /*! 
+	 * 
+	 * Hide layout button
+	 * ---------------------------------------------------
+	 */	
+	jQuery( document ).on( 'click', '.widget-items-col-container a', function( e ) {
+		jQuery( this ).parent().parent().hide();
+	});
+				
+		
 
     /*! 
 	 * 
