@@ -94,6 +94,7 @@ $args =
 		//------list begin
 		array(
 			'id'             => $clone_trigger_id,
+			'colid'          => $colid, /*clone required */
 			'name'           => UixPageBuilder::fname( $colid, $form_id, $clone_trigger_id ),
 			'title'          => __( 'List Item', 'uix-pagebuilder' ),
 			'desc'           => '',
@@ -124,7 +125,7 @@ $args =
 				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_accordion_listitem_title' ),
 				'title'          => '',
 				'desc'           => '',
-				'value'          => UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_title', __( 'Accordion Title', 'uix-pagebuilder' ), $clone_max ),
+				'value'          => UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_title', __( 'Accordion Title', 'uix-pagebuilder' ) ),
 				'class'          => 'dynamic-row-uix_pb_accordion_listitem_title', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'text'
@@ -136,7 +137,7 @@ $args =
 				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_accordion_listitem_con' ),
 				'title'          => '',
 				'desc'           => '',
-				'value'          => UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_con', __( 'Accordion content here.', 'uix-pagebuilder' ), $clone_max ),
+				'value'          => UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_con', __( 'Accordion content here.', 'uix-pagebuilder' ) ),
 				'class'          => 'dynamic-row-uix_pb_accordion_listitem_con', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'textarea',
@@ -205,22 +206,22 @@ if ( $sid >= 0 && is_admin() ) {
 	for ( $i = 2; $i <= $clone_max; $i++ ) {
 		$uid = $i.'-';
 		$field = 'uix_pb_accordion_listitem_title';
-		if ( is_array( $item ) && array_key_exists( ''.$uid.'['.$colid.']['.$field.']['.$sid.']', $item ) ) {
+		if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$uid.'['.$field.']['.$sid.']', $item ) ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
 			$value         =  [
 								array(
 									'replace'  => $item[ '['.$colid.'][uix_pb_accordion_listitem_title]['.$sid.']' ],
-									'default'  => $item[ ''.$uid.'['.$colid.'][uix_pb_accordion_listitem_title]['.$sid.']' ]
+									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_accordion_listitem_title]['.$sid.']' ]
 								),
 								array(
 									'replace'  => $item[ '['.$colid.'][uix_pb_accordion_listitem_con]['.$sid.']' ],
-									'default'  => $item[ ''.$uid.'['.$colid.'][uix_pb_accordion_listitem_con]['.$sid.']' ]
+									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_accordion_listitem_con]['.$sid.']' ]
 								),
 			                  ];
 							  
-			UixPageBuilder::push_cloneform( $clone_trigger_id, $cur_id, $clone_value, $sid, $value, $clone_list_toggle_class );
+			UixPageBuilder::push_cloneform( $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
 	
 		} 
 	}

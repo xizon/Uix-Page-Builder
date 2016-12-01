@@ -62,6 +62,7 @@
 	color: #fff;
 	font-size: 10px;
 	line-height: 10px;
+	overflow: hidden;
 	display: none;
 	
 }
@@ -78,6 +79,10 @@
 	width: 150px;
 	text-indent: 15px;
 	height: 28px;
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
 }
 
 .uix-pagebuilder-gridster-widget.active .title-box {
@@ -86,7 +91,14 @@
 
 .uix-pagebuilder-gridster-widget .title-box:hover,
 .uix-pagebuilder-gridster-widget .title-box:focus {
-	background: #ECECEC;
+	-webkit-box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.23);
+	-moz-box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.23);
+	box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.23);
+	background: #fff;
+	-webkit-transform: scale(1.2);   
+	-ms-transform: scale(1.2); 
+	transform: scale(1.2);
+	border: 1px solid #D9D9D9;
 }
 
 /* Add button*/
@@ -172,6 +184,7 @@
 	color: #fff;
 	font-size: 10px;
 	line-height: 10px;
+	overflow: hidden;
 }
 
 /* per column data */
@@ -214,7 +227,7 @@
 .widget-items-container .widget-item-btn:hover {
 	filter: alpha(opacity=90);  
 	-moz-opacity: 0.9;   
-	opacity: 0.9; 
+	opacity: 0.9;
 }
 
 
@@ -242,12 +255,6 @@
 	vertical-align: middle;
 	margin-right: 5px;
 }
-
-
-.widget-items-container .widget-item-btn.used:hover {
-	background: #2886DA;
-}
-
 
 /* Sub Module
 -------------------------------------------------------------- */
@@ -316,6 +323,13 @@
 
 
 .sortable-list .row textarea {
+	width: 150px;
+	height: 20px;
+	color: #fff;
+	font-size: 10px;
+	line-height: 10px;
+	background: #D7D390;
+	overflow: hidden;
 	display: none;
 }
 

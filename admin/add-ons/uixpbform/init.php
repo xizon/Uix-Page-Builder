@@ -223,7 +223,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */	
 		public static function reg_clone_vars( $clone_id, $str ) {
 			wp_localize_script( 'uixpbform-functions-handle', $clone_id.'_clone_vars', array(
-				'value' => $str
+				'value' => str_replace( '|[]', '|[{columnid}]', $str)
 			) );
 			wp_enqueue_script( 'uixpbform-functions-handle' );
 		}
@@ -717,6 +717,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					$_type    = ( isset( $key['type'] ) ) ? $key['type'] : 'text';
 					$_class   = ( isset( $key['class'] ) ) ? $key['class'] : '';
 					$_toggle  = ( isset( $key['toggle'] ) ) ? $key['toggle'] : '';
+					$_colid   = ( isset( $key['colid'] ) ) ? $key['colid'] : '';
+				
 					
 					$args = [
 						'title'             => $_title,
@@ -728,7 +730,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 						'name'              => $_name,
 						'type'              => $_type,
 						'class'             => $_class,
-						'toggle'            => $_toggle
+						'toggle'            => $_toggle,
+						'colid'             => $_colid
 	
 					];
 				

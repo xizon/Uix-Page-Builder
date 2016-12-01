@@ -1,6 +1,17 @@
 jQuery( document ).ready( function() {
 	
 	
+	
+   /*! 
+	 * 
+	 * Debug detection textarea
+	 * ---------------------------------------------------
+	 */	
+	jQuery( document ).on( 'click', '#uix-pagebuilder-layoutdata, .uix-pagebuilder-gridster-widget .content-box, .uix-pagebuilder-gridster .temp-data-1, .uix-pagebuilder-gridster .temp-data-2, .sortable-list .row textarea', function() {
+		jQuery( this ).select();
+		
+	});
+		
 
     /*! 
 	 * 
@@ -125,7 +136,6 @@ function gridsterItemButtonsInit( uid ) {
 						jQuery( this ).text( widget_name );
 						$this.addClass( 'used' );
 					} 
-				
 					
 				});
 	

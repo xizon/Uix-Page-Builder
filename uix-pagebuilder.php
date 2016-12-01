@@ -308,15 +308,16 @@ class UixPageBuilder {
 	public static function pagebuilder_array_newlist( $arr ) {
 		
 		$data = esc_textarea( $arr );
-		$data = str_replace( '&quot;col&quot;', '"col"',
+		$data = str_replace( '&quot;col&quot;', '"col"', 
 		       str_replace( '&quot;row&quot;', '"row"',
 			   str_replace( '&quot;size_x&quot;', '"size_x"',
 			   str_replace( '&quot;size_y&quot;', '"size_y"',
 			   str_replace( '&quot;,&quot;title&quot;:&quot;', '","title":"',
 			   str_replace( '&quot;content&quot;:&quot;', '"content":"',
+			   str_replace( '&quot;,&quot;secindex&quot;:&quot;', '","secindex":"',
 			   str_replace( '&quot;}', '"}',
 			   $data 
-			   ) ) ) ) ) ) );
+			   ) ) ) ) ) ) ) );
 			   
 		if ( isset( $data ) ) {
 			
@@ -488,7 +489,7 @@ class UixPageBuilder {
 		
 	public static function list_page_itembuttons() {
 	
-	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-pagebuilder' )."</button><div class=\"btnlist\"><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1__1\',\'\');\" class=\"widget-items-col widget-items-col-average-1\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2__1\',\'\');\" class=\"widget-items-col widget-items-col-average-2\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3__1\',\'\');\" class=\"widget-items-col widget-items-col-average-3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'4__1\',\'\');\" class=\"widget-items-col widget-items-col-average-4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_3\',\'\');\" class=\"widget-items-col widget-items-col-1_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2_3\',\'\');\" class=\"widget-items-col widget-items-col-2_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_4\',\'\');\" class=\"widget-items-col widget-items-col-1_4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3_4\',\'\');\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
+	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-pagebuilder' )."</button><div class=\"btnlist\"><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-1\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-2\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'4__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_3\',\'\',\'\');\" class=\"widget-items-col widget-items-col-1_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2_3\',\'\',\'\');\" class=\"widget-items-col widget-items-col-2_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_4\',\'\',\'\');\" class=\"widget-items-col widget-items-col-1_4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3_4\',\'\',\'\');\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
 
 	}
 				
@@ -509,7 +510,7 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function fvalue( $col_id, $section_row, $arr, $field, $default = '', $clonemax = 0 ) {
+	public static function fvalue( $col_id, $section_row, $arr, $field, $default = '' ) {
 		
 		$result = '';
 		if ( is_array( $arr ) && array_key_exists( '['.$col_id.']['.$field.']['.$section_row.']', $arr ) ) {
@@ -518,27 +519,6 @@ class UixPageBuilder {
 			$result = $default;
 		}
 		
-		
-		
-		
-		//If it is clone list
-		if ( $clonemax > 0 ) {
-
-			for ( $i = 0; $i <= $clonemax; $i++ ) {
-				$uid = ( $i == 0 ) ? '' : $i.'-';
-				
-				if ( is_array( $arr ) && array_key_exists( ''.$uid.'['.$col_id.']['.$field.']['.$section_row.']', $arr ) ) {
-					$result = $arr[ ''.$uid.'['.$col_id.']['.$field.']['.$section_row.']' ];
-				} else {
-					$result = $default;
-				}
-				
-			}
-			
-	
-		}
-
-
 		$result = str_replace( '{rowcapo:}', '&#039;',
 			 	 str_replace( '{rowcqt:}', '&quot;',
 
@@ -556,7 +536,7 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function push_cloneform( $clone_trigger_id, $cur_id, $clone_value, $section_row, $value, $clone_list_toggle_class = '' ) {
+	public static function push_cloneform( $clone_trigger_id, $cur_id, $col_id, $clone_value, $section_row, $value, $clone_list_toggle_class = '' ) {
 		
 		$toggle_target_ID  = str_replace( '{dataID}', ''.$cur_id.'-', $clone_list_toggle_class );
 		$widget_ID         = $section_row;
@@ -568,16 +548,16 @@ class UixPageBuilder {
 			   str_replace( 'toggle-row', 'toggle-row toggle-row-clone-list',
 			   $data 
 			   ) );
-			   
-		
+			 
 		//Clone code
 		$data = str_replace( '{index}', '['.$widget_ID.']',
 		       str_replace( 'data-id="', 'id="'.$cur_id.'-',
-			   str_replace( '|[', '|['.$cur_id.'-',
+			   str_replace( '][uix', ']'.$cur_id.'-[uix',
 			   str_replace( '{dataID}', ''.$cur_id.'-',
 			   str_replace( '{multID}', $toggle_target_ID,
+			   str_replace( '{columnid}', $col_id,
 			   $data 
-			   ) ) ) ) );
+			   ) ) ) ) ) );
 		
 		//Default value
 		if ( $value && is_array( $value ) ) {

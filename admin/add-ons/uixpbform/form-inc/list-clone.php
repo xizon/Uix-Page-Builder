@@ -19,6 +19,7 @@ class UixPBFormType_ListClone {
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
+		$colid            = ( isset( $args[ 'colid' ] ) ) ? $args[ 'colid' ] : '';
 		
 		$field = '';
 		$jscode = '';
@@ -80,7 +81,7 @@ class UixPBFormType_ListClone {
                     <td>
 					
 						<div class="uixpbform-box">
-						   <a href="javascript:" class="addrow table-link uixpbform_btn_trigger-clone" data-targetid="'.$id.'" data-max="'.$max.'" data-clonecontent="'.$clone_content_js_var.'" data-removeclass="delrow-'.$id.'" data-appendid="'.$append_box_id.'" data-toggle-targetid="'.$toggle_target_id.'" data-section-row="'.$sid.'"  data-index="2">'.$btn_text.'</a>
+						   <a href="javascript:" class="addrow table-link uixpbform_btn_trigger-clone" data-targetid="'.$id.'" data-max="'.$max.'" data-clonecontent="'.$clone_content_js_var.'" data-removeclass="delrow-'.$id.'" data-appendid="'.$append_box_id.'" data-toggle-targetid="'.$toggle_target_id.'" data-section-row="'.$sid.'" data-colid="'.$colid.'"  data-index="2">'.$btn_text.'</a>
 						 </div>
 					
 					    <div class="uixpbform-box">

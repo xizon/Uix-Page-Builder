@@ -113,6 +113,7 @@ jQuery( document ).ready( function() {
 			cur_appendID        = '#' + jQuery( this ).attr( "data-appendid" ),
 			cur_removeClass     = jQuery( this ).attr( "data-removeclass" ),
 			cur_cloneContent    = jQuery( this ).attr( "data-clonecontent" ),
+			cur_colid           = jQuery( this ).attr( "data-colid" ),
 			cur_max             = jQuery( this ).attr( "data-max" ),
 			cur_toggleTargetID  = jQuery( this ).attr( "data-toggle-targetid" ),
 			cur_sectionRow      = jQuery( this ).attr( "data-section-row" );
@@ -134,10 +135,11 @@ jQuery( document ).ready( function() {
 			var cloneCode           = clone_content,
 			    cur_toggleTargetID  = cur_toggleTargetID.replace( /{dataID}/g, ''+btnINdex+'-' );
 			cloneCode = cloneCode.replace( /data-id=\"/g, 'id="'+btnINdex+'-' );
-			cloneCode = cloneCode.replace( /\|\[/g, '|['+btnINdex+'-' );
+			cloneCode = cloneCode.replace( /\]\[uix/g, ']'+btnINdex+'-[uix' );
 			cloneCode = cloneCode.replace( /{dataID}/g, ''+btnINdex+'-' ); 
 			cloneCode = cloneCode.replace( /{multID}/g, cur_toggleTargetID );
 			cloneCode = cloneCode.replace( /{index}/g, '\['+widget_ID+'\]' );
+			cloneCode = cloneCode.replace( /{columnid}/g, cur_colid );
 			
 			jQuery( cur_appendID ).after( cloneCode );
 			jQuery( this ).attr( 'data-index',btnINdex+1 );
@@ -374,7 +376,6 @@ jQuery( document ).ready( function() {
 					btnINdex          = parseFloat( jQuery( this ).attr( 'data-index' ) );
 				
 				if ( btnINdex <= show_count ) {
-					var cloneCode = '<?php echo $clone_code; ?>';
 					
 					jQuery( cur_appendID ).after( settings.cloneCode );
 					jQuery( this ).attr( 'data-index',btnINdex+1 );
