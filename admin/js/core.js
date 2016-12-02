@@ -22,11 +22,31 @@ jQuery( document ).ready( function() {
 			
 			if ( jQuery( '#' + ele_target ).find( 'textarea' ).length > 0 ) {
 				
-				if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
+				//Save empty data
+				if ( cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) >= 0 ) {
+					var nv = cur_defaultvalue
+					                         .replace( 'uix_pb_section_undefined', cur_slug )
+											 .replace( 'uix_pb_undefined', cur_slug + '_temp' );
+											 
+					jQuery( '#' + ele_target ).find( 'textarea' ).val( nv );
+					
+					
+					gridsterItemSave( cur_rowID );
+					uixPBFormDataSave();
+					
+					
+				}
+				
+				
+				//status
+				new_cur_defaultvalue = jQuery( '#' + ele_target ).find( 'textarea' ).val();
+				if ( new_cur_defaultvalue.indexOf( cur_slug ) >= 0 && new_cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
 					jQuery( '#' + ele_target ).addClass( 'used' );
 				}
-			    
+	  
 			}
+		
+			
 		}
 		
 		

@@ -789,7 +789,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 				}
 					
 
-					//re-sortable
+				//re-sortable
 				gridsterItemSortableInit( uid );
 				
 				setTimeout(function(){
