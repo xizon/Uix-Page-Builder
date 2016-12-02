@@ -499,17 +499,11 @@ class UixPageBuilder {
 		$btns = '';
 		
 		foreach ( $uix_pb_config as $key ) {
-			$btns .= "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-'+colid+'-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
+			$btns .= "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
 		}	
 		
 		
-		echo '
-			if ( jQuery( \'#widget-items-elements-\'+colid+\'-\'+uid+\'\' ).length < 1 ) {
-				jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-\'+colid+\'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' );
-				
-			}
-	
-		';
+		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' );}';
 		
 				
 	}
@@ -522,7 +516,18 @@ class UixPageBuilder {
 	}
 				
 		
-		
+	/*
+	 * Returns form id
+	 *
+	 *
+	 */
+	public static function fid( $col_id, $section_row, $field ) {
+		$colid = str_replace( 'col-item-', 'section_'.$section_row.'__', $col_id );
+		return $colid.'_'.$field;
+	}	
+
+	
+	
 	/*
 	 * Returns form name
 	 *
@@ -559,6 +564,29 @@ class UixPageBuilder {
 	
 	}
 	
+	
+	/*
+	 * Returns theme template value
+	 *
+	 *
+	 */
+	public static function theme_value( $str ) {
+		
+		$result = str_replace( '{rowcapo:}', "'",
+			 	 str_replace( '{rowcqt:}', '"',
+
+			    $str
+			    ) );	
+				
+				
+		return $result;
+		
+	
+	}
+	
+	
+	
+	
 	/*
 	 * Push the clone form of saved data
 	 *
@@ -584,8 +612,9 @@ class UixPageBuilder {
 			   str_replace( '{dataID}', ''.$cur_id.'-',
 			   str_replace( '{multID}', $toggle_target_ID,
 			   str_replace( '{columnid}', $col_id,
+			   str_replace( '{colID}', ''.$cur_id.'-'.str_replace( 'col-item-', 'section_'.$widget_ID.'__', $col_id ),
 			   $data 
-			   ) ) ) ) ) );
+			   ) ) ) ) ) ) );
 		
 		//Default value
 		if ( $value && is_array( $value ) ) {

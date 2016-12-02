@@ -223,7 +223,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */	
 		public static function reg_clone_vars( $clone_id, $str ) {
 			wp_localize_script( 'uixpbform-functions-handle', $clone_id.'_clone_vars', array(
-				'value' => str_replace( '|[]', '|[{columnid}]', $str)
+				'value' => $str
 			) );
 			wp_enqueue_script( 'uixpbform-functions-handle' );
 		}
@@ -511,13 +511,14 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 *
 		 *
 		 */
-		public static function dynamic_form_code( $class, $str, $toggle = null ) {
+		public static function dynamic_form_code( $class, $fid, $str, $toggle = null ) {
 			
 			 $searcharray[ 'list_str' ] = array(
 				   'data-insert-preview="', //image
 				   'data-insert-img="', //image
 				   'pushinputID=',//icon
 				   'id=',//input,textarea
+				   '|[]',//name
 				   '<td>',
 				   '</td>'
 				   
@@ -528,6 +529,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				   'data-insert-img="{dataID}', 
 				   'pushinputID={dataID}', 
 				   'data-id=',
+				   '|[{columnid}]',
 				   '',
 				   ''
 			  );  
@@ -536,7 +538,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				 preg_match_all( '/<tr.*?'.$class.'">(.*?)<\/tr>/is', $str, $match );
 				 $v = str_replace( $searcharray[ 'list_str' ], $replacearray[ 'list_str' ], $match[1][0] );
 				 $v = preg_replace( '/<th.*?<\/th>/', '', $v );
-				 
+				
 				//inscure browser
 				if( self::is_IE() ) {
 					 if ( $toggle == 'toggle-row' ) {

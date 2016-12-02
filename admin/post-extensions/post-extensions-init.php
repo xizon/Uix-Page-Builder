@@ -522,7 +522,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 			
 			if ( typeof( str ) == 'string' && str.length > 0 ) {
 				
-				var nstr   = str.replace(/{rqt:}/g, '"')
+				var nstr   = str.replace(/{rqt:}/g, '"');
 				
 				if ( type == 'id' ) {
 					var result = nstr.match( /row\",\"(.+?)\"\]/g );
@@ -726,6 +726,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					if ( col == '3_4' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '3_4' );?><?php UixPageBuilder::list_page_sortable_li( '1_4' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '3_4' );?>
+						<?php UixPageBuilder::list_page_sortable_li_btns( '1_4' );?>
 					}	
 			
 					
@@ -733,6 +734,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					if ( col == '1_4' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1_4' );?><?php UixPageBuilder::list_page_sortable_li( '3_4' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '1_4' );?>
+						<?php UixPageBuilder::list_page_sortable_li_btns( '3_4' );?>
 		
 					}	
 					
@@ -740,6 +742,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					if ( col == '2_3' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '2_3' );?><?php UixPageBuilder::list_page_sortable_li( '1_3' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '2_3' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '1_3' );?>
 					}	
 					
 					
@@ -747,23 +750,30 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					if ( col == '1_3' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1_3' );?><?php UixPageBuilder::list_page_sortable_li( '2_3' );?>';	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '1_3' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '2_3' );?>	
 					}		
 					
 					// 4 column
 					if ( col == '4__1' || col == '4__2' || col == '4__3' || col == '4__4' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '4__1' );?><?php UixPageBuilder::list_page_sortable_li( '4__2' );?><?php UixPageBuilder::list_page_sortable_li( '4__3' );?><?php UixPageBuilder::list_page_sortable_li( '4__4' );?>';	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '4__1' );?>
+						<?php UixPageBuilder::list_page_sortable_li_btns( '4__2' );?>
+						<?php UixPageBuilder::list_page_sortable_li_btns( '4__3' );?>
+						<?php UixPageBuilder::list_page_sortable_li_btns( '4__4' );?>
 					}	
 					
 					// 3 column
 					if ( col == '3__1' || col == '3__2' || col == '3__3' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '3__1' );?><?php UixPageBuilder::list_page_sortable_li( '3__2' );?><?php UixPageBuilder::list_page_sortable_li( '3__3' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '3__1' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '3__2' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '3__3' );?>	
 					}
 					// 2 column
 					if ( col == '2__1' || col == '2__2' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '2__1' );?><?php UixPageBuilder::list_page_sortable_li( '2__2' );?>';	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '2__1' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '2__2' );?>	
 					}
 					
 					// 1 column

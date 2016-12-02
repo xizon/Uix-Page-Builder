@@ -224,7 +224,18 @@ img.uix-pb-img,
 
 
 /* ====================================================== 
-   3. Author Card                                
+   3. Section Styles                               
+/* ====================================================== */
+.uix-pagebuilder-section {
+	margin: 1.5em;
+	padding: 1.5em;
+	border: #CFCFCF 1px solid;
+	background: #F6F6F6;
+}
+
+
+/* ====================================================== 
+   4. Author Card                                
 /* ====================================================== */
 .uix-pb-authorcard {
     margin: 0 auto;

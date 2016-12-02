@@ -134,7 +134,7 @@ jQuery( document ).ready( function() {
 			
 			var cloneCode           = clone_content,
 			    cur_toggleTargetID  = cur_toggleTargetID.replace( /{dataID}/g, ''+btnINdex+'-' );
-			cloneCode = cloneCode.replace( /data-id=\"/g, 'id="'+btnINdex+'-' );
+			cloneCode = cloneCode.replace( /data-id=\"/g, 'id="'+btnINdex+'-section_'+widget_ID+'__'+cur_colid.replace( 'col-item-', '' ) );
 			cloneCode = cloneCode.replace( /\]\[uix/g, ']'+btnINdex+'-[uix' );
 			cloneCode = cloneCode.replace( /{dataID}/g, ''+btnINdex+'-' ); 
 			cloneCode = cloneCode.replace( /{multID}/g, cur_toggleTargetID );
@@ -587,6 +587,26 @@ jQuery( document ).ready( function() {
   };
 } )( jQuery );
 
+
+/*! 
+ * ************************************
+ * HTML Encode form textarea and input
+ *************************************
+ */	
+function uixpbform_htmlEncode( s ) {
+	
+      return (typeof s != "string") ? s :  
+          s.replace(/"|&|'|<|>|[\x00-\x20]|[\x7F-\xFF]|[\u0100-\u2700]/g,  
+                    function($0){  
+                        var c = $0.charCodeAt(0), r = ["&#"];  
+                        c = (c == 0x20) ? 0xA0 : c;  
+                        r.push(c); r.push(";");  
+                        return r.join("");  
+                    });  
+};
+
+
+
 /*! 
  * ************************************
  * Format Content from Textarea 
@@ -622,6 +642,8 @@ function uixpbform_getHTML( str ) {
 	return v;
 
 }
+
+
 
 
 

@@ -23,23 +23,28 @@ class UixPBFormType_Textarea {
 		
 		if ( $type == 'textarea' ) {
 			
-			$row = 5;
-			$format = true;
+			$row     = 5;
+			$format  = true;
+			$the_var = '';
 			
 			if ( is_array( $default ) && !empty( $default ) ) {
-				$row = $default[ 'row' ];
-				$format = $default[ 'format' ];
+				$row    = ( isset( $default[ 'row' ] ) ) ? $default[ 'row' ] : 5;
+				$format = ( isset( $default[ 'format' ] ) ) ? $default[ 'format' ] : true;
+				$hide   = ( isset( $default[ 'hide' ] ) ) ? $default[ 'hide' ] : false;
 				
-				
-				if ( $format ) {
-					$the_var = 'var '.$id.' = uixpbform_formatTextarea( $( "#'.$id.'" ).val() );';
-				} else {
-					$the_var = 'var '.$id.' = $( "#'.$id.'" ).val();';
+				if ( !$hide ) {
+					if ( $format ) {
+						$the_var = 'var '.$id.' = uixpbform_formatTextarea( $( "#'.$id.'" ).val() );';
+					} else {
+						$the_var = 'var '.$id.' = $( "#'.$id.'" ).val();';
+					}
+
 				}
 			}
 			
 			$field = '
-					<tr'.$class.'>
+			        
+					'.( !$hide ? '<tr'.$class.'>' : '<tr'.$class.' '.( $hide ? 'style="display:none"' : '' ).'>' ).' 
 						<th scope="row"><label>'.$title.'</label></th>
 						<td>	
 						    <div class="uixpbform-box">
