@@ -171,10 +171,19 @@ jQuery( document ).ready( function() {
 		}
 		
 
-		//Icon list
+		//icon list with the jQuery AJAX method
 		jQuery( '.icon-selector' ).uixpbform_iconSelector();
 			  
-		 
+		//color picker
+		jQuery( '.wp-color-input' ).wpColorPicker();		 
+	 
+		//toggle default
+		jQuery( '.uixpbform_btn_trigger-toggleshow.open' ).each( function()  {
+			jQuery( this ).uixpbform_toggleshow();
+		});
+		jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+
+
 		//focus
 		var srow = '.uixpbform-form-container .dynamic-row';
 		jQuery( srow ).mouseenter(function() {
@@ -185,8 +194,7 @@ jQuery( document ).ready( function() {
 			jQuery( srow ).animate( { opacity: 1 }, 0 );
 		});
 		
-		//color picker
-		jQuery( '.wp-color-input' ).wpColorPicker();
+
 		
 		
 	
@@ -449,8 +457,19 @@ jQuery( document ).ready( function() {
 					jQuery( this ).addClass( 'disable' );
 				}
 				
-				//Icon list
+				//icon list with the jQuery AJAX method
 				jQuery( '.icon-selector' ).uixpbform_iconSelector();
+					  
+				//color picker
+				jQuery( '.wp-color-input' ).wpColorPicker();		 
+			 
+				//toggle default
+				jQuery( '.uixpbform_btn_trigger-toggleshow.open' ).each( function()  {
+					jQuery( this ).uixpbform_toggleshow();
+				});
+				jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+						
+				
 					  
 				//focus
 				var srow = '.uixpbform-form-container .dynamic-row';
@@ -462,8 +481,6 @@ jQuery( document ).ready( function() {
 					jQuery( srow ).animate( { opacity: 1 }, 0 );
 				});
 				
-				//color picker
-				jQuery( '.wp-color-input' ).wpColorPicker();
 				
 				 //remove input
 				 if ( cur_removeClass ){

@@ -84,15 +84,17 @@
 							
 							$obj.find( '.ajax-temp' ).html( result );
 							
-							//Icon list with the jQuery AJAX method
+							//icon list with the jQuery AJAX method
 							$( '.icon-selector' ).uixpbform_iconSelector();
+							
+							//color picker
 							$( '.wp-color-input' ).wpColorPicker();
 							
 							//toggle default
 							$( '.uixpbform_btn_trigger-toggleshow.open' ).each( function()  {
 								$( this ).uixpbform_toggleshow();
 							});
-							jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+							$( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
 							
 							//Close
 							$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
