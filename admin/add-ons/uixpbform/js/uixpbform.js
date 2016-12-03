@@ -88,6 +88,12 @@
 							$( '.icon-selector' ).uixpbform_iconSelector();
 							$( '.wp-color-input' ).wpColorPicker();
 							
+							//toggle default
+							$( '.uixpbform_btn_trigger-toggleshow.open' ).each( function()  {
+								$( this ).uixpbform_toggleshow();
+							});
+							jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+							
 							//Close
 							$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 								e.preventDefault();
@@ -164,7 +170,6 @@
 				$.each( fields, function( i, field ) {
 					var v = uixpbform_htmlEscape( field.value ),
 					    n = field.name;
-						
 					colContent.push( [ n, v ] );
 					
 				});

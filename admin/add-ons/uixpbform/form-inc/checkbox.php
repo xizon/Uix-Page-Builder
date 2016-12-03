@@ -36,7 +36,6 @@ class UixPBFormType_Checkbox {
                 }
 				
 	
-				
             }
 			
 			//Toggle for checkbox
@@ -77,6 +76,15 @@ class UixPBFormType_Checkbox {
 				$new_class = $class;
 			}
 			
+			
+			if ( $value == 1 && empty( $toggle_trigger_id ) ) {
+				$checked_txt = 'checked';
+			}
+			if ( $value == 0 && empty( $toggle_trigger_id ) ) {
+				$checked_txt = '';
+			}
+			
+			
             $field = '
                     <tr'.$new_class.'>
                         <th scope="row"><label>'.$title.'</label></th>
@@ -85,11 +93,13 @@ class UixPBFormType_Checkbox {
                         
                              <span class="uixpbform-checkbox">
                               
-								 '.( !empty( $toggle_trigger_id ) ? '<div class="onoffswitch uixpbform_btn_trigger-toggleswitch_checkbox" data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" data-linked-no-toggleid="'.rtrim( $toggle_no_id, ',' ).'">' : '' ).'
+								 '.( !empty( $toggle_trigger_id ) ? '<div class="onoffswitch uixpbform_btn_trigger-toggleswitch_checkbox '.$checked_txt.'" data-this-targetid="'.$id.'" data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" data-linked-no-toggleid="'.rtrim( $toggle_no_id, ',' ).'">' : '' ).'
 								 
-                                 '.( !empty( $id ) ? '<input id="'.$id.'" name="'.$name.'" value="'.$value.'" type="checkbox" class="uixpbform-normal uixpbform-check '.( !empty( $toggle_trigger_id ) ? 'onoffswitch-checkbox' : '' ).'" '.$checked_txt.'>' : '' ).'
+                                 '.( !empty( $id ) ? '<input value="" id="'.$id.'-checkbox" name="'.$name.'-checkbox" type="checkbox" data-this-targetid="'.$id.'" class="uixpbform-normal uixpbform-check uixpbform_btn_trigger-normalchk '.( !empty( $toggle_trigger_id ) ? 'onoffswitch-checkbox' : '' ).'" '.$checked_txt.'>' : '' ).'
 								 
 								 '.( !empty( $toggle_trigger_id ) ? '<label class="onoffswitch-label" for="myonoffswitch"></label></div>' : '' ).'
+								 
+								 '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" >' : '' ).'
 
 
                              </span>

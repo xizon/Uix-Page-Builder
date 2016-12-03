@@ -286,6 +286,18 @@
 	
 }
 
+.sortable-list .row textarea {
+	width: 150px;
+	height: 20px;
+	color: #fff;
+	font-size: 10px;
+	line-height: 10px;
+	background: #D7D390;
+	overflow: hidden;
+	display: none;
+}
+
+
 .sortable-list .row .add-elements-btn {
 	margin: 7px;
 }
@@ -331,18 +343,6 @@
 	width: calc( 100% - 20px );
 }
 
-
-
-.sortable-list .row textarea {
-	width: 150px;
-	height: 20px;
-	color: #fff;
-	font-size: 10px;
-	line-height: 10px;
-	background: #D7D390;
-	overflow: hidden;
-	display: none;
-}
 
 
 /* Column Elements */

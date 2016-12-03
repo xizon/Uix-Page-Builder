@@ -377,7 +377,7 @@ if ( $sid >= 0 && is_admin() ) {
 	$( document ).ready( function() {
 		
 		
-		$( document ).on( "input change keyup", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		$( document ).on( "input change keyup focusin focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
 			
 			var tempcode                         = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
 				uix_pb_authorcard_primary_color  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_primary_color' ); ?>' ).val(),

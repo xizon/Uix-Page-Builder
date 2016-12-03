@@ -14,6 +14,7 @@
 	2. Container   
 	3. Section Styles    
 	4. Author Card  
+	5. Accordion 
 	     
 
 
@@ -337,5 +338,74 @@ img.uix-pb-img,
 	.uix-pb-authorcard-final .uix-pb-authorcard-text {
 		color: #fff;
 		margin-left: .5em;
+	}	  
+		  
+		  
+/* ====================================================== 
+   5. Accordion                              
+/* ====================================================== */
+.uix-pb-accordion-box{
+	
+}
+
+
+	.uix-pb-accordion .uix-pb-spoiler{
+		border-bottom: 1px dotted rgba(0,0,0,.1);
+		padding: 0 0 .5em 0;
+		margin-bottom: 1.5em;
+	}
+	
+	.uix-pb-accordion .uix-pb-spoiler-group{
+		
+	}
+
+		.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-title{
+			margin: 0;
+			padding: 0;
+			cursor: pointer;
+			widows: 1; /*Accordion Analyzing Parameters*/
+			font-size: 14px;
+			letter-spacing: 0;
+			padding-bottom: 1em;
+		}
+		
+		
+		.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-title:before {
+			content: '\f067';
+			font-family: FontAwesome;
+			display: inline-block;
+			vertical-align: middle;
+			padding: 1px 10px 0 0;
+			font-size: 11px;
+		  
+		}
+		.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-content {
+			padding-left: 1.4em;
+			display: none;
+			color: #777;
+			line-height: 1.5;
+			-ms-word-wrap: break-word;
+			word-wrap: break-word;
+			font-size: 13px;
+			
+		}
+		
+		.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-content p {
+			margin-bottom: .2em;
+		}
+	
+		.uix-pb-accordion .uix-pb-spoiler-closed .uix-pb-spoiler-title:before {
+			content: '\f068';
+			
+		}
+		.uix-pb-accordion .uix-pb-spoiler-closed .uix-pb-spoiler-title{
+			font-weight: 600;
+			widows: 2; /*Accordion Analyzing Parameters*/
+			
+		}
+		
+	
+	.uix-pb-accordion .uix-pb-spoiler-content.uix-pb-spoiler-content-show {
+		display: block;
 	}	  
 		  

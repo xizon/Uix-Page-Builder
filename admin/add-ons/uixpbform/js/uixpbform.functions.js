@@ -7,6 +7,41 @@ jQuery( document ).ready( function() {
 	
     /*! 
 	 * 
+	 * Normal checkbox
+	 * ---------------------------------------------------
+	 */
+	 
+	jQuery( document ).on( 'click', '.uixpbform_btn_trigger-normalchk', function() {
+		
+		// don't prevent mouse action
+		var cur_targetThisID  = '#' + jQuery( this ).attr( "data-this-targetid" );
+		
+		if( jQuery( this ).is( ':checked' ) ) {
+			jQuery( cur_targetThisID ).val( 1 );
+		} else {
+			jQuery( cur_targetThisID ).val( 0 );
+		}
+		
+		
+	} );		
+	
+	
+	
+    /*! 
+	 * 
+	 * Remove focus
+	 * ---------------------------------------------------
+	 */
+	 
+	jQuery( document ).on( 'click', '.uixpbform-form-container', function() {
+		// don't prevent mouse action
+		jQuery( this ).find( 'form .wp-color-input' ).blur();
+	
+	} );
+	
+	
+    /*! 
+	 * 
 	 * Toggle of unidirectional display
 	 * ---------------------------------------------------
 	 */
@@ -14,32 +49,15 @@ jQuery( document ).ready( function() {
 	jQuery( document ).on( 'click', '.uixpbform_btn_trigger-toggleshow', function( e ) {
 		e.preventDefault();
 		
-		var cur_targetID       = jQuery( this ).attr( "data-targetid" ),
-			cur_targetCloneID  = jQuery( this ).attr( "data-targetid-clone" ),
-			cur_list           = jQuery( this ).attr( "data-list" );
-			
-		//Dynamic button id
-		if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
-			cur_targetID = cur_targetCloneID;
+		var cur_targetThisID   = '#' + jQuery( this ).attr( "data-this-targetid" );
+		jQuery( this ).uixpbform_toggleshow();
+		
+		
+		//status
+		if( !jQuery( this ).hasClass( 'open' ) ) {
+			jQuery( cur_targetThisID ).val( 1 );
 		}
 		
-		if ( cur_list == 1 ) {
-			
-			//Dynamic elements
-			jQuery( this ).parent().parent( '.toggle-btn' ).hide();
-			jQuery( cur_targetID ).parent().parent( '.toggle-row' ).show();
-			jQuery( cur_targetID ).parent().parent( '.toggle-row' ).find( '.uixpbform-box' ).show();
-			jQuery( cur_targetID ).addClass( 'active' );
-
-		} else {
-			jQuery( this ).parent( '.uixpbform-box' ).parent().parent( 'tr' ).hide();
-			jQuery( cur_targetID ).show();
-			jQuery( cur_targetID ).find( 'th' ).find( 'label' ).show();
-			jQuery( cur_targetID ).find( 'td' ).find( '.uixpbform-box' ).show();
-			jQuery( cur_targetID ).addClass( 'active' );
-
-		}
-
 		
 	} );	
 	//if IE
@@ -47,6 +65,7 @@ jQuery( document ).ready( function() {
 		jQuery( document ).off( 'click', '.uixpbform_btn_trigger-toggleshow' );
 	}
 	
+
 	
     /*! 
 	 * 
@@ -98,7 +117,6 @@ jQuery( document ).ready( function() {
 	 */
 	 jQuery( document ).uixpbform_toggleSwitchCheckbox( { btnID: '.uixpbform_btn_trigger-toggleswitch_checkbox' } );
 	 
-
 
 	/*! 
 	 * 
@@ -355,6 +373,51 @@ jQuery( document ).ready( function() {
 
 /*! 
  * ************************************
+ * Toggle of unidirectional display ( Show )
+ *************************************
+ */	
+( function( $ ) {
+  jQuery.fn.uixpbform_toggleshow = function( options ) {
+	
+		var settings=$.extend( {},options );
+		return this.each( function() {
+	  
+			var cur_targetID       = jQuery( this ).attr( "data-targetid" ),
+				cur_targetCloneID  = jQuery( this ).attr( "data-targetid-clone" ),
+				cur_list           = jQuery( this ).attr( "data-list" );
+				
+			//Dynamic button id
+			if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
+				cur_targetID = cur_targetCloneID;
+			}
+			
+			if ( cur_list == 1 ) {
+				
+				//Dynamic elements
+				jQuery( this ).parent().parent( '.toggle-btn' ).hide();
+				jQuery( cur_targetID ).parent().parent( '.toggle-row' ).show();
+				jQuery( cur_targetID ).parent().parent( '.toggle-row' ).find( '.uixpbform-box' ).show();
+				jQuery( cur_targetID ).addClass( 'active' );
+	
+			} else {
+				jQuery( this ).parent( '.uixpbform-box' ).parent().parent( 'tr' ).hide();
+				jQuery( cur_targetID ).show();
+				jQuery( cur_targetID ).find( 'th' ).find( 'label' ).show();
+				jQuery( cur_targetID ).find( 'td' ).find( '.uixpbform-box' ).show();
+				jQuery( cur_targetID ).addClass( 'active' );
+	
+			}
+			 
+		  
+		} );
+	
+  };
+} )( jQuery );
+
+
+
+/*! 
+ * ************************************
  * Re-initialize Dynamic Adding Input ( If there are some default values )
  *************************************
  */	
@@ -444,15 +507,25 @@ jQuery( document ).ready( function() {
 		}
 		,options );
 		return this.each( function() {
-	        
-			jQuery( document ).on( 'click', settings.btnID , function( e ) {
+			
+			//--------click
+			jQuery( document ).on( 'click', settings.btnID ,function( e ) {
 				e.preventDefault();
 	
 				var cur_targetID          = jQuery( this ).attr( "data-targetid" ),
 					cur_linkedNoToggleID  = jQuery( this ).attr( "data-linked-no-toggleid" ),
 					cur_targetCloneID     = jQuery( this ).attr( "data-targetid-clone" ),
-					cur_list              = jQuery( this ).attr( "data-list" );
+					cur_list              = jQuery( this ).attr( "data-list" ),
+					cur_targetThisID      = '#' + jQuery( this ).attr( "data-this-targetid" );
 					
+			
+				//status
+				if( !jQuery( this ).hasClass( 'checked' ) ) {
+					jQuery( cur_targetThisID ).val( 1 );
+				} else {
+					jQuery( cur_targetThisID ).val( 0 );
+				}
+							
 				//Dynamic button id
 				if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
 					cur_targetID = cur_targetCloneID;
@@ -500,7 +573,6 @@ jQuery( document ).ready( function() {
 		
 					}
 		
-		
 				}
 		
 		
@@ -518,6 +590,66 @@ jQuery( document ).ready( function() {
 				jQuery( document ).off( 'click', '.uixpbform_btn_trigger-toggleswitch_checkbox' );
 			}
 
+ 
+		} );
+	
+  };
+} )( jQuery );
+
+
+/*! 
+ * ************************************
+ * Toggle of switch with checkbox status
+ *************************************
+ */	
+ ( function( $ ) {
+  jQuery.fn.uixpbform_toggleSwitchCheckboxStatus = function( options ) {
+		var settings=$.extend( {}, options );
+		return this.each( function() {
+			
+			
+			//--------default status
+			jQuery( this ).each( function()  {
+				var cur_targetID          = jQuery( this ).attr( "data-targetid" ),
+					cur_linkedNoToggleID  = jQuery( this ).attr( "data-linked-no-toggleid" ),
+					cur_targetCloneID     = jQuery( this ).attr( "data-targetid-clone" ),
+					cur_list              = jQuery( this ).attr( "data-list" ),
+					cur_targetThisID      = '#' + jQuery( this ).attr( "data-this-targetid" );
+					
+				//Dynamic button id
+				if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
+					cur_targetID = cur_targetCloneID;
+				}
+				
+				if ( cur_list == 1 ) {
+					//Dynamic elements
+					
+					var trid = jQuery( cur_targetID ).parent().parent( '.toggle-row' );
+					
+					if( jQuery( this ).hasClass( 'checked' ) ) {
+						trid.show();
+						trid.find( '.uixpbform-box' ).show();
+						jQuery( cur_targetID ).addClass( 'active' );
+						
+					}
+		
+		
+				} else {
+					
+					var trid = jQuery( cur_targetID );
+					if( jQuery( this ).hasClass( 'checked' ) ) {
+						trid.show();
+						trid.find( 'th' ).find( 'label' ).show();
+						trid.find( 'td' ).find( '.uixpbform-box' ).show();
+						
+					}
+		
+		
+				}	
+				
+			});
+			
+			
  
 		} );
 	

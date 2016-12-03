@@ -51,6 +51,13 @@ class UixPBFormType_Toggle {
 			}
 		
 		
+			if ( $value == 1 ) {
+				$open_class = 'open';
+			}
+			if ( $value == 0 ) {
+				$open_class = '';
+			}
+		
 			
             $field = '
                     <tr'.$new_class.'>
@@ -58,7 +65,9 @@ class UixPBFormType_Toggle {
                         <td>
 						
 						   <div class="uixpbform-box">
-								<a href="javascript:" class="'.$link_class.' uixpbform_btn_trigger-toggleshow" data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}">'.$btn_text.'</a>
+								<a href="javascript:" class="'.$link_class.' uixpbform_btn_trigger-toggleshow '.$open_class.'" data-this-targetid="'.$id.'" data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}">'.$btn_text.'</a>
+								
+								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" >' : '' ).'
 		
 								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 	
 								

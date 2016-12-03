@@ -100,6 +100,11 @@ class UixPageBuilder {
 			
 
 		}
+		
+		// Theme path in javascript file ( var templateUrl = wp_uix_pb_root_path.templateUrl; )
+        wp_localize_script( self::PREFIX . '-pagebuilder',  'wp_uix_pb_root_path', array( 
+		    'templateUrl' => get_stylesheet_directory_uri()
+		 ) );
 			
 		
 
