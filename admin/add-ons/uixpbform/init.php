@@ -444,7 +444,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 *
 		 *
 		 */
-		public static function form_before( $widget_name, $section_row, $form_id, $widget_col_id ) {
+		public static function form_before( $widget_col_id, $widget_name, $section_row, $form_id ) {
 			
 			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-pagebuilder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-pagebuilder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'"><input type="hidden" name="colid" value="'.$widget_col_id.'">';
 	
@@ -616,7 +616,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 						if ( $arr1[ 'list' ] == false ) {
 			
 								$before = '
-								 '.self::form_before( $widget_name, $section_row, $config_id, $widget_col_id ).'
+								 '.self::form_before( $widget_col_id, $widget_name, $section_row, $config_id ).'
 									<table class="uixpbform-table">
 								'."\n";
 								

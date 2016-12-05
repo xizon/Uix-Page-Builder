@@ -1,15 +1,41 @@
 <?php
-include dirname( __FILE__ ) . 'data.php';
+if ( !class_exists( 'UixPBFormCore' ) ) {
+    return;
+}
 
 
 /**
  * Form ID
+ * ----------------------------------------------------
  */
-$form_id = 'uix_pb_form_hello2';
+$form_id = 'uix_pb_section_hello2';
 
 /**
- * Form Type
+ * Sections template parameters
+ * ----------------------------------------------------
  */
+$sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
+$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
+$item    = '';
+
+
+
+/**
+ * Element Template : Form Demo 2
+ * ----------------------------------------------------
+ */
+
+
+
+
+
+/**
+ * Form Type & Parameters
+ * ----------------------------------------------------
+ */
+
 $form_type_col2 = [
     'list'       => 2
 ];
@@ -18,6 +44,8 @@ $form_type_col2 = [
 $args_col2_1 = 
 	[
 	
+
+
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_1_text' ),
 			'title'          => __( 'Text2 - 1', 'uix-pagebuilder' ),
@@ -300,96 +328,109 @@ $args_col4_4 =
 		
 		),
 		
+		
+        //------- template
+		array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_hello2_temp' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_hello2_temp' ),
+			'title'          => '',
+			'desc'           => '',
+			'value'          => __( 'Form Demo 2', 'uix-pagebuilder' ),
+			'placeholder'    => '',
+			'type'           => 'textarea',
+			'default'        => array(
+									'hide' => true
+								)
+		
+		),
+		
+		
 	
 	]
 ;
 
 
 //---
-
-$form_html = UixSCFormCore::form_before( $cid, $sid, $form_id );
-
-
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col2, $args_col2_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col2, $args_col2_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
+$form_html = UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 
 
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_3, 'html', __( 'Item 3', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
 
 
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_3, 'html', __( 'Item 3', 'uix-pagebuilder' ) );
-$form_html .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_4, 'html', __( 'Item 4', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_3, 'html', __( 'Item 3', 'uix-pagebuilder' ) );
 
 
-$form_html .= UixSCFormCore::form_after();
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_3, 'html', __( 'Item 3', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_4, 'html', __( 'Item 4', 'uix-pagebuilder' ) );
+
+
+$form_html .= UixPBFormCore::form_after();
 
 //----
 
 $form_js = '';
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col2, $args_col2_1, 'js' );
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col2, $args_col2_2, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'js' );
 
 
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_1, 'js' );
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_2, 'js' );
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_3, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_1, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_2, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_3, 'js' );
 
 
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_1, 'js' );
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_2, 'js' );
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_3, 'js' );
-$form_js .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_4, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_1, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_2, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_3, 'js' );
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_4, 'js' );
 
 //----
 
 $form_js_vars = '';
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col2, $args_col2_1, 'js_vars' );
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col2, $args_col2_2, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'js_vars' );
 
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_1, 'js_vars' );
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_2, 'js_vars' );
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col3, $args_col3_3, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_1, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_2, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_3, 'js_vars' );
 
 
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_1, 'js_vars' );
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_2, 'js_vars' );
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_3, 'js_vars' );
-$form_js_vars .= UixSCFormCore::add_form( $cid, $sid, $form_id, $form_type_col4, $args_col4_4, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_1, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_2, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_3, 'js_vars' );
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_4, 'js_vars' );
+
+
 
 
 
 /**
  * Returns actions of javascript
+ * ----------------------------------------------------
  */
 
 if ( $sid == -1 && is_admin() ) {
-	$currentScreen = get_current_screen();
-	if( $currentScreen->base === "post" || $currentScreen->base === "widgets" || $currentScreen->base === "customize" || UixSCFormCore::inc_str( $currentScreen->base, '_page_' ) ) {
-  
-		
-		
-		?>
-		<script type="text/javascript">
-		( function($) {
-		'use strict';
-			$( function() {  
-				<?php echo UixSCFormCore::uixscform_callback( $form_js, $form_id, __( 'Demo Form 2', 'uix-pagebuilder' ) ); ?>					
-				<?php echo UixSCFormCore::send_before( $form_js_vars, $form_id ); ?> 
-				/*--**************** Custom shortcode begin ****************-- */
-					
-				code = "[uix_hello2][/uix_hello2]";
-					
-				/*--**************** Custom shortcode end ****************-- */
-				<?php echo UixSCFormCore::send_after(); ?> 
-		} ) ( jQuery );
-		</script>
- 
-		<?php
-
+	if( get_post_type() == 'page' ) {
+		if ( is_admin()) {
+			
+			?>
+			<script type="text/javascript">
+			( function($) {
+			'use strict';
+				$( document ).ready( function() {  
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Form Demo 2', 'uix-pagebuilder' ) ); ?>            
+				} ); 
+			} ) ( jQuery );
+			</script>
+	 
+			<?php
+	
+			
+		}
 	}
 	
 }
@@ -397,7 +438,9 @@ if ( $sid == -1 && is_admin() ) {
 
 /**
  * Returns forms with ajax
+ * ----------------------------------------------------
  */
 if ( $sid >= 0 && is_admin() ) {
 	echo $form_html;	
 }
+

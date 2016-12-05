@@ -474,22 +474,8 @@ class UixPageBuilder {
 	 */
 	public static function list_page_sortable_li( $col = '' ) {
 	
-		if ( self::tempfolder_exists() ) {
-			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
-		} else {
-			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
-		}
 		
-		$btns = '';
-		
-		foreach ( $uix_pb_config as $key ) {
-			$btns .= "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
-		}	
-		
-		$btncode = "<div class=\"widget-items-container\">".$btns."</div>";
-		$btncode = '';
-		
-		echo "<li class=\"row col-".$col."\" id=\"widget-items-elements-detail-".$col."-'+uid+'\"><a class=\"button add-elements-btn\" href=\"javascript:\" data-elements=\"widget-items-elements-".$col."-'+uid+'\">".__( 'Add content', 'uix-pagebuilder' )."</a>".$btncode."<textarea id=\"col-item-".$col."---'+uid+'\">[[{rqt:}col{rqt:},{rqt:}".$col."{rqt:}],[{rqt:}uix_pb_section_undefined|[col-item-".$col."---'+uid+'][uix_pb_undefined]['+sid+']{rqt:},{rqt:}{rqt:}]]</textarea></li>";
+		echo "<li class=\"row col-".$col."\" id=\"widget-items-elements-detail-".$col."-'+uid+'\"><a class=\"button add-elements-btn\" href=\"javascript:\" data-elements=\"widget-items-elements-".$col."-'+uid+'\">".__( 'Add content', 'uix-pagebuilder' )."</a><textarea id=\"col-item-".$col."---'+uid+'\">[[{rqt:}col{rqt:},{rqt:}".$col."{rqt:}],[{rqt:}uix_pb_section_undefined|[col-item-".$col."---'+uid+'][uix_pb_undefined]['+sid+']{rqt:},{rqt:}{rqt:}]]</textarea></li>";
 		
 	}
 	
@@ -504,7 +490,7 @@ class UixPageBuilder {
 		$btns = '';
 		
 		foreach ( $uix_pb_config as $key ) {
-			$btns .= "<a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a>";
+			$btns .= "<div class=\"uix-pagebuilder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a><div class=\"at-icon-box\" style=\"background-color:".esc_attr( $key[ 'bg' ] )."\"><div class=\"at-icon-box-text\"><h4><i class=\"fa fa-".esc_attr( $key[ 'icon' ] )."\"></i>".esc_html( $key[ 'title' ] )."</h4><p>".esc_html( $key[ 'info' ] )."</p></div></div></div>";
 		}	
 		
 		

@@ -53,6 +53,7 @@ The version number is the date of the revision of the [guidelines](https://make.
 == Screenshots ==
 1. screenshot-1.jpg
 2. screenshot-2.jpg
+3. screenshot-3.jpg
 
 
 == Upgrade Notice ==
