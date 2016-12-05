@@ -9,6 +9,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
  * ----------------------------------------------------
  */
 $form_id                 = 'uix_pb_section_accordion';
+
+//clone list
 $clone_trigger_id        = 'uix_pb_accordion_list';    // ID of clone trigger 
 $clone_max               = 5;                          // Maximum of clone form 
 $clone_list_toggle_class = '';                         // Clone list of toggle class value
@@ -91,10 +93,8 @@ $uix_pb_accordion_listitem_title  = UixPageBuilder::fvalue( $colid, $sid, $item,
 $uix_pb_accordion_listitem_con    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_con', __( 'Accordion content here.', 'uix-pagebuilder' ) );
 
 
-// Dynamic Adding Input ( Default Value )
+//dynamic adding input
 $list_accordion_item = '';
-
-
 
 for ( $k = 1; $k <= $clone_max; $k++ ) {
 	$_uid = ( $k >= 2 ) ? $k.'-' : '';
@@ -146,6 +146,12 @@ $args =
 	[
 	 
 		//------list begin
+		array(
+			'desc'           => sprintf( esc_html__( 'Note: %1$s items per row.Per section insert "for a maximum of %1$s".', 'uix-pagebuilder' ), $clone_max ),
+			'type'           => 'text'
+		
+		),
+		
 		array(
 			'id'             => $clone_trigger_id,
 			'colid'          => $colid, /*clone required */
@@ -234,7 +240,8 @@ $form_html = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type
 $form_js = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js' );
 $form_js_vars = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
-$clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html ).UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html );
+$clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html )
+.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html );
 
 /**
  * Returns actions of javascript
@@ -246,14 +253,14 @@ if ( $sid == -1 && is_admin() ) {
 		if ( is_admin()) {
 			
 		/* List Item - Register clone vars ( step 1) */
-		UixPBFormCore::reg_clone_vars( 'uix_pb_accordion_list', $clone_value );
+		UixPBFormCore::reg_clone_vars( $clone_trigger_id, $clone_value );
 		
 			?>
 			<script type="text/javascript">
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Accordion', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Accordion', 'uix-pagebuilder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -306,7 +313,7 @@ if ( $sid >= 0 && is_admin() ) {
 	$( document ).ready( function() {
 		
 		
-		$( document ).on( "input change keyup focusin focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
 			
 			
 			var tempcode = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>';
@@ -343,7 +350,8 @@ if ( $sid >= 0 && is_admin() ) {
 					
 				}
 
-
+                
+				//---
 				
 				tempcode = tempcode.replace(/{list}/g, show_list_item );
 								

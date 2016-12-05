@@ -17,7 +17,15 @@ $uix_pb_config = [
 			'title'           => __( 'Accordion', 'uix-pagebuilder' ),
 			'id'              => 'uix_pb_section_accordion'
 		
-		),		
+		),	
+		
+		
+		array(
+			'title'           => __( 'Hello', 'uix-pagebuilder' ),
+			'id'              => 'uix_pb_section_hello'
+		
+		),			
+			
 		
 		
 		

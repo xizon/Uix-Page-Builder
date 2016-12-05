@@ -24,6 +24,11 @@ class UixPBFormType_MultiSelector {
         if ( $type == 'multiselect' ) {
             
             $optionlist = '';
+			
+			if ( !is_array( $value ) ) {
+				$value = explode( ',', $value );
+			}
+			
             if ( is_array( $default ) && !empty( $default ) ) {
                 $optionloop = 1;
 				$radiofirst = '';

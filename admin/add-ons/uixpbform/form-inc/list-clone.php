@@ -81,7 +81,7 @@ class UixPBFormType_ListClone {
                     <td>
 					
 						<div class="uixpbform-box">
-						   <a href="javascript:" class="addrow table-link uixpbform_btn_trigger-clone" data-targetid="'.$id.'" data-max="'.$max.'" data-clonecontent="'.$clone_content_js_var.'" data-removeclass="delrow-'.$id.'" data-appendid="'.$append_box_id.'" data-toggle-targetid="'.$toggle_target_id.'" data-section-row="'.$sid.'" data-colid="'.$colid.'"  data-index="2">'.$btn_text.'</a>
+						   <a href="javascript:" class="addrow table-link uixpbform_btn_trigger-clone" data-targetid="'.$id.'" data-max="'.$max.'" data-clonecontent="'.$clone_content_js_var.'" data-removeclass="delrow-'.$id.'-'.$colid.'" data-appendid="'.$append_box_id.'-'.$colid.'" data-toggle-targetid="'.$toggle_target_id.'" data-section-row="'.$sid.'" data-colid="'.$colid.'"  data-index="2">'.$btn_text.'</a>
 						 </div>
 					
 					    <div class="uixpbform-box">
@@ -97,7 +97,7 @@ class UixPBFormType_ListClone {
                     <th scope="row"></th>
                     <td>
 					
-						<div class="dynamic-append-wrapper" id="'.$append_box_id.'"></div>
+						<div class="dynamic-append-wrapper" id="'.$append_box_id.'-'.$colid.'"></div>
                          
                     </td>
                 </tr>  

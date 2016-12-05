@@ -25,18 +25,27 @@ class UixPBFormType_ShortUnitsText {
             
             $unitslist = '';
 			$unitsid = ( isset( $default[ 'units_id' ] ) ) ? $default[ 'units_id' ] : '';
+			$unitsname = ( isset( $default[ 'units_name' ] ) ) ? $default[ 'units_name' ] : '';
+			$unitsvalue = ( isset( $default[ 'units_value' ] ) ) ? $default[ 'units_value' ] : '';
 			$unitsfirst = '';
 			$i = 1;
             if ( is_array( $default ) && !empty( $default ) ) {
 				$unitsfirst = $default[ 'units' ][0];
                 foreach ( $default[ 'units' ] as $units_value ) {
 					
-					( $i == 1 ) ? $active = ' class="active"' : $active = '' ;
+					if ( $unitsvalue == '' ) {
+						( $i == 1 ) ? $active = ' class="active"' : $active = '' ;
+					} else {
+						( $units_value == $unitsvalue ) ? $active = ' class="active"' : $active = '' ;
+					}
+					
                     $unitslist .= '<span '.$active.' data-value="'.$units_value.'">'.$units_value.'</span>'."\n";	
 					
 					$i++;
                 }	
             }
+			
+			if ( $unitsvalue == '' ) $unitsvalue = $unitsfirst;
             
             $field = '
                     <tr'.$class.'>
@@ -48,7 +57,7 @@ class UixPBFormType_ShortUnitsText {
 								<div class="uixpbform-input-text-short">
 			
 								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
-								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" value="'.$unitsfirst.'">' : '' ).' 
+								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" name="'.$unitsname.'" value="'.$unitsvalue.'">' : '' ).' 
 								   
 								   <span class="units units-short units-selector uixpbform_btn_trigger-radio" data-targetid="'.$unitsid.'">'.$unitslist.'</span>
 						

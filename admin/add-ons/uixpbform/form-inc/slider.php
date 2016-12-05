@@ -35,6 +35,7 @@ class UixPBFormType_Slider {
 				$step = $default[ 'step' ];
 				$units = ( isset( $default[ 'units' ] ) ) ? $default[ 'units' ] : '';
 				$units_id = ( isset( $default[ 'units_id' ] ) ) ? $default[ 'units_id' ] : '';
+				$units_name = ( isset( $default[ 'units_name' ] ) ) ? $default[ 'units_name' ] : '';
             }
 	
             
@@ -45,7 +46,7 @@ class UixPBFormType_Slider {
 						
 						    <div class="uixpbform-box">
                                
-								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" value="'.$units.'">' : '' ).' 
+								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" name="'.$units_name.'" value="'.$units.'">' : '' ).' 
 								   
 								   '.( !empty( $id ) ? '
 									<div class="uixpbform-range-container">

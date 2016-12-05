@@ -111,10 +111,7 @@ class UixPBFormType_Checkbox {
                     </tr> 
                 '."\n";	
                 
-            $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).is( ":checked" );'."\n" : '' ).'
-                
-            ';						
+            $jscode_vars = '';						
                 
 			$jscode = '';
 				

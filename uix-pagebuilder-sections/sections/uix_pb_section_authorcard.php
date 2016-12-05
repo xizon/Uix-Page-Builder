@@ -349,7 +349,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert An Author Card', 'uix-pagebuilder' ) ); ?>         
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Author Card', 'uix-pagebuilder' ) ); ?>         
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -377,7 +377,7 @@ if ( $sid >= 0 && is_admin() ) {
 	$( document ).ready( function() {
 		
 		
-		$( document ).on( "input change keyup focusin focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
 			
 			var tempcode                         = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
 				uix_pb_authorcard_primary_color  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_primary_color' ); ?>' ).val(),
@@ -396,16 +396,19 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_authorcard_2_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_2_url' ); ?>' ).val(),
 				uix_pb_authorcard_3_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_3_url' ); ?>' ).val();
 				
-				
-				
 			
-			var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? uix_pb_authorcard_avatar : '<?php echo UixPBFormCore::plug_directory(); ?>images/no-photo.png',
-				social_out_1 = ( uix_pb_authorcard_1_icon != undefined && uix_pb_authorcard_1_icon != '' ) ? '<a href="'+uix_pb_authorcard_1_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon+'"></i></a>' : '',
-				social_out_2 = ( uix_pb_authorcard_2_icon != undefined && uix_pb_authorcard_2_icon != '' ) ? '<a href="'+uix_pb_authorcard_2_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon+'"></i></a>' : '',
-				social_out_3 = ( uix_pb_authorcard_3_icon != undefined && uix_pb_authorcard_3_icon != '' ) ? '<a href="'+uix_pb_authorcard_3_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon+'"></i></a>' : '';
-				
 			
 			if ( tempcode.length > 0 ) {
+				
+				
+				var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? uix_pb_authorcard_avatar : '<?php echo UixPBFormCore::plug_directory(); ?>images/no-photo.png',
+					social_out_1 = ( uix_pb_authorcard_1_icon != undefined && uix_pb_authorcard_1_icon != '' ) ? '<a href="'+uix_pb_authorcard_1_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon+'"></i></a>' : '',
+					social_out_2 = ( uix_pb_authorcard_2_icon != undefined && uix_pb_authorcard_2_icon != '' ) ? '<a href="'+uix_pb_authorcard_2_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon+'"></i></a>' : '',
+					social_out_3 = ( uix_pb_authorcard_3_icon != undefined && uix_pb_authorcard_3_icon != '' ) ? '<a href="'+uix_pb_authorcard_3_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon+'"></i></a>' : '';
+
+				
+				
+				//---
 				tempcode = tempcode
 								  .replace(/{name}/g, uix_pb_authorcard_name )
 								  .replace(/{name_attr}/g, uixpbform_htmlEncode( uix_pb_authorcard_name ) )
@@ -418,7 +421,8 @@ if ( $sid >= 0 && is_admin() ) {
 								  .replace(/{social_2}/g, social_out_2 )
 								  .replace(/{social_3}/g, social_out_3 );
 								  
-								
+					
+							
 				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_authorcard_temp' ); ?>" ).val( tempcode );
 			}
 			

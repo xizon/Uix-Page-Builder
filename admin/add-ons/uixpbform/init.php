@@ -535,8 +535,15 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			  );  
 	
 			 if ( $str ) {
-				 preg_match_all( '/<tr.*?'.$class.'">(.*?)<\/tr>/is', $str, $match );
-				 $v = str_replace( $searcharray[ 'list_str' ], $replacearray[ 'list_str' ], $match[1][0] );
+				 
+				 $v = $str;
+				 
+				 $matchCount = preg_match_all( '/<tr.*?'.$class.'">(.*?)<\/tr>/is', $v, $match );
+				 
+				 if ( $matchCount > 0 ) {
+					 $v = str_replace( $searcharray[ 'list_str' ], $replacearray[ 'list_str' ], $match[1][0] );
+				 }
+				 
 				 $v = preg_replace( '/<th.*?<\/th>/', '', $v );
 				
 				//inscure browser

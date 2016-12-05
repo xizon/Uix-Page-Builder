@@ -603,7 +603,7 @@ class UixPageBuilder {
 		$widget_ID         = $section_row;
 		
 		//Clone content
-		$data = '<span class="dynamic-row dynamic-addnow">'.$clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'">&times;</a></div></span>';
+		$data = '<span class="dynamic-row dynamic-addnow">'.$clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'-'.$col_id.'">&times;</a></div></span>';
 	
 		$data = str_replace( 'data-list="0"', 'data-list="1"',
 			   str_replace( 'toggle-row', 'toggle-row toggle-row-clone-list',

@@ -87,7 +87,7 @@ if ( $sid >= 0 ) {
  */
 $uix_pb_code_info             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_code_info', '' );
 $uix_pb_code_info_chk         = $uix_pb_code_info;
-$uix_pb_code_moreoptions      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_code_moreoptions', 0 ); // 0:false  1:true
+$uix_pb_code_moreoptions      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_code_moreoptions', 0 ); // 0:close  1:open
 $uix_pb_code_moreoptions_chk  = ( $uix_pb_code_moreoptions == 1 ) ? true : false;
 $uix_pb_code_font             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_code_font', 0 ); // 0:false  1:true
 $uix_pb_code_font_chk         = ( $uix_pb_code_font == 1 ) ? true : false;
@@ -197,7 +197,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'toggle',
 			'default'        => array(
-									'btn_text'      => __( 'other color', 'uix-pagebuilder' ),
+									'btn_text'      => __( 'font color', 'uix-pagebuilder' ),
 									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_code_color_other' ).'_class' ]
 								)
 		
@@ -260,7 +260,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Insert Code', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Code', 'uix-pagebuilder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -288,7 +288,7 @@ if ( $sid >= 0 && is_admin() ) {
 	$( document ).ready( function() {
 		
 		
-		$( document ).on( "input change keyup focusin focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
 			
 			var tempcode                 = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
 			    uix_pb_code_font_chk     = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_code_font' ); ?>-checkbox' ).is( ":checked" ),
@@ -297,12 +297,13 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_code_color_other  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_code_color_other' ); ?>' ).val();
 				
 	
-				
-			if ( uix_pb_code_font_chk === true ) uix_pb_code_info_chk = '<span style="font-size: 2em">'+uix_pb_code_info_chk+'</span>';
-			if ( uix_pb_code_color_other != '' ) uix_pb_code_info_chk = '<span style="color: '+uix_pb_code_color_other+'">'+uix_pb_code_info_chk+'</span>';
-				
-
 			if ( tempcode.length > 0 ) {
+				
+				if ( uix_pb_code_font_chk === true ) uix_pb_code_info_chk = '<span style="font-size: 2em">'+uix_pb_code_info_chk+'</span>';
+				if ( uix_pb_code_color_other != '' ) uix_pb_code_info_chk = '<span style="color: '+uix_pb_code_color_other+'">'+uix_pb_code_info_chk+'</span>';
+					
+
+				//---
 				
 				tempcode = tempcode.replace(/{content}/g, uix_pb_code_info_chk );
 								
