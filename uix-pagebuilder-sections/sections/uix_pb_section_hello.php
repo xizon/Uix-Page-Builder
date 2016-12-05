@@ -13,7 +13,9 @@ $form_id = 'uix_pb_section_hello';
 //clone list
 $clone_trigger_id        = 'uix_pb_hello_list';    // ID of clone trigger 
 $clone_max               = 4;                     // Maximum of clone form 
-$clone_list_toggle_class = '';                    // Clone list of toggle class value
+
+//clone list of toggle class value
+$clone_list_toggle_class = '#{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_toggle_url' ).', #{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_toggle_icon' ).'';                    
 
 
 /**
@@ -103,9 +105,6 @@ $uix_pb_textarea            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_
 //toggle
 $uix_pb_toggle                = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_toggle', 0 ); // 0:close  1:open
 
-//clone list toggle
-$uix_pb_listitem_toggle       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_toggle', 0 ); // 0:close  1:open
-
 
 //toggle for switch
 $uix_pb_checkbox_toggle       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_checkbox_toggle', 0 ); // 0:close  1:open
@@ -125,8 +124,9 @@ $uix_pb_shortunitstext_units  = UixPageBuilder::fvalue( $colid, $sid, $item, 'ui
 
 
 //dynamic adding input
-$uix_pb_listitem_imgURL      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_imgURL', '' );
+$uix_pb_listitem_imgURL       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_imgURL', '' );
 $uix_pb_listitem_imgtitle     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_imgtitle', '' );
+$uix_pb_listitem_toggle       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_toggle', 0 ); // 0:close  1:open
 $uix_pb_listitem_toggle_url   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_toggle_url', '' );
 $uix_pb_listitem_toggle_icon  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_toggle_icon', '' );
 
@@ -780,6 +780,46 @@ if ( $sid == -1 && is_admin() ) {
  */
 if ( $sid >= 0 && is_admin() ) {
 	echo $form_html;	
+	
+    /*-- Dynamic Adding Input ( Default Value ) --*/
+	for ( $i = 2; $i <= $clone_max; $i++ ) {
+		$uid = $i.'-';
+		$field = 'uix_pb_listitem_imgURL';
+		if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$uid.'['.$field.']['.$sid.']', $item ) ) {
+			
+			$cur_id        = $i;
+			$cur_form_id   = '#'.$uid.$field;
+			$value         =  [
+								array(
+									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_imgURL]['.$sid.']' ],
+									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_imgURL]['.$sid.']' ]
+								),
+								array(
+									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_imgtitle]['.$sid.']' ],
+									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_imgtitle]['.$sid.']' ]
+								),
+								array(
+									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_toggle]['.$sid.']' ],
+									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_toggle]['.$sid.']' ]
+								),
+								array(
+									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_toggle_url]['.$sid.']' ],
+									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_toggle_url]['.$sid.']' ]
+								),
+								array(
+									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_toggle_icon]['.$sid.']' ],
+									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_toggle_icon]['.$sid.']' ]
+								)	
+																					
+								
+								
+			                  ];
+							  
+			UixPageBuilder::push_cloneform( $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
+	
+		} 
+	}
+	
 	?>
     
  <script type="text/javascript">

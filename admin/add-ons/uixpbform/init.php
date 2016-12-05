@@ -516,7 +516,6 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			 $searcharray[ 'list_str' ] = array(
 				   'data-insert-preview="', //image
 				   'data-insert-img="', //image
-				   'pushinputID=',//icon
 				   'id=',//input,textarea
 				   '|[]',//name
 				   '<td>',
@@ -525,9 +524,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			
 			  );
 			  $replacearray[ 'list_str' ] = array(
-				   'data-insert-preview="{dataID}', 
-				   'data-insert-img="{dataID}', 
-				   'pushinputID={dataID}', 
+				   'data-insert-preview="{colID}', 
+				   'data-insert-img="{colID}',
 				   'data-id=',
 				   '|[{columnid}]',
 				   '',

@@ -158,6 +158,7 @@ jQuery( document ).ready( function() {
 			cloneCode = cloneCode.replace( /{multID}/g, cur_toggleTargetID );
 			cloneCode = cloneCode.replace( /{index}/g, '\['+widget_ID+'\]' );
 			cloneCode = cloneCode.replace( /{columnid}/g, cur_colid );
+			cloneCode = cloneCode.replace( /{colID}/g, ''+btnINdex+'-section_'+widget_ID+'__'+cur_colid.replace( 'col-item-', '' ) );
 			
 			jQuery( cur_appendID ).after( cloneCode );
 			jQuery( this ).attr( 'data-index',btnINdex+1 );
@@ -179,9 +180,13 @@ jQuery( document ).ready( function() {
 		jQuery( '.wp-color-input' ).wpColorPicker();		 
 	 
 		//toggle default
-		jQuery( '.uixpbform_btn_trigger-toggleshow.open' ).each( function()  {
-			jQuery( this ).uixpbform_toggleshow();
-		});
+		jQuery( '.uixpbform_btn_trigger-toggleshow' ).each( function()  {
+			if ( jQuery( this ).closest( '.uixpbform-box' ).find( 'input' ).val() == 1 ) {
+				jQuery( this ).uixpbform_toggleshow();
+			}	
+		});	
+		
+		
 		jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
 
 
@@ -400,6 +405,8 @@ jQuery( document ).ready( function() {
 				cur_targetID = cur_targetCloneID;
 			}
 			
+			
+			
 			if ( cur_list == 1 ) {
 				
 				//Dynamic elements
@@ -465,9 +472,11 @@ jQuery( document ).ready( function() {
 				jQuery( '.wp-color-input' ).wpColorPicker();		 
 			 
 				//toggle default
-				jQuery( '.uixpbform_btn_trigger-toggleshow.open' ).each( function()  {
-					jQuery( this ).uixpbform_toggleshow();
-				});
+				jQuery( '.uixpbform_btn_trigger-toggleshow' ).each( function()  {
+					if ( jQuery( this ).closest( '.uixpbform-box' ).find( 'input' ).val() == 1 ) {
+						jQuery( this ).uixpbform_toggleshow();
+					}	
+				});	
 				jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
 						
 				

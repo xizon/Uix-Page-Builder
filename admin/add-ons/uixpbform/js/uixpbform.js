@@ -91,9 +91,11 @@
 							$( '.wp-color-input' ).wpColorPicker();
 							
 							//toggle default
-							$( '.uixpbform_btn_trigger-toggleshow.open' ).each( function()  {
-								$( this ).uixpbform_toggleshow();
-							});
+							$( '.uixpbform_btn_trigger-toggleshow' ).each( function()  {
+								if ( $( this ).closest( '.uixpbform-box' ).find( 'input' ).val() == 1 ) {
+									$( this ).uixpbform_toggleshow();
+								}	
+							});	
 							$( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
 							
 							//Close

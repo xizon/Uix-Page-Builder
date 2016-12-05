@@ -599,16 +599,13 @@ class UixPageBuilder {
 	 */
 	public static function push_cloneform( $clone_trigger_id, $cur_id, $col_id, $clone_value, $section_row, $value, $clone_list_toggle_class = '' ) {
 		
-		$toggle_target_ID  = str_replace( '{dataID}', ''.$cur_id.'-', $clone_list_toggle_class );
 		$widget_ID         = $section_row;
+		
+		$toggle_target_ID  = str_replace( '{colID}', ''.$cur_id.'-'.str_replace( 'col-item-', 'section_'.$widget_ID.'__', $col_id ), $clone_list_toggle_class );
 		
 		//Clone content
 		$data = '<span class="dynamic-row dynamic-addnow">'.$clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'-'.$col_id.'">&times;</a></div></span>';
 	
-		$data = str_replace( 'data-list="0"', 'data-list="1"',
-			   str_replace( 'toggle-row', 'toggle-row toggle-row-clone-list',
-			   $data 
-			   ) );
 			 
 		//Clone code
 		$data = str_replace( '{index}', '['.$widget_ID.']',
@@ -621,13 +618,28 @@ class UixPageBuilder {
 			   $data 
 			   ) ) ) ) ) ) );
 		
+		
+		//Toggle elements
+		$data = str_replace( 'uixpbform_btn_trigger-toggleshow open', 'uixpbform_btn_trigger-toggleshow',
+			   $data 
+			   );		
+		
+		
 		//Default value
 		if ( $value && is_array( $value ) ) {
 			foreach ( $value as $t_value ) {
-				$data = str_replace( $t_value[ 'replace' ], $t_value[ 'default' ], $data );
+				$data = str_replace( '"'.$t_value[ 'replace' ].'"', '"'.$t_value[ 'default' ].'"', $data );
+				$data = str_replace( '>'.$t_value[ 'replace' ].'<', '>'.$t_value[ 'default' ].'<', $data );
 			}	
 		}
+		
+		//Clone list classes
+		$data = str_replace( 'data-list="0"', 'data-list="1"',
+			   str_replace( 'toggle-row', 'toggle-row toggle-row-clone-list',
+			   $data 
+			   ) );
 			   
+			   	   
 		echo "<script type='text/javascript'>jQuery(document).uixpbform_dynamicFormInit({cloneCode:'{$data}'});</script>";
 	}
 	

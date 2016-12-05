@@ -13,7 +13,9 @@ $form_id                 = 'uix_pb_section_accordion';
 //clone list
 $clone_trigger_id        = 'uix_pb_accordion_list';    // ID of clone trigger 
 $clone_max               = 5;                          // Maximum of clone form 
-$clone_list_toggle_class = '';                         // Clone list of toggle class value
+
+//clone list of toggle class value
+$clone_list_toggle_class = '';
 
 
 /**
