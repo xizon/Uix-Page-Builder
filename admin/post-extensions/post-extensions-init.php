@@ -99,22 +99,14 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_type_opti
     </div>
     
     <div class="uix-metabox-group">
-        <h3><?php _e( 'Automatically Generated Menu', 'uix-pagebuilder' ); ?></h3>
+        <h3><?php _e( 'How To Create The One-Page Navigation? Here is an example:', 'uix-pagebuilder' ); ?></h3>
         <div class="uix-metabox-con">
             <p>
-                
-                <label for="uix-pagebuilder-nav">
-                    <input name="uix-pagebuilder-nav" type="radio" value="enable" <?php echo ( get_post_meta( $object->ID, 'uix-pagebuilder-nav', true ) == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-pagebuilder' ); ?>
-                </label>
-                
-                <label for="uix-pagebuilder-nav2">
-                    <input name="uix-pagebuilder-nav" type="radio" value="disable" <?php echo ( get_post_meta( $object->ID, 'uix-pagebuilder-nav', true ) == 'disable'  || empty( get_post_meta( $object->ID, 'uix-pagebuilder-nav', true ) )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-pagebuilder' ); ?>
-                </label>  
-        
-            </p>
-            <p class="uix-metabox-note">
-               <?php _e( 'If you have it enabled, this page menu anchor links will be generated automatically.', 'uix-pagebuilder' ); ?>
-            </p>
+             <?php _e( '1. Move the mouse over per row, you can enter <code>my-portfolio</code> in the Custom ID field on the right.', 'uix-pagebuilder' ); ?></p>
+             <p>
+             <?php printf( __( '2. Create a new <a href="%1$s">menu</a>, and add a Custom Link for each menu item you plan on having. For each menu item, enter an id that you will assign later to the corresponding section. For example, for the menu item <code>My Portfolio</code>, you would enter <code>#my-portfolio</code> in the URL field.', 'my-text-domain' ), admin_url( "nav-menus.php" ) ); ?>
+             </p>
+            
 
         </div>
 
@@ -238,6 +230,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 						size_y      : wgd.size_y, 
 						content     : jQuery( $w[0] ).find( '.content-box' ).val(),
 						secindex    : jQuery( $w[0] ).find( '.sid-box' ).val(),
+						customid    : gridsterStrToSlug( jQuery( $w[0] ).find( '.cusid-box' ).val() ),
 						title       : jQuery( $w[0] ).find( '.title-box' ).val()
 						
 					} ;
@@ -258,7 +251,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					titleid    = 'title-data-'+uid,
 					contentid  = 'content-data-'+uid;
 			
-				gridster.gridsterAddWidget( '<li class="uix-pagebuilder-gridster-widget" data-id="'+uid+'" data-row="'+saved_data[iii].row+'" data-col="'+saved_data[iii].col+'" data-sizex="'+saved_data[iii].size_x+'" data-sizey="'+saved_data[iii].size_y+'"><div class="uix-pagebuilder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-pagebuilder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ gridsterHtmlEscape( saved_data[iii].title ) +'"><input type="hidden" class="sid-box" value="'+saved_data[iii].secindex+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-pagebuilder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+gridsterHtmlUnescape( saved_data[iii].content )+'</textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', saved_data[iii].size_x, saved_data[iii].size_y, saved_data[iii].col, saved_data[iii].row );
+				gridster.gridsterAddWidget( '<li class="uix-pagebuilder-gridster-widget" data-id="'+uid+'" data-row="'+saved_data[iii].row+'" data-col="'+saved_data[iii].col+'" data-sizex="'+saved_data[iii].size_x+'" data-sizey="'+saved_data[iii].size_y+'"><div class="uix-pagebuilder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-pagebuilder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ gridsterHtmlEscape( saved_data[iii].title ) +'"><span class="cusid-wrapper"><?php _e( 'Custom ID: ', 'uix-pagebuilder' ); ?><input type="text" size="10" class="cusid-box" value="'+saved_data[iii].customid+'"></span><input type="hidden" class="sid-box" value="'+saved_data[iii].secindex+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-pagebuilder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+gridsterHtmlUnescape( saved_data[iii].content )+'</textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', saved_data[iii].size_x, saved_data[iii].size_y, saved_data[iii].col, saved_data[iii].row );
 				
 				
 				if ( saved_data[iii].content != '' ) {
@@ -405,7 +398,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 				uid  = gLi;
 		
 			
-			gridster.gridsterAddWidget( '<li class="uix-pagebuilder-gridster-widget" data-id="'+uid+'"><div class="uix-pagebuilder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-pagebuilder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-pagebuilder' ); ?> '+uid+'"><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-pagebuilder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', 1, 1 ).fadeIn( 100, function() {
+			gridster.gridsterAddWidget( '<li class="uix-pagebuilder-gridster-widget" data-id="'+uid+'"><div class="uix-pagebuilder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-pagebuilder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-pagebuilder' ); ?> '+uid+'"><span class="cusid-wrapper"><?php _e( 'Custom ID: ', 'uix-pagebuilder' ); ?><input type="text" size="10" class="cusid-box" value="section-'+uid+'"></span><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-pagebuilder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', 1, 1 ).fadeIn( 100, function() {
 					gridsterInputsave();
 			});
 			
@@ -477,7 +470,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 			jQuery( document ).ready( function() {  
 				jQuery( '.gridster ul > li' ).each( function() {
 					var $this = jQuery( this );
-					$this.find( '.content-box, .title-box' ).on( 'input change keyup', function() {
+					$this.find( '.content-box, .title-box, .cusid-box' ).on( 'change keyup', function() {
 						uixPBFormDataSave();
 					});
 		
@@ -514,6 +507,20 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 					.replace(/'/g, "&#39;")
 					.replace(/</g, '&lt;')
 					.replace(/>/g, '&gt;');
+	
+			}
+		}
+	
+		function gridsterStrToSlug( str ){
+			if ( typeof( str ) == 'string' && str.length > 0 ) {
+				var pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]");
+				var rs = ""; 
+				for (var i = 0; i < str.length; i++) { 
+					rs = rs+str.substr( i, 1 ).replace( pattern, '' ); 
+				} 
+				
+				rs = rs.replace(/ /g, '-').toLowerCase();
+				return rs;
 	
 			}
 		}
@@ -895,17 +902,11 @@ if ( !function_exists( 'uix_pagebuilder_page_save_custom_meta_box' ) ) {
 		
 	
 		$layoutdata 	                         = wp_unslash( $_POST[ 'uix-pagebuilder-layoutdata' ] );
-		$buildernav 	                         = sanitize_text_field( $_POST[ 'uix-pagebuilder-nav' ] );
 		$builderstatus 	                     = sanitize_text_field( $_POST[ 'uix-pagebuilder-status' ] );
 		
 		
-		if ( UixPageBuilder::inc_str( $layoutdata, '"content":""' ) || $layoutdata == '[]' ) {
-			//$layoutdata = '';
-		}
-		
 		
 		if( isset( $_POST[ 'uix-pagebuilder-layoutdata' ] ) ) update_post_meta( $post_id, 'uix-pagebuilder-layoutdata', $layoutdata );
-		if( isset( $_POST[ 'uix-pagebuilder-nav' ] ) ) update_post_meta( $post_id, 'uix-pagebuilder-nav', $buildernav );
 		if( isset( $_POST[ 'uix-pagebuilder-status' ] ) ) update_post_meta( $post_id, 'uix-pagebuilder-status', $builderstatus );
 		
 		

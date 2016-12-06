@@ -41,10 +41,13 @@ get_header(); ?>
 				$row                  = $value->row;
 				$size_x               = $value->size_x;
 				$section_id           = $value->secindex;
+				$custom_id            = $value->customid;
 				$section_title        = $value->title;
 				$element_code         = '';
 				$element_grid_before  = '';
 				$element_grid_after   = '</div>';
+				
+				if ( empty( $custom_id ) ) $custom_id = 'uix-pagebuilder-section-'.$row;
 				
 			
 				if ( $con && is_array( $con ) ) {
@@ -98,9 +101,9 @@ get_header(); ?>
 						}
 										
 						//Section container
-						echo  '<div class="uix-pagebuilder-section" id="uix-pagebuilder-section-'.$row.'" data-row="'.$section_id.'"><div class="uix-pb-row">'.$element_code.'</div></div>'; 
+						echo  '<div class="uix-pagebuilder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'"><div class="uix-pb-row">'.$element_code.'</div></div>'; 
 						//WP menu title of anchor link
-						echo "\n".'<div data-pb-section-title="'.esc_attr( $section_title ).'"></div>'."\n<!-- ".wp_kses( __( 'End Section', 'uix-pagebuilder' ), wp_kses_allowed_html( 'post' ) )." -->\n\n";	
+						echo "\n<!-- ".wp_kses( __( 'End Section', 'uix-pagebuilder' ), wp_kses_allowed_html( 'post' ) )." -->\n\n";	
 						
 
 						

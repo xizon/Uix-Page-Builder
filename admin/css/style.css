@@ -117,6 +117,8 @@
 	color: #A3A3A3;
 }
 
+
+
 /* Gridster Core
 -------------------------------------------------------------- */
 .uix-pagebuilder-gridster {
@@ -196,6 +198,28 @@
 	transform: scale(1.2);
 	border: 1px solid #D9D9D9;
 }
+
+
+
+.uix-pagebuilder-gridster-widget .cusid-wrapper {
+	position: absolute;
+	right: 80px;
+	top: 3px;
+	display: none;
+	font-size: 10px;
+	font-weight: 600;
+}
+
+.uix-pagebuilder-gridster-widget:hover .cusid-wrapper {
+	display: block;
+}
+
+.uix-pagebuilder-gridster-widget .cusid-wrapper input {
+	color: #8F8F8F;
+	font-size: 10px;
+}
+
+
 
 /* Add button*/
 .uix-pagebuilder-gridster-addbtn {

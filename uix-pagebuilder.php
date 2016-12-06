@@ -78,6 +78,7 @@ class UixPageBuilder {
 	 */
 	public static function includes() {
 		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
+		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
 	}
 	
 	
@@ -320,9 +321,10 @@ class UixPageBuilder {
 			   str_replace( '&quot;,&quot;title&quot;:&quot;', '","title":"',
 			   str_replace( '&quot;content&quot;:&quot;', '"content":"',
 			   str_replace( '&quot;,&quot;secindex&quot;:&quot;', '","secindex":"',
+			   str_replace( '&quot;,&quot;customid&quot;:&quot;', '","customid":"',
 			   str_replace( '&quot;}', '"}',
 			   $data 
-			   ) ) ) ) ) ) ) );
+			   ) ) ) ) ) ) ) ) );
 			   
 		if ( isset( $data ) ) {
 			
