@@ -108,7 +108,7 @@ $uix_pb_bar_trackcolor_other            = UixPageBuilder::fvalue( $colid, $sid, 
 $uix_pb_bar_percent_icon_color          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color', '#473f3f' );
 $uix_pb_bar_percent_icon_color_toggle   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color_toggle', 0 ); // 0:close  1:open
 $uix_pb_bar_percent_icon_color_other    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color_other', '' );
-$uix_pb_bar_title                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_title', '' );
+$uix_pb_bar_title                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_title', __( 'Title', 'uix-pagebuilder' ) );
 $uix_pb_bar_desc                        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_desc', '' );
 $uix_pb_bar_show_units                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_show_units', '%' );
 
@@ -603,51 +603,52 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_bar_show_units                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_show_units' ); ?>' ).val();
 				
 	
-			if ( tempcode.length > 0 ) {
-				
-				var  uix_pb_bar_result_color = ( uix_pb_bar_color_other != '' ) ? uix_pb_bar_color_other : uix_pb_bar_color,
-					 uix_pb_bar_result_trackcolor = ( uix_pb_bar_trackcolor_other != '' ) ? uix_pb_bar_trackcolor_other : uix_pb_bar_trackcolor,
-					 uix_pb_bar_result_percent_icon_color = ( uix_pb_bar_percent_icon_color_other != '' ) ? uix_pb_bar_percent_icon_color_other : uix_pb_bar_percent_icon_color,
-					 uix_pb_bar_result_size = ( uix_pb_bar_shape == 'circular' ) ? "size='"+uixpbform_htmlEncode( uix_pb_bar_circular_size )+"px'" : "size='"+uixpbform_htmlEncode( uix_pb_bar_square_size+uix_pb_bar_square_size_units )+"'";
-					 
-					 
-				
-				if ( uix_pb_bar_shape == 'square' ) {
-					
-					
-					tempcode += '<div class="uix-pb-bar-box uix-pb-bar-box-square" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px; width:'+uix_pb_bar_result_size+';">';
-					tempcode += '<div class="uix-pb-bar-info">';
-					tempcode += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
-					tempcode += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
-					tempcode += '</div>';
-					tempcode += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor='+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
-					tempcode += '<span class="uix-pb-bar-percent"></span>';
-					tempcode += '<span class="uix-pb-bar-placeholder">0</span>';
-					tempcode += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;">'+( !empty( uix_pb_bar_icon )  ? '<i class="fa fa-'+uixpbform_htmlEncode( uix_pb_bar_icon )+'"></i>' : ''+uix_pb_bar_percent+''+uix_pb_bar_show_units+'' )+'</span>';
-					tempcode += '</div>';
-					tempcode += '</div>';
-				
-					
-					
-				} else {
-					
-					tempcode += '<div id="uix-pb-bar-box-'+$id+'" class="uix-pb-bar-box uix-pb-bar-box-circular" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px;">';
-					tempcode += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
-					tempcode += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;"></span>';
-					tempcode += '</div>';
-					tempcode += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
-					tempcode += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
-					tempcode += '</div>';
-					
-					
-				}
-
-				//---
-				
-								
-				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_bar_temp' ); ?>" ).val( tempcode );
-			}
+		
 			
+			var  uix_pb_bar_result_color = ( uix_pb_bar_color_other != '' ) ? uix_pb_bar_color_other : uix_pb_bar_color,
+				 uix_pb_bar_result_trackcolor = ( uix_pb_bar_trackcolor_other != '' ) ? uix_pb_bar_trackcolor_other : uix_pb_bar_trackcolor,
+				 uix_pb_bar_result_percent_icon_color = ( uix_pb_bar_percent_icon_color_other != '' ) ? uix_pb_bar_percent_icon_color_other : uix_pb_bar_percent_icon_color,
+				 uix_pb_bar_result_size = ( uix_pb_bar_shape == 'circular' ) ? uixpbform_htmlEncode( uix_pb_bar_circular_size )+"px" : uixpbform_htmlEncode( uix_pb_bar_square_size+uix_pb_bar_square_size_units ),
+				 uix_pb_bar_result_icon = ( uix_pb_bar_icon != '' ) ? '<i class="fa fa-'+uixpbform_htmlEncode( uix_pb_bar_icon )+'"></i>' : uix_pb_bar_percent+uix_pb_bar_show_units;
+				 
+				 
+			
+			if ( uix_pb_bar_shape == 'square' ) {
+				
+				
+				tempcode += '<div class="uix-pb-bar-box uix-pb-bar-box-square" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px;">';
+				tempcode += '<div style="width:'+uix_pb_bar_result_size+';">';
+				tempcode += '<div class="uix-pb-bar-info">';
+				tempcode += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
+				tempcode += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
+				tempcode += '</div>';
+				tempcode += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
+				tempcode += '<span class="uix-pb-bar-percent"></span>';
+				tempcode += '<span class="uix-pb-bar-placeholder">0</span>';
+				tempcode += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;">'+uix_pb_bar_result_icon+'</span>';
+				tempcode += '</div>';
+				tempcode += '</div>';
+				tempcode += '</div>';
+			
+				
+				
+			} else {
+				
+				tempcode += '<div class="uix-pb-bar-box uix-pb-bar-box-circular" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px;">';
+				tempcode += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
+				tempcode += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;"></span>';
+				tempcode += '</div>';
+				tempcode += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
+				tempcode += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
+				tempcode += '</div>';
+				
+				
+			}
+
+			//---
+			
+							
+			$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_bar_temp' ); ?>" ).val( tempcode );
 			
 			
 			

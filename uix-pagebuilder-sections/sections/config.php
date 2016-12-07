@@ -1,4 +1,7 @@
 <?php 
+/*
+ * Palette: #18AFD3, #f57e57, #4c6575, #3ED3A9, #F65673, #4C7575, #D37918, #5899F6, #766A4D, #AD3DAC, #77D57D, #6D5468, #BC2D7C, #6AE1A4, #70525B, #4F44A6, #C2CE7D, #5C566B
+*/
 $uix_pb_config = [
 	    
 		array(
