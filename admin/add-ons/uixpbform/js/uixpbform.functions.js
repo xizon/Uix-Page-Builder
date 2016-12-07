@@ -76,7 +76,7 @@ jQuery( document ).ready( function() {
 		e.preventDefault();
 		
 		var cur_targetID          = jQuery( this ).attr( "data-targetid" ),
-		    cur_linkedBtnID       = '#' + jQuery( this ).attr( "data-linked-btnid" ),
+		    cur_removeID          = jQuery( this ).attr( "data-remove" ),
 			cur_targetCloneID     = jQuery( this ).attr( "data-targetid-clone" ),
 			cur_list              = jQuery( this ).attr( "data-list" );
 			
@@ -85,22 +85,28 @@ jQuery( document ).ready( function() {
 			cur_targetID = cur_targetCloneID;
 		}
 		
+	
 		if ( cur_list == 1 ) {
 			//Dynamic elements
 			
-			jQuery( cur_targetID ).parent().parent( '.toggle-row' ).hide();
-			jQuery( cur_targetID ).parent().parent( '.toggle-row' ).find( '.uixpbform-box' ).hide();
+			jQuery( cur_targetID ).parent().parent( '.toggle-row' ).show();
+			jQuery( cur_targetID ).parent().parent( '.toggle-row' ).find( '.uixpbform-box' ).show();
+			
+			jQuery( cur_removeID ).parent().parent( '.toggle-row' ).hide();
+			jQuery( cur_removeID ).parent().parent( '.toggle-row' ).find( '.uixpbform-box' ).hide();		
+			
 
 		} else {
-			jQuery( cur_targetID ).hide();
-			jQuery( cur_targetID ).find( 'th' ).find( 'label' ).hide();
-			jQuery( cur_targetID ).find( 'td' ).find( '.uixpbform-box' ).hide();
+			
+			jQuery( cur_targetID ).show();
+			jQuery( cur_targetID ).find( 'th' ).find( 'label' ).show();
+			jQuery( cur_targetID ).find( 'td' ).find( '.uixpbform-box' ).show();
+			
+			jQuery( cur_removeID ).hide();
+			jQuery( cur_removeID ).find( 'th' ).find( 'label' ).hide();
+			jQuery( cur_removeID ).find( 'td' ).find( '.uixpbform-box' ).hide();
 	
 		}
-		
-		
-		//Association checkbox action
-		jQuery( document ).uixpbform_toggleSwitchCheckbox( { btnID: cur_linkedBtnID } );
 		
 		
 		
@@ -173,6 +179,7 @@ jQuery( document ).ready( function() {
 		
 
 
+        /*-- Initializes the form state --*/
 		//icon list with the jQuery AJAX method
 		jQuery( '.icon-selector' ).uixpbform_iconSelector();
 			  
@@ -188,9 +195,14 @@ jQuery( document ).ready( function() {
 		
 		
 		jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+		jQuery( '.uixpbform_btn_trigger-toggleswitch_radio' ).uixpbform_toggleSwitchRadioStatus();
+		
+
+		//insert media
+		jQuery( '.uixpbform_btn_trigger-upload' ).uixpbform_mediaStatus();
 
 
-		//focus
+        /*-- The form focus --*/
 		var srow = '.uixpbform-form-container .dynamic-row';
 		jQuery( srow ).mouseenter(function() {
 			jQuery( srow ).animate( { opacity: 0.3 }, 0 );
@@ -242,10 +254,15 @@ jQuery( document ).ready( function() {
 		var cur_targetID    = '#' + jQuery( this ).parent().attr( "data-targetid" ),
 			cur_prop        = jQuery( this ).parent().attr( "data-prop" );
 		
+	
 		var _curValue = jQuery( this ).attr( 'data-value' );
 		jQuery( this ).parent().find( 'span' ).removeClass( 'active' );
 		jQuery( cur_targetID ).val( _curValue );
 		jQuery( this ).addClass( 'active' );
+		
+		//Dynamic listening for the latest value
+		jQuery( cur_targetID ).focus().blur();
+		
 	} );	
 	
 	
@@ -272,7 +289,11 @@ jQuery( document ).ready( function() {
 			_result = _tarValue.replace( _curValue + ',', '' );
 		}
 
-		jQuery( cur_targetID ).val( _result.substring( 0, _result.length-1 ) );		
+		jQuery( cur_targetID ).val( _result.substring( 0, _result.length-1 ) );	
+		
+		//Dynamic listening for the latest value
+		jQuery( cur_targetID ).focus().blur();
+		
 		
 	} );	
 	
@@ -341,8 +362,6 @@ jQuery( document ).ready( function() {
 		
 			}
 		
-			
-			
 		} );
 		 
 		upload_frame.open();
@@ -383,6 +402,85 @@ jQuery( document ).ready( function() {
 	});
 		
 });
+
+/*! 
+ * ************************************
+ * Insert media  status
+ *************************************
+ */	
+ ( function( $ ) {
+  jQuery.fn.uixpbform_mediaStatus = function( options ) {
+		var settings=$.extend( {}, options );
+		return this.each( function() {
+			
+			var cur_btnID       = '#' + jQuery( this ).attr( "data-btnid" ),
+			    cur_closebtnID  = '#' + jQuery( this ).attr( "data-closebtnid" ),
+				cur_targetID    = '#' + jQuery( this ).attr( "data-insert-img" ),
+				cur_prop        = jQuery( this ).attr( "data-prop" ),
+				propIDPrefix    = cur_btnID.replace( '#', '' )
+				imgvalue        = jQuery( cur_targetID ).val();
+				
+					
+			if ( jQuery( cur_targetID ).length > 0 ) {
+				
+				if ( imgvalue.length > 0 ) {
+					
+					/*-- Show image properties and remove button --*/
+					jQuery( cur_closebtnID ).show().css( { 'display': 'block' } );
+					
+					if ( cur_prop ) {
+						jQuery( "." + propIDPrefix + '_repeat' ).show();
+						jQuery( "." + propIDPrefix + '_position' ).show();
+						jQuery( "." + propIDPrefix + '_attachment' ).show();
+						jQuery( "." + propIDPrefix + '_size' ).show();
+					
+					}
+					
+								
+					/*-- Delete current picture --*/
+					 if ( cur_closebtnID ){
+						jQuery( document ).on( 'click', cur_closebtnID, function( e ) {
+							e.preventDefault();
+							var _targetImgContainer = jQuery( this ).attr( "data-insert-img" );
+							var _targetPreviewContainer = jQuery( this ).attr( "data-insert-preview" );
+							
+							jQuery( "#" + _targetImgContainer ).val( '' );
+							jQuery( "#" + _targetPreviewContainer ).find( 'img' ).attr( "src",'' );
+							jQuery( "#" + _targetPreviewContainer ).hide();
+							
+							//Upload container
+							if ( _targetPreviewContainer != '' && _targetPreviewContainer != 'none' ) {
+								jQuery( cur_btnID ).parent( '.uixpbform-upbtn-container' ).css( 'height','40px' );
+							}
+							
+							
+							jQuery( this ).hide();
+							
+							//Hide image properties
+							if ( cur_prop ) {
+								jQuery( "." + propIDPrefix + '_repeat' ).hide();
+								jQuery( "." + propIDPrefix + '_position' ).hide();
+								jQuery( "." + propIDPrefix + '_attachment' ).hide();
+								jQuery( "." + propIDPrefix + '_size' ).hide();
+							}
+							
+							
+						} );		
+					
+					 }	
+					
+					
+					
+				}
+				
+			}
+				
+				
+ 
+		} );
+	
+  };
+} )( jQuery );
 
 
 /*! 
@@ -465,6 +563,8 @@ jQuery( document ).ready( function() {
 					jQuery( this ).addClass( 'disable' );
 				}
 				
+				
+				/*-- Initializes the form state --*/
 				//icon list with the jQuery AJAX method
 				jQuery( '.icon-selector' ).uixpbform_iconSelector();
 					  
@@ -478,10 +578,14 @@ jQuery( document ).ready( function() {
 					}	
 				});	
 				jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+				jQuery( '.uixpbform_btn_trigger-toggleswitch_radio' ).uixpbform_toggleSwitchRadioStatus();
+				
+				//insert media
+				jQuery( '.uixpbform_btn_trigger-upload' ).uixpbform_mediaStatus();
 						
 				
 					  
-				//focus
+				/*-- The form focus --*/
 				var srow = '.uixpbform-form-container .dynamic-row';
 				jQuery( srow ).mouseenter(function() {
 					jQuery( srow ).animate( { opacity: 0.3 }, 0 );
@@ -633,55 +737,104 @@ jQuery( document ).ready( function() {
 		var settings=$.extend( {}, options );
 		return this.each( function() {
 			
+			var cur_targetID          = jQuery( this ).attr( "data-targetid" ),
+				cur_linkedNoToggleID  = jQuery( this ).attr( "data-linked-no-toggleid" ),
+				cur_targetCloneID     = jQuery( this ).attr( "data-targetid-clone" ),
+				cur_list              = jQuery( this ).attr( "data-list" ),
+				cur_targetThisID      = '#' + jQuery( this ).attr( "data-this-targetid" );
+				
+			//Dynamic button id
+			if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
+				cur_targetID = cur_targetCloneID;
+			}
 			
-			//--------default status
-			jQuery( this ).each( function()  {
-				var cur_targetID          = jQuery( this ).attr( "data-targetid" ),
-					cur_linkedNoToggleID  = jQuery( this ).attr( "data-linked-no-toggleid" ),
-					cur_targetCloneID     = jQuery( this ).attr( "data-targetid-clone" ),
-					cur_list              = jQuery( this ).attr( "data-list" ),
-					cur_targetThisID      = '#' + jQuery( this ).attr( "data-this-targetid" );
+			if ( cur_list == 1 ) {
+				//Dynamic elements
+				
+				var trid = jQuery( cur_targetID ).parent().parent( '.toggle-row' );
+				
+				if( jQuery( this ).hasClass( 'checked' ) ) {
+					trid.show();
+					trid.find( '.uixpbform-box' ).show();
+					jQuery( cur_targetID ).addClass( 'active' );
 					
-				//Dynamic button id
-				if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
-					cur_targetID = cur_targetCloneID;
 				}
+	
+	
+			} else {
 				
-				if ( cur_list == 1 ) {
-					//Dynamic elements
+				var trid = jQuery( cur_targetID );
+				if( jQuery( this ).hasClass( 'checked' ) ) {
+					trid.show();
+					trid.find( 'th' ).find( 'label' ).show();
+					trid.find( 'td' ).find( '.uixpbform-box' ).show();
 					
-					var trid = jQuery( cur_targetID ).parent().parent( '.toggle-row' );
-					
-					if( jQuery( this ).hasClass( 'checked' ) ) {
-						trid.show();
-						trid.find( '.uixpbform-box' ).show();
-						jQuery( cur_targetID ).addClass( 'active' );
-						
-					}
-		
-		
-				} else {
-					
-					var trid = jQuery( cur_targetID );
-					if( jQuery( this ).hasClass( 'checked' ) ) {
-						trid.show();
-						trid.find( 'th' ).find( 'label' ).show();
-						trid.find( 'td' ).find( '.uixpbform-box' ).show();
-						
-					}
-		
-		
-				}	
+				}
+	
+	
+			}	
 				
-			});
-			
-			
+		
  
 		} );
 	
   };
 } )( jQuery );
 
+
+/*! 
+ * ************************************
+ * Toggle of switch with radio status
+ *************************************
+ */	
+ ( function( $ ) {
+  jQuery.fn.uixpbform_toggleSwitchRadioStatus = function( options ) {
+		var settings=$.extend( {}, options );
+		return this.each( function() {
+			
+			var cur_targetID          = jQuery( this ).attr( "data-targetid" ),
+				cur_removeID          = jQuery( this ).attr( "data-remove" ),
+				cur_targetCloneID     = jQuery( this ).attr( "data-targetid-clone" ),
+				cur_list              = jQuery( this ).attr( "data-list" ),
+				cur_value             = jQuery( this ).closest( '.uixpbform-box' ).find( 'input' ).val();
+				
+			if ( cur_value == jQuery( this ).attr( 'data-value' ) ) {
+				
+				//Dynamic button id
+				if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
+					cur_targetID = cur_targetCloneID;
+				}
+				
+			
+				if ( cur_list == 1 ) {
+					//Dynamic elements
+					
+					jQuery( cur_targetID ).parent().parent( '.toggle-row' ).show();
+					jQuery( cur_targetID ).parent().parent( '.toggle-row' ).find( '.uixpbform-box' ).show();
+					
+					jQuery( cur_removeID ).parent().parent( '.toggle-row' ).hide();
+					jQuery( cur_removeID ).parent().parent( '.toggle-row' ).find( '.uixpbform-box' ).hide();		
+					
+		
+				} else {
+					
+					jQuery( cur_targetID ).show();
+					jQuery( cur_targetID ).find( 'th' ).find( 'label' ).show();
+					jQuery( cur_targetID ).find( 'td' ).find( '.uixpbform-box' ).show();
+					
+					jQuery( cur_removeID ).hide();
+					jQuery( cur_removeID ).find( 'th' ).find( 'label' ).hide();
+					jQuery( cur_removeID ).find( 'td' ).find( '.uixpbform-box' ).hide();
+			
+				}
+	
+			}
+			
+ 
+		} );
+	
+  };
+} )( jQuery );
 
 /*! 
  * ************************************
@@ -735,6 +888,10 @@ jQuery( document ).ready( function() {
 				_v = _v.replace( 'fa fa-', '' );
 				jQuery( targetID ).val(_v);
 				jQuery( previewID ).html( '<i class="fa fa-'+_v+'"></i>' );
+						
+				//Dynamic listening for the latest value
+				jQuery( targetID ).focus().blur();	
+						
 				
 			});
 			

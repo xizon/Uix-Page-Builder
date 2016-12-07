@@ -84,8 +84,9 @@
 							
 							$obj.find( '.ajax-temp' ).html( result );
 							
+							/*-- Initializes the form state --*/
 							//icon list with the jQuery AJAX method
-							$( '.icon-selector' ).uixpbform_iconSelector();
+							$( '.icon-selector' ).uixpbform_iconSelector(); 
 							
 							//color picker
 							$( '.wp-color-input' ).wpColorPicker();
@@ -97,8 +98,13 @@
 								}	
 							});	
 							$( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+							$( '.uixpbform_btn_trigger-toggleswitch_radio' ).uixpbform_toggleSwitchRadioStatus();
 							
-							//Close
+							//insert media
+							$( '.uixpbform_btn_trigger-upload' ).uixpbform_mediaStatus();						
+										
+							
+							/*-- Close --*/
 							$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 								e.preventDefault();
 								$( '.uixpbform-modal-box' ).removeClass( 'active' );

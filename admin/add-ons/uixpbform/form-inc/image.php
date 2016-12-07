@@ -81,20 +81,18 @@ class UixPBFormType_Image {
 							
 								<div class="uixpbform-box">
 								   
-									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_repeat">	
-										  <span data-value="no-repeat" class="active">'.__( 'No Repeat', 'uix-pagebuilder' ).'</span>
-										  <span data-value="repeat" >'.__( 'Tile', 'uix-pagebuilder' ).'</span>
-										  <span data-value="repeat-x" >'.__( 'Tile Horizontally', 'uix-pagebuilder' ).'</span>
-										  <span data-value="repeat-y" >'.__( 'Tile Vertically', 'uix-pagebuilder' ).'</span>
+									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$default[ 'prop_id' ][ 'repeat' ].'">	
+										  <span data-value="no-repeat" '.( $default[ 'prop_value' ][ 'repeat' ] == 'no-repeat' ? 'class="active"' : '' ).' >'.__( 'No Repeat', 'uix-pagebuilder' ).'</span>
+										  <span data-value="repeat" '.( $default[ 'prop_value' ][ 'repeat' ] == 'repeat' ? 'class="active"' : '' ).' >'.__( 'Tile', 'uix-pagebuilder' ).'</span>
+										  <span data-value="repeat-x" '.( $default[ 'prop_value' ][ 'repeat' ] == 'repeat-x' ? 'class="active"' : '' ).' >'.__( 'Tile Horizontally', 'uix-pagebuilder' ).'</span>
+										  <span data-value="repeat-y" '.( $default[ 'prop_value' ][ 'repeat' ] == 'repeat-y' ? 'class="active"' : '' ).' >'.__( 'Tile Vertically', 'uix-pagebuilder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_repeat" value="no-repeat">' : '' ).' 
+									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'repeat' ].'" name="'.$default[ 'prop_name' ][ 'repeat' ].'" value="'.$default[ 'prop_value' ][ 'repeat' ].'">' : '' ).' 
 								
 								</div>
 							</td>
 						</tr> 
-					'."\n";	
-				$jscode .= '';	
-				
+					'."\n";
 				/* ------------ */
 				
 				$field .= '
@@ -104,19 +102,17 @@ class UixPBFormType_Image {
 							
 								<div class="uixpbform-box">
 								   
-									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_position">	
-										  <span data-value="left" class="active">'.__( 'Left', 'uix-pagebuilder' ).'</span>
-										  <span data-value="center" >'.__( 'Center', 'uix-pagebuilder' ).'</span>
-										  <span data-value="right" >'.__( 'Right', 'uix-pagebuilder' ).'</span>
+									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$default[ 'prop_id' ][ 'position' ].'">
+										  <span data-value="left" '.( $default[ 'prop_value' ][ 'position' ] == 'left' ? 'class="active"' : '' ).' >'.__( 'Left', 'uix-pagebuilder' ).'</span>
+										  <span data-value="center" '.( $default[ 'prop_value' ][ 'position' ] == 'center' ? 'class="active"' : '' ).' >'.__( 'Center', 'uix-pagebuilder' ).'</span>
+										  <span data-value="right" '.( $default[ 'prop_value' ][ 'position' ] == 'right' ? 'class="active"' : '' ).' >'.__( 'Right', 'uix-pagebuilder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_position" value="left">' : '' ).' 
+									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'position' ].'" name="'.$default[ 'prop_name' ][ 'position' ].'" value="'.$default[ 'prop_value' ][ 'position' ].'">' : '' ).' 
 								
 								</div>
 							</td>
 						</tr> 
-					'."\n";	
-				$jscode .= '';	
-				
+					'."\n";
 				/* ------------ */
 				
 				$field .= '
@@ -126,18 +122,16 @@ class UixPBFormType_Image {
 							
 								<div class="uixpbform-box">
 								   
-									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_attachment">	
-										  <span data-value="scroll" class="active">'.__( 'Scroll', 'uix-pagebuilder' ).'</span>
-										  <span data-value="fixed" >'.__( 'Fixed', 'uix-pagebuilder' ).'</span>
+									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$default[ 'prop_id' ][ 'attachment' ].'">	
+										  <span data-value="scroll" '.( $default[ 'prop_value' ][ 'attachment' ] == 'scroll' ? 'class="active"' : '' ).' >'.__( 'Scroll', 'uix-pagebuilder' ).'</span>
+										  <span data-value="fixed"  '.( $default[ 'prop_value' ][ 'attachment' ] == 'fixed' ? 'class="active"' : '' ).' >'.__( 'Fixed', 'uix-pagebuilder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_attachment" value="scroll">' : '' ).' 
+									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'attachment' ].'" name="'.$default[ 'prop_name' ][ 'attachment' ].'" value="'.$default[ 'prop_value' ][ 'attachment' ].'">' : '' ).' 
 								
 								</div>
 							</td>
 						</tr> 
-					'."\n";	
-				$jscode .= '';	
-				
+					'."\n";
 				/* ------------ */
 				
 				$field .= '
@@ -147,19 +141,17 @@ class UixPBFormType_Image {
 							
 								<div class="uixpbform-box">
 								   
-									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$id.'_size">	
-									      <span data-value="cover" class="active">'.__( 'Cover', 'uix-pagebuilder' ).'</span>
-									      <span data-value="auto">'.__( 'Auto', 'uix-pagebuilder' ).'</span>
-										  <span data-value="contain">'.__( 'Contain', 'uix-pagebuilder' ).'</span>
+									  <div class="radio uixpbform_btn_trigger-radio" data-targetid="'.$default[ 'prop_id' ][ 'size' ].'">	
+									      <span data-value="cover" '.( $default[ 'prop_value' ][ 'size' ] == 'cover' ? 'class="active"' : '' ).' >'.__( 'Cover', 'uix-pagebuilder' ).'</span>
+									      <span data-value="auto" '.( $default[ 'prop_value' ][ 'size' ] == 'auto' ? 'class="active"' : '' ).'>'.__( 'Auto', 'uix-pagebuilder' ).'</span>
+										  <span data-value="contain" '.( $default[ 'prop_value' ][ 'size' ] == 'contain' ? 'class="active"' : '' ).'>'.__( 'Contain', 'uix-pagebuilder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'_size" value="cover">' : '' ).' 
+									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'size' ].'" name="'.$default[ 'prop_name' ][ 'size' ].'" value="'.$default[ 'prop_value' ][ 'size' ].'">' : '' ).' 
 								
 								</div>
 							</td>
 						</tr> 
-					'."\n";	
-				$jscode .= '';	
-				
+					'."\n";
 				/* ------------ */
 						
 				

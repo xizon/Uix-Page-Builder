@@ -15,6 +15,8 @@
 	3. Section Styles    
 	4. Author Card  
 	5. Accordion 
+	6. Tabs 
+	7. Progress Bar
 	     
 
 
@@ -413,3 +415,265 @@ img.uix-pb-img,
 		display: block;
 	}	  
 		  
+		  
+		  
+/* ====================================================== 
+   6. Tabs                              
+/* ====================================================== */
+.uix-pb-tabs:before,
+.uix-pb-tabs:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+.uix-pb-tabs:after {
+	clear: both;
+}
+ 
+.uix-pb-accordion.uix-pb-tabs{
+	padding-bottom: 0;
+}
+
+	.uix-pb-tabs .uix-pb-tabs-title{
+		margin: 0;
+		padding: 0;
+		position: relative;
+		z-index: 2;
+		font-weight: 600;
+		font-size: 14px;
+	}
+	
+	.uix-pb-tabs .uix-pb-spoiler-group{
+		border: 1px solid #DFDFDF;
+		color: #777;
+		line-height: 1.7;
+		padding: .5em 1.2em;
+		background: #fff;
+		position: relative;
+		z-index: 1;
+		margin-top: -1px;
+		font-size: 13px;
+
+	}
+
+	
+	.uix-pb-tabs .uix-pb-tabs-title:after {
+	  display: table;
+	  content: "";
+	  line-height: 0;
+	}
+	.uix-pb-tabs .uix-pb-tabs-title:after {
+	  clear: both;
+	}
+        
+    .uix-pb-tabs .uix-pb-tabs-title,
+	.uix-pb-tabs .uix-pb-tabs-title li{
+		margin: 0;
+		padding: 0;
+	}
+	
+		.uix-pb-tabs .uix-pb-tabs-title li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			cursor: pointer;
+			padding: .5em 1.2em;
+			border: 1px solid #DFDFDF;
+			margin-left: -1px;
+			float: left;
+			background: #FAFAFA;
+			widows: 1; /*Tabs Analyzing Parameters*/
+			
+		}
+		
+		.uix-pb-tabs .uix-pb-tabs-title li:first-child {
+			margin-left: 0;
+		}
+		
+		.uix-pb-tabs .uix-pb-tabs-title li.active{
+			border-bottom-color: #333;
+			background: #fff;
+			widows: 2; /*Tabs Analyzing Parameters*/
+		}
+	
+	
+	.uix-pb-tabs .uix-pb-spoiler-content {
+		display: none;
+	}
+	
+	.uix-pb-tabs .uix-pb-spoiler-content.active{
+		
+	}
+		.uix-pb-tabs .uix-pb-spoiler-content p {
+			margin-bottom: .2em;
+		}
+	
+
+/* Vertical tabs */
+.uix-pb-tabs.uix-pb-tabs-vertical{
+	padding: 0;
+    border: 1px solid #DFDFDF;
+	margin-bottom: 1.5em;
+}
+
+
+	.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title{
+		display: block;
+		margin: 0;
+		padding: 0;
+		float: left;
+		margin: -1px 0 -1px 0;
+		width: 200px;
+	
+	}
+	
+	.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-spoiler-group{
+		float: left;
+		margin: 0 0 -1px 0;
+		border: none;
+		width: calc(100% - 200px);
+		background: none;
+	}
+	
+	    .uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li {
+			float: none;
+			border-left: none;
+			border-bottom: none;
+			margin-right: auto;
+			margin-left: auto;
+
+		}
+		
+		.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li:last-child {
+			border-bottom: 1px solid #DFDFDF;
+		}
+	
+		.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li.active{
+			border-bottom-color: #DFDFDF;
+			border-right-color: #333;
+		}
+		
+	
+
+/* ----------  */
+
+
+@media (max-width: 768px){
+ 
+		.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title{
+			float: none;
+			margin: 0;
+			width: 100%;
+		
+		}
+		
+		.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-spoiler-group{
+			float: none;
+			margin: 0;
+			width: 100%;
+		}
+
+			.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li {
+				border-right: none;
+				border-bottom: 1px solid #DFDFDF;
+				border-top: none;
+			}
+			
+			.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li.active{
+				border-bottom-color: #333;
+			}
+
+	
+}	
+
+
+/* ====================================================== 
+   7. Progress Bar                     
+/* ====================================================== */
+.uix-pb-bar-box {
+	postiion: relative;
+	display: inline-block;
+	text-align: center;
+	margin: 1.5em;
+	vertical-align: top;
+	
+}
+
+
+@media (max-width: 768px) {
+
+	.uix-pb-bar-box {
+		margin: .5em !important;
+		
+	}
+	
+}
+
+
+.uix-pb-row .uix-pb-bar-box{
+	width: 100%;
+}
+
+	.uix-pb-bar-box .uix-pb-bar-title{
+		margin: 0;
+		padding: 0;
+		margin: 1.2em .3em .7em;
+		font-size: 14px;
+	}
+	.uix-pb-bar-box .uix-pb-bar-desc{
+		margin: 0;
+		padding: 0;
+		line-height: 1.5;
+		font-size: 12px;
+		display: block;
+		filter: alpha(opacity=80);  
+		-moz-opacity: 0.8;   
+		opacity: 0.8; 
+		margin-bottom: .7em;
+		padding-left: .3em;
+	}
+	
+
+	.uix-pb-bar-box .uix-pb-bar {
+		position: relative;
+		display: inline-block;
+		margin: 0 auto;
+	}
+	
+		.uix-pb-bar-box .uix-pb-bar .uix-pb-bar-percent{
+			display: inline-block;
+			text-align: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+		
+	
+/* square */
+.uix-pb-bar-box.uix-pb-bar-box-square{
+	position: relative;
+	text-align: left;
+}
+	.uix-pb-bar-box.uix-pb-bar-box-square .uix-pb-bar{
+		margin: 0;
+		padding: 0;
+	}
+	
+	.uix-pb-bar-box.uix-pb-bar-box-square .uix-pb-bar-info{
+	
+	}
+
+	
+		.uix-pb-bar-box.uix-pb-bar-box-square .uix-pb-bar .uix-pb-bar-placeholder{
+			visibility: hidden;
+			line-height: 0;
+		}
+		.uix-pb-bar-box.uix-pb-bar-box-square .uix-pb-bar .uix-pb-bar-text{
+			position: absolute;
+			right: 0;
+			top: -2em;
+		}
+		
+		

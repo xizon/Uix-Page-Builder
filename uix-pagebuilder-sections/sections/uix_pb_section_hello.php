@@ -131,19 +131,30 @@ $uix_pb_listitem_toggle_url   = UixPageBuilder::fvalue( $colid, $sid, $item, 'ui
 $uix_pb_listitem_toggle_icon  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_listitem_toggle_icon', '' );
 
 
+//image
+$uix_pb_image                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_image', '' );
+$uix_pb_image_repeat          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_image_repeat', 'no-repeat' );
+$uix_pb_image_position        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_image_position', 'left' );
+$uix_pb_image_attachment      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_image_attachment', 'scroll' );
+$uix_pb_image_size            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_image_size', 'cover'  );
+
+
+
 //general
 $uix_pb_text                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_text', '' );
 $uix_pb_shorttext             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_shorttext', '' );
 $uix_pb_radio                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_radio', '' );
 $uix_pb_slider                = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_slider', 1 );
 $uix_pb_slider_units          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_slider_units', '' );
-$uix_pb_image                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_image', '' );
 $uix_pb_single_color          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_single_color', '#333333' );
 $uix_pb_select                = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_select', '' );
 $uix_pb_icon                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_icon', '' );
 $uix_pb_colormap              = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_colormap', 'rgb(162, 63, 3)' );
 $uix_pb_toggle_url            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_toggle_url', '' );
 $uix_pb_checkbox_toggle_text  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_checkbox_toggle_text', 555 );
+
+
+
 
 
 //dynamic adding input
@@ -262,6 +273,77 @@ $form_type = [
 
 $args = 
 	[
+	
+	
+	    array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_dividingline' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_dividingline' ),
+			'title'          => __( 'Image Radio', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => 'solid',
+			'placeholder'    => '',
+			'type'           => 'radio-image',
+			'default'        => array(
+									'solid'     => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-1.png',
+									'double'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-2.png',
+									'dashed'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-3.png',
+									'dotted'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-4.png',
+									'shadow'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-5.png',
+									'gradient'  => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-6.png',
+									
+				                )
+		
+		),
+	
+	    array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_radioswitch_style' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_radioswitch_style' ),
+			'title'          => __( 'Radio Switch', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => 'grand-fill-yellow',
+			'placeholder'    => '',
+			'type'           => 'radio-image',
+			'default'        => array(
+									'grand-fill-yellow'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/heading/heading-style-1.jpg',
+									'grand'               => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/heading/heading-style-2.jpg',
+				                ),
+			/* if show the target item, the target id require class like "toggle-row" */
+			'toggle'        => array(
+			                        array(
+										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_radioswitch_style' ).'-grand-fill-yellow', /* {item id}-{option id} */
+										'toggle_class'         => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_radioswitch_fillbg' ).'_toggle_class' ],
+										'toggle_remove_class'  => [ ]
+
+									),
+									
+			                        array(
+										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_radioswitch_style' ).'-grand', /* {item id}-{option id} */
+										'toggle_class'         => [ ],
+										'toggle_remove_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_radioswitch_fillbg' ).'_toggle_class' ]
+
+									),	
+									
+				                )	
+								
+		
+		),
+			
+			array(
+				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_radioswitch_fillbg' ),
+				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_radioswitch_fillbg' ),
+				'title'          => '',
+				'desc'           => '',
+				'value'          => '',
+				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_radioswitch_fillbg' ).'_toggle_class', /*class of toggle item */
+				'placeholder'    => __( 'Image for Text Fill', 'uix-pagebuilder' ),
+				'type'           => 'image',
+				'default'        => array(
+										'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
+										'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' ),
+									)
+			
+			),	
+	
 
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_text' ),
@@ -364,16 +446,35 @@ $args =
 			'default'        => array(
 									'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
 									'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' ),
-									
+	
 									/* Show image properties 
 									 * Javascript Vars:
 									 
-									   {item id}_repeat
-									   {item id}_position
-									   {item id}_attachment
-									   {item id}_size
+									   $( '#<?php echo UixPageBuilder::fid( $colid, $sid, '{image id}_repeat' ); ?>' ).val()
+									   $( '#<?php echo UixPageBuilder::fid( $colid, $sid, '{image id}_position' ); ?>' ).val()
+									   $( '#<?php echo UixPageBuilder::fid( $colid, $sid, '{image id}_attachment' ); ?>' ).val()
+									   $( '#<?php echo UixPageBuilder::fid( $colid, $sid, '{image id}_size' ); ?>' ).val()
 									*/
-									//'prop'  => true,
+									'prop'        => true,
+									'prop_id'     => array(
+														'repeat'      => UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_repeat' ), 
+														'position'    => UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_position' ), 
+														'attachment'  => UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_attachment' ), 
+														'size'        => UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_size' )
+													),
+									'prop_name'     => array(
+														'repeat'      => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_image_repeat' ), 
+														'position'    => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_image_position' ), 
+														'attachment'  => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_image_attachment' ), 
+														'size'        => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_image_size' )
+													),	
+														
+									'prop_value'  => array(
+														'repeat'      => $uix_pb_image_repeat, 
+														'position'    => $uix_pb_image_position, 
+														'attachment'  => $uix_pb_image_attachment, 
+														'size'        => $uix_pb_image_size 
+													),
 				                )
 		
 		),	
@@ -550,7 +651,7 @@ $args =
 			'default'        => array(
 									'checked'  => $uix_pb_checkbox_toggle_chk
 				                ),
-			/* if show the target item, the target id require class like "toggle-row toggle-row-show" */
+			/* if show the target item, the target id require class like "toggle-row" */
 			'toggle'        => array(
 									'trigger_id'  => UixPageBuilder::fid( $colid, $sid, 'uix_pb_checkbox_toggle' ), /* {item id}-{option id} */
 									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_checkbox_toggle_text' ).'_class' ],
@@ -851,6 +952,14 @@ if ( $sid >= 0 && is_admin() ) {
                 //units
 			    uix_pb_shortunitstext        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_shortunitstext' ); ?>' ).val(),
 			    uix_pb_shortunitstext_units  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_shortunitstext_units' ); ?>' ).val(),
+				
+				//image
+				uix_pb_image                 = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_image' ); ?>' ).val(),
+				uix_pb_image_repeat          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_repeat' ); ?>' ).val(),
+				uix_pb_image_position        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_position' ); ?>' ).val(),
+				uix_pb_image_attachment      = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_attachment' ); ?>' ).val(),
+				uix_pb_image_size            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_image_size' ); ?>' ).val(),
+				
 
                 //general
 			    uix_pb_text                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_text' ); ?>' ).val(),
@@ -858,7 +967,6 @@ if ( $sid >= 0 && is_admin() ) {
 			    uix_pb_radio                 = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_radio' ); ?>' ).val(),
 			    uix_pb_slider                = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_slider' ); ?>' ).val(),
 			    uix_pb_slider_units          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_slider_units' ); ?>' ).val(),
-			    uix_pb_image                 = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_image' ); ?>' ).val(),
 			    uix_pb_single_color          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_single_color' ); ?>' ).val(),
 			    uix_pb_select                = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_select' ); ?>' ).val(),
 			    uix_pb_icon                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_icon' ); ?>' ).val(),

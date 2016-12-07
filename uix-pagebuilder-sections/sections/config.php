@@ -1,6 +1,6 @@
 <?php 
 $uix_pb_config = [
-	
+	    
 		array(
 			'title'           => __( 'Author Card', 'uix-pagebuilder' ),
 			'id'              => 'uix_pb_section_authorcard',
@@ -11,11 +11,11 @@ $uix_pb_config = [
 		),	
 		
 		array(
-			'title'           => __( 'Code', 'uix-pagebuilder' ),
-			'id'              => 'uix_pb_section_code',
-			'icon'            => 'cube',
+			'title'           => __( 'Progress Bar', 'uix-pagebuilder' ),
+			'id'              => 'uix_pb_section_bar',
+			'icon'            => 'signal',
 			'bg'              => '#f57e57',
-			'info'            => __( 'A simple text blending options.', 'uix-pagebuilder' ),
+			'info'            => __( 'Display status of a determinate or indeterminate process.', 'uix-pagebuilder' ),
 		
 		),	
 		
@@ -27,8 +27,16 @@ $uix_pb_config = [
 			'info'            => __( 'Displays collapsible content panels for presenting information in a limited amount of space.', 'uix-pagebuilder' ),
 		
 		),	
-			
 		
+		
+		array(
+			'title'           => __( 'Tabs', 'uix-pagebuilder' ),
+			'id'              => 'uix_pb_section_tabs',
+			'icon'            => 'hdd-o',
+			'bg'              => '#3ED3A9',
+			'info'            => __( 'A single content area with multiple panels, each associated with a header in a list.', 'uix-pagebuilder' ),
+		
+		),	
 		
 		
 ];

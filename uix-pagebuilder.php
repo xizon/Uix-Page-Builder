@@ -92,18 +92,22 @@ class UixPageBuilder {
 		
 		//Main stylesheets and scripts to Front-End
 		if ( self::tempfolder_exists() ) {
-			wp_enqueue_style( self::PREFIX . '-pagebuilder', get_template_directory_uri() .'/uix-pagebuilder-sections/css/uix-pagebuilder.css', false, self::ver(), 'all' );	
-			wp_enqueue_script( self::PREFIX . '-pagebuilder', get_template_directory_uri() .'/uix-pagebuilder-sections/js/uix-pagebuilder.js', array( 'jquery', 'masonry', 'shuffle', 'flexslider' ), self::ver(), true );	
-				
+			$dir = get_template_directory_uri() .'/uix-pagebuilder-sections/';
 		} else {
-			wp_enqueue_style( self::PREFIX . '-pagebuilder', self::plug_directory() .'uix-pagebuilder-sections/css/uix-pagebuilder.css', false, self::ver(), 'all' );	
-			wp_enqueue_script( self::PREFIX . '-pagebuilder', self::plug_directory() .'uix-pagebuilder-sections/js/uix-pagebuilder.js', array( 'jquery', 'masonry', 'shuffle', 'flexslider' ), self::ver(), true );	
-			
-
+			$dir = self::plug_directory() .'uix-pagebuilder-sections/';
 		}
 		
-		// Theme path in javascript file ( var templateUrl = wp_uix_pb_root_path.templateUrl; )
-        wp_localize_script( self::PREFIX . '-pagebuilder',  'wp_uix_pb_root_path', array( 
+		//Core
+		wp_enqueue_style( self::PREFIX . '-pagebuilder', $dir.'css/uix-pagebuilder.css', false, self::ver(), 'all' );	
+		wp_enqueue_script( self::PREFIX . '-pagebuilder', $dir.'js/uix-pagebuilder.js', array( 'jquery' ), self::ver(), true );	
+		
+		//Easy Pie Chart
+		wp_enqueue_script( 'easypiechart', $dir.'js/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
+
+		
+		
+		// Theme path in javascript file ( var templateUrl = wp_theme_root_path.templateUrl; )
+        wp_localize_script( self::PREFIX . '-pagebuilder',  'wp_theme_root_path', array( 
 		    'templateUrl' => get_stylesheet_directory_uri()
 		 ) );
 			

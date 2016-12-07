@@ -24,32 +24,7 @@ class UixPBFormType_RadioImage {
 		
         if ( $type == 'radio-image' ) {
             
-			//Toggle for radio options
-			$toggle_class = '';
-			$target_id = '';
-			$toggle_trigger_id = '';
-			
-            if ( is_array( $toggle ) && !empty( $toggle ) ) {
-             
-				foreach ( $toggle as $toggleArr ) {
-			
-			
-					$toggle_class = ( isset( $toggleArr[ 'toggle_class' ] ) ) ? $toggleArr[ 'toggle_class' ] : '';
-					$toggle_trigger_id = ( isset( $toggleArr[ 'trigger_id' ] ) ) ? $toggleArr[ 'trigger_id' ] : '';
-					$target_id = '';
-					
-					if ( isset( $toggleArr[ 'toggle_class' ] ) ) {
-						foreach ( $toggleArr[ 'toggle_class' ] as $tid_value ) {
-							$target_id .= '.'.$tid_value.','; 	
-						}
 		
-					}
-					
-				}	
-		
-            }
-			
-	
 			//inscure browser
 			if( UixPBFormCore::is_IE() && UixPBFormCore::is_dynamic_input( $class ) ) {
 				$new_class = str_replace( 'dynamic-row', 'isMSIE dynamic-row', $class );
@@ -57,31 +32,81 @@ class UixPBFormType_RadioImage {
 				$new_class = $class;
 			}
 			
-			//Options list
-            $optionlist = '';
-            if ( is_array( $default ) && !empty( $default ) ) {
-                $optionloop = 1;
-				$radiofirst = '';
-		
-                foreach ( $default as $select_key => $select_value ) {
-			        
-					$selected = ''; 
-					
-					if ( ( !empty( $value ) && $select_key == $value ) || ( empty( $value ) && $optionloop == 1 )  ) {
-                        $selected = '  active'; 
-						$radiofirst = $select_key;	
-					} 
-                  
-					
-                    $optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'"  class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" data-linked-btnid="'.$toggle_trigger_id.'"' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'."\n";	
-                    $optionloop ++;
-                }	
 			
+            //Options list & Toggle for radio options
+			
+			$optionlist            = '';
+			$toggle_class          = '';
+			$toggle_remove_class   = '';
+			$target_id             = '';
+			$remove_id             = '';
+			$toggle_trigger_id     = '';
+			$optionloop            = 1;
+			$radiofirst            = '';
+
+			if ( is_array( $default ) && !empty( $default ) ) {
 				
-            }
+				if ( is_array( $toggle ) && !empty( $toggle ) ) {
+					
+				
+					foreach ( $default as $select_key => $select_value ) {
+						
+						$selected            = ''; 
+						$togglekey           = $optionloop - 1;
+	
+						$toggle_class        = ( isset( $toggle[ $togglekey ][ 'toggle_class' ] ) ) ? $toggle[ $togglekey ][ 'toggle_class' ] : '';
+						$toggle_remove_class = ( isset( $toggle[ $togglekey ][ 'toggle_remove_class' ] ) ) ? $toggle[ $togglekey ][ 'toggle_remove_class' ] : '';
+						$toggle_trigger_id   = ( isset( $toggle[ $togglekey ][ 'trigger_id' ] ) ) ? $toggle[ $togglekey ][ 'trigger_id' ] : '';
+						$target_id           = '';
+						$remove_id           = '';
+						
+						if ( isset( $toggle[ $togglekey ][ 'toggle_class' ] ) ) {
+							foreach ( $toggle[ $togglekey ][ 'toggle_class' ] as $v ) {
+								$target_id .= '.'.$v.','; 	
+							}
+						}
+							
+						if ( isset( $toggle[ $togglekey ][ 'toggle_remove_class' ] ) ) {
+							foreach ( $toggle[ $togglekey ][ 'toggle_remove_class' ] as $v ) {
+								$remove_id .= '.'.$v.','; 	
+							}						
+							
+						}
+							
+						
+						if ( ( !empty( $value ) && $select_key == $value ) || ( empty( $value ) && $optionloop == 1 )  ) {
+							$selected = '  active'; 
+							$radiofirst = $select_key;	
+						} 
+					 
+						$optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'" class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-remove="'.rtrim( $remove_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" ' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'."\n";	
+						$optionloop ++;
+					}	
+					
+	
+					
+				} else {
+				
+					foreach ( $default as $select_key => $select_value ) {
+						
+						$selected = ''; 
+						
+						if ( ( !empty( $value ) && $select_key == $value ) || ( empty( $value ) && $optionloop == 1 )  ) {
+							$selected = '  active'; 
+							$radiofirst = $select_key;	
+						} 
+					 
+						$optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'" class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" ' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'."\n";	
+						$optionloop ++;
+					}	
 			
-	
-	
+					
+					
+				}
+				
+			}
+					
+		
             
             $field = '
                     <tr'.$new_class.'>

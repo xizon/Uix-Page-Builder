@@ -41,7 +41,7 @@
 					
 					
 					//status
-					new_cur_defaultvalue = $( '#' + ele_target ).find( 'textarea' ).val();
+					var new_cur_defaultvalue = $( '#' + ele_target ).find( 'textarea' ).val();
 					if ( new_cur_defaultvalue.indexOf( cur_slug ) >= 0 && new_cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
 						$( '#' + ele_target ).addClass( 'used' );
 					}
