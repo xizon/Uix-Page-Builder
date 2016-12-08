@@ -101,10 +101,7 @@ class UixPageBuilder {
 		wp_enqueue_style( self::PREFIX . '-pagebuilder', $dir.'css/uix-pagebuilder.css', false, self::ver(), 'all' );	
 		wp_enqueue_script( self::PREFIX . '-pagebuilder', $dir.'js/uix-pagebuilder.js', array( 'jquery' ), self::ver(), true );	
 		
-		//Easy Pie Chart
-		wp_enqueue_script( 'easypiechart', $dir.'js/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
-
-		
+	
 		
 		// Theme path in javascript file ( var templateUrl = wp_theme_root_path.templateUrl; )
         wp_localize_script( self::PREFIX . '-pagebuilder',  'wp_theme_root_path', array( 
