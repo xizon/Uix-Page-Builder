@@ -79,7 +79,7 @@
  /*coordinate of wordpress*/
     display: none;
     content: '';
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.7);
 }
 
 .uixpbform-modal-box.active {
@@ -1128,8 +1128,26 @@
     position: relative;
     margin: 4px 0;
     float: left;
-    overflow-y: auto;
+    overflow-y: auto; 
     z-index: 559902;
+}
+
+a.uixpbform-icon-clear {
+	background: #D8181C;
+    font-size: 16px;
+	margin-left: 10px;
+	color: #fff;
+	-webkit-border-radius: 100%; 
+	-moz-border-radius: 100%; 
+	border-radius: 100%; 
+	text-decoration: none;
+	font-weight: 600;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	display: none;
 }
 
 

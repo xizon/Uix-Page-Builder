@@ -200,21 +200,84 @@
 }
 
 
-
-.uix-pagebuilder-gridster-widget .cusid-wrapper {
+.uix-pagebuilder-gridster-widget .settings-wrapper,
+.uix-pagebuilder-gridster-widget .dashicons.settings {
 	position: absolute;
-	right: 80px;
-	top: 3px;
-	display: none;
-	font-size: 10px;
-	font-weight: 600;
+	right: 40px;
+	top: -1px;
+	z-index: 21;
+
+	
+	
 }
 
-.uix-pagebuilder-gridster-widget:hover .cusid-wrapper {
+.uix-pagebuilder-gridster-widget .settings-wrapper {
+	-webkit-box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.23);
+	-moz-box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.23);
+	box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.23);
+	background: #fff;
+	border: 1px solid #EBEBEB;
+	width: 150px;
+	padding: 10px;
+	display: none;
+}
+
+.uix-pagebuilder-gridster-widget .settings-wrapper a.close {
+	background: #D8181C;
+    font-size: 16px;
+	margin-left: 10px;
+	color: #fff;
+	-webkit-border-radius: 100%; 
+	-moz-border-radius: 100%; 
+	border-radius: 100%; 
+	text-decoration: none;
+	font-weight: 600;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+
+
+.uix-pagebuilder-gridster-widget .dashicons.settings {
+	top: 5px;
+	cursor: pointer;
+	color: #999999;
+	font-size: 18px;
+	border-right: 1px dotted #DADADA;
+	padding-right: 10px;
+}
+	
+.uix-pagebuilder-gridster-widget .dashicons.settings:hover {
+	color: #0085BA;
+}
+	
+
+
+.uix-pagebuilder-gridster-widget .settings-wrapper p {
+	margin: 0;
+	margin-bottom: 8px;
 	display: block;
 }
 
-.uix-pagebuilder-gridster-widget .cusid-wrapper input {
+.uix-pagebuilder-gridster-widget .settings-wrapper strong {
+	font-weight: 600;
+	display: block;
+	font-size: 10px;
+	
+}
+
+.uix-pagebuilder-gridster-widget .settings-wrapper label {
+	display: block;
+	font-size: 10px;
+	margin: 5px 0;
+}
+
+.uix-pagebuilder-gridster-widget .settings-wrapper input {
 	color: #8F8F8F;
 	font-size: 10px;
 }
@@ -245,11 +308,13 @@
 
 .uix-pagebuilder-gridster-drag .dashicons-sort {
 	position: absolute;
-	top: 3px;
+	top: 5px;
 	font-size: 20px;
-	right: 40px;
+	right: 80px;
 	color: #999999;
 	z-index: -1;
+	border-right: 1px dotted #DADADA;
+	padding-right: 10px;
 }
 
 .uix-pagebuilder-gridster-drag:hover {

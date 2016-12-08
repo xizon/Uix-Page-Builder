@@ -43,6 +43,7 @@ get_header(); ?>
 				$section_id           = $value->secindex;
 				$custom_id            = $value->customid;
 				$section_title        = $value->title;
+				$section_layout       = $value->layout;
 				$element_code         = '';
 				$element_grid_before  = '';
 				$element_grid_after   = '</div>';
@@ -61,8 +62,8 @@ get_header(); ?>
 				//------------------------------------   loop sections
 				if ( sizeof( $item ) > 3 && !empty( $value->content ) ) {
 					
-					$col_content   = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
-					
+					$col_content     = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+										
 					if ( $col_content && is_array( $col_content ) ) {
 						foreach ( $col_content as $key => $value ) :
 							
@@ -79,6 +80,7 @@ get_header(); ?>
 										$element_grid_before = '<div class="'.$id[1].' {last}">';
 									}
 								endforeach;
+								
 								
 								$element_code .= $element_grid_before.$html.$element_grid_after;	
 							
@@ -99,9 +101,12 @@ get_header(); ?>
 											
 										
 						}
+						
+						//To determine whether it is full width
+						$container_boxed = ( $section_layout == 'boxed' ) ? ' uix-pb-container-boxed' : ' uix-pb-container-fullwidth';
 										
 						//Section container
-						echo  '<div class="uix-pagebuilder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'"><div class="uix-pb-row">'.$element_code.'</div></div>'; 
+						echo  '<div class="uix-pb-container'.$container_boxed.'"><div class="uix-pagebuilder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'"><div class="uix-pb-row">'.$element_code.'</div></div></div>'; 
 						//WP menu title of anchor link
 						echo "\n<!-- ".wp_kses( __( 'End Section', 'uix-pagebuilder' ), wp_kses_allowed_html( 'post' ) )." -->\n\n";	
 						

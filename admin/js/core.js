@@ -107,6 +107,36 @@
 			
 						
 		});
+		
+	   /*! 
+		 * 
+		 * Row Settings
+		 * ---------------------------------------------------
+		 */	
+		$( document ).on( 'click', '.uix-pagebuilder-gridster-widget .dashicons.settings', function( e ) {
+			e.preventDefault();
+			
+			$( '.settings-wrapper' ).hide();
+			
+			var $set = $( this ).next( '.settings-wrapper' );
+			$set.show();
+			
+			
+			//Close
+			$set.find( '.close' ).on( 'click', function( e ) {
+				$set.hide();
+			});	
+			
+						
+		});		
+		
+		$( document ).on( 'click', '.uix-pagebuilder-gridster-drag', function( e ) {
+			e.preventDefault();
+			
+			$( '.settings-wrapper' ).hide();
+						
+		});				
+		
 			
 				
 	

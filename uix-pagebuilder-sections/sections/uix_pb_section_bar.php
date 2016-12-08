@@ -29,11 +29,6 @@ if ( $sid >= 0 ) {
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::pagebuilder_output( $value->content );
-			$col         = $value->col;
-			$row         = $value->row;
-			$size_x      = $value->size_x;
-			$section_id  = $value->secindex;
-
 			
 		
 			if ( $con && is_array( $con ) ) {
@@ -100,14 +95,8 @@ $uix_pb_bar_icon_toggle                 = UixPageBuilder::fvalue( $colid, $sid, 
 $uix_pb_bar_icon_toggle_chk             = ( $uix_pb_bar_icon_toggle == 1 ) ? true : false;
 $uix_pb_bar_icon                        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_icon', '' );
 $uix_pb_bar_color                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_color', '#a2bf2f' );
-$uix_pb_bar_color_toggle                = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_color_toggle', 0 ); // 0:close  1:open
-$uix_pb_bar_color_other                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_color_other', '' );
 $uix_pb_bar_trackcolor                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_trackcolor', '#f1f1f1' );
-$uix_pb_bar_trackcolor_toggle           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_trackcolor_toggle', 0 ); // 0:close  1:open
-$uix_pb_bar_trackcolor_other            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_trackcolor_other', '' );
 $uix_pb_bar_percent_icon_color          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color', '#473f3f' );
-$uix_pb_bar_percent_icon_color_toggle   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color_toggle', 0 ); // 0:close  1:open
-$uix_pb_bar_percent_icon_color_other    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color_other', '' );
 $uix_pb_bar_title                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_title', __( 'Title', 'uix-pagebuilder' ) );
 $uix_pb_bar_desc                        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_desc', '' );
 $uix_pb_bar_show_units                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_show_units', '%' );
@@ -116,26 +105,26 @@ $uix_pb_bar_show_units                  = UixPageBuilder::fvalue( $colid, $sid, 
 
 if ( $uix_pb_bar_shape == 'square' ) {
 	
-	$element_temp = '
+	$content = '
 	<div class="uix-pb-bar-box uix-pb-bar-box-square" style="margin:'.esc_attr( $uix_pb_bar_margin_top ).'px '.esc_attr( $uix_pb_bar_margin_right ).'px '.esc_attr( $uix_pb_bar_margin_bottom ).'px '.esc_attr( $uix_pb_bar_margin_left ).'px; width:'.esc_attr( $uix_pb_bar_square_size.$uix_pb_bar_square_size_units ).';">
 		<div class="uix-pb-bar-info">
 			<h3 class="uix-pb-bar-title">'.$uix_pb_bar_title.'</h3>
 			<div class="uix-pb-bar-desc">'.$uix_pb_bar_desc.'</div>
 		</div>
-		<div class="uix-pb-bar" data-percent="'.esc_attr( $uix_pb_bar_percent ).'" data-linewidth="'.esc_attr( $uix_pb_bar_linewidth ).'" data-trackcolor="'.( !empty( $uix_pb_bar_trackcolor_other )  ? esc_attr( $uix_pb_bar_trackcolor_other ) : esc_attr( $uix_pb_bar_trackcolor ) ).'" data-barcolor="'.( !empty( $uix_pb_bar_color_other )  ? esc_attr( $uix_pb_bar_color_other ) : esc_attr( $uix_pb_bar_color ) ).'" data-units="'.esc_attr( $uix_pb_bar_show_units ).'" data-size="'.esc_attr( $uix_pb_bar_square_size.$uix_pb_bar_square_size_units ).'" data-icon="'.esc_attr( $uix_pb_bar_icon ).'">
+		<div class="uix-pb-bar" data-percent="'.esc_attr( $uix_pb_bar_percent ).'" data-linewidth="'.esc_attr( $uix_pb_bar_linewidth ).'" data-trackcolor="'.esc_attr( $uix_pb_bar_trackcolor ).'" data-barcolor="'.esc_attr( $uix_pb_bar_color ).'" data-units="'.esc_attr( $uix_pb_bar_show_units ).'" data-size="'.esc_attr( $uix_pb_bar_square_size.$uix_pb_bar_square_size_units ).'" data-icon="'.esc_attr( $uix_pb_bar_icon ).'">
 			<span class="uix-pb-bar-percent"></span>
 			<span class="uix-pb-bar-placeholder">0</span>
-			<span class="uix-pb-bar-text"  style="color:'.( !empty( $uix_pb_bar_percent_icon_color_other )  ? esc_attr( $uix_pb_bar_percent_icon_color_other ) : esc_attr( $uix_pb_bar_percent_icon_color ) ).';font-size:'.esc_attr( $uix_pb_bar_perc_icons_size ).'px;">'.( !empty( $uix_pb_bar_icon )  ? '<i class="fa fa-'.esc_attr( $uix_pb_bar_icon ).'"></i>' : ''.$uix_pb_bar_percent.''.$uix_pb_bar_show_units.'' ).'</span>
+			<span class="uix-pb-bar-text"  style="color:'.esc_attr( $uix_pb_bar_percent_icon_color ).';font-size:'.esc_attr( $uix_pb_bar_perc_icons_size ).'px;">'.( !empty( $uix_pb_bar_icon )  ? '<i class="fa fa-'.esc_attr( $uix_pb_bar_icon ).'"></i>' : ''.$uix_pb_bar_percent.''.$uix_pb_bar_show_units.'' ).'</span>
 		</div>
 	</div><!-- /.uix-pb-bar-box-square -->
 	';
 	
 	
 } else {
-	$element_temp = '
+	$content = '
 			<div class="uix-pb-bar-box uix-pb-bar-box-circular" style="margin:'.esc_attr( $uix_pb_bar_margin_top ).'px '.esc_attr( $uix_pb_bar_margin_right ).'px '.esc_attr( $uix_pb_bar_margin_bottom ).'px '.esc_attr( $uix_pb_bar_margin_left ).'px;">
 				<div class="uix-pb-bar" data-percent="'.esc_attr( $uix_pb_bar_percent ).'" style="width:'.esc_attr( $uix_pb_bar_circular_size ).'px;">
-					<span class="uix-pb-bar-percent" data-linewidth="'.esc_attr( $uix_pb_bar_linewidth ).'" data-trackcolor="'.( !empty( $uix_pb_bar_trackcolor_other )  ? esc_attr( $uix_pb_bar_trackcolor_other ) : esc_attr( $uix_pb_bar_trackcolor ) ).'" data-barcolor="'.( !empty( $uix_pb_bar_color_other )  ? esc_attr( $uix_pb_bar_color_other ) : esc_attr( $uix_pb_bar_color ) ).'" data-units="'.esc_attr( $uix_pb_bar_show_units ).'" data-size="'.esc_attr( $uix_pb_bar_circular_size ).'px"  data-icon="'.esc_attr( $uix_pb_bar_icon ).'" style="color:'.( !empty( $uix_pb_bar_percent_icon_color_other )  ? esc_attr( $uix_pb_bar_percent_icon_color_other ) : esc_attr( $uix_pb_bar_percent_icon_color ) ).';font-size:'.esc_attr( $uix_pb_bar_perc_icons_size ).'px;"></span>
+					<span class="uix-pb-bar-percent" data-linewidth="'.esc_attr( $uix_pb_bar_linewidth ).'" data-trackcolor="'.esc_attr( $uix_pb_bar_trackcolor ).'" data-barcolor="'.esc_attr( $uix_pb_bar_color ).'" data-units="'.esc_attr( $uix_pb_bar_show_units ).'" data-size="'.esc_attr( $uix_pb_bar_circular_size ).'px"  data-icon="'.esc_attr( $uix_pb_bar_icon ).'" style="color:'.esc_attr( $uix_pb_bar_percent_icon_color ).';font-size:'.esc_attr( $uix_pb_bar_perc_icons_size ).'px;"></span>
 				</div>
 				<h3 class="uix-pb-bar-title">'.$uix_pb_bar_title.'</h3>
 				<div class="uix-pb-bar-desc">'.$uix_pb_bar_desc.'</div>
@@ -144,9 +133,12 @@ if ( $uix_pb_bar_shape == 'square' ) {
 	
 }
 
-$uix_pb_section_bar_temp = $element_temp;
+$element_temp = '{content}';
 
-
+$uix_pb_section_bar_temp = str_replace( '{content}', $content,
+							 $element_temp 
+							 );
+								 
 
 /**
  * Form Type & Parameters
@@ -318,38 +310,7 @@ $args =
 		
 		),
 		
-		//------toggle begin
-		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color_toggle' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_color_toggle' ),
-			'title'          => '',
-			'desc'           => '',
-			'value'          => $uix_pb_bar_color_toggle,
-			'placeholder'    => '',
-			'type'           => 'toggle',
-			'default'        => array(
-			                        'btn_text'      => __( 'other color', 'uix-pagebuilder' ),
-									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color_other' ).'_class' ]
-				                )
-		
-		),	
-			
-			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color_other' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_color_other' ),
-				'title'          => '',
-				'desc'           => '',
-				'value'          => $uix_pb_bar_color_other,
-				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color_other' ).'_class', /*class of toggle item */
-				'placeholder'    => '',
-				'type'           => 'colormap',
-				'default'        => array(
-										'swatches' => 1
-									)
-			
-			
-			),	
-	
+
 	
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor' ),
@@ -362,39 +323,6 @@ $args =
 			'default'        => [ '#ffffff', '#473f3f',  '#bebebe', '#dcdcdc', '#f1f1f1' ]
 		
 		),
-		
-		//------toggle begin
-		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor_toggle' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_trackcolor_toggle' ),
-			'title'          => '',
-			'desc'           => '',
-			'value'          => $uix_pb_bar_trackcolor_toggle,
-			'placeholder'    => '',
-			'type'           => 'toggle',
-			'default'        => array(
-			                        'btn_text'      => __( 'other color', 'uix-pagebuilder' ),
-									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor_other' ).'_class' ]
-				                )
-		
-		),	
-			
-			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor_other' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_trackcolor_other' ),
-				'title'          => '',
-				'desc'           => '',
-				'value'          => $uix_pb_bar_trackcolor_other,
-				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor_other' ).'_class', /*class of toggle item */
-				'placeholder'    => '',
-				'type'           => 'colormap',
-				'default'        => array(
-										'swatches' => 1
-									)
-			
-			
-			),	
-	
 	
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color' ),
@@ -408,37 +336,6 @@ $args =
 		
 		),
 		
-		//------toggle begin
-		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color_toggle' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_percent_icon_color_toggle' ),
-			'title'          => '',
-			'desc'           => '',
-			'value'          => $uix_pb_bar_percent_icon_color_toggle,
-			'placeholder'    => '',
-			'type'           => 'toggle',
-			'default'        => array(
-			                        'btn_text'      => __( 'other color', 'uix-pagebuilder' ),
-									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color_other' ).'_class' ]
-				                )
-		
-		),	
-			
-			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color_other' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_percent_icon_color_other' ),
-				'title'          => '',
-				'desc'           => '',
-				'value'          => $uix_pb_bar_percent_icon_color_other,
-				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color_other' ).'_class', /*class of toggle item */
-				'placeholder'    => '',
-				'type'           => 'colormap',
-				'default'        => array(
-										'swatches' => 1
-									)
-			
-			
-			),	
 	
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_title' ),
@@ -579,7 +476,7 @@ if ( $sid >= 0 && is_admin() ) {
 		
 		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
 			
-			var tempcode                               = '',
+			var tempcode                               = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
 			    uix_pb_bar_margin_top                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_margin_top' ); ?>' ).val(),
 				uix_pb_bar_margin_right                = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_margin_right' ); ?>' ).val(),
 				uix_pb_bar_margin_bottom               = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_margin_bottom' ); ?>' ).val(),
@@ -593,62 +490,64 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_bar_linewidth                   = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_linewidth' ); ?>' ).val(),
 				uix_pb_bar_icon                        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon' ); ?>' ).val(),
 				uix_pb_bar_color                       = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color' ); ?>' ).val(),
-				uix_pb_bar_color_other                 = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color_other' ); ?>' ).val(),
 				uix_pb_bar_trackcolor                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor' ); ?>' ).val(),
-				uix_pb_bar_trackcolor_other            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor_other' ); ?>' ).val(),
 				uix_pb_bar_percent_icon_color          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color' ); ?>' ).val(),
-				uix_pb_bar_percent_icon_color_other    = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color_other' ); ?>' ).val(),
 				uix_pb_bar_title                       = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_title' ); ?>' ).val(),
 				uix_pb_bar_desc                        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_desc' ); ?>' ).val(),
 				uix_pb_bar_show_units                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_show_units' ); ?>' ).val();
 				
+
+			if ( tempcode.length > 0 ) {
+				
+				var  show_content                         = '',
+				     uix_pb_bar_result_color              = uix_pb_bar_color,
+					 uix_pb_bar_result_trackcolor         = uix_pb_bar_trackcolor,
+					 uix_pb_bar_result_percent_icon_color = uix_pb_bar_percent_icon_color,
+					 uix_pb_bar_result_size               = ( uix_pb_bar_shape == 'circular' ) ? uixpbform_htmlEncode( uix_pb_bar_circular_size )+"px" : uixpbform_htmlEncode( uix_pb_bar_square_size+uix_pb_bar_square_size_units ),
+					 uix_pb_bar_result_icon               = ( uix_pb_bar_icon != '' ) ? '<i class="fa fa-'+uixpbform_htmlEncode( uix_pb_bar_icon )+'"></i>' : uix_pb_bar_percent+uix_pb_bar_show_units;
+					 
+					 
+				
+				if ( uix_pb_bar_shape == 'square' ) {
+					
+					
+					show_content += '<div class="uix-pb-bar-box uix-pb-bar-box-square" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px;">';
+					show_content += '<div style="width:'+uix_pb_bar_result_size+';">';
+					show_content += '<div class="uix-pb-bar-info">';
+					show_content += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
+					show_content += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
+					show_content += '</div>';
+					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
+					show_content += '<span class="uix-pb-bar-percent"></span>';
+					show_content += '<span class="uix-pb-bar-placeholder">0</span>';
+					show_content += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;">'+uix_pb_bar_result_icon+'</span>';
+					show_content += '</div>';
+					show_content += '</div>';
+					show_content += '</div>';
+				
+					
+					
+				} else {
+					
+					show_content += '<div class="uix-pb-bar-box uix-pb-bar-box-circular" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px;">';
+					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
+					show_content += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;"></span>';
+					show_content += '</div>';
+					show_content += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
+					show_content += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
+					show_content += '</div>';
+					
+					
+				}
 	
-		
-			
-			var  uix_pb_bar_result_color = ( uix_pb_bar_color_other != '' ) ? uix_pb_bar_color_other : uix_pb_bar_color,
-				 uix_pb_bar_result_trackcolor = ( uix_pb_bar_trackcolor_other != '' ) ? uix_pb_bar_trackcolor_other : uix_pb_bar_trackcolor,
-				 uix_pb_bar_result_percent_icon_color = ( uix_pb_bar_percent_icon_color_other != '' ) ? uix_pb_bar_percent_icon_color_other : uix_pb_bar_percent_icon_color,
-				 uix_pb_bar_result_size = ( uix_pb_bar_shape == 'circular' ) ? uixpbform_htmlEncode( uix_pb_bar_circular_size )+"px" : uixpbform_htmlEncode( uix_pb_bar_square_size+uix_pb_bar_square_size_units ),
-				 uix_pb_bar_result_icon = ( uix_pb_bar_icon != '' ) ? '<i class="fa fa-'+uixpbform_htmlEncode( uix_pb_bar_icon )+'"></i>' : uix_pb_bar_percent+uix_pb_bar_show_units;
-				 
-				 
-			
-			if ( uix_pb_bar_shape == 'square' ) {
+				//---
 				
-				
-				tempcode += '<div class="uix-pb-bar-box uix-pb-bar-box-square" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px;">';
-				tempcode += '<div style="width:'+uix_pb_bar_result_size+';">';
-				tempcode += '<div class="uix-pb-bar-info">';
-				tempcode += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
-				tempcode += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
-				tempcode += '</div>';
-				tempcode += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
-				tempcode += '<span class="uix-pb-bar-percent"></span>';
-				tempcode += '<span class="uix-pb-bar-placeholder">0</span>';
-				tempcode += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;">'+uix_pb_bar_result_icon+'</span>';
-				tempcode += '</div>';
-				tempcode += '</div>';
-				tempcode += '</div>';
-			
-				
-				
-			} else {
-				
-				tempcode += '<div class="uix-pb-bar-box uix-pb-bar-box-circular" style="margin:'+uixpbform_htmlEncode( uix_pb_bar_margin_top )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_right )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_bottom )+'px '+uixpbform_htmlEncode( uix_pb_bar_margin_left )+'px;">';
-				tempcode += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
-				tempcode += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;"></span>';
-				tempcode += '</div>';
-				tempcode += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
-				tempcode += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
-				tempcode += '</div>';
-				
+				tempcode = tempcode.replace(/{content}/g, show_content );	
+							
+				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_bar_temp' ); ?>" ).val( tempcode );
+	
 				
 			}
-
-			//---
-			
-							
-			$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_bar_temp' ); ?>" ).val( tempcode );
 			
 			
 			

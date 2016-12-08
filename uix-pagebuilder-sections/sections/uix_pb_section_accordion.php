@@ -36,11 +36,6 @@ if ( $sid >= 0 ) {
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::pagebuilder_output( $value->content );
-			$col         = $value->col;
-			$row         = $value->row;
-			$size_x      = $value->size_x;
-			$section_id  = $value->secindex;
-
 			
 		
 			if ( $con && is_array( $con ) ) {

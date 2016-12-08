@@ -326,9 +326,10 @@ class UixPageBuilder {
 			   str_replace( '&quot;content&quot;:&quot;', '"content":"',
 			   str_replace( '&quot;,&quot;secindex&quot;:&quot;', '","secindex":"',
 			   str_replace( '&quot;,&quot;customid&quot;:&quot;', '","customid":"',
+			   str_replace( '&quot;,&quot;layout&quot;:&quot;', '","layout":"',
 			   str_replace( '&quot;}', '"}',
 			   $data 
-			   ) ) ) ) ) ) ) ) );
+			   ) ) ) ) ) ) ) ) ) );
 			   
 		if ( isset( $data ) ) {
 			

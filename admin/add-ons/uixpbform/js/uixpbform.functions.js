@@ -846,16 +846,17 @@ jQuery( document ).ready( function() {
 	
 		return this.each( function() {
 			
-			var $this           = $( this ),
-			    containerID     = '#' + $this.attr( 'contain-id' ),
-				iconURL         = $this.attr( 'list-url' ),
-				targetID        = '#' + $this.attr( 'target-id' ),
-				previewID       = '#' + $this.attr( 'preview-id' ),
-				listContainerID = 'icon-list-' + $this.attr( 'target-id' ),
-				defaultIconName =  jQuery( targetID ).val();
+			var $this            = $( this ),
+			    containerID      = '#' + $this.attr( 'contain-id' ),
+				iconURL          = $this.attr( 'list-url' ),
+				targetID         = '#' + $this.attr( 'target-id' ),
+				previewID        = '#' + $this.attr( 'preview-id' ),
+				listContainerID  = 'icon-list-' + $this.attr( 'target-id' ),
+				defaultIconName  =  jQuery( targetID ).val(),
+				$formContainer   = jQuery( previewID ).closest( '.uixpbform-box' );
 				
 			
-			//Icon list with the jQuery AJAX method.
+			/*-- Icon list with the jQuery AJAX method. --*/
 			jQuery.ajax({
 				url       : ajaxurl,
 				type      : 'POST',
@@ -868,6 +869,23 @@ jQuery( document ).ready( function() {
 					jQuery( containerID ).html( '<div id="' + listContainerID + '">' + result + '</div>' );
 					jQuery( '.uixpbform-loading.icon' ).hide();
 					
+					//Remove button
+					jQuery( '.uixpbform-icon-clear' ).each( function()  {
+						
+						var c = jQuery( this ).closest( '.uixpbform-box' );
+						
+						if ( c.find( 'input' ).val() == '' ) {
+							jQuery( this ).css( 'display', 'none' );
+							c.find( 'input' ).val( '' );
+							c.find( '.uixpbform-icon-selector a' ).removeClass( 'active' );
+							c.find( '.uixpbform-icon-selector-icon-preview' ).html( '' );
+	
+						} else {
+							jQuery( this ).css( 'display', 'inline-block' );
+						}
+					  
+					});
+					
 				},
 				beforeSend: function() {
 					jQuery( '.uixpbform-loading.icon' ).css( 'visibility', 'visible' );
@@ -876,26 +894,39 @@ jQuery( document ).ready( function() {
 			});
 			
 			
-			
-			//Click event for icon type: Font Awesome
+			/*-- Click event for icon type: Font Awesome --*/
 			jQuery( document ).on( 'click', '#' + listContainerID + ' .b.fontawesome', function( e ) {
 				e.preventDefault();
 				var _v = jQuery(this).find( '.fa' ).attr( 'class' );
-				jQuery( '.b.fontawesome' ).removeClass('active');
+				jQuery( '.b.fontawesome' ).removeClass( 'active' );
 				jQuery( this ).addClass( 'active' );
 				
 				
 				_v = _v.replace( 'fa fa-', '' );
 				jQuery( targetID ).val(_v);
 				jQuery( previewID ).html( '<i class="fa fa-'+_v+'"></i>' );
+				
+				//remove button
+				$formContainer.find( '.uixpbform-icon-clear' ).css( 'display', 'inline-block' );
+				
+				
 						
 				//Dynamic listening for the latest value
 				jQuery( targetID ).focus().blur();	
-						
 				
 			});
 			
-	
+			/*-- Remove --*/
+			jQuery( document ).on( 'click', '.uixpbform-icon-clear', function( e ) {
+				e.preventDefault();
+				
+				jQuery( this ).css( 'display', 'none' );
+				$formContainer.find( 'input' ).val( '' );
+				$formContainer.find( '.uixpbform-icon-selector a' ).removeClass( 'active' );
+				$formContainer.find( '.uixpbform-icon-selector-icon-preview' ).html( '' );
+				
+			});
+			
  
 		} );
 	

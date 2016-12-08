@@ -166,17 +166,48 @@ img.uix-pb-img,
 
 
 
-
 /* ====================================================== 
-   2. Container                               
+   2. Container ( Compatible with Bootstrap 3.x )                           
 /* ====================================================== */
-.uix-pb-container{
+.uix-pb-container,
+.uix-pb-container.uix-pb-container-boxed {
 	margin: 0 auto;
-	max-width: 100%;
-	width: 1200px;
+	max-width: none !important;
+	padding: 0 15px !important;
 	position: relative;
 	overflow: hidden;
+
 }
+
+@media (max-width: 767px) {
+    .uix-pb-container,
+	.uix-pb-container.uix-pb-container-boxed {
+        width: 100% !important;
+    }	
+}
+
+@media (min-width:768px) {
+    .uix-pb-container,
+	.uix-pb-container.uix-pb-container-boxed {
+        width: 750px !important;
+    }	
+}
+
+@media (min-width:992px) {
+    .uix-pb-container,
+	.uix-pb-container.uix-pb-container-boxed {
+        width: 970px !important;
+    }
+}
+
+@media (min-width:1200px) {
+    .uix-pb-container,
+	.uix-pb-container.uix-pb-container-boxed {
+        width: 1170px !important;
+    }
+}
+
+
 .uix-pb-container:after,
 .uix-pb-container:before {
 	display: table;
@@ -188,29 +219,8 @@ img.uix-pb-img,
 }
 
 .uix-pb-container.uix-pb-container-fullwidth {
-	max-width: none;
-	width: 100%;
-}
-
-@media screen and (min-width: 767px) and (max-width: 1199px) {
-   .uix-pb-container.uix-pb-container-boxed{
-	   max-width: 980px!important;
-	   width: calc(100% - 7vw) !important;
-   } 
-}
-
-@media screen and (min-width: 767px) and (max-width: 980px) {
-   .uix-pb-container.uix-pb-container-boxed{
-	   max-width: 755px!important;
-	   width: calc(100% - 7vw) !important;
-   }
-}
-
-@media (max-width: 768px){
-   .uix-pb-container.uix-pb-container-boxed{
-	   max-width: none !important;
-	   width: calc(100% - 7vw) !important;
-   }  	
+	width: auto !important;
+	
 }
 
 
@@ -225,20 +235,15 @@ img.uix-pb-img,
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 	}
+		
+
 
 
 /* ====================================================== 
    3. Section Styles                               
 /* ====================================================== */
 .uix-pagebuilder-section {
-	margin: 2.5em;
-	padding: 1.5em;
-	border: #CFCFCF 1px solid;
-	-webkit-box-shadow: 0px 0px 0px 8px rgba(230,230,230,1);
-	-moz-box-shadow: 0px 0px 0px 8px rgba(230,230,230,1);
-	box-shadow: 0px 0px 0px 8px rgba(230,230,230,1);
-	
-	
+	margin: 1.5em 0;
 }
 
 
