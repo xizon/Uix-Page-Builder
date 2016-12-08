@@ -143,6 +143,9 @@ class UixPageBuilder {
 						//Jquery UI
 						wp_enqueue_script( 'jquery-ui' );
 
+						//Masonry
+						wp_enqueue_script( 'masonry' );
+
 				}
 		  }
 		
@@ -532,11 +535,10 @@ class UixPageBuilder {
 		$btns .= '</div>';
 				
 		
-		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' ); if ( jQuery( document.body ).width() > 768 ) { jQuery( ".uix-pagebuilder-col-tabs" ).accTabs(); } }';
+		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' ); var $grid = jQuery( ".js-tabs_panel" ).imagesLoaded( function() { $grid.masonry({itemSelector: ".uix-pagebuilder-col"}); }); if ( jQuery( document.body ).width() > 768 ) { jQuery( ".uix-pagebuilder-col-tabs" ).accTabs(); } }';
 			
-	
 		
-				
+		
 	}
 	
 		

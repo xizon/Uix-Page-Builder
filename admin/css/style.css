@@ -2,11 +2,11 @@
 -------------------------------------------------------------- */
 .uix-pagebuilder-col {
     width: 300px;
-	display: inline-block;
+	float: left;
 	margin-right: 15px;
 	margin-bottom: 15px;
 	position: relative;
-
+	vertical-align: top;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1199px) {
@@ -31,7 +31,6 @@
 	-o-transition: .1s ease-in-out;
 	-webkit-transition: .1s ease-in-out; 
 	transition: .1s ease-in-out;
-	vertical-align: top;
 	-webkit-box-shadow: 0px 3px 3px 0px rgba(230,230,230,1);
 	-moz-box-shadow: 0px 3px 3px 0px rgba(230,230,230,1);
 	box-shadow: 0px 3px 3px 0px rgba(230,230,230,1);
