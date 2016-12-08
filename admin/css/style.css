@@ -30,7 +30,8 @@
     line-height: 1;
     top: 0;
     transition: all 0.2s ease-out;
-    padding: 25px 20px;
+    padding: 10px 10px;
+	overflow: hidden;
 }
 
 .uix-pagebuilder-col .at-icon-box-text {
@@ -42,29 +43,38 @@
 .uix-pagebuilder-col .at-icon-box-text h4 {
     font-size: 18px;
     font-weight: 600;
-    margin: 0 0 10px 0;
-	height: 22px;
+    margin: 0 0 8px 0;
+	height: 20px;
 	overflow: hidden;
 	display: block;
+	font-family: serif;
+	text-transform: uppercase;
 }
 
 .uix-pagebuilder-col .at-icon-box-text p {
     font-size: 12px;
     line-height: 1.5;
-    margin-bottom: 0;
 	display: block;
 	overflow: hidden;
-	height: 60px;
+	height: 55px;
 	filter: alpha(opacity=75);  
 	-moz-opacity: 0.75;   
-	opacity: 0.75; 
+	opacity: 0.75;
+	margin: 0;
 
 }
 
 .uix-pagebuilder-col i.fa {
     vertical-align: middle;
     margin-right: 12px;
-    font-size: 20px;
+    font-size: 150px;
+	filter: alpha(opacity=50);  
+	-moz-opacity: 0.5;   
+	opacity: 0.5;
+	position: absolute;
+	z-index: 0;
+	left: -20px;
+
 }
 
 

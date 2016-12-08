@@ -85,7 +85,7 @@ if ( $sid >= 0 ) {
 
 
 /**
- * Element Template : Form Demo 1
+ * Element Template
  * ----------------------------------------------------
  */
 //padding

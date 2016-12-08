@@ -81,8 +81,12 @@ get_header(); ?>
 									}
 								endforeach;
 								
+								if ( $section_layout == 'boxed' ) {
+									$element_code .= $element_grid_before.$html.$element_grid_after;	
+								} else {
+									$element_code .= $html;	
+								}
 								
-								$element_code .= $element_grid_before.$html.$element_grid_after;	
 							
 								
 							}
@@ -102,11 +106,9 @@ get_header(); ?>
 										
 						}
 						
-						//To determine whether it is full width
-						$container_boxed = ( $section_layout == 'boxed' ) ? ' uix-pb-container-boxed' : ' uix-pb-container-fullwidth';
 										
 						//Section container
-						echo  '<div class="uix-pb-container'.$container_boxed.'"><div class="uix-pagebuilder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'"><div class="uix-pb-row">'.$element_code.'</div></div></div>'; 
+						echo  '<div class="uix-pb-container'.( $section_layout == 'boxed' ? ' uix-pb-container-boxed' : ' uix-pb-container-fullwidth' ).'"><div class="uix-pagebuilder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'">'.( $section_layout == 'boxed' ? '<div class="uix-pb-row">' : '' ).''.do_shortcode( $element_code ).''.( $section_layout == 'boxed' ? '</div>' : '' ).'</div></div>';
 						//WP menu title of anchor link
 						echo "\n<!-- ".wp_kses( __( 'End Section', 'uix-pagebuilder' ), wp_kses_allowed_html( 'post' ) )." -->\n\n";	
 						

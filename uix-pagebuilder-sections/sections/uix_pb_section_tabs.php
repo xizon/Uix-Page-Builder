@@ -83,7 +83,7 @@ if ( $sid >= 0 ) {
 }
 
 /**
- * Element Template : Accordion
+ * Element Template
  * ----------------------------------------------------
  */
 $uix_pb_tabs_listitem_title  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_tabs_listitem_title', __( 'Tab Title', 'uix-pagebuilder' ) );

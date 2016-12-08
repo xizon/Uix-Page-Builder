@@ -18,10 +18,11 @@
 
 class UixPageBuilder {
 	
-	const PREFIX = 'uix';
-	const HELPER = 'uix-pagebuilder-helper';
-	const NOTICEID = 'uix-pagebuilder-helper-tip';
-	const CUSTOMTEMP = 'uix-pagebuilder-sections/sections/';
+	const PREFIX      = 'uix';
+	const HELPER      = 'uix-pagebuilder-helper';
+	const NOTICEID    = 'uix-pagebuilder-helper-tip';
+	const CUSTOMTEMP  = 'uix-pagebuilder-sections/sections/';
+	const MAPAPI      = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 
 	
 	/**
@@ -79,6 +80,7 @@ class UixPageBuilder {
 	public static function includes() {
 		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
 		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
+		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/classes/class-google-map.php';
 	}
 	
 	
@@ -494,7 +496,7 @@ class UixPageBuilder {
 		$btns = '';
 		
 		foreach ( $uix_pb_config as $key ) {
-			$btns .= "<div class=\"uix-pagebuilder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a><div class=\"at-icon-box\" style=\"background-color:".esc_attr( $key[ 'bg' ] )."\"><div class=\"at-icon-box-text\"><h4><i class=\"fa fa-".esc_attr( $key[ 'icon' ] )."\"></i>".esc_html( $key[ 'title' ] )."</h4><p>".esc_html( $key[ 'info' ] )."</p></div></div></div>";
+			$btns .= "<div class=\"uix-pagebuilder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a><div class=\"at-icon-box\" style=\"background-color:".esc_attr( $key[ 'bg' ] )."\"><i class=\"fa fa-".esc_attr( $key[ 'icon' ] )."\"></i><div class=\"at-icon-box-text\"><h4>".esc_html( $key[ 'title' ] )."</h4><p>".esc_html( $key[ 'info' ] )."</p></div></div></div>";
 		}	
 		
 		

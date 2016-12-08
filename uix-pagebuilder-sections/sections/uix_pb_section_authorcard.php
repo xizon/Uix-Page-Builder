@@ -74,7 +74,7 @@ if ( $sid >= 0 ) {
 }
 
 /**
- * Element Template : Author Card
+ * Element Template
  * ----------------------------------------------------
  */
 $uix_pb_authorcard_primary_color  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_primary_color', '#a2bf2f' );

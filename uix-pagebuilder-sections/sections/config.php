@@ -16,7 +16,7 @@ $uix_pb_config = [
 		array(
 			'title'           => __( 'Progress Bar', 'uix-pagebuilder' ),
 			'id'              => 'uix_pb_section_bar',
-			'icon'            => 'signal',
+			'icon'            => 'server',
 			'bg'              => '#f57e57',
 			'info'            => __( 'Display status of a determinate or indeterminate process.', 'uix-pagebuilder' ),
 		
@@ -40,6 +40,15 @@ $uix_pb_config = [
 			'info'            => __( 'A single content area with multiple panels, each associated with a header in a list.', 'uix-pagebuilder' ),
 		
 		),	
+		
+		array(
+			'title'           => __( 'Google Map', 'uix-pagebuilder' ),
+			'id'              => 'uix_pb_section_map',
+			'icon'            => 'map-marker',
+			'bg'              => '#F65673',
+			'info'            => __( 'Insert Google Maps into your website.', 'uix-pagebuilder' ),
+		
+		),			
 		
 		
 ];

@@ -23,7 +23,7 @@ $item    = '';
 
 
 /**
- * Element Template : Form Demo 2
+ * Element Template
  * ----------------------------------------------------
  */
 

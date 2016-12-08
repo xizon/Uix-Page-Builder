@@ -77,7 +77,7 @@ if ( $sid >= 0 ) {
 
 
 /**
- * Element Template : Code
+ * Element Template
  * ----------------------------------------------------
  */
 $uix_pb_bar_margin_top                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_margin_top', 25 );
