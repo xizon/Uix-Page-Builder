@@ -132,12 +132,16 @@ class UixPageBuilder {
 						wp_enqueue_script( self::PREFIX . '-gridster', self::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.6', true );	
 						wp_enqueue_style( self::PREFIX . '-gridster', self::plug_directory() .'admin/css/jquery.gridster.css', false, '0.5.6', 'all');
 						
+						//jQuery Accessible Tabs
+						wp_enqueue_script( 'accTabs', self::plug_directory() .'admin/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1');
+						wp_enqueue_style( 'accTabs', self::plug_directory() .'admin/css/jquery.accTabs.css', false, '0.1.1', 'all');
+					
+						
 						//Main
 						wp_enqueue_style( self::PREFIX . '-pagebuilder', self::plug_directory() .'admin/css/style.css', false, self::ver(), 'all');
 						
 						//Jquery UI
 						wp_enqueue_script( 'jquery-ui' );
-
 
 				}
 		  }
@@ -445,14 +449,27 @@ class UixPageBuilder {
 			
 			if ( self::tempfolder_exists() ) {
 				include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
-				foreach ( $uix_pb_config as $key ) {
-					include get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
+				foreach ( $uix_pb_config as $v ) {
+					foreach ( $v[ 'buttons' ] as $key ) {
+						
+						if ( file_exists( get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php" ) ) {
+							include get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
+						}
+						
+					}						
 				}
 
 			} else {
 				include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
-				foreach ( $uix_pb_config as $key ) {
-					include self::plug_filepath(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
+				
+				foreach ( $uix_pb_config as $v ) {
+					foreach ( $v[ 'buttons' ] as $key ) {
+						
+						if ( file_exists( self::plug_filepath(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php" ) ) {
+							include self::plug_filepath(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
+						}
+						
+					}						
 				}
 			}
 		
@@ -485,22 +502,39 @@ class UixPageBuilder {
 		
 	}
 	
+	
 	public static function list_page_sortable_li_btns( $col = '' ) {
 	
 		if ( self::tempfolder_exists() ) {
 			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
+			$imgpath = get_template_directory_uri() .'/uix-pagebuilder-sections/images/preview_thumbnail/';
+			
 		} else {
 			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
+			$imgpath = self::plug_directory() .'uix-pagebuilder-sections/images/preview_thumbnail/';
 		}
 		
-		$btns = '';
+		$btns = '<div class="uix-pagebuilder-col-tabs">';
+	   
+		foreach ( $uix_pb_config as $v ) {
+			
+			$btns .= '<h3>'.$v[ 'sortname' ].'</h3><div>';
+			
+			foreach ( $v[ 'buttons' ] as $key ) {
+				
+				$btns .= "<div class=\"uix-pagebuilder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgpath.$key[ 'thumb' ] )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
+			}		
+			
+			$btns .= '</div>';
+							
+		}
 		
-		foreach ( $uix_pb_config as $key ) {
-			$btns .= "<div class=\"uix-pagebuilder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\">".$key[ 'title' ]."</a><div class=\"at-icon-box\" style=\"background-color:".esc_attr( $key[ 'bg' ] )."\"><i class=\"fa fa-".esc_attr( $key[ 'icon' ] )."\"></i><div class=\"at-icon-box-text\"><h4>".esc_html( $key[ 'title' ] )."</h4><p>".esc_html( $key[ 'info' ] )."</p></div></div></div>";
-		}	
+		$btns .= '</div>';
+				
 		
-		
-		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' );}';
+		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' ); if ( jQuery( document.body ).width() > 768 ) { jQuery( ".uix-pagebuilder-col-tabs" ).accTabs(); } }';
+			
+	
 		
 				
 	}

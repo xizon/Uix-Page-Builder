@@ -82,6 +82,8 @@
 		$( document ).on( 'click', '.widget-items-col-container a', function( e ) {
 			$( this ).parent().parent().hide();
 		});
+				
+						
 					
 	   /*! 
 		 * 
