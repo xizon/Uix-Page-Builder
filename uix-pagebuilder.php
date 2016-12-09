@@ -92,26 +92,24 @@ class UixPageBuilder {
 	 */
 	public static function frontpage_scripts() {
 		
-		//Main stylesheets and scripts to Front-End
-		if ( self::tempfolder_exists() ) {
-			$dir = get_template_directory_uri() .'/uix-pagebuilder-sections/';
-		} else {
-			$dir = self::plug_directory() .'uix-pagebuilder-sections/';
-		}
-		
 		//Core
-		wp_enqueue_style( self::PREFIX . '-pagebuilder', $dir.'css/uix-pagebuilder.css', false, self::ver(), 'all' );	
-		wp_enqueue_script( self::PREFIX . '-pagebuilder', $dir.'js/uix-pagebuilder.js', array( 'jquery' ), self::ver(), true );	
-		
-	
-		
-		// Theme path in javascript file ( var templateUrl = wp_theme_root_path.templateUrl; )
-        wp_localize_script( self::PREFIX . '-pagebuilder',  'wp_theme_root_path', array( 
-		    'templateUrl' => get_stylesheet_directory_uri()
-		 ) );
+		if ( file_exists( self::backend_path( 'dir' ).'css/uix-pagebuilder.css' ) ) {
+			wp_enqueue_style( self::PREFIX . '-pagebuilder', self::backend_path( 'uri' ).'css/uix-pagebuilder.css', false, self::ver(), 'all' );
+		}
+		if ( file_exists( self::backend_path( 'dir' ).'js/plugins.js' ) ) {
+			wp_enqueue_script( self::PREFIX . '-pagebuilder-plugins', self::backend_path( 'uri' ).'js/plugins.js', false, self::ver(), true );	
+		}	
+		if ( file_exists( self::backend_path( 'dir' ).'js/uix-pagebuilder.js' ) ) {
+			wp_enqueue_script( self::PREFIX . '-pagebuilder', self::backend_path( 'uri' ).'js/uix-pagebuilder.js', array( 'jquery' ), self::ver(), true );	
 			
+			// Theme path in javascript file ( var templateUrl = wp_theme_root_path.templateUrl; )
+			wp_localize_script( self::PREFIX . '-pagebuilder',  'wp_theme_root_path', array( 
+				'templateUrl' => get_stylesheet_directory_uri()
+			 ) );		
+			
+		}	
 		
-
+		
 	}
 	
 	
@@ -255,26 +253,53 @@ class UixPageBuilder {
 	}
 	
 	
+	/*
+	 * Returns custom back-end panel directory or directory URL
+	 *
+	 */
+	public static function backend_path( $type = 'uri' ) {
+	
+		if ( self::tempfolder_exists() ) {
+			
+			if ( $type == 'uri' )  {
+				return get_template_directory_uri() .'/uix-pagebuilder-sections/';
+			} else {
+				return get_template_directory() .'/uix-pagebuilder-sections/';
+			}
+			
+			
+		} else {
+			
+			if ( $type == 'uri' )  {
+				return self::plug_directory() .'uix-pagebuilder-sections/';
+			} else {
+				return self::plug_filepath() .'uix-pagebuilder-sections/';
+				
+			}
+		}
+
+	}
+	
 
 	/*
-	 * Callback the plugin directory
+	 * Callback the plugin directory URL
 	 *
 	 *
 	 */
 	public static function plug_directory() {
 
-	  return plugin_dir_url( __FILE__ );
+	  return trailingslashit( plugin_dir_url( __FILE__ ) );
 
 	}
 	
 	/*
-	 * Callback the plugin file path
+	 * Callback the plugin directory
 	 *
 	 *
 	 */
 	public static function plug_filepath() {
 
-	  return WP_PLUGIN_DIR .'/'.self::get_slug();
+	  return trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() );
 
 	}	
 	
@@ -463,13 +488,13 @@ class UixPageBuilder {
 				}
 
 			} else {
-				include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
+				include self::plug_filepath().self::CUSTOMTEMP."config.php";
 				
 				foreach ( $uix_pb_config as $v ) {
 					foreach ( $v[ 'buttons' ] as $key ) {
 						
-						if ( file_exists( self::plug_filepath(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php" ) ) {
-							include self::plug_filepath(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
+						if ( file_exists( self::plug_filepath().self::CUSTOMTEMP."".$key[ 'id' ].".php" ) ) {
+							include self::plug_filepath().self::CUSTOMTEMP."".$key[ 'id' ].".php";
 						}
 						
 					}						
@@ -487,7 +512,7 @@ class UixPageBuilder {
 			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
 
 		} else {
-			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
+			include self::plug_filepath().self::CUSTOMTEMP."config.php";
 		}
 		
 	}
@@ -510,12 +535,13 @@ class UixPageBuilder {
 	
 		if ( self::tempfolder_exists() ) {
 			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
-			$imgpath = get_template_directory_uri() .'/uix-pagebuilder-sections/images/preview_thumbnail/';
 			
 		} else {
-			include self::plug_filepath(). "/".self::CUSTOMTEMP."config.php";
-			$imgpath = self::plug_directory() .'uix-pagebuilder-sections/images/preview_thumbnail/';
+			include self::plug_filepath().self::CUSTOMTEMP."config.php";
 		}
+		
+		$imgpath = self::backend_path( 'uri' ).'images/preview_thumbnail/';
+		
 		
 		$btns = '<div class="uix-pagebuilder-col-tabs">';
 	   

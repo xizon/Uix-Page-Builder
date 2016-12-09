@@ -106,24 +106,24 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		
 		
 		/*
-		 * Callback the plugin directory
+		 * Callback the plugin directory URL
 		 *
 		 *
 		 */
 		public static function plug_directory() {
 	
-		  return plugin_dir_url( __FILE__ );
+		  return trailingslashit( plugin_dir_url( __FILE__ ) );
 	
 		}
 		
 		/*
-		 * Callback the plugin file path
+		 * Callback the plugin directory
 		 *
 		 *
 		 */
 		public static function plug_filepath() {
 	
-		  return WP_PLUGIN_DIR .'/'.self::get_slug();
+		  return trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() );
 	
 		}	
 		
@@ -191,7 +191,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				include get_stylesheet_directory(). "/".self::CUSTOMTEMP."{$name}.php";
 	
 			} else {
-				include self::plug_filepath(). "/".self::CUSTOMTEMP."{$name}.php";
+				include self::plug_filepath().self::CUSTOMTEMP."{$name}.php";
 			}
 			
 		}
