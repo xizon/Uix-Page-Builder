@@ -682,7 +682,7 @@ $args =
 		
 		//------list begin
 		array(
-			'desc'           => sprintf( esc_html__( 'Note: %1$s items per row.Per section insert "for a maximum of %1$s".', 'uix-pagebuilder' ), $clone_max ),
+			'desc'           => sprintf( __( '<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum of <strong>%1$s</strong>.', 'uix-pagebuilder' ), $clone_max ),
 			'type'           => 'text'
 		
 		),
@@ -1050,13 +1050,13 @@ if ( $sid >= 0 && is_admin() ) {
 						_toggleurl   = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_toggle_url' ); ?>' ).val(),
 						_toggleicon  = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_toggle_icon' ); ?>' ).val();
 						
-					var _item_v_img         = ( _img != undefined ) ? _img : '',
-					    _item_v_title       = ( _title != undefined ) ? _title : '',
-						_item_v_toggleurl   = ( _toggleurl != undefined ) ? _toggleurl : '',
-						_item_v_toggleicon  = ( _toggleicon != undefined ) ? uixpbform_htmlEncode( _toggleicon ) : '';
+					var _item_v_img         = ( _img != undefined && _img != '' ) ? _img : '',
+					    _item_v_title       = ( _title != undefined && _title != '' ) ? _title : '',
+						_item_v_toggleurl   = ( _toggleurl != undefined && _toggleurl != '' ) ? _toggleurl : '',
+						_item_v_toggleicon  = ( _toggleicon != undefined && _toggleicon != '' ) ? uixpbform_htmlEncode( _toggleicon ) : '';
 					
 					
-					if ( _title != undefined ) {
+					if ( _title != undefined && _title != '' ) {
 							
 						//Do not include spaces
 						show_list_item += '<p>';

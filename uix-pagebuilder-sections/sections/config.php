@@ -57,7 +57,9 @@ $uix_pb_config = [
 									'id'              => 'uix_pb_section_tabs',
 									'thumb'           => 'tabs.jpg',
 								
-								),		
+								),
+								
+										
 							
 							]
 	

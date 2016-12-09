@@ -43,7 +43,7 @@ class UixPBFormType_ColorMap {
 				                <div class="uixpbform-color-selector-onlybutton">
 								        
 										<div class="uixpbform-color-selector-toggles">
-											<input type="text" class="wp-color-input" id="'.$id.'" name="'.$name.'" value="'.$value.'">
+											<input type="text" class="wp-color-input" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">
 										</div>	
 										<span class="uixpbform-color-selector-label">'.( !empty( $desc ) ? $desc : __( 'Add Custom Color', 'uix-pagebuilder' ) ).'</span>		
 								
@@ -57,7 +57,7 @@ class UixPBFormType_ColorMap {
 				$field .= ' 
 				                <div class="uixpbform-input-text-short">
 				
-									   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixPBFormCore::readable_color( $value ).'"' : '' ).' value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+									   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixPBFormCore::readable_color( $value ).'"' : '' ).' chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
 									   
 									  
 								</div>

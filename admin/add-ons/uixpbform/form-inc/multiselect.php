@@ -74,7 +74,7 @@ class UixPBFormType_MultiSelector {
 								   '.$optionlist.' 
 								   </div>
 							   
-								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.rtrim( $radiofirst, ',' ).'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.rtrim( $radiofirst, ',' ).'">' : '' ).' 
 						   
 								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 								  

@@ -119,7 +119,7 @@ class UixPBFormType_RadioImage {
 								   '.$optionlist.' 
 								   </div>
 							   
-								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$radiofirst.'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$radiofirst.'">' : '' ).' 
 						   
 								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 								  

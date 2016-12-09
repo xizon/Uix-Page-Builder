@@ -34,6 +34,7 @@ Initial Release.
 - WP 4.4.2
 - WP 4.5.*
 - WP 4.6.*
+- WP 4.7
 
 
 ###Screenshot
@@ -43,6 +44,8 @@ Initial Release.
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-2.jpg)
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-3.jpg)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-4.jpg)
 
 
 

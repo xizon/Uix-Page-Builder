@@ -46,11 +46,11 @@ class UixPBFormType_Slider {
 						
 						    <div class="uixpbform-box">
                                
-								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" name="'.$units_name.'" value="'.$units.'">' : '' ).' 
+								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" name="'.$units_name.'" chk-id-input="'.$units_id.'" value="'.$units.'">' : '' ).' 
 								   
 								   '.( !empty( $id ) ? '
 									<div class="uixpbform-range-container">
-										<input type="range" class="uixpbform-normal uixpbform-range" id="'.$id.'" name="'.$name.'" value="'.$value.'" min="'.$min.'" max="'.$max.'" step="'.$step.'" oninput="uixpbform_rangeSlider(this.id, \'slider_output_'.$id.'\', \''.$units.'\' )">
+										<input type="range" class="uixpbform-normal uixpbform-range" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'" min="'.$min.'" max="'.$max.'" step="'.$step.'" oninput="uixpbform_rangeSlider(this.id, \'slider_output_'.$id.'\', \''.$units.'\' )">
 										<output class="uixpbform-range-txt" id="slider_output_'.$id.'">'.$value.''.$units.'</output>
 									</div>
 								   ' : '' ).' 

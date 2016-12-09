@@ -67,7 +67,7 @@ class UixPBFormType_Toggle {
 						   <div class="uixpbform-box">
 								<a href="javascript:" class="'.$link_class.' uixpbform_btn_trigger-toggleshow '.$open_class.'" data-this-targetid="'.$id.'" data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}">'.$btn_text.'</a>
 								
-								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" >' : '' ).'
+								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'" >' : '' ).'
 		
 								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 	
 								

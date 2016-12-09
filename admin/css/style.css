@@ -7,7 +7,18 @@
 	margin-bottom: 15px;
 	position: relative;
 	vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+@media screen and (min-width: 769px) {
+	.uix-pagebuilder-col:nth-child(3n+1) {
+		clear: both;
+		margin-left: 0;
+	}
+}
+
 
 @media screen and (min-width: 769px) and (max-width: 1199px) {
 	.uix-pagebuilder-col {

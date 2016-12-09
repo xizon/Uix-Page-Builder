@@ -5,7 +5,7 @@ Author URI: https://uiux.cc
 Plugin URL: https://uiux.cc/wp-plugins/uix-pagebuilder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -54,6 +54,7 @@ The version number is the date of the revision of the [guidelines](https://make.
 1. screenshot-1.jpg
 2. screenshot-2.jpg
 3. screenshot-3.jpg
+4. screenshot-4.jpg
 
 
 == Upgrade Notice ==

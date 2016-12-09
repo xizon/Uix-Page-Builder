@@ -56,8 +56,8 @@ class UixPBFormType_ShortUnitsText {
                                
 								<div class="uixpbform-input-text-short">
 			
-								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
-								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" name="'.$unitsname.'" value="'.$unitsvalue.'">' : '' ).' 
+								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" name="'.$unitsname.'" chk-id-input="'.$unitsid.'" value="'.$unitsvalue.'">' : '' ).' 
 								   
 								   <span class="units units-short units-selector uixpbform_btn_trigger-radio" data-targetid="'.$unitsid.'">'.$unitslist.'</span>
 						

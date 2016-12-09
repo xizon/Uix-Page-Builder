@@ -47,7 +47,7 @@ class UixPBFormType_Icon {
 								<div class="uixpbform-icon-selector-label">'.$tips.'<span class="uixpbform-loading icon"></span></div>
 								<div class="uixpbform-icon-selector-icon-preview" id="'.$id.'-preview">'.( ( !empty( $value ) ) ? '<i class="'.$iconprefix.''.$value.'"></i>' : '' ).'</div>
 								<a href="javascript:" class="uixpbform-icon-clear">&times;</a>
-								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" value="'.$value.'">' : '' ).'
+								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).'
 								'.$iconlist.'
 							
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 

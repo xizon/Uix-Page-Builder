@@ -49,7 +49,7 @@ class UixPBFormType_Textarea {
 						<td>	
 						    <div class="uixpbform-box">
 						
-							   '.( !empty( $id ) ? '<textarea rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'">'.$value.'</textarea>' : '' ).' 					   	   
+							   '.( !empty( $id ) ? '<textarea rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'" chk-id-textarea="'.$id.'">'.$value.'</textarea>' : '' ).' 					   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
 							</div>

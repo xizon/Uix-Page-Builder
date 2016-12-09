@@ -155,16 +155,6 @@ $form_type = [
 $args = 
 	[
 	
-	
-	
-	 
-		
-		array(
-			'desc'           => sprintf( esc_html__( 'Note: %1$s items per row.Per section insert "for a maximum of %1$s".', 'uix-pagebuilder' ), $clone_max ),
-			'type'           => 'text'
-		
-		),
-		
 		
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_tabs_style' ),

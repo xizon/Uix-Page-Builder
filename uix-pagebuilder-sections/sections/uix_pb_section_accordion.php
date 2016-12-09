@@ -150,15 +150,6 @@ $args =
 	[
 	
 	
-	
-	 
-		
-		array(
-			'desc'           => sprintf( esc_html__( 'Note: %1$s items per row.Per section insert "for a maximum of %1$s".', 'uix-pagebuilder' ), $clone_max ),
-			'type'           => 'text'
-		
-		),
-		
 		
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_effect' ),
@@ -403,11 +394,11 @@ if ( $sid >= 0 && is_admin() ) {
 						_title   = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ); ?>' ).val(),
 						_con     = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ); ?>' ).val();
 						
-					var _item_v_title = ( _title != undefined ) ? _title : '',
-						_item_v_con   = ( _con != undefined ) ? _con : '';
+					var _item_v_title = ( _title != undefined && _title != '' ) ? _title : '',
+						_item_v_con   = ( _con != undefined && _con != '' ) ? _con : '';
 					
 					
-					if ( _title != undefined ) {
+					if ( _title != undefined && _title != '' ) {
 										
 						//Do not include spaces
 						show_list_item += '<div class="uix-pb-spoiler'+openfirst_class+'">';
