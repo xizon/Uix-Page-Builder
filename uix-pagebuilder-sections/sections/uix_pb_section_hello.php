@@ -887,23 +887,23 @@ if ( $sid >= 0 && is_admin() ) {
 			$cur_form_id   = '#'.$uid.$field;
 			$value         =  [
 								array(
-									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_imgURL]['.$sid.']' ],
+									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_imgURL' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_imgURL]['.$sid.']' ]
 								),
 								array(
-									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_imgtitle]['.$sid.']' ],
+									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_imgtitle' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_imgtitle]['.$sid.']' ]
 								),
 								array(
-									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_toggle]['.$sid.']' ],
+									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_toggle' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_toggle]['.$sid.']' ]
 								),
 								array(
-									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_toggle_url]['.$sid.']' ],
+									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_toggle_url' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_toggle_url]['.$sid.']' ]
 								),
 								array(
-									'replace'  => $item[ '['.$colid.'][uix_pb_listitem_toggle_icon]['.$sid.']' ],
+									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_listitem_toggle_icon' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_listitem_toggle_icon]['.$sid.']' ]
 								)	
 																					

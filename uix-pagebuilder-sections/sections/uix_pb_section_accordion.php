@@ -324,11 +324,11 @@ if ( $sid >= 0 && is_admin() ) {
 			$cur_form_id   = '#'.$uid.$field;
 			$value         =  [
 								array(
-									'replace'  => $item[ '['.$colid.'][uix_pb_accordion_listitem_title]['.$sid.']' ],
+									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_accordion_listitem_title]['.$sid.']' ]
 								),
 								array(
-									'replace'  => $item[ '['.$colid.'][uix_pb_accordion_listitem_con]['.$sid.']' ],
+									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_accordion_listitem_con]['.$sid.']' ]
 								),
 			                  ];

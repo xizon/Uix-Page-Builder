@@ -544,79 +544,76 @@ jQuery( document ).ready( function() {
 		,options );
 		return this.each( function() {
 	  
-			
-            jQuery( '.uixpbform_btn_trigger-clone' ).each( function()  {
-				
-				var cur_appendID      = '#' + jQuery( this ).attr( "data-appendid" ),
-				    show_count        = jQuery( this ).attr( "data-max" ),
-					cur_removeClass   = jQuery( this ).attr( "data-removeclass" ),
-					btnINdex          = parseFloat( jQuery( this ).attr( 'data-index' ) );
-				
-				if ( btnINdex <= show_count ) {
-					
-					jQuery( cur_appendID ).after( settings.cloneCode );
-					jQuery( this ).attr( 'data-index',btnINdex+1 );
-				}
-				
-				
-				if ( btnINdex == show_count ) {
-					jQuery( this ).addClass( 'disable' );
-				}
-				
-				
-				/*-- Initializes the form state --*/
-				//icon list with the jQuery AJAX method
-				jQuery( '.icon-selector' ).uixpbform_iconSelector();
-					  
-				//color picker
-				jQuery( '.wp-color-input' ).wpColorPicker();		 
-			 
-				//toggle default
-				jQuery( '.uixpbform_btn_trigger-toggleshow' ).each( function()  {
-					if ( jQuery( this ).closest( '.uixpbform-box' ).find( 'input' ).val() == 1 ) {
-						jQuery( this ).uixpbform_toggleshow();
-					}	
-				});	
-				jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
-				jQuery( '.uixpbform_btn_trigger-toggleswitch_radio' ).uixpbform_toggleSwitchRadioStatus();
-				
-				//insert media
-				jQuery( '.uixpbform_btn_trigger-upload' ).uixpbform_mediaStatus();
-						
-				
-					  
-				/*-- The form focus --*/
-				var srow = '.uixpbform-form-container .dynamic-row';
-				jQuery( srow ).mouseenter(function() {
-					jQuery( srow ).animate( { opacity: 0.3 }, 0 );
-					jQuery( this ).animate( { opacity: 1 }, 0 );
-				});
-				jQuery( srow ).mouseleave(function() {
-					jQuery( srow ).animate( { opacity: 1 }, 0 );
-				});
-				
-				
-				 //remove input
-				 if ( cur_removeClass ){
-					 
-					 jQuery( document ).on( 'click', '.' + cur_removeClass, function( e ) {
-						e.preventDefault();
-
-						var  cur_thisBTN = jQuery( this ).closest( 'table' ).find( '.uixpbform_btn_trigger-clone' ),
-							 btnINdex = parseFloat( cur_thisBTN.attr( 'data-index' ) );
-				
-						if ( btnINdex > 1 ) {
-							jQuery( this ).closest( '.dynamic-addnow' ).remove();
-							cur_thisBTN.attr( 'data-index',btnINdex-1 );							
-						}
-						
-						cur_thisBTN.removeClass( 'disable' );
-						
-					} );		
 		
-				 }	
-                
-            });
+			var cur_appendID      = '#' + jQuery( this ).attr( "data-appendid" ),
+				show_count        = jQuery( this ).attr( "data-max" ),
+				cur_removeClass   = jQuery( this ).attr( "data-removeclass" ),
+				btnINdex          = parseFloat( jQuery( this ).attr( 'data-index' ) );
+			
+			if ( btnINdex <= show_count ) {
+				
+				jQuery( cur_appendID ).after( settings.cloneCode );
+				jQuery( this ).attr( 'data-index',btnINdex+1 );
+			}
+			
+			
+			if ( btnINdex == show_count ) {
+				jQuery( this ).addClass( 'disable' );
+			}
+			
+			
+			/*-- Initializes the form state --*/
+			//icon list with the jQuery AJAX method
+			jQuery( '.icon-selector' ).uixpbform_iconSelector();
+				  
+			//color picker
+			jQuery( '.wp-color-input' ).wpColorPicker();		 
+		 
+			//toggle default
+			jQuery( '.uixpbform_btn_trigger-toggleshow' ).each( function()  {
+				if ( jQuery( this ).closest( '.uixpbform-box' ).find( 'input' ).val() == 1 ) {
+					jQuery( this ).uixpbform_toggleshow();
+				}	
+			});	
+			jQuery( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
+			jQuery( '.uixpbform_btn_trigger-toggleswitch_radio' ).uixpbform_toggleSwitchRadioStatus();
+			
+			//insert media
+			jQuery( '.uixpbform_btn_trigger-upload' ).uixpbform_mediaStatus();
+					
+			
+				  
+			/*-- The form focus --*/
+			var srow = '.uixpbform-form-container .dynamic-row';
+			jQuery( srow ).mouseenter(function() {
+				jQuery( srow ).animate( { opacity: 0.3 }, 0 );
+				jQuery( this ).animate( { opacity: 1 }, 0 );
+			});
+			jQuery( srow ).mouseleave(function() {
+				jQuery( srow ).animate( { opacity: 1 }, 0 );
+			});
+			
+			
+			 //remove input
+			 if ( cur_removeClass ){
+				 
+				 jQuery( document ).on( 'click', '.' + cur_removeClass, function( e ) {
+					e.preventDefault();
+
+					var  cur_thisBTN = jQuery( this ).closest( 'table' ).find( '.uixpbform_btn_trigger-clone' ),
+						 btnINdex = parseFloat( cur_thisBTN.attr( 'data-index' ) );
+			
+					if ( btnINdex > 1 ) {
+						jQuery( this ).closest( '.dynamic-addnow' ).remove();
+						cur_thisBTN.attr( 'data-index',btnINdex-1 );							
+					}
+					
+					cur_thisBTN.removeClass( 'disable' );
+					
+				} );		
+	
+			 }	
+            
  
 		} );
 	
@@ -873,7 +870,6 @@ jQuery( document ).ready( function() {
 					jQuery( '.uixpbform-icon-clear' ).each( function()  {
 						
 						var c = jQuery( this ).closest( '.uixpbform-box' );
-						
 						if ( c.find( 'input' ).val() == '' ) {
 							jQuery( this ).css( 'display', 'none' );
 							c.find( 'input' ).val( '' );
@@ -882,6 +878,7 @@ jQuery( document ).ready( function() {
 	
 						} else {
 							jQuery( this ).css( 'display', 'inline-block' );
+							c.find( '.uixpbform-icon-selector-icon-preview' ).html( '<i class="fa fa-'+c.find( 'input' ).val()+'"></i>' );
 						}
 					  
 					});

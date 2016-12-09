@@ -685,7 +685,7 @@ if ( $sid >= 0 && is_admin() ) {
 								
 			                  ];
 							  
-			//UixPageBuilder::push_cloneform( $clone_trigger_id_2, $cur_id, $colid, $clone_value_2, $sid, $value, $clone_list_toggle_class );
+			UixPageBuilder::push_cloneform( $clone_trigger_id_2, $cur_id, $colid, $clone_value_2, $sid, $value, $clone_list_toggle_class );
 	
 		} 
 	}	
