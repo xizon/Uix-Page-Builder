@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- *  WP Menu Extensions: Google Map
+ *  Parse Google Map
  *
  */
 if ( !class_exists( 'UixPB_Map' ) ) {

@@ -34,6 +34,8 @@
 						
 						
 						gridsterItemSave( cur_rowID );
+						
+						/*-- Initialize default value & form --*/
 						uixPBFormDataSave();
 						
 						
@@ -139,7 +141,14 @@
 			
 			$( '.settings-wrapper' ).hide();
 						
-		});				
+		});	
+		
+		$( document ).on( 'mouseenter', '.sortable-list .row', function( e ) {
+			e.preventDefault();
+			
+			$( '.settings-wrapper' ).hide();
+						
+		});						
 		
 			
 	   /*! 
@@ -147,13 +156,30 @@
 		 * Template Settings
 		 * ---------------------------------------------------
 		 */	
-		 //--------load
-		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .select-temp', function( e ) {
+		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .export-temp, .uix-pagebuilder-gridster-addbtn .select-temp, .uix-pagebuilder-gridster-addbtn .save-temp', function( e ) {
 			e.preventDefault();
 		
 			var $set = $( this ).next( '.settings-temp-wrapper' );
 			$set.show();
 			$( '.uixpbform-modal-mask' ).show();
+	
+			//Close
+			$set.find( '.close, .export' ).on( 'click', function() {
+				$set.hide();
+				$( '.uixpbform-modal-mask' ).hide();
+			});	
+			
+			$( '.uixpbform-modal-mask' ).on( 'click', function() {
+				$set.hide();	
+				$( this ).hide();		
+			});	
+					
+		});	
+		 
+		 //--------load
+		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .select-temp', function( e ) {
+			e.preventDefault();
+		
 			
 			//List
 			$.ajax({
@@ -181,18 +207,6 @@
 				}
 			});
 			
-			
-	
-			//Close
-			$set.find( '.close' ).on( 'click', function() {
-				$set.hide();
-				$( '.uixpbform-modal-mask' ).hide();
-			});	
-			
-			$( '.uixpbform-modal-mask' ).on( 'click', function() {
-				$set.hide();	
-				$( this ).hide();		
-			});	
 						
 		});		
 		
@@ -218,6 +232,7 @@
 			
 				//Initialize gridster
 				gridsterEditRow( JSON.parse( data ) );
+			    
 				
 				//close
 				$this.parent().hide();
@@ -236,26 +251,8 @@
 		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .save-temp', function( e ) {
 			e.preventDefault();
 		
-			var $set = $( this ).next( '.settings-temp-wrapper' );
-			$set.show();
-			$( '.uixpbform-modal-mask' ).show();
-	
-	       $set.find( '[name="tempname"]' ).val( uix_pagebuilder_layoutdata.send_string_name );
-	
-	
-			//Close
-			$set.find( '.close' ).on( 'click', function() {
-				$set.hide();
-				$( '.uixpbform-modal-mask' ).hide();
-			});	
-			
-			$( '.uixpbform-modal-mask' ).on( 'click', function() {
-				$set.hide();	
-				$( this ).hide();		
-			});	
-			
-		
-						
+	        $( this ).next( '.settings-temp-wrapper' ).find( '[name="tempname"]' ).val( uix_pagebuilder_layoutdata.send_string_name );
+				
 		});		
 		
 		$( document ).on( 'click', '.settings-temp-wrapper .save', function( e ) {
@@ -287,7 +284,6 @@
 						
 		});
 	
-		
 				
 	
 		/*! 
@@ -393,6 +389,8 @@ function gridsterItemElementsBTStatus( type ) {
 						
 						if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
 							
+							
+							//The click action has not yet been performed.
 							if ( type == 0 ) {
 								ele_btn.after( jQuery( this ).clone().addClass( 'used' ).text( widget_name ) ).hide();
 							}

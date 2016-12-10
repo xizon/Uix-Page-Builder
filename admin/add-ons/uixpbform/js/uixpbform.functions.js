@@ -1102,6 +1102,8 @@ function uixpbform_insertCodes( formid, code, conid, sid ) {
 	
 	//Synchronize other plug-ins
 	if(typeof uixPBFormDataSave == 'function'){
+		
+		/*-- Initialize default value & form --*/
 		uixPBFormDataSave();
 	}
 };

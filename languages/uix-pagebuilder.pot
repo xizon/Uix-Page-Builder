@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Fri Dec 09 2016 15:12:55 GMT+0800 (CST)\n"
+"POT-Revision-Date: Sat Dec 10 2016 21:39:06 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,45 +42,45 @@ msgstr ""
 msgid "https://uiux.cc"
 msgstr ""
 
-#: ../uix-pagebuilder.php:194
+#: ../uix-pagebuilder.php:193
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: ../uix-pagebuilder.php:195 ../admin/post-extensions/post-extensions-init.php:134
+#: ../uix-pagebuilder.php:194 ../admin/post-extensions/post-extensions-init.php:317
 msgid "Uix Page Builder"
 msgstr ""
 
-#: ../uix-pagebuilder.php:207 ../uix-pagebuilder.php:208
+#: ../uix-pagebuilder.php:206 ../uix-pagebuilder.php:207
 msgid "Helper"
 msgstr ""
 
-#: ../uix-pagebuilder.php:237 ../helper/settings.php:69
+#: ../uix-pagebuilder.php:236 ../helper/settings.php:69
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-pagebuilder.php:529
+#: ../uix-pagebuilder.php:528
 msgid "Add content"
 msgstr ""
 
-#: ../uix-pagebuilder.php:564
+#: ../uix-pagebuilder.php:563
 msgid "Choose Element You Want"
 msgstr ""
 
-#: ../uix-pagebuilder.php:573
+#: ../uix-pagebuilder.php:572
 msgid "Layout"
 msgstr ""
 
-#: ../uix-pagebuilder.php:737
+#: ../uix-pagebuilder.php:766
 msgid ""
 "<strong>You need to create Uix Page Builder template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:737 ../helper/tabs/usage.php:22
+#: ../uix-pagebuilder.php:766 ../helper/tabs/usage.php:22
 msgid "Create now!"
 msgstr ""
 
-#: ../uix-pagebuilder.php:737 ../helper/tabs/temp.php:73
+#: ../uix-pagebuilder.php:766 ../helper/tabs/temp.php:73
 msgid ""
 "As a workaround you can use FTP, access the Uix Page Builder template files "
 "path <code>/wp-content/plugins/uix-pagebuilder/theme_templates/</code> and "
@@ -88,27 +88,27 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../uix-pagebuilder.php:880 ../uix-pagebuilder.php:955
+#: ../uix-pagebuilder.php:909 ../uix-pagebuilder.php:984
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:882
+#: ../uix-pagebuilder.php:911
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:887
+#: ../uix-pagebuilder.php:916
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:890
+#: ../uix-pagebuilder.php:919
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -116,7 +116,8 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../admin/add-ons/uixpbform/init.php:449
+#: ../admin/add-ons/uixpbform/init.php:449 ../admin/post-extensions/post-
+#: extensions-init.php:363
 msgid "Save"
 msgstr ""
 
@@ -249,36 +250,54 @@ msgstr ""
 msgid "Add to Menu"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:67
+#: ../admin/post-extensions/post-extensions-init.php:18 ../admin/post-
+#: extensions/post-extensions-init.php:222 ../admin/post-extensions/post-
+#: extensions-init.php:360
+msgid "Undefined"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:116
+msgid "Hmm... no templates yet."
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:147
+msgid "Default"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:223
+msgid "Loading list..."
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:250
 msgid ""
 "<i class=\"dashicons dashicons-editor-kitchensink\"></i>&nbsp;&nbsp;Uix Page "
 "Builder Attributes"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:85
+#: ../admin/post-extensions/post-extensions-init.php:268
 msgid "Page Builder Editor"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:89
+#: ../admin/post-extensions/post-extensions-init.php:272
 msgid "Enable"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:93
+#: ../admin/post-extensions/post-extensions-init.php:276
 msgid "Disable"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:102
+#: ../admin/post-extensions/post-extensions-init.php:285
 msgid "How To Create The One-Page Navigation? Here is an example:"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:105
+#: ../admin/post-extensions/post-extensions-init.php:288
 msgid ""
 "1. Under the <i class=\"dashicons dashicons-admin-generic\"></i> on the right "
 "per row, expand the Attributes tab. You can enter <code>my-portfolio</code> "
 "in the Custom ID field on the right."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:107
+#: ../admin/post-extensions/post-extensions-init.php:290
 #, php-format
 msgid ""
 "2. Create a new <a href=\"%1$s\">menu</a>, and add a Custom Link for each menu "
@@ -288,40 +307,74 @@ msgid ""
 "URL field."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:159
+#: ../admin/post-extensions/post-extensions-init.php:344
 msgid "Add Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:167
+#: ../admin/post-extensions/post-extensions-init.php:347
+msgid "Select a Template"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:348
+msgid "Choose Template You Want"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:350
+msgid "Confirm"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:356
+msgid "Save as Template"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:357
+msgid "Enter Template Name"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:369 ../admin/post-
+#: extensions/post-extensions-init.php:380
+msgid "Export"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:376
+#, php-format
+msgid ""
+"Move this file \"uix-pagebuilder-templates.xml\" to the <code>%1$s</code> "
+"folder. If you have done so yet, Uix Page Builder's templates list will be "
+"reset to its default value as specified from the xml file."
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:394
 msgid "Add section here."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:259 ../admin/post-
-#: extensions/post-extensions-init.php:406
+#: ../admin/post-extensions/post-extensions-init.php:504 ../admin/post-
+#: extensions/post-extensions-init.php:661
 msgid "Custom ID"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:259 ../admin/post-
-#: extensions/post-extensions-init.php:406
+#: ../admin/post-extensions/post-extensions-init.php:504 ../admin/post-
+#: extensions/post-extensions-init.php:661
 msgid "Container"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:259 ../admin/post-
-#: extensions/post-extensions-init.php:406
+#: ../admin/post-extensions/post-extensions-init.php:504 ../admin/post-
+#: extensions/post-extensions-init.php:661
 msgid "Boxed"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:259 ../admin/post-
-#: extensions/post-extensions-init.php:406
+#: ../admin/post-extensions/post-extensions-init.php:504 ../admin/post-
+#: extensions/post-extensions-init.php:661
 msgid "Full Width"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:259 ../admin/post-
-#: extensions/post-extensions-init.php:406 ../admin/post-extensions/post-
-#: extensions-init.php:406 ../uix-pagebuilder-
+#: ../admin/post-extensions/post-extensions-init.php:504 ../admin/post-
+#: extensions/post-extensions-init.php:661 ../admin/post-extensions/post-
+#: extensions-init.php:661 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_accordion.php:27 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_authorcard.php:18 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_bar.php:19 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_features1.php:28 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello.php:27 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:19 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:18 ../uix-pagebuilder-
@@ -329,8 +382,8 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:259 ../admin/post-
-#: extensions/post-extensions-init.php:406
+#: ../admin/post-extensions/post-extensions-init.php:504 ../admin/post-
+#: extensions/post-extensions-init.php:661
 msgid "HTML Code..."
 msgstr ""
 
@@ -526,20 +579,20 @@ msgid "Progress Bar"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/config.php:48 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_accordion.php:305
+#: sections/sections/uix_pb_section_accordion.php:296
 msgid "Accordion"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/config.php:56 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_tabs.php:312
+#: sections/sections/uix_pb_section_tabs.php:302
 msgid "Tabs"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:68
+#: ../uix-pagebuilder-sections/sections/config.php:70
 msgid "Contact"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:72 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:74 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:284
 msgid "Google Map"
 msgstr ""
@@ -553,30 +606,27 @@ msgid "Accordion content here."
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:157 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:685 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_tabs.php:163
-#, php-format
-msgid "Note: %1$s items per row.Per section insert \"for a maximum of %1$s\"."
-msgstr ""
-
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:166 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_tabs.php:188
+#: pagebuilder-sections/sections/uix_pb_section_tabs.php:178
 msgid "Transition Effect"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:182
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:173
 msgid "Open The First One Automatically"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:201 ../uix-
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:192 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:198 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:364 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_hello.php:694 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_tabs.php:208
+#: sections/sections/uix_pb_section_tabs.php:198
 msgid "List Item"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:207 ../uix-
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:198 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:204 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:370 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_hello.php:700 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_tabs.php:214
+#: sections/sections/uix_pb_section_tabs.php:204
 msgid "click here to add an item"
 msgstr ""
 
@@ -682,7 +732,7 @@ msgid "Title"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_bar.php:159 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_tabs.php:172
+#: pagebuilder-sections/sections/uix_pb_section_tabs.php:162
 msgid "Choose Style"
 msgstr ""
 
@@ -739,6 +789,57 @@ msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_bar.php:391
 msgid "Use the input fields below to customize the margin of progress bar."
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:90 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:98
+msgid "Feature Title"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:92 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:100
+msgid ""
+"Some description text here. You can add a lot of it or can choose to leave "
+"it blank."
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:188 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:354
+msgid "Note: multiple items per column"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:262 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:428
+msgid "Title Color"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:297 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:463
+msgid "Description Color"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:315 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:481 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_hello2.php:81 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_hello2.php:162
+msgid "Choose Feature Icon"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:327 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_features1.php:493
+msgid "Icon Color"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:533
+msgid "Left Section"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:534
+msgid "Right Section"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:587
+msgid "features1"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:98
@@ -850,17 +951,19 @@ msgstr ""
 msgid "Switch"
 msgstr ""
 
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:685
+#, php-format
+msgid ""
+"<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum "
+"of <strong>%1$s</strong>."
+msgstr ""
+
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:859
 msgid "Form Demo 1"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_hello2.php:51
 msgid "Text2 - 1"
-msgstr ""
-
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello2.php:81 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello2.php:162
-msgid "Choose Feature Icon"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_hello2.php:108 ../uix-

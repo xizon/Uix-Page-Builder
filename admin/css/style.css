@@ -705,10 +705,23 @@
 }
 
 
-.settings-temp-wrapper  label {
+.settings-temp-wrapper label {
 	color: #7E7E7E;
 	display: block;
 	margin-bottom: 5px;
+}
+
+.settings-temp-wrapper label .default {
+	font-size: 10px;
+	background: #ECECEC;
+	border: 1px solid #DFDFDF;
+	color: #717171;
+	-webkit-border-radius: 2px; 
+	-moz-border-radius: 2px; 
+	border-radius: 2px;
+	padding: 1px 3px;
+	display: inline-block;
+	margin-left: 4px;
 }
 
 .settings-temp-wrapper a.close {
