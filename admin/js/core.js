@@ -59,10 +59,7 @@
 		
 		});	
 		
-		//--------status
-		gridsterItemElementsBTStatus( 0 );
-		
-		
+
 		
 	   /*! 
 		 * 
@@ -145,6 +142,152 @@
 		});				
 		
 			
+	   /*! 
+		 * 
+		 * Template Settings
+		 * ---------------------------------------------------
+		 */	
+		 //--------load
+		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .select-temp', function( e ) {
+			e.preventDefault();
+		
+			var $set = $( this ).next( '.settings-temp-wrapper' );
+			$set.show();
+			$( '.uixpbform-modal-mask' ).show();
+			
+			//List
+			$.ajax({
+				url       : ajaxurl,
+				type      : 'POST',
+				data: {
+					action     : 'uix_pagebuilder_metaboxes_loadtemplist_settings',
+					postID     : uix_pagebuilder_layoutdata.send_string_postid,
+					security   : uix_pagebuilder_layoutdata.send_string_nonce
+				},
+				success   : function( result ){
+					$( '#uix-pagebuilder-templatelist' ).html( result );	
+					
+					if ( result == '' || result == '<p>Hmm... no templates yet.</p>' ) {
+						$( '#uix-pagebuilder-templatelist-confirm' ).hide();
+					} else {
+						$( '#uix-pagebuilder-templatelist-confirm' ).show();
+					}
+					
+				},
+				beforeSend: function() {
+					$( '#uix-pagebuilder-templatelist' ).html( uix_pagebuilder_layoutdata.send_string_loadlist );	
+					$( '#uix-pagebuilder-templatelist-confirm' ).hide();
+
+				}
+			});
+			
+			
+	
+			//Close
+			$set.find( '.close' ).on( 'click', function() {
+				$set.hide();
+				$( '.uixpbform-modal-mask' ).hide();
+			});	
+			
+			$( '.uixpbform-modal-mask' ).on( 'click', function() {
+				$set.hide();	
+				$( this ).hide();		
+			});	
+						
+		});		
+		
+		$( document ).on( 'click', '.settings-temp-wrapper .confirm', function() {
+			
+			var $this = $( this ),
+			    v     = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="temp"]:checked' ).parent().find( 'textarea' ).html();
+			
+			$this.next( '.spinner' ).addClass( 'is-active' ); 
+			
+			$.post( ajaxurl, {
+				action               : 'uix_pagebuilder_metaboxes_loadtemp_settings',
+				curlayoutdata        : v,
+				security             : uix_pagebuilder_layoutdata.send_string_nonce
+			}, function ( response ) {
+				
+				var data = response
+								.toString()
+								.replace( /\\/g, '' )
+								.replace( /""/g, '' )
+								.replace( /:,/g, ':"",' );
+				
+			
+				//Initialize gridster
+				gridsterEditRow( JSON.parse( data ) );
+				
+				//close
+				$this.parent().hide();
+				$( '.uixpbform-modal-mask' ).hide();
+				$this.next( '.spinner' ).removeClass( 'is-active' ); 
+				
+				
+			});
+			
+			
+						
+		});
+		
+		
+		//--------save
+		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .save-temp', function( e ) {
+			e.preventDefault();
+		
+			var $set = $( this ).next( '.settings-temp-wrapper' );
+			$set.show();
+			$( '.uixpbform-modal-mask' ).show();
+	
+	       $set.find( '[name="tempname"]' ).val( uix_pagebuilder_layoutdata.send_string_name );
+	
+	
+			//Close
+			$set.find( '.close' ).on( 'click', function() {
+				$set.hide();
+				$( '.uixpbform-modal-mask' ).hide();
+			});	
+			
+			$( '.uixpbform-modal-mask' ).on( 'click', function() {
+				$set.hide();	
+				$( this ).hide();		
+			});	
+			
+		
+						
+		});		
+		
+		$( document ).on( 'click', '.settings-temp-wrapper .save', function( e ) {
+			e.preventDefault();
+			
+		
+			var $this = $( this ),
+			    v     = $( "[name='uix-pagebuilder-layoutdata']" ).val(),
+			    n     = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="tempname"]' ).val();
+			
+			$this.next( '.spinner' ).addClass( 'is-active' ); 
+			
+			$.post( ajaxurl, {
+				action               : 'uix_pagebuilder_metaboxes_savetemp_settings',
+				curlayoutdata        : v,
+				tempname             : n,
+				postID               : uix_pagebuilder_layoutdata.send_string_postid,
+				security             : uix_pagebuilder_layoutdata.send_string_nonce
+			}, function ( response ) {
+				console.log( response )
+				
+				//close
+				$this.parent().hide();
+				$( '.uixpbform-modal-mask' ).hide();
+				$this.next( '.spinner' ).removeClass( 'is-active' ); 
+				
+			});
+			
+						
+		});
+	
+		
 				
 	
 		/*! 

@@ -47,6 +47,8 @@ Initial Release.
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-4.jpg)
 
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-5.jpg)
+
 
 
 ###Credits

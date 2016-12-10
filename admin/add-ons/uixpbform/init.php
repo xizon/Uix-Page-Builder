@@ -499,9 +499,9 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			$formid     = '.'.$old_formid.'';
 			$postid     = $post->ID;
 			$title      = esc_attr( $title );
-			  
+	
 			return "{$form_js}
-			$(document).UixPBFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'});";
+			if( $.isFunction( $.fn.UixPBFormPop ) ){ $(document).UixPBFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'}); }; ";
 	
 		}
 		

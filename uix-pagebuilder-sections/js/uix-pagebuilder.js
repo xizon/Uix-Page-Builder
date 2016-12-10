@@ -22,7 +22,7 @@ var uix_pb = (function ( $, window, document ) {
     var uix_pb         = {},
         components    = { documentReady: [], pageLoaded: [] };
 
-	if(typeof waitForImages == 'function'){
+	if( $.isFunction( $.fn.waitForImages ) ){
 		$( 'body' ).waitForImages( pageLoaded );
 	} else {
 		$( window ).load( pageLoaded );

@@ -60,7 +60,7 @@ get_header(); ?>
 				}
 		
 				//------------------------------------   loop sections
-				if ( sizeof( $item ) > 3 && !empty( $value->content ) ) {
+				if ( sizeof( $item ) > 3 && !empty( $value->content ) && $value->content != 'undefined' ) {
 					
 					$col_content     = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 										

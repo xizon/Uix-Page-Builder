@@ -291,8 +291,28 @@
 	margin: 10px 0 0 18px;
 }
 
+.uix-pagebuilder-gridster-addbtn .li {
+	display: inline-block;
+	position: relative;
+}
+
+.uix-pagebuilder-gridster-addbtn a:not(.button) {
+	display: inline-block;
+	margin-left: 5px;
+	vertical-align: bottom;
+}
+
+.uix-pagebuilder-gridster-addbtn a.add {
+	background: #7AD03A !important;
+	border-color: #5EB83C !important;
+	color: #fff !important;
+}
+
+
 .uix-pagebuilder-gridster-addbtn i {
 	vertical-align: middle;
+	font-size: 18px;
+	margin-right: 5px;
 }
 
 
@@ -452,6 +472,8 @@
 	vertical-align: middle;
 	margin-right: 5px;
 }
+
+
 
 /* Sub Module
 -------------------------------------------------------------- */
@@ -649,3 +671,62 @@
 	background:url(../add-ons/uixpbform/images/column-style2/3_4-1_4.png) no-repeat  top center;
 }
 
+
+
+/* Save Templates
+-------------------------------------------------------------- */
+
+.settings-temp-wrapper {
+	-webkit-box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.83);
+	-moz-box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.83);
+	box-shadow: 0px 0px 46px 0px rgba(0,0,0,0.83);
+	background: #fff;
+	border: 1px solid #EBEBEB;
+	width: 315px;
+	padding: 10px;
+	display: non;
+	position: absolute;
+	top: -1px;
+	z-index: 100049;
+	left: 0;
+	display: none;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px;
+}
+
+.settings-temp-wrapper strong {
+	display: block;
+	margin-bottom: 15px;
+}
+
+.settings-temp-wrapper textarea {
+	display: none;
+}
+
+
+.settings-temp-wrapper  label {
+	color: #7E7E7E;
+	display: block;
+	margin-bottom: 5px;
+}
+
+.settings-temp-wrapper a.close {
+	background: #D8181C;
+    font-size: 16px;
+	margin-left: 10px;
+	color: #fff;
+	-webkit-border-radius: 100%; 
+	-moz-border-radius: 100%; 
+	border-radius: 100%; 
+	text-decoration: none;
+	font-weight: 600;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
