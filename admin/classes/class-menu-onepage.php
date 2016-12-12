@@ -197,7 +197,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
                 <p>
                 <select style=" width: 100%;" id="uix-pagebuilder-anchorlinks"> 
                  <option value="">
-                <?php echo esc_attr( __( 'Select page' ) ); ?></option> 
+                <?php echo esc_attr( __( 'Select page', 'uix-pagebuilder' ) ); ?></option> 
                  <?php 
 				$pages = get_pages(); 
 				$pb_total = 0;
