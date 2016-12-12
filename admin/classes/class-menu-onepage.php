@@ -204,7 +204,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 				foreach ( $pages as $page ) {
 				
 					if ( get_page_template_slug( $page->ID ) ==  'page-uix_pagebuilder.php' ) {
-						$option = '<option value="' . $page->ID . '">';
+						$option = '<option value="'.esc_attr( $page->ID ).'">';
 						$option .= $page->post_title;
 						$option .= '</option>';
 						echo $option;
