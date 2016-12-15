@@ -575,6 +575,7 @@
     margin-right: 10px;
 }
 
+
 .uixpbform-form-container .uixpbform-input-text-margin-container div.dir {
     position: absolute;
 }
@@ -1377,6 +1378,10 @@ a.uixpbform-icon-clear {
     overflow: hidden;
 }
 
+.uixpbform-table-col-1 {
+    width: 956px;
+}
+
 .uixpbform-table-col-2 {
     width: 480px;
 }
@@ -1642,6 +1647,9 @@ a.uixpbform-icon-clear {
 	/* Table Column List
 	-------------------------------------------------------------- */
 
+	.uixpbform-table-col-1 {
+		width: 816px;
+	}
 
     .uixpbform-table-col-2 {
         width: 410px;
@@ -1776,7 +1784,8 @@ a.uixpbform-icon-clear {
         float: none;
     }
 
-    .uixpbform-table-col-2,
+    .uixpbform-table-col-1,
+	.uixpbform-table-col-2,
 	.uixpbform-table-col-3,
 	.uixpbform-table-col-4 {
         width: 435px;
@@ -1861,6 +1870,7 @@ a.uixpbform-icon-clear {
         float: none;
     }
 
+	.uixpbform-table-col-1,
     .uixpbform-table-col-2,
 	.uixpbform-table-col-3,
 	.uixpbform-table-col-4 {

@@ -628,6 +628,33 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			
 				
 						}
+					 
+					 
+						//Column 1
+						if ( $arr1[ 'list' ] == 1 ) {
+						
+								$before = '
+								 
+									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-1">
+										<table class="uixpbform-table-list">
+											
+											<tr class="item">
+												<th colspan="2" scope="col">
+												'.$wrapper_name.'
+												</th>
+											</tr> 
+											
+								'."\n";
+								
+								
+								$after = '
+										</table>
+									</div><!-- /.uixpbform-table-cols-wrapper-->
+								 
+								'."\n";
+							
+							
+						} 
 						
 						//Column 2
 						if ( $arr1[ 'list' ] == 2 ) {

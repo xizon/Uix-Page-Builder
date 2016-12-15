@@ -36,6 +36,48 @@ $item    = '';
  * ----------------------------------------------------
  */
 
+$form_type_config = [
+    'list' => 1
+];
+
+
+
+$args_config = 
+	[
+	
+		array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_title' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col2_config_title' ),
+			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => $uix_pb_features_col2_config_title,
+			'placeholder'    => '',
+			'type'           => 'text'
+		
+		),
+	
+		
+		array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_intro' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col2_config_intro' ),
+			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => $uix_pb_features_col2_config_intro,
+			'placeholder'    => '',
+			'type'           => 'textarea',
+			'default'        => array(
+									'row'     => 3,
+									'format'  => true
+								)
+		
+		),
+		
+	
+	]
+;
+
+
+
 $form_type_col2 = [
     'list'       => 2
 ];
@@ -353,6 +395,7 @@ $args_col4_4 =
 //---
 $form_html = UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-pagebuilder' ) );
 
 $form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
 $form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
@@ -374,6 +417,9 @@ $form_html .= UixPBFormCore::form_after();
 //----
 
 $form_js = '';
+
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'js' );
+
 $form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'js' );
 $form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'js' );
 
@@ -391,6 +437,9 @@ $form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_
 //----
 
 $form_js_vars = '';
+
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'js_vars' );
+
 $form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'js_vars' );
 $form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'js_vars' );
 

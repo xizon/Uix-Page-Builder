@@ -87,6 +87,10 @@ if ( $sid >= 0 ) {
  * Element Template : features1
  * ----------------------------------------------------
  */
+$uix_pb_features_col2_config_title               = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_config_title', __( 'Text Here', 'uix-pagebuilder' ) );
+$uix_pb_features_col2_config_intro               = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_config_intro', __( 'This is the description text for the heading.', 'uix-pagebuilder' ) );
+
+
 $uix_pb_features_col2_one_listitem_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_one_listitem_title', __( 'Feature Title', 'uix-pagebuilder' ) );
 $uix_pb_features_col2_one_listitem_titlecolor     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_one_listitem_titlecolor', '' );
 $uix_pb_features_col2_one_listitem_desc           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_one_listitem_desc', __( 'Some description text here. You can add a lot of it or can choose to leave it blank.', 'uix-pagebuilder' ) );
@@ -150,6 +154,8 @@ for ( $kk = 1; $kk <= $clone_max; $kk++ ) {
 	
 				
 $element_temp = '
+{heading}
+{desc}
 <div class="uix-pb-feature">
 	<div class="uix-pb-row">
 		<div class="uix-pb-col-6">
@@ -165,8 +171,10 @@ $element_temp = '
 
 $uix_pb_section_features1_temp = str_replace( '{list_1}', $list_features1_item_1,
                                  str_replace( '{list_2}', $list_features1_item_2,
+								 str_replace( '{heading}', ( !empty( $uix_pb_features_col2_config_title ) ? '<div class="uix-pb-section-heading">'.$uix_pb_features_col2_config_title.'</div><div class="uix-pb-section-hr"></div>' : '' ),
+								 str_replace( '{desc}', ( !empty( $uix_pb_features_col2_config_intro ) ? '<div class="uix-pb-section-desc">'.$uix_pb_features_col2_config_intro.'</div>' : '' ),
 							     $element_temp 
-								 ) );
+								 ) ) ) );
 
 
 
@@ -174,6 +182,49 @@ $uix_pb_section_features1_temp = str_replace( '{list_1}', $list_features1_item_1
  * Form Type & Parameters
  * ----------------------------------------------------
  */
+
+$form_type_config = [
+    'list' => 1
+];
+
+
+
+$args_config = 
+	[
+	
+		array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_title' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col2_config_title' ),
+			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => $uix_pb_features_col2_config_title,
+			'placeholder'    => '',
+			'type'           => 'text'
+		
+		),
+	
+		
+		array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_intro' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col2_config_intro' ),
+			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => $uix_pb_features_col2_config_intro,
+			'placeholder'    => '',
+			'type'           => 'textarea',
+			'default'        => array(
+									'row'     => 3,
+									'format'  => true
+								)
+		
+		),
+		
+	
+	]
+;
+
+
+
 $form_type = [
     'list' => 2
 ];
@@ -530,6 +581,8 @@ $args_2 =
 //---
 $form_html = UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 
+
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-pagebuilder' ) );
 $form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_1, 'html', __( 'Left Section', 'uix-pagebuilder' ) );
 $form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_2, 'html', __( 'Right Section', 'uix-pagebuilder' ) );
 
@@ -538,6 +591,7 @@ $form_html .= UixPBFormCore::form_after();
 //----
 
 $form_js = '';
+$form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'js' );
 $form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_1, 'js' );
 $form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_2, 'js' );
 
@@ -545,6 +599,7 @@ $form_js .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type,
 //----
 
 $form_js_vars = '';
+$form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'js_vars' );
 $form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_1, 'js_vars' );
 $form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_2, 'js_vars' );
 
@@ -584,7 +639,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'features1', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Features (2 Column)', 'uix-pagebuilder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -702,9 +757,11 @@ if ( $sid >= 0 && is_admin() ) {
 		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
 			
 			
-			var tempcode = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>';
-				
-
+			var tempcode                           = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
+				uix_pb_features_col2_config_title  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_title' ); ?>' ).val(),
+				uix_pb_features_col2_config_intro  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_intro' ); ?>' ).val();
+			
+			
 				
 			if ( tempcode.length > 0 ) {
 		
@@ -773,12 +830,19 @@ if ( $sid >= 0 && is_admin() ) {
 	   	
 					
 				}
-
-                
+				
+				
+				var _config_t      = ( uix_pb_features_col2_config_title != undefined && uix_pb_features_col2_config_title != '' ) ? '<div class="uix-pb-section-heading">'+uix_pb_features_col2_config_title+'</div><div class="uix-pb-section-hr"></div>' : '',
+					_config_desc   = ( uix_pb_features_col2_config_intro != undefined && uix_pb_features_col2_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_features_col2_config_intro+'</div>' : '';
+								
 				//---
 				
+	
+				
 				tempcode = tempcode.replace(/{list_1}/g, show_list_item_1 )
-				                   .replace(/{list_2}/g, show_list_item_2 );
+				                   .replace(/{list_2}/g, show_list_item_2 )
+								   .replace(/{heading}/g, _config_t )
+								   .replace(/{desc}/g, _config_desc );
 								
 				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_features1_temp' ); ?>" ).val( tempcode );
 			}

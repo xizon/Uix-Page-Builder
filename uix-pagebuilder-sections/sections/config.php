@@ -58,7 +58,12 @@ $uix_pb_config = [
 									'thumb'           => 'tabs.jpg',
 								
 								),
+								array(
+									'title'           => __( 'Google Map', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_map',
+									'thumb'           => 'map.jpg',
 								
+								),					
 										
 							
 							]
@@ -66,23 +71,6 @@ $uix_pb_config = [
 	),		
 	
 	
-	array(
-		'sortname'        => __( 'Contact', 'uix-pagebuilder' ),
-		'buttons'         => [
-		
-								array(
-									'title'           => __( 'Google Map', 'uix-pagebuilder' ),
-									'id'              => 'uix_pb_section_map',
-									'thumb'           => 'map.jpg',
-								
-								),			
-
-							
-							]
-	
-	),			
-	
-
 		
 		
 ];
