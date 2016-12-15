@@ -223,7 +223,7 @@
 				security             : uix_pagebuilder_layoutdata.send_string_nonce
 			}, function ( response ) {
 				
-				var data = response
+				var data      = response
 								.toString()
 								.replace( /\\/g, '' )
 								.replace( /""/g, '' )
@@ -233,6 +233,17 @@
 				//Initialize gridster
 				gridsterEditRow( JSON.parse( data ) );
 			    
+				//Save options for gridster data
+				var settings = jQuery( "[name='uix-pagebuilder-layoutdata']" ).val();
+				$.post( ajaxurl, {
+					action               : 'uix_pagebuilder_metaboxes_save_settings',
+					layoutdata           : settings,
+					postID               : uix_pagebuilder_layoutdata.send_string_postid,
+					security             : uix_pagebuilder_layoutdata.send_string_nonce
+				}, function ( response ) {
+					
+				});
+
 				
 				//close
 				$this.parent().hide();

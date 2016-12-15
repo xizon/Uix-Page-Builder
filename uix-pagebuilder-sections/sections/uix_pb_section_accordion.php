@@ -83,7 +83,7 @@ if ( $sid >= 0 ) {
 }
 
 /**
- * Element Template : Accordion
+ * Element Template
  * ----------------------------------------------------
  */
 $uix_pb_accordion_listitem_title  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_title', __( 'Accordion Title', 'uix-pagebuilder' ) );

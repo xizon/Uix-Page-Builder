@@ -84,7 +84,7 @@ if ( $sid >= 0 ) {
 }
 
 /**
- * Element Template : features1
+ * Element Template
  * ----------------------------------------------------
  */
 $uix_pb_features_col2_config_title               = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_config_title', __( 'Text Here', 'uix-pagebuilder' ) );
@@ -171,7 +171,7 @@ $element_temp = '
 
 $uix_pb_section_features1_temp = str_replace( '{list_1}', $list_features1_item_1,
                                  str_replace( '{list_2}', $list_features1_item_2,
-								 str_replace( '{heading}', ( !empty( $uix_pb_features_col2_config_title ) ? '<div class="uix-pb-section-heading">'.$uix_pb_features_col2_config_title.'</div><div class="uix-pb-section-hr"></div>' : '' ),
+								 str_replace( '{heading}', ( !empty( $uix_pb_features_col2_config_title ) ? '<h2 class="uix-pb-section-heading">'.$uix_pb_features_col2_config_title.'</h2><div class="uix-pb-section-hr"></div>' : '' ),
 								 str_replace( '{desc}', ( !empty( $uix_pb_features_col2_config_intro ) ? '<div class="uix-pb-section-desc">'.$uix_pb_features_col2_config_intro.'</div>' : '' ),
 							     $element_temp 
 								 ) ) ) );
@@ -818,7 +818,7 @@ if ( $sid >= 0 && is_admin() ) {
 					}
 					
 					
-					if ( _title_2 != undefined ) {
+					if ( _title_2 != undefined && _title_2 != '' ) {
 										
 						//Do not include spaces
 						show_list_item_2 += '<div class="uix-pb-feature-li">';
@@ -832,7 +832,7 @@ if ( $sid >= 0 && is_admin() ) {
 				}
 				
 				
-				var _config_t      = ( uix_pb_features_col2_config_title != undefined && uix_pb_features_col2_config_title != '' ) ? '<div class="uix-pb-section-heading">'+uix_pb_features_col2_config_title+'</div><div class="uix-pb-section-hr"></div>' : '',
+				var _config_t      = ( uix_pb_features_col2_config_title != undefined && uix_pb_features_col2_config_title != '' ) ? '<h2 class="uix-pb-section-heading">'+uix_pb_features_col2_config_title+'</h2><div class="uix-pb-section-hr"></div>' : '',
 					_config_desc   = ( uix_pb_features_col2_config_intro != undefined && uix_pb_features_col2_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_features_col2_config_intro+'</div>' : '';
 								
 				//---

@@ -23,6 +23,7 @@ class UixPageBuilder {
 	const NOTICEID    = 'uix-pagebuilder-helper-tip';
 	const CUSTOMTEMP  = 'uix-pagebuilder-sections/sections/';
 	const MAPAPI      = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
+	const CLEANTEMP   = 0;
 
 	
 	/**

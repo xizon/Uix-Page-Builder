@@ -64,7 +64,13 @@ if ( !function_exists( 'uix_pagebuilder_savetemp' ) ) {
 			';
 			
 			
-			update_option( 'uix-pagebuilder-templates', $value );
+			if ( UixPageBuilder::CLEANTEMP == 1 ) {
+				update_option( 'uix-pagebuilder-templates', '' );
+			} else {
+				update_option( 'uix-pagebuilder-templates', $value );
+			}
+			
+			
 			update_option( 'uix-pagebuilder-templates-xml', $xmlvalue );
 			
 			
