@@ -92,8 +92,17 @@ if ( !function_exists( 'uix_pagebuilder_loadtemplist' ) ) {
 	add_action( 'wp_ajax_uix_pagebuilder_metaboxes_loadtemplist_settings', 'uix_pagebuilder_loadtemplist' );		
 	function uix_pagebuilder_loadtemplist() {
 		check_ajax_referer( 'uix_pagebuilder_metaboxes_save_nonce', 'security' );
+		/*
+		 * Add a preview to a Wordpress Control Panel
+		  
+		  http://yoursite.com/wp-admin/admin-ajax.php?action=uix_pagebuilder_metaboxes_loadtemplist_settings&postID=1234
+		  
+		  echo '<iframe id="themepreview" name="themepreview"  frameborder="0" border="0" width="100%" height="500" src="'.esc_url( get_permalink( $_GET[ 'postID' ] ) ).'/?preview=1"></iframe>';
+		
+		*/
 		
 		if ( isset( $_POST[ 'postID' ] ) ) {
+			
 			
 			$tempdata  = get_option( 'uix-pagebuilder-templates' );
 			$xmlfile   = UixPageBuilder::backend_path( 'dir' ).'sections/uix-pagebuilder-templates.xml';
