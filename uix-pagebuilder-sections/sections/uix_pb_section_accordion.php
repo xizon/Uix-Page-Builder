@@ -98,9 +98,9 @@ $list_accordion_item = '';
 for ( $k = 1; $k <= $clone_max; $k++ ) {
 	$_uid = ( $k >= 2 ) ? $k.'-' : '';
 	$_field = 'uix_pb_accordion_listitem_title';
+	$openfirst_class = ( $uix_pb_accordion_open_first == 1 && $k == 1 ) ? ' uix-pb-spoiler-closed' : '';
+	
 	if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) ) {
-		
-		$openfirst_class = ( $uix_pb_accordion_open_first == 1 && $k == 1 ) ? ' uix-pb-spoiler-closed' : '';
 		
 		$list_accordion_item .= '
 		<div class="uix-pb-spoiler'.$openfirst_class.'">
@@ -111,6 +111,20 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		</div>     
 		';
 	} 
+	
+	//The default value is not taken for any operation
+	if ( is_array( $item ) && !array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) && $k == 1 ) {
+		
+		$list_accordion_item .= '
+		<div class="uix-pb-spoiler'.$openfirst_class.'">
+			<div class="uix-pb-spoiler-title">'.$uix_pb_accordion_listitem_title.'</div>
+			<div class="uix-pb-spoiler-content">
+				<p>'.$uix_pb_accordion_listitem_con.'</p>
+			</div>                   
+		</div>     
+		';	
+		
+	}
 }
 	
 	
@@ -346,7 +360,7 @@ if ( $sid >= 0 && is_admin() ) {
 	$( document ).ready( function() {
 		
 		
-		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() {
 			
 			
 			var tempcode                        = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
@@ -387,6 +401,7 @@ if ( $sid >= 0 && is_admin() ) {
 				
 			
 				for ( var i = 1; i <= list_num; i++ ){
+					
 					
 					var openfirst_class = ( uix_pb_accordion_open_first_chk === true && i == 1 ) ? ' uix-pb-spoiler-closed' : '';
 					

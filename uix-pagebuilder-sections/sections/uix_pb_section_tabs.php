@@ -110,6 +110,19 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		</div>                      
 		';
 	} 
+	
+	//The default value is not taken for any operation
+	if ( is_array( $item ) && !array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) && $k == 1 ) {
+		
+		$list_tabs_item_title .= '<li>'.$uix_pb_tabs_listitem_title.'</li>';
+		$list_tabs_item_content .= '
+		<div class="uix-pb-spoiler-content">
+			<p>'.$uix_pb_tabs_listitem_con.'</p>
+		</div>   
+		';	
+		
+	}
+	
 }
 	
 
@@ -352,7 +365,7 @@ if ( $sid >= 0 && is_admin() ) {
 	$( document ).ready( function() {
 		
 		
-		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() {
 			
 			
 			var tempcode                   = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',

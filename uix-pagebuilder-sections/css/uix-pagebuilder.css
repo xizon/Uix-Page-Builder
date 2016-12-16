@@ -273,12 +273,17 @@ img.uix-pb-img,
 /* ====================================================== 
    4. Author Card                                
 /* ====================================================== */
+
 .uix-pb-authorcard {
     margin: 0 auto;
     border: 1px solid #eaeaea;
     position: relative;
 	border-top: 3px solid #a2bf2f;
 	margin-bottom: 1em;
+}
+
+.uix-pb-container-fullwidth .uix-pb-authorcard {
+	padding: 2em;
 }
 
 .uix-pb-authorcard-top {
@@ -382,6 +387,9 @@ img.uix-pb-img,
 	
 }
 
+.uix-pb-container-fullwidth .uix-pb-accordion-box{
+	padding: 2em;
+}
 
 	.uix-pb-accordion .uix-pb-spoiler{
 		border-bottom: 1px dotted rgba(0,0,0,.1);
@@ -448,6 +456,7 @@ img.uix-pb-img,
 /* ====================================================== 
    6. Tabs                              
 /* ====================================================== */
+
 .uix-pb-tabs:before,
 .uix-pb-tabs:after {
   display: table;
@@ -764,6 +773,10 @@ img.uix-pb-img,
 
 }
 
+.uix-pb-container-fullwidth .uix-pb-feature{
+	padding: 2em;
+}
+
 .uix-pb-feature.uix-pb-tc{
 	padding: 1.5em 0 0 0;
 }
@@ -820,6 +833,12 @@ img.uix-pb-img,
 	text-align: center;
 	
 }
+
+.uix-pb-container-fullwidth .uix-pb-price{
+	padding: 2em;
+}
+
+
 .uix-pb-price:before{
   padding-top: 3em;
 }

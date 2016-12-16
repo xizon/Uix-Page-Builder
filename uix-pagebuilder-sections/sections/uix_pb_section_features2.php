@@ -99,7 +99,7 @@ $uix_pb_features_col3_listitem_iconcolor      = UixPageBuilder::fvalue( $colid, 
 
 
 //dynamic adding input
-$list_features1_item = '';
+$list_features2_item = '';
 
 for ( $k = 1; $k <= $clone_max; $k++ ) {
 	$_uid = ( $k >= 2 ) ? $k.'-' : '';
@@ -110,9 +110,9 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		$desccolor    = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_desccolor]['.$sid.']' ] ) ) ? 'style="color:'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_desccolor]['.$sid.']' ].'"' : '';
 		$iconcolor    = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_iconcolor]['.$sid.']' ] ) ) ? 'style="border-color:'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_iconcolor]['.$sid.']' ].';color:'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_iconcolor]['.$sid.']' ].'"' : '';
 		$icon         = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ] ) ) ? '<i class="fa fa-'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ].'" '.$iconcolor.'></i>' : '<i class="fa fa-check" '.$iconcolor.'></i>';	
-		$list_features1_item .= '<div class="uix-pb-col-4 '.( $k == 3 ? 'uix-pb-col-last' : '' ).'">';
+		$list_features2_item .= '<div class="uix-pb-col-4 '.( $k == 3 ? 'uix-pb-col-last' : '' ).'">';
 		
-		$list_features1_item .= '
+		$list_features2_item .= '
 			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
 			    <p class="uix-pb-feature-icon">'.$icon.'</p>
 				  
@@ -121,8 +121,46 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 
 			 </div>
 		';
-		$list_features1_item .= '</div>';
+		$list_features2_item .= '</div>';
 	} 
+	
+	//The default value is not taken for any operation
+	if ( is_array( $item ) && !array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) && $k == 1 ) {
+		
+		$titlecolor   = ( !empty( $uix_pb_features_col3_listitem_titlecolor ) ) ? 'style="color:'.$uix_pb_features_col3_listitem_titlecolor.'"' : '';
+		$desccolor    = ( !empty( $uix_pb_features_col3_listitem_desccolor ) ) ? 'style="color:'.$uix_pb_features_col3_listitem_desccolor.'"' : '';
+		$iconcolor    = ( !empty( $uix_pb_features_col3_listitem_iconcolor ) ) ? 'style="border-color:'.$uix_pb_features_col3_listitem_iconcolor.';color:'.$uix_pb_features_col3_listitem_iconcolor.'"' : '';
+		$icon         = ( !empty( $uix_pb_features_col3_listitem_icon ) ) ? '<i class="fa fa-'.$uix_pb_features_col3_listitem_icon.'" '.$iconcolor.'></i>' : '<i class="fa fa-check" '.$iconcolor.'></i>';	
+		
+		
+		$list_features2_item .= '
+		<div class="uix-pb-col-4">
+			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
+				<p class="uix-pb-feature-icon">'.$icon.'</p>
+				<h3 class="uix-pb-feature-title" '.$titlecolor.'>'.$uix_pb_features_col3_listitem_title.'</h3>
+				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '.$desccolor.'><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
+			</div>
+		</div>
+		
+		<div class="uix-pb-col-4">
+			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
+				<p class="uix-pb-feature-icon">'.$icon.'</p>
+				<h3 class="uix-pb-feature-title" '.$titlecolor.'>'.$uix_pb_features_col3_listitem_title.'</h3>
+				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '.$desccolor.'><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
+			</div>
+		</div>
+		
+		<div class="uix-pb-col-4 uix-pb-col-last">
+			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
+				<p class="uix-pb-feature-icon">'.$icon.'</p>
+				<h3 class="uix-pb-feature-title" '.$titlecolor.'>'.$uix_pb_features_col3_listitem_title.'</h3>
+				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '.$desccolor.'><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
+			</div>  
+		</div>
+		';
+	}
+	
+	
 }
 
 				
@@ -137,7 +175,7 @@ $element_temp = '
 ';
 
 
-$uix_pb_section_features2_temp = str_replace( '{list}', $list_features1_item,
+$uix_pb_section_features2_temp = str_replace( '{list}', $list_features2_item,
 								 str_replace( '{heading}', ( !empty( $uix_pb_features_col3_config_title ) ? '<h2 class="uix-pb-section-heading">'.$uix_pb_features_col3_config_title.'</h2><div class="uix-pb-section-hr"></div>' : '' ),
 								 str_replace( '{desc}', ( !empty( $uix_pb_features_col3_config_intro ) ? '<div class="uix-pb-section-desc">'.$uix_pb_features_col3_config_intro.'</div>' : '' ),
 							     $element_temp 
@@ -507,7 +545,7 @@ if ( $sid >= 0 && is_admin() ) {
 	$( document ).ready( function() {
 		
 		
-		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() {
 			
 			
 			var tempcode                           = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
