@@ -791,7 +791,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 			if ( typeof( str ) == 'string' && str.length > 0 ) {
 				return str
 					.replace(/"/g, '&quot;')
-					.replace(/'/g, "&#39;")
+					.replace(/'/g, '&#39;')
 					.replace(/</g, '&lt;')
 					.replace(/>/g, '&gt;');
 	
