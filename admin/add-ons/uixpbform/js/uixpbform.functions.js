@@ -1022,6 +1022,43 @@ function uixpbform_colorTran( value ) {
 
 /*! 
  * ************************************
+ * Format Content from Textarea 
+ *************************************
+ */	
+function uixpbform_formatTextarea( str ) {
+	
+	//checking for "undefined" in replace-regexp
+	if ( str != undefined ) {
+		str = uixpbform_getHTML( str );
+		str = str.toString().replace(/\s/g," ").replace(/\"/g,"&quot;").replace(/\'/g,"&apos;");
+		str = str.replace(/<br\w*\/*>/g,"&lt;br&gt;");
+		str = str.replace(/<p>/g,"&lt;p&gt;");
+		str = str.replace(/<\/p>/g,"&lt;\/p&gt;");
+		
+	}
+	
+	return str;
+
+}
+
+
+function uixpbform_getHTML( str ) {
+
+    var v = str;
+    v = v.replace(/\r?\n/gm, '<br/>');
+    v = v.replace(/(?!<br\/>)(.{5})<br\/><br\/>(?!<br\/>)/gi, '$1</p><p>');
+    if (v.indexOf("<p>") > v.indexOf("</p>")) v = "<p>" + v;
+    if (v.lastIndexOf("</p>") < v.lastIndexOf("<p>")) v += "</p>";
+    if (v.length > 1 && v.indexOf("<p>") == -1) v = "<p>" + v + "</p>";
+
+
+	return v;
+
+}
+
+
+/*! 
+ * ************************************
  * HTML tags like "<li>","<ul>","<ol>" transform
  *************************************
  */	
