@@ -29,6 +29,8 @@
    1. Basic                               
 /* ====================================================== */
 .uix-pb-row {
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
 
 }
 
@@ -223,7 +225,6 @@ img.uix-pb-img,
 .uix-pb-container.uix-pb-container-fullwidth {
 	width: auto !important;
 	padding: 0 !important;
-	
 }
 
 
