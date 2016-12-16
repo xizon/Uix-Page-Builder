@@ -263,9 +263,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function str_compression( $str ) {
 			
-			$str = str_replace( "\r\n", '', $str );
-			$str = str_replace( "\n", '', $str );
-			$str = str_replace( "\t", '', $str ); 
+			$str = str_replace( PHP_EOL, '', $str );
 			$str = str_replace( "\t", '', $str );
 			
 			$pattern = array(
@@ -437,6 +435,19 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			
 		}
 		
+
+
+		/*
+		 * Not formatted as HTML
+		 *
+		 *
+		 */
+		public static function html_textareaTran( $str ) {
+
+			return $str;
+
+		}
+
 	
 	
 		/*
@@ -618,13 +629,13 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 								$before = '
 								 '.self::form_before( $widget_col_id, $widget_name, $section_row, $config_id ).'
 									<table class="uixpbform-table">
-								'."\n";
+								'.PHP_EOL;
 								
 								
 								$after = '
 									</table>
 								 '.self::form_after().'
-								'."\n";
+								'.PHP_EOL;
 			
 				
 						}
@@ -644,14 +655,14 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 												</th>
 											</tr> 
 											
-								'."\n";
+								'.PHP_EOL;
 								
 								
 								$after = '
 										</table>
 									</div><!-- /.uixpbform-table-cols-wrapper-->
 								 
-								'."\n";
+								'.PHP_EOL;
 							
 							
 						} 
@@ -670,14 +681,14 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 												</th>
 											</tr> 
 											
-								'."\n";
+								'.PHP_EOL;
 								
 								
 								$after = '
 										</table>
 									</div><!-- /.uixpbform-table-cols-wrapper-->
 								 
-								'."\n";
+								'.PHP_EOL;
 							
 							
 						}
@@ -695,14 +706,14 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 												</th>
 											</tr> 
 											
-								'."\n";
+								'.PHP_EOL;
 								
 								
 								$after = '
 										</table>
 									</div><!-- /.uixpbform-table-cols-wrapper-->
 								 
-								'."\n";
+								'.PHP_EOL;
 							
 						}
 						
@@ -719,14 +730,14 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 												</th>
 											</tr> 
 											
-								'."\n";
+								'.PHP_EOL;
 								
 								
 								$after = '
 										</table>
 									</div><!-- /.uixpbform-table-cols-wrapper-->
 								 
-								'."\n";
+								'.PHP_EOL;
 								
 						}
 				

@@ -202,7 +202,7 @@ if (  !class_exists(  'UixPB_XML'  )  ) {
 			
 			}
 			
-			if( fwrite( fopen( $this->xml_path,"w" ),str_replace( "\r\n\r\n\r\n", "",$xml->saveXML() ) ) ){
+			if( fwrite( fopen( $this->xml_path,"w" ),str_replace( PHP_EOL.PHP_EOL.PHP_EOL, "",$xml->saveXML() ) ) ){
 				return true;
 			}else{
 				return false;
@@ -241,7 +241,7 @@ if (  !class_exists(  'UixPB_XML'  )  ) {
 				}
 		
 				
-				if( fwrite( fopen( $this->xml_path,"w" ),str_replace( "\r\n\r\n\r\n", "",$xml->saveXML() ) ) ){
+				if( fwrite( fopen( $this->xml_path,"w" ),str_replace( PHP_EOL.PHP_EOL.PHP_EOL, "",$xml->saveXML() ) ) ){
 					return true;
 		
 				}else{
@@ -305,7 +305,7 @@ if (  !class_exists(  'UixPB_XML'  )  ) {
 				}
 		
 				
-				if( fwrite( fopen( $this->xml_path,"w" ),str_replace( "\r\n\r\n\r\n", "",$xml->saveXML() ) ) ){
+				if( fwrite( fopen( $this->xml_path,"w" ),str_replace( PHP_EOL.PHP_EOL.PHP_EOL, "",$xml->saveXML() ) ) ){
 					return true;
 		
 				}else{
@@ -359,7 +359,7 @@ if (  !class_exists(  'UixPB_XML'  )  ) {
 				}
 				
 		
-				if( fwrite( fopen( $this->xml_path,"w" ),str_replace( "\r\n\r\n\r\n", "",$xml->saveXML() ) ) ){
+				if( fwrite( fopen( $this->xml_path,"w" ),str_replace( PHP_EOL.PHP_EOL.PHP_EOL, "",$xml->saveXML() ) ) ){
 					return true;
 		
 				}else{

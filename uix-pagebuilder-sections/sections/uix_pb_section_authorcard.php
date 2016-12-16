@@ -110,9 +110,9 @@ $element_temp = '
  
  
 $avatarURL = ( !empty( $uix_pb_authorcard_avatar ) ) ? $uix_pb_authorcard_avatar : UixPBFormCore::plug_directory() .'images/no-photo.png';
-$social_out_1 = ( !empty( $uix_pb_authorcard_1_icon ) ) ? '<a href=\''.$uix_pb_authorcard_1_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_1_icon ) ? $uix_pb_authorcard_1_icon : 'link' ).'\'></i></a>' : '';
-$social_out_2 = ( !empty( $uix_pb_authorcard_2_icon ) ) ? '<a href=\''.$uix_pb_authorcard_2_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_2_icon ) ? $uix_pb_authorcard_2_icon : 'link' ).'\'></i></a>' : '';
-$social_out_3 = ( !empty( $uix_pb_authorcard_3_icon ) ) ? '<a href=\''.$uix_pb_authorcard_3_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_3_icon ) ? $uix_pb_authorcard_3_icon : 'link' ).'\'></i></a>' : '';
+$social_out_1 = ( !empty( $uix_pb_authorcard_1_url ) ) ? '<a href=\''.$uix_pb_authorcard_1_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_1_icon ) ? $uix_pb_authorcard_1_icon : 'link' ).'\'></i></a>' : '';
+$social_out_2 = ( !empty( $uix_pb_authorcard_2_url ) ) ? '<a href=\''.$uix_pb_authorcard_2_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_2_icon ) ? $uix_pb_authorcard_2_icon : 'link' ).'\'></i></a>' : '';
+$social_out_3 = ( !empty( $uix_pb_authorcard_3_url ) ) ? '<a href=\''.$uix_pb_authorcard_3_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_3_icon ) ? $uix_pb_authorcard_3_icon : 'link' ).'\'></i></a>' : '';
 
 
 $uix_pb_section_authorcard_temp = str_replace( '{name}', wp_kses( $uix_pb_authorcard_name, wp_kses_allowed_html( 'post' ) ), 
@@ -383,11 +383,11 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_authorcard_link_label     = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_link_label' ); ?>' ).val(),
 				uix_pb_authorcard_link_link      = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_link_link' ); ?>' ).val(),
 				uix_pb_authorcard_1_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_1_icon' ); ?>' ).val(),
-				uix_pb_authorcard_1_icon         = ( uix_pb_authorcard_1_icon == undefined || uix_pb_authorcard_1_icon == '' ) ? 'link' : '',
+				uix_pb_authorcard_1_icon_cur     = ( uix_pb_authorcard_1_icon == undefined || uix_pb_authorcard_1_icon == '' ) ? 'link' : uix_pb_authorcard_1_icon,
 				uix_pb_authorcard_2_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_2_icon' ); ?>' ).val(),
-				uix_pb_authorcard_2_icon         = ( uix_pb_authorcard_2_icon == undefined || uix_pb_authorcard_2_icon == '' ) ? 'link' : '',
+				uix_pb_authorcard_2_icon_cur     = ( uix_pb_authorcard_2_icon == undefined || uix_pb_authorcard_2_icon == '' ) ? 'link' : uix_pb_authorcard_2_icon,
 				uix_pb_authorcard_3_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_3_icon' ); ?>' ).val(),
-				uix_pb_authorcard_3_icon         = ( uix_pb_authorcard_3_icon == undefined || uix_pb_authorcard_3_icon == '' ) ? 'link' : '',
+				uix_pb_authorcard_3_icon_cur     = ( uix_pb_authorcard_3_icon == undefined || uix_pb_authorcard_3_icon == '' ) ? 'link' : uix_pb_authorcard_3_icon,
 				uix_pb_authorcard_1_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_1_url' ); ?>' ).val(),
 				uix_pb_authorcard_2_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_2_url' ); ?>' ).val(),
 				uix_pb_authorcard_3_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_3_url' ); ?>' ).val();
@@ -398,9 +398,9 @@ if ( $sid >= 0 && is_admin() ) {
 				
 				
 				var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? uix_pb_authorcard_avatar : '<?php echo UixPBFormCore::plug_directory(); ?>images/no-photo.png',
-					social_out_1 = ( uix_pb_authorcard_1_icon != undefined && uix_pb_authorcard_1_icon != '' ) ? '<a href="'+uix_pb_authorcard_1_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon+'"></i></a>' : '',
-					social_out_2 = ( uix_pb_authorcard_2_icon != undefined && uix_pb_authorcard_2_icon != '' ) ? '<a href="'+uix_pb_authorcard_2_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon+'"></i></a>' : '',
-					social_out_3 = ( uix_pb_authorcard_3_icon != undefined && uix_pb_authorcard_3_icon != '' ) ? '<a href="'+uix_pb_authorcard_3_url+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon+'"></i></a>' : '';
+					social_out_1 = ( uix_pb_authorcard_1_url != undefined && uix_pb_authorcard_1_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_1_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon_cur+'"></i></a>' : '',
+					social_out_2 = ( uix_pb_authorcard_2_url != undefined && uix_pb_authorcard_2_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_2_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon_cur+'"></i></a>' : '',
+					social_out_3 = ( uix_pb_authorcard_3_url != undefined && uix_pb_authorcard_3_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_3_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon_cur+'"></i></a>' : '';
 
 				
 				

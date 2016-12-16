@@ -109,7 +109,7 @@ class UixPBFormType_Checkbox {
                             </div>
                         </td>
                     </tr> 
-                '."\n";	
+                '.PHP_EOL;	
                 
             $jscode_vars = '';						
                 

@@ -34,7 +34,7 @@ class UixPBFormType_Select {
 					}
                    
                     
-                    $optionlist .= '<option value="'.$select_key.'" '.$selected.'>'.$select_value.'</option>'."\n";	
+                    $optionlist .= '<option value="'.$select_key.'" '.$selected.'>'.$select_value.'</option>'.PHP_EOL;	
                     $optionloop ++;
                 }	
             }
@@ -52,11 +52,11 @@ class UixPBFormType_Select {
 							</div>
                         </td>
                     </tr> 
-                '."\n";	
+                '.PHP_EOL;	
                 
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
+                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
 
         }	

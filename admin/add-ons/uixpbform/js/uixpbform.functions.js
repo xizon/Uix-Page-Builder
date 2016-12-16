@@ -950,45 +950,6 @@ function uixpbform_htmlEncode( s ) {
 
 
 
-/*! 
- * ************************************
- * Format Content from Textarea 
- *************************************
- */	
-function uixpbform_formatTextarea( str ) {
-	
-	//checking for "undefined" in replace-regexp
-	if ( str != undefined ) {
-		str = uixpbform_getHTML( str );
-		str = str.toString().replace(/\s/g," ").replace(/\"/g,"&quot;").replace(/\'/g,"&apos;");
-		str = str.replace(/<br\w*\/*>/g,"&lt;br&gt;");
-		str = str.replace(/<p>/g,"&lt;p&gt;");
-		str = str.replace(/<\/p>/g,"&lt;\/p&gt;");
-		
-	}
-	
-	return str;
-
-}
-
-
-function uixpbform_getHTML( str ) {
-
-    var v = str;
-    v = v.replace(/\r?\n/gm, '<br/>');
-    v = v.replace(/(?!<br\/>)(.{5})<br\/><br\/>(?!<br\/>)/gi, '$1</p><p>');
-    if (v.indexOf("<p>") > v.indexOf("</p>")) v = "<p>" + v;
-    if (v.lastIndexOf("</p>") < v.lastIndexOf("<p>")) v += "</p>";
-    if (v.length > 1 && v.indexOf("<p>") == -1) v = "<p>" + v + "</p>";
-
-
-	return v;
-
-}
-
-
-
-
 
 /*! 
  * ************************************
@@ -1066,20 +1027,47 @@ function uixpbform_colorTran( value ) {
  */	
 function uixpbform_html_listTran( str, type ) {
 	
+	
 	var newStr = '';
-	if ( str != undefined ) {
+	
+	if ( str != '' ) {
 		
-		//checking for "undefined" in replace-regexp
-		str = str.toString().replace(/(\r)*\n/g,"&lt;/li&gt;&lt;li&gt;").replace(/<br>/g,"&lt;/li&gt;&lt;li&gt;");
+		if ( str != undefined ) {
+			str = str.toString().replace(/(\r)*\n/g, '<br>' );
+		}
+
+
+		if ( str.indexOf( '<br>' ) >= 0 ) {
+
+			var strarr = str.split( '<br>' );	
+
+			for (var i = 0, len = strarr.length; i < len; i++ ) {
+				
+				if ( strarr[i].indexOf( '<'+type+'>' ) >= 0 ) {
+					newStr += strarr[i];
+				} else {
+					newStr += '<'+type+'>'+strarr[i]+'</'+type+'>';
+				}
+				
+				
+			}	
+
+		} else {
+            
+			if ( str.indexOf( '<'+type+'>' ) >= 0 ) {
+				newStr = str;
+			} else {
+				newStr = '<'+type+'>'+str+'</'+type+'>';
+			}
+			
+		}	
 		
-		newStr = '&lt;li&gt;'+str+'&lt;/li&gt;';
-		newStr = newStr.replace('&lt;li&gt;&lt;/li&gt;','');
-		newStr = '&lt;'+type+'&gt;'+newStr+'&lt;/'+type+'&gt;';
 	}
 	
-	if ( str == '' ) newStr = '';
+    newStr = newStr.replace(/\<li\>\<\/li\>/g, '' );
+
 	return newStr;
-        
+	
 };
 
 /*! 
@@ -1129,6 +1117,6 @@ function uixpbform_htmlEscape( str ){
 	return str
 		.replace(/"/g, '{cqt:}')
 		.replace(/'/g, "{apo:}")
-		.replace(/\n/g, "{br:}");
+		.replace(/(\r)*\n/g, "{br:}");
 }
 

@@ -52,7 +52,7 @@ class UixPBFormType_MultiSelector {
 					
 					}
 					
-					$optionlist .= '<span data-value="'.$select_key.'" '.$selected.'>'.$select_value.'<i class="fa fa-check no"></i></span>'."\n";	
+					$optionlist .= '<span data-value="'.$select_key.'" '.$selected.'>'.$select_value.'<i class="fa fa-check no"></i></span>'.PHP_EOL;	
 			        
                     $optionloop ++;
                 }	
@@ -82,11 +82,11 @@ class UixPBFormType_MultiSelector {
 							</div>
                         </td>
                     </tr> 
-                '."\n";	
+                '.PHP_EOL;	
                 
 				
             $jscode_vars = '
-				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
+				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';		
 			
             $jscode = '';

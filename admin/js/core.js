@@ -169,10 +169,6 @@
 				$( '.uixpbform-modal-mask' ).hide();
 			});	
 			
-			$( '.uixpbform-modal-mask' ).on( 'click', function() {
-				$set.hide();	
-				$( this ).hide();		
-			});	
 					
 		});	
 		 

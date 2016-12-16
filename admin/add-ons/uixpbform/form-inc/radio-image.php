@@ -79,7 +79,7 @@ class UixPBFormType_RadioImage {
 							$radiofirst = $select_key;	
 						} 
 					 
-						$optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'" class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-remove="'.rtrim( $remove_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" ' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'."\n";	
+						$optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'" class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-remove="'.rtrim( $remove_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" ' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'.PHP_EOL;	
 						$optionloop ++;
 					}	
 					
@@ -96,7 +96,7 @@ class UixPBFormType_RadioImage {
 							$radiofirst = $select_key;	
 						} 
 					 
-						$optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'" class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" ' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'."\n";	
+						$optionlist .= '<span data-value="'.$select_key.'" id="'.$id.'-'.$select_key.'" class="img'.$selected.' '.( !empty( $toggle_trigger_id ) ? 'uixpbform_btn_trigger-toggleswitch_radio' : '' ).'" '.( !empty( $toggle_trigger_id ) ? 'data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" ' : '' ).'><img alt="" title="'.$select_key.'" src="'.$select_value.'"></span>'.PHP_EOL;	
 						$optionloop ++;
 					}	
 			
@@ -127,11 +127,11 @@ class UixPBFormType_RadioImage {
 							</div>
                         </td>
                     </tr> 
-                '."\n";	
+                '.PHP_EOL;	
                 
 				
             $jscode_vars = '
-				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
+				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';	
 			
 			

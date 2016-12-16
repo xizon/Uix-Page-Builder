@@ -20,7 +20,7 @@
 	8. Google Map
 	9. Features   
 	10. Pricing      
-
+    11. Buttons     
 
 */
 
@@ -265,7 +265,7 @@ img.uix-pb-img,
 	color: #808080;
 	text-align: center;
 	margin-top: 1.5em;
-	margin-bottom: 2.5em;
+	margin-bottom: 4.5em;
 }
 
 
@@ -994,4 +994,163 @@ img.uix-pb-img,
 	
 	}
 }
+
+
+
+/**
+ *  11. Button
+ * ----------------------------------------------------------------------------
+ */
+ 
+.uix-pb-btn{
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0);
+	box-shadow: 0 1px 5px rgba(0,0,0,0);
+	border: none;
+	color: #fff;
+	-webkit-border-radius: 50px; 
+	-moz-border-radius: 50px; 
+	border-radius: 50px;
+	padding: .8em 3em;
+	letter-spacing: normal;
+	text-transform: none;
+	font-size: 12px;
+	position: relative;
+	margin: 1em 1em .7em 0;
+	display: inline-block;	
+}
+
+	.uix-pb-btn .fa{
+		margin: 0 .4em 0 0;
+	
+	}
+
+	.uix-pb-btn-small{
+		padding: .6em 1.7em;
+		
+	}
+	
+	.uix-pb-btn-small-small{
+		padding: .3em 1.2em;
+	}
+	
+
+	/*green*/
+	.uix-pb-btn-green{
+		background: #a2bf2f;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-green:hover{
+		background: #77a43a;
+		color: #fff;
+	}
+	
+	/*yellow*/
+	.uix-pb-btn-yellow{
+		background: #d59a3e;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-yellow:hover{
+		background: #b37f2d;
+		color: #fff;
+	}
+	
+	/*black*/
+	.uix-pb-btn-black{
+		background: #473f3f;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-black:hover{
+		background: #090909;
+		color: #fff;
+	}
+	
+	/*gray*/
+	.uix-pb-btn-gray{
+		background: #bebebe;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-gray:hover{
+		background: #979797;
+		color: #fff;
+	}
+
+
+	/*red*/
+	.uix-pb-btn-red{
+		background: #DD514C;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-red:hover{
+		background: #B53335;
+		color: #fff;
+	}
+	
+	/*blue*/
+	.uix-pb-btn-blue{
+		background: #4BB1CF;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-blue:hover{
+		background: #36A4C0;
+		color: #fff;
+	}
+	
+	/*darkblue*/
+	.uix-pb-btn-darkblue{
+		background: #0E90D2;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-darkblue:hover{
+		background: #3780C4;
+		color: #fff;
+	}
+	
+	/*cadetblue*/
+	.uix-pb-btn-cadetblue{
+		background: #5F9EA0;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-cadetblue:hover{
+		background: #509088;
+		color: #fff;
+	}
+	
+	/*pink*/
+	.uix-pb-btn-pink{
+		background: #FA9ADF;
+		color: #fff;
+	
+	}
+	
+	
+	.uix-pb-btn-pink:hover{
+		background: #D27FC5;
+		color: #fff;
+	}
+	
 	

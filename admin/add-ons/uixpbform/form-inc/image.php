@@ -70,7 +70,7 @@ class UixPBFormType_Image {
                             
                         </td>
                     </tr> 
-                '."\n";	
+                '.PHP_EOL;	
                 
 				
 			if ( $image_prop ) {	
@@ -92,7 +92,7 @@ class UixPBFormType_Image {
 								</div>
 							</td>
 						</tr> 
-					'."\n";
+					'.PHP_EOL;
 				/* ------------ */
 				
 				$field .= '
@@ -112,7 +112,7 @@ class UixPBFormType_Image {
 								</div>
 							</td>
 						</tr> 
-					'."\n";
+					'.PHP_EOL;
 				/* ------------ */
 				
 				$field .= '
@@ -131,7 +131,7 @@ class UixPBFormType_Image {
 								</div>
 							</td>
 						</tr> 
-					'."\n";
+					'.PHP_EOL;
 				/* ------------ */
 				
 				$field .= '
@@ -151,7 +151,7 @@ class UixPBFormType_Image {
 								</div>
 							</td>
 						</tr> 
-					'."\n";
+					'.PHP_EOL;
 				/* ------------ */
 						
 				
@@ -161,8 +161,8 @@ class UixPBFormType_Image {
                 
 				
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
-				'.( $image_prop ? 'var '.$id.'_repeat = $( "#'.$id.'_repeat" ).val(); var '.$id.'_position = $( "#'.$id.'_position" ).val(); var '.$id.'_attachment = $( "#'.$id.'_attachment" ).val(); var '.$id.'_size = $( "#'.$id.'_size" ).val();'."\n" : '' ).'
+                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+				'.( $image_prop ? 'var '.$id.'_repeat = $( "#'.$id.'_repeat" ).val(); var '.$id.'_position = $( "#'.$id.'_position" ).val(); var '.$id.'_attachment = $( "#'.$id.'_attachment" ).val(); var '.$id.'_size = $( "#'.$id.'_size" ).val();'.PHP_EOL : '' ).'
             ';
             $jscode .= '';	
                 

@@ -18,7 +18,22 @@ $uix_pb_config = [
 									'id'              => 'uix_pb_section_features2',
 									'thumb'           => 'feaures-2.jpg',
 								
+								),	
+	
+								array(
+									'title'           => __( 'Pricing 3 column', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_pricing1',
+									'thumb'           => 'pricing-1.jpg',
+								
+								),	
+								
+								array(
+									'title'           => __( 'Pricing 4 column', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_pricing2',
+									'thumb'           => 'pricing-2.jpg',
+								
 								),		
+	
 								
 				
 							]

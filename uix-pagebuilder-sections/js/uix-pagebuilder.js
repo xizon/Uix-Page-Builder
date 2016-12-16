@@ -10,6 +10,7 @@
 		
 	1. Accordion & Tabs
 	2. Progress Bar
+	3. Pricing
 	
 
 ************************************* */
@@ -420,3 +421,106 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 }( uix_pb, jQuery, window, document ) );
 
+
+
+
+/*! 
+ *************************************
+ * 3. Pricing
+ *************************************
+ */
+uix_pb = ( function ( uix_pb, $, window, document ) {
+    'use strict';
+   
+    var pageLoaded = function() {
+	
+		//Initialize the height
+		$( '.uix-pb-price' ).each( function(){
+			
+				//returns new id
+				var $this            = $( this ),
+					priceBGH         = Array(),
+					priceBGH_excerpt = Array(),
+					$initHeight      = $this.find( '.uix-pb-price-init-height' );
+				
+				$initHeight.each( function( index ) {
+					//Screen protection of height 
+					$( this ).find( '.uix-pb-price-border,.uix-pb-price-excerpt' ).css( 'height', 'auto' );
+					
+					var tempheight = $( this ).height();
+					var tempheight_excerpt = $( this ).find( '.uix-pb-price-excerpt' ).height();
+					priceBGH.push( tempheight );
+					priceBGH_excerpt.push( tempheight_excerpt );
+				
+			
+				} );
+			
+				var priceBGH_Max         = Math.max.apply( Math, priceBGH ),
+					priceBGH_Max_excerpt = Math.max.apply( Math, priceBGH_excerpt );
+		
+				
+				
+				if ( priceBGH_Max > 0 ) {
+					if ( $( document.body ).width() > 768 ){
+						
+						$initHeight.find( '.uix-pb-price-border' ).css( 'height', priceBGH_Max + 'px' );
+						if ( $initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).length > 0 ) {
+							var ty = Math.abs(parseInt($initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).css('transform').split(',')[5]));
+							if ( !isNaN(ty) ) {
+								$initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).css( 'height', priceBGH_Max + ty*2 + 'px' );
+							} 
+	
+						}
+						
+						
+					} else {
+						$initHeight.find( '.uix-pb-price-border' ).css( 'height', 'auto' );	
+					}
+	
+				}
+				
+			
+		});
+		
+		//Border of the hover effect
+		$( '.uix-pb-price-border-hover' ).each( function(){
+			
+			var $this        = $( this ),
+				hw           = 6,
+			    defaultColor = $this.find( '.uix-pb-price-border' ).css( 'border-color' );
+			
+			if ( $this.css( 'top' ) != '0px' ) {
+				
+				$this.hover(function() {
+					$(this).find( '.uix-pb-price-border' ).css({
+						"border-color": $this.data( 'tcolor' ),
+						"-webkit-box-shadow": "inset 0 0px 0px "+hw+"px " + $this.data( 'tcolor' ),
+						"-moz-box-shadow": "inset 0 0px 0px "+hw+"px " + $this.data( 'tcolor' ),
+						"box-shadow": "inset 0 0px 0px "+hw+"px " + $this.data( 'tcolor' )
+					});
+				},function() {
+					$(this).find( '.uix-pb-price-border' ).css({
+						"border-color": defaultColor,
+						"-webkit-box-shadow": "none",
+						"-moz-box-shadow": "none",
+						"box-shadow": "none"
+					});
+				});		
+	
+			}	
+				
+			
+		});	
+		
+		
+    };
+
+    uix_pb.pricing = {
+        pageLoaded : pageLoaded        
+    };
+
+    uix_pb.components.pageLoaded.push( pageLoaded );
+    return uix_pb;	
+	
+
+}( uix_pb, jQuery, window, document ) );

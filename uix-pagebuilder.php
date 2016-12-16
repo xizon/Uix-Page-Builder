@@ -561,7 +561,7 @@ class UixPageBuilder {
 		$btns .= '</div>';
 				
 		
-		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">×</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' ); if ( jQuery( document.body ).width() > 768 ) { jQuery( ".uix-pagebuilder-col-tabs" ).accTabs(); } }';
+		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">&times;</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-pagebuilder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' ); if ( jQuery( document.body ).width() > 768 ) { jQuery( ".uix-pagebuilder-col-tabs" ).accTabs(); } }';
 			
 		
 		
@@ -750,7 +750,105 @@ class UixPageBuilder {
 		}
 		
 	}
-						
+	
+	/*
+	 * Color transform
+	 *
+	 *
+	 */
+	public static function color_tran( $str ) {
+		
+		switch( $str ) {
+			case '#a2bf2f':
+				return 'green';
+
+			  break;
+			case '#d59a3e':
+				return 'yellow';
+
+			  break;
+
+			case '#DD514C':
+				return 'red';	 
+			  break;
+
+			case '#FA9ADF':
+				return 'pink';	
+
+			  break;
+
+			case '#4BB1CF':
+				return 'blue'; 
+			  break;
+
+			case '#0E90D2':
+				return 'darkblue'; 
+			  break;	  
+
+
+			case '#5F9EA0':
+				return 'cadetblue';
+			  break;
+
+			case '#473f3f':
+				return 'black';
+			  break;
+
+
+			case '#bebebe':
+				return 'gray';
+			  break;       
+
+
+			default:
+
+		}
+	}
+	
+	
+	/*
+	 * HTML tags like "<li>","<ul>","<ol>" transform
+	 *
+	 *
+	 */
+	public static function html_listTran( $str, $type = 'li' ) {
+		
+		$newstr = '';
+		
+		if ( !empty( $str ) ) {
+			if ( self::inc_str( $str, '<br>' ) ) {
+				$strarr = explode( '<br>', $str );
+
+				foreach ( $strarr as $value ) {
+
+					if ( self::inc_str( $value, '<'.$type.'>' ) ) {
+						$newstr .= $value;
+					} else {
+						$newstr .= '<'.$type.'>'.$value.'</'.$type.'>';
+					}
+
+
+				}	
+			} else {
+
+				if ( self::inc_str( $str, '<'.$type.'>' ) ) {
+					$newstr = $str;
+				} else {
+					$newstr = '<'.$type.'>'.$str.'</'.$type.'>';
+				}
+
+
+			}
+		}
+		
+		$newstr = str_replace( '<'.$type.'></'.$type.'>', '', $newstr );
+		
+		
+		return $newstr;
+		
+	}
+	
+	
 			
 	/*
 	 *  Add admin one-time notifications

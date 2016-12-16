@@ -74,13 +74,13 @@ class UixPBFormType_ColorMap {
 							</div>
                         </td>
                     </tr> 
-                '."\n";	
+                '.PHP_EOL;	
                 
 				
           
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
+                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
 			
 			$jscode = '';

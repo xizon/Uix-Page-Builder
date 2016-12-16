@@ -709,7 +709,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 		function uixPBFormDataSave(){
 			jQuery( document ).ready( function() {  
 				var json_str = JSON.stringify( gridster.serialize() );
-				json_str = json_str.replace(/\\n/g, '<br>' ).replace(/\\r/g, '' ).replace(/\\/g, '' );
+				json_str = json_str.replace(/(\r)*\n/g, '<br>' ).replace(/\\r/g, '' ).replace(/\\/g, '' );
 				
 				jQuery( '#uix-pagebuilder-layoutdata' ).val( json_str );
 				

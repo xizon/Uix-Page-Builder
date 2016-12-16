@@ -58,7 +58,7 @@ class UixPBFormType_Margin {
 							</div>
 						</td>
 					</tr> 
-				'."\n";	
+				'.PHP_EOL;	
 
 			$jscode_vars = '
 				'.( !empty( $id ) ? '
@@ -66,7 +66,7 @@ class UixPBFormType_Margin {
 				    '.$id[ 'right' ].' = $( "#'.$id[ 'right' ].'" ).val(),
 					'.$id[ 'bottom' ].' = $( "#'.$id[ 'bottom' ].'" ).val(),
 					'.$id[ 'left' ].' = $( "#'.$id[ 'left' ].'" ).val();
-				'."\n" : '' ).'
+				'.PHP_EOL : '' ).'
 			';	
 
 		}

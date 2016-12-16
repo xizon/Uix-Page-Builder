@@ -28,7 +28,7 @@ class UixPBFormType_Color {
 					
 					( $value == $color_value ) ? $active = ' class="active"' : $active = '' ;
 					
-                    $colorlist .= '<span '.$active.' style="background:'.$color_value.'" data-value="'.$color_value.'"></span>'."\n";	
+                    $colorlist .= '<span '.$active.' style="background:'.$color_value.'" data-value="'.$color_value.'"></span>'.PHP_EOL;	
                 }	
             }
             
@@ -47,12 +47,12 @@ class UixPBFormType_Color {
 							 </div> 
                         </td>
                     </tr> 
-                '."\n";	
+                '.PHP_EOL;	
                 
                 
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'."\n" : '' ).'
+                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
             $jscode = '';
 

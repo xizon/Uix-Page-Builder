@@ -98,7 +98,7 @@ $uix_pb_features_col2_one_listitem_desccolor      = UixPageBuilder::fvalue( $col
 $uix_pb_features_col2_one_listitem_icon           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_one_listitem_icon', '' );
 $uix_pb_features_col2_one_listitem_iconcolor      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_one_listitem_iconcolor', '' );
 
-
+//--
 $uix_pb_features_col2_two_listitem_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_two_listitem_title', __( 'Feature Title', 'uix-pagebuilder' ) );
 $uix_pb_features_col2_two_listitem_titlecolor     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_two_listitem_titlecolor', '' );
 $uix_pb_features_col2_two_listitem_desc           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col2_two_listitem_desc', __( 'Some description text here. You can add a lot of it or can choose to leave it blank.', 'uix-pagebuilder' ) );
