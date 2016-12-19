@@ -77,48 +77,44 @@ if ( $sid >= 0 ) {
  * Element Template
  * ----------------------------------------------------
  */
-$uix_pb_parallax_title           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_title', __( 'Feature Title', 'uix-pagebuilder' ) );
+$uix_pb_parallax_title           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_title', __( 'Text Here', 'uix-pagebuilder' ) );
 $uix_pb_parallax_titlecolor      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_titlecolor', '' );
-$uix_pb_parallax_desc            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_desc', __( 'Some description text here. You can add a lot of it or can choose to leave it blank.', 'uix-pagebuilder' ) );
+$uix_pb_parallax_desc            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_desc', __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hoc etsi multimodis reprehendi potest, tamen accipio, quod dant. Teneo, inquit, finem illi videri nihil dolere. Esse enim, nisi eris, non potes.', 'uix-pagebuilder' ) );
 $uix_pb_parallax_desccolor       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_desccolor', '' );
-$uix_pb_parallax_bg             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_bg', '' );
-$uix_pb_parallax_bg_attachment  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_bg_attachment', 'fixed' );
-$uix_pb_parallax_speed  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_speed', 0 );
-$uix_pb_parallax_height  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_height', 0 );
+$uix_pb_parallax_bg              = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_bg', '' );
+$uix_pb_parallax_bg_attachment   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_bg_attachment', 'fixed' );
+$uix_pb_parallax_speed           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_speed', 0 );
+$uix_pb_parallax_height          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_height', 300 );
 
+
+$bgimage_css = ( !empty( $uix_pb_parallax_bg ) ) ? 'style="background:url('.esc_attr( $uix_pb_parallax_bg ).') '.( $uix_pb_parallax_speed > 0 ? '50%' : 'top' ).' '.( $uix_pb_parallax_speed > 0 ? 0 : 'left' ).' no-repeat '.( $uix_pb_parallax_speed > 0 ? 'fixed' : esc_attr( $uix_pb_parallax_bg_attachment ) ).';"' : '';
+
+$title       =  ( !empty( $uix_pb_parallax_titlecolor ) ) ? '<span style="color:'.esc_attr( $uix_pb_parallax_titlecolor ).';">'.wp_kses( $uix_pb_parallax_title, wp_kses_allowed_html( 'post' ) ).'</span>' : wp_kses( $uix_pb_parallax_title, wp_kses_allowed_html( 'post' ) );
+
+$desc        =  ( !empty( $uix_pb_parallax_desccolor ) ) ? '<span style="color:'.esc_attr( $uix_pb_parallax_desccolor ).';">'.wp_kses( $uix_pb_parallax_desc, wp_kses_allowed_html( 'post' ) ).'</span>' : wp_kses( $uix_pb_parallax_desc, wp_kses_allowed_html( 'post' ) );
 
 
 
 $element_temp = '
-<div class="uix-pb-parallax" style="border-top-color: {color};">
-	<div class="uix-pb-parallax-top">
-		<div class="uix-pb-parallax-text">
-			<h3 class="uix-pb-parallax-title">{name}
-			{social_1}
-			{social_2}
-			{social_3}
-			</h3> 	 
+<div class="uix-pb-parallax-wrapper uix-pb-parallax" {mainstyle} data-parallax="{speed}">
+	<div class="uix-pb-parallax-table" style="height:{height}">
+		<div class="uix-pb-parallax-content-box">
+			<h2>{title}</h2>
+			<p>{desc}</p>
 		</div>
-		<div class="uix-pb-parallax-pic"><img src="{avatar}" alt="{name_attr}"></div>
 	</div>
-	<div class="uix-pb-parallax-middle">{intro}</div> 
-	<a class="uix-pb-parallax-final" href="{link_url}" rel="author">{link_label}</a> 
-</div> 
+</div>
 ';
 
-$uix_pb_section_parallax_temp = str_replace( '{name}', wp_kses( $uix_pb_parallax_title, wp_kses_allowed_html( 'post' ) ), 
-                                  str_replace( '{name_attr}', esc_attr( $uix_pb_parallax_title ), 
-								  str_replace( '{intro}', wp_kses( $uix_pb_parallax_intro, wp_kses_allowed_html( 'post' ) ), 
-								  str_replace( '{link_url}', esc_url( $uix_pb_parallax_link_link ), 
-								  str_replace( '{link_label}', wp_kses( $uix_pb_parallax_link_label, wp_kses_allowed_html( 'post' ) ), 
-								  str_replace( '{avatar}',esc_url( $avatarURL ), 
-								  str_replace( '{color}', esc_attr( $uix_pb_parallax_primary_color ), 
-								  str_replace( '{social_1}', $social_out_1, 
-								  str_replace( '{social_2}', $social_out_2, 
-								  str_replace( '{social_3}', $social_out_3, 
+
+$uix_pb_section_parallax_temp = str_replace( '{mainstyle}', $bgimage_css, 
+                                  str_replace( '{speed}', esc_attr( $uix_pb_parallax_speed ), 
+								  str_replace( '{height}', esc_attr( $uix_pb_parallax_height ).'px', 
+								  str_replace( '{title}', $title, 
+								  str_replace( '{desc}', $desc,
 
 							     $element_temp 
-								 ) ) ) ) ) ) ) ) ) );
+								 ) ) ) ) );
 
 
 
@@ -141,7 +137,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_title' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_title' ),
-			'title'          => '',
+			'title'          => __( 'Title', 'uix-pagebuilder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_parallax_title,
 			'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_title' ).'', /*class of list item */
@@ -154,7 +150,7 @@ $args =
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_titlecolor' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_titlecolor' ),
 			'title'          => '',
-			'desc'           => __( 'Title Color', 'uix-pagebuilder' ),
+			'desc'           => '',
 			'value'          => $uix_pb_parallax_titlecolor,
 			'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_titlecolor' ).'', /*class of list item */
 			'placeholder'    => '',
@@ -167,12 +163,10 @@ $args =
 		),	
 
 
-
-
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_desc' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_desc' ),
-			'title'          => '',
+			'title'          => __( 'Description', 'uix-pagebuilder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_parallax_desc,
 			'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_desc' ).'', /*class of list item */
@@ -189,7 +183,7 @@ $args =
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_desccolor' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_desccolor' ),
 			'title'          => '',
-			'desc'           => __( 'Description Color', 'uix-pagebuilder' ),
+			'desc'           => '',
 			'value'          => $uix_pb_parallax_desccolor,
 			'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_desccolor' ).'', /*class of list item */
 			'placeholder'    => '',
@@ -201,6 +195,39 @@ $args =
 		),	
 		
 		
+	    array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_height' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_height' ),
+			'title'          => __( 'Height', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => $uix_pb_parallax_height,
+			'placeholder'    => '',
+			'type'           => 'short-text',
+			'default'        => array(
+									'units'  => 'px'
+				                )
+		
+		),	
+		
+		
+	    array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_speed' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_speed' ),
+			'title'          => __( 'Parallax', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => $uix_pb_parallax_speed,
+			'placeholder'    => '',
+			'type'           => 'slider',
+			'default'        => array(
+			                        'units_id'    => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_speed_units' ),
+									'units_name'  => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_speed_units' ),
+									'units'       => '',
+									'min'         => 0,
+									'max'         => 10,
+									'step'        => 0.1
+				                )
+		
+		),	
 		
 
 		array(
@@ -218,25 +245,10 @@ $args =
 		
 		),	
 			
-		
-	    array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_height' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_height' ),
-			'title'          => __( 'Height', 'uix-pagebuilder' ),
-			'desc'           => __( 'The browser automatically calculates the container height if the value is <strong>"0"</strong>.', 'uix-pagebuilder' ),
-			'value'          => $uix_pb_parallax_height,
-			'placeholder'    => '',
-			'type'           => 'short-text',
-			'default'        => array(
-									'units'  => 'px'
-				                )
-		
-		),	
-		
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_bg_attachment' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_bg_attachment' ),
-			'title'          => __( 'Radio', 'uix-pagebuilder' ),
+			'title'          => '',
 			'desc'           => '',
 			'value'          => $uix_pb_parallax_bg_attachment,
 			'placeholder'    => '',
@@ -248,24 +260,8 @@ $args =
 		
 		),
 		
-	    array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_speed' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_speed' ),
-			'title'          => __( 'Slider', 'uix-pagebuilder' ),
-			'desc'           => '',
-			'value'          => $uix_pb_parallax_speed,
-			'placeholder'    => '',
-			'type'           => 'slider',
-			'default'        => array(
-			                        'units_id'    => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_speed_units' ),
-									'units_name'  => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_speed_units' ),
-									'units'       => '',
-									'min'         => 0,
-									'max'         => 10,
-									'step'        => 0.1
-				                )
 		
-		),	
+
 		
 
         //------- template
@@ -307,7 +303,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Author Card', 'uix-pagebuilder' ) ); ?>         
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Parallax', 'uix-pagebuilder' ) ); ?>         
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -337,47 +333,36 @@ if ( $sid >= 0 && is_admin() ) {
 		
 		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
 			
-			var tempcode                         = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
-				uix_pb_parallax_primary_color  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_primary_color' ); ?>' ).val(),
-				uix_pb_parallax_avatar         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_avatar' ); ?>' ).val(),
+			var tempcode                        = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
 				uix_pb_parallax_title           = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_title' ); ?>' ).val(),
-				uix_pb_parallax_intro          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_intro' ); ?>' ).val(),
-				uix_pb_parallax_link_label     = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_link_label' ); ?>' ).val(),
-				uix_pb_parallax_link_link      = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_link_link' ); ?>' ).val(),
-				uix_pb_parallax_1_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_1_icon' ); ?>' ).val(),
-				uix_pb_parallax_1_icon_cur     = ( uix_pb_parallax_1_icon == undefined || uix_pb_parallax_1_icon == '' ) ? 'link' : uix_pb_parallax_1_icon,
-				uix_pb_parallax_2_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_2_icon' ); ?>' ).val(),
-				uix_pb_parallax_2_icon_cur     = ( uix_pb_parallax_2_icon == undefined || uix_pb_parallax_2_icon == '' ) ? 'link' : uix_pb_parallax_2_icon,
-				uix_pb_parallax_3_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_3_icon' ); ?>' ).val(),
-				uix_pb_parallax_3_icon_cur     = ( uix_pb_parallax_3_icon == undefined || uix_pb_parallax_3_icon == '' ) ? 'link' : uix_pb_parallax_3_icon,
-				uix_pb_parallax_1_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_1_url' ); ?>' ).val(),
-				uix_pb_parallax_2_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_2_url' ); ?>' ).val(),
-				uix_pb_parallax_3_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_3_url' ); ?>' ).val();
+				uix_pb_parallax_titlecolor      = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_titlecolor' ); ?>' ).val(),
+				uix_pb_parallax_desc            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_desc' ); ?>' ).val(),
+				uix_pb_parallax_desccolor       = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_desccolor' ); ?>' ).val(),
+				uix_pb_parallax_bg              = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_bg' ); ?>' ).val(),
+				uix_pb_parallax_bg_attachment   = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_bg_attachment' ); ?>' ).val(),
+				uix_pb_parallax_speed           = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_speed' ); ?>' ).val(),
+				uix_pb_parallax_height          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_height' ); ?>' ).val();
 				
 			
 			
 			if ( tempcode.length > 0 ) {
 				
-				
-				var avatarURL    = ( uix_pb_parallax_avatar != undefined && uix_pb_parallax_avatar != '' ) ? uix_pb_parallax_avatar : '<?php echo UixPBFormCore::plug_directory(); ?>images/no-photo.png',
-					social_out_1 = ( uix_pb_parallax_1_url != undefined && uix_pb_parallax_1_url != '' ) ? '<a href="'+encodeURI( uix_pb_parallax_1_url )+'" target="_blank"><i class="fa fa-'+uix_pb_parallax_1_icon_cur+'"></i></a>' : '',
-					social_out_2 = ( uix_pb_parallax_2_url != undefined && uix_pb_parallax_2_url != '' ) ? '<a href="'+encodeURI( uix_pb_parallax_2_url )+'" target="_blank"><i class="fa fa-'+uix_pb_parallax_2_icon_cur+'"></i></a>' : '',
-					social_out_3 = ( uix_pb_parallax_3_url != undefined && uix_pb_parallax_3_url != '' ) ? '<a href="'+encodeURI( uix_pb_parallax_3_url )+'" target="_blank"><i class="fa fa-'+uix_pb_parallax_3_icon_cur+'"></i></a>' : '';
+				var bg_pos_1     = ( uix_pb_parallax_speed > 0 ) ? '50%' : 'top',
+					bg_pos_2     = ( uix_pb_parallax_speed > 0 ) ? 0 : 'left',
+					speed        = ( uix_pb_parallax_speed > 0 ) ? 'fixed' : uixpbform_htmlEncode( uix_pb_parallax_bg_attachment ),
+					bgimage_css  = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != '' ) ? 'style="background:url('+uixpbform_htmlEncode( uix_pb_parallax_bg )+') '+bg_pos_1+' '+bg_pos_2+' no-repeat '+speed+';"' : '',
+					title        =  ( uix_pb_parallax_titlecolor != undefined && uix_pb_parallax_titlecolor != '' ) ? '<span style="color:'+uixpbform_htmlEncode( uix_pb_parallax_titlecolor )+';">' + uix_pb_parallax_title + '</span>' : uix_pb_parallax_title,
+					desc         =  ( uix_pb_parallax_desccolor != undefined && uix_pb_parallax_desccolor != '' ) ? '<span style="color:'+uixpbform_htmlEncode( uix_pb_parallax_desccolor )+';">' + uix_pb_parallax_desc + '</span>' : '';
 
-				
+			  
 				
 				//---
 				tempcode = tempcode
-								  .replace(/{name}/g, uix_pb_parallax_title )
-								  .replace(/{name_attr}/g, uixpbform_htmlEncode( uix_pb_parallax_title ) )
-								  .replace(/{intro}/g, uix_pb_parallax_intro )
-								  .replace(/{link_url}/g, uix_pb_parallax_link_link )
-								  .replace(/{link_label}/g, uix_pb_parallax_link_label )
-								  .replace(/{avatar}/g, avatarURL )
-								  .replace(/{color}/g, uixpbform_htmlEncode( uix_pb_parallax_primary_color ) )
-								  .replace(/{social_1}/g, social_out_1 )
-								  .replace(/{social_2}/g, social_out_2 )
-								  .replace(/{social_3}/g, social_out_3 );
+								  .replace(/{mainstyle}/g, bgimage_css )
+								  .replace(/{speed}/g, uixpbform_htmlEncode( uix_pb_parallax_speed ) )
+								  .replace(/{height}/g, uixpbform_htmlEncode( uix_pb_parallax_height )+'px' )
+								  .replace(/{title}/g, title )
+								  .replace(/{desc}/g, desc );
 								  
 					
 							

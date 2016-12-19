@@ -136,7 +136,9 @@
 
 		});
 
-		$( document ).on( 'click', '.uix-pagebuilder-gridster-drag', function() {
+		$( document ).on( 'click', '.uix-pagebuilder-gridster-drag', function( e ) {
+            e.preventDefault();
+            
 			$( '.settings-wrapper' ).hide();
 		});
 

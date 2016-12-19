@@ -501,7 +501,6 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 				//Initialize gridster
 				if ( jQuery( "[name='uix-pagebuilder-layoutdata']" ).val().length > 2 ) {
 					gridster.remove_all_widgets();
-					gridster.destroy();
 					jQuery( '.gridster ul' ).empty();
 				}
 			
@@ -665,8 +664,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 		
 		function gridsterAddRow() {
 			
-		
-			var gLi = ( jQuery( '.gridster ul > li' ).length >= 2 ) ? parseFloat( jQuery( '.gridster ul > li' ).length - 1 ) : jQuery( '.gridster ul > li' ).length;
+			var gLi = jQuery( '.gridster > ul > li' ).length,
 				gLi = gLi + 1,
 				titleid = 'title-data-'+gLi,
 				contentid = 'content-data-'+gLi,
@@ -721,7 +719,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 		}
 		function gridsterWidgetStatus(){
 			jQuery( document ).ready( function() {  
-				jQuery( '.gridster ul > li' ).each( function() {
+				jQuery( '.gridster > ul > li' ).each( function() {
 					var $this = jQuery( this );
 					if ( $this.find( '.content-box' ).val() != '') {
 						$this.addClass( 'active' );
@@ -753,7 +751,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 		
 		function gridsterFormEnterAction(){
 			jQuery( document ).ready( function() {  
-				jQuery( '.gridster ul > li' ).each( function() {
+				jQuery( '.gridster > ul > li' ).each( function() {
 					var $this = jQuery( this );
 					$this.find( '.content-box, .title-box, .cusid-box, [name^="layout"]' ).on( 'change keyup', function() {
 						
