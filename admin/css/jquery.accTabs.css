@@ -30,7 +30,7 @@
 		background: #FFFFFF;
 		border-width: 1px 1px 0;
 		float: left;
-		margin: 0 10px 0 0;
+		margin: 0 6px 0 0;
 		padding: 0;
 		position: relative;
 	}
@@ -38,17 +38,17 @@
 	.js-tabs .js-tabs_control button {
 		background: transparent;
 		cursor: pointer;
-		padding: 8px 1em 10px;
+		padding: 4px .5em 5px;
 		position: relative;
 		outline: 0;
-		font-size:14px;
+		font-size:12px;
 		font-weight:normal;
 		color: #646464;
 		border:none;
 		border-left: 1px solid #E5E5E5;
 		border-right: 1px solid #E5E5E5;
 		border-top: 1px solid #E5E5E5;
-		font-weight: 600;
+		font-weight: 400;
 	
 	}
 	
@@ -64,7 +64,7 @@
 	.js-tabs .js-tabs_control .js-tabs_control-item--active:focus,
 	.js-tabs .js-tabs_control .js-tabs_control-item--active:active {
 		background: #0085BA;
-		border: 1px solid #CCCCCC;
+		border: 1px solid #0085BA;
 		border-bottom: none;
 		color:#fff;
 		top: 1px;

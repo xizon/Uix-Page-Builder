@@ -1,9 +1,43 @@
 <?php 
 
 $uix_pb_config = [
-
+	
+	
 	array(
 		'sortname'        => __( 'Contents', 'uix-pagebuilder' ),
+		'buttons'         => [
+							
+	
+								array(
+									'title'           => __( 'Accordion', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_accordion',
+									'thumb'           => 'accordion.jpg',
+								
+								),	
+								
+								
+								array(
+									'title'           => __( 'Tabs', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_tabs',
+									'thumb'           => 'tabs.jpg',
+								
+								),
+	
+								array(
+									'title'           => __( 'Parallax', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_parallax',
+									'thumb'           => 'parallax.jpg',
+								
+								),							
+								
+				
+							]
+	
+	),		
+	
+	
+	array(
+		'sortname'        => __( 'Features', 'uix-pagebuilder' ),
 		'buttons'         => [
 							
 								array(
@@ -18,7 +52,17 @@ $uix_pb_config = [
 									'id'              => 'uix_pb_section_features2',
 									'thumb'           => 'feaures-2.jpg',
 								
-								),	
+								),
+	
+								
+				
+							]
+	
+	),		
+	
+	array(
+		'sortname'        => __( 'Pricing', 'uix-pagebuilder' ),
+		'buttons'         => [
 	
 								array(
 									'title'           => __( 'Pricing 3 column', 'uix-pagebuilder' ),
@@ -59,26 +103,14 @@ $uix_pb_config = [
 								
 								),	
 								
-								array(
-									'title'           => __( 'Accordion', 'uix-pagebuilder' ),
-									'id'              => 'uix_pb_section_accordion',
-									'thumb'           => 'accordion.jpg',
-								
-								),	
-								
-								
-								array(
-									'title'           => __( 'Tabs', 'uix-pagebuilder' ),
-									'id'              => 'uix_pb_section_tabs',
-									'thumb'           => 'tabs.jpg',
-								
-								),
+
 								array(
 									'title'           => __( 'Google Map', 'uix-pagebuilder' ),
 									'id'              => 'uix_pb_section_map',
 									'thumb'           => 'map.jpg',
 								
-								),					
+								),	
+		
 										
 							
 							]

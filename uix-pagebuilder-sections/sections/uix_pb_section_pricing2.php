@@ -238,14 +238,19 @@ $element_temp = '
 $win_one        = ( $uix_pb_pricing_col4_one_btn_win == 1 ) ? 'target="_blank"' : '';
 $win_two        = ( $uix_pb_pricing_col4_two_btn_win == 1 ) ? 'target="_blank"' : '';
 $win_three      = ( $uix_pb_pricing_col4_three_btn_win == 1 ) ? 'target="_blank"' : '';
+$win_four       = ( $uix_pb_pricing_col4_four_btn_win == 1 ) ? 'target="_blank"' : '';
+
 
 $imclass_one    = ( $uix_pb_pricing_col4_one_active == 1 ) ? 'uix-pb-price-important' : '';
 $imclass_two    = ( $uix_pb_pricing_col4_two_active == 1 ) ? 'uix-pb-price-important' : '';
 $imclass_three  = ( $uix_pb_pricing_col4_three_active == 1 ) ? 'uix-pb-price-important' : '';
+$imclass_four   = ( $uix_pb_pricing_col4_four_active == 1 ) ? 'uix-pb-price-important' : '';
+
 
 $btncolor_one   = UixPageBuilder::color_tran( $uix_pb_pricing_col4_one_btn_color );
 $btncolor_two   = UixPageBuilder::color_tran( $uix_pb_pricing_col4_two_btn_color );
 $btncolor_three = UixPageBuilder::color_tran( $uix_pb_pricing_col4_three_btn_color );
+$btncolor_four  = UixPageBuilder::color_tran( $uix_pb_pricing_col4_four_btn_color );
 
 
 $uix_pb_section_pricing2_temp = str_replace( '{imcolor_one}', esc_attr( $uix_pb_pricing_col4_one_emphasis_color ),
