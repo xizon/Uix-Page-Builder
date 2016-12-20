@@ -87,7 +87,7 @@ if ( $sid >= 0 ) {
  * ----------------------------------------------------
  */
 $uix_pb_testimonials_config_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_config_title', __( 'Text Here', 'uix-pagebuilder' ) );
-$uix_pb_testimonials_config_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_config_intro', __( 'This is the description text for the heading.', 'uix-pagebuilder' ) );
+$uix_pb_testimonials_config_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
 
 
 $uix_pb_testimonials_listitem_avatar       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_listitem_avatar', '' );

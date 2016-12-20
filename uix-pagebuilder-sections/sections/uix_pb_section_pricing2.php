@@ -78,7 +78,7 @@ if ( $sid >= 0 ) {
  * ----------------------------------------------------
  */
 $uix_pb_pricing_col4_config_title         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_config_title', __( 'Text Here', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_config_intro         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_config_intro', __( 'This is the description text for the heading.', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col4_config_intro         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
 
 $uix_pb_pricing_col4_one_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_title', __( 'free', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_one_price            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_price', 49 );
