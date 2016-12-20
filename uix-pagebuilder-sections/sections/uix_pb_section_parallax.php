@@ -350,9 +350,9 @@ if ( $sid >= 0 && is_admin() ) {
 				var bg_pos_1     = ( uix_pb_parallax_speed > 0 ) ? '50%' : 'top',
 					bg_pos_2     = ( uix_pb_parallax_speed > 0 ) ? 0 : 'left',
 					speed        = ( uix_pb_parallax_speed > 0 ) ? 'fixed' : uixpbform_htmlEncode( uix_pb_parallax_bg_attachment ),
-					bgimage_css  = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != '' ) ? 'style="background:url('+uixpbform_htmlEncode( uix_pb_parallax_bg )+') '+bg_pos_1+' '+bg_pos_2+' no-repeat '+speed+';"' : '',
+					bgimage_css  = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != '' ) ? 'style="background:url('+encodeURI( uix_pb_parallax_bg )+') '+bg_pos_1+' '+bg_pos_2+' no-repeat '+speed+';"' : '',
 					title        =  ( uix_pb_parallax_titlecolor != undefined && uix_pb_parallax_titlecolor != '' ) ? '<span style="color:'+uixpbform_htmlEncode( uix_pb_parallax_titlecolor )+';">' + uix_pb_parallax_title + '</span>' : uix_pb_parallax_title,
-					desc         =  ( uix_pb_parallax_desccolor != undefined && uix_pb_parallax_desccolor != '' ) ? '<span style="color:'+uixpbform_htmlEncode( uix_pb_parallax_desccolor )+';">' + uix_pb_parallax_desc + '</span>' : '';
+					desc         =  ( uix_pb_parallax_desccolor != undefined && uix_pb_parallax_desccolor != '' ) ? '<span style="color:'+uixpbform_htmlEncode( uix_pb_parallax_desccolor )+';">' + uix_pb_parallax_desc + '</span>' : uix_pb_parallax_desc;
 
 			  
 				

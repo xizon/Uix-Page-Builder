@@ -622,8 +622,8 @@ $form_html = UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 
 
 $form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_1, 'html', __( 'Left Section', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_2, 'html', __( 'Right Section', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_1, 'html', __( 'Left Block', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_2, 'html', __( 'Right Block', 'uix-pagebuilder' ) );
 
 $form_html .= UixPBFormCore::form_after();
 

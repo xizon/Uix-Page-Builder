@@ -422,17 +422,19 @@ jQuery( document ).ready( function() {
 			var cur_btnID       = '#' + jQuery( this ).attr( "data-btnid" ),
 			    cur_closebtnID  = '#' + jQuery( this ).attr( "data-closebtnid" ),
 				cur_targetID    = '#' + jQuery( this ).attr( "data-insert-img" ),
+				cur_previewID   = '#' + jQuery( this ).attr( "data-insert-preview" ),
 				cur_prop        = jQuery( this ).attr( "data-prop" ),
-				propIDPrefix    = cur_btnID.replace( '#', '' )
+				propIDPrefix    = cur_btnID.replace( '#', '' ),
 				imgvalue        = jQuery( cur_targetID ).val();
 
-
+		
 			if ( jQuery( cur_targetID ).length > 0 ) {
 
 				if ( imgvalue.length > 0 ) {
 
 					/*-- Show image properties and remove button --*/
 					jQuery( cur_closebtnID ).show().css( { 'display': 'block' } );
+					jQuery( cur_previewID ).find( 'img' ).attr( 'src', imgvalue );
 
 					if ( cur_prop ) {
 						jQuery( "." + propIDPrefix + '_repeat' ).show();
@@ -451,7 +453,7 @@ jQuery( document ).ready( function() {
 							var _targetPreviewContainer = jQuery( this ).attr( "data-insert-preview" );
 
 							jQuery( "#" + _targetImgContainer ).val( '' );
-							jQuery( "#" + _targetPreviewContainer ).find( 'img' ).attr( "src",'' );
+							jQuery( "#" + _targetPreviewContainer ).find( 'img' ).attr( 'src', '' );
 							jQuery( "#" + _targetPreviewContainer ).hide();
 
 							//Upload container

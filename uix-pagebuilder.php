@@ -692,8 +692,10 @@ class UixPageBuilder {
 			   str_replace( '{multID}', $toggle_target_ID,
 			   str_replace( '{columnid}', $col_id,
 			   str_replace( '{colID}', ''.$cur_id.'-'.str_replace( 'col-item-', 'section_'.$widget_ID.'__', $col_id ),
+			   str_replace( 'data-insert-img="{colID}', 'data-insert-img="'.$cur_id.'-',
+			   str_replace( 'data-insert-preview="{colID}', 'data-insert-preview="'.$cur_id.'-',
 			   $data 
-			   ) ) ) ) ) ) ) ) );
+			   ) ) ) ) ) ) ) ) ) ) );
 		
 		
 		//Toggle elements

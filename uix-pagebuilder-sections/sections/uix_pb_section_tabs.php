@@ -413,11 +413,11 @@ if ( $sid >= 0 && is_admin() ) {
 						_title   = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_tabs_listitem_title' ); ?>' ).val(),
 						_con     = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_tabs_listitem_con' ); ?>' ).val();
 						
-					var _item_v_title = ( _title != undefined ) ? _title : '',
-						_item_v_con   = ( _con != undefined ) ? _con : '';
+					var _item_v_title = ( _title != undefined && _title != '' ) ? _title : '',
+						_item_v_con   = ( _con != undefined && _con != '' ) ? _con : '';
 					
 					
-					if ( _title != undefined ) {
+					if ( _title != undefined && _title != '' ) {
 										
 						//Do not include spaces
 						show_list_item_title += '<li>'+_item_v_title+'</li>';

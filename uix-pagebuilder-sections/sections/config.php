@@ -35,6 +35,23 @@ $uix_pb_config = [
 	
 	),		
 	
+	array(
+		'sortname'        => __( 'Testimonials', 'uix-pagebuilder' ),
+		'buttons'         => [
+							
+								array(
+									'title'           => __( 'Testimonials Carousel', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_testimonials',
+									'thumb'           => 'testimonials.jpg',
+								
+								),
+	
+								
+				
+							]
+	
+	),	
+	
 	
 	array(
 		'sortname'        => __( 'Features', 'uix-pagebuilder' ),
