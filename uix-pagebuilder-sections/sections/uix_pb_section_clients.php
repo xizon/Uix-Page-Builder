@@ -453,17 +453,14 @@ if ( $sid >= 0 && is_admin() ) {
 						_logo   = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_listitem_logo' ); ?>' ).val(),
 						_intro    = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_listitem_intro' ); ?>' ).val();
 						
-					var _item_v_logo        = ( _logo != undefined && _logo != '' ) ? _logo : '',
-						_item_v_intro      = ( _intro != undefined && _intro != '' ) ? _intro : '';
 					
-		
 					
 					if ( _intro != undefined && _intro != '' ) {
 										
 						//Do not include spaces
 						show_list_item_content += '<div class="uix-pb-client-li uix-pb-client-li-'+uix_pb_clients_config_grid+'">';
-						show_list_item_content += '<p class="uix-pb-img"><img src="'+encodeURI( _item_v_logo )+'" alt="" /></p>';
-						show_list_item_content += '<p>'+_item_v_intro+'</p>';   
+						show_list_item_content += '<p class="uix-pb-img"><img src="'+encodeURI( _logo )+'" alt="" /></p>';
+						show_list_item_content += '<p>'+_intro+'</p>';   
 						show_list_item_content += '</div>';
 	
 					}

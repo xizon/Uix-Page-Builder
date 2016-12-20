@@ -489,19 +489,16 @@ if ( $sid >= 0 && is_admin() ) {
 						_intro    = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ); ?>' ).val();
 						
 					var _item_v_avatar     = ( _avatar != undefined && _avatar != '' ) ? '<img class="uix-pb-testimonials-avatar" src="'+encodeURI( _avatar )+'" alt="'+uixpbform_htmlEncode( _name )+'" />': '<span class="uix-pb-testimonials-no-avatar"></span>',
-						_item_v_posclass   = ( _avatar != undefined && _avatar != '' ) ? '': 'class="uix-pb-testimonials-pure-text"',
-						_item_v_name       = ( _name != undefined && _name != '' ) ? _name : '',
-						_item_v_pos        = ( _pos != undefined && _pos != '' ) ? _pos : '',
-						_item_v_intro      = ( _intro != undefined && _intro != '' ) ? _intro : '';
+						_item_v_posclass   = ( _avatar != undefined && _avatar != '' ) ? '': 'class="uix-pb-testimonials-pure-text"';
 					
 					
 					if ( _intro != undefined && _intro != '' ) {
 										
 						//Do not include spaces
 						show_list_item_content += '<li>';
-						show_list_item_content += '<div class="uix-pb-testimonials-content">'+_item_v_intro+'</div>';
+						show_list_item_content += '<div class="uix-pb-testimonials-content">'+_intro+'</div>';
 						show_list_item_content += '<div class="uix-pb-testimonials-signature">'+_item_v_avatar+'';
-						show_list_item_content += '<strong '+_item_v_posclass+'>'+_item_v_name+'</strong> - '+_item_v_pos+'';
+						show_list_item_content += '<strong '+_item_v_posclass+'>'+_name+'</strong> - '+_pos+'';
 						show_list_item_content += '</div>';										                                                    
 						show_list_item_content += '</li>';
 	

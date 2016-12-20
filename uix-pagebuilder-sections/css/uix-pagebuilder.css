@@ -24,6 +24,8 @@
     12. Testimonials Carousel 
     13. Parallax
     14. Client 
+    15. Gallery list (Team) 
+    16. Card list  (Team)       
 
 
 */
@@ -1451,3 +1453,385 @@ img.uix-pb-img,
 		 border: 1px solid #DFDFDF;
 	 }
 	 
+
+
+
+/* ====================================================== 
+   15. Gallery list (Team)                              
+/* ====================================================== */
+.uix-pb-gallery {
+	/* Let all the flexible items be the same length, regardles of its content */
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	/* specifies whether flex items are forced into a single line */
+	-moz-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+	position: relative;
+	margin: 0 0 0 -2.5em;
+	
+
+}
+
+
+.uix-pb-gallery .uix-pb-gallery-list {
+	-moz-transition: .2s ease-in-out; 
+	-o-transition: .2s ease-in-out; 
+	-webkit-transition: .2s ease-in-out;  
+	transition: .2s ease-in-out;	
+	position: relative;
+	margin: 1.5em 0 .5em 2.5em;
+	float: left;
+	
+}
+
+.uix-pb-gallery .uix-pb-gallery-list-col4 {
+	width: calc(24.9% - 2.5em);
+}
+
+	.uix-pb-gallery-list-col4 .uix-pb-gallery-list-imgbox{
+		height: 180px;
+	}	
+    
+
+.uix-pb-gallery .uix-pb-gallery-list-col3 {
+	width: calc(33.3% - 2.5em);
+}
+
+	.uix-pb-gallery-list-col3 .uix-pb-gallery-list-imgbox{
+		height: 245px;
+	}	
+
+.uix-pb-gallery .uix-pb-gallery-list-col2 {
+	
+	width: calc(49.9% - 2.5em);
+}
+
+	.uix-pb-gallery-list-col2 .uix-pb-gallery-list-imgbox{
+		height: 425px;
+	}	
+    
+    
+	.uix-pb-gallery-list img{
+		width: 100%;
+		height: auto;
+	}
+	
+	
+	.uix-pb-gallery-list .uix-pb-gallery-list-info{
+		line-height: 1.5;
+		margin-bottom: 15px;
+		text-align: center;	
+	}
+
+	.uix-pb-gallery-list .uix-pb-gallery-list-title {
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin: 6px 0;
+		font-size: 16px;
+		line-height: 1.2;
+		letter-spacing: 1px;
+		text-transform: none;
+		font-weight: 600;	
+	}
+	
+	
+	.uix-pb-gallery-list .uix-pb-gallery-list-position{
+		padding: 2px 6px;
+		font-size: 12px;
+		position: absolute;
+		bottom: 5px;
+		right: 0;
+		color: #fff;
+		background: #77a43a;
+		filter: alpha(opacity=80);  
+		-moz-opacity: 0.8;   
+		opacity: 0.8;
+	}
+	
+
+	
+	.uix-pb-gallery-list .uix-pb-gallery-list-desc .uix-pb-gallery-list-desc-p{
+		display: block;
+		line-height: 1.5;
+		font-size: 12px;
+		padding-bottom: 4px;
+		filter: alpha(opacity=80);  
+		-moz-opacity: 0.8;   
+		opacity: 0.8; 
+	}
+	
+	.uix-pb-gallery-list .uix-pb-gallery-list-imgbox{
+		margin-bottom: .7em;
+		position: relative;
+		display: block;
+		width: 100%;
+		overflow: hidden;
+	}
+	
+
+	
+	.uix-pb-gallery-list .uix-pb-gallery-list-social a{
+	
+		text-align: center;
+	}
+
+		.uix-pb-gallery-list .uix-pb-gallery-list-social a .fa{
+			margin: 0 .2em;
+			display: inline-block;
+			border: 1px solid #77a43a;
+			color: #77a43a;
+			width: 25px;
+			height: 25px;
+			-webkit-border-radius: 100%; 
+			-moz-border-radius: 100%; 
+			border-radius: 100%;
+			font-size: 14px;
+			line-height: 25px;
+			-moz-transition: .2s ease-in-out; 
+			-o-transition: .2s ease-in-out;
+			-webkit-transition: .2s ease-in-out; 
+			transition: .2s ease-in-out;
+		
+		}
+		
+		.uix-pb-gallery-list .uix-pb-gallery-list-social a:hover .fa{
+			border-color: #333;
+			color: #333;
+		
+		}	
+
+
+
+
+@media screen and (max-width: 1280px) {
+	
+	.uix-pb-gallery {
+		margin: -1.25em 0 0 -1.25em;
+	}
+
+	.uix-pb-gallery .uix-pb-gallery-list-col4 {
+		width: calc(24.9% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+
+	.uix-pb-gallery .uix-pb-gallery-list-col3 {
+		width: calc(33.3% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+	
+
+	.uix-pb-gallery .uix-pb-gallery-list-col2 {
+		width: calc(49.9% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+	
+}
+
+@media screen and (max-width: 980px) {
+
+	.uix-pb-gallery {
+		margin: -2.5em 0 0 -2.5em;
+	}
+
+    .uix-pb-gallery .uix-pb-gallery-list-col4,
+	.uix-pb-gallery .uix-pb-gallery-list-col3,
+	.uix-pb-gallery .uix-pb-gallery-list-col2{
+		width: calc(50% - 2.5em);
+		margin: 2.5em 0 0 2.5em;
+	}
+	
+}
+
+@media screen and (max-width: 736px) {
+
+	.uix-pb-gallery {
+		margin: -1.25em 0 0 -1.25em;
+	}
+
+    .uix-pb-gallery .uix-pb-gallery-list-col4,
+	.uix-pb-gallery .uix-pb-gallery-list-col3,
+	.uix-pb-gallery .uix-pb-gallery-list-col2{
+		width: calc(50% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+	.uix-pb-gallery {
+		margin: 0;
+	}
+	
+    .uix-pb-gallery .uix-pb-gallery-list-col4,
+	.uix-pb-gallery .uix-pb-gallery-list-col3,
+	.uix-pb-gallery .uix-pb-gallery-list-col2{
+		width: 100%;
+		margin: 1.25em 0 0 0;
+		height: auto!important;
+	}
+
+	.uix-pb-gallery-list-col4 .uix-pb-gallery-list-imgbox,
+	.uix-pb-gallery-list-col3 .uix-pb-gallery-list-imgbox,
+	.uix-pb-gallery-list-col2 .uix-pb-gallery-list-imgbox{
+		/* Compulsively cover custom height of grid */
+		height: auto!important;
+	
+	
+	}
+
+	
+
+}
+
+
+
+/* ====================================================== 
+   16. Card list  (Team)                         
+/* ====================================================== */
+.uix-pb-card {
+	
+}
+
+	.uix-pb-card-item {
+	  margin-top: 15px;
+	  padding-bottom: 40px;
+	  position: relative;
+	}
+		
+	
+	.uix-pb-card-item:first-child {
+	  margin-top: 0;
+	}
+	.uix-pb-card-item,
+	.uix-pb-card-item-body {
+	  overflow: hidden;
+	  zoom: 1;
+	}
+	.uix-pb-card-item-body{
+		padding-left: 2em;
+	
+	}
+
+	.uix-pb-card-item-left{
+	  padding-right: 10px;
+	}
+	.uix-pb-card-item-left,
+	.uix-pb-card-item-body {
+	  display: table-cell;
+	  vertical-align: top;
+	}
+	
+		.uix-pb-card-item-body em {
+			color: #A7A7A7;
+			font-size: 13px;
+		}
+		
+		
+	.uix-pb-card-item-heading {
+	  margin-top: 0;
+	  margin-bottom: 5px;
+	  font-size: 18px;
+	}
+	.uix-pb-card-item-list {
+	  padding-left: 0;
+	  list-style: none;
+	}
+	
+	.uix-pb-card-item-desc{
+		line-height: 1.5;
+		margin-top: 1em;
+		font-size: 14px;
+
+		
+	}
+	
+	.uix-pb-card-item-social a{
+	
+		text-align: center;
+	}
+	
+	
+	.uix-pb-card-item .uix-pb-card-item-left-imgbox{
+		width: 250px;
+		height: 250px;
+		overflow: hidden;
+		margin: 0 auto;
+
+	
+	}
+	
+
+		.uix-pb-card-item .uix-pb-card-item-left-imgbox img{
+			width: 100%;
+		
+		}
+
+	
+		.uix-pb-card-item-social a .fa{
+			margin: 0 .2em;
+			display: inline-block;
+			border: 1px solid #77a43a;
+			color: #77a43a;
+			width: 25px;
+			height: 25px;
+			-webkit-border-radius: 100%; 
+			-moz-border-radius: 100%; 
+			border-radius: 100%;
+			font-size: 14px;
+			line-height: 25px;
+			-moz-transition: .2s ease-in-out; 
+			-o-transition: .2s ease-in-out;
+			-webkit-transition: .2s ease-in-out; 
+			transition: .2s ease-in-out;
+		
+		}
+		
+		.uix-pb-card-item-social a:hover .fa{
+			border-color: #333;
+			color: #333;
+		
+		}	
+		
+	
+
+/* ----------  */
+
+
+@media (max-width: 768px){
+ 
+	.uix-pb-card {
+		text-align: center;
+	}
+	
+	.uix-pb-card-item-left{
+	  display: block;
+	  text-align: center;
+	  margin-bottom: 1em;
+	}
+	
+	.uix-pb-card-item .uix-pb-card-item-left-imgbox{
+		width: 98%;
+		/* Compulsively cover custom height of grid */
+		height: auto !important;
+	
+	}
+	
+	.uix-pb-card-item-body{
+		display: block;
+		padding-left: 0;
+		width: 98%;
+		
+	}
+	
+	
+	
+}

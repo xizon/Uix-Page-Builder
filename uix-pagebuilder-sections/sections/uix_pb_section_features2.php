@@ -575,9 +575,7 @@ if ( $sid >= 0 && is_admin() ) {
 
 						
 					var _item_v_titlecolor   = ( _titlecolor != undefined && _titlecolor != '' ) ? 'style="color:'+_titlecolor+'"' : '',
-					    _item_v_title        = ( _title != undefined && _title != '' ) ? _title : '',
 						_item_v_desccolor    = ( _desccolor != undefined && _desccolor != '' ) ? 'style="color:'+_desccolor+'"' : '',
-						_item_v_desc         = ( _desc != undefined && _desc != '' ) ? _desc : '',
 						_item_v_iconcolor    = ( _iconcolor != undefined && _iconcolor != '' ) ? 'style="border-color:'+_iconcolor+';color:'+_iconcolor+'"' : '',
 						_item_v_icon         = ( _icon != undefined && _icon != '' ) ? '<i class="fa fa-'+_icon+'" '+_item_v_iconcolor+'></i>' : '<i class="fa fa-check" '+_item_v_iconcolor+'></i>',
 						_item_v_col_lastclass  = ( i == 3 ) ? 'uix-pb-col-last' : '';
@@ -592,8 +590,8 @@ if ( $sid >= 0 && is_admin() ) {
 						
 						show_list_item += '<div class="uix-pb-feature-li uix-pb-feature-li-c3">';
 						show_list_item += '<p class="uix-pb-feature-icon">'+_item_v_icon+'</p>';
-						show_list_item += '<h3 class="uix-pb-feature-title" '+_item_v_titlecolor+'>'+_item_v_title+'</h3>';
-						show_list_item += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '+_item_v_desccolor+'><p>'+_item_v_desc+'</p></div>';             
+						show_list_item += '<h3 class="uix-pb-feature-title" '+_item_v_titlecolor+'>'+_title+'</h3>';
+						show_list_item += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '+_item_v_desccolor+'><p>'+_desc+'</p></div>';             
 						show_list_item += '</div>';
 						
 	

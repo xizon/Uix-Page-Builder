@@ -831,16 +831,12 @@ if ( $sid >= 0 && is_admin() ) {
 
 						
 					var _item_v_titlecolor_1   = ( _titlecolor_1 != undefined && _titlecolor_1 != '' ) ? 'style="color:'+_titlecolor_1+'"' : '',
-					    _item_v_title_1        = ( _title_1 != undefined && _title_1 != '' ) ? _title_1 : '',
 						_item_v_desccolor_1    = ( _desccolor_1 != undefined && _desccolor_1 != '' ) ? 'style="color:'+_desccolor_1+'"' : '',
-						_item_v_desc_1         = ( _desc_1 != undefined && _desc_1 != '' ) ? _desc_1 : '',
 						_item_v_iconcolor_1    = ( _iconcolor_1 != undefined && _iconcolor_1 != '' ) ? 'style="border-color:'+_iconcolor_1+';color:'+_iconcolor_1+'"' : '',
 						_item_v_icon_1         = ( _icon_1 != undefined && _icon_1 != '' ) ? '<i class="fa fa-'+_icon_1+'" '+_item_v_iconcolor_1+'></i>' : '<i class="fa fa-check" '+_item_v_iconcolor_1+'></i>',
 						
 						_item_v_titlecolor_2   = ( _titlecolor_2 != undefined && _titlecolor_2 != '' ) ? 'style="color:'+_titlecolor_2+'"' : '',
-					    _item_v_title_2        = ( _title_2 != undefined && _title_2 != '' ) ? _title_2 : '',
 					    _item_v_desccolor_2    = ( _desccolor_2 != undefined && _desccolor_2 != '' ) ? 'style="color:'+_desccolor_2+'"' : '',
-						_item_v_desc_2         = ( _desc_2 != undefined && _desc_2 != '' ) ? _desc_2 : '',
 						_item_v_iconcolor_2    = ( _iconcolor_2 != undefined && _iconcolor_2 != '' ) ? 'style="border-color:'+_iconcolor_2+';color:'+_iconcolor_2+'"' : '',
 						_item_v_icon_2         = ( _icon_2 != undefined && _icon_2 != '' ) ? '<i class="fa fa-'+_icon_2+'" '+_item_v_iconcolor_2+'></i>' : '<i class="fa fa-check" '+_item_v_iconcolor_2+'></i>';
 						
@@ -850,8 +846,8 @@ if ( $sid >= 0 && is_admin() ) {
 										
 						//Do not include spaces
 						show_list_item_1 += '<div class="uix-pb-feature-li">';
-						show_list_item_1 += '<h3 class="uix-pb-feature-title" '+_item_v_titlecolor_1+'><span class="uix-pb-feature-icon-side">'+_item_v_icon_1+'</span>'+_item_v_title_1+'</h3>';
-						show_list_item_1 += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '+_item_v_desccolor_1+'><p>'+_item_v_desc_1+'</p></div>';             
+						show_list_item_1 += '<h3 class="uix-pb-feature-title" '+_item_v_titlecolor_1+'><span class="uix-pb-feature-icon-side">'+_item_v_icon_1+'</span>'+_title_1+'</h3>';
+						show_list_item_1 += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '+_item_v_desccolor_1+'><p>'+_desc_1+'</p></div>';             
 						show_list_item_1 += '</div>';
 	
 					}
@@ -861,8 +857,8 @@ if ( $sid >= 0 && is_admin() ) {
 										
 						//Do not include spaces
 						show_list_item_2 += '<div class="uix-pb-feature-li">';
-						show_list_item_2 += '<h3 class="uix-pb-feature-title" '+_item_v_titlecolor_2+'><span class="uix-pb-feature-icon-side">'+_item_v_icon_2+'</span>'+_item_v_title_2+'</h3>';
-						show_list_item_2 += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '+_item_v_desccolor_2+'><p>'+_item_v_desc_2+'</p></div>';             
+						show_list_item_2 += '<h3 class="uix-pb-feature-title" '+_item_v_titlecolor_2+'><span class="uix-pb-feature-icon-side">'+_item_v_icon_2+'</span>'+_title_2+'</h3>';
+						show_list_item_2 += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '+_item_v_desccolor_2+'><p>'+_desc_2+'</p></div>';             
 						show_list_item_2 += '</div>';
 	
 					}

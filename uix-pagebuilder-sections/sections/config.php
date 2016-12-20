@@ -6,7 +6,6 @@ $uix_pb_config = [
 	array(
 		'sortname'        => __( 'Contents', 'uix-pagebuilder' ),
 		'buttons'         => [
-							
 	
 								array(
 									'title'           => __( 'Accordion', 'uix-pagebuilder' ),
@@ -60,6 +59,32 @@ $uix_pb_config = [
 									'title'           => __( 'Clients', 'uix-pagebuilder' ),
 									'id'              => 'uix_pb_section_clients',
 									'thumb'           => 'clients.jpg',
+								
+								),
+	
+								
+				
+							]
+	
+	),	
+	
+	
+	
+	array(
+		'sortname'        => __( 'Team', 'uix-pagebuilder' ),
+		'buttons'         => [
+							
+								array(
+									'title'           => __( 'Team Fullwidth', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_team1',
+									'thumb'           => 'team-1.jpg',
+								
+								),	
+								
+								array(
+									'title'           => __( 'Team Grid', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_team2',
+									'thumb'           => 'team-2.jpg',
 								
 								),
 	

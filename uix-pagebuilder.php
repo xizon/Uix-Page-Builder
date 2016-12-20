@@ -710,10 +710,13 @@ class UixPageBuilder {
 
 				preg_match_all( '#chk-id-input="'.$t_value[ 'id' ].'" value="(.*?)"#i', $data, $m1 ); 
 				preg_match_all( '#chk-id-textarea="'.$t_value[ 'id' ].'">(.*?)<\/textarea>#i', $data, $m2 ); 
-				$data = str_replace( $m1[1][0], '', $data );
-				$data = str_replace( $m2[1][0], '', $data );
+				$data = str_replace( 'value="'.$m1[1][0].'"', 'value=""', $data );
+				$data = str_replace( '">'.$m2[1][0].'</textarea>', '"></textarea>', $data );
+				
 				$data = str_replace( 'chk-id-input="'.$t_value[ 'id' ].'" value="', 'chk-id-input="'.$t_value[ 'id' ].'" value="'.esc_attr( self::inputtextareavalue( $t_value[ 'default' ] ) ).'', $data );
 				$data = str_replace( 'chk-id-textarea="'.$t_value[ 'id' ].'">', 'chk-id-textarea="'.$t_value[ 'id' ].'">'.esc_textarea( self::inputtextareavalue( $t_value[ 'default' ] ) ).'', $data );
+				
+				
 			}	
 		}
 		
