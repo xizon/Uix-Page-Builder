@@ -146,7 +146,7 @@ jQuery( document ).ready( function() {
 			clone_content = eval( cur_cloneContent ),
 			widget_ID     = cur_sectionRow;
 
-		clone_content = '<span class="dynamic-row dynamic-addnow">' + clone_content + '<div class="delrow-container"><a href="javascript:" class="delrow '+cur_removeClass+'">&times;</a></div></span>';
+		clone_content = '<span class="dynamic-row dynamic-addnow">' + clone_content + '<div class="delrow-container"><a href="javascript:" class="delrow '+cur_removeClass+'" data-spy="'+cur_targetID.replace('#','')+'__'+cur_colid+'">&times;</a></div></span>';
 		clone_content = clone_content
 		               .replace( /toggle-row/g, 'toggle-row toggle-row-clone-list' )
 					   .replace( /data-list="0"/g, 'data-list="1"' );
@@ -205,11 +205,11 @@ jQuery( document ).ready( function() {
         /*-- The form focus --*/
 		var srow = '.uixpbform-form-container .dynamic-row';
 		jQuery( srow ).mouseenter(function() {
-			jQuery( srow ).animate( { opacity: 0.3 }, 0 );
-			jQuery( this ).animate( { opacity: 1 }, 0 );
+			jQuery( srow ).removeClass( 'hover' );
+			jQuery( this ).addClass( 'hover' );
 		});
 		jQuery( srow ).mouseleave(function() {
-			jQuery( srow ).animate( { opacity: 1 }, 0 );
+			jQuery( srow ).removeClass( 'hover' );
 		});
 
 
@@ -232,6 +232,7 @@ jQuery( document ).ready( function() {
 				}
 
 				cur_thisBTN.removeClass( 'disable' );
+				
 
 
 			} );
@@ -594,12 +595,13 @@ jQuery( document ).ready( function() {
 			/*-- The form focus --*/
 			var srow = '.uixpbform-form-container .dynamic-row';
 			jQuery( srow ).mouseenter(function() {
-				jQuery( srow ).animate( { opacity: 0.3 }, 0 );
-				jQuery( this ).animate( { opacity: 1 }, 0 );
+				jQuery( srow ).removeClass( 'hover' );
+				jQuery( this ).addClass( 'hover' );
 			});
 			jQuery( srow ).mouseleave(function() {
-				jQuery( srow ).animate( { opacity: 1 }, 0 );
+				jQuery( srow ).removeClass( 'hover' );
 			});
+
 
 
 			 //remove input

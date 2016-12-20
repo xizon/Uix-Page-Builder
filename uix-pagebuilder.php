@@ -679,7 +679,7 @@ class UixPageBuilder {
 		$toggle_target_ID  = str_replace( '{colID}', ''.$cur_id.'-'.str_replace( 'col-item-', 'section_'.$widget_ID.'__', $col_id ), $clone_list_toggle_class );
 		
 		//Clone content
-		$data = '<span class="dynamic-row dynamic-addnow">'.$clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'-'.$col_id.'">&times;</a></div></span>';
+		$data = '<span class="dynamic-row dynamic-addnow">'.$clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'-'.$col_id.'" data-spy="'.$clone_trigger_id.'__'.$col_id.'">&times;</a></div></span>';
 	
 			 
 		//Clone code

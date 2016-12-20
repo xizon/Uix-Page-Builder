@@ -23,6 +23,7 @@
     11. Buttons
     12. Testimonials Carousel 
     13. Parallax
+    14. Client 
 
 
 */
@@ -300,11 +301,9 @@ img.uix-pb-img,
 /* ====================================================== */
 
 .uix-pb-authorcard {
-    margin: 0 auto;
     border: 1px solid #eaeaea;
     position: relative;
 	border-top: 3px solid #a2bf2f;
-	margin-bottom: 1em;
 }
 
 .uix-pb-container-fullwidth .uix-pb-authorcard {
@@ -408,9 +407,6 @@ img.uix-pb-img,
 /* ====================================================== 
    5. Accordion                              
 /* ====================================================== */
-.uix-pb-accordion-box{
-	
-}
 
 .uix-pb-container-fullwidth .uix-pb-accordion-box{
 	padding: 2em;
@@ -654,10 +650,9 @@ img.uix-pb-img,
    7. Progress Bar                     
 /* ====================================================== */
 .uix-pb-bar-box {
-	postiion: relative;
+	position: relative;
 	display: inline-block;
 	text-align: center;
-	margin: 1.5em;
 	vertical-align: top;
 	
 }
@@ -794,16 +789,9 @@ img.uix-pb-img,
 /* ====================================================== 
    9. Features                              
 /* ====================================================== */
-.uix-pb-feature{
-
-}
 
 .uix-pb-container-fullwidth .uix-pb-feature{
 	padding: 2em;
-}
-
-.uix-pb-feature.uix-pb-tc{
-	padding: 1.5em 0 0 0;
 }
 
 	.uix-pb-feature-icon {
@@ -1380,7 +1368,6 @@ img.uix-pb-img,
    13. Parallax                     
 /* ====================================================== */
 .uix-pb-parallax-wrapper {
-	margin: 1.5em 0;
 	position: relative;
 	overflow: hidden;
 	text-align: center;
@@ -1400,3 +1387,67 @@ img.uix-pb-img,
 		transform: translateY(-50%);
 	}
 		
+
+
+
+/* ====================================================== 
+   14. Client                           
+/* ====================================================== */
+.uix-pb-container-fullwidth .uix-pb-client{
+	padding: 2em;
+}
+
+.uix-pb-client-li {
+	padding: 10px;
+    width: calc( 33.3% - 20px );
+	float: left;
+	margin-bottom: 15px;
+	position: relative;
+	vertical-align: top;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	font-size: 13px;
+	text-align: center;
+	
+}
+
+.uix-pb-client-li-2 {
+	width: calc( 49.9% - 20px );
+}
+.uix-pb-client-li-3 {
+	width: calc( 33.3% - 20px );
+}
+.uix-pb-client-li-4 {
+	width: calc( 24.9% - 20px );
+}
+.uix-pb-client-li-5 {
+	width: calc( 19.9% - 20px );
+}
+.uix-pb-client-li-6 {
+	width: calc( 16.6% - 20px );
+}
+
+
+
+@media screen and (min-width: 768px) {
+	
+	.uix-pb-client-li-2:nth-child(2n+1),
+	.uix-pb-client-li-3:nth-child(3n+1),
+	.uix-pb-client-li-4:nth-child(4n+1),
+	.uix-pb-client-li-5:nth-child(5n+1),
+	.uix-pb-client-li-6:nth-child(6n+1) {
+		clear: both;
+	}
+}
+
+@media all and (max-width: 768px) {
+ 	.uix-pb-client-li {
+		width: 100%;
+	} 
+}
+
+	 .uix-pb-client-li .uix-pb-img img{
+		 border: 1px solid #DFDFDF;
+	 }
+	 

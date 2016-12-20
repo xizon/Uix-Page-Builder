@@ -52,6 +52,22 @@ $uix_pb_config = [
 	
 	),	
 	
+	array(
+		'sortname'        => __( 'Clients', 'uix-pagebuilder' ),
+		'buttons'         => [
+							
+								array(
+									'title'           => __( 'Clients', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_clients',
+									'thumb'           => 'clients.jpg',
+								
+								),
+	
+								
+				
+							]
+	
+	),	
 	
 	array(
 		'sortname'        => __( 'Features', 'uix-pagebuilder' ),
