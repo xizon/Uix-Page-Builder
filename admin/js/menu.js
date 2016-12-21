@@ -28,6 +28,10 @@
 				
 				$( '#uix_pagebuilder_anchorlinks_loader' ).hide();
 			});
+			
+			// stuff here
+			return false;	
+			
 		});
 
 	} );

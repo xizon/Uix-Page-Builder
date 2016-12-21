@@ -91,11 +91,8 @@ $uix_pb_features_col3_config_intro               = UixPageBuilder::fvalue( $coli
 
 
 $uix_pb_features_col3_listitem_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col3_listitem_title', __( 'Feature Title', 'uix-pagebuilder' ) );
-$uix_pb_features_col3_listitem_titlecolor     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col3_listitem_titlecolor', '' );
 $uix_pb_features_col3_listitem_desc           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col3_listitem_desc', __( 'Some description text here. You can add a lot of it or can choose to leave it blank.', 'uix-pagebuilder' ) );
-$uix_pb_features_col3_listitem_desccolor      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col3_listitem_desccolor', '' );
 $uix_pb_features_col3_listitem_icon           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col3_listitem_icon', '' );
-$uix_pb_features_col3_listitem_iconcolor      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_features_col3_listitem_iconcolor', '' );
 
 
 //dynamic adding input
@@ -106,18 +103,16 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	$_field = 'uix_pb_features_col3_listitem_title';
 	if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) ) {
 		
-		$titlecolor   = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_titlecolor]['.$sid.']' ] ) ) ? 'style="color:'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_titlecolor]['.$sid.']' ].'"' : '';
-		$desccolor    = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_desccolor]['.$sid.']' ] ) ) ? 'style="color:'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_desccolor]['.$sid.']' ].'"' : '';
-		$iconcolor    = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_iconcolor]['.$sid.']' ] ) ) ? 'style="border-color:'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_iconcolor]['.$sid.']' ].';color:'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_iconcolor]['.$sid.']' ].'"' : '';
-		$icon         = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ] ) ) ? '<i class="fa fa-'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ].'" '.$iconcolor.'></i>' : '<i class="fa fa-check" '.$iconcolor.'></i>';	
+
+		$icon         = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ] ) ) ? '<i class="fa fa-'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ].'"></i>' : '<i class="fa fa-check"></i>';	
 		$list_features2_item .= '<div class="uix-pb-col-4 '.( $k == 3 ? 'uix-pb-col-last' : '' ).'">';
 		
 		$list_features2_item .= '
 			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
 			    <p class="uix-pb-feature-icon">'.$icon.'</p>
 				  
-				<h3 class="uix-pb-feature-title" '.$titlecolor.'>'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_title]['.$sid.']' ].'</h3>
-				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '.$desccolor.'><p>'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_desc]['.$sid.']' ].'</p></div>     
+				<h3 class="uix-pb-feature-title">'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_title]['.$sid.']' ].'</h3>
+				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_desc]['.$sid.']' ].'</p></div>     
 
 			 </div>
 		';
@@ -127,34 +122,32 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	//The default value is not taken for any operation
 	if ( is_array( $item ) && !array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) && $k == 1 ) {
 		
-		$titlecolor   = ( !empty( $uix_pb_features_col3_listitem_titlecolor ) ) ? 'style="color:'.$uix_pb_features_col3_listitem_titlecolor.'"' : '';
-		$desccolor    = ( !empty( $uix_pb_features_col3_listitem_desccolor ) ) ? 'style="color:'.$uix_pb_features_col3_listitem_desccolor.'"' : '';
-		$iconcolor    = ( !empty( $uix_pb_features_col3_listitem_iconcolor ) ) ? 'style="border-color:'.$uix_pb_features_col3_listitem_iconcolor.';color:'.$uix_pb_features_col3_listitem_iconcolor.'"' : '';
-		$icon         = ( !empty( $uix_pb_features_col3_listitem_icon ) ) ? '<i class="fa fa-'.$uix_pb_features_col3_listitem_icon.'" '.$iconcolor.'></i>' : '<i class="fa fa-check" '.$iconcolor.'></i>';	
+	
+		$icon         = ( !empty( $uix_pb_features_col3_listitem_icon ) ) ? '<i class="fa fa-'.$uix_pb_features_col3_listitem_icon.'"></i>' : '<i class="fa fa-check"></i>';	
 		
 		
 		$list_features2_item .= '
 		<div class="uix-pb-col-4">
 			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
 				<p class="uix-pb-feature-icon">'.$icon.'</p>
-				<h3 class="uix-pb-feature-title" '.$titlecolor.'>'.$uix_pb_features_col3_listitem_title.'</h3>
-				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '.$desccolor.'><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
+				<h3 class="uix-pb-feature-title">'.$uix_pb_features_col3_listitem_title.'</h3>
+				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
 			</div>
 		</div>
 		
 		<div class="uix-pb-col-4">
 			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
 				<p class="uix-pb-feature-icon">'.$icon.'</p>
-				<h3 class="uix-pb-feature-title" '.$titlecolor.'>'.$uix_pb_features_col3_listitem_title.'</h3>
-				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '.$desccolor.'><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
+				<h3 class="uix-pb-feature-title">'.$uix_pb_features_col3_listitem_title.'</h3>
+				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
 			</div>
 		</div>
 		
 		<div class="uix-pb-col-4 uix-pb-col-last">
 			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
 				<p class="uix-pb-feature-icon">'.$icon.'</p>
-				<h3 class="uix-pb-feature-title" '.$titlecolor.'>'.$uix_pb_features_col3_listitem_title.'</h3>
-				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '.$desccolor.'><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
+				<h3 class="uix-pb-feature-title">'.$uix_pb_features_col3_listitem_title.'</h3>
+				<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>'.$uix_pb_features_col3_listitem_desc.'</p></div>         
 			</div>  
 		</div>
 		';
@@ -264,31 +257,18 @@ $args =
 											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_title' ).'',
 											'type'      => 'text'
 										), 
-										
-										array(
-											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_titlecolor' ).'',
-											'type'      => 'colormap'
-										), 		
+											
 									
 										array(
 											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desc' ).'',
 											'type'      => 'textarea'
 										),
-										array(
-											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desccolor' ).'',
-											'type'      => 'colormap'
-										), 		
-										 
 										
 										array(
 											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ).'',
 											'type'      => 'icon'
 										), 	
-										
-										array(
-											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_iconcolor' ).'',
-											'type'      => 'colormap'
-										), 										
+																			
 																			
 
 									 ],
@@ -310,24 +290,6 @@ $args =
 				'type'           => 'text'
 			
 			),
-			
-			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_titlecolor' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col3_listitem_titlecolor' ),
-				'title'          => '',
-				'desc'           => __( 'Title Color', 'uix-pagebuilder' ),
-				'value'          => $uix_pb_features_col3_listitem_titlecolor,
-				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_titlecolor' ).'', /*class of list item */
-				'placeholder'    => '',
-				'type'           => 'colormap',
-				'default'        => array(
-										'swatches' => 1
-									)
-
-			
-			),	
-		
-			
 
 			
 			array(
@@ -347,50 +309,19 @@ $args =
 			),
 			
 			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desccolor' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col3_listitem_desccolor' ),
-				'title'          => '',
-				'desc'           => __( 'Description Color', 'uix-pagebuilder' ),
-				'value'          => $uix_pb_features_col3_listitem_desccolor,
-				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desccolor' ).'', /*class of list item */
-				'placeholder'    => '',
-				'type'           => 'colormap',
-				'default'        => array(
-										'swatches' => 1
-									)
-			
-			),	
-		
-			array(
 				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ),
 				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col3_listitem_icon' ),
 				'title'          => '',
 				'desc'           => '',
 				'value'          => $uix_pb_features_col3_listitem_icon,
 				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ).'', /*class of list item */
-				'placeholder'    => __( 'Choose Feature Icon', 'uix-pagebuilder' ),
+				'placeholder'    => '',
 				'type'           => 'icon',
 				'default'        => array(
 										'social'  => false
 									)
 			
 			),
-			
-			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_iconcolor' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col3_listitem_iconcolor' ),
-				'title'          => '',
-				'desc'           => __( 'Icon Color', 'uix-pagebuilder' ),
-				'value'          => $uix_pb_features_col3_listitem_iconcolor,
-				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_iconcolor' ).'', /*class of list item */
-				'placeholder'    => '',
-				'type'           => 'colormap',
-				'default'        => array(
-										'swatches' => 1
-									)
-			
-			),	
-
 			
 		
 		//------list end
@@ -448,11 +379,8 @@ $form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_
 
 
 $clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_title' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html )
-.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_titlecolor' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html )
 .UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desc' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html )
-.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desccolor' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html )
-.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html )
-.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_iconcolor' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html );
+.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ).'', 'section_'.$sid.'__'.$colid.'---'.$sid.'', $form_html );
 
 
 /**
@@ -508,25 +436,13 @@ if ( $sid >= 0 && is_admin() ) {
 								),
 								
 								array(
-									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_titlecolor' ),
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_titlecolor]['.$sid.']' ]
-								),
-								array(
 									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desc' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_desc]['.$sid.']' ]
-								),
-								array(
-									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desccolor' ),
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_desccolor]['.$sid.']' ]
 								),
 								array(
 									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ),
 									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ]
 								),
-								array(
-									'id'       => $uid.UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_iconcolor' ),
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_iconcolor]['.$sid.']' ]
-								),	
 														
 								
 			                  ];
@@ -567,17 +483,11 @@ if ( $sid >= 0 && is_admin() ) {
 					
 					var _uid              = ( i >= 2 ) ? '#'+i+'-' : '#',
 						_title          = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_title' ); ?>' ).val(),
-						_titlecolor     = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_titlecolor' ); ?>' ).val(),
 						_desc           = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desc' ); ?>' ).val(),
-						_desccolor      = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_desccolor' ); ?>' ).val(),
-						_icon           = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ); ?>' ).val(),
-						_iconcolor      = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_iconcolor' ); ?>' ).val();
+						_icon           = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col3_listitem_icon' ); ?>' ).val();
 
 						
-					var _item_v_titlecolor   = ( _titlecolor != undefined && _titlecolor != '' ) ? 'style="color:'+_titlecolor+'"' : '',
-						_item_v_desccolor    = ( _desccolor != undefined && _desccolor != '' ) ? 'style="color:'+_desccolor+'"' : '',
-						_item_v_iconcolor    = ( _iconcolor != undefined && _iconcolor != '' ) ? 'style="border-color:'+_iconcolor+';color:'+_iconcolor+'"' : '',
-						_item_v_icon         = ( _icon != undefined && _icon != '' ) ? '<i class="fa fa-'+_icon+'" '+_item_v_iconcolor+'></i>' : '<i class="fa fa-check" '+_item_v_iconcolor+'></i>',
+					var _item_v_icon         = ( _icon != undefined && _icon != '' ) ? '<i class="fa fa-'+_icon+'"></i>' : '<i class="fa fa-check"></i>',
 						_item_v_col_lastclass  = ( i == 3 ) ? 'uix-pb-col-last' : '';
 					
 					
@@ -590,8 +500,8 @@ if ( $sid >= 0 && is_admin() ) {
 						
 						show_list_item += '<div class="uix-pb-feature-li uix-pb-feature-li-c3">';
 						show_list_item += '<p class="uix-pb-feature-icon">'+_item_v_icon+'</p>';
-						show_list_item += '<h3 class="uix-pb-feature-title" '+_item_v_titlecolor+'>'+_title+'</h3>';
-						show_list_item += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow" '+_item_v_desccolor+'><p>'+_desc+'</p></div>';             
+						show_list_item += '<h3 class="uix-pb-feature-title">'+_title+'</h3>';
+						show_list_item += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>'+_desc+'</p></div>';             
 						show_list_item += '</div>';
 						
 	

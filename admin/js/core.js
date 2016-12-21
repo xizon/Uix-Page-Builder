@@ -193,6 +193,10 @@
 					} else {
 						$( '#uix-pagebuilder-templatelist-confirm' ).show();
 					}
+					
+					// stuff here
+					return false;	
+					
 
 				},
 				beforeSend: function() {
@@ -245,8 +249,14 @@
 				$( '.uixpbform-modal-mask' ).hide();
 				$this.next( '.spinner' ).removeClass( 'is-active' );
 
+				// stuff here
+				return false;		
+
 
 			});
+			
+			// stuff here
+			return false;	
 
 
 
@@ -286,6 +296,9 @@
 				$this.next( '.spinner' ).removeClass( 'is-active' );
 
 			});
+			
+			// stuff here
+			return false;	
 
 
 		});

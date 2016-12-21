@@ -637,9 +637,12 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 							gridsterItemElementsBTStatus( 1 );
 							
 						});
-						
+
+						// stuff here
+						return false;	
 			
 					}, 500 );
+					
 				});	
 				
 				
@@ -688,7 +691,9 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 			jQuery( '#uix-pagebuilder-layoutdata-none' ).hide();
 			
 			/*-- Navigate to the current row --*/
+			/*
 			jQuery( 'html, body' ).delay( 100 ).animate( {scrollTop: jQuery( '#uix-pagebuilder-gridster-widget-'+uid ).offset().top - 50 }, 100 );
+			*/
 	
 
 		}

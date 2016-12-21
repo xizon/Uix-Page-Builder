@@ -28,6 +28,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_form_core' ) );
+			add_action( 'admin_footer', array( __CLASS__, 'icon_selector_win' ) );
 			add_filter( 'mce_css', array( __CLASS__, 'mce_css' ) );
 			add_action( 'wp_ajax_nopriv_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
 			add_action( 'wp_ajax_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
@@ -213,8 +214,43 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		/*
 		 * ========================================================================================================================================
 		 * ========================================================================================================================================
-		 */			
+		 */		
+		
+		/*
+		 * Print icon selector
+		 *
+		 */
+		 public static function icon_selector_win() {
+			 
+			 if( get_post_type() == 'page' ) {
+				 
+			     echo '<div class="uixpbform-icon-selector-btn-target" id="">';
+				 require_once ( dirname( __FILE__ ) . '/'.self::icon_attr( 'selector' ) );
+				 echo '</div>';	 
+			 }
+			 
+				 
+		 }	
+		
 	
+		/*
+		 * Returns icon attributes
+		 *
+		 */
+		 public static function icon_attr( $type = 'prefix' ) {
+			
+			if ( $type == 'prefix' ) {
+				return 'fa fa-';
+				
+			}
+			 
+			if ( $type == 'selector' ) {
+				return 'fontawesome/font-awesome-custom.php';	
+			}
+		
+			 
+		 }	
+		
 		
 		/*
 		 * Register clone vars

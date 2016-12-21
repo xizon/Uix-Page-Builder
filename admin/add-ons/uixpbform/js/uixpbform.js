@@ -107,11 +107,20 @@
 							/*-- Close --*/
 							$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 								e.preventDefault();
+								
+								//remove modal
 								$( '.uixpbform-modal-box' ).removeClass( 'active' );
 								$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 								$( 'html' ).css( 'overflow-y', 'auto' );
+								
+								//remove icon list window
+								$( '.uixpbform-icon-selector-btn-target' ).attr( 'id', '' ).hide();	
+								
 							});	
 							
+							// stuff here
+							return false;		
+
 						
 
 						},
@@ -143,10 +152,17 @@
 				//Close
 				$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 					e.preventDefault();
+					
+					//remove modal
 					$( this ).parent().removeClass( 'active' );
 					$( '.uixpbform-modal-box' ).removeClass( 'active' );
 					$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 					$( 'html' ).css( 'overflow-y', 'auto' );
+					
+					//remove icon list window
+					$( '.uixpbform-icon-selector-btn-target' ).attr( 'id', '' ).hide();		
+
+					
 				});
 				
 			} );
