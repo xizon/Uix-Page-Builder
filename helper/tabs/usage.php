@@ -68,9 +68,9 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
         <p>
            <?php _e( '<h4 class="uix-bg-custom-title">5. Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.</h4>', 'uix-pagebuilder' ); ?>
         </p> 
-        <p>
-           <?php _e( 'Backend templates are in the <code>uix-pagebuilder-sections</code> folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory "/wp-content/plugins/uix-pagebuilder/uix-pagebuilder-sections/" to your theme directory "/wp-content/themes/{your-theme}/".', 'uix-pagebuilder' ); ?>
-        </p>  
+		<p class="uix-bg-custom-desc">
+		   <?php _e( 'Backend templates are in the <strong>uix-pagebuilder-sections</strong> folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory <code>/wp-content/plugins/uix-pagebuilder/uix-pagebuilder-sections/</code> to your theme directory <code>/wp-content/themes/{your-theme}/</code>.', 'uix-pagebuilder' ); ?>
+		</p>  
         <p>
            <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/temp2.jpg" alt="">
         </p>    

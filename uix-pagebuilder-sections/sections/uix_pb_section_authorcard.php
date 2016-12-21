@@ -92,20 +92,22 @@ $uix_pb_authorcard_3_url          = UixPageBuilder::fvalue( $colid, $sid, $item,
 
 
 $element_temp = '
-<div class="uix-pb-authorcard" style="border-top-color: {color};">
-	<div class="uix-pb-authorcard-top">
-		<div class="uix-pb-authorcard-text">
-			<h3 class="uix-pb-authorcard-title">{name}
-			{social_1}
-			{social_2}
-			{social_3}
-			</h3> 	 
+<div class="uix-pb-authorcard-wrapper">
+	<div class="uix-pb-authorcard" style="border-top-color: {color};">
+		<div class="uix-pb-authorcard-top">
+			<div class="uix-pb-authorcard-text">
+				<h3 class="uix-pb-authorcard-title">{name}
+				{social_1}
+				{social_2}
+				{social_3}
+				</h3> 	 
+			</div>
+			<div class="uix-pb-authorcard-pic"><img src="{avatar}" alt="{name_attr}"></div>
 		</div>
-		<div class="uix-pb-authorcard-pic"><img src="{avatar}" alt="{name_attr}"></div>
-	</div>
-	<div class="uix-pb-authorcard-middle">{intro}</div> 
-	<a class="uix-pb-authorcard-final" href="{link_url}" rel="author">{link_label}</a> 
-</div> 
+		<div class="uix-pb-authorcard-middle">{intro}</div> 
+		<a class="uix-pb-authorcard-final" href="{link_url}" rel="author">{link_label}</a> 
+	</div> 
+</div>
 ';
  
  

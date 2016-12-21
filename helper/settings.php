@@ -40,9 +40,24 @@ function uix_pagebuilder_options_page(){
 	font-size:1.1em;
 	font-weight:bold;
 }
-.uix-bg-custom-title strong{
+.uix-bg-custom-title strong,
+.uix-bg-custom-desc strong{
 	color:#D16E15;
 }
+	
+.uix-bg-custom-blockquote {
+    background: #EBEBEB;
+	border: 1px solid #F8F8F8;
+    border-left: 7px solid #BEBEBE;
+    padding: 0 2em 1.421875em;
+	margin: 1.625em;
+	font-style: italic;
+	line-height: 2;
+    quotes: "\201C""\201D""\2018""\2019";
+	font-size: 1.14285714286em;
+	color: #939393;
+}
+	
 
 </style>
 

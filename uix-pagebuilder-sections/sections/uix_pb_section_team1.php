@@ -138,14 +138,15 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 			<div class="uix-pb-card-item-body">
 				<h3 class="uix-pb-card-item-heading">'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_name]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</h3>
 				<div class="uix-pb-card-item-social">
-			   '.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_position]['.$sid.']' ] )  ? '<em>'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_position]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</em>' : '' ).'
-				&nbsp;&nbsp;
-				'.$social_out_1.'
-				'.$social_out_2.'
-				'.$social_out_3.'		
-				
-				<div class="uix-pb-card-item-desc">
-					<p>'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_intro]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</p>
+				   '.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_position]['.$sid.']' ] )  ? '<em>'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_position]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</em>' : '' ).'
+					&nbsp;&nbsp;
+					'.$social_out_1.'
+					'.$social_out_2.'
+					'.$social_out_3.'		
+
+					<div class="uix-pb-card-item-desc">
+						<p>'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_intro]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</p>
+					</div>
 				</div>
 			</div>
 		</div> 
@@ -173,14 +174,15 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 			<div class="uix-pb-card-item-body">
 				<h3 class="uix-pb-card-item-heading">'.wp_kses( $uix_pb_team1_listitem_name, wp_kses_allowed_html( 'post' ) ).'</h3>
 				<div class="uix-pb-card-item-social">
-			   '.( !empty( $uix_pb_team1_listitem_position )  ? '<em>'.wp_kses( $uix_pb_team1_listitem_position, wp_kses_allowed_html( 'post' ) ).'</em>' : '' ).'
-				&nbsp;&nbsp;
-				'.$social_out_1.'
-				'.$social_out_2.'
-				'.$social_out_3.'		
-				
-				<div class="uix-pb-card-item-desc">
-					<p>'.wp_kses( $uix_pb_team1_listitem_intro, wp_kses_allowed_html( 'post' ) ).'</p>
+				   '.( !empty( $uix_pb_team1_listitem_position )  ? '<em>'.wp_kses( $uix_pb_team1_listitem_position, wp_kses_allowed_html( 'post' ) ).'</em>' : '' ).'
+					&nbsp;&nbsp;
+					'.$social_out_1.'
+					'.$social_out_2.'
+					'.$social_out_3.'		
+
+					<div class="uix-pb-card-item-desc">
+						<p>'.wp_kses( $uix_pb_team1_listitem_intro, wp_kses_allowed_html( 'post' ) ).'</p>
+					</div>
 				</div>
 			</div>
 		</div> 
@@ -607,7 +609,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'team1 Carousel', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Team Normal', 'uix-pagebuilder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -775,6 +777,7 @@ if ( $sid >= 0 && is_admin() ) {
 						show_list_item_content += _item_v_social_out_3;
 						show_list_item_content += '<div class="uix-pb-card-item-desc">';
 						show_list_item_content += '<p>'+_intro+'</p>';
+						show_list_item_content += '</div>';
 						show_list_item_content += '</div>';
 						show_list_item_content += '</div>';
 						show_list_item_content += '</div>';

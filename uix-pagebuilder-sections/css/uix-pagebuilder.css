@@ -302,15 +302,17 @@ img.uix-pb-img,
    4. Author Card                                
 /* ====================================================== */
 
+
+.uix-pb-container-fullwidth .uix-pb-authorcard-wrapper {
+	padding: 2em;
+}
+
 .uix-pb-authorcard {
     border: 1px solid #eaeaea;
     position: relative;
 	border-top: 3px solid #a2bf2f;
 }
 
-.uix-pb-container-fullwidth .uix-pb-authorcard {
-	padding: 2em;
-}
 
 .uix-pb-authorcard-top {
 	min-height: 2.38461538462em;
@@ -1175,6 +1177,12 @@ img.uix-pb-img,
 /* ====================================================== 
    12. Testimonials Carousel                           
 /* ====================================================== */
+
+.uix-pb-container-fullwidth .uix-pb-testimonials-wrapper {
+	padding: 2em;
+}
+
+
 /* Custom flexslider style */ 
 .uix-pb-flex-direction-nav a:before{
 	display: none;
@@ -1395,7 +1403,7 @@ img.uix-pb-img,
 /* ====================================================== 
    14. Client                           
 /* ====================================================== */
-.uix-pb-container-fullwidth .uix-pb-client{
+.uix-pb-container-fullwidth .uix-pb-client {
 	padding: 2em;
 }
 
@@ -1459,6 +1467,11 @@ img.uix-pb-img,
 /* ====================================================== 
    15. Gallery list (Team)                              
 /* ====================================================== */
+.uix-pb-container-fullwidth .uix-pb-gallery-wrapper {
+	padding: 2em;
+}
+
+
 .uix-pb-gallery {
 	/* Let all the flexible items be the same length, regardles of its content */
 	display: -moz-flex;
@@ -1697,9 +1710,10 @@ img.uix-pb-img,
 /* ====================================================== 
    16. Card list  (Team)                         
 /* ====================================================== */
-.uix-pb-card {
-	
+.uix-pb-container-fullwidth .uix-pb-card {
+	padding: 2em;
 }
+
 
 	.uix-pb-card-item {
 	  margin-top: 15px;

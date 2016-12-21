@@ -144,15 +144,17 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 $element_temp = '
 {heading}
 {desc}
-<div class="uix-pb-testimonials">
-	<div class="uix-pb-testimonials-container">
-		<div class="flexslider">
-			<ul class="slides">
-				{list_content}
-			</ul><!-- .uix-pb-testimonials-slides -->
-		</div><!-- .flexslider -->
-	</div><!-- .uix-pb-testimonials-container -->
-</div><!-- /.uix-pb-testimonials -->        
+<div class="uix-pb-testimonials-wrapper">
+	<div class="uix-pb-testimonials">
+		<div class="uix-pb-testimonials-container">
+			<div class="flexslider">
+				<ul class="slides">
+					{list_content}
+				</ul><!-- .uix-pb-testimonials-slides -->
+			</div><!-- .flexslider -->
+		</div><!-- .uix-pb-testimonials-container -->
+	</div><!-- /.uix-pb-testimonials -->    
+</div>
 ';
 
 

@@ -38,9 +38,9 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
   (2) You can connect to your site via an FTP client, download a copy of the file you want to change, make the changes and then upload the file back to the server, overwriting the file that’s on the server.
 
-5.Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
+5. Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
 
-Backend templates are in the 'uix-pagebuilder-sections' folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory **"/wp-content/plugins/uix-pagebuilder/uix-pagebuilder-sections/"** to your theme directory **"/wp-content/themes/{your-theme}/"**.
+  Backend templates are in the <strong>"uix-pagebuilder-sections"</strong> folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory  <strong>"/wp-content/plugins/uix-pagebuilder/uix-pagebuilder-sections/"</strong> to your theme directory  <strong>"/wp-content/themes/{your-theme}/"</strong>.
 
 
 == Frequently Asked Questions ==

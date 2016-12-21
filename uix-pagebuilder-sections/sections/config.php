@@ -75,7 +75,7 @@ $uix_pb_config = [
 		'buttons'         => [
 							
 								array(
-									'title'           => __( 'Team Fullwidth', 'uix-pagebuilder' ),
+									'title'           => __( 'Team Normal', 'uix-pagebuilder' ),
 									'id'              => 'uix_pb_section_team1',
 									'thumb'           => 'team-1.jpg',
 								
