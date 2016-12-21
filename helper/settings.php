@@ -12,6 +12,7 @@ function uix_pagebuilder_options_page(){
 
 
 <style>
+/* General */
 .uix-bg-custom-wrapper img{
 	background-color:#fff;
     border: 1px solid #ddd;
@@ -59,6 +60,61 @@ function uix_pagebuilder_options_page(){
 }
 	
 
+/* Code preview container*/
+.uix-pagebuilder-dialog {  
+    width:500px;
+	height:440px;
+	padding:20px 0 0 20px;
+    background:#e8e8e8;
+    border: 1px solid #dadada;
+    font-family:sans-serif;
+	-webkit-box-shadow: 0 1px 15px rgba(0,0,0,.8);
+	-moz-box-shadow: 0 1px 15px rgba(0,0,0,.8);
+	box-shadow: 0 1px 15px rgba(0,0,0,.8);
+	position:absolute;
+	top:50%;
+	margin-top:-250px;
+	left:50%;
+	margin-left:-250px;
+	display:none;
+	z-index:9999999;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
+}  
+
+.uix-pagebuilder-dialog-mask{
+	display:none;
+	z-index:9999998;
+	background:rgba(0,0,0,.8);
+	position:fixed;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+}
+	
+
+.uix-pagebuilder-dialog textarea{
+	width:100%;
+	height:90%;
+}
+.uix-pagebuilder-dialog .close{
+	display:inline-block;
+	margin-top:3px;
+}
+
+@media all and (max-width: 540px) {
+	
+	.uix-pagebuilder-dialog {  
+		width: 300px;
+		margin-left:-170px;
+		
+	}
+	
+}
+
+	
 </style>
 
 <div class="wrap uix-bg-custom-wrapper">
@@ -93,6 +149,12 @@ function uix_pagebuilder_options_page(){
 	    'tab'     =>  'temp', 
 		'title'   =>  __( 'Template Files', 'uix-pagebuilder' )
 	];
+	
+	$tabs[] = [
+	    'tab'     =>  'custom-css', 
+		'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-pagebuilder' )
+	];	
+	
 	
 	?>
     <h2 class="nav-tab-wrapper">

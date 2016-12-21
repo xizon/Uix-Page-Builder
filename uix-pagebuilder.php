@@ -47,6 +47,7 @@ class UixPageBuilder {
 		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
 		add_action( 'admin_notices', array( __CLASS__, 'template_notice_required' ) );
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
 		
 	
 	}
@@ -200,6 +201,15 @@ class UixPageBuilder {
 			'82.' . rand( 0, 99 )
 			
 		);
+		 
+		add_submenu_page(
+			self::HELPER,
+			__( 'Custom CSS', 'uix-pagebuilder' ),
+			__( 'Custom CSS', 'uix-pagebuilder' ),
+			'manage_options',
+			'admin.php?page='.self::HELPER.'&tab=custom-css'
+		);	 
+		 
 	
         //Add sub links
 		add_submenu_page(
@@ -340,6 +350,26 @@ class UixPageBuilder {
 	}
 	
 	
+
+	/*
+	 * Print Custom Stylesheet
+	 *
+	 */
+	 public static function print_custom_stylesheet( $uix_pb_frontend_css = null ) {
+      
+		$custom_css = get_option( 'uix_pb_opt_cssnewcode' );
+		
+		if ( !empty( $uix_pb_frontend_css ) ) {
+			$custom_css = $custom_css.$uix_pb_frontend_css;
+		}
+
+		wp_add_inline_style( self::PREFIX . '-pagebuilder', $custom_css );
+		
+		return $uix_pb_frontend_css;
+
+
+	 }
+
 		
 	
 	/*
