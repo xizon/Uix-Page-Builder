@@ -81,10 +81,10 @@ $uix_pb_parallax_title           = UixPageBuilder::fvalue( $colid, $sid, $item, 
 $uix_pb_parallax_titlecolor      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_titlecolor', '' );
 $uix_pb_parallax_desc            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_desc', __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hoc etsi multimodis reprehendi potest, tamen accipio, quod dant. Teneo, inquit, finem illi videri nihil dolere. Esse enim, nisi eris, non potes.', 'uix-pagebuilder' ) );
 $uix_pb_parallax_desccolor       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_desccolor', '' );
-$uix_pb_parallax_bg              = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_bg', '' );
+$uix_pb_parallax_bg              = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_bg', '' ) );
 $uix_pb_parallax_bg_attachment   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_bg_attachment', 'fixed' );
 $uix_pb_parallax_speed           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_speed', 0 );
-$uix_pb_parallax_height          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_height', 300 );
+$uix_pb_parallax_height          = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_height', 300 ) );
 
 
 $bgimage_css = ( !empty( $uix_pb_parallax_bg ) ) ? 'style="background:url('.esc_attr( $uix_pb_parallax_bg ).') '.( $uix_pb_parallax_speed > 0 ? '50%' : 'top' ).' '.( $uix_pb_parallax_speed > 0 ? 0 : 'left' ).' no-repeat '.( $uix_pb_parallax_speed > 0 ? 'fixed' : esc_attr( $uix_pb_parallax_bg_attachment ) ).';"' : '';
@@ -359,8 +359,8 @@ if ( $sid >= 0 && is_admin() ) {
 				//---
 				tempcode = tempcode
 								  .replace(/{mainstyle}/g, bgimage_css )
-								  .replace(/{speed}/g, uixpbform_htmlEncode( uix_pb_parallax_speed ) )
-								  .replace(/{height}/g, uixpbform_htmlEncode( uix_pb_parallax_height )+'px' )
+								  .replace(/{speed}/g, uix_pb_parallax_speed )
+								  .replace(/{height}/g, uixpbform_floatval( uix_pb_parallax_height )+'px' )
 								  .replace(/{title}/g, title )
 								  .replace(/{desc}/g, desc );
 								  

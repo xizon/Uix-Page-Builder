@@ -90,7 +90,7 @@ $uix_pb_testimonials_config_title          = UixPageBuilder::fvalue( $colid, $si
 $uix_pb_testimonials_config_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
 
 
-$uix_pb_testimonials_listitem_avatar       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_listitem_avatar', '' );
+$uix_pb_testimonials_listitem_avatar       = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_listitem_avatar', '' ) );
 $uix_pb_testimonials_listitem_name         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_listitem_name', __( 'Name', 'uix-pagebuilder' ) );
 $uix_pb_testimonials_listitem_position     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_listitem_position', __( 'Position', 'uix-pagebuilder' ) );
 $uix_pb_testimonials_listitem_intro        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_testimonials_listitem_intro', __( 'Enter some details for the customer giving this testimonial., E.g., Thank you from the bottom of our hearts.', 'uix-pagebuilder' ) );

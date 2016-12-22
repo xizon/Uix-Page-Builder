@@ -82,12 +82,12 @@ if ( $sid >= 0 ) {
  */
 
 $uix_pb_bar_shape                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_shape', 'circular' );
-$uix_pb_bar_circular_size               = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_circular_size', 120 );
-$uix_pb_bar_square_size                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_square_size', 100 );
+$uix_pb_bar_circular_size               = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_circular_size', 120 ) );
+$uix_pb_bar_square_size                 = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_square_size', 100 ) );
 $uix_pb_bar_square_size_units           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_square_size_units', '%' );
-$uix_pb_bar_percent                     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent', 75 );
-$uix_pb_bar_perc_icons_size             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_perc_icons_size', 12 );
-$uix_pb_bar_linewidth                   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_linewidth', 3 );
+$uix_pb_bar_percent                     = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent', 75 ) );
+$uix_pb_bar_perc_icons_size             = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_perc_icons_size', 12 ) );
+$uix_pb_bar_linewidth                   = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_linewidth', 3 ) );
 $uix_pb_bar_icon_toggle                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_icon_toggle', 0 ); // 0:false  1:true
 $uix_pb_bar_icon_toggle_chk             = ( $uix_pb_bar_icon_toggle == 1 ) ? true : false;
 $uix_pb_bar_icon                        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_icon', '' );
@@ -471,7 +471,7 @@ if ( $sid >= 0 && is_admin() ) {
 				     uix_pb_bar_result_color              = uix_pb_bar_color,
 					 uix_pb_bar_result_trackcolor         = uix_pb_bar_trackcolor,
 					 uix_pb_bar_result_percent_icon_color = uix_pb_bar_percent_icon_color,
-					 uix_pb_bar_result_size               = ( uix_pb_bar_shape == 'circular' ) ? uixpbform_htmlEncode( uix_pb_bar_circular_size )+"px" : uixpbform_htmlEncode( uix_pb_bar_square_size+uix_pb_bar_square_size_units ),
+					 uix_pb_bar_result_size               = ( uix_pb_bar_shape == 'circular' ) ? uixpbform_floatval( uix_pb_bar_circular_size )+"px" : uixpbform_floatval( uix_pb_bar_square_size )+uix_pb_bar_square_size_units,
 					 uix_pb_bar_result_icon               = ( uix_pb_bar_icon != '' ) ? '<i class="fa fa-'+uixpbform_htmlEncode( uix_pb_bar_icon )+'"></i>' : uix_pb_bar_percent+uix_pb_bar_show_units;
 					 
 					 
@@ -485,10 +485,10 @@ if ( $sid >= 0 && is_admin() ) {
 					show_content += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
 					show_content += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
 					show_content += '</div>';
-					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
+					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_floatval( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_floatval( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
 					show_content += '<span class="uix-pb-bar-percent"></span>';
 					show_content += '<span class="uix-pb-bar-placeholder">0</span>';
-					show_content += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;">'+uix_pb_bar_result_icon+'</span>';
+					show_content += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+'px;">'+uix_pb_bar_result_icon+'</span>';
 					show_content += '</div>';
 					show_content += '</div>';
 					show_content += '</div>';
@@ -498,8 +498,8 @@ if ( $sid >= 0 && is_admin() ) {
 				} else {
 					
 					show_content += '<div class="uix-pb-bar-box uix-pb-bar-box-circular">';
-					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_htmlEncode( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
-					show_content += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_htmlEncode( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_htmlEncode( uix_pb_bar_perc_icons_size )+'px;"></span>';
+					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_floatval( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
+					show_content += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_floatval( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+'px;"></span>';
 					show_content += '</div>';
 					show_content += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
 					show_content += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';

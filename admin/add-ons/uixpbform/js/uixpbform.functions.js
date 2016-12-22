@@ -24,7 +24,7 @@ jQuery( document ).ready( function() {
 		
 		jQuery( this ).css( 'display', 'none' );
 		c.find( 'input' ).val( '' );
-		c.find( '.uixpbform-icon-selector-icon-preview' ).html( '' );
+		c.find( '.uixpbform-icon-selector-icon-preview' ).html( '' ).removeClass( 'iconshow' );
 		jQuery( chooseBtnID ).show();
 		jQuery( labeltxtID ).show();
 		jQuery( previewID ).hide();
@@ -231,8 +231,19 @@ jQuery( document ).ready( function() {
 
 		/*-- The form focus --*/
 		var srow            = jQuery( cur_appendID ).parent( 'td' ).find( ' > .dynamic-row' ),
-			sroworg         = jQuery( cur_appendID ).closest( 'form' ).find( 'tr[class^="dynamic-row-"]' ),
-			sroworg_trigger = jQuery( cur_appendID ).closest( 'form' ).find( 'tr[class^="dynamic-row-"] td' );
+			srowcols_c      = jQuery( cur_appendID ).closest( '.uixpbform-table-cols-wrapper' ),
+			srowsingle_c    = jQuery( cur_appendID ).closest( '.uixpbform-table-wrapper' ),
+			sroworg         = null, 
+			sroworg_trigger = null;
+		
+		if ( srowcols_c.length > 0 ) {
+			sroworg         = srowcols_c.find( 'tr[class^="dynamic-row-"]' ),
+			sroworg_trigger = srowcols_c.find( 'tr[class^="dynamic-row-"] td' );	
+		} else {
+			sroworg         = srowsingle_c.find( 'tr[class^="dynamic-row-"]' ),
+			sroworg_trigger = srowsingle_c.find( 'tr[class^="dynamic-row-"] td' );	
+		}
+		
 
 
 		jQuery( srow ).mouseenter(function() {
@@ -655,8 +666,18 @@ jQuery( document ).ready( function() {
 
 			/*-- The form focus --*/
 			var srow            = jQuery( cur_appendID ).parent( 'td' ).find( ' > .dynamic-row' ),
-				sroworg         = jQuery( cur_appendID ).closest( 'form' ).find( 'tr[class^="dynamic-row-"]' ),
-				sroworg_trigger = jQuery( cur_appendID ).closest( 'form' ).find( 'tr[class^="dynamic-row-"] td' );
+				srowcols_c      = jQuery( cur_appendID ).closest( '.uixpbform-table-cols-wrapper' ),
+				srowsingle_c    = jQuery( cur_appendID ).closest( '.uixpbform-table-wrapper' ),
+				sroworg         = null, 
+				sroworg_trigger = null;
+
+			if ( srowcols_c.length > 0 ) {
+				sroworg         = srowcols_c.find( 'tr[class^="dynamic-row-"]' ),
+				sroworg_trigger = srowcols_c.find( 'tr[class^="dynamic-row-"] td' );	
+			} else {
+				sroworg         = srowsingle_c.find( 'tr[class^="dynamic-row-"]' ),
+				sroworg_trigger = srowsingle_c.find( 'tr[class^="dynamic-row-"] td' );	
+			}
 
 			
 			jQuery( srow ).mouseenter(function() {
@@ -968,7 +989,7 @@ jQuery( document ).ready( function() {
 			if ( $formContainer.find( 'input' ).val() == '' ) {
 				$formContainer.find( '.uixpbform-icon-clear' ).css( 'display', 'none' );
 				$formContainer.find( 'input' ).val( '' );
-				$formContainer.find( '.uixpbform-icon-selector-icon-preview' ).html( '' );
+				$formContainer.find( '.uixpbform-icon-selector-icon-preview' ).html( '' ).removeClass( 'iconshow' );
 				jQuery( chooseBtnID ).show();
 				jQuery( labeltxtID ).show();
 				jQuery( previewID ).hide();
@@ -1022,6 +1043,24 @@ jQuery( document ).ready( function() {
 	
   };
 } )( jQuery );
+
+
+/*! 
+ * ************************************
+ * Number formatting
+ *************************************
+ */	
+function uixpbform_floatval( str ) {
+	
+	if (typeof str == "string" ) {
+	    return ( !isNaN( parseFloat( str ) ) ) ? parseFloat( str ) : 0;
+	} else {
+		return str;
+	}
+
+}
+
+
 
 
 /*!

@@ -78,17 +78,17 @@ if ( $sid >= 0 ) {
  * ----------------------------------------------------
  */
 $uix_pb_authorcard_primary_color  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_primary_color', '#a2bf2f' );
-$uix_pb_authorcard_avatar         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_avatar', '' );
+$uix_pb_authorcard_avatar         = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_avatar', '' ) );
 $uix_pb_authorcard_name           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_name', __( 'Your Name', 'uix-pagebuilder' ) );
-$uix_pb_authorcard_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_intro', __( 'There is no description.', 'uix-pagebuilder' ) );
+$uix_pb_authorcard_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_intro', __( 'Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Tu vero, inquam, ducas licet, si sequetur; Ab his oratores, ab his imperatores ac rerum publicarum principes extiterunt. Igitur neque stultorum quisquam beatus neque sapientium non beatus.', 'uix-pagebuilder' ) );
 $uix_pb_authorcard_link_label     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_link_label', __( '&rarr;', 'uix-pagebuilder' ) );
-$uix_pb_authorcard_link_link      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_link_link', '#' );
+$uix_pb_authorcard_link_link      = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_link_link', '#' ) );
 $uix_pb_authorcard_1_icon         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_1_icon', '' );
 $uix_pb_authorcard_2_icon         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_2_icon', '' );
 $uix_pb_authorcard_3_icon         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_3_icon', '' );
-$uix_pb_authorcard_1_url          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_1_url', '' );
-$uix_pb_authorcard_2_url          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_2_url', '' );
-$uix_pb_authorcard_3_url          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_3_url', '' );
+$uix_pb_authorcard_1_url          = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_1_url', '' ) );
+$uix_pb_authorcard_2_url          = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_2_url', '' ) );
+$uix_pb_authorcard_3_url          = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_3_url', '' ) );
 
 
 $element_temp = '
@@ -399,7 +399,7 @@ if ( $sid >= 0 && is_admin() ) {
 			if ( tempcode.length > 0 ) {
 				
 				
-				var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? uix_pb_authorcard_avatar : '<?php echo UixPBFormCore::plug_directory(); ?>images/no-photo.png',
+				var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? encodeURI( uix_pb_authorcard_avatar ) : '<?php echo UixPBFormCore::plug_directory(); ?>images/no-photo.png',
 					social_out_1 = ( uix_pb_authorcard_1_url != undefined && uix_pb_authorcard_1_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_1_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon_cur+'"></i></a>' : '',
 					social_out_2 = ( uix_pb_authorcard_2_url != undefined && uix_pb_authorcard_2_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_2_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon_cur+'"></i></a>' : '',
 					social_out_3 = ( uix_pb_authorcard_3_url != undefined && uix_pb_authorcard_3_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_3_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon_cur+'"></i></a>' : '';
@@ -411,7 +411,7 @@ if ( $sid >= 0 && is_admin() ) {
 								  .replace(/{name}/g, uix_pb_authorcard_name )
 								  .replace(/{name_attr}/g, uixpbform_htmlEncode( uix_pb_authorcard_name ) )
 								  .replace(/{intro}/g, uix_pb_authorcard_intro )
-								  .replace(/{link_url}/g, uix_pb_authorcard_link_link )
+								  .replace(/{link_url}/g, encodeURI( uix_pb_authorcard_link_link ) )
 								  .replace(/{link_label}/g, uix_pb_authorcard_link_label )
 								  .replace(/{avatar}/g, avatarURL )
 								  .replace(/{color}/g, uixpbform_htmlEncode( uix_pb_authorcard_primary_color ) )

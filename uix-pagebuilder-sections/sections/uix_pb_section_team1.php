@@ -92,27 +92,27 @@ $uix_pb_team1_config_title            = UixPageBuilder::fvalue( $colid, $sid, $i
 $uix_pb_team1_config_intro            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
 $uix_pb_team1_config_avatar_gray      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_config_avatar_gray', 0 ); // 0:false  1:true
 $uix_pb_team1_config_avatar_gray_chk  = ( $uix_pb_team1_config_avatar_gray == 1 ) ? true : false;
-$uix_pb_team1_config_avatar_fillet    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_config_avatar_fillet', 0 );
-$uix_pb_team1_config_list_height      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_config_list_height', 0 );
+$uix_pb_team1_config_avatar_fillet    = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_config_avatar_fillet', 0 ) );
+$uix_pb_team1_config_list_height      = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_config_list_height', 0 ) );
 
 
 
-$uix_pb_team1_listitem_avatar         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_avatar', '' );
+$uix_pb_team1_listitem_avatar         = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_avatar', '' ) );
 $uix_pb_team1_listitem_name           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_name', __( 'Name', 'uix-pagebuilder' ) );
 $uix_pb_team1_listitem_position       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_position', __( 'Position', 'uix-pagebuilder' ) );
 $uix_pb_team1_listitem_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_intro', __( 'The Introduction of this member.', 'uix-pagebuilder' ) );
 $uix_pb_team1_listitem_toggle         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle', 0 ); // 0:close  1:open
-$uix_pb_team1_listitem_toggle_url1    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_url1', '' );
+$uix_pb_team1_listitem_toggle_url1    = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_url1', '' ) );
 $uix_pb_team1_listitem_toggle_icon1   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_icon1', '' );
-$uix_pb_team1_listitem_toggle_url2    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_url2', '' );
+$uix_pb_team1_listitem_toggle_url2    = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_url2', '' ) );
 $uix_pb_team1_listitem_toggle_icon2   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_icon2', '' );
-$uix_pb_team1_listitem_toggle_url3    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_url3', '' );
+$uix_pb_team1_listitem_toggle_url3    = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_url3', '' ) );
 $uix_pb_team1_listitem_toggle_icon3   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_team1_listitem_toggle_icon3', '' );
 
 
 //dynamic adding input
 $list_team1_item_content = '';
-$avatarfillet            = intval( $uix_pb_team1_config_avatar_fillet ).'%';
+$avatarfillet            =  $uix_pb_team1_config_avatar_fillet.'%';
 $height                  = ( $uix_pb_team1_config_list_height > 0 ) ? 'style="height:'.$uix_pb_team1_config_list_height.'px;"' : '';
 
 for ( $k = 1; $k <= $clone_max; $k++ ) {
@@ -707,7 +707,7 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_team1_config_title            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_team1_config_title' ); ?>' ).val(),
 				uix_pb_team1_config_intro            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_team1_config_intro' ); ?>' ).val(),
 				uix_pb_team1_config_avatar_gray_chk  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_team1_config_avatar_gray' ); ?>-checkbox' ).is( ":checked" ),
-				uix_pb_team1_config_avatar_fillet    = parseFloat( $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_team1_config_avatar_fillet' ); ?>' ).val() ) + '%',
+				uix_pb_team1_config_avatar_fillet    = uixpbform_floatval( $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_team1_config_avatar_fillet' ); ?>' ).val() ) + '%',
 				uix_pb_team1_config_list_height      = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_team1_config_list_height' ); ?>' ).val();
 	
 	
@@ -719,7 +719,7 @@ if ( $sid >= 0 && is_admin() ) {
 				var _config_t      = ( uix_pb_team1_config_title != undefined && uix_pb_team1_config_title != '' ) ? '<h2 class="uix-pb-section-heading">'+uix_pb_team1_config_title+'</h2><div class="uix-pb-section-hr"></div>' : '',
 					_config_desc   = ( uix_pb_team1_config_intro != undefined && uix_pb_team1_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_team1_config_intro+'</div>' : '',
 					_config_gray   = ( uix_pb_team1_config_avatar_gray_chk === true ) ? ' uix-pb-gray' : '',
-					_config_height = ( uix_pb_team1_config_list_height > 0 ) ? 'style="height:'+uix_pb_team1_config_list_height+'px;"' : '';
+					_config_height = ( uix_pb_team1_config_list_height > 0 ) ? 'style="height:'+uixpbform_floatval( uix_pb_team1_config_list_height )+'px;"' : '';
 ;
 						
 					

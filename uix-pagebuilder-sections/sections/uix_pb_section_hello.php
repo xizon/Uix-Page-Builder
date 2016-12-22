@@ -89,10 +89,10 @@ if ( $sid >= 0 ) {
  * ----------------------------------------------------
  */
 //padding
-$uix_pb_hello_paddingdis_top        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_top', 20 );
-$uix_pb_hello_paddingdis_right      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_right', 0 );
-$uix_pb_hello_paddingdis_bottom     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_bottom', 20 );
-$uix_pb_hello_paddingdis_left       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_left', 0 );
+$uix_pb_hello_paddingdis_top        = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_top', 20 ) );
+$uix_pb_hello_paddingdis_right      = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_right', 0 ) );
+$uix_pb_hello_paddingdis_bottom     = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_bottom', 20 ) );
+$uix_pb_hello_paddingdis_left       = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_left', 0 ) );
 
 //textarea
 $uix_pb_hello_textarea            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_textarea', __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-pagebuilder' ) );
@@ -127,7 +127,7 @@ $uix_pb_hello_listitem_toggle_icon  = UixPageBuilder::fvalue( $colid, $sid, $ite
 
 
 //image
-$uix_pb_hello_image                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_image', '' );
+$uix_pb_hello_image                 = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_image', '' ) );
 $uix_pb_hello_image_repeat          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_image_repeat', 'no-repeat' );
 $uix_pb_hello_image_position        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_image_position', 'left' );
 $uix_pb_hello_image_attachment      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_image_attachment', 'scroll' );
@@ -145,8 +145,8 @@ $uix_pb_hello_single_color          = UixPageBuilder::fvalue( $colid, $sid, $ite
 $uix_pb_hello_select                = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_select', '' );
 $uix_pb_hello_icon                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_icon', '' );
 $uix_pb_hello_colormap              = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_colormap', 'rgb(162, 63, 3)' );
-$uix_pb_hello_toggle_url            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_toggle_url', '' );
-$uix_pb_hello_checkbox_toggle_text  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_checkbox_toggle_text', 555 );
+$uix_pb_hello_toggle_url            = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_toggle_url', '' ) );
+$uix_pb_hello_checkbox_toggle_text  = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_checkbox_toggle_text', 555 ) );
 
 
 
@@ -1064,7 +1064,7 @@ if ( $sid >= 0 && is_admin() ) {
 						_toggleurl   = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ); ?>' ).val(),
 						_toggleicon  = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ); ?>' ).val();
 						
-					var _item_v_img         = ( _img != undefined && _img != '' ) ? _img : '',
+					var _item_v_img         = ( _img != undefined && _img != '' ) ? encodeURI( _img ) : '',
 						_item_v_toggleurl   = ( _toggleurl != undefined && _toggleurl != '' ) ? encodeURI( _toggleurl ) : '',
 						_item_v_toggleicon  = ( _toggleicon != undefined && _toggleicon != '' ) ? uixpbform_htmlEncode( _toggleicon ) : '';
 					
@@ -1099,7 +1099,7 @@ if ( $sid >= 0 && is_admin() ) {
 				show_html += '<hr><h4>Slider:</h4> '+uix_pb_hello_slider+''+uix_pb_hello_slider_units+'';
 				show_html += '<hr><h4>Color:</h4> '+uix_pb_hello_colormap+'';
 				show_html += '<hr><h4>Multiple Selector:</h4> '+show_multiselector+'';
-				show_html += '<hr><h4>Padding:</h4> '+uix_pb_hello_paddingdis_top+' '+uix_pb_hello_paddingdis_right+' '+uix_pb_hello_paddingdis_bottom+' '+uix_pb_hello_paddingdis_left+''; 
+				show_html += '<hr><h4>Padding:</h4> '+uixpbform_floatval( uix_pb_hello_paddingdis_top )+' '+uixpbform_floatval( uix_pb_hello_paddingdis_right )+' '+uixpbform_floatval( uix_pb_hello_paddingdis_bottom )+' '+uixpbform_floatval( uix_pb_hello_paddingdis_left )+''; 
 				show_html += '<hr><h4>Checkbox:</h4> '+show_checkbox+'';
 				show_html += '<hr><h4>List Item:</h4> '+show_list_item+'';
 

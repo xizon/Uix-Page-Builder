@@ -81,13 +81,13 @@ $uix_pb_pricing_col4_config_title         = UixPageBuilder::fvalue( $colid, $sid
 $uix_pb_pricing_col4_config_intro         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
 
 $uix_pb_pricing_col4_one_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_title', __( 'free', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_one_price            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_price', 49 );
+$uix_pb_pricing_col4_one_price            = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_price', 49 ) );
 $uix_pb_pricing_col4_one_emphasis_color   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_emphasis_color', '#d59a3e' );
 $uix_pb_pricing_col4_one_currency         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_currency', __( '$', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_one_period           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_period', __( 'per month', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_one_desc             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_desc', __( 'Some description text here.', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_one_btn_label        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_btn_label', __( 'TRY FOR FREE', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_one_btn_link         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_btn_link', '#' );
+$uix_pb_pricing_col4_one_btn_link         = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_btn_link', '#' ) );
 $uix_pb_pricing_col4_one_btn_color        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_btn_color', '#a2bf2f' );
 $uix_pb_pricing_col4_one_btn_win          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_one_btn_win', 0 ); // 0:false  1:true
 $uix_pb_pricing_col4_one_btn_win_chk      = ( $uix_pb_pricing_col4_one_btn_win == 1 ) ? true : false;
@@ -97,13 +97,13 @@ $uix_pb_pricing_col4_one_active_chk       = ( $uix_pb_pricing_col4_one_active ==
 
 //---
 $uix_pb_pricing_col4_two_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_title', __( 'premium', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_two_price            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_price', 69 );
+$uix_pb_pricing_col4_two_price            = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_price', 69 ) );
 $uix_pb_pricing_col4_two_emphasis_color   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_emphasis_color', '#d59a3e' );
 $uix_pb_pricing_col4_two_currency         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_currency', __( '$', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_two_period           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_period', __( 'per month', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_two_desc             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_desc', __( 'Some description text here.', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_two_btn_label        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_btn_label', __( 'BUY', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_two_btn_link         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_btn_link', '#' );
+$uix_pb_pricing_col4_two_btn_link         = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_btn_link', '#' ) );
 $uix_pb_pricing_col4_two_btn_color        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_btn_color', '#a2bf2f' );
 $uix_pb_pricing_col4_two_btn_win          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_two_btn_win', 0 ); // 0:false  1:true
 $uix_pb_pricing_col4_two_btn_win_chk      = ( $uix_pb_pricing_col4_two_btn_win == 1 ) ? true : false;
@@ -114,13 +114,13 @@ $uix_pb_pricing_col4_two_active_chk       = ( $uix_pb_pricing_col4_two_active ==
 
 //--
 $uix_pb_pricing_col4_three_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_title', __( 'professional', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_three_price          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_price', 109 );
+$uix_pb_pricing_col4_three_price          = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_price', 109 ) );
 $uix_pb_pricing_col4_three_emphasis_color = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_emphasis_color', '#d59a3e' );
 $uix_pb_pricing_col4_three_currency       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_currency', __( '$', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_three_period         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_period', __( 'per month', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_three_desc           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_desc', __( 'Some description text here.', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_three_btn_label      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_btn_label', __( 'BUY', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_three_btn_link       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_btn_link', '#' );
+$uix_pb_pricing_col4_three_btn_link       = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_btn_link', '#' ) );
 $uix_pb_pricing_col4_three_btn_color      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_btn_color', '#a2bf2f' );
 $uix_pb_pricing_col4_three_btn_win        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_three_btn_win', 0 ); // 0:false  1:true
 $uix_pb_pricing_col4_three_btn_win_chk    = ( $uix_pb_pricing_col4_three_btn_win == 1 ) ? true : false;
@@ -131,13 +131,13 @@ $uix_pb_pricing_col4_three_active_chk     = ( $uix_pb_pricing_col4_three_active 
 
 //--
 $uix_pb_pricing_col4_four_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_title', __( 'expand', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_four_price          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_price', 139 );
+$uix_pb_pricing_col4_four_price          = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_price', 139 ) );
 $uix_pb_pricing_col4_four_emphasis_color = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_emphasis_color', '#d59a3e' );
 $uix_pb_pricing_col4_four_currency       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_currency', __( '$', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_four_period         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_period', __( 'per month', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_four_desc           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_desc', __( 'Some description text here.', 'uix-pagebuilder' ) );
 $uix_pb_pricing_col4_four_btn_label      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_btn_label', __( 'BUY', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col4_four_btn_link       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_btn_link', '#' );
+$uix_pb_pricing_col4_four_btn_link       = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_btn_link', '#' ) );
 $uix_pb_pricing_col4_four_btn_color      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_btn_color', '#a2bf2f' );
 $uix_pb_pricing_col4_four_btn_win        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col4_four_btn_win', 0 ); // 0:false  1:true
 $uix_pb_pricing_col4_four_btn_win_chk    = ( $uix_pb_pricing_col4_four_btn_win == 1 ) ? true : false;
@@ -1146,7 +1146,7 @@ if ( $sid >= 0 && is_admin() ) {
 								  .replace(/{desc_one}/g, uix_pb_pricing_col4_one_desc )	
 								  .replace(/{btnlabel_one}/g, uix_pb_pricing_col4_one_btn_label )	
 								  .replace(/{currency_one}/g, uix_pb_pricing_col4_one_currency )
-								  .replace(/{price_one}/g, uix_pb_pricing_col4_one_price )		  
+								  .replace(/{price_one}/g, uixpbform_floatval( uix_pb_pricing_col4_one_price ) )		  
 								  .replace(/{btnurl_one}/g, encodeURI( uix_pb_pricing_col4_one_btn_link ) ) 
 								  .replace(/{btncolor_one}/g, btncolor_one ) 
 								  .replace(/{win_one}/g, win_one )
@@ -1159,7 +1159,7 @@ if ( $sid >= 0 && is_admin() ) {
 								  .replace(/{desc_two}/g, uix_pb_pricing_col4_two_desc )	
 								  .replace(/{btnlabel_two}/g, uix_pb_pricing_col4_two_btn_label )	
 								  .replace(/{currency_two}/g, uix_pb_pricing_col4_two_currency )
-								  .replace(/{price_two}/g, uix_pb_pricing_col4_two_price )		  
+								  .replace(/{price_two}/g, uixpbform_floatval( uix_pb_pricing_col4_two_price ) )		  
 								  .replace(/{btnurl_two}/g, encodeURI( uix_pb_pricing_col4_two_btn_link ) ) 
 								  .replace(/{btncolor_two}/g, btncolor_two )
 								  .replace(/{win_two}/g, win_two )
@@ -1172,7 +1172,7 @@ if ( $sid >= 0 && is_admin() ) {
 								  .replace(/{desc_three}/g, uix_pb_pricing_col4_three_desc )	
 								  .replace(/{btnlabel_three}/g, uix_pb_pricing_col4_three_btn_label )	
 								  .replace(/{currency_three}/g, uix_pb_pricing_col4_three_currency )
-								  .replace(/{price_three}/g, uix_pb_pricing_col4_three_price )		  
+								  .replace(/{price_three}/g, uixpbform_floatval( uix_pb_pricing_col4_three_price ) )		  
 								  .replace(/{btnurl_three}/g, encodeURI( uix_pb_pricing_col4_three_btn_link ) )
 								  .replace(/{btncolor_three}/g, btncolor_three )
 								  .replace(/{win_three}/g, win_three )
@@ -1185,7 +1185,7 @@ if ( $sid >= 0 && is_admin() ) {
 								  .replace(/{desc_four}/g, uix_pb_pricing_col4_four_desc )	
 								  .replace(/{btnlabel_four}/g, uix_pb_pricing_col4_four_btn_label )	
 								  .replace(/{currency_four}/g, uix_pb_pricing_col4_four_currency )
-								  .replace(/{price_four}/g, uix_pb_pricing_col4_four_price )		  
+								  .replace(/{price_four}/g, uixpbform_floatval( uix_pb_pricing_col4_four_price ) )		  
 								  .replace(/{btnurl_four}/g, encodeURI( uix_pb_pricing_col4_four_btn_link ) )
 								  .replace(/{btncolor_four}/g, btncolor_four )
 								  .replace(/{win_four}/g, win_four )

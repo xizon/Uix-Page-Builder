@@ -1457,9 +1457,19 @@ img.uix-pb-img,
 	} 
 }
 
-	 .uix-pb-client-li .uix-pb-img img{
-		 border: 1px solid #DFDFDF;
-	 }
+		.uix-pb-client-li .uix-pb-img img{
+		    border: 1px solid #DFDFDF;
+			-moz-transition: .1s ease-in-out; 
+			-o-transition: .1s ease-in-out;
+			-webkit-transition: .1s ease-in-out; 
+			transition: .1s ease-in-out;
+
+		}
+
+		.uix-pb-client-li .uix-pb-img a:hover img {
+			border-color: #333;
+		}
+	 
 	 
 
 

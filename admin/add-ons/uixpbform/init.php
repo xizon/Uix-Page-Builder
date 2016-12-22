@@ -224,7 +224,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			 
 			 if( get_post_type() == 'page' ) {
 				 
-			     echo '<div class="uixpbform-icon-selector-btn-target" id="">';
+			     echo '<div class="uixpbform-icon-selector-btn-target" id="" style="display:none;">';
 				 require_once ( dirname( __FILE__ ) . '/'.self::icon_attr( 'selector' ) );
 				 echo '</div>';	 
 			 }
