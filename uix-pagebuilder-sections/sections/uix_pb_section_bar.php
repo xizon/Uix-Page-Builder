@@ -164,7 +164,7 @@ $args =
 									'circular'  => 'circular',
 									'square'  => 'square'
 								),
-			/* if show the target item, the target id require class like "toggle-row" */
+			/* If the toggle of switch with radio is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 			                        array(
 										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_shape' ).'-circular', /* {item id}-{option id} */
@@ -273,7 +273,7 @@ $args =
 			'default'        => array(
 									'checked'  => $uix_pb_bar_icon_toggle_chk
 				                ),
-			/* if show the target item, the target id require class like "toggle-row" */
+			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 									'trigger_id'  => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon_toggle' ), /* {item id}-{option id} */
 									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class' ]

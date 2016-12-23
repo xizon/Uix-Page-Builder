@@ -52,7 +52,7 @@ class UixPBFormType_Icon {
 								
 									<div class="uixpbform-icon-selector-icon-preview" id="'.$id.'-preview">'.( ( !empty( $value ) ) ? '<i class="'.$iconprefix.''.$value.'"></i>' : '' ).'</div>
 
-									<a href="javascript:" id="'.$id.'-choosebtn" class="uixpbform-icon-selector-btn" title="'.esc_attr__( 'Choose Icon', 'uix-shortcodes' ).'"><i class="fa fa-question"></i></a>
+									<a href="javascript:" id="'.$id.'-choosebtn" class="uixpbform-icon-selector-btn" title="'.esc_attr__( 'Choose Icon', 'uix-pagebuilder' ).'"><i class="fa fa-question"></i></a>
 
 									<a href="javascript:" class="uixpbform-icon-clear">&times;</a>
 

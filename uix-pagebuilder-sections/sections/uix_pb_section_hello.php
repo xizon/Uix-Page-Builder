@@ -316,7 +316,7 @@ $args =
 									'grand-fill-yellow'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/heading/heading-style-1.jpg',
 									'grand'               => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/heading/heading-style-2.jpg',
 				                ),
-			/* if show the target item, the target id require class like "toggle-row" */
+			/* If the toggle of switch with radio is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 			                        array(
 										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radioswitch_style' ).'-grand-fill-yellow', /* {item id}-{option id} */
@@ -364,6 +364,8 @@ $args =
 			'type'           => 'text'
 		
 		),
+		
+		/*
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radio' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_radio' ),
@@ -376,7 +378,52 @@ $args =
 									'1'  => 'boy',
 									'2'  => 'girl',
 									'3'  => 'private',
-				                )
+				                )	
+		
+		),
+		*/
+		
+	    array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radio' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_radio' ),
+			'title'          => __( 'Radio', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => $uix_pb_hello_radio,
+			'placeholder'    => '',
+			'type'           => 'radio',
+			'default'        => array(
+									'1'  => 'boy',
+									'2'  => 'girl',
+									'3'  => 'private',
+				                ),
+			/* If the toggle of switch with radio is enabled, the target id require class like "toggle-row" */
+			'toggle'        => array(
+			                        array(
+										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radio' ).'-1', /* {item id}-{option id} */
+										'toggle_class'         => [ ''.UixPageBuilder::fid( $colid, $sid, 'xxx' ).'_toggle_class' ],
+										'toggle_remove_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'yyy' ).'_toggle_class', 
+																    ''.UixPageBuilder::fid( $colid, $sid, 'zzz' ).'_toggle_class' 
+																  ]
+
+									),
+			                        array(
+										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radio' ).'-2', /* {item id}-{option id} */
+										'toggle_class'         => [ ''.UixPageBuilder::fid( $colid, $sid, 'yyy' ).'_toggle_class' ],
+										'toggle_remove_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'xxx' ).'_toggle_class', 
+																    ''.UixPageBuilder::fid( $colid, $sid, 'zzz' ).'_toggle_class' 
+																  ]
+
+									),
+				                    array(
+										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radio' ).'-3', /* {item id}-{option id} */
+										'toggle_class'         => [ ''.UixPageBuilder::fid( $colid, $sid, 'zzz' ).'_toggle_class' ],
+										'toggle_remove_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'xxx' ).'_toggle_class',
+																    ''.UixPageBuilder::fid( $colid, $sid, 'yyy' ).'_toggle_class'
+																  ]
+
+									),
+									
+				                )		
 		
 		),
 
@@ -660,7 +707,7 @@ $args =
 			'default'        => array(
 									'checked'  => $uix_pb_hello_checkbox_toggle_chk
 				                ),
-			/* if show the target item, the target id require class like "toggle-row" */
+			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 									'trigger_id'  => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_checkbox_toggle' ), /* {item id}-{option id} */
 									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_checkbox_toggle_text' ).'_class' ],
@@ -1089,6 +1136,7 @@ if ( $sid >= 0 && is_admin() ) {
 				
 				show_html += '<h4>Text:</h4> '+uix_pb_hello_text+'';
 				show_html += '<hr><h4>Textarea:</h4> '+uix_pb_hello_textarea+'';
+				show_html += '<hr>ToggleSwitch: '+uixpbform_toggleSwitchCheckboxVal( '<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_checkbox_toggle' ); ?>' );
 				show_html += '<hr><h4>Short Text:</h4> '+uix_pb_hello_shorttext+'';
 				show_html += '<hr><h4>Short Units Text:</h4> '+uix_pb_hello_shortunitstext+''+uix_pb_hello_shortunitstext_units+'';
 				show_html += '<hr><h4>Select:</h4> '+uix_pb_hello_select+'';

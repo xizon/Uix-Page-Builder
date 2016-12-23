@@ -245,7 +245,44 @@
     display: block;
     clear: both;
     width: 780px;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
+
+.uixpbform-form-container .info.info-error,
+.uixpbform-form-container .info.info-success,
+.uixpbform-form-container .info.info-warning,
+.uixpbform-form-container .info.info-note {
+    color: #555 !important;
+    border-radius: 3px;
+    padding: 6px 35px;
+	display: block;
+}
+
+.uixpbform-form-container .info.info-error a,
+.uixpbform-form-container .info.info-success a,
+.uixpbform-form-container .info.info-warning a,
+.uixpbform-form-container .info.info-note a {
+	text-decoration: none !important;
+}
+
+
+.uixpbform-form-container .info.info-error {
+    background:#ffecec url(../images/info/error.png) no-repeat 10px 50%;
+    border:1px solid #f5aca6;
+}
+.uixpbform-form-container .info.info-success {
+    background:#e9ffd9 url(../images/info/success.png) no-repeat 10px 50%;
+    border:1px solid #a6ca8a;
+}
+.uixpbform-form-container .info.info-warning {
+    background:#fff8c4 url(../images/info/warning.png) no-repeat 10px 50%;
+    border:1px solid #f2c779;
+}
+.uixpbform-form-container .info.info-note {
+    background:#e3f7fc url(../images/info/notice.png) no-repeat 10px 50%;
+    border:1px solid #8ed9f6;
+}
+
 
 .uixpbform-form-container .info.info-checkbox {
     position: absolute;
@@ -1520,6 +1557,10 @@ a.uixpbform-icon-clear {
     text-align: left;
     line-height: 15px;
     min-height: 32px;
+}
+
+.uixpbform-table-col-1 .uixpbform-table-list tr th {
+	width: 150px;
 }
 
 .uixpbform-table-list .item th {

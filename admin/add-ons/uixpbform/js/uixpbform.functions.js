@@ -902,6 +902,12 @@ jQuery( document ).ready( function() {
 			}
 
 
+			//if this toggle contains another toggle, please specifies "toggle_not_class" in order that default hiding form is still valid
+			if ( cur_linkedNoToggleID != '' ) {
+				jQuery( cur_linkedNoToggleID ).hide();
+			}
+			
+
 
 		} );
 
@@ -1288,3 +1294,28 @@ function uixpbform_htmlEscape( str ){
 		.replace(/'/g, "{apo:}")
 		.replace(/(\r)*\n/g, "{br:}");
 }
+
+
+/*! 
+ * ************************************
+ * Returns value for toggle of switch with checkbox 
+ *************************************
+ */	
+function uixpbform_toggleSwitchCheckboxVal( id ) {
+	var result;
+	( function( $ ) {
+	"use strict";
+		$( function() {
+			
+			if( $( 'input[data-this-targetid="'+id+'"]' ).parent( '.onoffswitch' ).hasClass( 'checked' ) ) {
+				result = true;
+			} else {
+				result = false;
+			}		
+
+		} );
+		
+	} ) ( jQuery );
+	
+	return result;
+};

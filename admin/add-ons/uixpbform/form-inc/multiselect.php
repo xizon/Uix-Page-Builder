@@ -91,11 +91,6 @@ class UixPBFormType_MultiSelector {
 			
             $jscode = '';
 		  
-		  
-
-			
- 
-		  
             
 
         }

@@ -903,12 +903,16 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					$jscode .= UixPBFormType_Toggle::add( $args, 'js' );
 					$jscode_vars .= UixPBFormType_Toggle::add( $args, 'js_vars' );
 		
-					//list 1
+					//Clone list
 					$field .= UixPBFormType_ListClone::add( $args, 'html', $section_row );
 					$jscode .= UixPBFormType_ListClone::add( $args, 'js', $section_row );
 					$jscode_vars .= UixPBFormType_ListClone::add( $args, 'js_vars', $section_row );
 		
-		
+					//Note
+					$field .= UixPBFormType_Note::add( $args, 'html' );
+					$jscode .= UixPBFormType_Note::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Note::add( $args, 'js_vars' );
+					
 	
 	
 				} // end foreach

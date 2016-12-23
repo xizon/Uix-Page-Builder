@@ -111,7 +111,10 @@ class UixPBFormType_Checkbox {
                     </tr> 
                 '.PHP_EOL;	
                 
-            $jscode_vars = '';						
+            $jscode_vars = '
+                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'-checkbox" ).is( ":checked" );'.PHP_EOL : '' ).'
+                
+            ';						
                 
 			$jscode = '';
 				
