@@ -172,12 +172,17 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function inc_str( $str, $incstr ) {
-	
-		if ( mb_strlen( strpos( $str, $incstr ), 'UTF8' ) > 0 ) {
-			return true;
+	    
+		if ( !empty( $incstr ) ) {
+			if ( preg_match( '/'.$incstr.'/', $str ) ) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
+
 
 	}
 
