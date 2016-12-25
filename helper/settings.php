@@ -168,7 +168,7 @@ function uix_pagebuilder_options_page(){
     </h2>
 
     <?php 
-		foreach ( glob( WP_PLUGIN_DIR .'/'.UixPageBuilder::get_slug(). "/helper/tabs/*.php") as $file ) {
+		foreach ( glob( UIX_PAGEBUILDER_PLUGIN_DIR. "helper/tabs/*.php") as $file ) {
 			include $file;
 		}	
 	?>

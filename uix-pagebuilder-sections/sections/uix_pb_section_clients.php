@@ -116,7 +116,7 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		       '.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ) ? '<a href="'.esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ).'" target="_blank">' : '' ).'<img src="'.esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_logo]['.$sid.']' ] ).'" alt="" />'.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ) ? '</a>' : '' ).'
 		       
 		   </p>
-		   <p>'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_intro]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</p>
+		   <p>'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_intro]['.$sid.']' ] ).'</p>
 		  													                                                    
         </div>  
 		';	
@@ -131,7 +131,7 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		       '.( !empty( $uix_pb_clients_listitem_url ) ? '<a href="'.esc_url( $uix_pb_clients_listitem_url ).'" target="_blank">' : '' ).'<img src="'.esc_url( $uix_pb_clients_listitem_logo ).'" alt="" />'.( !empty( $uix_pb_clients_listitem_url ) ? '</a>' : '' ).'
 		       
 		   </p>
-           <p>'.wp_kses( $uix_pb_clients_listitem_intro, wp_kses_allowed_html( 'post' ) ).'</p>            
+           <p>'.uix_pb_kses( $uix_pb_clients_listitem_intro ).'</p>            
         </div>  
 		';	
 		

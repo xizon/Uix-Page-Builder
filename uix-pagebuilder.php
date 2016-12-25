@@ -34,7 +34,6 @@ class UixPageBuilder {
 	
 	    self::setup_constants();
 		self::includes();
-		self::uixpbform_core();
 		
 		
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
@@ -60,17 +59,17 @@ class UixPageBuilder {
 
 		// Plugin Folder Path.
 		if ( ! defined( 'UIX_PAGEBUILDER_PLUGIN_DIR' ) ) {
-			define( 'UIX_PAGEBUILDER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+			define( 'UIX_PAGEBUILDER_PLUGIN_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 		}
 
 		// Plugin Folder URL.
 		if ( ! defined( 'UIX_PAGEBUILDER_PLUGIN_URL' ) ) {
-			define( 'UIX_PAGEBUILDER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+			define( 'UIX_PAGEBUILDER_PLUGIN_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 		}
 
 		// Plugin Root File.
 		if ( ! defined( 'UIX_PAGEBUILDER_PLUGIN_FILE' ) ) {
-			define( 'UIX_PAGEBUILDER_PLUGIN_FILE', __FILE__ );
+			define( 'UIX_PAGEBUILDER_PLUGIN_FILE', trailingslashit( __FILE__ ) );
 		}
 	}
 
@@ -80,10 +79,12 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function includes() {
+		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/general.php';
 		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
 		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
 		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/classes/class-google-map.php';
 		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/classes/class-xml.php';
+		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/add-ons/uixpbform/init.php';
 	}
 	
 	
@@ -172,7 +173,25 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function inc_str( $str, $incstr ) {
-	    
+		
+		$incstr = str_replace( '(', '\(',
+				  str_replace( ')', '\)',
+				  str_replace( '|', '\|',
+				  str_replace( '*', '\*',
+				  str_replace( '+', '\+',
+			      str_replace( '.', '\.',
+				  str_replace( '[', '\[',
+				  str_replace( ']', '\]',
+				  str_replace( '?', '\?',
+				  str_replace( '/', '\/',
+				  str_replace( '^', '\^',
+			      str_replace( '{', '\{',
+				  str_replace( '}', '\}',	
+				  str_replace( '$', '\$',
+			      str_replace( '\\', '\\\\',
+				  $incstr 
+				  )))))))))))))));
+			
 		if ( !empty( $incstr ) ) {
 			if ( preg_match( '/'.$incstr.'/', $str ) ) {
 				return true;
@@ -303,7 +322,7 @@ class UixPageBuilder {
 	 */
 	public static function plug_directory() {
 
-	  return trailingslashit( plugin_dir_url( __FILE__ ) );
+	  return UIX_PAGEBUILDER_PLUGIN_URL;
 
 	}
 	
@@ -314,7 +333,7 @@ class UixPageBuilder {
 	 */
 	public static function plug_filepath() {
 
-	  return trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() );
+	  return UIX_PAGEBUILDER_PLUGIN_DIR;
 
 	}	
 	
@@ -956,7 +975,7 @@ class UixPageBuilder {
 	
 		
 		$filenames = array();
-		$filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
+		$filepath = UIX_PAGEBUILDER_PLUGIN_DIR. 'theme_templates/';
 		$themepath = get_stylesheet_directory() . '/';
 		
 		foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
@@ -995,7 +1014,7 @@ class UixPageBuilder {
 		  global $wp_filesystem;
 			
 		  $filenames = array();
-		  $filepath = WP_PLUGIN_DIR .'/'.self::get_slug(). '/theme_templates/';
+		  $filepath = UIX_PAGEBUILDER_PLUGIN_DIR. 'theme_templates/';
 		  $themepath = get_stylesheet_directory() . '/';
 
 	      foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
@@ -1072,20 +1091,18 @@ class UixPageBuilder {
 	 * Initialize the WP_Filesystem
 	 * 
 	 * Example:
-	 
+	        
             $output = "";
-			$wpnonce_url = 'edit.php?post_type=uix_pagebuilder&page='.UixPageBuilder::HELPER;
-			$wpnonce_action = 'temp-filesystem-nonce';
-
-            if ( !empty( $_POST ) ) {
+			
+            if ( !empty( $_POST ) && check_admin_referer( 'custom_action_nonce') ) {
 				
 				
-                  $output = UixPageBuilder::wpfilesystem_write_file( $wpnonce_action, $wpnonce_url, 'helper/', 'debug.txt', 'This is test.' );
+                  $output = UixPageBuilder::wpfilesystem_write_file( 'custom_action_nonce', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=???', 'helper/', 'debug.txt', 'This is test.' );
 				  echo $output;
 			
             } else {
 				
-				wp_nonce_field( $wpnonce_action );
+				wp_nonce_field( 'custom_action_nonce' );
 				echo '<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__( 'Click This Button to Copy Files', 'uix-pagebuilder' ).'"  /></p>';
 				
 			}
@@ -1112,7 +1129,7 @@ class UixPageBuilder {
 		
 		  $url = wp_nonce_url( $nonce, $nonceaction );
 		
-		  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+		  $contentdir = UIX_PAGEBUILDER_PLUGIN_DIR.$path; 
 		  
 		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
 			  
@@ -1132,7 +1149,7 @@ class UixPageBuilder {
 		  $url = wp_nonce_url( $nonce, $nonceaction );
 	
 		  if ( $type == 'plugin' ) {
-			  $contentdir = trailingslashit( WP_PLUGIN_DIR .'/'.self::get_slug() ).$path; 
+			  $contentdir = UIX_PAGEBUILDER_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
 			  $contentdir = trailingslashit( get_template_directory() ).$path; 
@@ -1156,18 +1173,6 @@ class UixPageBuilder {
 		
 		  } 
 	}	 	
-				
-		
-	/*
-	 * Uix Form Core
-	 *
-	 *
-	 */
-	public static function uixpbform_core() {
-	
-		require_once UIX_PAGEBUILDER_PLUGIN_DIR.'admin/add-ons/uixpbform/init.php';
-
-	}
 	
 	
 }

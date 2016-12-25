@@ -89,9 +89,9 @@ $uix_pb_parallax_height          = floatval( UixPageBuilder::fvalue( $colid, $si
 
 $bgimage_css = ( !empty( $uix_pb_parallax_bg ) ) ? 'style="background:url('.esc_attr( $uix_pb_parallax_bg ).') '.( $uix_pb_parallax_speed > 0 ? '50%' : 'top' ).' '.( $uix_pb_parallax_speed > 0 ? 0 : 'left' ).' no-repeat '.( $uix_pb_parallax_speed > 0 ? 'fixed' : esc_attr( $uix_pb_parallax_bg_attachment ) ).';"' : '';
 
-$title       =  ( !empty( $uix_pb_parallax_titlecolor ) ) ? '<span style="color:'.esc_attr( $uix_pb_parallax_titlecolor ).';">'.wp_kses( $uix_pb_parallax_title, wp_kses_allowed_html( 'post' ) ).'</span>' : wp_kses( $uix_pb_parallax_title, wp_kses_allowed_html( 'post' ) );
+$title       =  ( !empty( $uix_pb_parallax_titlecolor ) ) ? '<span style="color:'.esc_attr( $uix_pb_parallax_titlecolor ).';">'.uix_pb_kses( $uix_pb_parallax_title ).'</span>' : uix_pb_kses( $uix_pb_parallax_title );
 
-$desc        =  ( !empty( $uix_pb_parallax_desccolor ) ) ? '<span style="color:'.esc_attr( $uix_pb_parallax_desccolor ).';">'.wp_kses( $uix_pb_parallax_desc, wp_kses_allowed_html( 'post' ) ).'</span>' : wp_kses( $uix_pb_parallax_desc, wp_kses_allowed_html( 'post' ) );
+$desc        =  ( !empty( $uix_pb_parallax_desccolor ) ) ? '<span style="color:'.esc_attr( $uix_pb_parallax_desccolor ).';">'.uix_pb_kses( $uix_pb_parallax_desc ).'</span>' : uix_pb_kses( $uix_pb_parallax_desc );
 
 
 

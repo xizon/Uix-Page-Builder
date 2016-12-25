@@ -77,13 +77,13 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	// capture output from WP_Filesystem
 	ob_start();
 	
-		UixPageBuilder::wpfilesystem_read_file( 'css-filesystem-nonce', 'edit.php?post_type='.UixPageBuilder::get_slug().'&page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_shortcodes, $filetype );
+		UixPageBuilder::wpfilesystem_read_file( 'uix_pb_customcss', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_shortcodes, $filetype );
 		$filesystem_uix_shortcodes_out = ob_get_contents();
 	ob_end_clean();
 	
 	if ( empty( $filesystem_uix_shortcodes_out ) ) {
 		
-		$style_org_code_uix_shortcodes = UixPageBuilder::wpfilesystem_read_file( 'css-filesystem-nonce', 'edit.php?post_type='.UixPageBuilder::get_slug().'&page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_shortcodes, $filetype );
+		$style_org_code_uix_shortcodes = UixPageBuilder::wpfilesystem_read_file( 'uix_pb_customcss', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_shortcodes, $filetype );
 		
 		echo '
 		

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Fri Dec 23 2016 15:01:39 GMT+0800 (CST)\n"
+"POT-Revision-Date: Mon Dec 26 2016 01:52:45 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,49 +42,49 @@ msgstr ""
 msgid "https://uiux.cc"
 msgstr ""
 
-#: ../uix-pagebuilder.php:195
+#: ../uix-pagebuilder.php:201
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: ../uix-pagebuilder.php:196 ../admin/post-extensions/post-extensions-init.php:332
+#: ../uix-pagebuilder.php:202 ../admin/post-extensions/post-extensions-init.php:332
 msgid "Uix Page Builder"
 msgstr ""
 
-#: ../uix-pagebuilder.php:207 ../uix-pagebuilder.php:208
+#: ../uix-pagebuilder.php:213 ../uix-pagebuilder.php:214
 msgid "Custom CSS"
 msgstr ""
 
-#: ../uix-pagebuilder.php:217 ../uix-pagebuilder.php:218
+#: ../uix-pagebuilder.php:223 ../uix-pagebuilder.php:224
 msgid "Helper"
 msgstr ""
 
-#: ../uix-pagebuilder.php:247 ../helper/settings.php:140
+#: ../uix-pagebuilder.php:253 ../helper/settings.php:140
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-pagebuilder.php:559
+#: ../uix-pagebuilder.php:565
 msgid "Add content"
 msgstr ""
 
-#: ../uix-pagebuilder.php:594
+#: ../uix-pagebuilder.php:600
 msgid "Choose Element You Want"
 msgstr ""
 
-#: ../uix-pagebuilder.php:603
+#: ../uix-pagebuilder.php:609
 msgid "Layout"
 msgstr ""
 
-#: ../uix-pagebuilder.php:900
+#: ../uix-pagebuilder.php:906
 msgid ""
 "<strong>You need to create Uix Page Builder template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:900 ../helper/tabs/usage.php:22
+#: ../uix-pagebuilder.php:906 ../helper/tabs/usage.php:22
 msgid "Create now!"
 msgstr ""
 
-#: ../uix-pagebuilder.php:900 ../helper/tabs/temp.php:73
+#: ../uix-pagebuilder.php:906 ../helper/tabs/temp.php:73
 msgid ""
 "As a workaround you can use FTP, access the Uix Page Builder template files "
 "path <code>/wp-content/plugins/uix-pagebuilder/theme_templates/</code> and "
@@ -92,27 +92,27 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../uix-pagebuilder.php:1043 ../uix-pagebuilder.php:1118
+#: ../uix-pagebuilder.php:1049 ../uix-pagebuilder.php:1122
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1045
+#: ../uix-pagebuilder.php:1051
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1050
+#: ../uix-pagebuilder.php:1056
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1053
+#: ../uix-pagebuilder.php:1059
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -120,11 +120,11 @@ msgstr ""
 msgid "Sorry, you are not allowed to export the content of this site."
 msgstr ""
 
-#: ../admin/add-ons/uixpbform/init.php:496
+#: ../admin/add-ons/uixpbform/init.php:501
 msgid "Cancel"
 msgstr ""
 
-#: ../admin/add-ons/uixpbform/init.php:496 ../admin/post-extensions/post-
+#: ../admin/add-ons/uixpbform/init.php:501 ../admin/post-extensions/post-
 #: extensions-init.php:378
 msgid "Save"
 msgstr ""
@@ -464,16 +464,10 @@ msgstr ""
 msgid "<p>The .css file does not exist.</p>"
 msgstr ""
 
-#: ../helper/tabs/products-list.php:51
-msgid "Create Uix Page Builder list files in this plugin directory:"
-msgstr ""
-
-#: ../helper/tabs/products-list.php:54
-msgid "Themes list file's name:"
-msgstr ""
-
-#: ../helper/tabs/products-list.php:59
-msgid "Click This Button to Create Uix Page Builder List Files"
+#: ../helper/tabs/temp.php:44
+msgid ""
+"Are you sure?\\nIt is possible based on your theme of the plugin templates. "
+"When you create them again, the default plugin template will be used."
 msgstr ""
 
 #: ../helper/tabs/temp.php:50

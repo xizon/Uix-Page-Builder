@@ -117,11 +117,11 @@ $social_out_2 = ( !empty( $uix_pb_authorcard_2_url ) ) ? '<a href=\''.$uix_pb_au
 $social_out_3 = ( !empty( $uix_pb_authorcard_3_url ) ) ? '<a href=\''.$uix_pb_authorcard_3_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_3_icon ) ? $uix_pb_authorcard_3_icon : 'link' ).'\'></i></a>' : '';
 
 
-$uix_pb_section_authorcard_temp = str_replace( '{name}', wp_kses( $uix_pb_authorcard_name, wp_kses_allowed_html( 'post' ) ), 
+$uix_pb_section_authorcard_temp = str_replace( '{name}', uix_pb_kses( $uix_pb_authorcard_name ), 
                                   str_replace( '{name_attr}', esc_attr( $uix_pb_authorcard_name ), 
-								  str_replace( '{intro}', wp_kses( $uix_pb_authorcard_intro, wp_kses_allowed_html( 'post' ) ), 
+								  str_replace( '{intro}', uix_pb_kses( $uix_pb_authorcard_intro ), 
 								  str_replace( '{link_url}', esc_url( $uix_pb_authorcard_link_link ), 
-								  str_replace( '{link_label}', wp_kses( $uix_pb_authorcard_link_label, wp_kses_allowed_html( 'post' ) ), 
+								  str_replace( '{link_label}', uix_pb_kses( $uix_pb_authorcard_link_label ), 
 								  str_replace( '{avatar}',esc_url( $avatarURL ), 
 								  str_replace( '{color}', esc_attr( $uix_pb_authorcard_primary_color ), 
 								  str_replace( '{social_1}', $social_out_1, 

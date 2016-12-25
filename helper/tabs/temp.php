@@ -20,12 +20,12 @@ if ( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' 
 		
 		if( UixPageBuilder::tempfile_exists() ) {
 			// Template files removed
-			$status_echo = UixPageBuilder::templates( 'uix_pagebuilder_tempfiles', 'edit.php?post_type=uix_pagebuilder&page='.UixPageBuilder::HELPER, true );
+			$status_echo = UixPageBuilder::templates( 'uix_pagebuilder_tempfiles', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=temp', true );
 			echo $status_echo;
 	
 		} else {
 			// Template files copied
-			$status_echo = UixPageBuilder::templates( 'uix_pagebuilder_tempfiles', 'edit.php?post_type=uix_pagebuilder&page='.UixPageBuilder::HELPER );
+			$status_echo = UixPageBuilder::templates( 'uix_pagebuilder_tempfiles', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=temp' );
 			echo $status_echo;
 		
 		}
@@ -41,7 +41,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'temp' ) { ?>
 	
     <?php if( UixPageBuilder::tempfile_exists() ) { ?>
     
-        <form method="post" action="">
+        <form method="post" action="" onsubmit="return confirm('<?php echo esc_attr__( 'Are you sure?\nIt is possible based on your theme of the plugin templates. When you create them again, the default plugin template will be used.', 'uix-pagebuilder' ); ?>')">
         
             <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
             <?php wp_nonce_field( 'uix_pagebuilder_tempfiles' ); ?>

@@ -118,7 +118,7 @@ get_header(); ?>
 						</div>
 						';
 						//WP menu title of anchor link
-						echo PHP_EOL."<!-- ".wp_kses( __( 'End Section', 'uix-pagebuilder' ), wp_kses_allowed_html( 'post' ) )." -->".PHP_EOL.PHP_EOL;	
+						echo PHP_EOL."<!-- ".uix_pb_kses( __( 'End Section', 'uix-pagebuilder' ) )." -->".PHP_EOL.PHP_EOL;	
 						
 
 						

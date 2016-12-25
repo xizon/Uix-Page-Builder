@@ -112,10 +112,10 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		$posclass                        = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_testimonials_listitem_avatar]['.$sid.']' ] ) )  ? '': 'class="uix-pb-testimonials-pure-text"';
 		$list_testimonials_item_content .= '
         <li>
-           <div class="uix-pb-testimonials-content">'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_testimonials_listitem_intro]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</div>
+           <div class="uix-pb-testimonials-content">'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_testimonials_listitem_intro]['.$sid.']' ] ).'</div>
 		   <div class="uix-pb-testimonials-signature">
 		       '.$avatar.'
-		       <strong '.$posclass.'>'.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_testimonials_listitem_name]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'</strong> - '.wp_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_testimonials_listitem_position]['.$sid.']' ], wp_kses_allowed_html( 'post' ) ).'
+		       <strong '.$posclass.'>'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_testimonials_listitem_name]['.$sid.']' ] ).'</strong> - '.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_testimonials_listitem_position]['.$sid.']' ] ).'
 		   </div>														                                                    
         </li>  
 		';	
@@ -128,10 +128,10 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		$posclass                        = ( !empty( $uix_pb_testimonials_listitem_avatar ) )  ? '': 'class="uix-pb-testimonials-pure-text"';
 		$list_testimonials_item_content .= '
         <li>
-           <div class="uix-pb-testimonials-content">'.wp_kses( $uix_pb_testimonials_listitem_intro, wp_kses_allowed_html( 'post' ) ).'</div>
+           <div class="uix-pb-testimonials-content">'.uix_pb_kses( $uix_pb_testimonials_listitem_intro ).'</div>
 		   <div class="uix-pb-testimonials-signature">
 		       '.$avatar.'
-		       <strong '.$posclass.'>'.wp_kses( $uix_pb_testimonials_listitem_name, wp_kses_allowed_html( 'post' ) ).'</strong> - '.wp_kses( $uix_pb_testimonials_listitem_position, wp_kses_allowed_html( 'post' ) ).'
+		       <strong '.$posclass.'>'.uix_pb_kses( $uix_pb_testimonials_listitem_name ).'</strong> - '.uix_pb_kses( $uix_pb_testimonials_listitem_position ).'
 		   </div>														                                                    
         </li>  
 		';	
