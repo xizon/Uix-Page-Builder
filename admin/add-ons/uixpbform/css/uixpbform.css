@@ -20,7 +20,7 @@
     -o-transition: all .5s ease-out;
     transition: all .5s ease-out;
     width: 1080px;
-    height: 75vh;
+    height: 80vh;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;
@@ -34,39 +34,50 @@
     transform: translateY(-50%);
 }
 
-
-.uixpbform-modal-buttons {
+.uixpbform-modal-buttons,
+.uixpbform-sub-window .uixpbform-sub-window-buttons {
+	display: block;
+	text-align: center;
     width: 1080px;
     left: calc( (100% - 1080px)/2 );
 }
 
 @media all and (min-width: 1200px) {
-    .uixpbform-modal-box, .uixpbform-modal-buttons {
+    .uixpbform-modal-box, 
+	.uixpbform-modal-buttons,
+	.uixpbform-sub-window .uixpbform-sub-window-buttons {
         width: 1080px;
         left: calc( (100% - 1080px)/2 );
     }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1199px) {
-    .uixpbform-modal-box, .uixpbform-modal-buttons {
+    .uixpbform-modal-box, 
+	.uixpbform-modal-buttons,
+	.uixpbform-sub-window .uixpbform-sub-window-buttons {
         width: 930px;
         left: calc( (100% - 930px)/2 );
     }
 }
 
 @media all and (max-width: 768px) {
-    .uixpbform-modal-box, .uixpbform-modal-buttons {
+    .uixpbform-modal-box, 
+	.uixpbform-modal-buttons,
+	.uixpbform-sub-window .uixpbform-sub-window-buttons {
         width: 550px;
         left: calc( (100% - 550px)/2 );
     }
 }
 
 @media all and (max-width: 480px) {
-    .uixpbform-modal-box, .uixpbform-modal-buttons {
+    .uixpbform-modal-box, 
+	.uixpbform-modal-buttons,
+	.uixpbform-sub-window .uixpbform-sub-window-buttons {
         width: 90%;
         left: 5%;
     }
 }
+
 
 .uixpbform-modal-mask {
     background: rgba(0,0,0,.0);
@@ -154,7 +165,7 @@
     z-index: 100049;
     /*coordinate of wordpress*/
     width: calc( 1080px - 8px );
-    height: 75vh;
+    height: 80vh;
     background: #fff;
     left: calc( (100% - 1000px)/2 );
     -webkit-transform: translateY(-50%);
@@ -233,7 +244,7 @@
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    margin-top: calc( 75vh/2 - 60px );
+    margin-top: calc( 80vh/2 - 60px );
 }
 
 
@@ -274,6 +285,12 @@
     box-shadow: 2.5px 4.33px 16px 0px rgba(207, 207, 207, 0.31) !important;
 }
 
+.uixpbform-modal-buttons .uixpbform-modal-button-alert {
+	 background-color: rgba(204, 23, 30, 1) !important;
+    -webkit-box-shadow: 2.5px 4.33px 16px 0px rgba(204, 23, 30, 0.31) !important;
+    -moz-box-shadow: 2.5px 4.33px 16px 0px rgba(204, 23, 30, 0.31) !important;
+    box-shadow: 2.5px 4.33px 16px 0px rgba(204, 23, 30, 0.31) !important;
+}
 
 .uixpbform-modal-buttons .uixpbform-modal-button-icon {
 	background-color: rgba(106, 194, 41, 1) !important;
@@ -331,7 +348,10 @@
 	background-color: #dedede !important;
 }
 
-	
+.uixpbform-modal-buttons .uixpbform-modal-button-alert:hover {
+	background-color: #b50d14 !important;
+}	
+
 
 
 /* Popup Window
