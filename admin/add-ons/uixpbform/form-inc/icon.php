@@ -56,7 +56,7 @@ class UixPBFormType_Icon {
 
 									<a href="javascript:" class="uixpbform-icon-clear">&times;</a>
 
-									<div class="uixpbform-icon-selector-label" id="'.$id.'-label">'.$tips.'<span class="uixpbform-loading icon"></span></div>
+									<div class="uixpbform-icon-selector-label" id="'.$id.'-label">'.$tips.'<span class="uixpbform-loading icon" style="display:none"></span></div>
 									
 								</div>
 								

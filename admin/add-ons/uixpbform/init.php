@@ -247,7 +247,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			 
 			 if( get_post_type() == 'page' ) {
 				 
-			     echo '<div class="uixpbform-icon-selector-btn-target" id="" style="display:none;">';
+			     echo '<div class="uixpbform-sub-window uixpbform-icon-selector-btn-target" id="" style="display:none;">';
 				 require_once ( dirname( __FILE__ ) . '/'.self::icon_attr( 'selector' ) );
 				 echo '</div>';	 
 			 }
@@ -516,7 +516,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function form_before( $widget_col_id, $widget_name, $section_row, $form_id ) {
 			
-			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-pagebuilder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-pagebuilder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'"><input type="hidden" name="colid" value="'.$widget_col_id.'">';
+			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-button-secondary uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-pagebuilder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-pagebuilder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'"><input type="hidden" name="colid" value="'.$widget_col_id.'">';
 	
 		}
 		

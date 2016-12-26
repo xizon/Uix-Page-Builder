@@ -262,59 +262,46 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 			$( '.uix-pb-bar .uix-pb-bar-percent', this).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } );
 			$( '.uix-pb-bar .uix-pb-bar-text', this).html( '' );
 
-			//Number Incrementers of Progress Bar ( Making class active by scrolling past it )
-			$window.on( 'scroll', function() {
-				var scrollTop = $window.scrollTop();
+
+			$this.find( '.uix-pb-bar .uix-pb-bar-text' ).each( function()  {
+
+				if ( $this.find( '.uix-pb-bar .uix-pb-bar-percent' ).width() == 0 ) {
+
+					$this.find( '.uix-pb-bar .uix-pb-bar-percent' ).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } ).animate( { percentage: perc, width: perc + '%'  }, {duration: barspeed } );
+
+					var $el = $( this ),
+						value = perc;
 
 
-				$this.find( '.uix-pb-bar .uix-pb-bar-text' ).each( function()  {
+					$( { percentage: 0 } ).stop(true).animate( { percentage: value }, {
+						duration : barspeed,
+						step: function () {
+							// percentage with 1 decimal;
+							var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
 
-					if ( $this.find( '.uix-pb-bar .uix-pb-bar-percent' ).width() == 0 ) {
-
-						if ( scrollTop > parseFloat( $( this ).offset().top - windowHeight + 150 ) ) {
-
-							$this.find( '.uix-pb-bar .uix-pb-bar-percent' ).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } ).animate( { percentage: perc, width: perc + '%'  }, {duration: barspeed } );
-
-							var $el = $( this ),
-								value = perc;
-
-
-							$( { percentage: 0 } ).stop(true).animate( { percentage: value }, {
-								duration : barspeed,
-								step: function () {
-									// percentage with 1 decimal;
-									var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
-
-									if ( iconName != '' ) {
-										$el.html( '<i class="fa fa-'+iconName+'"></i>' );
-									} else {
-										$el.html( percentageVal + units );
-									}
-
-								}
-							}).promise().done(function () {
-								// hard set the value after animation is done to be
-								// sure the value is correct
-								if ( iconName != '' ) {
-									$el.html( '<i class="fa fa-'+iconName+'"></i>' );
-								} else {
-									$el.html( value + units );
-								}
-
-
-							});
-
+							if ( iconName != '' ) {
+								$el.html( '<i class="fa fa-'+iconName+'"></i>' );
+							} else {
+								$el.html( percentageVal + units );
+							}
 
 						}
+					}).promise().done(function () {
+						// hard set the value after animation is done to be
+						// sure the value is correct
+						if ( iconName != '' ) {
+							$el.html( '<i class="fa fa-'+iconName+'"></i>' );
+						} else {
+							$el.html( value + units );
+						}
 
-					}
 
-				});
+					});
 
+
+				}
 
 			});
-
-
 
 		});
 
@@ -346,64 +333,51 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 		});
 
-		// Making class active by scrolling past it
-		$window.on( 'scroll', function() {
-			var scrollTop = $window.scrollTop();
+        $( '.uix-pb-bar-box-circular' ).each(function() {
 
-			$( '.uix-pb-bar-box-circular' ).each(function() {
+			if ( $( '.uix-pb-bar .uix-pb-bar-percent', this ).text().length == 0 ) {
 
-				if ( $( '.uix-pb-bar .uix-pb-bar-percent', this ).text().length == 0 ) {
-
-					if ( scrollTop > parseFloat( $( this ).offset().top - windowHeight + 150 ) ) {
-
-
-						var $this      = $( this ),
-							perc       = $( '.uix-pb-bar', this).data( 'percent' ),
-							size       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'size' ),
-							sizeNum    = size.replace( 'px', '' ),
-							linewidth  = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'linewidth' ),
-							trackcolor = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'trackcolor' ),
-							barcolor   = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'barcolor' ),
-							units      = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'units' ),
-							icon       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'icon' ),
-							$txtcont   = $( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' );
+				var $this      = $( this ),
+					perc       = $( '.uix-pb-bar', this).data( 'percent' ),
+					size       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'size' ),
+					sizeNum    = size.replace( 'px', '' ),
+					linewidth  = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'linewidth' ),
+					trackcolor = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'trackcolor' ),
+					barcolor   = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'barcolor' ),
+					units      = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'units' ),
+					icon       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'icon' ),
+					$txtcont   = $( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' );
 
 
-						$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( perc );
-						$( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' ).css( { 'line-height': size, 'width': size } ).animate( { percentage: perc }, {duration: barspeed } );
-						$( { percentage: 0 } ).stop(true).animate( { percentage: perc }, {
-							duration : barspeed,
-							step: function () {
-								// percentage with 1 decimal;
-								var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
+				$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( perc );
+				$( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' ).css( { 'line-height': size, 'width': size } ).animate( { percentage: perc }, {duration: barspeed } );
+				$( { percentage: 0 } ).stop(true).animate( { percentage: perc }, {
+					duration : barspeed,
+					step: function () {
+						// percentage with 1 decimal;
+						var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
 
-								if ( icon != '' ) {
-									$txtcont.html( '<i class="fa fa-'+icon+'"></i>' );
-								} else {
-									$txtcont.html( percentageVal + units );
-								}
-
-							}
-						}).promise().done(function () {
-							// hard set the value after animation is done to be
-							// sure the value is correct
-							if ( icon != '' ) {
-								$txtcont.html( '<i class="fa fa-'+icon+'"></i>' );
-							} else {
-								$txtcont.html( perc + units );
-							}
-
-
-						});
-
-
+						if ( icon != '' ) {
+							$txtcont.html( '<i class="fa fa-'+icon+'"></i>' );
+						} else {
+							$txtcont.html( percentageVal + units );
+						}
 
 					}
+				}).promise().done(function () {
+					// hard set the value after animation is done to be
+					// sure the value is correct
+					if ( icon != '' ) {
+						$txtcont.html( '<i class="fa fa-'+icon+'"></i>' );
+					} else {
+						$txtcont.html( perc + units );
+					}
 
-				}
+
+				});
 
 
-			});
+			}
 
 
 		});

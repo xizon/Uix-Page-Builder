@@ -246,7 +246,7 @@ jQuery( document ).ready( function() {
 		
 
 
-		jQuery( srow ).mouseenter(function() {
+		jQuery( srow ).on( 'mouseenter', function(){
 			jQuery( srow ).removeClass( 'hover' );
 			jQuery( srow ).addClass( 'hoverall' );
 			jQuery( sroworg ).removeClass( 'hover' );
@@ -257,7 +257,7 @@ jQuery( document ).ready( function() {
 
 			return false;
 		});
-		jQuery( srow ).mouseleave(function() {
+		jQuery( srow ).on( 'mouseleave', function(){
 			jQuery( srow ).removeClass( 'hoverall' );
 			jQuery( sroworg ).removeClass( 'hoverall' );	
 
@@ -269,7 +269,7 @@ jQuery( document ).ready( function() {
 		});
 
 		//--
-		jQuery( sroworg_trigger ).mouseenter(function() {
+		jQuery( sroworg_trigger ).on( 'mouseenter', function(){
 			jQuery( srow ).removeClass( 'hover' );
 			jQuery( srow ).addClass( 'hoverall' );		
 
@@ -278,7 +278,7 @@ jQuery( document ).ready( function() {
 
 			return false;
 		});
-		jQuery( sroworg_trigger ).mouseleave(function() {
+		jQuery( sroworg_trigger ).on( 'mouseleave', function(){
 			jQuery( srow ).removeClass( 'hoverall' );
 			jQuery( sroworg ).removeClass( 'hoverall' );	
 
@@ -680,7 +680,7 @@ jQuery( document ).ready( function() {
 			}
 
 			
-			jQuery( srow ).mouseenter(function() {
+			jQuery( srow ).on( 'mouseenter', function(){
 				jQuery( srow ).removeClass( 'hover' );
 				jQuery( srow ).addClass( 'hoverall' );
 				jQuery( sroworg ).removeClass( 'hover' );
@@ -691,7 +691,7 @@ jQuery( document ).ready( function() {
 				
 				return false;
 			});
-			jQuery( srow ).mouseleave(function() {
+			jQuery( srow ).on( 'mouseleave', function(){
 				jQuery( srow ).removeClass( 'hoverall' );
 				jQuery( sroworg ).removeClass( 'hoverall' );	
 				
@@ -703,7 +703,7 @@ jQuery( document ).ready( function() {
 			});
 			
 			//--
-			jQuery( sroworg_trigger ).mouseenter(function() {
+			jQuery( sroworg_trigger ).on( 'mouseenter', function(){
 				jQuery( srow ).removeClass( 'hover' );
 				jQuery( srow ).addClass( 'hoverall' );		
 
@@ -712,7 +712,7 @@ jQuery( document ).ready( function() {
 				
 				return false;
 			});
-			jQuery( sroworg_trigger ).mouseleave(function() {
+			jQuery( sroworg_trigger ).on( 'mouseleave', function(){
 				jQuery( srow ).removeClass( 'hoverall' );
 				jQuery( sroworg ).removeClass( 'hoverall' );	
 				

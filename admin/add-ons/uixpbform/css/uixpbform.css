@@ -146,6 +146,58 @@
 }
 
 
+/* Sub Window for Modal
+-------------------------------------------------------------- */
+.uixpbform-sub-window {
+    position: fixed;
+    top: 50%;
+    z-index: 100049;
+    /*coordinate of wordpress*/
+    width: calc( 1080px - 8px );
+    height: 75vh;
+    background: #fff;
+    left: calc( (100% - 1000px)/2 );
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;	
+	display: none;
+}
+
+
+@media all and (min-width: 1200px) {
+    .uixpbform-sub-window {
+        width: calc( 1080px - 8px );
+        left: calc( (100% - 1080px)/2 );
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1199px) {
+    .uixpbform-sub-window {
+        width: calc( 930px - 8px );
+        left: calc( (100% - 930px)/2 );
+    }
+}
+
+@media all and (max-width: 768px) {
+    .uixpbform-sub-window {
+        width: calc( 550px - 16px );
+        left: calc( (100% - 550px)/2 );
+    }
+}
+
+@media all and (max-width: 480px) {
+    .uixpbform-sub-window {
+        width: calc( 90% - 16px );
+        left: 5%;
+    }
+}
+
+
+
+
 /* Loading
 -------------------------------------------------------------- */
 .uixpbform-loading {
@@ -153,7 +205,7 @@
     width: 18px;
     height: 15px;
     margin: 8px 0;
-	display: none;
+	display: block;
 }
 
 .uixpbform-loading.icon {
@@ -184,7 +236,9 @@
     margin-top: calc( 75vh/2 - 60px );
 }
 
-.uixpbform-modal-buttons input {
+
+.uixpbform-modal-buttons input,
+.uixpbform-modal-button {
     width: auto !important;
     display: inline-block !important;
     background-color: #CFCFCF !important;
@@ -202,24 +256,81 @@
     -webkit-box-shadow: 2.5px 4.33px 16px 0px rgba(207, 207, 207, 0.31) !important;
     -moz-box-shadow: 2.5px 4.33px 16px 0px rgba(207, 207, 207, 0.31) !important;
     box-shadow: 2.5px 4.33px 16px 0px rgba(207, 207, 207, 0.31) !important;
+	position: relative;
+	z-index: 2;
 }
 
-.uixpbform-modal-buttons input.uixpbform-modal-button-primary {
+.uixpbform-modal-buttons .uixpbform-modal-button-primary {
     background-color: RGBA(122, 208, 58, 1) !important;
     -webkit-box-shadow: 2.5px 4.33px 16px 0px rgba(122, 208, 58, 0.31) !important;
     -moz-box-shadow: 2.5px 4.33px 16px 0px rgba(122, 208, 58, 0.31) !important;
     box-shadow: 2.5px 4.33px 16px 0px rgba(122, 208, 58, 0.31) !important;
 }
 
+
+.uixpbform-modal-buttons .uixpbform-modal-button-secondary {
+    -webkit-box-shadow: 2.5px 4.33px 16px 0px rgba(207, 207, 207, 0.31) !important;
+    -moz-box-shadow: 2.5px 4.33px 16px 0px rgba(207, 207, 207, 0.31) !important;
+    box-shadow: 2.5px 4.33px 16px 0px rgba(207, 207, 207, 0.31) !important;
+}
+
+
+.uixpbform-modal-buttons .uixpbform-modal-button-icon {
+	background-color: rgba(106, 194, 41, 1) !important;
+    -webkit-box-shadow: 2.5px 4.33px 16px 0px rgba(106, 194, 41, 0.31) !important;
+    -moz-box-shadow: 2.5px 4.33px 16px 0px rgba(106, 194, 41, 0.31) !important;
+    box-shadow: 2.5px 4.33px 16px 0px rgba(106, 194, 41, 0.31) !important;
+	position: absolute !important;
+	display: inline-block !important;
+	color: #fff !important;
+    padding: 6px 10px 7px 10px !important;
+    margin: 26px 5px 0 -57px !important;
+    -webkit-border-top-left-radius: 0 !important;
+    -moz-border-top-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    -webkit-border-bottom-left-radius: 0 !important;
+    -moz-border-bottom-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;	
+	visibility: hidden;
+	z-index: 1;
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
+}
+
+.uixpbform-modal-buttons .uixpbform-modal-button-icon.active {
+    margin: 26px 5px 0 -7px !important;
+	visibility: visible;
+	z-index: 1;
+}
+
+.uixpbform-modal-buttons .uixpbform-modal-button-txt {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+	background-color: transparent !important;
+	color: #A4A4A4 !important;
+	font-weight: bold!important;
+	font-size: 12px !important;
+	padding: 10px 10px 2px !important;
+}
+
 .uixpbform-modal-buttons input:focus {
     outline: none !important;
 }
 
-.uixpbform-modal-buttons input:hover {
-    filter: alpha(opacity=90);
-    -moz-opacity: 0.9;
-    opacity: 0.9;
+.uixpbform-modal-buttons .uixpbform-modal-button-primary:hover {
+	background-color: #9cdf5f !important;
 }
+.uixpbform-modal-buttons .uixpbform-modal-button-icon:hover {
+	background-color: #8ed44b !important;
+}
+
+.uixpbform-modal-buttons .uixpbform-modal-button-secondary:hover {
+	background-color: #dedede !important;
+}
+
 	
 
 
@@ -1202,53 +1313,7 @@
 	display: none;
 }
 
-.uixpbform-icon-selector-btn-target {
-    position: fixed;
-    top: 50%;
-    z-index: 100049;
-    /*coordinate of wordpress*/
-    width: calc( 1080px - 8px );
-    height: 75vh;
-    background: #fff;
-    left: calc( (100% - 1000px)/2 );
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;	
-	display: none;
-}
 
-
-
-@media all and (min-width: 1200px) {
-    .uixpbform-icon-selector-btn-target{
-        width: calc( 1080px - 8px );
-        left: calc( (100% - 1080px)/2 );
-    }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1199px) {
-    .uixpbform-icon-selector-btn-target {
-        width: calc( 930px - 8px );
-        left: calc( (100% - 930px)/2 );
-    }
-}
-
-@media all and (max-width: 768px) {
-    .uixpbform-icon-selector-btn-target {
-        width: calc( 550px - 16px );
-        left: calc( (100% - 550px)/2 );
-    }
-}
-
-@media all and (max-width: 480px) {
-    .uixpbform-icon-selector-btn-target {
-        width: calc( 90% - 16px );
-        left: 5%;
-    }
-}
 
 .uixpbform-icon-selector-label {
     line-height: 25px;
