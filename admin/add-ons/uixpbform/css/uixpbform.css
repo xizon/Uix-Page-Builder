@@ -1126,7 +1126,7 @@
 	border-radius: 100%;
 	width: 28px;
 	height: 28px;
-	line-height: 28px;
+	line-height: 30px;
 	text-align: center;
 	background: rgba(233, 179, 48, 1);
     -webkit-box-shadow: 2.5px 4.33px 16px 0px rgba(233, 179, 48, .31);
@@ -1159,9 +1159,10 @@
     color: #fff;
     content: attr(title);
     left: 20%;
-    padding: 2px 7px;
+    padding: 7px 7px;
     position: absolute;
-    min-width: 160px;
+    min-width: 185px;
+	line-height: 1.2;
 }
 .uixpbform-form-container a.table-link-m:hover:before{
     border: solid;
@@ -1174,6 +1175,70 @@
     z-index: 99;
 }
 
+/*--*/
+.uixpbform-form-container a.table-link-iconattr {
+	margin-top: 6px;
+	display: inline-block;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px; 
+	width: auto;
+	height: 28px;
+	line-height: 30px;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	margin-bottom: 10px;
+	text-decoration: none;
+	color: #C2BEBE;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.uixpbform-form-container a.table-link-iconattr i {
+	font-size: 15px !important;
+	color: #333 !important;
+	margin-right: 7px;
+	-webkit-border-radius: 100%; 
+	-moz-border-radius: 100%; 
+	border-radius: 100%;
+	width: 18px;
+	height: 18px;
+	line-height: 13px;
+	text-align: center;
+	background: #FBFBFB;
+	border: 1px solid #CFCFCF;
+
+}
+
+.uixpbform-form-container a.table-link-iconattr:hover:after{
+    background: #333;
+    background: rgba(0,0,0,.8);
+    border-radius: 5px;
+    bottom: 26px;
+    color: #fff;
+    content: attr(title);
+    left: 20%;
+    padding: 7px 7px;
+    position: absolute;
+    min-width: 185px;
+	line-height: 1.2;
+	font-weight: normal;
+	font-style: normal;
+}
+.uixpbform-form-container a.table-link-iconattr:hover:before{
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 20px;
+    content: "";
+    left: 50%;
+    position: absolute;
+    z-index: 99;
+}
+
+
+/*--*/
 .uixpbform-form-container a.table-link {
     line-height: 28px;
     text-decoration: none;

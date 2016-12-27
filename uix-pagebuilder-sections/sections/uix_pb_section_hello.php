@@ -289,7 +289,8 @@ $args =
 			'desc'           => sprintf( __( 'You can custom the boxed width of the container for Uix Page Builder stylesheets. <a target="_blank" href="%1$s">click here to custom</a>', 'uix-pagebuilder' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ),
 			'type'           => 'note',
 			'default'        => array(
-									'type'  => 'note'  //error, success, warning, note
+		                            'fullwidth'  => false,
+									'type'       => 'note'  //error, success, warning, note
 				                ),
 		
 		),	
@@ -587,7 +588,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'toggle',
 			'default'        => array(
-			                        //'btn_textclass' => 'table-link-attr',
+		                            //'btn_textclass' => 'table-link-icon',
 			                        'btn_text'      => __( 'set up links with toggle', 'uix-pagebuilder' ),
 									'toggle_class'  => [ UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_toggle_url' ).'_class' ]
 				                )
