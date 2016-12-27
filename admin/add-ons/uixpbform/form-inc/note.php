@@ -28,8 +28,8 @@ class UixPBFormType_Note {
 			
 			
 			if ( is_array( $default ) && !empty( $default ) ) {
-				$infotype  = $default[ 'type' ];
-				$fullwidth = $default[ 'fullwidth' ];
+				$infotype  = ( isset( $default[ 'type' ] ) ) ? $default[ 'type' ] : 'note';
+				$fullwidth = ( isset( $default[ 'fullwidth' ] ) ) ? $default[ 'fullwidth' ] : false;
 			}
 			
 			$field = '
