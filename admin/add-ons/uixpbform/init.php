@@ -60,26 +60,21 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		
 			 if( get_post_type() == 'page' ) {
 				  
-					if ( is_admin()) {
-						
-							//Register clone vars
-							wp_register_script( 'uixpbform-functions-handle', self::plug_directory() .'js/uixpbform.debug.js' );
-						
-							//Add Icons
-							wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.css', array(), '4.5.0', 'all');
-									
-							//UixForm
-							wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false,'1.0.0', 'all');
-							wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), '1.0.0', true );
-							wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), '1.0.0', true );
-					
-							//Colorpicker
-							wp_enqueue_style( 'wp-color-picker' );
-							wp_enqueue_script( 'wp-color-picker' );	
+					//Register clone vars
+					wp_register_script( 'uixpbform-functions-handle', self::plug_directory() .'js/uixpbform.debug.js' );
+
+					//Add Icons
+					wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.css', array(), '4.5.0', 'all');
+
+					//UixForm
+					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false,'1.0.0', 'all');
+					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), '1.0.0', true );
+					wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), '1.0.0', true );
+
+					//Colorpicker
+					wp_enqueue_style( 'wp-color-picker' );
+					wp_enqueue_script( 'wp-color-picker' );	
 	
-	
-	
-					}
 			  }
 			
 	

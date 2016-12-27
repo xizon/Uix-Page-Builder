@@ -128,25 +128,21 @@ class UixPageBuilder {
 	
 		 if( get_post_type() == 'page' ) {
 			  
-				if ( is_admin()) {
-					
-						//Drag and drop
-						wp_enqueue_script( self::PREFIX . '-gridster', self::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.6', true );	
-						wp_enqueue_style( self::PREFIX . '-gridster', self::plug_directory() .'admin/css/jquery.gridster.css', false, '0.5.6', 'all');
-						
-						//jQuery Accessible Tabs
-						wp_enqueue_script( 'accTabs', self::plug_directory() .'admin/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1');
-						wp_enqueue_style( 'accTabs', self::plug_directory() .'admin/css/jquery.accTabs.css', false, '0.1.1', 'all');
-					
-						
-						//Main
-						wp_enqueue_style( self::PREFIX . '-pagebuilder', self::plug_directory() .'admin/css/style.css', false, self::ver(), 'all');
-						
-						//Jquery UI
-						wp_enqueue_script( 'jquery-ui' );
+				//Drag and drop
+				wp_enqueue_script( self::PREFIX . '-gridster', self::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.6', true );	
+				wp_enqueue_style( self::PREFIX . '-gridster', self::plug_directory() .'admin/css/jquery.gridster.css', false, '0.5.6', 'all' );
+
+				//jQuery Accessible Tabs
+				wp_enqueue_script( 'accTabs', self::plug_directory() .'admin/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1' );
+				wp_enqueue_style( 'accTabs', self::plug_directory() .'admin/css/jquery.accTabs.css', false, '0.1.1', 'all' );
 
 
-				}
+				//Main
+				wp_enqueue_style( self::PREFIX . '-pagebuilder-admin', self::plug_directory() .'admin/css/style.css', false, self::ver(), 'all' );
+
+				//Jquery UI
+				wp_enqueue_script( 'jquery-ui' );
+
 		  }
 		
 
