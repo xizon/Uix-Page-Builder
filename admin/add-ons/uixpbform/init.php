@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 0.0.1
+ * @version		: 1.1
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -16,7 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
-		const PREFIX = 'uix';
+		const PREFIX     = 'uix';
+		const VERSION    = '1.1';
 		const CUSTOMTEMP = 'uix-pagebuilder-sections/sections/';
 	
 		
@@ -67,9 +68,9 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.css', array(), '4.5.0', 'all');
 
 					//UixForm
-					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false,'1.0.0', 'all');
-					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), '1.0.0', true );
-					wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), '1.0.0', true );
+					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false, self::VERSION, 'all');
+					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), self::VERSION, true );
+					wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), self::VERSION, true );
 
 					//Colorpicker
 					wp_enqueue_style( 'wp-color-picker' );
