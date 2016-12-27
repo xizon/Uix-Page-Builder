@@ -322,6 +322,34 @@
 	z-index: 1;
 }
 
+.uixpbform-modal-buttons .uixpbform-modal-button-icon:hover:after{
+    background: #333;
+    background: rgba(0,0,0,.8);
+    border-radius: 5px;
+    bottom: 36px;
+    color: #fff;
+    content: attr(title);
+    left: 0;
+	margin-left: -14px;
+    padding: 7px 7px;
+    position: absolute;
+    min-width: 60px;
+	line-height: 1.2;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 12px;
+}
+.uixpbform-modal-buttons .uixpbform-modal-button-icon:hover:before{
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 31px;
+    content: "";
+    left: 50%;
+    position: absolute;
+    z-index: 99;
+}
+
 .uixpbform-modal-buttons .uixpbform-modal-button-txt {
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
@@ -1168,7 +1196,7 @@
     border: solid;
     border-color: #333 transparent;
     border-width: 6px 6px 0 6px;
-    bottom: 20px;
+    bottom: 21px;
     content: "";
     left: 50%;
     position: absolute;
@@ -1230,7 +1258,7 @@
     border: solid;
     border-color: #333 transparent;
     border-width: 6px 6px 0 6px;
-    bottom: 20px;
+    bottom: 21px;
     content: "";
     left: 50%;
     position: absolute;
