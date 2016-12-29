@@ -34,7 +34,7 @@
 				
 
 			
-			//Prepend section templates
+			/*------------- Load core form templates ------------- */
 			var form = { 'formID': formID, 'title': $title, 'thisModalID': dataID, 'thisFormName': $ID };
 			
 			if ( $( '.uixpbform-modal-mask' ).length < 1 ) {
@@ -42,7 +42,7 @@
 			}
 			
 			if ( $( '#' + form[ 'thisModalID' ] ).length < 1 ) {
-				$( 'body' ).prepend( '<div class="uixpbform-modal-box" id="'+form[ 'thisModalID' ]+'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">&times;</a><div class="content"><h2>'+form[ 'title' ]+'</h2><span class="ajax-temp"></span></div></div>' );
+				$( 'body' ).prepend( '<div class="uixpbform-modal-box" id="'+form[ 'thisModalID' ]+'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">&times;</a><div class="content"><h2>'+form[ 'title' ]+'</h2><span class="iconslist-box"></span><span class="ajax-temp"></span></div></div>' );
 				
 			}
 				
@@ -53,7 +53,7 @@
 			
 				
 			
-			/*-- Open Window -- */
+			
 	        $( document ).on( 'click', $trigger, function( e ) {
 				e.preventDefault();
 				
@@ -63,11 +63,19 @@
 				    widgets          = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID, 'colID': widget_colID },
 				    code             = '',
 					$obj             = $( '.uixpbform-modal-box#'+dataID ),
-					modal_H_init     = $( '.uixpbform-modal-box, .uixpbform-sub-window' ),
+					modal_H_init     = $( '.uixpbform-modal-box' ),
 					modal_H_btn_init = $( '.uixpbform-modal-buttons' ),
-					modal_H_max      = $( window ).height()*0.8 - 150;;
+					modal_H_max      = $( window ).height()*0.8 - 150,
+					action_first_add = false;
 				
-				//Open
+				
+				/*------------- Check whether the element is added for the first time ------------- */
+				if ( $( this ).parent( '.uix-pagebuilder-col' ).length > 0 ) {
+					action_first_add = true;
+				}
+				
+				
+				/*------------- Open Window ------------- */
 				if ( $obj.length > 0 ) {
 					
 					$.ajax({
@@ -86,6 +94,12 @@
 							result = result.replace( /{index}/g, '\['+widget_ID+'\]' );
 							
 							$obj.find( '.ajax-temp' ).html( result );
+							
+							if ( $obj.find( '.iconslist-box' ).html().length == 0 ) {
+								$obj.find( '.iconslist-box' ).html( $( '.uixpbform-icon-selector-btn-target' ).html() );
+							}
+							
+							
 							
 							
 							/*-- Count new modal height --*/
@@ -167,9 +181,12 @@
 								$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 								$( 'html' ).css( 'overflow-y', 'auto' );
 								
-								//remove sub window
-								$( '.uixpbform-sub-window' ).removeAttr( 'id' ).removeClass( 'active' );
 								
+								//remove sub window (icons)
+								$( '.uixpbform-modal-box .iconslist-box' ).removeAttr( 'id' ).removeClass( 'active' );
+								//show main modal content
+								$( '.uixpbform-modal-box .ajax-temp' ).css( 'visibility', 'visible' );
+
 							});	
 							
 							// stuff here
@@ -200,14 +217,14 @@
 				}
 	
 				
-				//Callback API
+				/*------------- Callback API ------------- */
 				if ( Object.prototype.toString.call( settings.startFunction ) == '[object Function]' ) {
 					settings.startFunction( widgets );
 				}
 				
 				
-				
-				//Close
+
+				/*------------- Close ------------- */
 				$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 					e.preventDefault();
 					
@@ -217,8 +234,11 @@
 					$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 					$( 'html' ).css( 'overflow-y', 'auto' );
 					
-					//remove sub window
-					$( '.uixpbform-sub-window' ).removeAttr( 'id' ).removeClass( 'active' );
+					//remove sub window (icons)
+					$( '.uixpbform-modal-box .iconslist-box' ).removeAttr( 'id' ).removeClass( 'active' );
+					//show main modal content
+					$( '.uixpbform-modal-box .ajax-temp' ).css( 'visibility', 'visible' );
+
 
 					
 				});
@@ -226,8 +246,7 @@
 			} );
 			
 			
-			
-			/*-- Save data -- */
+			/*------------- Save data ------------- */
 			$( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
 				e.preventDefault();
 				

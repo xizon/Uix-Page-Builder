@@ -105,6 +105,7 @@
 			$('.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 				e.preventDefault();
 				gridsterItemElementsClose();
+				$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 			});
 
 
@@ -439,7 +440,6 @@ function gridsterItemElementsBTStatus( type ) {
 function gridsterItemElementsClose() {
 	jQuery( document ).ready( function() {
 		jQuery( '.uixpbform-modal-box' ).removeClass( 'active' );
-		jQuery( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 		jQuery( 'html' ).css( 'overflow-y', 'auto' );
     });
 }
