@@ -89,10 +89,16 @@
 		padding: .3em 0 .3em;
 		visibility: visible;
 		z-index: 5;
-		padding-top: 20px;
 	}
 	
-	.js-tabs .js-tabs_panel p{
+	.js-tabs .js-tabs_panel:before {
+		content: '';
+		display: table;
+		clear: both;
+		height: 12px;
+	}
+
+	.js-tabs .js-tabs_panel p {
 		display: block;
 		margin: 1em 0;
 	

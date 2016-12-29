@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 1.1
+ * @version		: 1.2
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '1.1';
+		const VERSION    = '1.2';
 		const CUSTOMTEMP = 'uix-pagebuilder-sections/sections/';
 	
 		

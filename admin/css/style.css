@@ -1,5 +1,6 @@
 /* Elements Navigation
 -------------------------------------------------------------- */
+
 .uix-pagebuilder-col {
     width: 300px;
 	float: left;
@@ -24,7 +25,6 @@
 @media screen and (min-width: 769px) {
 	.uix-pagebuilder-col:nth-child(3n+1) {
 		clear: both;
-		margin-left: 0;
 	}
 }
 

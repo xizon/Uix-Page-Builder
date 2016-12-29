@@ -57,12 +57,15 @@
 	        $( document ).on( 'click', $trigger, function( e ) {
 				e.preventDefault();
 				
-				var widget_ID       = $( this ).data( 'id' ),
-				    widget_name     = $( this ).data( 'name' ),
-					widget_colID    = $( this ).data( 'col-textareaid' ),
-				    widgets         = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID, 'colID': widget_colID },
-				    code            = '',
-					$obj            = $( '.uixpbform-modal-box#'+dataID );
+				var widget_ID        = $( this ).data( 'id' ),
+				    widget_name      = $( this ).data( 'name' ),
+					widget_colID     = $( this ).data( 'col-textareaid' ),
+				    widgets          = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID, 'colID': widget_colID },
+				    code             = '',
+					$obj             = $( '.uixpbform-modal-box#'+dataID ),
+					modal_H_init     = $( '.uixpbform-modal-box, .uixpbform-sub-window' ),
+					modal_H_btn_init = $( '.uixpbform-modal-buttons' ),
+					modal_H_max      = $( window ).height()*0.8 - 150;;
 				
 				//Open
 				if ( $obj.length > 0 ) {
@@ -84,8 +87,59 @@
 							
 							$obj.find( '.ajax-temp' ).html( result );
 							
+							
+							/*-- Count new modal height --*/
+							var newmHeight = 0,
+								hEx        = 0,
+								nocols     = $obj.find( '.ajax-temp .uixpbform-form-container' ),
+								cols       = $obj.find( '.ajax-temp .uixpbform-table-cols-wrapper' ),
+								colsH      = Array(),
+								colsH_Max  = 0;
+							if ( cols.length > 0 ) {
+								
+								cols.each( function( index ) {
+									var curH  = $( this ).height();
+									
+									if ( $( this ).hasClass( 'uixpbform-table-col-1' ) ) {
+										hEx = curH;
+									}
+									
+									colsH.push( parseFloat( curH ) + parseFloat( hEx ) );
+									
+									
+								} );
+								
+								newmHeight = Math.max.apply( Math, colsH );
+	
+								
+							} else {
+								newmHeight = nocols.height();
+							}
+							
+							if ( newmHeight == null || 
+								newmHeight == 0 || 
+								parseFloat( newmHeight + 250 ) > $( window ).height()
+							   ) 
+							{
+								newmHeight = modal_H_max;
+							}
+							//Initializes modal height
+							modal_H_init.css( 'height', parseFloat( newmHeight + 150 ) + 'px' );
+							$obj.find( '.ajax-temp .uixpbform-modal-buttons' ).css( 'margin-top', parseFloat( newmHeight/2 + 20 ) + 'px' );
+						
+							
+							//Add row
+							$( '.uixpbform_btn_trigger-clone' ).on( 'click', function( e ) {
+								e.preventDefault();
+								
+								modal_H_init.css( 'height', parseFloat( modal_H_max + 150 ) + 'px' );
+								$obj.find( '.ajax-temp .uixpbform-modal-buttons' ).css( 'margin-top', parseFloat( modal_H_max/2 + 20 ) + 'px' );
+							});	
+							
+							
+							
 							/*-- Initializes the form state --*/
-							//icon list with the jQuery AJAX method
+							//Icon list
 							$( '.icon-selector' ).uixpbform_iconSelector(); 
 							
 							//color picker
@@ -130,6 +184,10 @@
 						beforeSend: function() {
 							$obj.find( '.ajax-temp' ).html( '<span class="uixpbform-loading"></span>' );
 							//console.log( 'loading...' );
+							
+							//Initializes modal height
+							modal_H_init.css( 'height', '220px' );
+							modal_H_btn_init.css( 'margin-top', '50px' );
 
 						}
 					});
