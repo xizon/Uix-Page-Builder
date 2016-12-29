@@ -184,6 +184,11 @@
 	display: none;
 }
 
+.uixpbform-sub-window.active {
+	display: block !important;
+}
+
+
 
 @media all and (min-width: 1200px) {
     .uixpbform-sub-window {
@@ -1510,6 +1515,9 @@ a.uixpbform-icon-clear {
     transition: .2s ease-in-out;
     outline: none;
 	cursor: pointer;
+	-webkit-box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,0.16);
+	-moz-box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,0.16);
+	box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,0.16);
 }
 
 .uixpbform-icon-selector span.b i {

@@ -29,7 +29,7 @@ class UixPBFormType_Icon {
 			$social = false;
 			
 			//Icon list here ( without ajax that is to increase speed. )
-			$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixPBFormCore::plug_filepath().'admin/add-ons/uixpbform/'.$iconselector.'" target-id="'.$id.'" name="'.$name.'" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'"></span>';
+			$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixPBFormCore::plug_filepath().'admin/add-ons/uixpbform/'.$iconselector.'" target-id="'.$id.'" name="'.$name.'" preview-id="'.$id.'-preview" class="icon-selector uixpbform-icon-selector" id="icon-selector-'.$id.'"></span>';
 			if ( is_array( $default ) && !empty( $default ) ) {
 				$social = $default[ 'social' ];
 				
@@ -38,7 +38,7 @@ class UixPBFormType_Icon {
 				if ( $social ) {
 					
 					//Icon list here ( without ajax that is to increase speed. )
-					$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixPBFormCore::plug_filepath().'admin/add-ons/uixpbform/'.$iconselector.'" target-id="'.$id.'" name="'.$name.'" preview-id="'.$id.'-preview" class="icon-selector" id="icon-selector-'.$id.'-social"></span>';
+					$iconlist = '<span contain-id="icon-selector-'.$id.''.( ( $social ) ? '-social' : '' ).'" list-url="'.UixPBFormCore::plug_filepath().'admin/add-ons/uixpbform/'.$iconselector.'" target-id="'.$id.'" name="'.$name.'" preview-id="'.$id.'-preview" class="icon-selector uixpbform-icon-selector icon-social" id="icon-selector-'.$id.'-social"></span>';
 				} 
 			}
 			

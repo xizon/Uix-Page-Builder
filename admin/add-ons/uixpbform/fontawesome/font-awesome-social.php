@@ -1,6 +1,6 @@
 <?php
 $iconName     = isset( $_POST['iconName'] ) ? $_POST[ 'iconName' ] : ''; //default value with ajax
-$g            ='class="b fontawesome"';
+$g            ='class="b social fontawesome"';
 $icons        = [
 '<span '.$g.'><i class="fa fa-twitter"></i></span>',
 '<span '.$g.'><i class="fa fa-twitter-square"></i></span>',

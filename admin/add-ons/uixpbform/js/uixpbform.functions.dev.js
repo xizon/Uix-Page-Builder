@@ -208,7 +208,7 @@ jQuery( document ).ready( function() {
 
         /*-- Initializes the form state --*/
 		//icon list with the jQuery AJAX method
-		jQuery( '.icon-selector' ).uixpbform_iconSelector();
+		jQuery( '.uixpbform-icon-selector' ).uixpbform_iconSelector();
 
 		//color picker
 		jQuery( '.wp-color-input' ).wpColorPicker();
@@ -645,7 +645,7 @@ jQuery( document ).ready( function() {
 
 			/*-- Initializes the form state --*/
 			//icon list with the jQuery AJAX method
-			jQuery( '.icon-selector' ).uixpbform_iconSelector();
+			jQuery( '.uixpbform-icon-selector' ).uixpbform_iconSelector();
 
 			//color picker
 			jQuery( '.wp-color-input' ).wpColorPicker();
@@ -988,7 +988,9 @@ jQuery( document ).ready( function() {
 				previewID       = '#' + $this.attr( 'preview-id' ),
 				listContainerID = 'icon-list-' + $this.attr( 'target-id' ),
 				defaultIconName =  jQuery( targetID ).val(),
-				$formContainer   = jQuery( previewID ).closest( '.uixpbform-box' );
+				$formContainer  = jQuery( previewID ).closest( '.uixpbform-box' ),
+				$socialIcon     = jQuery( '.uixpbform-icon-selector-btn-target .b:not(.social)' ),
+				$socialTitle    = jQuery( '.uixpbform-icon-selector-btn-target .uixpbform-icon-social-title' );
 				
 			
 			/*-- Default status --*/
@@ -1013,8 +1015,17 @@ jQuery( document ).ready( function() {
 			jQuery( document ).on( 'click', chooseBtnID, function( e ) {
 				e.preventDefault();
 				
-				jQuery( '.uixpbform-icon-selector-btn-target' ).attr( 'id', listContainerID ).show();
+				jQuery( '.uixpbform-icon-selector-btn-target' ).attr( 'id', listContainerID ).addClass( 'active' );
 
+				//social icons
+				if ( $this.hasClass( 'icon-social' ) ) {
+					$socialIcon.hide();	
+					$socialTitle.hide();		
+				} else {
+					$socialIcon.show();	
+					$socialTitle.show();		
+				}
+				
 			});
 			
 		
@@ -1036,7 +1047,7 @@ jQuery( document ).ready( function() {
 				
 				
 				//remove window
-				jQuery( '#' + listContainerID ).attr( 'id', '' ).hide();
+				$( '.uixpbform-sub-window' ).removeAttr( 'id' ).removeClass( 'active' );
 				
 				//Dynamic listening for the latest value
 				jQuery( targetID ).focus().blur();	
