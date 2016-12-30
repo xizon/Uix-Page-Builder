@@ -1018,7 +1018,7 @@ jQuery( document ).ready( function() {
 					$socialIcon     = jQuery( '#'+curmID+' .iconslist-box .b:not(.social)' ),
 				    $socialTitle    = jQuery( '#'+curmID+' .iconslist-box .uixpbform-icon-social-title' )
 				
-				console.log( curmID );
+				//console.log( curmID );
 
 				//hide main modal content
 				jQuery( '#'+curmID+' .ajax-temp' ).css( 'visibility', 'hidden' );

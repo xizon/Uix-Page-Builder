@@ -61,8 +61,9 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		
 			 if( get_post_type() == 'page' ) {
 				  
-					//Register clone vars
-					wp_register_script( 'uixpbform-functions-handle', self::plug_directory() .'js/uixpbform.debug.js' );
+					////Register core functions
+				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), self::VERSION, true );
+				    wp_enqueue_script( 'uixpbform-functions' );
 
 					//Add Icons
 					wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.css', array(), '4.5.0', 'all');
@@ -70,7 +71,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					//UixForm
 					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false, self::VERSION, 'all');
 					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), self::VERSION, true );
-					wp_enqueue_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), self::VERSION, true );
+					
 
 					//Colorpicker
 					wp_enqueue_style( 'wp-color-picker' );
@@ -277,10 +278,10 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 *
 		 */	
 		public static function reg_clone_vars( $clone_id, $str ) {
-			wp_localize_script( 'uixpbform-functions-handle', $clone_id.'_clone_vars', array(
+			wp_localize_script( 'uixpbform-functions', $clone_id.'_clone_vars', array(
 				'value' => $str
 			) );
-			wp_enqueue_script( 'uixpbform-functions-handle' );
+			wp_enqueue_script( 'uixpbform-functions' );
 		}
 		
 		

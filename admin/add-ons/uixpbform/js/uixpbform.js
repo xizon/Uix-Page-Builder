@@ -132,7 +132,7 @@
 							
 							if ( newmHeight == null || 
 								newmHeight == 0 || 
-								parseFloat( newmHeight + 250 ) > $( window ).height()
+								parseFloat( newmHeight + 150 + $( window ).height()*0.2 ) > $( window ).height()
 							   ) 
 							{
 								newmHeight = modal_H_max;

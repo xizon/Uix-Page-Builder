@@ -289,7 +289,7 @@
 				postID               : uix_pagebuilder_layoutdata.send_string_postid,
 				security             : uix_pagebuilder_layoutdata.send_string_nonce
 			}, function ( response ) {
-				console.log( response )
+				//console.log( response )
 
 				//close
 				$this.parent().hide();
