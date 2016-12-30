@@ -26,6 +26,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 *
 		 */
 		public static function init() {
+			
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_form_core' ) );
@@ -35,6 +36,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			add_action( 'wp_ajax_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
 			add_action( 'wp_ajax_nopriv_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
 			add_action( 'wp_ajax_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
+			
 			
 		}
 		

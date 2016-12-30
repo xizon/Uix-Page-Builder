@@ -43,21 +43,32 @@
 
 .uixpbform-modal-box .iconslist-box {
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
+	width: calc(100% - 20px);
+	height: calc(100% - 10px);
+	top: 10px;
+	left: 15px;
 	display: none;
 	background: #fff;
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;	
-    z-index: 100051;
+    z-index: 559902;
    /*coordinate of wordpress*/
 }
 
+
 .uixpbform-modal-box .iconslist-box.active {
 	display: block;
+}
+
+.uixpbform-modal-box .iconslist-box .uixpbform-icon-selector {
+    width: calc( 98% - 40px );
+    height: calc( 98% - 70px );
+    overflow: hidden;
+    position: relative;
+    overflow-y: auto;
+	padding: 15px 20px 0 20px;
+	margin: 10px 0 20px;
 }
 
 
@@ -1438,16 +1449,6 @@
 }
 
 
-.uixpbform-icon-selector {
-    width: calc( 98% - 20px );
-    height: calc( 98% - 80px );
-    overflow: hidden;
-    position: relative;
-    margin: 20px 0;
-    overflow-y: auto;
-    z-index: 559902;
-	padding: 20px;
-}
 
 a.uixpbform-icon-clear {
 	position: absolute;
