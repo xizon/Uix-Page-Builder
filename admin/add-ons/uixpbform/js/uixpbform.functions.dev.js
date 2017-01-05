@@ -5,7 +5,7 @@
  */
 jQuery( document ).ready( function() {
 
-
+	
     /*!
 	 *
 	 * Remove current icon from icons list
@@ -502,6 +502,11 @@ jQuery( document ).ready( function() {
 
 		
 			if ( jQuery( cur_targetID ).length > 0 ) {
+				
+				if ( imgvalue.length == 0 ) {
+					jQuery( cur_previewID ).find( 'img' ).attr( 'src', '' );
+				}
+				
 
 				if ( imgvalue.length > 0 ) {
 
@@ -1370,4 +1375,65 @@ function uixpbform_curModalID() {
 	
 	return result;
 };
+
+/*! 
+ * ************************************
+ * Generate human-readable url slugs from any ordinary string.
+ *************************************
+ */	
+function uixpbform_strToSlug( str ){
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		var pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]");
+		var rs = ""; 
+		for (var i = 0; i < str.length; i++) { 
+			rs = rs+str.substr( i, 1 ).replace( pattern, '' ); 
+		} 
+
+		rs = rs.replace(/ /g, '-').toLowerCase();
+		return rs;
+	}
+}
+
+/*! 
+ * ************************************
+ * Initialize editor
+ *************************************
+ */	
+function uixpbform_editorInit( id ){
+	( function( $ ) {
+	"use strict";
+		$( function() {
+            
+			if ( id != undefined ) {
+				
+				var vid = id.replace( '-editor', '' );
+				tinyMCE.execCommand( 'mceRemoveEditor', true, id );
+				tinymce.init({
+					selector:  'textarea#' + id,
+					height : 200,
+					menubar: false,
+					plugins: 'textcolor image media hr',
+				    toolbar: 'undo redo | forecolor backcolor styleselect | bold italic | bullist numlist outdent indent | hr image',
+					setup:function(ed) {
+					   ed.on( 'change', function(e) {
+						   var newvalue = ed.getContent().replace(/\r?\n/gm, '');
+						   $( 'textarea#' + vid ).val( newvalue ).trigger( 'change' );
+					   });
+				   },
+				  content_css: [
+					uix_pagebuilder_wp_plugin.url + 'css/uixpbform.mce.css'
+				  ]
+				});	
+			}
+			
+
+		} );
+		
+	} ) ( jQuery );
+	
+
+}
+
+
+
 

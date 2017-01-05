@@ -489,6 +489,22 @@ $args =
 		),
 		
 		array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_editor' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_editor' ),
+			'title'          => __( 'Editor', 'uix-pagebuilder' ),
+			'desc'           => '',
+			'value'          => '',
+			'placeholder'    => '',
+			'type'           => 'editor',
+			'default'        => array(
+									'row'     => 3,
+									'format'  => true
+								)
+		
+		),
+		
+		
+		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_textarea' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_textarea' ),
 			'title'          => __( 'Textarea(by default value)', 'uix-pagebuilder' ),

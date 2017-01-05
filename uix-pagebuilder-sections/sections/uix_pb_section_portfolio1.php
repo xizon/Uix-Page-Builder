@@ -100,9 +100,9 @@ $uix_pb_portfolio1_config_grid              = UixPageBuilder::fvalue( $colid, $s
 
 $uix_pb_portfolio1_listitem_thumbnail       = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_thumbnail', '' ) );
 $uix_pb_portfolio1_listitem_fullimage       = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_fullimage', '' ) );
-$uix_pb_portfolio1_listitem_title           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_title', __( 'Name', 'uix-pagebuilder' ) );
-$uix_pb_portfolio1_listitem_cat             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_cat', __( 'Position', 'uix-pagebuilder' ) );
-$uix_pb_portfolio1_listitem_intro           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_intro', __( 'The Introduction of this member.', 'uix-pagebuilder' ) );
+$uix_pb_portfolio1_listitem_title           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_title', __( 'Project Title', 'uix-pagebuilder' ) );
+$uix_pb_portfolio1_listitem_cat             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_cat', __( 'Category', 'uix-pagebuilder' ) );
+$uix_pb_portfolio1_listitem_intro           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_intro', __( 'The description of this project.', 'uix-pagebuilder' ) );
 $uix_pb_portfolio1_listitem_toggle          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_toggle', 0 ); // 0:close  1:open
 $uix_pb_portfolio1_listitem_toggle_url      = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_listitem_toggle_url', '' ) );
 
@@ -117,54 +117,34 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) ) {
 		
 		
-		$thumbnailURL       = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_thumbnail]['.$sid.']' ] ) ) ? $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_thumbnail]['.$sid.']' ] : UixPBFormCore::photo_placeholder();
-		$fullimageURL       = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_fullimage]['.$sid.']' ] ) ) ? $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_fullimage]['.$sid.']' ] : $thumbnailURL;
-		$url                = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_toggle_url]['.$sid.']' ] ) ) ? '<a href="'.esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_toggle_url]['.$sid.']' ] ).'" target="_blank"><i class="fa fa-'.esc_attr( $social_icon_1 ).'"></i></a>' : '';
+		$thumbnailURL       = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_thumbnail]['.$sid.']' ] ) ) ? esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_thumbnail]['.$sid.']' ] ) : UixPBFormCore::photo_placeholder();
+		$fullimageURL       = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_fullimage]['.$sid.']' ] ) ) ? esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_fullimage]['.$sid.']' ] ) : $thumbnailURL;
+		$cat                = uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_cat]['.$sid.']' ] );
 		
+		$targetcode = '';
+		if ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_toggle_url]['.$sid.']' ] ) ) {
+			$targetcode   = ( $uix_pb_portfolio1_config_urlwindow == 1 ) ? ' target="_blank"' : '';
+			$fullimageURL = esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_toggle_url]['.$sid.']' ] );
+		} else {
+			$targetcode = ( $uix_pb_portfolio1_config_urlwindow == 1 ) ? ' target="_blank" rel="uix-pb-prettyPhoto"' : ' rel="uix-pb-prettyPhoto"';
+		}
 		
+
 		$list_portfolio1_item_content .= '
-        <div class="uix-pb-portfolio-item" data-groups=\'["'.UixPageBuilder::transform_slug( $type ).'"]\'>
-            <span class="uix-pb-portfolio-image" {imagefillet}>
-                <a '.$targetcode.' href="'.$fullimgURL.'" title="'.esc_attr( $title ).'">
-                <img src="'.$image.'" id="'.UixPageBuilder::get_attachment_id( $image ).'" alt="" {imagefillet}>
+        <div class="uix-pb-portfolio-item" data-groups=\'{rowcsql:}"'.UixPageBuilder::transform_slug( $cat ).'"{rowcsqr:}\'>
+            <span class="uix-pb-portfolio-image" style="-webkit-border-radius: '.$thumbnailfillet.'; -moz-border-radius: '.$thumbnailfillet.'; border-radius: '.$thumbnailfillet.';">
+                <a '.$targetcode.' href="'.$fullimageURL.'" title="'.esc_attr( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_title]['.$sid.']' ] ).'">
+                <img src="'.$thumbnailURL.'" alt="" style="-webkit-border-radius: '.$thumbnailfillet.'; -moz-border-radius: '.$thumbnailfillet.'; border-radius: '.$thumbnailfillet.';">
                 </a>
             </span>
-            <h3><a '.$targetcode.' href="'.$fullimgURL.'" title="'.esc_attr( $title ).'">'.$title.'</a></h3>
-			'.( !empty( $type ) ? '<div class="uix-pb-portfolio-type">'.$type.'</div>' : '' ).'
+            <h3><a '.$targetcode.' href="'.$fullimageURL.'" title="'.esc_attr( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_title]['.$sid.']' ] ).'">'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_title]['.$sid.']' ] ).'</a></h3>
+			'.( !empty( $cat ) ? '<div class="uix-pb-portfolio-type">'.$cat.'</div>' : '' ).'
             <div class="uix-pb-portfolio-content">
-                '.str_replace( '[uix_portfolio_item_desc]', '',
-                  str_replace( '[/uix_portfolio_item_desc]', '',
-                   $content
-                   ) ).'
-				<a class="uix-pb-portfolio-link" '.$targetcode.' href="'.$fullimgURL.'" title="'.esc_attr( $title ).'"></a>
+                '.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_intro]['.$sid.']' ] ).'
+				<a class="uix-pb-portfolio-link" '.$targetcode.' href="'.$fullimageURL.'" title="'.esc_attr( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_title]['.$sid.']' ] ).'"></a>
             </div>
     
-        </div> 
-		
-		
-		
-		
-		
-		<div class="uix-pb-gallery-list uix-pb-gallery-list-col'.$uix_pb_portfolio1_config_grid.' '.( $uix_pb_portfolio1_config_filterable == 1 ? ' uix-pb-gray' : '' ).'">
-			<div class="uix-pb-gallery-list-imgbox" '.$height.'>
-				<img src="'.esc_url( $avatarURL ).'" alt="'.esc_attr( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_title]['.$sid.']' ] ).'" style="-webkit-border-radius: '.$thumbnailfillet.'; -moz-border-radius: '.$thumbnailfillet.'; border-radius: '.$thumbnailfillet.';">
-				'.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_cat]['.$sid.']' ] )  ? '<span class="uix-pb-gallery-list-position">'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_cat]['.$sid.']' ] ).'</span>' : '' ).'
-			</div>
-			<div class="uix-pb-gallery-list-info">
-				<h3 class="uix-pb-gallery-list-title">'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_title]['.$sid.']' ] ).'</h3>	
-				<div class="uix-pb-gallery-list-desc">
-					<p>'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_portfolio1_listitem_intro]['.$sid.']' ] ).'</p>
-				</div>
-				<div class="uix-pb-gallery-list-social">
-					&nbsp;&nbsp;
-					'.$social_out_1.'
-					'.$social_out_2.'
-					'.$social_out_3.'									
-				
-				</div>
-				
-			</div>
-		</div>
+        </div>
 		';	
 		
 	} 
@@ -175,32 +155,33 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 
 		$thumbnailURL       = ( !empty( $uix_pb_portfolio1_listitem_thumbnail ) ) ? $uix_pb_portfolio1_listitem_thumbnail : UixPBFormCore::photo_placeholder();
 		$fullimageURL       = ( !empty( $uix_pb_portfolio1_listitem_fullimage ) ) ? $uix_pb_portfolio1_listitem_fullimage : $thumbnailURL;
-		  
-		$url                = ( !empty( $uix_pb_portfolio1_listitem_toggle_url ) ) ? '<a href="'.esc_url( $uix_pb_portfolio1_listitem_toggle_url ).'" target="_blank"><i class="fa fa-'.esc_attr( $social_icon_1 ).'"></i></a>' : '';
+		$cat                = uix_pb_kses( $uix_pb_portfolio1_listitem_cat );
+		
+		$targetcode = '';
+		if ( !empty( $uix_pb_portfolio1_listitem_toggle_url ) ) {
+			$targetcode   = ( $uix_pb_portfolio1_config_urlwindow == 1 ) ? ' target="_blank"' : '';
+			$fullimageURL = $uix_pb_portfolio1_listitem_toggle_url;
+		} else {
+			$targetcode = ( $uix_pb_portfolio1_config_urlwindow == 1 ) ? ' target="_blank" rel="uix-pb-prettyPhoto"' : ' rel="uix-pb-prettyPhoto"';
+		}
 		
 		
 		
 		$list_portfolio1_item_content .= '
-		<div class="uix-pb-gallery-list uix-pb-gallery-list-col'.$uix_pb_portfolio1_config_grid.' '.( $uix_pb_portfolio1_config_filterable == 1 ? ' uix-pb-gray' : '' ).'">
-			<div class="uix-pb-gallery-list-imgbox" '.$height.'>
-				<img src="'.esc_url( $avatarURL ).'" alt="'.esc_attr( $uix_pb_portfolio1_listitem_title ).'" style="-webkit-border-radius: '.$thumbnailfillet.'; -moz-border-radius: '.$thumbnailfillet.'; border-radius: '.$thumbnailfillet.';">
-				'.( !empty( $uix_pb_portfolio1_listitem_cat )  ? '<span class="uix-pb-gallery-list-position">'.uix_pb_kses( $uix_pb_portfolio1_listitem_cat ).'</span>' : '' ).'
-			</div>
-			<div class="uix-pb-gallery-list-info">
-				<h3 class="uix-pb-gallery-list-title">'.uix_pb_kses( $uix_pb_portfolio1_listitem_title ).'</h3>	
-				<div class="uix-pb-gallery-list-desc">
-					<p>'.uix_pb_kses( $uix_pb_portfolio1_listitem_intro ).'</p>
-				</div>
-				<div class="uix-pb-gallery-list-social">
-					&nbsp;&nbsp;
-					'.$social_out_1.'
-					'.$social_out_2.'
-					'.$social_out_3.'									
-				
-				</div>
-				
-			</div>
-		</div>
+        <div class="uix-pb-portfolio-item" data-groups=\'{rowcsql:}"'.UixPageBuilder::transform_slug( $cat ).'"{rowcsqr:}\'>
+            <span class="uix-pb-portfolio-image" style="-webkit-border-radius: '.$thumbnailfillet.'; -moz-border-radius: '.$thumbnailfillet.'; border-radius: '.$thumbnailfillet.';">
+                <a '.$targetcode.' href="'.$fullimageURL.'" title="'.esc_attr( $uix_pb_portfolio1_listitem_title ).'">
+                <img src="'.$thumbnailURL.'" alt="" style="-webkit-border-radius: '.$thumbnailfillet.'; -moz-border-radius: '.$thumbnailfillet.'; border-radius: '.$thumbnailfillet.';">
+                </a>
+            </span>
+            <h3><a '.$targetcode.' href="'.$fullimageURL.'" title="'.esc_attr( $uix_pb_portfolio1_listitem_title ).'">'.uix_pb_kses( $uix_pb_portfolio1_listitem_title ).'</a></h3>
+			'.( !empty( $cat ) ? '<div class="uix-pb-portfolio-type">'.$cat.'</div>' : '' ).'
+            <div class="uix-pb-portfolio-content">
+                '.uix_pb_kses( $uix_pb_portfolio1_listitem_intro ).'
+				<a class="uix-pb-portfolio-link" '.$targetcode.' href="'.$fullimageURL.'" title="'.esc_attr( $uix_pb_portfolio1_listitem_title ).'"></a>
+            </div>
+    
+        </div>
 		';	
 		
 	}
@@ -302,7 +283,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_config_thumbnail_fillet' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_portfolio1_config_thumbnail_fillet' ),
-			'title'          => __( 'Radius of Fillet Avatar', 'uix-pagebuilder' ),
+			'title'          => __( 'Radius of Fillet Image', 'uix-pagebuilder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_portfolio1_config_thumbnail_fillet,
 			'placeholder'    => '',
@@ -677,12 +658,9 @@ if ( $sid >= 0 && is_admin() ) {
 				
 				var _config_t          = ( uix_pb_portfolio1_config_title != undefined && uix_pb_portfolio1_config_title != '' ) ? '<h2 class="uix-pb-section-heading">'+uix_pb_portfolio1_config_title+'</h2><div class="uix-pb-section-hr"></div>' : '',
 					_config_desc       = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_portfolio1_config_intro+'</div>' : '',
-					_config_filterable = ( uix_pb_portfolio1_config_filterable_chk === true ) ? ' ' : '',
-					_config_urlwindow  = ( uix_pb_portfolio1_config_urlwindow_chk === true ) ? ' ' : '';
+					_config_filterable = ( uix_pb_portfolio1_config_filterable_chk === true ) ? ' ' : '';
 ;
 						
-					
-				
 				
 				/* List Item */
 				var list_num               = <?php echo $clone_max; ?>,
@@ -694,40 +672,43 @@ if ( $sid >= 0 && is_admin() ) {
 					
 					var _uid         = ( i >= 2 ) ? '#'+i+'-' : '#',
 						_thumbnail   = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_thumbnail' ); ?>' ).val(),
-						_fullimage = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_fullimage' ); ?>' ).val(),
+						_fullimage   = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_fullimage' ); ?>' ).val(),
 						_title       = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_title' ); ?>' ).val(),
 						_cat         = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_cat' ); ?>' ).val(),
 						_intro       = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_intro' ); ?>' ).val(),
-						_url         = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ); ?>' ).val();
+						_url         = encodeURI( $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ); ?>' ).val() );
 					
 						
-						var _item_v_thumbnailURL     = ( _thumbnail != undefined && _thumbnail != '' ) ? _thumbnail : '<?php echo UixPBFormCore::photo_placeholder(); ?>',
-						_item_v_fullimageURL   = ( _fullimage != undefined && _fullimage != '' ) ? _fullimage : _item_v_thumbnailURL,
-						_item_v_url              = ( _toggleurl1 != undefined && _toggleurl1 != '' ) ? '<a href="'+encodeURI( _toggleurl1 )+'" target="_blank"><i class="fa fa-'+uixpbform_htmlEncode( _item_v_social_icon_1 )+'"></i></a>' : '';
+						var _item_v_thumbnailURL  = ( _thumbnail != undefined && _thumbnail != '' ) ? _thumbnail : '<?php echo UixPBFormCore::photo_placeholder(); ?>',
+						_item_v_fullimageURL      = ( _fullimage != undefined && _fullimage != '' ) ? _fullimage : _item_v_thumbnailURL,
+					    _item_v_catshow           = ( _cat != undefined && _cat != '' ) ? '<div class="uix-pb-portfolio-type">'+_cat+'</div>' : '',
+						_item_v_targetcode        = '';
+					
+						if ( _url != undefined && _url != '' ) {
+							_item_v_targetcode   = ( uix_pb_portfolio1_config_urlwindow_chk === true ) ? ' target="_blank"' : '';
+							_item_v_fullimageURL = _url;
+						} else {
+							_item_v_targetcode = ( uix_pb_portfolio1_config_urlwindow_chk === true ) ? ' target="_blank" rel="uix-pb-prettyPhoto"' : 'rel="uix-pb-prettyPhoto"';;
+						}
+		
 					
 					
-	
 					
 					if ( _intro != undefined && _intro != '' ) {
 										
 						//Do not include spaces
 						
-						show_list_item_content += '<div class="uix-pb-gallery-list uix-pb-gallery-list-col'+uix_pb_portfolio1_config_grid+' '+_config_gray+'">';
-						show_list_item_content += '<div class="uix-pb-gallery-list-imgbox" '+_config_height+'>';
-						show_list_item_content += '<img src="'+encodeURI( _item_v_thumbnailURL )+'" alt="'+uixpbform_htmlEncode( _title )+'" style="-webkit-border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+'; -moz-border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+'; border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+';">';
-						show_list_item_content += _item_v_pos;
-						show_list_item_content += '</div>';
-						show_list_item_content += '<div class="uix-pb-gallery-list-info">';
-						show_list_item_content += '<h3 class="uix-pb-gallery-list-title">'+_title+'</h3>	';
-						show_list_item_content += '<div class="uix-pb-gallery-list-desc">';
-						show_list_item_content += '<p>'+_intro+'</p>';
-						show_list_item_content += '</div>';
-						show_list_item_content += '<div class="uix-pb-gallery-list-social">';
-						show_list_item_content += '&nbsp;&nbsp;';
-						show_list_item_content += _item_v_social_out_1;
-						show_list_item_content += _item_v_social_out_2;
-						show_list_item_content += _item_v_social_out_3;									
-						show_list_item_content += '</div>';
+						show_list_item_content += '<div class="uix-pb-portfolio-item" data-groups=\'{rowcsql:}"'+uixpbform_strToSlug( _cat )+'"{rowcsqr:}\'>';
+						show_list_item_content += '<span class="uix-pb-portfolio-image" style="-webkit-border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+'; -moz-border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+'; border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+';">';
+						show_list_item_content += '<a '+_item_v_targetcode+' href="'+encodeURI( _item_v_fullimageURL )+'" title="'+uixpbform_htmlEncode( _title )+'">';
+						show_list_item_content += '<img src="'+_item_v_thumbnailURL+'" alt="" style="-webkit-border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+'; -moz-border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+'; border-radius: '+uix_pb_portfolio1_config_thumbnail_fillet+';">';
+						show_list_item_content += '</a>';
+						show_list_item_content += '</span>';
+						show_list_item_content += '<h3><a '+_item_v_targetcode+' href="'+encodeURI( _item_v_fullimageURL )+'" title="'+uixpbform_htmlEncode( _title )+'">'+_title+'</a></h3>';
+						show_list_item_content += _item_v_catshow;
+						show_list_item_content += '<div class="uix-pb-portfolio-content">';
+						show_list_item_content += _intro;
+						show_list_item_content += '<a class="uix-pb-portfolio-link" '+_item_v_targetcode+' href="'+encodeURI( _item_v_fullimageURL )+'" title="'+uixpbform_htmlEncode( _title )+'"></a>';
 						show_list_item_content += '</div>';
 						show_list_item_content += '</div>';
 	

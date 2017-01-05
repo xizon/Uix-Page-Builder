@@ -100,6 +100,9 @@
 							}
 							
 							
+							/*-- Init tinymce --*/
+							uixpbform_editorInit( $obj.find( '.uixpbform-mce-editor textarea.mce' ).attr( 'id' ) );
+							
 							
 							
 							/*-- Count new modal height --*/

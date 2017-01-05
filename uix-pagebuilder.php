@@ -467,7 +467,15 @@ class UixPageBuilder {
 			    ) ) ) ) ) ) );
 				
 		if ( !is_admin() ) {
-			$data = 	str_replace( '&lt;br&gt;', '<br>', $data );	
+			$data = str_replace( '&lt;br&gt;', '<br>',
+								
+					//Returns string in order to protect the security output of JSON
+					str_replace( '{rowcsql:}', '[', 
+					str_replace( '{rowcsqr:}', ']', 
+								
+					$data 
+				   ) ) );	
+	
 		}
 			   
 		return json_decode( $data, true );
@@ -713,8 +721,7 @@ class UixPageBuilder {
 		
 	
 	}
-	
-	
+
 	
 	
 	/*

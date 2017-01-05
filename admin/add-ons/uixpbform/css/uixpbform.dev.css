@@ -1352,7 +1352,7 @@
 }
 
 .uixpbform-form-container .toggle-row:not(.toggle-row-show) label,
-.uixpbform-form-container .toggle-row:not(.toggle-row-show) .uixpbform-box {
+.uixpbform-form-container .toggle-row:not(.toggle-row-show) .uixpbform-box:not(.uixpbform-mce-editor) {
     display: none;
 }
 
@@ -1380,7 +1380,7 @@
 .uixpbform-form-container .toggle-row.isMSIE,
 .uixpbform-form-container .toggle-row.toggle-row-clone-list.isMSIE,
 .uixpbform-form-container .toggle-row.isMSIE label,
-.uixpbform-form-container .toggle-row.isMSIE .uixpbform-box {
+.uixpbform-form-container .toggle-row.isMSIE .uixpbform-box:not(.uixpbform-mce-editor) {
     display: block;
 }
 
@@ -2225,6 +2225,14 @@ a.uixpbform-icon-clear {
 
 }
 
+/* Editor
+--------------------------------------------------------------
+-------------------------------------------------------------- */ 
+.uixpbform-mce-editor {
+	border: 1px solid #E7E7E7;
+}
+
+
 
 /* Default
 --------------------------------------------------------------
@@ -2314,58 +2322,5 @@ a.uixpbform-icon-clear {
     color: #bdbdbd;
 }
 
-.uixpbform-form-container button {
-    background-color: #AEDEF4;
-    color: white;
-    border: none;
-    box-shadow: none;
-    font-size: 14px;
-    font-weight: 500;
-    -webkit-border-radius: 4px;
-    border-radius: 5px;
-    padding: 6px 22px;
-    margin: 26px 5px 0 5px;
-    cursor: pointer;
-}
 
-.uixpbform-form-container button:focus {
-    outline: none;
-    box-shadow: 0 0 2px rgba(128, 179, 235, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
-}
-
-.uixpbform-form-container button:hover {
-    background-color: #a1d9f2;
-}
-
-.uixpbform-form-container button:active {
-    background-color: #81ccee;
-}
-
-.uixpbform-form-container button.cancel {
-    background-color: #D0D0D0;
-}
-
-.uixpbform-form-container button.cancel:hover {
-    background-color: #c8c8c8;
-}
-
-.uixpbform-form-container button.cancel:active {
-    background-color: #b6b6b6;
-}
-
-.uixpbform-form-container button.cancel:focus {
-    box-shadow: rgba(197, 205, 211, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset !important;
-}
-
-.uixpbform-form-container button::-moz-focus-inner {
-    border: 0;
-}
-
-.uixpbform-form-container[data-has-cancel-button=false] button {
-    box-shadow: none !important;
-}
-
-.uixpbform-form-container[data-has-confirm-button=false][data-has-cancel-button=false] {
-    padding-bottom: 40px;
-}
 

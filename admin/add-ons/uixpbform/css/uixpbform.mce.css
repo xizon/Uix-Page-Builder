@@ -1,4 +1,112 @@
-pre {
+.mce-container textarea {
+    display: initial!important;
+}
+
+.mce-content-body {
+    font-size: 12px;
+    color: #626262;
+    padding: 0 0 0;
+	background: rgba(241,241,241,0.65);
+}
+
+.mce-content-body h1,.mce-content-body h2,.mce-content-body h3,.mce-content-body h4,.mce-content-body h5,.mce-content-body h6 {
+    font-family: aileron;
+    font-weight: 200;
+    line-height: 1.4em;
+    margin: 15px 0 15px;
+}
+
+.mce-content-body h1 {
+    font-size: 34px;
+}
+
+.mce-content-body h2 {
+    font-size: 30px;
+}
+
+.mce-content-body h3 {
+    font-size: 26px;
+}
+
+.mce-content-body h4 {
+    font-size: 22px;
+}
+
+.mce-content-body h5 {
+    font-size: 18px;
+}
+
+.mce-content-body h6 {
+    font-size: 14px;
+}
+
+.mce-content-body p {
+    margin: 15px 0;
+}
+
+.mce-content-body ol,.mce-content-body ul {
+    margin-left: 15px;
+    list-style-position: outside;
+    margin-bottom: 20px;
+}
+
+.mce-content-body ol li,.mce-content-body ul li {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    color: #626262;
+}
+
+.mce-content-body ul {
+    list-style-type: disc;
+}
+
+.mce-content-body ol {
+    list-style-type: decimal;
+}
+
+.mce-content-body a[href] {
+    text-decoration: underline;
+}
+
+.mce-content-body table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+    border: 1px solid #aaa;
+}
+
+.mce-content-body blockquote {
+	border-left: 4px solid #707070;
+	color: #707070;
+	font-size: 20px;
+	font-style: italic;
+	line-height: 1.8182;
+	margin: 0 0 35px 20px;
+	padding-left: 17px;
+}
+
+.mce-content-body table tr:nth-child(even) {
+    background: #FAFAFA;
+}
+
+.mce-content-body table caption,.mce-content-body table td,.mce-content-body table th {
+    padding: 15px 7px;
+    font: inherit;
+}
+
+.mce-content-body table th {
+    font-weight: 400;
+    color: #6E6E6E;
+    background-position: 100% 100%;
+    background-size: 2px 10px;
+    background-repeat: no-repeat;
+}
+
+.mce-content-body table th:last-child {
+    background: 0 0;
+}
+
+.mce-content-body pre {
 	background: #F6F6F6;
 	border-left: 5px solid #a2bf2f;
 	margin-bottom: 1.5em;

@@ -31,7 +31,6 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_form_core' ) );
 			add_action( 'admin_footer', array( __CLASS__, 'icon_selector_win' ) );
-			add_filter( 'mce_css', array( __CLASS__, 'mce_css' ) );
 			add_action( 'wp_ajax_nopriv_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
 			add_action( 'wp_ajax_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
 			add_action( 'wp_ajax_nopriv_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
@@ -65,6 +64,10 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				  
 					////Register core functions
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), self::VERSION, true );
+					wp_localize_script( 'uixpbform-functions',  'uix_pagebuilder_wp_plugin', array( 
+						'url' => self::plug_directory()
+					 ) );	
+				 
 				    wp_enqueue_script( 'uixpbform-functions' );
 
 					//Add Icons
@@ -399,17 +402,6 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			return $new_class;
 			
 		
-		}
-		
-		
-		/*
-		 * Add custom CTA styles to TinyMCE editor
-		 *
-		 *
-		 */
-		public static function mce_css( $wp ) {
-			$wp .= ',' . self::plug_directory() .'css/uixpbform.mce.css';
-			return $wp;
 		}
 		
 		
@@ -934,6 +926,13 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					$field .= UixPBFormType_Note::add( $args, 'html' );
 					$jscode .= UixPBFormType_Note::add( $args, 'js' );
 					$jscode_vars .= UixPBFormType_Note::add( $args, 'js_vars' );
+					
+					//Editor
+					$field .= UixPBFormType_Editor::add( $args, 'html' );
+					$jscode .= UixPBFormType_Editor::add( $args, 'js' );
+					$jscode_vars .= UixPBFormType_Editor::add( $args, 'js_vars' );
+									
+					
 					
 	
 	
