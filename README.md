@@ -7,6 +7,8 @@ Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Plugin URI](https://uiux.cc/wp-plugins/uix-pagebuilder/)
 
+[Video Demo](#)
+
 ### Licensing
 
 Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
@@ -14,16 +16,29 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 ### Description
 
 
-Uix Page Builder is a design system that it is simple content creation interface.
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card` and `portfolio`. To be continued.
 
+= Features =
+
+* Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
+* Support to save custom templates and export templates.
+* Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like "Uix Page Builder Anchor Links", from the left column to add to the menu.
+* It is s easy to bind specific WordPress themes you want.
+* Simple operation window, support loop list items.
+* Allows you to customize front-end templates and publish multiple pages based Uix Page Builder.
+* Allows completely customize your `.css`, `.php`, `.js`, `image` files for your builder structure, please refer to the usage.
+
+> Note: Currently there is no detailed custom development documentation, can only refer to the default provided by the custom files in folders ( **"uix-pagebuilder/uix-pagebuilder-sections/"** and **"uix-pagebuilder/theme_templates/"** ).
 
 
 ### Updates 
 
 
-##### Version 1.0.0
+##### = 1.0.0 =
 
-Initial Release.
+* First release.
+
+
 
 
 ### Tested under

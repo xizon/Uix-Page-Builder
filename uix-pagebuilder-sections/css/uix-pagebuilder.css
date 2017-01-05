@@ -25,8 +25,8 @@
     13. Parallax
     14. Client 
     15. Gallery list (Team) 
-    16. Card list  (Team)       
-
+    16. Card list  (Team)
+    17. Portfolio
 
 */
 
@@ -1858,4 +1858,327 @@ img.uix-pb-img,
 	
 	
 	
+}
+
+
+/* ====================================================== 
+   17. Portfolio                               
+/* ====================================================== */
+.uix-pb-container-fullwidth .uix-pb-portfolio-wrapper {
+	padding: 2em;
+}
+
+
+.uix-pb-portfolio-tiles {
+	/* Let all the flexible items be the same length, regardles of its content */
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	/* specifies whether flex items are forced into a single line */
+	-moz-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+	position: relative;
+	margin: 0 0 0 -2.5em;
+
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item {
+	-moz-transition: .2s ease-in-out; 
+	-o-transition: .2s ease-in-out; 
+	-webkit-transition: .2s ease-in-out;  
+	transition: .2s ease-in-out;	
+	position: relative;
+	margin: 1.5em 0 .5em 2.5em;
+	float: left;
+	
+}
+
+.uix-pb-portfolio-tiles.uix-pb-portfolio-col4 .uix-pb-portfolio-item {
+	width: calc(24.9% - 2.5em);
+}
+
+.uix-pb-portfolio-tiles.uix-pb-portfolio-col3 .uix-pb-portfolio-item {
+	width: calc(33.3% - 2.5em);
+}
+
+.uix-pb-portfolio-tiles.uix-pb-portfolio-col2 .uix-pb-portfolio-item {
+	width: calc(49.9% - 2.5em);
+}
+
+
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item > .uix-pb-portfolio-image {
+	-moz-transition: -moz-transform 0.5s ease;
+	-webkit-transition: -webkit-transform 0.5s ease;
+	-ms-transition: -ms-transform 0.5s ease;
+	transition: transform 0.5s ease;
+	position: relative;
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	background: #000;
+}
+
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item > .uix-pb-portfolio-image img {
+	display: block;/* Remove gap */
+	width: 100%;
+	height: auto;
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item > .uix-pb-portfolio-image img,
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item > .uix-pb-portfolio-image iframe,
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item .uix-pb-portfolio-content {
+	-moz-transition: all 0.5s; 
+	-o-transition: all 0.5s; 
+	-webkit-transition: all 0.5s; 
+	transition: all 0.5s;
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item > .uix-pb-portfolio-image:before {
+	/* allows authors to control under what circumstances (if any) a particular graphic element can become the target of mouse events */
+	-moz-pointer-events: none;
+	-webkit-pointer-events: none;
+	-ms-pointer-events: none;
+	pointer-events: none;
+	-moz-transition: .2s ease-in-out; 
+	-o-transition: .2s ease-in-out;
+	-webkit-transition: .2s ease-in-out; 
+	transition: .2s ease-in-out;
+	content: '+';
+	color: #fff;
+	font-family: Arial, sans-serif;
+	font-size: 46px;
+	font-weight: 100;
+	display: block;
+	position: absolute;
+	bottom: .5em;
+	right: 15px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	filter: alpha(opacity=0); 
+	-moz-opacity: 0; 
+	opacity: 0;
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item h3{
+	display: block;
+	overflow: hidden;
+	height: 15px;/* Compatible with IE */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 1em 0 .3em;
+	font-size: 16px;
+	line-height: 1.2;
+	font-weight: 600;
+	text-align: center;
+}
+
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item h3,
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item h3 a{
+	color: #090909;
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item h3 a:hover{
+	color: #b2d234;
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item .uix-pb-portfolio-type{
+	color: #A7A7A7;
+	text-align: center;
+	font-size: 12px;
+	margin-top: .3em;
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item .uix-pb-portfolio-content{
+	line-height: 1.5;
+	font-size: 14px;
+	padding: 0 1em;
+	text-align: center;
+	width: 85%;
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 1.5em;
+	filter: alpha(opacity=0);  
+	-moz-opacity: 0;   
+	opacity: 0;
+	overflow: hidden;
+	
+	-moz-transition: .2s ease-in-out; 
+	-o-transition: .2s ease-in-out;
+	-webkit-transition: .2s ease-in-out; 
+	transition: .2s ease-in-out;
+	
+	/* Centering text (multiple lines) */
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 69%;
+	
+	
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item .uix-pb-portfolio-content a.uix-pb-portfolio-link{
+	display: block;
+	background-color: transparent;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item > .uix-pb-portfolio-image img,
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item > .uix-pb-portfolio-image iframe{
+	max-width: 100%;
+}
+
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item:hover > .uix-pb-portfolio-image img,
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item:hover > .uix-pb-portfolio-image iframe{
+	filter: alpha(opacity=40); 
+	-moz-opacity: 0.4; 
+	opacity: 0.4;
+}
+
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item:hover > .uix-pb-portfolio-image:before{
+	filter: alpha(opacity=100); 
+	-moz-opacity: 1; 
+	opacity: 1;	
+	font-size: 56px;
+}
+
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item:hover > .uix-pb-portfolio-content{
+	filter: alpha(opacity=100);  
+	-moz-opacity: 1;   
+	opacity: 1; 
+}
+
+
+
+
+@media screen and (max-width: 1280px) {
+	
+	.uix-pb-portfolio-tiles {
+		margin: -1.25em 0 0 -1.25em;
+	}
+
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col4 .uix-pb-portfolio-item {
+		width: calc(24.9% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col3 .uix-pb-portfolio-item {
+		width: calc(33.3% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+	
+
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col2 .uix-pb-portfolio-item {
+		width: calc(49.9% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+	
+}
+
+@media screen and (max-width: 980px) {
+
+	.uix-pb-portfolio-tiles {
+		margin: -2.5em 0 0 -2.5em;
+	}
+
+    .uix-pb-portfolio-tiles.uix-pb-portfolio-col4 .uix-pb-portfolio-item,
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col3 .uix-pb-portfolio-item,
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col2 .uix-pb-portfolio-item{
+		width: calc(50% - 2.5em);
+		margin: 2.5em 0 0 2.5em;
+	}
+	
+}
+
+@media screen and (max-width: 736px) {
+
+	.uix-pb-portfolio-tiles {
+		margin: -1.25em 0 0 -1.25em;
+	}
+
+    .uix-pb-portfolio-tiles.uix-pb-portfolio-col4 .uix-pb-portfolio-item,
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col3 .uix-pb-portfolio-item,
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col2 .uix-pb-portfolio-item{
+		width: calc(50% - 1.25em);
+		margin: 1.25em 0 0 1.25em;
+	}
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+	.uix-pb-portfolio-tiles {
+		margin: 0;
+	}
+	
+    .uix-pb-portfolio-tiles.uix-pb-portfolio-col4 .uix-pb-portfolio-item,
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col3 .uix-pb-portfolio-item,
+	.uix-pb-portfolio-tiles.uix-pb-portfolio-col2 .uix-pb-portfolio-item{
+		width: 100%;
+		margin: 1.25em 0 0 0;
+	}
+
+}
+
+
+
+/*-- Categories --*/ 
+.uix-pb-portfolio-cat-list{
+	clear: both;
+	margin-bottom: 25px;
+	font-size: 13px;
+	text-align: center;
+	padding: .5em 0 1.5em;
+}
+
+.uix-pb-portfolio-cat-list:before,
+.uix-pb-portfolio-cat-list:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.uix-pb-portfolio-cat-list:after {
+  clear: both;
+}
+
+
+.uix-pb-portfolio-cat-list ul,
+.uix-pb-portfolio-cat-list li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.uix-pb-portfolio-cat-list li{
+	display: inline;
+	margin-right: 20px;
+}
+
+
+.uix-pb-portfolio-cat-list li a{
+	color: #666;
+	text-decoration: none;
+}
+
+.uix-pb-portfolio-cat-list li a:hover,
+.uix-pb-portfolio-cat-list li.current > a,
+.uix-pb-portfolio-cat-list li a.current {
+	color: #000;
 }

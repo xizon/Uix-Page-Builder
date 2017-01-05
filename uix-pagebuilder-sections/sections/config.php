@@ -68,6 +68,25 @@ $uix_pb_config = [
 	
 	),	
 	
+	array(
+		'sortname'        => __( 'Portfolio', 'uix-pagebuilder' ),
+		'buttons'         => [
+							
+								array(
+									'title'           => __( 'Portfolio Grid', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_portfolio1',
+									'thumb'           => 'portfolio1.jpg',
+								
+								),
+	
+								
+				
+							]
+	
+	),	
+	
+	
+	
 	
 	
 	array(

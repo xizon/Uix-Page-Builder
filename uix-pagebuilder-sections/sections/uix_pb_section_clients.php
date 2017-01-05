@@ -109,11 +109,12 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	$_field = 'uix_pb_clients_listitem_logo';
 	if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) ) {
 		
+		$logoURL       = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_logo]['.$sid.']' ] ) ) ? $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_logo]['.$sid.']' ] : UixPBFormCore::logo_placeholder();
 	
 		$list_clients_item_content .= '
         <div class="uix-pb-client-li uix-pb-client-li-'.$uix_pb_clients_config_grid.'">
            <p class="uix-pb-img">
-		       '.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ) ? '<a href="'.esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ).'" target="_blank">' : '' ).'<img src="'.esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_logo]['.$sid.']' ] ).'" alt="" />'.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ) ? '</a>' : '' ).'
+		       '.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ) ? '<a href="'.esc_url( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ).'" target="_blank">' : '' ).'<img src="'.esc_url( $logoURL ).'" alt="" />'.( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_url]['.$sid.']' ] ) ? '</a>' : '' ).'
 		       
 		   </p>
 		   <p>'.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_clients_listitem_intro]['.$sid.']' ] ).'</p>
@@ -125,10 +126,12 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	//The default value is not taken for any operation
 	if ( is_array( $item ) && !array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) && $k == 1 ) {
 		
+		$logoURL       = ( !empty( $uix_pb_clients_listitem_logo ) ) ? $uix_pb_clients_listitem_logo : UixPBFormCore::logo_placeholder();
+		
 		$list_clients_item_content .= '
         <div class="uix-pb-client-li uix-pb-client-li-'.$uix_pb_clients_config_grid.'">
 		   <p class="uix-pb-img">
-		       '.( !empty( $uix_pb_clients_listitem_url ) ? '<a href="'.esc_url( $uix_pb_clients_listitem_url ).'" target="_blank">' : '' ).'<img src="'.esc_url( $uix_pb_clients_listitem_logo ).'" alt="" />'.( !empty( $uix_pb_clients_listitem_url ) ? '</a>' : '' ).'
+		       '.( !empty( $uix_pb_clients_listitem_url ) ? '<a href="'.esc_url( $uix_pb_clients_listitem_url ).'" target="_blank">' : '' ).'<img src="'.esc_url( $logoURL ).'" alt="" />'.( !empty( $uix_pb_clients_listitem_url ) ? '</a>' : '' ).'
 		       
 		   </p>
            <p>'.uix_pb_kses( $uix_pb_clients_listitem_intro ).'</p>            
@@ -485,14 +488,15 @@ if ( $sid >= 0 && is_admin() ) {
 						_intro    = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_listitem_intro' ); ?>' ).val();
 						
 					
-					var _item_v_urltag_before  = ( _url != undefined && _url != '' ) ? '<a href="'+encodeURI( _url )+'" target="_blank">' : '',
+					var _item_v_logoURL        = ( _logo != undefined && _logo != '' ) ? encodeURI( _logo ) : '<?php echo UixPBFormCore::logo_placeholder(); ?>',
+					    _item_v_urltag_before  = ( _url != undefined && _url != '' ) ? '<a href="'+encodeURI( _url )+'" target="_blank">' : '',
 						_item_v_urltag_after   = ( _url != undefined && _url != '' ) ? '</a>' : '';
 					
 					if ( _intro != undefined && _intro != '' ) {
 										
 						//Do not include spaces
 						show_list_item_content += '<div class="uix-pb-client-li uix-pb-client-li-'+uix_pb_clients_config_grid+'">';
-						show_list_item_content += '<p class="uix-pb-img">'+_item_v_urltag_before+'<img src="'+encodeURI( _logo )+'" alt="" />'+_item_v_urltag_after+'</p>';
+						show_list_item_content += '<p class="uix-pb-img">'+_item_v_urltag_before+'<img src="'+_item_v_logoURL+'" alt="" />'+_item_v_urltag_after+'</p>';
 						show_list_item_content += '<p>'+_intro+'</p>';   
 						show_list_item_content += '</div>';
 	

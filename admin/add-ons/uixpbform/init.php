@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 1.3
+ * @version		: 1.4
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '1.3';
+		const VERSION    = '1.4';
 		const CUSTOMTEMP = 'uix-pagebuilder-sections/sections/';
 	
 		
@@ -960,8 +960,40 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		}
 			
 		
+		/*
+		 * Callback photo placeholder
+		 *
+		 *
+		 */
+		public static function photo_placeholder() {
+			
+			return self::plug_directory().'images/no-photo.png';
 	
+		}
+		
+		/*
+		 * Callback LOGO placeholder
+		 *
+		 *
+		 */
+		public static function logo_placeholder() {
+			
+			return self::plug_directory().'images/no-logo.png';
 	
+		}
+		
+		
+		/*
+		 * Callback cover placeholder
+		 *
+		 *
+		 */
+		public static function cover_placeholder() {
+			
+			return self::plug_directory().'images/default-cover.jpg';
+	
+		}		
+		
 		
 	}
 

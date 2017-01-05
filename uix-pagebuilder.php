@@ -903,6 +903,57 @@ class UixPageBuilder {
 		
 	}
 	
+	/*
+	 * Transform string to slug for filterable categories
+	 *
+	 *
+	 */
+	public static function transform_slug( $str ) {
+	
+		return sanitize_title( $str );
+
+	}
+	
+	
+	/*
+	 * Display categories on page
+	 *
+	 *
+	 */
+	public static function cat_list( $str, $classprefix = 'uix-pb-portfolio-' ) {
+
+		$list = array();  
+		$html = array();  
+		$c = preg_match_all( '/\<div class="'.$classprefix.'type">(.*?)\<\/div\>/', $str, $m ); 
+		$code = '';
+		if( count( $m[1] ) > 0 ) { 
+			for( $i=0; $i < $c; $i++ ) { 
+			
+				$new = !empty($m[1][$i]) ? $m[1][$i] : '';
+				array_push( $list, array(
+				    'slug' => self::transform_slug( $new ),
+					'name' => $new
+				));
+				
+			}  
+			
+			foreach ( $list as $key ) {
+				array_push( $html, '<li><a href="javascript:" data-group="'.$key[ 'slug' ].'">'.$key[ 'name' ].'</a></li>' );
+			}
+			$html = array_unique( $html );
+			
+			foreach ( $html as $key ) {
+				$code .= $key;
+			}	
+			
+			return $code;
+
+		} else {
+			return '';
+		}
+	
+	}
+	
 	
 			
 	/*

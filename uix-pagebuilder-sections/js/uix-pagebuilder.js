@@ -13,6 +13,7 @@
 	3. Pricing
     4. Parallax
     5. Testimonials
+	6. Filterable
 
 
 ************************************* */
@@ -581,3 +582,78 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
     return uix_pb;
 
 }( uix_pb, jQuery, window, document ) );
+
+
+/*!
+ *************************************
+ * 6. Filterable
+ *************************************
+ */
+uix_pb = ( function ( uix_pb, $, window, document ) {
+    'use strict';
+
+
+    var documentReady = function( $ ) {
+
+		 $( '.uix-pb-filterable' ).each( function(){
+
+			var $this              = $( this ),
+				classprefix        = $this.data( 'classprefix' ),
+				fid                = $this.data( 'filter-id' ),
+				filterBox          = $( '#'+classprefix+'filter-stage-'+fid+'' ),
+				filterNav          = $( '#'+classprefix+'cat-list-'+fid+'' ),
+				filterItemSelector = '.'+classprefix+'item';
+
+
+			 filterBox.shuffle({
+				itemSelector: filterItemSelector,
+				speed: 550, // Transition/animation speed (milliseconds).
+				easing: 'ease-out', // CSS easing function to use.
+				sizer: null // Sizer element. Use an element to determine the size of columns and gutters.
+			  });
+
+			//init
+			imagesLoaded( '#'+classprefix+'filter-stage-'+fid+'' ).on( 'always', function() {
+				 $( '#'+classprefix+'cat-list-'+fid+' li:first a' ).trigger( 'click' );
+			 });
+
+
+			filterNav.find( 'li > a' ).on( 'click', function( e ) {
+
+				  var thisBtn = $( this ),
+					  activeClass = 'current',
+					  isActive = thisBtn.hasClass( activeClass ),
+					  group = isActive ? 'all' : thisBtn.data( 'group' );
+
+				  // Hide current label, show current label in title
+				  if ( !isActive ) {
+					filterNav.find( '.' + activeClass ).removeClass( activeClass );
+				  }
+
+				  thisBtn.toggleClass( activeClass );
+
+				  // Filter elements
+				  filterBox.shuffle( 'shuffle', group );
+
+				  return false;
+
+
+			} ); 		
+
+
+		 });	
+
+	};
+
+
+    uix_pb.filterable = {
+        documentReady : documentReady
+    };
+
+    uix_pb.components.documentReady.push( documentReady );
+    return uix_pb;
+
+}( uix_pb, jQuery, window, document ) );
+
+
+

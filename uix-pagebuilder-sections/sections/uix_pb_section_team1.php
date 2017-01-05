@@ -121,7 +121,7 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) ) {
 		
 		
-		$avatarURL       = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_avatar]['.$sid.']' ] ) ) ? $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_avatar]['.$sid.']' ] : UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/no-photo.png';
+		$avatarURL       = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_avatar]['.$sid.']' ] ) ) ? $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_avatar]['.$sid.']' ] : UixPBFormCore::photo_placeholder();
 		
 		$social_icon_1   = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_toggle_icon1]['.$sid.']' ] ) ) ? $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_toggle_icon1]['.$sid.']' ] : 'link';
 		$social_icon_2   = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_toggle_icon2]['.$sid.']' ] ) ) ? $item[ '['.$colid.']'.$_uid.'[uix_pb_team1_listitem_toggle_icon2]['.$sid.']' ] : 'link';
@@ -158,7 +158,7 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	if ( is_array( $item ) && !array_key_exists( '['.$colid.']'.$_uid.'['.$_field.']['.$sid.']', $item ) && $k == 1 ) {
 		
 
-		$avatarURL       = ( !empty( $uix_pb_team1_listitem_avatar ) ) ? $uix_pb_team1_listitem_avatar : UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/no-photo.png';
+		$avatarURL       = ( !empty( $uix_pb_team1_listitem_avatar ) ) ? $uix_pb_team1_listitem_avatar : UixPBFormCore::photo_placeholder();
 		$social_icon_1   = ( !empty( $uix_pb_team1_listitem_toggle_icon1 ) ) ? $uix_pb_team1_listitem_toggle_icon1 : 'link';
 		$social_icon_2   = ( !empty( $uix_pb_team1_listitem_toggle_icon2 ) ) ? $uix_pb_team1_listitem_toggle_icon2 : 'link';
 		$social_icon_3   = ( !empty( $uix_pb_team1_listitem_toggle_icon3 ) ) ? $uix_pb_team1_listitem_toggle_icon3 : 'link'; 
@@ -745,7 +745,7 @@ if ( $sid >= 0 && is_admin() ) {
 						_toggleicon3 = $( _uid+'<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon3' ); ?>' ).val();
 					
 						
-					var _item_v_avatarURL       = ( _avatar != undefined && _avatar != '' ) ? _avatar : '<?php echo UixPageBuilder::plug_directory(); ?>admin/add-ons/uixpbform/images/no-photo.png',
+					var _item_v_avatarURL       = ( _avatar != undefined && _avatar != '' ) ? _avatar : '<?php echo UixPBFormCore::photo_placeholder(); ?>',
 						_item_v_social_icon_1   = ( _toggleicon1 != undefined && _toggleicon1 != '' ) ? _toggleicon1 : 'link',
 						_item_v_social_icon_2   = ( _toggleicon2 != undefined && _toggleicon2 != '' ) ? _toggleicon2 : 'link',
 						_item_v_social_icon_3   = ( _toggleicon3 != undefined && _toggleicon3 != '' ) ? _toggleicon3 : 'link', 

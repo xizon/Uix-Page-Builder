@@ -111,7 +111,7 @@ $element_temp = '
 ';
  
  
-$avatarURL = ( !empty( $uix_pb_authorcard_avatar ) ) ? $uix_pb_authorcard_avatar : UixPBFormCore::plug_directory() .'images/no-photo.png';
+$avatarURL = ( !empty( $uix_pb_authorcard_avatar ) ) ? $uix_pb_authorcard_avatar : UixPBFormCore::photo_placeholder();
 $social_out_1 = ( !empty( $uix_pb_authorcard_1_url ) ) ? '<a href=\''.$uix_pb_authorcard_1_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_1_icon ) ? $uix_pb_authorcard_1_icon : 'link' ).'\'></i></a>' : '';
 $social_out_2 = ( !empty( $uix_pb_authorcard_2_url ) ) ? '<a href=\''.$uix_pb_authorcard_2_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_2_icon ) ? $uix_pb_authorcard_2_icon : 'link' ).'\'></i></a>' : '';
 $social_out_3 = ( !empty( $uix_pb_authorcard_3_url ) ) ? '<a href=\''.$uix_pb_authorcard_3_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_3_icon ) ? $uix_pb_authorcard_3_icon : 'link' ).'\'></i></a>' : '';
@@ -399,7 +399,7 @@ if ( $sid >= 0 && is_admin() ) {
 			if ( tempcode.length > 0 ) {
 				
 				
-				var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? encodeURI( uix_pb_authorcard_avatar ) : '<?php echo UixPBFormCore::plug_directory(); ?>images/no-photo.png',
+				var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? encodeURI( uix_pb_authorcard_avatar ) : '<?php echo UixPBFormCore::photo_placeholder(); ?>',
 					social_out_1 = ( uix_pb_authorcard_1_url != undefined && uix_pb_authorcard_1_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_1_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon_cur+'"></i></a>' : '',
 					social_out_2 = ( uix_pb_authorcard_2_url != undefined && uix_pb_authorcard_2_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_2_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon_cur+'"></i></a>' : '',
 					social_out_3 = ( uix_pb_authorcard_3_url != undefined && uix_pb_authorcard_3_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_3_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon_cur+'"></i></a>' : '';
