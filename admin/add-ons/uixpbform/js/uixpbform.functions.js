@@ -38,3 +38,9 @@ function uixpbform_toggleSwitchCheckboxVal(id){var result;(function($){"use stri
 return false;}});});})(jQuery);return result;};function uixpbform_strToSlug(str){if(typeof(str)=='string'&&str.length>0){var pattern=new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]");var rs="";for(var i=0;i<str.length;i++){rs=rs+str.substr(i,1).replace(pattern,'');}
 rs=rs.replace(/ /g,'-').toLowerCase();return rs;}}
 function uixpbform_editorInit(id){(function($){"use strict";$(function(){if(id!=undefined){var vid=id.replace('-editor','');tinyMCE.execCommand('mceRemoveEditor',true,id);tinymce.init({selector:'textarea#'+id,height:200,menubar:false,plugins:'textcolor image media hr',toolbar:'undo redo | forecolor backcolor styleselect | bold italic | bullist numlist outdent indent | hr image',setup:function(ed){ed.on('change',function(e){var newvalue=ed.getContent().replace(/\r?\n/gm,'');$('textarea#'+vid).val(newvalue).trigger('change');});},content_css:[uix_pagebuilder_wp_plugin.url+'css/uixpbform.mce.css']});}});})(jQuery);}
+function uixpbform_uid(){var date=Date.now();if(date<=uixpbform_uid.previous){date=++uixpbform_uid.previous;}else{uixpbform_uid.previous=date;}
+return date;}
+function uixpbform_catlist(str,classprefix){if(typeof(str)=='string'&&str.length>0){var re=new RegExp("(.*?)\<\/div\>","gim"),v='<div class="'+classprefix+'type">',re=new RegExp(""+v+"(.*?)\<\/div\>","gim"),arr=[],output='';str.replace(re,function(s,match){arr.push(match);});Array.prototype.uniqueArr=function(){var res=[];var json={};for(var i=0;i<this.length;i++){if(!json[this[i]]){res.push(this[i]);json[this[i]]=1;}}
+return res;}
+var newArr=arr.uniqueArr();for(var j=0;j<newArr.length;j++){output+='<li><a href="javascript:" data-group="'+uixpbform_strToSlug(newArr[j])+'">'+newArr[j]+'</a></li>';}
+return output;}}

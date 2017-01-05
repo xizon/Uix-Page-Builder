@@ -1434,6 +1434,68 @@ function uixpbform_editorInit( id ){
 
 }
 
+/*! 
+ * ************************************
+ * Create a unique number with javascript time
+ *************************************
+ */	
+function uixpbform_uid() {
+    var date = Date.now();
+    
+    // If created at same millisecond as previous
+    if (date <= uixpbform_uid.previous) {
+        date = ++uixpbform_uid.previous;
+    } else {
+        uixpbform_uid.previous = date;
+    }
+    
+    return date;
+}
 
+
+
+/*! 
+ * ************************************
+ * Display categories on page
+ *************************************
+ */	
+function uixpbform_catlist( str, classprefix ) {
+    if ( typeof( str ) == 'string' && str.length > 0 ) {
+		
+		var re      = new RegExp("(.*?)\<\/div\>","gim"),
+			v       = '<div class="'+classprefix+'type">',
+			re      = new RegExp("" + v + "(.*?)\<\/div\>","gim"),
+			arr     = [],
+			output  = '';
+
+		str.replace( re, function(s, match) {
+			   arr.push(match);
+			  });	
+
+		Array.prototype.uniqueArr = function() {
+			var res = [];
+			var json = {};
+			for( var i = 0; i < this.length; i++ ) {
+				if(!json[this[i]]){
+					res.push(this[i]);
+					json[this[i]] = 1;
+				}
+			}
+			return res;
+		}
+
+
+		//output
+		var newArr = arr.uniqueArr();
+		for( var j = 0; j < newArr.length; j++ ) {
+			output += '<li><a href="javascript:" data-group="'+uixpbform_strToSlug( newArr[j] )+'">'+newArr[j]+'</a></li>';
+		}
+		
+		return output;
+		
+		
+	}
+
+}
 
 

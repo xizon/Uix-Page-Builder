@@ -88,6 +88,8 @@ if ( $sid >= 0 ) {
  * Element Template
  * ----------------------------------------------------
  */
+$uniqid_id                                 = uniqid(); 
+
 $uix_pb_portfolio1_config_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_config_title', __( 'Text Here', 'uix-pagebuilder' ) );
 $uix_pb_portfolio1_config_intro            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
 $uix_pb_portfolio1_config_filterable        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_config_filterable', 0 ); // 0:false  1:true
@@ -130,6 +132,8 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		}
 		
 
+		
+
 		$list_portfolio1_item_content .= '
         <div class="uix-pb-portfolio-item" data-groups=\'{rowcsql:}"'.UixPageBuilder::transform_slug( $cat ).'"{rowcsqr:}\'>
             <span class="uix-pb-portfolio-image" style="-webkit-border-radius: '.$thumbnailfillet.'; -moz-border-radius: '.$thumbnailfillet.'; border-radius: '.$thumbnailfillet.';">
@@ -146,6 +150,9 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
     
         </div>
 		';	
+
+		
+		
 		
 	} 
 	
@@ -188,22 +195,42 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 	
 }
 	
+
+		
+//Display categories on page
+$catlist = '';
+if (  $uix_pb_portfolio1_config_filterable == 1 ) {
+   $catlist = '
+	<div class="uix-pb-portfolio-cat-list uix-pb-filterable" data-classprefix="uix-pb-portfolio-"  data-filter-id="'.esc_attr( $uniqid_id ).'" id="uix-pb-portfolio-cat-list-'.esc_attr( $uniqid_id ).'">
+		<ul>
+			<li class="current"><a href="javascript:" data-group="all">'.__( 'All', 'uix-pagebuilder' ).'</a></li>
+			'.UixPageBuilder::cat_list( $list_portfolio1_item_content, 'uix-pb-portfolio-' ).'
+		</ul>
+	</div><!-- /.uix-pb-portfolio-cat-list -->
+   ';  	
+}
+
 				
 $element_temp = '
 {heading}
 {desc}
-<div class="uix-pb-portfolio-tiles uix-pb-portfolio-col'.$uix_pb_portfolio1_config_grid.'">
+{catlist}
+<div class="uix-pb-portfolio-tiles uix-pb-portfolio-col{grid}" id="uix-pb-portfolio-filter-stage-{id}">
 	{list_content}
 </div><!-- /.uix-pb-portfolio-tiles -->        
 ';
 
 
-$uix_pb_section_portfolio1_temp = str_replace( '{list_content}', $list_portfolio1_item_content,
+$uix_pb_section_portfolio1_temp = str_replace( '{catlist}', $catlist,
+	                              str_replace( '{list_content}', $list_portfolio1_item_content,
+								  str_replace( '{id}', esc_attr( $uniqid_id ),
+								  str_replace( '{grid}', esc_attr( $uix_pb_portfolio1_config_grid ),
 								 str_replace( '{heading}', ( !empty( $uix_pb_portfolio1_config_title ) ? '<h2 class="uix-pb-section-heading">'.$uix_pb_portfolio1_config_title.'</h2><div class="uix-pb-section-hr"></div>' : '' ),
-								 str_replace( '{desc}', ( !empty( $uix_pb_portfolio1_config_intro ) ? '<div class="uix-pb-section-desc">'.$uix_pb_portfolio1_config_intro.'</div>' : '' ),			  
+								 str_replace( '{desc}', ( !empty( $uix_pb_portfolio1_config_intro ) ? '<div class="uix-pb-section-desc">'.$uix_pb_portfolio1_config_intro.'</div>' : '' ),		
+											 
 					
 							     $element_temp 
-								 ) ) );
+								 ) ) ) ) ) );
 
 
 
@@ -643,6 +670,7 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			    
 			var tempcode                                  = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
+				uix_pb_portfolio1_config_id               = uixpbform_uid(),
 				uix_pb_portfolio1_config_title            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_config_title' ); ?>' ).val(),
 				uix_pb_portfolio1_config_intro            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_config_intro' ); ?>' ).val(),
 				uix_pb_portfolio1_config_filterable_chk   = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_config_filterable' ); ?>-checkbox' ).is( ":checked" ),
@@ -657,8 +685,7 @@ if ( $sid >= 0 && is_admin() ) {
 				
 				
 				var _config_t          = ( uix_pb_portfolio1_config_title != undefined && uix_pb_portfolio1_config_title != '' ) ? '<h2 class="uix-pb-section-heading">'+uix_pb_portfolio1_config_title+'</h2><div class="uix-pb-section-hr"></div>' : '',
-					_config_desc       = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_portfolio1_config_intro+'</div>' : '',
-					_config_filterable = ( uix_pb_portfolio1_config_filterable_chk === true ) ? ' ' : '';
+					_config_desc       = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_portfolio1_config_intro+'</div>' : '';
 ;
 						
 				
@@ -718,16 +745,30 @@ if ( $sid >= 0 && is_admin() ) {
 				}
 
                 
+				//Display categories on page
+				var catlist = '';
+				if (  uix_pb_portfolio1_config_filterable_chk === true ) {
+					catlist += '<div class="uix-pb-portfolio-cat-list uix-pb-filterable" data-classprefix="uix-pb-portfolio-"  data-filter-id="'+uix_pb_portfolio1_config_id+'" id="uix-pb-portfolio-cat-list-'+uix_pb_portfolio1_config_id+'">';
+					catlist += '<ul>';
+					catlist += '<li class="current"><a href="javascript:" data-group="all"><?php echo __( 'All', 'uix-pagebuilder' ); ?></a></li>';
+					catlist += uixpbform_catlist( show_list_item_content, 'uix-pb-portfolio-' );
+					catlist += '</ul>';
+					catlist += '</div>';
+				
+				}
+				
+				
 				//---
 				
 				tempcode = tempcode.replace(/{list_content}/g, show_list_item_content )
 								    .replace(/{heading}/g, _config_t )
+				                    .replace(/{catlist}/g, catlist )
+				                    .replace(/{id}/g, uix_pb_portfolio1_config_id )
+				                    .replace(/{grid}/g, uix_pb_portfolio1_config_grid )
 								    .replace(/{desc}/g, _config_desc );
 								
 				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_portfolio1_temp' ); ?>" ).val( tempcode );
 			}
-			
-			
 			
 			
 		});
