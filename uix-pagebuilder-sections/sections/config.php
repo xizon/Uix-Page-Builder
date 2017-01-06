@@ -32,7 +32,10 @@ $uix_pb_config = [
 				
 							]
 	
-	),		
+	),
+	
+
+	
 	
 	array(
 		'sortname'        => __( 'Testimonials', 'uix-pagebuilder' ),
@@ -187,6 +190,13 @@ $uix_pb_config = [
 									'thumb'           => 'map.jpg',
 								
 								),	
+	
+								array(
+									'title'           => __( 'Contact Form', 'uix-pagebuilder' ),
+									'id'              => 'uix_pb_section_contactform1',
+									'thumb'           => 'contactform.jpg',
+								
+								),
 		
 										
 							

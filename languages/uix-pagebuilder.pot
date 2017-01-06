@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Fri Jan 06 2017 03:07:30 GMT+0800 (CST)\n"
+"POT-Revision-Date: Fri Jan 06 2017 19:58:29 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,49 +42,49 @@ msgstr ""
 msgid "https://uiux.cc"
 msgstr ""
 
-#: ../uix-pagebuilder.php:215
+#: ../uix-pagebuilder.php:216
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: ../uix-pagebuilder.php:216 ../admin/post-extensions/post-extensions-init.php:332
+#: ../uix-pagebuilder.php:217 ../admin/post-extensions/post-extensions-init.php:332
 msgid "Uix Page Builder"
 msgstr ""
 
-#: ../uix-pagebuilder.php:227 ../uix-pagebuilder.php:228
+#: ../uix-pagebuilder.php:228 ../uix-pagebuilder.php:229
 msgid "Custom CSS"
 msgstr ""
 
-#: ../uix-pagebuilder.php:237 ../uix-pagebuilder.php:238
+#: ../uix-pagebuilder.php:238 ../uix-pagebuilder.php:239
 msgid "Helper"
 msgstr ""
 
-#: ../uix-pagebuilder.php:267 ../helper/settings.php:170
+#: ../uix-pagebuilder.php:268 ../helper/settings.php:170
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-pagebuilder.php:587
+#: ../uix-pagebuilder.php:588
 msgid "Add content"
 msgstr ""
 
-#: ../uix-pagebuilder.php:622
+#: ../uix-pagebuilder.php:623
 msgid "Choose Element You Want"
 msgstr ""
 
-#: ../uix-pagebuilder.php:631
+#: ../uix-pagebuilder.php:632
 msgid "Layout"
 msgstr ""
 
-#: ../uix-pagebuilder.php:978
+#: ../uix-pagebuilder.php:979
 msgid ""
 "<strong>You need to create Uix Page Builder template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:978 ../helper/tabs/usage.php:22
+#: ../uix-pagebuilder.php:979 ../helper/tabs/usage.php:22
 msgid "Create now!"
 msgstr ""
 
-#: ../uix-pagebuilder.php:978 ../helper/tabs/temp.php:73
+#: ../uix-pagebuilder.php:979 ../helper/tabs/temp.php:73
 msgid ""
 "As a workaround you can use FTP, access the Uix Page Builder template files "
 "path <code>/wp-content/plugins/uix-pagebuilder/theme_templates/</code> and "
@@ -92,141 +92,39 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../uix-pagebuilder.php:1049
+#: ../uix-pagebuilder.php:1050
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
 "blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1121 ../uix-pagebuilder.php:1194
+#: ../uix-pagebuilder.php:1122 ../uix-pagebuilder.php:1195
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1123
+#: ../uix-pagebuilder.php:1124
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1128
+#: ../uix-pagebuilder.php:1129
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1131
+#: ../uix-pagebuilder.php:1132
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
 #: ../admin/export-templates.php:10
 msgid "Sorry, you are not allowed to export the content of this site."
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/init.php:510
-msgid "Cancel"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/init.php:510 ../admin/post-extensions/post-
-#: extensions-init.php:378
-msgid "Save"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/fontawesome/font-awesome-custom.php:474
-msgid "Social:"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/color-map.php:48
-msgid "Add Custom Color"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/icon.php:23 ../admin/add-
-#: ons/uixpbform/form-inc/icon.php:55
-msgid "Choose Icon"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:79
-msgid "Background Repeat"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:85
-msgid "No Repeat"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:86
-msgid "Tile"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:87
-msgid "Tile Horizontally"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:88
-msgid "Tile Vertically"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:100
-msgid "Background Position"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:106
-msgid "Left"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:107
-msgid "Center"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:108
-msgid "Right"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:120
-msgid "Background Attachment"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:126
-msgid "Scroll"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:127
-msgid "Fixed"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:139
-msgid "Background Size"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:145
-msgid "Cover"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:146
-msgid "Auto"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/image.php:147
-msgid "Contain"
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/multiselect.php:62
-msgid "Must use the array for \"value\"."
-msgstr ""
-
-#: ../admin/add-ons/uixpbform/form-inc/toggle.php:68
-msgid "More Options"
-msgstr ""
-
-#: ../admin/classes/class-google-map.php:69
-msgid "+"
-msgstr ""
-
-#: ../admin/classes/class-google-map.php:70
-msgid "-"
 msgstr ""
 
 #: ../admin/classes/class-menu-onepage.php:136
@@ -268,6 +166,18 @@ msgstr ""
 
 #: ../admin/classes/class-menu-onepage.php:241
 msgid "Add to Menu"
+msgstr ""
+
+#: ../admin/classes/class-section-contactform.php:60
+msgid "Comments are closed."
+msgstr ""
+
+#: ../admin/classes/class-section-googlemap.php:69
+msgid "+"
+msgstr ""
+
+#: ../admin/classes/class-section-googlemap.php:70
+msgid "-"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:18 ../admin/post-
@@ -351,6 +261,11 @@ msgstr ""
 msgid "Enter Template Name"
 msgstr ""
 
+#: ../admin/post-extensions/post-extensions-init.php:378 ../admin/uixpbform/init.
+#: php:513
+msgid "Save"
+msgstr ""
+
 #: ../admin/post-extensions/post-extensions-init.php:384 ../admin/post-
 #: extensions/post-extensions-init.php:395
 msgid "Export"
@@ -366,6 +281,11 @@ msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:409
 msgid "Add section here."
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
+#: extensions/post-extensions-init.php:677
+msgid "Settings"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
@@ -395,6 +315,7 @@ msgstr ""
 #: sections/sections/uix_pb_section_authorcard.php:18 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_bar.php:19 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_clients.php:27 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_contactform1.php:18 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_features1.php:28 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_features2.php:27 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello.php:27 ../uix-pagebuilder-
@@ -414,6 +335,106 @@ msgstr ""
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
 #: extensions/post-extensions-init.php:677
 msgid "HTML Code..."
+msgstr ""
+
+#: ../admin/uixpbform/init.php:69
+msgid "Select Files"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:70
+msgid "Insert"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:71
+msgid "Insert Image"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:513
+msgid "Cancel"
+msgstr ""
+
+#: ../admin/uixpbform/fontawesome/font-awesome-custom.php:474
+msgid "Social:"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/color-map.php:48
+msgid "Add Custom Color"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/icon.php:23 ../admin/uixpbform/form-inc/icon.php:55
+msgid "Choose Icon"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:79
+msgid "Background Repeat"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:85
+msgid "No Repeat"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:86
+msgid "Tile"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:87
+msgid "Tile Horizontally"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:88
+msgid "Tile Vertically"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:100
+msgid "Background Position"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:106
+msgid "Left"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:107
+msgid "Center"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:108
+msgid "Right"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:120
+msgid "Background Attachment"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:126
+msgid "Scroll"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:127
+msgid "Fixed"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:139
+msgid "Background Size"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:145
+msgid "Cover"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:146
+msgid "Auto"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/image.php:147
+msgid "Contain"
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/multiselect.php:62
+msgid "Must use the array for \"value\"."
+msgstr ""
+
+#: ../admin/uixpbform/form-inc/toggle.php:68
+msgid "More Options"
 msgstr ""
 
 #: ../helper/settings.php:7
@@ -447,12 +468,12 @@ msgid ""
 " <code>\"google maps\"</code>, <code>\"pricing table\"</code>, <code>\"features "
 "boxes\"</code>, <code>\"testimonials carousel\"</code>, <code>\"team\"</code>, "
 "<code>\"list of clients\"</code>, <code>\"accordion\"</code>, "
-"<code>\"tabs\"</code>, <code>\"author card\"</code> and <code>\"portfolio\"</code>."
-" To be continued."
+"<code>\"tabs\"</code>, <code>\"author card\"</code>, <code>\"contact form\"</code> "
+"and <code>\"portfolio\"</code>. To be continued."
 msgstr ""
 
 #: ../helper/tabs/about.php:15 ../uix-pagebuilder-sections/sections/config.php:
-#: 117 ../uix-pagebuilder-sections/sections/uix_pb_section_pricing1.php:428 ..
+#: 120 ../uix-pagebuilder-sections/sections/uix_pb_section_pricing1.php:428 ..
 #: /uix-pagebuilder-sections/sections/uix_pb_section_pricing1.php:577 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_pricing1.php:726 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_pricing2.php:486 ../uix-
@@ -697,81 +718,86 @@ msgstr ""
 msgid "Parallax"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:38
+#: ../uix-pagebuilder-sections/sections/config.php:41
 msgid "Testimonials"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:42 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:45 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_testimonials.php:398
 msgid "Testimonials Carousel"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:55 ../uix-pagebuilder-
-#: sections/sections/config.php:59 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:58 ../uix-pagebuilder-
+#: sections/sections/config.php:62 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_clients.php:396
 msgid "Clients"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:72
+#: ../uix-pagebuilder-sections/sections/config.php:75
 msgid "Portfolio"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:76 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:79 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:593
 msgid "Portfolio Grid"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:93
+#: ../uix-pagebuilder-sections/sections/config.php:96
 msgid "Team"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:97 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:100 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:612
 msgid "Team Normal"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:104 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:107 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team2.php:630
 msgid "Team Grid"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:121
+#: ../uix-pagebuilder-sections/sections/config.php:124
 msgid "Features 2 Column"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:128
+#: ../uix-pagebuilder-sections/sections/config.php:131
 msgid "Features 3 Column"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:141
+#: ../uix-pagebuilder-sections/sections/config.php:144
 msgid "Pricing"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:145
+#: ../uix-pagebuilder-sections/sections/config.php:148
 msgid "Pricing 3 column"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:152
+#: ../uix-pagebuilder-sections/sections/config.php:155
 msgid "Pricing 4 column"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:166
+#: ../uix-pagebuilder-sections/sections/config.php:169
 msgid "Elements"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:170 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:173 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_authorcard.php:350
 msgid "Author Card"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:177 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:180 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_bar.php:420
 msgid "Progress Bar"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/config.php:185 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/config.php:188 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:284
 msgid "Google Map"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/config.php:195 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_contactform1.php:174
+msgid "Contact Form"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_accordion.php:89
@@ -1103,6 +1129,17 @@ msgstr ""
 #: sections/sections/uix_pb_section_team2.php:581 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_testimonials.php:356
 msgid "Content"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_contactform1.php:110
+msgid "Shortcode"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_contactform1.php:125
+msgid ""
+"Output a complete commenting form with your theme by default. <strong>You "
+"can install a contact form plugin you want. When you're done, copy shortcode "
+"and paste into the editor.</strong>"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_features1.php:94 ../uix-

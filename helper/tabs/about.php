@@ -9,7 +9,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 ?>
 
         <p>
-            <?php _e( 'Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: <code>"parallax"</code>, <code>"google maps"</code>, <code>"pricing table"</code>, <code>"features boxes"</code>, <code>"testimonials carousel"</code>, <code>"team"</code>, <code>"list of clients"</code>, <code>"accordion"</code>, <code>"tabs"</code>, <code>"author card"</code> and <code>"portfolio"</code>. To be continued.', 'uix-pagebuilder' ); ?>
+            <?php _e( 'Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: <code>"parallax"</code>, <code>"google maps"</code>, <code>"pricing table"</code>, <code>"features boxes"</code>, <code>"testimonials carousel"</code>, <code>"team"</code>, <code>"list of clients"</code>, <code>"accordion"</code>, <code>"tabs"</code>, <code>"author card"</code>, <code>"contact form"</code> and <code>"portfolio"</code>. To be continued.', 'uix-pagebuilder' ); ?>
         </p>  
         <h3>
             <?php _e( 'Features', 'uix-pagebuilder' ); ?>

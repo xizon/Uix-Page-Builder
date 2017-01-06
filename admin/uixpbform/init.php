@@ -65,7 +65,10 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					////Register core functions
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_pagebuilder_wp_plugin', array( 
-						'url' => self::plug_directory()
+						'url'                => self::plug_directory(),
+						'lang_media_title'   => __( 'Select Files', 'uix-pagebuilder' ),
+						'lang_media_text'    => __( 'Insert', 'uix-pagebuilder' ),				
+						'lang_mce_image'     => __( 'Insert Image', 'uix-pagebuilder' ),
 					 ) );	
 				 
 				    wp_enqueue_script( 'uixpbform-functions' );
