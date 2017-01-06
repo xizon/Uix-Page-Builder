@@ -1394,6 +1394,8 @@ function uixpbform_strToSlug( str ){
 	}
 }
 
+		
+
 /*! 
  * ************************************
  * Initialize editor
@@ -1421,7 +1423,7 @@ function uixpbform_editorInit( id ){
 					   });
 				   },
 				  content_css: [
-					uix_pagebuilder_wp_plugin.url + 'css/uixpbform.mce.css'
+					uix_pagebuilder_wp_plugin.url + 'css/uixpbform.editor.css'
 				  ]
 				});	
 			}

@@ -53,10 +53,12 @@ class UixPBFormType_Editor {
 							
 							   <textarea class="mce" rows="'.$row.'" id="'.$id.'-editor">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>
 							   
-							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
 							   
 							</div>
+							
+							'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+							
 							'.( !empty( $id ) ? '<textarea style="display:none;" id="'.$id.'" name="'.$name.'" chk-id-textarea="'.$id.'">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>' : '' ).' 	
 						</td>
 					</tr> 

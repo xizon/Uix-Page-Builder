@@ -305,12 +305,12 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'radio-image',
 			'default'        => array(
-									'solid'     => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-1.png',
-									'double'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-2.png',
-									'dashed'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-3.png',
-									'dotted'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-4.png',
-									'shadow'    => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-5.png',
-									'gradient'  => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/line/line-style-6.png',
+									'solid'     => UixPageBuilder::plug_directory() .'admin/uixpbform/images/line/line-style-1.png',
+									'double'    => UixPageBuilder::plug_directory() .'admin/uixpbform/images/line/line-style-2.png',
+									'dashed'    => UixPageBuilder::plug_directory() .'admin/uixpbform/images/line/line-style-3.png',
+									'dotted'    => UixPageBuilder::plug_directory() .'admin/uixpbform/images/line/line-style-4.png',
+									'shadow'    => UixPageBuilder::plug_directory() .'admin/uixpbform/images/line/line-style-5.png',
+									'gradient'  => UixPageBuilder::plug_directory() .'admin/uixpbform/images/line/line-style-6.png',
 									
 				                )
 		
@@ -325,8 +325,8 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'radio-image',
 			'default'        => array(
-									'grand-fill-yellow'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/heading/heading-style-1.jpg',
-									'grand'               => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/heading/heading-style-2.jpg',
+									'grand-fill-yellow'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/heading/heading-style-1.jpg',
+									'grand'               => UixPageBuilder::plug_directory() .'admin/uixpbform/images/heading/heading-style-2.jpg',
 				                ),
 			/* If the toggle of switch with radio is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(

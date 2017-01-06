@@ -85,7 +85,7 @@ $uix_pb_map_name         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_
 $uix_pb_map_latitude     = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_latitude', 37.7770776 ) );
 $uix_pb_map_longitude    = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_longitude', -122.4414289 ) );
 $uix_pb_map_zoom         = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_zoom', 14 ) );
-$uix_pb_map_marker       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_marker', UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-location.png' );
+$uix_pb_map_marker       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_marker', UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-location.png' );
 
 
 
@@ -130,16 +130,16 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'radio-image',
 			'default'        => array(
-									'normal'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-1.png',
-									'gray'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-2.png',
-									'black'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-3.png',
-									'real'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-4.png',
-									'terrain'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-5.png',
-									'white'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-6.png',
-									'dark-blue'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-7.png',
-									'dark-blue-2'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-8.png',
-									'blue'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-9.png',
-									'flat'   => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-style-10.png',
+									'normal'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-1.png',
+									'gray'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-2.png',
+									'black'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-3.png',
+									'real'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-4.png',
+									'terrain'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-5.png',
+									'white'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-6.png',
+									'dark-blue'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-7.png',
+									'dark-blue-2'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-8.png',
+									'blue'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-9.png',
+									'flat'   => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-style-10.png',
 				                )
 		
 		),

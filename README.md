@@ -54,15 +54,15 @@ Uix Page Builder is a design system that it is simple content creation interface
 
 ###Screenshot
 
-![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-1.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-1.jpg)
 
-![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-2.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-2.jpg)
 
-![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-3.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-3.jpg)
 
-![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-4.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-4.jpg)
 
-![](https://github.com/xizon/Uix-Page-Builder/blob/master/assets/screenshot-5.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-5.jpg)
 
 
 

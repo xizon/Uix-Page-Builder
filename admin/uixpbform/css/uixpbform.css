@@ -412,7 +412,7 @@
     color: #AF7342;
     display: block;
     clear: both;
-    width: 780px;
+    width: calc( 780px - 80px );
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
 
@@ -1914,7 +1914,7 @@ a.uixpbform-icon-clear {
 		 
 	/* Note */
     .uixpbform-form-container .info {
-        width: 615px;
+        width: calc( 615px - 80px );
     }
 
     .uixpbform-table-cols-wrapper .info,
@@ -2017,7 +2017,7 @@ a.uixpbform-icon-clear {
 		 
 	/* Note */
     .uixpbform-form-container .info {
-        width: 265px;
+        width: calc( 265px - 80px );
     }
 
     .uixpbform-table-cols-wrapper .info,
@@ -2229,7 +2229,7 @@ a.uixpbform-icon-clear {
 --------------------------------------------------------------
 -------------------------------------------------------------- */ 
 .uixpbform-mce-editor {
-	border: 1px solid #E7E7E7;
+	border: 1px solid #ccc;
 }
 
 

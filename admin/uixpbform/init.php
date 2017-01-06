@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 1.4
+ * @version		: 1.5
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '1.4';
+		const VERSION    = '1.5';
 		const CUSTOMTEMP = 'uix-pagebuilder-sections/sections/';
 	
 		
@@ -63,7 +63,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			 if( get_post_type() == 'page' ) {
 				  
 					////Register core functions
-				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.js', array( 'jquery' ), self::VERSION, true );
+				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_pagebuilder_wp_plugin', array( 
 						'url' => self::plug_directory()
 					 ) );	
@@ -74,8 +74,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.css', array(), '4.5.0', 'all');
 
 					//UixForm
-					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.css', false, self::VERSION, 'all');
-					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.js', array( 'jquery' ), self::VERSION, true );
+					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.min.css', false, self::VERSION, 'all');
+					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.min.js', array( 'jquery' ), self::VERSION, true );
 					
 
 					//Colorpicker

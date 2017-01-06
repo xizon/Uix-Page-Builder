@@ -40,7 +40,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 				'longitude' => 0,
 				'zoom' => 14,
 				'name' => '',
-				'marker' => UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-location.png',
+				'marker' => UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-location.png',
 				
 			 ), $atts ) );
 			 
@@ -51,7 +51,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 			$map_zoom = $zoom;	 //Map zoom
 			$map_name = $name;	 //Map place name
 			$map_height = $height;	 //Map height
-			$map_marker = UixPageBuilder::plug_directory() .'admin/add-ons/uixpbform/images/map/map-location.png'; //Map marker 
+			$map_marker = UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-location.png'; //Map marker 
 			 
 			
 			$return_string = '';
