@@ -43,6 +43,14 @@ Uix Page Builder is a design system that it is simple content creation interface
 
 ### Tested under
 
+- WP 4.2.*
+- WP 4.3.*
+- WP 4.4.1
+- WP 4.4.2
+- WP 4.5
+- WP 4.5.1
+- WP 4.5.2
+- WP 4.5.3
 - WP 4.6.*
 - WP 4.7
 
