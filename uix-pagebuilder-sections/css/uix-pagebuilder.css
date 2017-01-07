@@ -27,6 +27,7 @@
     15. Gallery list (Team) 
     16. Card list  (Team)
     17. Portfolio
+    18. Image Slider 
 
 */
 
@@ -190,6 +191,8 @@ img.uix-pb-img,
 .uix-pb-card:after,
 .uix-pb-client:before,
 .uix-pb-client:after,
+.uix-pb-imageslider:before,
+.uix-pb-imageslider:after,
 .uix-pb-testimonials:before,
 .uix-pb-testimonials:after {
   display: table;
@@ -205,9 +208,142 @@ img.uix-pb-img,
 .uix-pb-gallery:after,
 .uix-pb-card:after,
 .uix-pb-client:after,
+.uix-pb-imageslider:after,
 .uix-pb-testimonials:after {
 	padding-top: 0;
 	clear: both;
+}
+
+/* 
+ * Custom flexslider style
+ */
+.uix-pb-flex-direction-nav a:before{
+	display: none;
+}
+
+.uix-pb-flex-viewport {
+	max-height: 2000px;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.uix-pb-flex-slider .custom-theme-slides img {
+    max-width: 100%;
+    display: block;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+}
+
+.uix-pb-flex-control-nav,
+.uix-pb-flex-control-nav li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.uix-pb-flex-control-nav{
+	bottom: 100px;
+	list-style: none;
+	width: 100%;
+	position: absolute;
+	bottom: -40px;
+	text-align: center;
+}
+
+
+.uix-pb-flex-control-nav li {
+  margin: 0 6px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+
+
+.uix-pb-flex-control-paging li a {
+  width: 8px;
+  height: 8px;
+  display: block;
+  background: #666;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-indent: -9999px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.uix-pb-flex-control-paging li a:hover {
+  background: #090909;
+  background: rgba(0, 0, 0, 0.4);
+}
+.uix-pb-flex-control-paging li a.uix-pb-flex-active {
+  background: #000;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: default;
+}
+
+.uix-pb-flex-direction-nav .uix-pb-flex-prev {
+    left: -100px;
+}
+
+.uix-pb-flex-direction-nav .uix-pb-flex-next {
+    right: -100px;
+    text-align: right;
+}
+
+.uix-pb-flex-direction-nav a:before {
+    display: none;
+}
+
+.uix-pb-flex-direction-nav,
+.uix-pb-flex-direction-nav li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.uix-pb-flex-direction-nav li a {
+    display: block;
+    z-index: 9;
+    position: absolute;
+    top: 50%;
+    height: 40px;
+    margin-top: -20px;
+    line-height: 40px;
+    width: 50px;
+    text-align: center;
+    opacity: 0.8;
+    color: #fff;
+    font-size: 21px;
+    filter: alpha(opacity=66);
+    -moz-opacity: 0.66;
+    opacity: 0.66;
+}
+
+.uix-pb-flex-direction-nav li a:hover {
+    filter: alpha(opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+    color: #fff;
+    text-decoration: none;
+}
+
+.flexslider:hover .uix-pb-flex-prev {
+    left: 0;
+}
+
+.flexslider:hover .uix-pb-flex-next {
+    right: 20px;
 }
 
 
@@ -1182,111 +1318,8 @@ img.uix-pb-img,
 	padding: 2em;
 }
 
-
-/* Custom flexslider style */ 
-.uix-pb-flex-direction-nav a:before{
-	display: none;
-}
-.uix-pb-flex-control-nav,
-.uix-pb-flex-control-nav li{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.uix-pb-flex-control-nav{
-	bottom: 100px;
-	list-style: none;
-	width: 100%;
-	position: absolute;
-	bottom: -40px;
-	text-align: center;
-}
-
-
-.uix-pb-flex-control-nav li {
-  margin: 0 6px;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-}
-.uix-pb-flex-control-paging li a {
-  width: 8px;
-  height: 8px;
-  display: block;
-  background: #666;
-  background: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  text-indent: -9999px;
-  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-}
-.uix-pb-flex-control-paging li a:hover {
-  background: #090909;
-  background: rgba(0, 0, 0, 0.4);
-}
-.uix-pb-flex-control-paging li a.uix-pb-flex-active {
-  background: #000;
-  background: rgba(0, 0, 0, 0.6);
-  cursor: default;
-}
-.uix-pb-flex-direction-nav li a {
-	display: block;
-	z-index: 9;
-	position: absolute;
-	top: 33%;
-	height: 40px;
-	line-height: 40px;
-	width: 50px;
-	text-align: center;
-	opacity: 0.8;
-	color: #fff;
-	font-size: 21px;
-	filter: alpha(opacity=66); 
-	-moz-opacity: 0.66; 
-	opacity: 0.66;
-
-}
-.uix-pb-flex-direction-nav li a:hover {
-
-	filter: alpha(opacity=100); 
-	-moz-opacity: 1; 
-	opacity: 1;
-	color: #fff;
-	text-decoration: none;
-}
-.uix-pb-flex-direction-nav li a.uix-pb-flex-prev {
-	left: 0;
-}
-.uix-pb-flex-direction-nav li a.uix-pb-flex-next {
-	right: 20px;
-}
-
-
-/* ----------  */
-
-@media (max-width: 768px) {
-
-	.uix-pb-flex-direction-nav .uix-pb-flex-prev {
-		opacity: 1;
-		left: 10px;
-	}
-	.uix-pb-flex-direction-nav .uix-pb-flex-next {
-		opacity: 1;
-		right: 10px;
-	}
-	
-}
-
-
 .uix-pb-testimonials{
-	width: 100%;
-	overflow: hidden;		 
+	
 }
 
 
@@ -2186,3 +2219,63 @@ img.uix-pb-img,
 .uix-pb-portfolio-cat-list li a.current {
 	color: #000;
 }
+
+
+
+
+/* ====================================================== 
+   18. Image Slider                
+/* ====================================================== */
+.uix-pb-imageslider{
+}
+
+	.uix-pb-imageslider .uix-pb-flex-control-paging {
+		position: absolute;
+		bottom: -15px;
+
+	}
+
+    .uix-pb-imageslider .slides,
+	.uix-pb-imageslider .slides li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-size: 13px;
+		position: relative;
+	}
+	
+		.uix-pb-imageslider .slides li img {
+			width: 100%;
+		}
+
+
+		.uix-pb-imageslider .slides li .slide-text {
+		  background-color: transparent;
+		  background-color: rgba(0, 0, 0, 0.5);  /* FF3+, Saf3+, Opera 10.10+, Chrome, IE9 */
+		  bottom: 0;
+		  color: #fff;
+		  display: block;
+		  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000); /* IE6–IE9 */
+		  left: 0;
+		  padding: 1em;
+		  position: absolute;
+		  width: 100%;
+		  zoom: 1;
+		}
+
+		.uix-pb-imageslider .slides li .slide-title {
+		  font-size: 16px;
+		  text-transform: uppercase;
+		}
+
+		.uix-pb-imageslider .slides li .slide-byline {
+		  font-size: 12px;
+		  display: block;  
+		}
+
+
+	
+	.uix-pb-imageslider-container{
+		position: relative;
+	}
+		 
