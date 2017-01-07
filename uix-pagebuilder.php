@@ -734,10 +734,46 @@ class UixPageBuilder {
 		
 		$widget_ID         = $section_row;
 		
-		$toggle_target_ID  = str_replace( '{colID}', ''.$cur_id.'-'.str_replace( 'col-item-', 'section_'.$widget_ID.'__', $col_id ), $clone_list_toggle_class );
+		$toggle_target_ID  = str_replace( '{colID}', $cur_id.'-', $clone_list_toggle_class );
+		
+		
+	    //Initialize clone content
+		$new_clone_value = preg_replace_callback(
+			'|chk-id-input="(.*?)"|',
+			function ( $matches ) {
+				return $matches[0].' {temp}';
+			},
+			$clone_value
+		);
+		
+		$new_clone_value = preg_replace_callback(
+			'|chk-id-textarea="(.*?)"|',
+			function ( $matches ) {
+				return $matches[0].' {temp}';
+			},
+			$new_clone_value
+		);		
+		
+		$new_clone_value = preg_replace_callback(
+			'|\{temp\} value="(.*?)"|',
+			function ( $matches ) {
+				return '';
+			},
+			$new_clone_value
+		);
+
+		$new_clone_value = preg_replace_callback(
+			'|\{temp\}>(.*?)</textarea>|',
+			function ( $matches ) {
+				return '';
+			},
+			$new_clone_value
+		);
+
+		
 		
 		//Clone content
-		$data = '<span class="dynamic-row dynamic-addnow">'.$clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'-'.$col_id.'" data-spy="'.$clone_trigger_id.'__'.$col_id.'">&times;</a></div></span>';
+		$data = '<span class="dynamic-row dynamic-addnow">'.$new_clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'-'.$col_id.'" data-spy="'.$clone_trigger_id.'__'.$col_id.'">&times;</a></div></span>';
 	
 			 
 		//Clone code
@@ -765,16 +801,15 @@ class UixPageBuilder {
 		//Default value
 		if ( $value && is_array( $value ) ) {
 			foreach ( $value as $t_value ) {
+				
+				if ( self::inc_str( $data, 'chk-id-input="'.$t_value[ 'id' ].'"' ) ) {
+					$data = str_replace( 'chk-id-input="'.$t_value[ 'id' ].'"', 'value="'.esc_attr( self::inputtextareavalue( $t_value[ 'default' ] ) ).'"', $data );	
+				}
+				if ( self::inc_str( $data, 'chk-id-textarea="'.$t_value[ 'id' ].'"' ) ) {
+					$data = str_replace( 'chk-id-textarea="'.$t_value[ 'id' ].'"', '>'.esc_textarea( self::inputtextareavalue( $t_value[ 'default' ] ) ).'</textarea>', $data );	
+				}			
+				
 
-				preg_match_all( '#chk-id-input="'.$t_value[ 'id' ].'" value="(.*?)"#i', $data, $m1 ); 
-				preg_match_all( '#chk-id-textarea="'.$t_value[ 'id' ].'">(.*?)<\/textarea>#i', $data, $m2 ); 
-				$data = str_replace( 'value="'.$m1[1][0].'"', 'value=""', $data );
-				$data = str_replace( '">'.$m2[1][0].'</textarea>', '"></textarea>', $data );
-				
-				$data = str_replace( 'chk-id-input="'.$t_value[ 'id' ].'" value="', 'chk-id-input="'.$t_value[ 'id' ].'" value="'.esc_attr( self::inputtextareavalue( $t_value[ 'default' ] ) ).'', $data );
-				$data = str_replace( 'chk-id-textarea="'.$t_value[ 'id' ].'">', 'chk-id-textarea="'.$t_value[ 'id' ].'">'.esc_textarea( self::inputtextareavalue( $t_value[ 'default' ] ) ).'', $data );
-				
-				
 			}	
 		}
 		
@@ -785,7 +820,6 @@ class UixPageBuilder {
 			   str_replace( 'toggle-row', 'toggle-row toggle-row-clone-list',
 			   $data 
 			   ) );
-			   
 			   	   
 		echo "<script type='text/javascript'>jQuery(document).ready(function(){ jQuery( 'a[data-targetid=\"".$clone_trigger_id."\"]' ).uixpbform_dynamicFormInit({cloneCode:'{$data}'}); });</script>";
 	}

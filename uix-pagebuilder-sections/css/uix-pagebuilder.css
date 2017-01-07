@@ -274,7 +274,7 @@ img.uix-pb-img,
    3. Section Styles                               
 /* ====================================================== */
 .uix-pagebuilder-section {
-	margin: 1.5em 0;
+	margin: 0 0 3em;
 }
 
 .uix-pb-section-heading {
@@ -833,7 +833,7 @@ img.uix-pb-img,
 		padding: 0;
 		font-size: 13px;
 		line-height: 1.6;
-		padding: .2em 0;
+		padding: .2em 0 1.5em;
 	}
 	
 	.uix-pb-feature-desc.uix-pb-feature-desc-singlerow{
@@ -1396,8 +1396,6 @@ img.uix-pb-img,
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 	}
-		
-
 
 
 /* ====================================================== 
@@ -1782,6 +1780,12 @@ img.uix-pb-img,
 	
 		text-align: center;
 	}
+
+	.uix-pb-card-item-social em {
+		padding-right: 10px;
+	}
+
+
 	
 	
 	.uix-pb-card-item .uix-pb-card-item-left-imgbox{

@@ -80,6 +80,7 @@ if ( $sid >= 0 ) {
 $uix_pb_map_style        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_style', 'normal' );
 $uix_pb_map_width        = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_width', 100 ) );
 $uix_pb_map_height       = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_height', 285 ) );
+$uix_pb_map_height_units = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_height_units', 'px' );
 $uix_pb_map_width_units  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_width_units', '%' );
 $uix_pb_map_name         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_name', 'SEO San Francisco, CA, Gough Street, San Francisco, CA' );
 $uix_pb_map_latitude     = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_latitude', 37.7770776 ) );
@@ -88,8 +89,7 @@ $uix_pb_map_zoom         = floatval( UixPageBuilder::fvalue( $colid, $sid, $item
 $uix_pb_map_marker       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_map_marker', UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-location.png' );
 
 
-
-$element_temp = '[uix_pb_map style=\'{map_style}\' width=\'{map_width}{map_width_units}\' height=\'{map_height}px\' latitude=\'{map_latitude}\' longitude=\'{map_longitude}\' zoom=\'{map_zoom}\' name=\'{map_name}\' marker=\'{map_marker}\' ]';
+$element_temp = '[uix_pb_map style=\'{map_style}\' width=\'{map_width}{map_width_units}\' height=\'{map_height}{map_height_units}\' latitude=\'{map_latitude}\' longitude=\'{map_longitude}\' zoom=\'{map_zoom}\' name=\'{map_name}\' marker=\'{map_marker}\' ]';
  
  
 $uix_pb_section_map_temp = str_replace( '{map_marker}', esc_url( $uix_pb_map_marker ), 
@@ -98,12 +98,13 @@ $uix_pb_section_map_temp = str_replace( '{map_marker}', esc_url( $uix_pb_map_mar
 						  str_replace( '{map_width}', esc_attr( $uix_pb_map_width ), 
 						  str_replace( '{map_width_units}', esc_attr( $uix_pb_map_width_units ), 
 						  str_replace( '{map_height}', esc_attr( $uix_pb_map_height ), 
+						  str_replace( '{map_height_units}', esc_attr( $uix_pb_map_height_units ), 
 						  str_replace( '{map_latitude}', esc_attr( $uix_pb_map_latitude ), 
 						  str_replace( '{map_longitude}', esc_attr( $uix_pb_map_longitude ), 
 						  str_replace( '{map_zoom}', esc_attr( $uix_pb_map_zoom ), 
 
 						 $element_temp 
-						 ) ) ) ) ) ) ) ) );
+						 ) ) ) ) ) ) ) ) ) );
 
 
 
@@ -168,12 +169,17 @@ $args =
 			'desc'           => '',
 			'value'          => $uix_pb_map_height,
 			'placeholder'    => '',
-			'type'           => 'short-text',
+			'type'           => 'short-units-text',
 			'default'        => array(
-									'units'  => 'px'
-				                )
+									'units'      => [ 'px', 'vh' ],
+									'units_id'    => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_height_units' ),
+									'units_name'  => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_height_units' ),
+									'units_value' => $uix_pb_map_height_units
+								)
 		
 		),	
+		
+		
 		
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_name' ),
@@ -315,6 +321,7 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_map_style        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_style' ); ?>' ).val(),
 				uix_pb_map_width        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_width' ); ?>' ).val(),
 				uix_pb_map_height       = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_height' ); ?>' ).val(),
+				uix_pb_map_height_units = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_height_units' ); ?>' ).val(),
 				uix_pb_map_width_units  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_width_units' ); ?>' ).val(),
 				uix_pb_map_name         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_name' ); ?>' ).val(),
 				uix_pb_map_latitude     = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_latitude' ); ?>' ).val(),
@@ -335,6 +342,7 @@ if ( $sid >= 0 && is_admin() ) {
 								  .replace(/{map_width}/g, uixpbform_floatval( uix_pb_map_width ) )
 								  .replace(/{map_width_units}/g, uixpbform_htmlEncode( uix_pb_map_width_units )  )
 								  .replace(/{map_height}/g, uixpbform_floatval( uix_pb_map_height ) )
+				                  .replace(/{map_height_units}/g, uixpbform_htmlEncode( uix_pb_map_height_units ) )
 								  .replace(/{map_latitude}/g, uixpbform_floatval( uix_pb_map_latitude ) )
 								  .replace(/{map_longitude}/g, uixpbform_floatval( uix_pb_map_longitude )  )
 								  .replace(/{map_zoom}/g, uixpbform_floatval( uix_pb_map_zoom ) );

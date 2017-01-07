@@ -12,7 +12,7 @@ $form_id                 = 'uix_pb_section_features2';
 
 //clone list
 $clone_trigger_id        = 'uix_pb_features_col3_list';    // ID of clone trigger
-$clone_max                 = 3;                                 // Maximum of clone form 
+$clone_max               = 30;                                 // Maximum of clone form 
 
 //clone list of toggle class value
 $clone_list_toggle_class = '';
@@ -105,7 +105,9 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		
 
 		$icon         = ( !empty( $item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ] ) ) ? '<i class="fa fa-'.$item[ '['.$colid.']'.$_uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ].'"></i>' : '<i class="fa fa-check"></i>';	
-		$list_features2_item .= '<div class="uix-pb-col-4 '.( $k == 3 ? 'uix-pb-col-last' : '' ).'">';
+		
+
+		$list_features2_item .= '<div class="uix-pb-col-4 '.( $k >= 3 && $k % 3 == 0 ? 'uix-pb-col-last' : '' ).'">';
 		
 		$list_features2_item .= '
 			<div class="uix-pb-feature-li uix-pb-feature-li-c3">
@@ -232,12 +234,6 @@ $form_type = [
 $args = 
 	[
 	
-	
-		array(
-			'desc'           => sprintf( __( '<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum of <strong>%1$s</strong>.', 'uix-pagebuilder' ), $clone_max ),
-			'type'           => 'text'
-		
-		),
 	 
 		//------list begin
 		array(
@@ -488,26 +484,26 @@ if ( $sid >= 0 && is_admin() ) {
 
 						
 					var _item_v_icon         = ( _icon != undefined && _icon != '' ) ? '<i class="fa fa-'+_icon+'"></i>' : '<i class="fa fa-check"></i>',
-						_item_v_col_lastclass  = ( i == 3 ) ? 'uix-pb-col-last' : '';
+						_item_v_col_lastclass  = ( i >=3 && i % 3 == 0 ) ? 'uix-pb-col-last' : '';
 					
 					
 							
-					show_list_item += '<div class="uix-pb-col-4 '+_item_v_col_lastclass+'">';
+					
 						
 					if ( _title != undefined && _title != '' ) {
 										
 						//Do not include spaces
-						
+						show_list_item += '<div class="uix-pb-col-4 '+_item_v_col_lastclass+'">';
 						show_list_item += '<div class="uix-pb-feature-li uix-pb-feature-li-c3">';
 						show_list_item += '<p class="uix-pb-feature-icon">'+_item_v_icon+'</p>';
 						show_list_item += '<h3 class="uix-pb-feature-title">'+_title+'</h3>';
 						show_list_item += '<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>'+_desc+'</p></div>';             
 						show_list_item += '</div>';
-						
+						show_list_item += '</div>';
 	
 					}
 					
-					show_list_item += '</div>';
+					
 	   	
 					
 				}

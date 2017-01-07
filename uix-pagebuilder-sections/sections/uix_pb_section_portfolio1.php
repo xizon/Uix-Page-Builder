@@ -14,10 +14,6 @@ $form_id                 = 'uix_pb_section_portfolio1';
 $clone_trigger_id        = 'uix_pb_portfolio1_list';    // ID of clone trigger 
 $clone_max               = 30;                         // Maximum of clone form 
 
-//clone list of toggle class value
-$clone_list_toggle_class = '#{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ).'';       
-
-
 
 
 /**
@@ -88,6 +84,11 @@ if ( $sid >= 0 ) {
  * Element Template
  * ----------------------------------------------------
  */
+//clone list of toggle class value
+$clone_list_toggle_class = '#{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ).'';       
+
+
+
 $uniqid_id                                 = uniqid(); 
 
 $uix_pb_portfolio1_config_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_portfolio1_config_title', __( 'Text Here', 'uix-pagebuilder' ) );

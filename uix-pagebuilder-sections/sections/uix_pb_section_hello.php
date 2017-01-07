@@ -13,9 +13,7 @@ $form_id = 'uix_pb_section_hello';
 //clone list
 $clone_trigger_id        = 'uix_pb_hello_hello_list';    // ID of clone trigger 
 $clone_max               = 4;                     // Maximum of clone form 
-
-//clone list of toggle class value
-$clone_list_toggle_class = '#{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).', #{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ).'';                    
+               
 
 
 /**
@@ -88,6 +86,10 @@ if ( $sid >= 0 ) {
  * Element Template
  * ----------------------------------------------------
  */
+//clone list of toggle class value
+$clone_list_toggle_class = '#{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).', #{colID}'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ).'';     
+
+
 //padding
 $uix_pb_hello_paddingdis_top        = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_top', 20 ) );
 $uix_pb_hello_paddingdis_right      = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_right', 0 ) );

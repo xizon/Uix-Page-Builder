@@ -13,7 +13,7 @@ $form_id                 = 'uix_pb_section_features1';
 //clone list
 $clone_trigger_id_1        = 'uix_pb_features_col2_one_list';    // ID of clone trigger 
 $clone_trigger_id_2        = 'uix_pb_features_col2_two_list';    // ID of clone trigger 
-$clone_max                 = 10;                                 // Maximum of clone form 
+$clone_max                 = 15;                                 // Maximum of clone form 
 
 //clone list of toggle class value
 $clone_list_toggle_class = '';
