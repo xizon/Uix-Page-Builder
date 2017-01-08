@@ -65,10 +65,15 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					////Register core functions
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_pagebuilder_wp_plugin', array( 
-						'url'                => self::plug_directory(),
-						'lang_media_title'   => __( 'Select Files', 'uix-pagebuilder' ),
-						'lang_media_text'    => __( 'Insert', 'uix-pagebuilder' ),				
-						'lang_mce_image'     => __( 'Insert Image', 'uix-pagebuilder' ),
+						'url'                       => self::plug_directory(),
+						'lang_media_title'          => __( 'Select Files', 'uix-pagebuilder' ),
+						'lang_media_text'           => __( 'Insert', 'uix-pagebuilder' ),				
+						'lang_mce_image'            => __( 'Insert Image', 'uix-pagebuilder' ),
+						'lang_mce_unlink_title'     => __( 'Remove link', 'uix-pagebuilder' ),
+						'lang_mce_link_title'       => __( 'Insert/Edit link', 'uix-pagebuilder' ),
+						'lang_mce_link_field_url'   => __( 'URL', 'uix-pagebuilder' ),
+						'lang_mce_link_field_text'  => __( 'Link Text', 'uix-pagebuilder' ),
+						'lang_mce_link_field_win'   => __( 'Open link in a new tab', 'uix-pagebuilder' ),
 					 ) );	
 				 
 				    wp_enqueue_script( 'uixpbform-functions' );

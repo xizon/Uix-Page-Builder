@@ -1416,10 +1416,14 @@ function uixpbform_editorInit( id ){
 					height : 200,
 					menubar: false,
 					plugins: 'textcolor image media hr',
-				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | bold italic | bullist numlist outdent indent | hr uixpb_image',
+				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent | hr uixpb_image',
 					setup:function(ed) {
 					   ed.on( 'change', function(e) {
-						   var newvalue = ed.getContent().replace(/\r?\n/gm, '');
+						   var newvalue = ed.getContent()
+						                                 .replace(/\r?\n/gm, '')
+						                                 .replace(/&nbsp;/g, ' ');
+						   
+						   
 						   $( 'textarea#' + vid ).val( newvalue ).trigger( 'change' );
 					   });
 						
@@ -1454,7 +1458,82 @@ function uixpbform_editorInit( id ){
 						  tooltip: uix_pagebuilder_wp_plugin.lang_mce_image,
 						  onclick: uixpb_mce_insertImage
 						});
+						
+						
+						// Add link button
+						ed.addButton('uixpb_link', {
+							icon: 'mce-ico mce-i-link',
+							tooltip: uix_pagebuilder_wp_plugin.lang_mce_link_title,
+							onclick: function (e) {
+								
+								var urlRegex     = /<a href="(.*?)"/g,
+									urlMatch     = '',
+									selectedtxt  = ed.selection.getContent(),
+									curlabel     = selectedtxt.replace(/<a\b[^>]*>/i, '' ).replace(/<\/a>/i, '' ),
+									curlinkURL   = '';
+								
+								while( urlMatch = urlRegex.exec( selectedtxt ) ){
+									curlinkURL = urlMatch[1];
+								}	
 
+								ed.windowManager.open( {
+									title: uix_pagebuilder_wp_plugin.lang_mce_link_title,
+									body: [
+									{
+										type: 'textbox',
+										label: uix_pagebuilder_wp_plugin.lang_mce_link_field_url,
+										name: 'link_url',
+										value: curlinkURL,
+										placeholder: 'https://',
+										multiline: true,
+										minWidth: 500,
+										minHeight: 30,
+									},
+									{
+										type: 'textbox',
+										label: uix_pagebuilder_wp_plugin.lang_mce_link_field_text,
+										name: 'link_text',
+										value: curlabel,
+										multiline: true,
+										minWidth: 500,
+										minHeight: 30,
+									},	   
+										
+									{
+										type: 'checkbox',
+										name: 'link_target',
+										label: ' ',
+										text: ' ' + uix_pagebuilder_wp_plugin.lang_mce_link_field_win,
+									},
+				
+										
+									],
+									onsubmit: function( e ) {
+										
+										var curtxt      = ( e.data.link_text != '' ) ? e.data.link_text : e.data.link_url,
+											target      = ( e.data.link_target ) ? 'target="_blank"' : '';
+										
+										ed.insertContent( '<a href="' + e.data.link_url + '" ' + target + '>' + curtxt + '</a>');
+									}
+								});
+							}
+						});
+						
+						
+						//Delete link button
+						ed.addButton('uixpb_unlink', {
+							icon: 'mce-ico mce-i-unlink',
+							tooltip: uix_pagebuilder_wp_plugin.lang_mce_unlink_title,
+							onclick: function (e) {
+								
+								var selectedtxt  = ed.selection.getContent();
+								selectedtxt = selectedtxt.replace(/<a\b[^>]*>/i, '' ).replace(/<\/a>/i, '' );
+								ed.insertContent(  selectedtxt );
+								
+							}
+						});
+
+						
 				   },
 				  content_css: [
 					uix_pagebuilder_wp_plugin.url + 'css/uixpbform.editor.css'
@@ -1469,6 +1548,8 @@ function uixpbform_editorInit( id ){
 	
 
 }
+
+
 
 /*! 
  * ************************************

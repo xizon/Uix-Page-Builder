@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Sun Jan 08 2017 03:41:11 GMT+0800 (CST)\n"
+"POT-Revision-Date: Mon Jan 09 2017 01:29:59 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -262,7 +262,7 @@ msgid "Enter Template Name"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:378 ../admin/uixpbform/init.
-#: php:513
+#: php:518
 msgid "Save"
 msgstr ""
 
@@ -349,7 +349,28 @@ msgstr ""
 msgid "Insert Image"
 msgstr ""
 
-#: ../admin/uixpbform/init.php:513
+#: ../admin/uixpbform/init.php:72
+msgid "Remove link"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:73
+msgid "Insert/Edit link"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:74
+msgid "URL"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:75 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_authorcard.php:209
+msgid "Link Text"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:76
+msgid "Open link in a new tab"
+msgstr ""
+
+#: ../admin/uixpbform/init.php:518
 msgid "Cancel"
 msgstr ""
 
@@ -713,8 +734,8 @@ msgid "Tabs"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/config.php:26 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:205 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:295
+#: sections/sections/uix_pb_section_parallax.php:210 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:315
 msgid "Parallax"
 msgstr ""
 
@@ -884,7 +905,7 @@ msgstr ""
 #: sections/sections/uix_pb_section_hello2.php:140 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:221 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:243 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:231 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:251 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:422 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:438 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:380 ../uix-pagebuilder-
@@ -901,7 +922,7 @@ msgstr ""
 #: sections/sections/uix_pb_section_hello2.php:141 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:222 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:244 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:232 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:252 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:423 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:439 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:381 ../uix-pagebuilder-
@@ -916,10 +937,6 @@ msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_authorcard.php:193
 msgid "Biographical Info"
-msgstr ""
-
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_authorcard.php:209
-msgid "Link Text"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_authorcard.php:219
@@ -980,7 +997,7 @@ msgstr ""
 #: sections/sections/uix_pb_section_features1.php:223 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_features2.php:198 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:51 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:141 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:146 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:255 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:276 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:316 ../uix-pagebuilder-
@@ -1046,7 +1063,7 @@ msgstr ""
 #: pagebuilder-sections/sections/uix_pb_section_features1.php:235 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_features2.php:210 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_hello2.php:63 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:170 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:175 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:267 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:288 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:369 ../uix-pagebuilder-
@@ -1445,11 +1462,15 @@ msgid ""
 "videri nihil dolere. Esse enim, nisi eris, non potes."
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:187
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:192
 msgid "Height"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:225
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:229
+msgid "Background Color"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:245
 msgid "Background Image"
 msgstr ""
 

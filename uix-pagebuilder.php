@@ -455,7 +455,7 @@ class UixPageBuilder {
 	public static function pagebuilder_output( $arr ) {
 		
 		$data = wp_specialchars_decode( $arr );
-		$data = 	str_replace( '{rqt:}', '"',
+		$data = str_replace( '{rqt:}', '"',
 				str_replace( '{apo:}', '&#039;',
 				str_replace( '{cqt:}', '&quot;',
 				str_replace( '{br:}', '<br>',

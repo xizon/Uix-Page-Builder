@@ -527,6 +527,16 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
                 $( this ).bgParallax( "50%", $( this ).data( 'parallax' ) );
             });
         };
+		
+		
+		// If has background color
+		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-container' ).css( {
+			'margin-top': '-3em'
+		} );
+		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pagebuilder-section' ).css( {
+			'margin-bottom': '0'
+		} );
+		
 
 
 	};
