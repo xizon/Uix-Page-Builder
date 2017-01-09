@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Mon Jan 09 2017 01:29:59 GMT+0800 (CST)\n"
+"POT-Revision-Date: Mon Jan 09 2017 14:49:53 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,29 +62,29 @@ msgstr ""
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-pagebuilder.php:588
+#: ../uix-pagebuilder.php:589
 msgid "Add content"
 msgstr ""
 
-#: ../uix-pagebuilder.php:623
+#: ../uix-pagebuilder.php:624
 msgid "Choose Element You Want"
 msgstr ""
 
-#: ../uix-pagebuilder.php:632
+#: ../uix-pagebuilder.php:633
 msgid "Layout"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1013
+#: ../uix-pagebuilder.php:1015
 msgid ""
 "<strong>You need to create Uix Page Builder template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1013 ../helper/tabs/usage.php:22
+#: ../uix-pagebuilder.php:1015 ../helper/tabs/usage.php:22
 msgid "Create now!"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1013 ../helper/tabs/temp.php:73
+#: ../uix-pagebuilder.php:1015 ../helper/tabs/temp.php:73
 msgid ""
 "As a workaround you can use FTP, access the Uix Page Builder template files "
 "path <code>/wp-content/plugins/uix-pagebuilder/theme_templates/</code> and "
@@ -92,34 +92,34 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../uix-pagebuilder.php:1084
+#: ../uix-pagebuilder.php:1086
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
 "blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1156 ../uix-pagebuilder.php:1229
+#: ../uix-pagebuilder.php:1158 ../uix-pagebuilder.php:1231
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1158
+#: ../uix-pagebuilder.php:1160
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1163
+#: ../uix-pagebuilder.php:1165
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-pagebuilder.php:1166
+#: ../uix-pagebuilder.php:1168
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -274,9 +274,10 @@ msgstr ""
 #: ../admin/post-extensions/post-extensions-init.php:391
 #, php-format
 msgid ""
-"Move this file \"uix-pagebuilder-templates.xml\" to the <code>%1$s</code> "
-"folder. If you have done so yet, Uix Page Builder's templates list will be "
-"reset to its default value as specified from the xml file."
+"Please save the template you are editing before exporting. <br><br>Move this "
+"file <b><em>\"templates.xml\"</em></b> to the <code>%1$s</code> folder. If you "
+"have done so yet, Uix Page Builder's templates list will be reset to its "
+"default value as specified from the xml file."
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:409
@@ -284,33 +285,33 @@ msgid "Add section here."
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
-#: extensions/post-extensions-init.php:677
+#: extensions/post-extensions-init.php:678
 msgid "Settings"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
-#: extensions/post-extensions-init.php:677
+#: extensions/post-extensions-init.php:678
 msgid "Custom ID"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
-#: extensions/post-extensions-init.php:677
+#: extensions/post-extensions-init.php:678
 msgid "Container"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
-#: extensions/post-extensions-init.php:677
+#: extensions/post-extensions-init.php:678
 msgid "Boxed"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
-#: extensions/post-extensions-init.php:677
+#: extensions/post-extensions-init.php:678
 msgid "Full Width"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
-#: extensions/post-extensions-init.php:677 ../admin/post-extensions/post-
-#: extensions-init.php:677 ../uix-pagebuilder-
+#: extensions/post-extensions-init.php:678 ../admin/post-extensions/post-
+#: extensions-init.php:678 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_accordion.php:27 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_authorcard.php:18 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_bar.php:19 ../uix-pagebuilder-
@@ -333,7 +334,7 @@ msgid "Section"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:518 ../admin/post-
-#: extensions/post-extensions-init.php:677
+#: extensions/post-extensions-init.php:678
 msgid "HTML Code..."
 msgstr ""
 
@@ -362,7 +363,8 @@ msgid "URL"
 msgstr ""
 
 #: ../admin/uixpbform/init.php:75 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_authorcard.php:209
+#: sections/sections/uix_pb_section_authorcard.php:209 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:296
 msgid "Link Text"
 msgstr ""
 
@@ -376,10 +378,6 @@ msgstr ""
 
 #: ../admin/uixpbform/fontawesome/font-awesome-custom.php:474
 msgid "Social:"
-msgstr ""
-
-#: ../admin/uixpbform/form-inc/color-map.php:48
-msgid "Add Custom Color"
 msgstr ""
 
 #: ../admin/uixpbform/form-inc/icon.php:23 ../admin/uixpbform/form-inc/icon.php:55
@@ -715,10 +713,6 @@ msgid ""
 "theme}/</code>."
 msgstr ""
 
-#: ../theme_templates/page-uix_pagebuilder.php:121
-msgid "End Section"
-msgstr ""
-
 #: ../uix-pagebuilder-sections/sections/config.php:7
 msgid "Contents"
 msgstr ""
@@ -734,8 +728,8 @@ msgid "Tabs"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/config.php:26 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:210 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:315
+#: sections/sections/uix_pb_section_parallax.php:215 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:346
 msgid "Parallax"
 msgstr ""
 
@@ -843,7 +837,7 @@ msgstr ""
 #: pagebuilder-sections/sections/uix_pb_section_features1.php:274 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_features1.php:379 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_features2.php:243 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:785 ../uix-pagebuilder-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:783 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:363 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_tabs.php:211 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:321 ../uix-pagebuilder-
@@ -857,7 +851,7 @@ msgstr ""
 #: pagebuilder-sections/sections/uix_pb_section_features1.php:280 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_features1.php:385 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_features2.php:249 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:791 ../uix-pagebuilder-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:789 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:369 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_tabs.php:217 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:327 ../uix-pagebuilder-
@@ -899,13 +893,13 @@ msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_authorcard.php:170 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_clients.php:288 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:364 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_hello.php:533 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_hello.php:826 ../uix-pagebuilder-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:362 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_hello.php:531 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_hello.php:824 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:140 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:221 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:243 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:251 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:258 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:422 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:438 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:380 ../uix-pagebuilder-
@@ -916,13 +910,13 @@ msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_authorcard.php:171 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_clients.php:289 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:365 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_hello.php:534 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_hello.php:827 ../uix-pagebuilder-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:363 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_hello.php:532 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_hello.php:825 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:141 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:222 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:244 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:252 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:259 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:423 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:439 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:381 ../uix-pagebuilder-
@@ -997,7 +991,7 @@ msgstr ""
 #: sections/sections/uix_pb_section_features1.php:223 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_features2.php:198 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:51 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:146 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:151 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:255 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:276 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:316 ../uix-pagebuilder-
@@ -1063,7 +1057,7 @@ msgstr ""
 #: pagebuilder-sections/sections/uix_pb_section_features1.php:235 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_features2.php:210 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_hello2.php:63 ../uix-pagebuilder-
-#: sections/sections/uix_pb_section_parallax.php:175 ../uix-pagebuilder-
+#: sections/sections/uix_pb_section_parallax.php:180 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:267 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:288 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_pricing1.php:369 ../uix-pagebuilder-
@@ -1206,131 +1200,131 @@ msgid ""
 "Description</s>"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:291
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:289
 #, php-format
 msgid ""
 "You can custom the boxed width of the container for Uix Page Builder "
 "stylesheets. <a target=\"_blank\" href=\"%1$s\">click here to custom</a>"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:304
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:302
 msgid "Image Radio"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:324
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:322
 msgid "Radio Switch"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:361
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:359
 msgid "Image for Text Fill"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:374 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:840
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:372 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:838
 msgid "Text"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:403
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:401
 msgid "Radio"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:447
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:445
 msgid "Slider"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:477
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:475
 msgid "Padding (px)"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:478
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:476
 msgid ""
 "Use the input fields below to customize the padding of your column shortcode."
 " Measurement units is pixels (px)."
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:496
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:494
 msgid "Editor"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:512
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:510
 msgid "Textarea(by default value)"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:527 ../uix-
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:525 ../uix-
 #: pagebuilder-sections/sections/uix_pb_section_hello2.php:134 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:215
 msgid "Upload Image"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:530 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:823 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:528 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:821 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:137 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_hello2.php:218 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_map.php:240
 msgid "Image URL"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:572
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:570
 msgid "Short Text"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:585
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:583
 msgid "Short Units Text"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:610 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:856 ../uix-pagebuilder-
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:608 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:854 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_portfolio1.php:495 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team1.php:436 ../uix-pagebuilder-
 #: sections/sections/uix_pb_section_team2.php:455
 msgid "set up links with toggle"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:623 ../uix-
-#: pagebuilder-sections/sections/uix_pb_section_hello.php:869
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:621 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_hello.php:867
 msgid "Toggle URL"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:638
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:636
 msgid "Color"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:650
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:648
 msgid "Select"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:651
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:649
 msgid "This is infomation."
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:668
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:666
 msgid "Multiple Selector"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:687
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:685
 msgid "This is Icon Selector "
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:702
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:700
 msgid "Color Map"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:717
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:715
 msgid "Checkbox"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:732
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:730
 msgid "Switch"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:776
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:774
 #, php-format
 msgid ""
 "<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum "
 "of <strong>%1$s</strong>."
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:950
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_hello.php:948
 msgid "Form Demo 1"
 msgstr ""
 
@@ -1462,16 +1456,37 @@ msgid ""
 "videri nihil dolere. Esse enim, nisi eris, non potes."
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:192
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:90
+msgid "Check Out"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:197
 msgid "Height"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:229
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:234
 msgid "Background Color"
 msgstr ""
 
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:245
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:235
+msgid "Seamless display when the background color is not empty."
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:252
 msgid "Background Image"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:284 ../uix-
+#: pagebuilder-sections/sections/uix_pb_section_portfolio1.php:510
+msgid "Destination URL"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:287
+msgid "http://"
+msgstr ""
+
+#: ../uix-pagebuilder-sections/sections/uix_pb_section_parallax.php:297
+msgid "Valid when the value of <strong>\"Destination URL\"</strong> is not empty"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_portfolio1.php:106
@@ -1513,10 +1528,6 @@ msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_portfolio1.php:435
 msgid "Full Preview"
-msgstr ""
-
-#: ../uix-pagebuilder-sections/sections/uix_pb_section_portfolio1.php:510
-msgid "Destination URL"
 msgstr ""
 
 #: ../uix-pagebuilder-sections/sections/uix_pb_section_pricing1.php:83 ../uix-

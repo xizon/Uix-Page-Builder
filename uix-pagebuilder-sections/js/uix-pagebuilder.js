@@ -529,13 +529,10 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
         };
 		
 		
-		// If has background color
-		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-container' ).css( {
-			'margin-top': '-3em'
-		} );
-		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pagebuilder-section' ).css( {
-			'margin-bottom': '0'
-		} );
+		// Seamless display when the background color is not empty
+		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-container' ).addClass( 'nospace' );
+		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pagebuilder-section' ).addClass( 'nospace' );	
+		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-row > div' ).addClass( 'nospace' );
 		
 
 

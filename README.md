@@ -7,7 +7,7 @@ Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Plugin URI](https://uiux.cc/wp-plugins/uix-pagebuilder/)
 
-[Video Demo](#)
+[Video Demo](https://www.youtube.com/watch?v=1111111)
 
 ### Licensing
 
@@ -70,6 +70,13 @@ Uix Page Builder is a design system that it is simple content creation interface
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-6.jpg)
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-7.jpg)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-8.jpg)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-9.jpg)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-10.jpg)
+
 
 
 ###Credits

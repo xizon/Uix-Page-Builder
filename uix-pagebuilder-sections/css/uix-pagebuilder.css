@@ -51,6 +51,7 @@
   clear: both;
 }
 
+   
 	/* 
 	 * Common uix-pb-col-umns definitions
 	 */
@@ -58,7 +59,9 @@
 		float: left;
 		margin: 0 3% 0 0;
 	}
-	
+    
+    
+
 	.uix-pb-col-1.uix-pb-col-last, .uix-pb-col-2.uix-pb-col-last, .uix-pb-col-3.uix-pb-col-last, .uix-pb-col-4.uix-pb-col-last, .uix-pb-col-5.uix-pb-col-last, .uix-pb-col-6.uix-pb-col-last, .uix-pb-col-7.uix-pb-col-last, .uix-pb-col-8.uix-pb-col-last, .uix-pb-col-9.uix-pb-col-last, .uix-pb-col-10.uix-pb-col-last, .uix-pb-col-11.uix-pb-col-last, .uix-pb-col-12 {
 		margin: 0;
 	}
@@ -118,6 +121,68 @@
 			
 		}
 
+		.uix-pb-container-fullwidth .uix-pb-col-12 {
+			margin: 0;
+			width: 100%;
+
+		}
+
+	/* Seamless display when the background color is not empty */
+	.uix-pb-row > div.nospace {
+		margin: 0 !important;
+	}
+
+	.uix-pb-col-1.nospace {
+		width: 8.33333%;
+	}
+
+	.uix-pb-col-2.nospace {
+		width: 16.60667%;
+	}
+
+	.uix-pb-col-3.nospace {
+		width: 24.95%;
+	}
+
+	.uix-pb-col-4.nospace {
+		width: 33.27333%;
+	}
+
+	.uix-pb-col-5.nospace {
+		width: 41.66667%;
+	}
+
+	.uix-pb-col-6.nospace {
+		width: 49.95%;
+	}
+
+	.uix-pb-col-7.nospace {
+		width: 58.33333%;
+	}
+
+	.uix-pb-col-8.nospace {
+		width: 66.66667%;
+	}
+
+	.uix-pb-col-9.nospace {
+		width: 75%;
+	}
+
+	.uix-pb-col-10.nospace {
+		width: 83.33333%;
+	}
+
+	.uix-pb-col-11.nospace {
+		width: 91.66667%;
+	}
+
+	.uix-pb-col-12.nospace {
+		width: 100%;
+	}
+
+
+
+
 
 /* 
  * Small devices
@@ -128,6 +193,13 @@
 		float: none;
 		width: 99%;
 	}
+	
+	/* Seamless display when the background color is not empty */
+	.uix-pb-col-1.nospace, .uix-pb-col-2.nospace, .uix-pb-col-3.nospace, .uix-pb-col-4.nospace, .uix-pb-col-5.nospace, .uix-pb-col-6.nospace, .uix-pb-col-7.nospace, .uix-pb-col-8.nospace, .uix-pb-col-9.nospace, .uix-pb-col-10.nospace, .uix-pb-col-11.nospace {
+		float: none;
+		width: 100%;
+	}
+	
 }
 	
 
@@ -350,6 +422,7 @@ img.uix-pb-img,
 /* ====================================================== 
    2. Container ( Compatible with Bootstrap 3.x )                           
 /* ====================================================== */
+
 .uix-pb-container,
 .uix-pb-container.uix-pb-container-boxed {
 	margin: 0 auto;
@@ -409,6 +482,7 @@ img.uix-pb-img,
 /* ====================================================== 
    3. Section Styles                               
 /* ====================================================== */
+
 .uix-pagebuilder-section {
 	margin: 0 0 3em;
 }
@@ -1151,7 +1225,7 @@ img.uix-pb-img,
 
 
 /**
- *  11. Button
+ *  11. Buttons
  * ----------------------------------------------------------------------------
  */
  
@@ -1161,13 +1235,11 @@ img.uix-pb-img,
 	box-shadow: 0 1px 5px rgba(0,0,0,0);
 	border: none;
 	color: #fff;
-	-webkit-border-radius: 50px; 
-	-moz-border-radius: 50px; 
-	border-radius: 50px;
 	padding: .8em 3em;
-	letter-spacing: normal;
-	text-transform: none;
-	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 600;
 	position: relative;
 	margin: 1em 1em .7em 0;
 	display: inline-block;	
@@ -1319,6 +1391,7 @@ img.uix-pb-img,
 }
 
 .uix-pb-testimonials{
+	margin-bottom: 3em;
 	
 }
 
@@ -1419,6 +1492,17 @@ img.uix-pb-img,
 	background-size: cover !important;
 }
 
+.uix-pb-parallax-wrapper h1,
+.uix-pb-parallax-wrapper h2,
+.uix-pb-parallax-wrapper h3,
+.uix-pb-parallax-wrapper h4,
+.uix-pb-parallax-wrapper h5,
+.uix-pb-parallax-wrapper h6 {
+    line-height: .5;
+	margin: 0;
+	padding: .5em;
+}
+
 .uix-pb-parallax-wrapper .uix-pb-parallax-table {
 	height: 250px;
 }
@@ -1429,6 +1513,10 @@ img.uix-pb-img,
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 	}
+
+.uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+	padding:  0 5em;
+}
 
 
 /* ====================================================== 

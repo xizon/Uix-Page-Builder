@@ -152,8 +152,6 @@ $uix_pb_hello_checkbox_toggle_text  = floatval( UixPageBuilder::fvalue( $colid, 
 
 
 
-
-
 //dynamic adding input
 $list_hello_item = '';
 
@@ -165,7 +163,7 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		
 		$list_hello_item .= '
 		<p>
-		    '.$item[ '['.$colid.']'.$_uid.'[uix_pb_hello_listitem_imgURL]['.$sid.']' ].' <strong>('.$item[ '['.$colid.']'.$_uid.'[uix_pb_hello_listitem_imgtitle]['.$sid.']' ].')</strong><br>
+		    '.$item[ '['.$colid.']'.$_uid.'[uix_pb_hello_listitem_imgURL]['.$sid.']' ].' <strong>('.uix_pb_kses( $item[ '['.$colid.']'.$_uid.'[uix_pb_hello_listitem_imgtitle]['.$sid.']' ] ).')</strong><br>
 			Toggle URL: '.$item[ '['.$colid.']'.$_uid.'[uix_pb_hello_listitem_toggle_url]['.$sid.']' ].'<br>
 			Toggle Icon: <i class="fa fa-'.esc_attr( $item[ '['.$colid.']'.$_uid.'[uix_pb_hello_listitem_toggle_icon]['.$sid.']' ] ).'"></i><br>
 		</p>    
@@ -177,7 +175,7 @@ for ( $k = 1; $k <= $clone_max; $k++ ) {
 		
 		$list_hello_item .= '
 		<p>
-		    '.$uix_pb_hello_listitem_imgURL.' <strong>('.$uix_pb_hello_listitem_imgtitle.')</strong><br>
+		    '.$uix_pb_hello_listitem_imgURL.' <strong>('.uix_pb_kses( $uix_pb_hello_listitem_imgtitle ).')</strong><br>
 			Toggle URL: '.$uix_pb_hello_listitem_toggle_url.'<br>
 			Toggle Icon: <i class="fa fa-'.esc_attr( $uix_pb_hello_listitem_toggle_icon ).'"></i><br>
 		</p> 

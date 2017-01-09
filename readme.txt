@@ -18,6 +18,9 @@ Uix Page Builder is a design system that it is simple content creation interface
 Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form` and `portfolio`. To be continued.
 
 
+https://www.youtube.com/watch?v=1111111
+
+
 = Features =
 
 * Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
@@ -72,6 +75,10 @@ The version number is the date of the revision of the [guidelines](https://make.
 5. screenshot-5.jpg
 6. screenshot-6.jpg
 7. screenshot-7.jpg
+8. screenshot-8.jpg
+9. screenshot-9.jpg
+10. screenshot-10.jpg
+
 
 == Upgrade Notice ==
 

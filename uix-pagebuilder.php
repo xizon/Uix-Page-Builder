@@ -462,20 +462,21 @@ class UixPageBuilder {
 		        str_replace( '&#039;', "'",
 		        str_replace( '&quot;', '"',
 			    str_replace( '&apos;', "'",
-
+				str_replace( '&amp;', '&',
 				
 			    $data 
-			    ) ) ) ) ) ) );
+			    ) ) ) ) ) ) ) );
 				
 		if ( !is_admin() ) {
 			$data = str_replace( '&lt;br&gt;', '<br>',
 								
 					//Returns string in order to protect the security output of JSON
 					str_replace( '{rowcsql:}', '[', 
-					str_replace( '{rowcsqr:}', ']', 
+					str_replace( '{rowcsqr:}', ']',
+					str_replace( '&amp;', '&',
 								
 					$data 
-				   ) ) );	
+				   ) ) ) );	
 	
 		}
 			   
@@ -672,6 +673,7 @@ class UixPageBuilder {
 		
 		$result = str_replace( '{rowcapo:}', '&#039;',
 			 	 str_replace( '{rowcqt:}', '&quot;',
+				 
 
 			    $result
 			    ) );	

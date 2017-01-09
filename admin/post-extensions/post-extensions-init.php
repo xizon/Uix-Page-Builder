@@ -105,7 +105,7 @@ if ( !function_exists( 'uix_pagebuilder_loadtemplist' ) ) {
 			
 			
 			$tempdata  = get_option( 'uix-pagebuilder-templates' );
-			$xmlfile   = UixPageBuilder::backend_path( 'dir' ).'sections/uix-pagebuilder-templates.xml';
+			$xmlfile   = UixPageBuilder::backend_path( 'dir' ).'sections/templates.xml';
 			
 			echo '<p>';
 			
@@ -134,7 +134,7 @@ if ( !function_exists( 'uix_pagebuilder_loadtemplist' ) ) {
 			}
 			
 			/*
-			 * Templates file: uix-pagebuilder-sections/sections/uix-pagebuilder-templates.xml
+			 * Templates file: uix-pagebuilder-sections/sections/templates.xml
 			 *
 			 * If you have moved to "uix-pagebuilder-sections/sections/" folder so yet, Uix Page Builder's templates 
 			 * list will be reset to its default value as specified from the xml file.
@@ -143,7 +143,7 @@ if ( !function_exists( 'uix_pagebuilder_loadtemplist' ) ) {
 			if ( file_exists( $xmlfile ) ) {
 				
 				$xml             = new UixPB_XML;  
-				$xml -> xml_path = UixPageBuilder::backend_path( 'uri' ).'sections/uix-pagebuilder-templates.xml';
+				$xml -> xml_path = UixPageBuilder::backend_path( 'uri' ).'sections/templates.xml';
 				$xLength         =  $xml -> get_xmlLength();
 				$xValue          = $xml -> xml_read();
 				
@@ -388,7 +388,7 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 						
 						$folder = ( UixPageBuilder::tempfolder_exists() ) ? get_stylesheet_directory(). "/".UixPageBuilder::CUSTOMTEMP : UixPageBuilder::plug_filepath().UixPageBuilder::CUSTOMTEMP;
                  
-						echo sprintf( __( 'Move this file "uix-pagebuilder-templates.xml" to the <code>%1$s</code> folder. If you have done so yet, Uix Page Builder\'s templates list will be reset to its default value as specified from the xml file.', 'uix-pagebuilder' ), $folder );
+						echo sprintf( __( 'Please save the template you are editing before exporting. <br><br>Move this file <b><em>"templates.xml"</em></b> to the <code>%1$s</code> folder. If you have done so yet, Uix Page Builder\'s templates list will be reset to its default value as specified from the xml file.', 'uix-pagebuilder' ), $folder );
 						
 						?>
                     </p>
@@ -667,14 +667,15 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 		
 		function gridsterAddRow() {
 			
-			var gLi = jQuery( '.gridster > ul > li' ).length,
-				gLi = gLi + 1,
-				titleid = 'title-data-'+gLi,
-				contentid = 'content-data-'+gLi,
-				uid  = gLi;
+			var gLi         = jQuery( '.gridster > ul > li' ).length,
+				gLi         = gLi + 1,
+				titleid     = 'title-data-'+gLi,
+				contentid   = 'content-data-'+gLi,
+				uid         = gLi,
+				curid       = gLi + ''+gridsterRowUID()+'';
 				
 			
-			gridster.gridsterAddWidget( '<li id="uix-pagebuilder-gridster-widget-'+uid+'" class="uix-pagebuilder-gridster-widget" data-id="'+uid+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-pagebuilder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-pagebuilder' ); ?></strong><input type="text" size="10" class="cusid-box" value="section-'+uid+'"></p><p><strong><?php _e( 'Container', 'uix-pagebuilder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+uid+'" value="boxed" checked><?php _e( 'Boxed', 'uix-pagebuilder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+uid+'" value="fullwidth"><?php _e( 'Full Width', 'uix-pagebuilder' ); ?></label></p></div><div class="uix-pagebuilder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-pagebuilder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-pagebuilder' ); ?> '+uid+'"><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-pagebuilder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', 1, 1 ).fadeIn( 100, function() {
+			gridster.gridsterAddWidget( '<li id="uix-pagebuilder-gridster-widget-'+uid+'" class="uix-pagebuilder-gridster-widget" data-id="'+curid+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-pagebuilder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-pagebuilder' ); ?></strong><input type="text" size="10" class="cusid-box" value="section-'+uid+'"></p><p><strong><?php _e( 'Container', 'uix-pagebuilder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+uid+'" value="boxed" checked><?php _e( 'Boxed', 'uix-pagebuilder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+uid+'" value="fullwidth"><?php _e( 'Full Width', 'uix-pagebuilder' ); ?></label></p></div><div class="uix-pagebuilder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-pagebuilder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-pagebuilder' ); ?> '+uid+'"><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-pagebuilder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', 1, 1 ).fadeIn( 100, function() {
 				
 				    /*-- Initialize form action for entering --*/
 					gridsterFormEnterAction();
@@ -1170,7 +1171,13 @@ if ( !function_exists( 'uix_pagebuilder_page_ex_metaboxes_pagerbuilder_container
 
 			});
 		}
-		
+			
+			
+		function gridsterRowUID() {
+			return Math.floor( Math.random() * 10000);
+		}
+
+
 		
         </script>
         
