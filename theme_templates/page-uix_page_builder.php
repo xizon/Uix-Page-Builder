@@ -15,7 +15,7 @@ get_header(); ?>
             
   
 		<?php
-		$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $post->ID, 'uix-pagebuilder-layoutdata', true ) );
+		$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $post->ID, 'uix-page-builder-layoutdata', true ) );
 		$item              = [];
 		$cols              = [ 
 								[ '3_4', 'uix-pb-col-8' ],
@@ -36,7 +36,7 @@ get_header(); ?>
 		
 		if ( $builder_content && is_array( $builder_content ) ) {
 			foreach ( $builder_content as $key => $value ) :
-				$con                  = UixPageBuilder::pagebuilder_output( $value->content );
+				$con                  = UixPageBuilder::page_builder_output( $value->content );
 				$col                  = $value->col;
 				$row                  = $value->row;
 				$size_x               = $value->size_x;
@@ -48,21 +48,21 @@ get_header(); ?>
 				$element_grid_before  = '';
 				$element_grid_after   = '</div>';
 				
-				if ( empty( $custom_id ) ) $custom_id = 'uix-pagebuilder-section-'.$row;
+				if ( empty( $custom_id ) ) $custom_id = 'uix-page-builder-section-'.$row;
 				
 			
 				if ( $con && is_array( $con ) ) {
 					foreach ( $con as $key ) :
 						
 						$$key[0] = $key[ 1 ];
-						$item[ UixPageBuilder::pagebuilder_item_name( $key[0] ) ]  =  $$key[0];
+						$item[ UixPageBuilder::page_builder_item_name( $key[0] ) ]  =  $$key[0];
 					endforeach;
 				}
 		
 				//------------------------------------   loop sections
 				if ( sizeof( $item ) > 3 && !empty( $value->content ) && $value->content != 'undefined' ) {
 					
-					$col_content     = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+					$col_content     = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 										
 					if ( $col_content && is_array( $col_content ) ) {
 						foreach ( $col_content as $key => $value ) :
@@ -104,7 +104,7 @@ get_header(); ?>
 						//Section container
 						echo  '
 						<div class="uix-pb-container'.( $section_layout == 'boxed' ? ' uix-pb-container-boxed' : ' uix-pb-container-fullwidth' ).'">
-							<div class="uix-pagebuilder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'">
+							<div class="uix-page-builder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'">
 								<div class="uix-pb-row">
 								'.do_shortcode( $element_code ).'
 								</div>

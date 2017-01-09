@@ -15,7 +15,7 @@ $form_id = 'uix_pb_section_contactform1';
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
@@ -23,23 +23,23 @@ $item    = '';
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
-			$con         = UixPageBuilder::pagebuilder_output( $value->content );
+			$con         = UixPageBuilder::page_builder_output( $value->content );
 			
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
 					
 					$$key[ 0 ] = $key[ 1 ];
-					$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+					$item[ UixPageBuilder::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
 				endforeach;
 			}
 	
 	        //loop content
-			$col_content = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+			$col_content = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 			
 			
 			if ( $col_content && is_array( $col_content ) ) {
@@ -107,7 +107,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_contactform1_code' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_contactform1_code' ),
-			'title'          => __( 'Shortcode', 'uix-pagebuilder' ),
+			'title'          => __( 'Shortcode', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_section_contactform1_code,
 			'placeholder'    => '',
@@ -122,7 +122,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_contactform1_tipinfo' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_contactform1_tipinfo' ),
-			'desc'           => __( 'Output a complete commenting form with your theme by default. <strong>You can install a contact form plugin you want. When you\'re done, copy shortcode and paste into the editor.</strong>', 'uix-pagebuilder' ),
+			'desc'           => __( 'Output a complete commenting form with your theme by default. <strong>You can install a contact form plugin you want. When you\'re done, copy shortcode and paste into the editor.</strong>', 'uix-page-builder' ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
@@ -171,7 +171,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Contact Form', 'uix-pagebuilder' ) ); ?>         
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Contact Form', 'uix-page-builder' ) ); ?>         
 				} ); 
 			} ) ( jQuery );
 			</script>

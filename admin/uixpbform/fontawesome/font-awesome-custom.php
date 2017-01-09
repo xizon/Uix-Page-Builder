@@ -471,7 +471,7 @@ foreach ( $all_icons as $value ) {
 	}
 }
 
-echo '<strong class="uixpbform-icon-social-title">'.__( 'Social:', 'uix-pagebuilder' ).'</strong>';
+echo '<strong class="uixpbform-icon-social-title">'.__( 'Social:', 'uix-page-builder' ).'</strong>';
 
 foreach ( $social_icons as $value ) {
 	$v = str_replace( '"></i></span>', '', str_replace( '<span '.$g.'><i class="fa fa-', '', $value ) );

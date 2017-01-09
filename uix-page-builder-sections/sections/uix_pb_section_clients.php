@@ -24,30 +24,30 @@ $clone_list_toggle_class = '';
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
-			$con         = UixPageBuilder::pagebuilder_output( $value->content );
+			$con         = UixPageBuilder::page_builder_output( $value->content );
 		
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
 					
 					$$key[ 0 ] = $key[ 1 ];
-					$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+					$item[ UixPageBuilder::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
 				endforeach;
 			}
 	
 	        //loop content
-			$col_content = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+			$col_content = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 			
 			
 			if ( $col_content && is_array( $col_content ) ) {
@@ -86,8 +86,8 @@ if ( $sid >= 0 ) {
  * Element Template
  * ----------------------------------------------------
  */
-$uix_pb_clients_config_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_config_title', __( 'Text Here', 'uix-pagebuilder' ) );
-$uix_pb_clients_config_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
+$uix_pb_clients_config_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_config_title', __( 'Text Here', 'uix-page-builder' ) );
+$uix_pb_clients_config_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_config_intro', __( 'This is the description text for the title.', 'uix-page-builder' ) );
 $uix_pb_clients_config_grid           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_config_grid', 3 );
 
 
@@ -95,7 +95,7 @@ $uix_pb_clients_config_grid           = UixPageBuilder::fvalue( $colid, $sid, $i
 
 $uix_pb_clients_listitem_logo       = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_listitem_logo', '' ) );
 $uix_pb_clients_listitem_url        = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_listitem_url', '' ) );
-$uix_pb_clients_listitem_intro      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_listitem_intro', __( 'The Introduction of this client.', 'uix-pagebuilder' ) );
+$uix_pb_clients_listitem_intro      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_clients_listitem_intro', __( 'The Introduction of this client.', 'uix-page-builder' ) );
 
 
 
@@ -178,7 +178,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_config_title' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_clients_config_title' ),
-			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_clients_config_title,
 			'placeholder'    => '',
@@ -190,7 +190,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_config_intro' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_clients_config_intro' ),
-			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_clients_config_intro,
 			'placeholder'    => '',
@@ -206,7 +206,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_config_grid' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_clients_config_grid' ),
-			'title'          => __( 'Column', 'uix-pagebuilder' ),
+			'title'          => __( 'Column', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_clients_config_grid,
 			'placeholder'    => '',
@@ -243,13 +243,13 @@ $args =
 			'id'             => $clone_trigger_id,
 			'colid'          => $colid, /*clone required */
 			'name'           => UixPageBuilder::fname( $colid, $form_id, $clone_trigger_id ),
-			'title'          => __( 'List Item', 'uix-pagebuilder' ),
+			'title'          => __( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => __( 'click here to add an item', 'uix-pagebuilder' ),
+									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
 									'clone_class'               => [ 
 										array(
 											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_listitem_logo' ).'',
@@ -282,11 +282,11 @@ $args =
 				'desc'           => '',
 				'value'          => $uix_pb_clients_listitem_logo,
 				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_listitem_logo' ).'', /*class of list item */
-				'placeholder'    => __( 'LOGO URL', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'LOGO URL', 'uix-page-builder' ),
 				'type'           => 'image',
 				'default'        => array(
-										'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
-										'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' ),
+										'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
+										'upload_btn_text'  => __( 'Upload', 'uix-page-builder' ),
 									)
 			
 			),	
@@ -298,7 +298,7 @@ $args =
 				'desc'           => '',
 				'value'          => $uix_pb_clients_listitem_url,
 				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_clients_listitem_url' ).'', /*class of list item */
-				'placeholder'    => __( 'Destination URL, e.g., http://your.clientsite.com', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'Destination URL, e.g., http://your.clientsite.com', 'uix-page-builder' ),
 				'type'           => 'text',
 				'default'        => ''
 
@@ -351,8 +351,8 @@ $args =
 $form_html = UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 
 
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'html', __( 'Content', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'html', __( 'Content', 'uix-page-builder' ) );
 
 $form_html .= UixPBFormCore::form_after();
 
@@ -393,7 +393,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Clients', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Clients', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

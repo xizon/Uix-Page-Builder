@@ -66,8 +66,8 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 			
 				<div class="google-map-area">
 					<div id="google-container-<?php echo $id; ?>" style="position: relative; width: 100%; height: <?php echo $map_height;?>;"></div>
-					<div class="google-map-zoom-in" id="google-map-zoom-in-<?php echo $id; ?>"><?php _e( '+', 'uix-pagebuilder' ); ?></div>
-					<div class="google-map-zoom-out" id="google-map-zoom-out-<?php echo $id; ?>"><?php _e( '-', 'uix-pagebuilder' ); ?></div>
+					<div class="google-map-zoom-in" id="google-map-zoom-in-<?php echo $id; ?>"><?php _e( '+', 'uix-page-builder' ); ?></div>
+					<div class="google-map-zoom-out" id="google-map-zoom-out-<?php echo $id; ?>"><?php _e( '-', 'uix-page-builder' ); ?></div>
 				</div>	
 			
 				<script type="text/javascript">

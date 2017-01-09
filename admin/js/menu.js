@@ -7,26 +7,26 @@
 		 * Uix Page Builder Anchor Links
 		 * ---------------------------------------------------
 		 */
-		$( '#uix-pagebuilder-anchorlinks' ).on( 'change', function() {
+		$( '#uix-page-builder-anchorlinks' ).on( 'change', function() {
 			
 			var id = $( this ).val();
 		
-			$( '#uix_pagebuilder_anchorlinks_loader' ).show();
+			$( '#uix_page_builder_anchorlinks_loader' ).show();
 			
 	
 			// retrieve the widget settings form
 			$.post( ajaxurl, {
-				action               : 'uix_pagebuilder_anchorlinks_save_settings',
+				action               : 'uix_page_builder_anchorlinks_save_settings',
 				postID               : id,
-				security             : uix_pagebuilder_anchorlinks_data.send_string_nonce
+				security             : uix_page_builder_anchorlinks_data.send_string_nonce
 			}, function ( response ) {
-				$( '#uix-pagebuilder-anchorlinks-result' ).html( response );
-				$( '#uix-pagebuilder-anchorlinks-selectall, #uix-pagebuilder-anchorlinks-addbtn' ).show();
+				$( '#uix-page-builder-anchorlinks-result' ).html( response );
+				$( '#uix-page-builder-anchorlinks-selectall, #uix-page-builder-anchorlinks-addbtn' ).show();
 				if ( response == '' ) {
-					$( '#uix-pagebuilder-anchorlinks-selectall, #uix-pagebuilder-anchorlinks-addbtn' ).hide();
+					$( '#uix-page-builder-anchorlinks-selectall, #uix-page-builder-anchorlinks-addbtn' ).hide();
 				}
 				
-				$( '#uix_pagebuilder_anchorlinks_loader' ).hide();
+				$( '#uix_page_builder_anchorlinks_loader' ).hide();
 			});
 			
 			// stuff here

@@ -14,7 +14,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 	
 		public static function init() {
 			add_action( 'admin_init', array( __CLASS__, 'nav_menu_meta_box' ) );
-			add_action( 'wp_ajax_uix_pagebuilder_anchorlinks_save_settings', array( __CLASS__, 'save' ) );
+			add_action( 'wp_ajax_uix_page_builder_anchorlinks_save_settings', array( __CLASS__, 'save' ) );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_menu_page_scripts' ) );
 		}
 	
@@ -25,14 +25,14 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 		public static function enqueue_menu_page_scripts() {
 	
 			// Register the script
-			wp_register_script( 'uix_pagebuilder_anchorlinks_save_handle', UixPageBuilder::plug_directory() .'admin/js/menu.js' );
+			wp_register_script( 'uix_page_builder_anchorlinks_save_handle', UixPageBuilder::plug_directory() .'admin/js/menu.js' );
 		
-			wp_localize_script( 'uix_pagebuilder_anchorlinks_save_handle', 'uix_pagebuilder_anchorlinks_data', array(
-				'send_string_nonce' => wp_create_nonce( 'uix_pagebuilder_anchorlinks_save_nonce' ),
+			wp_localize_script( 'uix_page_builder_anchorlinks_save_handle', 'uix_page_builder_anchorlinks_data', array(
+				'send_string_nonce' => wp_create_nonce( 'uix_page_builder_anchorlinks_save_nonce' ),
 			) );
 			
 			// Enqueued script with localized data.
-			wp_enqueue_script( 'uix_pagebuilder_anchorlinks_save_handle' );
+			wp_enqueue_script( 'uix_page_builder_anchorlinks_save_handle' );
 
 		}	
 	
@@ -42,14 +42,14 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 		 */
 		public static function save() {
 			
-			check_ajax_referer( 'uix_pagebuilder_anchorlinks_save_nonce', 'security' );
+			check_ajax_referer( 'uix_page_builder_anchorlinks_save_nonce', 'security' );
 			
 			if ( isset( $_POST[ 'postID' ] ) ) {
 				
 				$postID = $_POST[ 'postID' ];
 				
 				
-				$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $postID, 'uix-pagebuilder-layoutdata', true ) );
+				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $postID, 'uix-page-builder-layoutdata', true ) );
 				$item              = [];
 				$cols              = [ 
 										[ '3_4', 'uix-pb-col-8' ],
@@ -77,7 +77,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 					
 		
 					foreach ( $builder_content as $key => $value ) :
-						$con                  = UixPageBuilder::pagebuilder_output( $value->content );
+						$con                  = UixPageBuilder::page_builder_output( $value->content );
 						$col                  = $value->col;
 						$row                  = $value->row;
 						$size_x               = $value->size_x;
@@ -88,21 +88,21 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 						$element_grid_before  = '';
 						$element_grid_after   = '</div>';
 						
-						if ( empty( $custom_id ) ) $custom_id = 'uix-pagebuilder-section-'.$row;
+						if ( empty( $custom_id ) ) $custom_id = 'uix-page-builder-section-'.$row;
 						
 					
 						if ( $con && is_array( $con ) ) {
 							foreach ( $con as $key ) :
 								
 								$$key[0] = $key[ 1 ];
-								$item[ UixPageBuilder::pagebuilder_item_name( $key[0] ) ]  =  $$key[0];
+								$item[ UixPageBuilder::page_builder_item_name( $key[0] ) ]  =  $$key[0];
 							endforeach;
 						}
 				
 						//------------------------------------   loop sections
 						if ( sizeof( $item ) > 3 && !empty( $value->content ) ) {
 							
-							$col_content   = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+							$col_content   = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 							
 							if ( $col_content && is_array( $col_content ) ) {
 								foreach ( $col_content as $key => $value ) :
@@ -133,7 +133,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 							    echo '
 								<li>
 									<label class="menu-item-title">
-										<input type="checkbox" class="menu-item-checkbox" name="menu-item['.esc_attr( $section_id ).'][menu-item-object-id]" value="'.esc_attr( $section_id ).'"> '.$section_title.'<br><span class="custom-prop"><strong>'.__( 'ID', 'uix-pagebuilder' ).':</strong> '.$custom_id.'</span>
+										<input type="checkbox" class="menu-item-checkbox" name="menu-item['.esc_attr( $section_id ).'][menu-item-object-id]" value="'.esc_attr( $section_id ).'"> '.$section_title.'<br><span class="custom-prop"><strong>'.__( 'ID', 'uix-page-builder' ).':</strong> '.$custom_id.'</span>
 									</label>
 									<input type="hidden" class="menu-item-type" name="menu-item['.esc_attr( $section_id ).'][menu-item-type]" value="custom">
 									<input type="hidden" class="menu-item-title" name="menu-item['.esc_attr( $section_id ).'][menu-item-title]" value="'.esc_attr( $section_title ).'">
@@ -182,7 +182,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 		public static function nav_menu_meta_box() {
 			add_meta_box( 
 				'uix-pb-menu-onepage-links',
-				__( 'Uix Page Builder Anchor Links', 'uix-pagebuilder' ),
+				__( 'Uix Page Builder Anchor Links', 'uix-page-builder' ),
 				array( __CLASS__, 'display_menu_custom_box' ),
 				'nav-menus', 
 				'side', 
@@ -195,15 +195,15 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 			 
 			 ?>
                 <p>
-                <select style=" width: 100%;" id="uix-pagebuilder-anchorlinks"> 
+                <select style=" width: 100%;" id="uix-page-builder-anchorlinks"> 
                  <option value="">
-                <?php echo esc_attr( __( 'Select page', 'uix-pagebuilder' ) ); ?></option> 
+                <?php echo esc_attr( __( 'Select page', 'uix-page-builder' ) ); ?></option> 
                  <?php 
 				$pages = get_pages(); 
 				$pb_total = 0;
 				foreach ( $pages as $page ) {
 				
-					if ( get_page_template_slug( $page->ID ) ==  'page-uix_pagebuilder.php' ) {
+					if ( get_page_template_slug( $page->ID ) ==  'page-uix_page_builder.php' ) {
 						$option = '<option value="'.esc_attr( $page->ID ).'">';
 						$option .= $page->post_title;
 						$option .= '</option>';
@@ -220,25 +220,25 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
                 </p>    
              <?php
 			 if ( !UixPageBuilder::tempfile_exists() || $pb_total == 0 ) {
-				 _e( '<em>No custom pages based on Uix Page Builder.</em>', 'uix-pagebuilder' );
+				 _e( '<em>No custom pages based on Uix Page Builder.</em>', 'uix-page-builder' );
 				 
 			 } else {
-				 printf( __( '<div style="background:#FCDBD6;border:1px solid #ECD5D8;-webkit-box-shadow:0 1px 1px 0 rgba(255,255,255,.1);box-shadow:0 1px 1px 0 rgba(255,255,255,.1);margin:5px 2px 12px 0;padding:8px 12px;border-color:#f5df52;background:#fcf7d4;box-shadow:inset 0 0 0 1px #ffffff,0 0 10px 0 rgba(0,0,0,0.05);"><strong>Usage Suggestions:</strong><br><br> Click on <a href="%1$s">Settings &raquo; Reading</a>. Select the option of Static Page, now select one of your page based on "Uix Page Builder" to be the homepage.</div>', 'uix-pagebuilder' ), esc_url( admin_url( 'options-reading.php' ) ) );
+				 printf( __( '<div style="background:#FCDBD6;border:1px solid #ECD5D8;-webkit-box-shadow:0 1px 1px 0 rgba(255,255,255,.1);box-shadow:0 1px 1px 0 rgba(255,255,255,.1);margin:5px 2px 12px 0;padding:8px 12px;border-color:#f5df52;background:#fcf7d4;box-shadow:inset 0 0 0 1px #ffffff,0 0 10px 0 rgba(0,0,0,0.05);"><strong>Usage Suggestions:</strong><br><br> Click on <a href="%1$s">Settings &raquo; Reading</a>. Select the option of Static Page, now select one of your page based on "Uix Page Builder" to be the homepage.</div>', 'uix-page-builder' ), esc_url( admin_url( 'options-reading.php' ) ) );
 			?>
-                <span id="uix_pagebuilder_anchorlinks_loader" style="display: none"><?php echo __( 'Loading...', 'uix-pagebuilder' ); ?></span>
-				<div id="posttype-uix_pagebuilder_anchorlinks_options" class="posttypediv">
+                <span id="uix_page_builder_anchorlinks_loader" style="display: none"><?php echo __( 'Loading...', 'uix-page-builder' ); ?></span>
+				<div id="posttype-uix_page_builder_anchorlinks_options" class="posttypediv">
 
-				    <span id="uix-pagebuilder-anchorlinks-result"></span>
+				    <span id="uix-page-builder-anchorlinks-result"></span>
 
 					<p class="button-controls">
-                        <span id="uix-pagebuilder-anchorlinks-selectall" style="display: none">
+                        <span id="uix-page-builder-anchorlinks-selectall" style="display: none">
                             <span class="list-controls">
-                                <a href="<?php echo esc_url( admin_url( 'nav-menus.php?page-tab=all&amp;selectall=1#posttype-uix_pagebuilder_anchorlinks_options' ) ); ?>" class="select-all"><?php _e( 'Select All', 'uix-pagebuilder' ); ?></a>
+                                <a href="<?php echo esc_url( admin_url( 'nav-menus.php?page-tab=all&amp;selectall=1#posttype-uix_page_builder_anchorlinks_options' ) ); ?>" class="select-all"><?php _e( 'Select All', 'uix-page-builder' ); ?></a>
                             </span>
 
                         </span>
-						<span class="add-to-menu" id="uix-pagebuilder-anchorlinks-addbtn" style="display: none">
-							<input type="submit" class="button-secondary submit-add-to-menu right" value="<?php echo esc_attr__( 'Add to Menu', 'uix-pagebuilder' ); ?>" name="add-post-type-menu-item" id="submit-posttype-uix_pagebuilder_anchorlinks_options">
+						<span class="add-to-menu" id="uix-page-builder-anchorlinks-addbtn" style="display: none">
+							<input type="submit" class="button-secondary submit-add-to-menu right" value="<?php echo esc_attr__( 'Add to Menu', 'uix-page-builder' ); ?>" name="add-post-type-menu-item" id="submit-posttype-uix_page_builder_anchorlinks_options">
 							<span class="spinner"></span>
 						</span>
 					</p>

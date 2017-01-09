@@ -16,7 +16,7 @@ $form_id = 'uix_pb_section_hello2';
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
@@ -48,7 +48,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_title' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col2_config_title' ),
-			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_features_col2_config_title,
 			'placeholder'    => '',
@@ -60,7 +60,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_features_col2_config_intro' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_features_col2_config_intro' ),
-			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_features_col2_config_intro,
 			'placeholder'    => '',
@@ -90,7 +90,7 @@ $args_col2_1 =
 
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_1_text' ),
-			'title'          => __( 'Text2 - 1', 'uix-pagebuilder' ),
+			'title'          => __( 'Text2 - 1', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -117,10 +117,10 @@ $args_col2_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_1_icon' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_col_demo_col2_1_icon' ),
-			'title'          => __( 'Icon', 'uix-pagebuilder' ),
+			'title'          => __( 'Icon', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
-			'placeholder'    => __( 'Choose Demo Icon', 'uix-pagebuilder' ),
+			'placeholder'    => __( 'Choose Demo Icon', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
 									'social'  => false
@@ -131,14 +131,14 @@ $args_col2_1 =
 		array(
 				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_1_upload' ),
 				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_col_demo_col2_1_upload' ),
-				'title'          => __( 'Upload Image', 'uix-pagebuilder' ),
+				'title'          => __( 'Upload Image', 'uix-page-builder' ),
 				'desc'           => '',
 				'value'          => '',
-				'placeholder'    => __( 'Image URL', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'Image URL', 'uix-page-builder' ),
 				'type'           => 'image',
 				'default'        => array(
-										'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
-										'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' )
+										'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
+										'upload_btn_text'  => __( 'Upload', 'uix-page-builder' )
 									)
 			
 		),	
@@ -147,7 +147,7 @@ $args_col2_1 =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_1_slider' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_col_demo_col2_1_slider' ),
-			'title'          => __( 'SLider', 'uix-pagebuilder' ),
+			'title'          => __( 'SLider', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 0,
 			'placeholder'    => '',
@@ -172,7 +172,7 @@ $args_col2_2 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_2' ),
-			'title'          => __( 'Text2 - 2', 'uix-pagebuilder' ),
+			'title'          => __( 'Text2 - 2', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -198,10 +198,10 @@ $args_col2_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_2_icon' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_col_demo_col2_2_icon' ),
-			'title'          => __( 'Icon', 'uix-pagebuilder' ),
+			'title'          => __( 'Icon', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
-			'placeholder'    => __( 'Choose Demo Icon', 'uix-pagebuilder' ),
+			'placeholder'    => __( 'Choose Demo Icon', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
 									'social'  => false
@@ -212,14 +212,14 @@ $args_col2_2 =
 		array(
 				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_2_upload' ),
 				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_col_demo_col2_2_upload' ),
-				'title'          => __( 'Upload Image', 'uix-pagebuilder' ),
+				'title'          => __( 'Upload Image', 'uix-page-builder' ),
 				'desc'           => '',
 				'value'          => '',
-				'placeholder'    => __( 'Image URL', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'Image URL', 'uix-page-builder' ),
 				'type'           => 'image',
 				'default'        => array(
-										'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
-										'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' )
+										'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
+										'upload_btn_text'  => __( 'Upload', 'uix-page-builder' )
 									)
 			
 		),	
@@ -227,7 +227,7 @@ $args_col2_2 =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col2_2_slider' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_col_demo_col2_2_slider' ),
-			'title'          => __( 'SLider', 'uix-pagebuilder' ),
+			'title'          => __( 'SLider', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 0,
 			'placeholder'    => '',
@@ -258,7 +258,7 @@ $args_col3_1 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col3_1' ),
-			'title'          => __( 'Text3 - 1', 'uix-pagebuilder' ),
+			'title'          => __( 'Text3 - 1', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -274,7 +274,7 @@ $args_col3_2 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col3_2' ),
-			'title'          => __( 'Text3 - 2', 'uix-pagebuilder' ),
+			'title'          => __( 'Text3 - 2', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -291,7 +291,7 @@ $args_col3_3 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col3_3' ),
-			'title'          => __( 'Text3 - 3', 'uix-pagebuilder' ),
+			'title'          => __( 'Text3 - 3', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -316,7 +316,7 @@ $args_col4_1 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col4_1' ),
-			'title'          => __( 'Text4 - 1', 'uix-pagebuilder' ),
+			'title'          => __( 'Text4 - 1', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -332,7 +332,7 @@ $args_col4_2 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col4_2' ),
-			'title'          => __( 'Text4 - 2', 'uix-pagebuilder' ),
+			'title'          => __( 'Text4 - 2', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -347,7 +347,7 @@ $args_col4_3 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col4_3' ),
-			'title'          => __( 'Text4 - 3', 'uix-pagebuilder' ),
+			'title'          => __( 'Text4 - 3', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -362,7 +362,7 @@ $args_col4_4 =
 	[
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_col_demo_col4_4' ),
-			'title'          => __( 'Text4 - 4', 'uix-pagebuilder' ),
+			'title'          => __( 'Text4 - 4', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -377,7 +377,7 @@ $args_col4_4 =
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_hello2_temp' ),
 			'title'          => '',
 			'desc'           => '',
-			'value'          => __( 'Form Demo 2', 'uix-pagebuilder' ),
+			'value'          => __( 'Form Demo 2', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -395,21 +395,21 @@ $args_col4_4 =
 //---
 $form_html = UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-page-builder' ) );
 
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
-
-
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_3, 'html', __( 'Item 3', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_1, 'html', __( 'Item 1', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col2, $args_col2_2, 'html', __( 'Item 2', 'uix-page-builder' ) );
 
 
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_1, 'html', __( 'Item 1', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_2, 'html', __( 'Item 2', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_3, 'html', __( 'Item 3', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_4, 'html', __( 'Item 4', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_1, 'html', __( 'Item 1', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_2, 'html', __( 'Item 2', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col3, $args_col3_3, 'html', __( 'Item 3', 'uix-page-builder' ) );
+
+
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_1, 'html', __( 'Item 1', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_2, 'html', __( 'Item 2', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_3, 'html', __( 'Item 3', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_col4, $args_col4_4, 'html', __( 'Item 4', 'uix-page-builder' ) );
 
 
 $form_html .= UixPBFormCore::form_after();
@@ -471,7 +471,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Form Demo 2', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Form Demo 2', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

@@ -1,7 +1,7 @@
 /*
 
 	 Uix Page Builder
-	 Plugin URI: https://uiux.cc/wp-plugins/uix-pagebuilder/
+	 Plugin URI: https://uiux.cc/wp-plugins/uix-page-builder/
 	 Author: UIUX Lab
 	 Author URI: https://uiux.cc
 	 License: GPLv2 or later
@@ -483,7 +483,7 @@ img.uix-pb-img,
    3. Section Styles                               
 /* ====================================================== */
 
-.uix-pagebuilder-section {
+.uix-page-builder-section {
 	margin: 0 0 3em;
 }
 

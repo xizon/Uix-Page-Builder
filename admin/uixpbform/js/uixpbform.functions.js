@@ -403,9 +403,9 @@ jQuery( document ).ready( function() {
 			return;
 		}
 		upload_frame = wp.media( {
-			title: uix_pagebuilder_wp_plugin.lang_media_title,
+			title: uix_page_builder_wp_plugin.lang_media_title,
 			button: {
-			text: uix_pagebuilder_wp_plugin.lang_media_text,
+			text: uix_page_builder_wp_plugin.lang_media_text,
 		},
 			multiple: false
 		} );
@@ -1435,9 +1435,9 @@ function uixpbform_editorInit( id ){
 								return;
 							}
 							upload_frame = wp.media( {
-								title: uix_pagebuilder_wp_plugin.lang_media_title,
+								title: uix_page_builder_wp_plugin.lang_media_title,
 								button: {
-								text: uix_pagebuilder_wp_plugin.lang_media_text,
+								text: uix_page_builder_wp_plugin.lang_media_text,
 							},
 								multiple: false
 							} );
@@ -1455,7 +1455,7 @@ function uixpbform_editorInit( id ){
 
 						ed.addButton( 'uixpb_image', {
 						  icon: 'mce-ico mce-i-image',
-						  tooltip: uix_pagebuilder_wp_plugin.lang_mce_image,
+						  tooltip: uix_page_builder_wp_plugin.lang_mce_image,
 						  onclick: uixpb_mce_insertImage
 						});
 						
@@ -1463,7 +1463,7 @@ function uixpbform_editorInit( id ){
 						// Add link button
 						ed.addButton('uixpb_link', {
 							icon: 'mce-ico mce-i-link',
-							tooltip: uix_pagebuilder_wp_plugin.lang_mce_link_title,
+							tooltip: uix_page_builder_wp_plugin.lang_mce_link_title,
 							onclick: function (e) {
 								
 								var urlRegex     = /<a href="(.*?)"/g,
@@ -1477,11 +1477,11 @@ function uixpbform_editorInit( id ){
 								}	
 
 								ed.windowManager.open( {
-									title: uix_pagebuilder_wp_plugin.lang_mce_link_title,
+									title: uix_page_builder_wp_plugin.lang_mce_link_title,
 									body: [
 									{
 										type: 'textbox',
-										label: uix_pagebuilder_wp_plugin.lang_mce_link_field_url,
+										label: uix_page_builder_wp_plugin.lang_mce_link_field_url,
 										name: 'link_url',
 										value: curlinkURL,
 										placeholder: 'https://',
@@ -1491,7 +1491,7 @@ function uixpbform_editorInit( id ){
 									},
 									{
 										type: 'textbox',
-										label: uix_pagebuilder_wp_plugin.lang_mce_link_field_text,
+										label: uix_page_builder_wp_plugin.lang_mce_link_field_text,
 										name: 'link_text',
 										value: curlabel,
 										multiline: true,
@@ -1503,7 +1503,7 @@ function uixpbform_editorInit( id ){
 										type: 'checkbox',
 										name: 'link_target',
 										label: ' ',
-										text: ' ' + uix_pagebuilder_wp_plugin.lang_mce_link_field_win,
+										text: ' ' + uix_page_builder_wp_plugin.lang_mce_link_field_win,
 									},
 				
 										
@@ -1523,7 +1523,7 @@ function uixpbform_editorInit( id ){
 						//Delete link button
 						ed.addButton('uixpb_unlink', {
 							icon: 'mce-ico mce-i-unlink',
-							tooltip: uix_pagebuilder_wp_plugin.lang_mce_unlink_title,
+							tooltip: uix_page_builder_wp_plugin.lang_mce_unlink_title,
 							onclick: function (e) {
 								
 								var selectedtxt  = ed.selection.getContent();
@@ -1536,7 +1536,7 @@ function uixpbform_editorInit( id ){
 						
 				   },
 				  content_css: [
-					uix_pagebuilder_wp_plugin.url + 'css/uixpbform.editor.css'
+					uix_page_builder_wp_plugin.url + 'css/uixpbform.editor.css'
 				  ]
 				});	
 			}

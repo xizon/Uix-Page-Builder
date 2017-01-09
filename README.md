@@ -28,7 +28,7 @@ Uix Page Builder is a design system that it is simple content creation interface
 * Allows you to customize front-end templates and publish multiple pages based Uix Page Builder.
 * Allows completely customize your `.css`, `.php`, `.js`, `image` files for your builder structure, please refer to the usage.
 
-> Note: Currently there is no detailed custom development documentation, can only refer to the default provided by the custom files in folders ( **"uix-pagebuilder/uix-pagebuilder-sections/"** and **"uix-pagebuilder/theme_templates/"** ).
+> Note: Currently there is no detailed custom development documentation, can only refer to the default provided by the custom files in folders ( **"uix-page-builder/uix-page-builder-sections/"** and **"uix-page-builder/theme_templates/"** ).
 
 
 ### Updates 
@@ -93,10 +93,10 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/plug.jpg)
 
-2.You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Page Builder template files path (`/wp-content/plugins/uix-pagebuilder/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  
+2.You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel. As a workaround you can use FTP, access the Uix Page Builder template files path (`/wp-content/plugins/uix-page-builder/theme_templates/`) and upload files to your theme templates directory (`/wp-content/themes/{your-theme}/`).  
 
 
-Please check if you have the **1** template files `page-uix_pagebuilder.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-pagebuilder/theme_templates/"** to your templates directory.
+Please check if you have the **1** template files `page-uix_page_builder.php` in your templates directory. If you can't find these files, then just copy them from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/"** to your templates directory.
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/temp.jpg)
 
@@ -125,7 +125,7 @@ Please check if you have the **1** template files `page-uix_pagebuilder.php` in 
 
 5.Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
 
-Backend templates are in the **"uix-pagebuilder-sections"** folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-pagebuilder/uix-pagebuilder-sections/` to your theme directory `/wp-content/themes/{your-theme}/`.
+Backend templates are in the **"uix-page-builder-sections"** folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-sections/` to your theme directory `/wp-content/themes/{your-theme}/`.
   
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/temp2.jpg)
 

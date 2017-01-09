@@ -531,7 +531,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		
 		// Seamless display when the background color is not empty
 		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-container' ).addClass( 'nospace' );
-		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pagebuilder-section' ).addClass( 'nospace' );	
+		$( '.uix-pb-parallax-nospace' ).closest( '.uix-page-builder-section' ).addClass( 'nospace' );	
 		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-row > div' ).addClass( 'nospace' );
 		
 

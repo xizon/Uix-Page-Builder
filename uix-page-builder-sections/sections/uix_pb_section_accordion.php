@@ -24,30 +24,30 @@ $clone_list_toggle_class = '';
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
-			$con         = UixPageBuilder::pagebuilder_output( $value->content );
+			$con         = UixPageBuilder::page_builder_output( $value->content );
 			
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
 					
 					$$key[ 0 ] = $key[ 1 ];
-					$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+					$item[ UixPageBuilder::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
 				endforeach;
 			}
 	
 	        //loop content
-			$col_content = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+			$col_content = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 			
 			
 			if ( $col_content && is_array( $col_content ) ) {
@@ -86,8 +86,8 @@ if ( $sid >= 0 ) {
  * Element Template
  * ----------------------------------------------------
  */
-$uix_pb_accordion_listitem_title  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_title', __( 'Accordion Title', 'uix-pagebuilder' ) );
-$uix_pb_accordion_listitem_con    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_con', __( 'Accordion content here.', 'uix-pagebuilder' ) );
+$uix_pb_accordion_listitem_title  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_title', __( 'Accordion Title', 'uix-page-builder' ) );
+$uix_pb_accordion_listitem_con    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_listitem_con', __( 'Accordion content here.', 'uix-page-builder' ) );
 $uix_pb_accordion_effect          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_effect', 1 );
 $uix_pb_accordion_open_first      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_accordion_open_first', 0 ); // 0:false  1:true
 $uix_pb_accordion_open_first_chk  = ( $uix_pb_accordion_open_first == 1 ) ? true : false;
@@ -168,7 +168,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_effect' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_accordion_effect' ),
-			'title'          => __( 'Transition Effect', 'uix-pagebuilder' ),
+			'title'          => __( 'Transition Effect', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_accordion_effect,
 			'placeholder'    => '',
@@ -184,7 +184,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_open_first' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_accordion_open_first' ),
-			'title'          => __( 'Open The First One Automatically', 'uix-pagebuilder' ),
+			'title'          => __( 'Open The First One Automatically', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_accordion_open_first,
 			'placeholder'    => '',
@@ -203,13 +203,13 @@ $args =
 			'id'             => $clone_trigger_id,
 			'colid'          => $colid, /*clone required */
 			'name'           => UixPageBuilder::fname( $colid, $form_id, $clone_trigger_id ),
-			'title'          => __( 'List Item', 'uix-pagebuilder' ),
+			'title'          => __( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => __( 'click here to add an item', 'uix-pagebuilder' ),
+									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
 									'clone_class'               => [ 
 										array(
 											'id'        => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ).'',
@@ -307,7 +307,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Accordion', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Accordion', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

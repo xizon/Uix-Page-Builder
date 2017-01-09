@@ -1,10 +1,10 @@
 <?php
 
-function uix_pagebuilder_options_page(){
+function uix_page_builder_options_page(){
 	
     //must check that the user has the required capability 
     if ( !current_user_can( 'manage_options' ) ){
-      wp_die( __('You do not have sufficient permissions to access this page.', 'uix-pagebuilder') );
+      wp_die( __('You do not have sufficient permissions to access this page.', 'uix-page-builder') );
     }
 
   
@@ -91,7 +91,7 @@ function uix_pagebuilder_options_page(){
 	
 
 /* Code preview container*/
-.uix-pagebuilder-dialog {  
+.uix-page-builder-dialog {  
     width:500px;
 	height:440px;
 	padding:20px 0 0 20px;
@@ -113,7 +113,7 @@ function uix_pagebuilder_options_page(){
 	border-radius: 5px;
 }  
 
-.uix-pagebuilder-dialog-mask{
+.uix-page-builder-dialog-mask{
 	display:none;
 	z-index:9999998;
 	background:rgba(0,0,0,.8);
@@ -125,18 +125,18 @@ function uix_pagebuilder_options_page(){
 }
 	
 
-.uix-pagebuilder-dialog textarea{
+.uix-page-builder-dialog textarea{
 	width:100%;
 	height:90%;
 }
-.uix-pagebuilder-dialog .close{
+.uix-page-builder-dialog .close{
 	display:inline-block;
 	margin-top:3px;
 }
 
 @media all and (max-width: 540px) {
 	
-	.uix-pagebuilder-dialog {  
+	.uix-page-builder-dialog {  
 		width: 300px;
 		margin-left:-170px;
 		
@@ -149,7 +149,7 @@ function uix_pagebuilder_options_page(){
 
 <div class="wrap uix-bg-custom-wrapper">
     
-    <h2><?php _e( 'Uix Page Builder Helper', 'uix-pagebuilder' ); ?></h2>
+    <h2><?php _e( 'Uix Page Builder Helper', 'uix-page-builder' ); ?></h2>
     <?php
 	
 	if( !isset( $_GET[ 'tab' ] ) ) {
@@ -163,26 +163,26 @@ function uix_pagebuilder_options_page(){
 	$tabs = array();
 	$tabs[] = [
 	    'tab'     =>  'about', 
-		'title'   =>  __( 'About', 'uix-pagebuilder' )
+		'title'   =>  __( 'About', 'uix-page-builder' )
 	];
 	$tabs[] = [
 	    'tab'     =>  'usage', 
-		'title'   =>  __( 'How to use?', 'uix-pagebuilder' )
+		'title'   =>  __( 'How to use?', 'uix-page-builder' )
 	];
 	
 	$tabs[] = [
 	    'tab'     =>  'credits', 
-		'title'   =>  __( 'Credits', 'uix-pagebuilder' )
+		'title'   =>  __( 'Credits', 'uix-page-builder' )
 	];
 	
 	$tabs[] = [
 	    'tab'     =>  'temp', 
-		'title'   =>  __( 'Template Files', 'uix-pagebuilder' )
+		'title'   =>  __( 'Template Files', 'uix-page-builder' )
 	];
 	
 	$tabs[] = [
 	    'tab'     =>  'custom-css', 
-		'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-pagebuilder' )
+		'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-page-builder' )
 	];	
 	
 	
@@ -198,7 +198,7 @@ function uix_pagebuilder_options_page(){
     </h2>
 
     <?php 
-		foreach ( glob( UIX_PAGEBUILDER_PLUGIN_DIR. "helper/tabs/*.php") as $file ) {
+		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "helper/tabs/*.php") as $file ) {
 			include $file;
 		}	
 	?>

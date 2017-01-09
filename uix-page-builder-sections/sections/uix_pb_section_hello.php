@@ -22,7 +22,7 @@ $clone_max               = 4;                     // Maximum of clone form
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
@@ -30,23 +30,23 @@ $item    = '';
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
-			$con         = UixPageBuilder::pagebuilder_output( $value->content );
+			$con         = UixPageBuilder::page_builder_output( $value->content );
 		
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
 					
 					$$key[ 0 ] = $key[ 1 ];
-					$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+					$item[ UixPageBuilder::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
 				endforeach;
 			}
 	
 	        //loop content
-			$col_content = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+			$col_content = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 			
 			
 			if ( $col_content && is_array( $col_content ) ) {
@@ -97,7 +97,7 @@ $uix_pb_hello_paddingdis_bottom     = floatval( UixPageBuilder::fvalue( $colid, 
 $uix_pb_hello_paddingdis_left       = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_paddingdis_left', 0 ) );
 
 //textarea
-$uix_pb_hello_textarea            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_textarea', __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-pagebuilder' ) );
+$uix_pb_hello_textarea            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_textarea', __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ) );
 
 //toggle
 $uix_pb_hello_toggle                = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_hello_toggle', 0 ); // 0:close  1:open
@@ -286,7 +286,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_tipinfo' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_tipinfo' ),
-			'desc'           => sprintf( __( 'You can custom the boxed width of the container for Uix Page Builder stylesheets. <a target="_blank" href="%1$s">click here to custom</a>', 'uix-pagebuilder' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ),
+			'desc'           => sprintf( __( 'You can custom the boxed width of the container for Uix Page Builder stylesheets. <a target="_blank" href="%1$s">click here to custom</a>', 'uix-page-builder' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
@@ -299,7 +299,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_dividingline' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_dividingline' ),
-			'title'          => __( 'Image Radio', 'uix-pagebuilder' ),
+			'title'          => __( 'Image Radio', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 'solid',
 			'placeholder'    => '',
@@ -319,7 +319,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radioswitch_style' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_radioswitch_style' ),
-			'title'          => __( 'Radio Switch', 'uix-pagebuilder' ),
+			'title'          => __( 'Radio Switch', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 'grand-fill-yellow',
 			'placeholder'    => '',
@@ -356,11 +356,11 @@ $args =
 				'desc'           => '',
 				'value'          => '',
 				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radioswitch_fillbg' ).'_toggle_class', /*class of toggle item */
-				'placeholder'    => __( 'Image for Text Fill', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'Image for Text Fill', 'uix-page-builder' ),
 				'type'           => 'image',
 				'default'        => array(
-										'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
-										'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' ),
+										'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
+										'upload_btn_text'  => __( 'Upload', 'uix-page-builder' ),
 									)
 			
 			),	
@@ -369,7 +369,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_text' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_text' ),
-			'title'          => __( 'Text', 'uix-pagebuilder' ),
+			'title'          => __( 'Text', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_text,
 			'placeholder'    => '',
@@ -381,7 +381,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radio' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_radio' ),
-			'title'          => __( 'Radio', 'uix-pagebuilder' ),
+			'title'          => __( 'Radio', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_radio,
 			'placeholder'    => '',
@@ -398,7 +398,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_radio' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_radio' ),
-			'title'          => __( 'Radio', 'uix-pagebuilder' ),
+			'title'          => __( 'Radio', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_radio,
 			'placeholder'    => '',
@@ -442,7 +442,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_slider' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_slider' ),
-			'title'          => __( 'Slider', 'uix-pagebuilder' ),
+			'title'          => __( 'Slider', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_slider,
 			'placeholder'    => '',
@@ -472,8 +472,8 @@ $args =
 									'bottom'  => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_paddingdis_bottom' ), 
 									'left'    => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_paddingdis_left' )
 				                ),
-			'title'          => __( 'Padding (px)', 'uix-pagebuilder' ),
-			'desc'           => __( 'Use the input fields below to customize the padding of your column shortcode. Measurement units is pixels (px).', 'uix-pagebuilder' ),
+			'title'          => __( 'Padding (px)', 'uix-page-builder' ),
+			'desc'           => __( 'Use the input fields below to customize the padding of your column shortcode. Measurement units is pixels (px).', 'uix-page-builder' ),
 			'value'          => array(
 									'top'     => $uix_pb_hello_paddingdis_top,
 									'right'   => $uix_pb_hello_paddingdis_right,
@@ -491,7 +491,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_editor' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_editor' ),
-			'title'          => __( 'Editor', 'uix-pagebuilder' ),
+			'title'          => __( 'Editor', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
@@ -507,7 +507,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_textarea' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_textarea' ),
-			'title'          => __( 'Textarea(by default value)', 'uix-pagebuilder' ),
+			'title'          => __( 'Textarea(by default value)', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_textarea,
 			'placeholder'    => '',
@@ -522,14 +522,14 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_image' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_image' ),
-			'title'          => __( 'Upload Image', 'uix-pagebuilder' ),
+			'title'          => __( 'Upload Image', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_image,
-			'placeholder'    => __( 'Image URL', 'uix-pagebuilder' ),
+			'placeholder'    => __( 'Image URL', 'uix-page-builder' ),
 			'type'           => 'image',
 			'default'        => array(
-									'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
-									'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' ),
+									'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
+									'upload_btn_text'  => __( 'Upload', 'uix-page-builder' ),
 	
 									/* Show image properties 
 									 * Javascript Vars:
@@ -567,7 +567,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_shorttext' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_shorttext' ),
-			'title'          => __( 'Short Text', 'uix-pagebuilder' ),
+			'title'          => __( 'Short Text', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_shorttext,
 			'placeholder'    => '',
@@ -580,7 +580,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_shortunitstext' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_shortunitstext' ),
-			'title'          => __( 'Short Units Text', 'uix-pagebuilder' ),
+			'title'          => __( 'Short Units Text', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_shortunitstext,
 			'placeholder'    => '',
@@ -605,7 +605,7 @@ $args =
 			'type'           => 'toggle',
 			'default'        => array(
 		                            //'btn_textclass' => 'table-link-icon',
-			                        'btn_text'      => __( 'set up links with toggle', 'uix-pagebuilder' ),
+			                        'btn_text'      => __( 'set up links with toggle', 'uix-page-builder' ),
 									'toggle_class'  => [ UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_toggle_url' ).'_class' ]
 				                )
 		
@@ -618,7 +618,7 @@ $args =
 				'desc'           => '',
 				'value'          => $uix_pb_hello_toggle_url,
 				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_toggle_url' ).'_class', /*class of toggle item */
-				'placeholder'    => __( 'Toggle URL', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'Toggle URL', 'uix-page-builder' ),
 				'type'           => 'text',
 				'default'        => ''
 			
@@ -633,7 +633,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_single_color' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_single_color' ),
-			'title'          => __( 'Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_single_color,
 			'placeholder'    => '',
@@ -645,8 +645,8 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_select' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_select' ),
-			'title'          => __( 'Select', 'uix-pagebuilder' ),
-			'desc'           => __( 'This is infomation.', 'uix-pagebuilder' ),
+			'title'          => __( 'Select', 'uix-page-builder' ),
+			'desc'           => __( 'This is infomation.', 'uix-page-builder' ),
 			'value'          => $uix_pb_hello_select,
 			'placeholder'    => '',
 			'type'           => 'select',
@@ -663,7 +663,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_multiselect' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_multiselect' ),
-			'title'          => __( 'Multiple Selector', 'uix-pagebuilder' ),
+			'title'          => __( 'Multiple Selector', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_multiselect, //It takes a variable like '1,3'  if the value is empty.
 			'placeholder'    => '',
@@ -682,7 +682,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_icon' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_icon' ),
-			'title'          => __( 'This is Icon Selector ', 'uix-pagebuilder' ),
+			'title'          => __( 'This is Icon Selector ', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_icon,
 			'placeholder'    => '',
@@ -697,7 +697,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_colormap' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_colormap' ),
-			'title'          => __( 'Color Map', 'uix-pagebuilder' ),
+			'title'          => __( 'Color Map', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_colormap,
 			'placeholder'    => '',
@@ -712,7 +712,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_checkbox' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_checkbox' ),
-			'title'          => __( 'Checkbox', 'uix-pagebuilder' ),
+			'title'          => __( 'Checkbox', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_checkbox,
 			'placeholder'    => '',
@@ -727,7 +727,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_checkbox_toggle' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_hello_checkbox_toggle' ),
-			'title'          => __( 'Switch', 'uix-pagebuilder' ),
+			'title'          => __( 'Switch', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_hello_checkbox_toggle,
 			'placeholder'    => '',
@@ -771,7 +771,7 @@ $args =
 		
 		//------list begin
 		array(
-			'desc'           => sprintf( __( '<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum of <strong>%1$s</strong>.', 'uix-pagebuilder' ), $clone_max ),
+			'desc'           => sprintf( __( '<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum of <strong>%1$s</strong>.', 'uix-page-builder' ), $clone_max ),
 			'type'           => 'text'
 		
 		),
@@ -780,13 +780,13 @@ $args =
 			'id'             => $clone_trigger_id,
 			'colid'          => $colid, /*clone required */
 			'name'           => UixPageBuilder::fname( $colid, $form_id, $clone_trigger_id ),
-			'title'          => __( 'List Item', 'uix-pagebuilder' ),
+			'title'          => __( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => __( 'click here to add an item', 'uix-pagebuilder' ),
+									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
 									'clone_class'               => [ 
 										array(
 											'id'             => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_imgURL' ).'',
@@ -818,11 +818,11 @@ $args =
 				'desc'           => '',
 				'value'          => $uix_pb_hello_listitem_imgURL,
 				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_imgURL' ).'', /*class of list item */
-				'placeholder'    => __( 'Image URL', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'Image URL', 'uix-page-builder' ),
 				'type'           => 'image',
 				'default'        => array(
-										'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
-										'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' ),
+										'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
+										'upload_btn_text'  => __( 'Upload', 'uix-page-builder' ),
 									)
 			
 			),	
@@ -835,7 +835,7 @@ $args =
 				'desc'           => '',
 				'value'          => $uix_pb_hello_listitem_imgtitle,
 				'class'          => 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_imgtitle' ).'', /*class of list item */
-				'placeholder'    => __( 'Text', 'uix-pagebuilder' ),
+				'placeholder'    => __( 'Text', 'uix-page-builder' ),
 				'type'           => 'text'
 			
 			),
@@ -851,7 +851,7 @@ $args =
 				'placeholder'    => '',
 				'type'           => 'toggle',
 				'default'        => array(
-										'btn_text'      => __( 'set up links with toggle', 'uix-pagebuilder' ),
+										'btn_text'      => __( 'set up links with toggle', 'uix-page-builder' ),
 										'toggle_class'  => [ 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).'', 'dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ).'' ]
 									)
 			
@@ -864,7 +864,7 @@ $args =
 					'desc'           => '',
 					'value'          => $uix_pb_hello_listitem_toggle_url,
 					'class'          => 'toggle-row dynamic-row-'.UixPageBuilder::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).'', /*class of toggle item */
-					'placeholder'    => __( 'Toggle URL', 'uix-pagebuilder' ),
+					'placeholder'    => __( 'Toggle URL', 'uix-page-builder' ),
 					'type'           => 'text',
 					'default'        => ''
 				
@@ -945,7 +945,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Form Demo 1', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Form Demo 1', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>

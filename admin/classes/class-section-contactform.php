@@ -57,7 +57,7 @@ if ( !class_exists( 'UixPB_ContactForm' ) ) {
 
 			// If comments are closed and there are comments,let's leave a little note,shall we?
 			if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
-				$return_string = '<p class="no-comments uix-sc-no-comments">'.__( 'Comments are closed.', 'uix-pagebuilder' ).'</p>';
+				$return_string = '<p class="no-comments uix-sc-no-comments">'.__( 'Comments are closed.', 'uix-page-builder' ).'</p>';
 			} 
 
 

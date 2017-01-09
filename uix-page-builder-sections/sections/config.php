@@ -4,11 +4,11 @@ $uix_pb_config = [
 	
 	
 	array(
-		'sortname'        => __( 'Contents', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Contents', 'uix-page-builder' ),
 		'buttons'         => [
 	
 								array(
-									'title'           => __( 'Accordion', 'uix-pagebuilder' ),
+									'title'           => __( 'Accordion', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_accordion',
 									'thumb'           => 'accordion.jpg',
 								
@@ -16,14 +16,14 @@ $uix_pb_config = [
 								
 								
 								array(
-									'title'           => __( 'Tabs', 'uix-pagebuilder' ),
+									'title'           => __( 'Tabs', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_tabs',
 									'thumb'           => 'tabs.jpg',
 								
 								),
 	
 								array(
-									'title'           => __( 'Parallax', 'uix-pagebuilder' ),
+									'title'           => __( 'Parallax', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_parallax',
 									'thumb'           => 'parallax.jpg',
 								
@@ -38,11 +38,11 @@ $uix_pb_config = [
 	
 	
 	array(
-		'sortname'        => __( 'Testimonials', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Testimonials', 'uix-page-builder' ),
 		'buttons'         => [
 							
 								array(
-									'title'           => __( 'Testimonials Carousel', 'uix-pagebuilder' ),
+									'title'           => __( 'Testimonials Carousel', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_testimonials',
 									'thumb'           => 'testimonials.jpg',
 								
@@ -55,11 +55,11 @@ $uix_pb_config = [
 	),	
 	
 	array(
-		'sortname'        => __( 'Clients', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Clients', 'uix-page-builder' ),
 		'buttons'         => [
 							
 								array(
-									'title'           => __( 'Clients', 'uix-pagebuilder' ),
+									'title'           => __( 'Clients', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_clients',
 									'thumb'           => 'clients.jpg',
 								
@@ -72,11 +72,11 @@ $uix_pb_config = [
 	),	
 	
 	array(
-		'sortname'        => __( 'Portfolio', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Portfolio', 'uix-page-builder' ),
 		'buttons'         => [
 							
 								array(
-									'title'           => __( 'Portfolio Grid', 'uix-pagebuilder' ),
+									'title'           => __( 'Portfolio Grid', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_portfolio1',
 									'thumb'           => 'portfolio1.jpg',
 								
@@ -93,18 +93,18 @@ $uix_pb_config = [
 	
 	
 	array(
-		'sortname'        => __( 'Team', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Team', 'uix-page-builder' ),
 		'buttons'         => [
 							
 								array(
-									'title'           => __( 'Team Normal', 'uix-pagebuilder' ),
+									'title'           => __( 'Team Normal', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_team1',
 									'thumb'           => 'team-1.jpg',
 								
 								),	
 								
 								array(
-									'title'           => __( 'Team Grid', 'uix-pagebuilder' ),
+									'title'           => __( 'Team Grid', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_team2',
 									'thumb'           => 'team-2.jpg',
 								
@@ -117,18 +117,18 @@ $uix_pb_config = [
 	),	
 	
 	array(
-		'sortname'        => __( 'Features', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Features', 'uix-page-builder' ),
 		'buttons'         => [
 							
 								array(
-									'title'           => __( 'Features 2 Column', 'uix-pagebuilder' ),
+									'title'           => __( 'Features 2 Column', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_features1',
 									'thumb'           => 'feaures-1.jpg',
 								
 								),	
 								
 								array(
-									'title'           => __( 'Features 3 Column', 'uix-pagebuilder' ),
+									'title'           => __( 'Features 3 Column', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_features2',
 									'thumb'           => 'feaures-2.jpg',
 								
@@ -141,18 +141,18 @@ $uix_pb_config = [
 	),		
 	
 	array(
-		'sortname'        => __( 'Pricing', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Pricing', 'uix-page-builder' ),
 		'buttons'         => [
 	
 								array(
-									'title'           => __( 'Pricing 3 column', 'uix-pagebuilder' ),
+									'title'           => __( 'Pricing 3 column', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_pricing1',
 									'thumb'           => 'pricing-1.jpg',
 								
 								),	
 								
 								array(
-									'title'           => __( 'Pricing 4 column', 'uix-pagebuilder' ),
+									'title'           => __( 'Pricing 4 column', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_pricing2',
 									'thumb'           => 'pricing-2.jpg',
 								
@@ -166,18 +166,18 @@ $uix_pb_config = [
 	
 	
 	array(
-		'sortname'        => __( 'Elements', 'uix-pagebuilder' ),
+		'sortname'        => __( 'Elements', 'uix-page-builder' ),
 		'buttons'         => [
 		
 								array(
-									'title'           => __( 'Author Card', 'uix-pagebuilder' ),
+									'title'           => __( 'Author Card', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_authorcard',
 									'thumb'           => 'card.jpg',
 								
 								),	
 								
 								array(
-									'title'           => __( 'Progress Bar', 'uix-pagebuilder' ),
+									'title'           => __( 'Progress Bar', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_bar',
 									'thumb'           => 'bar.jpg',
 								
@@ -185,14 +185,14 @@ $uix_pb_config = [
 								
 
 								array(
-									'title'           => __( 'Google Map', 'uix-pagebuilder' ),
+									'title'           => __( 'Google Map', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_map',
 									'thumb'           => 'map.jpg',
 								
 								),	
 	
 								array(
-									'title'           => __( 'Contact Form', 'uix-pagebuilder' ),
+									'title'           => __( 'Contact Form', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_contactform1',
 									'thumb'           => 'contactform.jpg',
 								

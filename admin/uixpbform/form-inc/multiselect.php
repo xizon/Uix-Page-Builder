@@ -59,7 +59,7 @@ class UixPBFormType_MultiSelector {
             }
 			
 			if ( !is_array( $value ) ) {
-				$optionlist = __( 'Must use the array for "value".', 'uix-pagebuilder' );
+				$optionlist = __( 'Must use the array for "value".', 'uix-page-builder' );
 			} 
 	
 	

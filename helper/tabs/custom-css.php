@@ -23,7 +23,7 @@ if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' )
 	
 	
 		// Put a "settings saved" message on the screen
-		echo '<div class="updated"><p><strong>'.__('Settings saved.', 'uix-pagebuilder' ).'</strong></p></div>';
+		echo '<div class="updated"><p><strong>'.__('Settings saved.', 'uix-page-builder' ).'</strong></p></div>';
 
 	
 	}
@@ -36,7 +36,7 @@ if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' )
 
 if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
-	if ( file_exists( UixPageBuilder::backend_path( 'dir' ).'css/uix-pagebuilder.css' ) ) {
+	if ( file_exists( UixPageBuilder::backend_path( 'dir' ).'css/uix-page-builder.css' ) ) {
 
 ?>
 
@@ -45,12 +45,12 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
         <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
         <?php wp_nonce_field( 'uix_pb_customcss' ); ?>
         
-        <h4><?php _e( 'You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original <code>.css</code> files.', 'uix-pagebuilder' ); ?></h4>
+        <h4><?php _e( 'You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original <code>.css</code> files.', 'uix-page-builder' ); ?></h4>
             
         <table class="form-table">
           <tr>
             <th scope="row">
-              <?php _e( 'Paste your CSS code', 'uix-pagebuilder' ); ?>
+              <?php _e( 'Paste your CSS code', 'uix-page-builder' ); ?>
             </th>
             <td>
               <textarea name="uix_pb_opt_cssnewcode" class="regular-text" rows="25" style="width:98%;"><?php echo esc_textarea( get_option( 'uix_pb_opt_cssnewcode' ) ); ?></textarea>
@@ -62,9 +62,9 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 <?php
 
 	
-	$org_cssname_uix_shortcodes = 'uix-pagebuilder.css';
-	$org_csspath_uix_shortcodes = UixPageBuilder::backend_path( 'uri' ).'css/uix-pagebuilder.css';
-	$filepath                   = 'uix-pagebuilder-sections/css/';
+	$org_cssname_uix_shortcodes = 'uix-page-builder.css';
+	$org_csspath_uix_shortcodes = UixPageBuilder::backend_path( 'uri' ).'css/uix-page-builder.css';
+	$filepath                   = 'uix-page-builder-sections/css/';
 	
 	
 	if ( UixPageBuilder::tempfolder_exists() ) {
@@ -87,12 +87,12 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 		
 		echo '
 		
-		         <p>'.__( 'CSS file root directory:', 'uix-pagebuilder' ).' 
+		         <p>'.__( 'CSS file root directory:', 'uix-page-builder' ).' 
 				     <a href="javascript:" id="uix_shortcodes_view_css" >'.$org_csspath_uix_shortcodes.'</a>
-					 <div class="uix-pagebuilder-dialog-mask"></div>
-					 <div class="uix-pagebuilder-dialog" id="uix-pagebuilder-view-css-container">  
+					 <div class="uix-page-builder-dialog-mask"></div>
+					 <div class="uix-page-builder-dialog" id="uix-page-builder-view-css-container">  
 						<textarea rows="15" style=" width:95%;" class="regular-text">'.$style_org_code_uix_shortcodes.'</textarea>
-						<a href="javascript:" id="uix_shortcodes_close_css" class="close button button-primary">'.__( 'Close', 'uix-pagebuilder' ).'</a>  
+						<a href="javascript:" id="uix_shortcodes_close_css" class="close button button-primary">'.__( 'Close', 'uix-page-builder' ).'</a>  
 					</div>
 				 </p><hr />
 				<script type="text/javascript">
@@ -103,7 +103,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 					
 					$( function() {
 						
-						var dialog_uix_shortcodes = $( "#uix-pagebuilder-view-css-container, .uix-pagebuilder-dialog-mask" );  
+						var dialog_uix_shortcodes = $( "#uix-page-builder-view-css-container, .uix-page-builder-dialog-mask" );  
 						
 						$( "#uix_shortcodes_view_css" ).click( function() {
 							dialog_uix_shortcodes.show();
@@ -124,7 +124,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	} else {
 		
 		echo '
-		         <p>'.__( 'CSS file root directory:', 'uix-pagebuilder' ).' 
+		         <p>'.__( 'CSS file root directory:', 'uix-page-builder' ).' 
 				     <a href="'.$org_csspath_uix_shortcodes.'" target="_blank">'.$org_csspath_uix_shortcodes.'</a>
 				 </p><hr />
 
@@ -144,7 +144,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
     
 <?php 
 	} else {
-		echo __( '<p>The .css file does not exist.</p>', 'uix-pagebuilder' );
+		echo __( '<p>The .css file does not exist.</p>', 'uix-page-builder' );
 		
 	}																			
 } 

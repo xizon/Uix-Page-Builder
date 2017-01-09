@@ -15,7 +15,7 @@ $form_id = 'uix_pb_section_pricing1';
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
@@ -23,23 +23,23 @@ $item    = '';
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
-			$con         = UixPageBuilder::pagebuilder_output( $value->content );
+			$con         = UixPageBuilder::page_builder_output( $value->content );
 			
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
 					
 					$$key[ 0 ] = $key[ 1 ];
-					$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+					$item[ UixPageBuilder::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
 				endforeach;
 			}
 	
 	        //loop content
-			$col_content = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+			$col_content = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 			
 			
 			if ( $col_content && is_array( $col_content ) ) {
@@ -77,54 +77,54 @@ if ( $sid >= 0 ) {
  * Element Template
  * ----------------------------------------------------
  */
-$uix_pb_pricing_col3_config_title         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_config_title', __( 'Text Here', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_config_intro         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_config_intro', __( 'This is the description text for the title.', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col3_config_title         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_config_title', __( 'Text Here', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_config_intro         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_config_intro', __( 'This is the description text for the title.', 'uix-page-builder' ) );
 
-$uix_pb_pricing_col3_one_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_title', __( 'free', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col3_one_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_title', __( 'free', 'uix-page-builder' ) );
 $uix_pb_pricing_col3_one_price            = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_price', 49 ) );
 $uix_pb_pricing_col3_one_emphasis_color   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_emphasis_color', '#d59a3e' );
-$uix_pb_pricing_col3_one_currency         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_currency', __( '$', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_one_period           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_period', __( 'per month', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_one_desc             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_desc', __( 'Some description text here.', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_one_btn_label        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_btn_label', __( 'TRY FOR FREE', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col3_one_currency         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_currency', __( '$', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_one_period           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_period', __( 'per month', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_one_desc             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_desc', __( 'Some description text here.', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_one_btn_label        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_btn_label', __( 'TRY FOR FREE', 'uix-page-builder' ) );
 $uix_pb_pricing_col3_one_btn_link         = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_btn_link', '#' ) );
 $uix_pb_pricing_col3_one_btn_color        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_btn_color', '#a2bf2f' );
 $uix_pb_pricing_col3_one_btn_win          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_btn_win', 0 ); // 0:false  1:true
 $uix_pb_pricing_col3_one_btn_win_chk      = ( $uix_pb_pricing_col3_one_btn_win == 1 ) ? true : false;
-$uix_pb_pricing_col3_one_features         = UixPageBuilder::html_listTran( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_features', __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-pagebuilder' ) ) );
+$uix_pb_pricing_col3_one_features         = UixPageBuilder::html_listTran( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_features', __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ) ) );
 $uix_pb_pricing_col3_one_active           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_one_active', 0 ); // 0:false  1:true
 $uix_pb_pricing_col3_one_active_chk       = ( $uix_pb_pricing_col3_one_active == 1 ) ? true : false;
 
 //---
-$uix_pb_pricing_col3_two_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_title', __( 'free', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col3_two_title            = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_title', __( 'free', 'uix-page-builder' ) );
 $uix_pb_pricing_col3_two_price            = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_price', 69 ) );
 $uix_pb_pricing_col3_two_emphasis_color   = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_emphasis_color', '#d59a3e' );
-$uix_pb_pricing_col3_two_currency         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_currency', __( '$', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_two_period           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_period', __( 'per month', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_two_desc             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_desc', __( 'Some description text here.', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_two_btn_label        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_btn_label', __( 'BUY', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col3_two_currency         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_currency', __( '$', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_two_period           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_period', __( 'per month', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_two_desc             = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_desc', __( 'Some description text here.', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_two_btn_label        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_btn_label', __( 'BUY', 'uix-page-builder' ) );
 $uix_pb_pricing_col3_two_btn_link         = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_btn_link', '#' ) );
 $uix_pb_pricing_col3_two_btn_color        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_btn_color', '#a2bf2f' );
 $uix_pb_pricing_col3_two_btn_win          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_btn_win', 0 ); // 0:false  1:true
 $uix_pb_pricing_col3_two_btn_win_chk      = ( $uix_pb_pricing_col3_two_btn_win == 1 ) ? true : false;
-$uix_pb_pricing_col3_two_features         = UixPageBuilder::html_listTran( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_features', __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-pagebuilder' ) ) );
+$uix_pb_pricing_col3_two_features         = UixPageBuilder::html_listTran( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_features', __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ) ) );
 $uix_pb_pricing_col3_two_active           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_two_active', 1 ); // 0:false  1:true
 $uix_pb_pricing_col3_two_active_chk       = ( $uix_pb_pricing_col3_two_active == 1 ) ? true : false;
 
 
 //--
-$uix_pb_pricing_col3_three_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_title', __( 'free', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col3_three_title          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_title', __( 'free', 'uix-page-builder' ) );
 $uix_pb_pricing_col3_three_price          = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_price', 109 ) );
 $uix_pb_pricing_col3_three_emphasis_color = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_emphasis_color', '#d59a3e' );
-$uix_pb_pricing_col3_three_currency       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_currency', __( '$', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_three_period         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_period', __( 'per month', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_three_desc           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_desc', __( 'Some description text here.', 'uix-pagebuilder' ) );
-$uix_pb_pricing_col3_three_btn_label      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_btn_label', __( 'BUY', 'uix-pagebuilder' ) );
+$uix_pb_pricing_col3_three_currency       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_currency', __( '$', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_three_period         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_period', __( 'per month', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_three_desc           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_desc', __( 'Some description text here.', 'uix-page-builder' ) );
+$uix_pb_pricing_col3_three_btn_label      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_btn_label', __( 'BUY', 'uix-page-builder' ) );
 $uix_pb_pricing_col3_three_btn_link       = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_btn_link', '#' ) );
 $uix_pb_pricing_col3_three_btn_color      = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_btn_color', '#a2bf2f' );
 $uix_pb_pricing_col3_three_btn_win        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_btn_win', 0 ); // 0:false  1:true
 $uix_pb_pricing_col3_three_btn_win_chk    = ( $uix_pb_pricing_col3_three_btn_win == 1 ) ? true : false;
-$uix_pb_pricing_col3_three_features       = UixPageBuilder::html_listTran( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_features', __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s><br>Another Feature Description', 'uix-pagebuilder' ) ) );
+$uix_pb_pricing_col3_three_features       = UixPageBuilder::html_listTran( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_features', __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s><br>Another Feature Description', 'uix-page-builder' ) ) );
 $uix_pb_pricing_col3_three_active         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_pricing_col3_three_active', 0 ); // 0:false  1:true
 $uix_pb_pricing_col3_three_active_chk     = ( $uix_pb_pricing_col3_three_active == 1 ) ? true : false;
 
@@ -273,7 +273,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_config_title' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_config_title' ),
-			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_config_title,
 			'placeholder'    => '',
@@ -285,7 +285,7 @@ $args_config =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_config_intro' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_config_intro' ),
-			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_config_intro,
 			'placeholder'    => '',
@@ -313,7 +313,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_title' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_title' ),
-			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_title,
 			'placeholder'    => '',
@@ -323,7 +323,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_price' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_price' ),
-			'title'          => __( 'Price', 'uix-pagebuilder' ),
+			'title'          => __( 'Price', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_price,
 			'placeholder'    => '',
@@ -333,7 +333,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_emphasis_color' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_emphasis_color' ),
-			'title'          => __( 'Price Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Price Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_emphasis_color,
 			'placeholder'    => '',
@@ -346,7 +346,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_currency' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_currency' ),
-			'title'          => __( 'Currency', 'uix-pagebuilder' ),
+			'title'          => __( 'Currency', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_currency,
 			'placeholder'    => '',
@@ -356,7 +356,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_period' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_period' ),
-			'title'          => __( 'Period', 'uix-pagebuilder' ),
+			'title'          => __( 'Period', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_period,
 			'placeholder'    => '',
@@ -366,7 +366,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_desc' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_desc' ),
-			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_desc,
 			'placeholder'    => '',
@@ -380,7 +380,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_btn_label' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_btn_label' ),
-			'title'          => __( 'Button Label', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Label', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_btn_label,
 			'placeholder'    => '',
@@ -390,7 +390,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_btn_link' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_btn_link' ),
-			'title'          => __( 'Button Link', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Link', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_btn_link,
 			'placeholder'    => 'URL',
@@ -400,7 +400,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_btn_color' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_btn_color' ),
-			'title'          => __( 'Button Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_btn_color,
 			'placeholder'    => '',
@@ -412,7 +412,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_btn_win' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_btn_win' ),
-			'title'          => __( 'Open in new tab', 'uix-pagebuilder' ),
+			'title'          => __( 'Open in new tab', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_btn_win,
 			'placeholder'    => '',
@@ -425,8 +425,8 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_features' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_features' ),
-			'title'          => __( 'Features', 'uix-pagebuilder' ),
-			'desc'           => __( 'Type one word or sentence per line when press "ENTER".', 'uix-pagebuilder' ),
+			'title'          => __( 'Features', 'uix-page-builder' ),
+			'desc'           => __( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
 			'value'          => $uix_pb_pricing_col3_one_features,
 			'placeholder'    => '',
 			'type'           => 'textarea',
@@ -440,7 +440,7 @@ $args_1 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_one_active' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_one_active' ),
-			'title'          => __( 'Active', 'uix-pagebuilder' ),
+			'title'          => __( 'Active', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_one_active,
 			'placeholder'    => '',
@@ -462,7 +462,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_title' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_title' ),
-			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_title,
 			'placeholder'    => '',
@@ -472,7 +472,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_price' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_price' ),
-			'title'          => __( 'Price', 'uix-pagebuilder' ),
+			'title'          => __( 'Price', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_price,
 			'placeholder'    => '',
@@ -482,7 +482,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_emphasis_color' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_emphasis_color' ),
-			'title'          => __( 'Price Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Price Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_emphasis_color,
 			'placeholder'    => '',
@@ -495,7 +495,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_currency' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_currency' ),
-			'title'          => __( 'Currency', 'uix-pagebuilder' ),
+			'title'          => __( 'Currency', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_currency,
 			'placeholder'    => '',
@@ -505,7 +505,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_period' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_period' ),
-			'title'          => __( 'Period', 'uix-pagebuilder' ),
+			'title'          => __( 'Period', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_period,
 			'placeholder'    => '',
@@ -515,7 +515,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_desc' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_desc' ),
-			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_desc,
 			'placeholder'    => '',
@@ -529,7 +529,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_btn_label' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_btn_label' ),
-			'title'          => __( 'Button Label', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Label', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_btn_label,
 			'placeholder'    => '',
@@ -539,7 +539,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_btn_link' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_btn_link' ),
-			'title'          => __( 'Button Link', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Link', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_btn_link,
 			'placeholder'    => 'URL',
@@ -549,7 +549,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_btn_color' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_btn_color' ),
-			'title'          => __( 'Button Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_btn_color,
 			'placeholder'    => '',
@@ -561,7 +561,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_btn_win' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_btn_win' ),
-			'title'          => __( 'Open in new tab', 'uix-pagebuilder' ),
+			'title'          => __( 'Open in new tab', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_btn_win,
 			'placeholder'    => '',
@@ -574,8 +574,8 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_features' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_features' ),
-			'title'          => __( 'Features', 'uix-pagebuilder' ),
-			'desc'           => __( 'Type one word or sentence per line when press "ENTER".', 'uix-pagebuilder' ),
+			'title'          => __( 'Features', 'uix-page-builder' ),
+			'desc'           => __( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
 			'value'          => $uix_pb_pricing_col3_two_features,
 			'placeholder'    => '',
 			'type'           => 'textarea',
@@ -589,7 +589,7 @@ $args_2 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_two_active' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_two_active' ),
-			'title'          => __( 'Active', 'uix-pagebuilder' ),
+			'title'          => __( 'Active', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_two_active,
 			'placeholder'    => '',
@@ -611,7 +611,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_title' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_title' ),
-			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_title,
 			'placeholder'    => '',
@@ -621,7 +621,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_price' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_price' ),
-			'title'          => __( 'Price', 'uix-pagebuilder' ),
+			'title'          => __( 'Price', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_price,
 			'placeholder'    => '',
@@ -631,7 +631,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_emphasis_color' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_emphasis_color' ),
-			'title'          => __( 'Price Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Price Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_emphasis_color,
 			'placeholder'    => '',
@@ -644,7 +644,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_currency' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_currency' ),
-			'title'          => __( 'Currency', 'uix-pagebuilder' ),
+			'title'          => __( 'Currency', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_currency,
 			'placeholder'    => '',
@@ -654,7 +654,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_period' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_period' ),
-			'title'          => __( 'Period', 'uix-pagebuilder' ),
+			'title'          => __( 'Period', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_period,
 			'placeholder'    => '',
@@ -664,7 +664,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_desc' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_desc' ),
-			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_desc,
 			'placeholder'    => '',
@@ -678,7 +678,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_btn_label' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_btn_label' ),
-			'title'          => __( 'Button Label', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Label', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_btn_label,
 			'placeholder'    => '',
@@ -688,7 +688,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_btn_link' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_btn_link' ),
-			'title'          => __( 'Button Link', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Link', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_btn_link,
 			'placeholder'    => 'URL',
@@ -698,7 +698,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_btn_color' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_btn_color' ),
-			'title'          => __( 'Button Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Button Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_btn_color,
 			'placeholder'    => '',
@@ -710,7 +710,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_btn_win' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_btn_win' ),
-			'title'          => __( 'Open in new tab', 'uix-pagebuilder' ),
+			'title'          => __( 'Open in new tab', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_btn_win,
 			'placeholder'    => '',
@@ -723,8 +723,8 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_features' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_features' ),
-			'title'          => __( 'Features', 'uix-pagebuilder' ),
-			'desc'           => __( 'Type one word or sentence per line when press "ENTER".', 'uix-pagebuilder' ),
+			'title'          => __( 'Features', 'uix-page-builder' ),
+			'desc'           => __( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
 			'value'          => $uix_pb_pricing_col3_three_features,
 			'placeholder'    => '',
 			'type'           => 'textarea',
@@ -738,7 +738,7 @@ $args_3 =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_pricing_col3_three_active' ),
 		    'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_pricing_col3_three_active' ),
-			'title'          => __( 'Active', 'uix-pagebuilder' ),
+			'title'          => __( 'Active', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_pricing_col3_three_active,
 			'placeholder'    => '',
@@ -775,10 +775,10 @@ $args_3 =
 $form_html = UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 
 
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_1, 'html', __( 'Table 1', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_2, 'html', __( 'Table 2', 'uix-pagebuilder' ) );
-$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_3, 'html', __( 'Table 3', 'uix-pagebuilder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type_config, $args_config, 'html', __( 'General Settings', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_1, 'html', __( 'Table 1', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_2, 'html', __( 'Table 2', 'uix-page-builder' ) );
+$form_html .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args_3, 'html', __( 'Table 3', 'uix-page-builder' ) );
 
 $form_html .= UixPBFormCore::form_after();
 
@@ -813,7 +813,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Pricing Table (3 column)', 'uix-pagebuilder' ) ); ?>         
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Pricing Table (3 column)', 'uix-page-builder' ) ); ?>         
 				} ); 
 			} ) ( jQuery );
 			</script>

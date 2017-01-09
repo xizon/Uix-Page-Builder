@@ -15,7 +15,7 @@ $form_id = 'uix_pb_section_map';
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
@@ -23,23 +23,23 @@ $item    = '';
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
-			$con         = UixPageBuilder::pagebuilder_output( $value->content );
+			$con         = UixPageBuilder::page_builder_output( $value->content );
 			
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
 					
 					$$key[ 0 ] = $key[ 1 ];
-					$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+					$item[ UixPageBuilder::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
 				endforeach;
 			}
 	
 	        //loop content
-			$col_content = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+			$col_content = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 			
 			
 			if ( $col_content && is_array( $col_content ) ) {
@@ -125,8 +125,8 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_style' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_style' ),
-			'title'          => __( 'Map Style', 'uix-pagebuilder' ),
-			'desc'           => __( 'You can make a search, use the name of a place, city, state, or address, or click the location on the map to get lat long coordinates. &rarr; <a href="//www.latlong.net/" target="_blank">Get Latitude Longitude</a>', 'uix-pagebuilder' ),
+			'title'          => __( 'Map Style', 'uix-page-builder' ),
+			'desc'           => __( 'You can make a search, use the name of a place, city, state, or address, or click the location on the map to get lat long coordinates. &rarr; <a href="//www.latlong.net/" target="_blank">Get Latitude Longitude</a>', 'uix-page-builder' ),
 			'value'          => $uix_pb_map_style,
 			'placeholder'    => '',
 			'type'           => 'radio-image',
@@ -148,8 +148,8 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_width' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_width' ),
-			'title'          => __( 'Map Width', 'uix-pagebuilder' ),
-			'desc'           => __( 'It default to using a 100% width.', 'uix-pagebuilder' ),
+			'title'          => __( 'Map Width', 'uix-page-builder' ),
+			'desc'           => __( 'It default to using a 100% width.', 'uix-page-builder' ),
 			'value'          => $uix_pb_map_width,
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
@@ -165,7 +165,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_height' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_height' ),
-			'title'          => __( 'Map Height', 'uix-pagebuilder' ),
+			'title'          => __( 'Map Height', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_map_height,
 			'placeholder'    => '',
@@ -184,7 +184,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_name' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_name' ),
-			'title'          => __( 'Place Name', 'uix-pagebuilder' ),
+			'title'          => __( 'Place Name', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_map_name,
 			'placeholder'    => '',
@@ -195,7 +195,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_latitude' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_latitude' ),
-			'title'          => __( 'Latitude', 'uix-pagebuilder' ),
+			'title'          => __( 'Latitude', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_map_latitude,
 			'placeholder'    => '',
@@ -206,7 +206,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_longitude' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_longitude' ),
-			'title'          => __( 'Longitude', 'uix-pagebuilder' ),
+			'title'          => __( 'Longitude', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_map_longitude,
 			'placeholder'    => '',
@@ -218,7 +218,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_zoom' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_zoom' ),
-			'title'          => __( 'Zoom', 'uix-pagebuilder' ),
+			'title'          => __( 'Zoom', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_map_zoom,
 			'placeholder'    => '',
@@ -234,14 +234,14 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_map_marker' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_map_marker' ),
-			'title'          => __( 'Marker', 'uix-pagebuilder' ),
-			'desc'           => __( 'By default, a marker uses a standard image. Markers can display custom images, in which case they are usually referred to as "icons."', 'uix-pagebuilder' ),
+			'title'          => __( 'Marker', 'uix-page-builder' ),
+			'desc'           => __( 'By default, a marker uses a standard image. Markers can display custom images, in which case they are usually referred to as "icons."', 'uix-page-builder' ),
 			'value'          => $uix_pb_map_marker,
-			'placeholder'    => __( 'Image URL', 'uix-pagebuilder' ),
+			'placeholder'    => __( 'Image URL', 'uix-page-builder' ),
 			'type'           => 'image',
 			'default'        => array(
-									'remove_btn_text'  => __( 'Remove image', 'uix-pagebuilder' ),
-									'upload_btn_text'  => __( 'Upload', 'uix-pagebuilder' ),
+									'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
+									'upload_btn_text'  => __( 'Upload', 'uix-page-builder' ),
 				                )
 		
 		),		
@@ -287,7 +287,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Google Map', 'uix-pagebuilder' ) ); ?>         
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Google Map', 'uix-page-builder' ) ); ?>         
 				} ); 
 			} ) ( jQuery );
 			</script>

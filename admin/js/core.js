@@ -68,7 +68,7 @@
 		 * Debug detection textarea
 		 * ---------------------------------------------------
 		 */
-		$( document ).on( 'click', '#uix-pagebuilder-layoutdata, .uix-pagebuilder-gridster-widget .content-box, .uix-pagebuilder-gridster .temp-data-1, .uix-pagebuilder-gridster .temp-data-2, .sortable-list .row textarea', function() {
+		$( document ).on( 'click', '#uix-page-builder-layoutdata, .uix-page-builder-gridster-widget .content-box, .uix-page-builder-gridster .temp-data-1, .uix-page-builder-gridster .temp-data-2, .sortable-list .row textarea', function() {
 			$( this ).select();
 
 		});
@@ -120,7 +120,7 @@
 		 * Row Settings
 		 * ---------------------------------------------------
 		 */
-		$( document ).on( 'click', '.uix-pagebuilder-gridster-widget .dashicons.settings', function( e ) {
+		$( document ).on( 'click', '.uix-page-builder-gridster-widget .dashicons.settings', function( e ) {
 			e.preventDefault();
 
 			$( '.settings-wrapper' ).hide();
@@ -137,7 +137,7 @@
 
 		});
 
-		$( document ).on( 'click', '.uix-pagebuilder-gridster-drag', function( e ) {
+		$( document ).on( 'click', '.uix-page-builder-gridster-drag', function( e ) {
             e.preventDefault();
             
 			$( '.settings-wrapper' ).hide();
@@ -156,7 +156,7 @@
 		 * Template Settings
 		 * ---------------------------------------------------
 		 */
-		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .export-temp, .uix-pagebuilder-gridster-addbtn .select-temp, .uix-pagebuilder-gridster-addbtn .save-temp', function( e ) {
+		$( document ).on( 'click', '.uix-page-builder-gridster-addbtn .export-temp, .uix-page-builder-gridster-addbtn .select-temp, .uix-page-builder-gridster-addbtn .save-temp', function( e ) {
 			e.preventDefault();
 
 			var $set = $( this ).next( '.settings-temp-wrapper' );
@@ -173,7 +173,7 @@
 		});
 
 		 //--------load
-		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .select-temp', function( e ) {
+		$( document ).on( 'click', '.uix-page-builder-gridster-addbtn .select-temp', function( e ) {
 			e.preventDefault();
 
 
@@ -182,17 +182,17 @@
 				url       : ajaxurl,
 				type      : 'POST',
 				data: {
-					action     : 'uix_pagebuilder_metaboxes_loadtemplist_settings',
-					postID     : uix_pagebuilder_layoutdata.send_string_postid,
-					security   : uix_pagebuilder_layoutdata.send_string_nonce
+					action     : 'uix_page_builder_metaboxes_loadtemplist_settings',
+					postID     : uix_page_builder_layoutdata.send_string_postid,
+					security   : uix_page_builder_layoutdata.send_string_nonce
 				},
 				success   : function( result ){
-					$( '#uix-pagebuilder-templatelist' ).html( result );
+					$( '#uix-page-builder-templatelist' ).html( result );
 
 					if ( result == '' || result == '<p>Hmm... no templates yet.</p>' ) {
-						$( '#uix-pagebuilder-templatelist-confirm' ).hide();
+						$( '#uix-page-builder-templatelist-confirm' ).hide();
 					} else {
-						$( '#uix-pagebuilder-templatelist-confirm' ).show();
+						$( '#uix-page-builder-templatelist-confirm' ).show();
 					}
 					
 					// stuff here
@@ -201,8 +201,8 @@
 
 				},
 				beforeSend: function() {
-					$( '#uix-pagebuilder-templatelist' ).html( uix_pagebuilder_layoutdata.send_string_loadlist );
-					$( '#uix-pagebuilder-templatelist-confirm' ).hide();
+					$( '#uix-page-builder-templatelist' ).html( uix_page_builder_layoutdata.send_string_loadlist );
+					$( '#uix-page-builder-templatelist-confirm' ).hide();
 
 				}
 			});
@@ -218,9 +218,9 @@
 			$this.next( '.spinner' ).addClass( 'is-active' );
 
 			$.post( ajaxurl, {
-				action               : 'uix_pagebuilder_metaboxes_loadtemp_settings',
+				action               : 'uix_page_builder_metaboxes_loadtemp_settings',
 				curlayoutdata        : v,
-				security             : uix_pagebuilder_layoutdata.send_string_nonce
+				security             : uix_page_builder_layoutdata.send_string_nonce
 			}, function ( response ) {
 
 				var data      = response
@@ -234,12 +234,12 @@
 				gridsterEditRow( JSON.parse( data ) );
 
 				//Save options for gridster data
-				var settings = jQuery( "[name='uix-pagebuilder-layoutdata']" ).val();
+				var settings = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
 				$.post( ajaxurl, {
-					action               : 'uix_pagebuilder_metaboxes_save_settings',
+					action               : 'uix_page_builder_metaboxes_save_settings',
 					layoutdata           : settings,
-					postID               : uix_pagebuilder_layoutdata.send_string_postid,
-					security             : uix_pagebuilder_layoutdata.send_string_nonce
+					postID               : uix_page_builder_layoutdata.send_string_postid,
+					security             : uix_page_builder_layoutdata.send_string_nonce
 				}, function ( response ) {
 
 				});
@@ -265,10 +265,10 @@
 
 
 		//--------save
-		$( document ).on( 'click', '.uix-pagebuilder-gridster-addbtn .save-temp', function( e ) {
+		$( document ).on( 'click', '.uix-page-builder-gridster-addbtn .save-temp', function( e ) {
 			e.preventDefault();
 
-	        $( this ).next( '.settings-temp-wrapper' ).find( '[name="tempname"]' ).val( uix_pagebuilder_layoutdata.send_string_name );
+	        $( this ).next( '.settings-temp-wrapper' ).find( '[name="tempname"]' ).val( uix_page_builder_layoutdata.send_string_name );
 
 		});
 
@@ -277,17 +277,17 @@
 
 
 			var $this = $( this ),
-			    v     = $( "[name='uix-pagebuilder-layoutdata']" ).val(),
+			    v     = $( "[name='uix-page-builder-layoutdata']" ).val(),
 			    n     = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="tempname"]' ).val();
 
 			$this.next( '.spinner' ).addClass( 'is-active' );
 
 			$.post( ajaxurl, {
-				action               : 'uix_pagebuilder_metaboxes_savetemp_settings',
+				action               : 'uix_page_builder_metaboxes_savetemp_settings',
 				curlayoutdata        : v,
 				tempname             : n,
-				postID               : uix_pagebuilder_layoutdata.send_string_postid,
-				security             : uix_pagebuilder_layoutdata.send_string_nonce
+				postID               : uix_page_builder_layoutdata.send_string_postid,
+				security             : uix_page_builder_layoutdata.send_string_nonce
 			}, function ( response ) {
 				//console.log( response )
 
@@ -315,10 +315,10 @@
 
 			var hidedivs    = [ '#postdivrich' ],
 				hideID      = '',
-				selectedElt = $( "input[name='uix-pagebuilder-status']:checked" ).attr( 'id' ),
-				pbID        = '#uix_pagebuilder_page_meta_pagerbuilder_container';
+				selectedElt = $( "input[name='uix-page-builder-status']:checked" ).attr( 'id' ),
+				pbID        = '#uix_page_builder_page_meta_pagerbuilder_container';
 			$( '.postbox' ).each( function()  {
-				if ( $( this ).attr( 'id' ).indexOf( 'dis_pagebuilder' ) >= 0 ) {
+				if ( $( this ).attr( 'id' ).indexOf( 'dis_page_builder' ) >= 0 ) {
 					hidedivs.push( '#' + $( this ).attr( 'id' ) );
 				}
 
@@ -330,26 +330,26 @@
 			hideID = hideID.substring( 0, hideID.length-1 );
 
 
-			if ( selectedElt == 'uix-pagebuilder-status2' ) {
-				uixpagebuilderHide();
+			if ( selectedElt == 'uix-page-builder-status2' ) {
+				uix_page_builder_hide();
 			} else {
-				uixpagebuilderShow();
+				uix_page_builder_show();
 			}
 
-			$( '#uix-pagebuilder-status1' ).on( 'click', function() {
-				uixpagebuilderShow();
+			$( '#uix-page-builder-status1' ).on( 'click', function() {
+				uix_page_builder_show();
 
 				//Auto set page template
-				if ( uix_pagebuilder_layoutdata.send_string_tempfiles_exists == 1 ) {
-					$('[name="page_template"] option[value="page-uix_pagebuilder.php"]').attr( 'selected', 'selected' );
+				if ( uix_page_builder_layoutdata.send_string_tempfiles_exists == 1 ) {
+					$('[name="page_template"] option[value="page-uix_page_builder.php"]').attr( 'selected', 'selected' );
 				}
 
 			});
-			$( '#uix-pagebuilder-status2' ).on( 'click', function() {
-				uixpagebuilderHide();
+			$( '#uix-page-builder-status2' ).on( 'click', function() {
+				uix_page_builder_hide();
 
 				//Restore set page template
-				if ( uix_pagebuilder_layoutdata.send_string_tempfiles_exists == 1 ) {
+				if ( uix_page_builder_layoutdata.send_string_tempfiles_exists == 1 ) {
 					$('[name="page_template"] option[value="default"]').attr( 'selected', 'selected' );
 				}
 
@@ -357,20 +357,20 @@
 
 
 
-			function uixpagebuilderHide() {
+			function uix_page_builder_hide() {
 				$( hideID ).slideDown( 300 ).css( 'width', '100%' );
 				$( pbID ).slideUp( 300 );
-				uixpagebuilderInit();
+				uix_page_builder_init();
 			}
-			function uixpagebuilderShow() {
+			function uix_page_builder_show() {
 				$( hideID ).slideUp( 300 );
 				$( pbID ).slideDown( 300 ).css( 'width', '100%' );
-				uixpagebuilderInit();
+				uix_page_builder_init();
 			}
-			function uixpagebuilderInit() {
+			function uix_page_builder_init() {
 				$( 'html, body' ).animate( {scrollTop: 10 }, 100 );
 				$( 'html, body' ).delay( 300 ).animate( {scrollTop: 5 }, 100 );
-				$( '.uix-pagebuilder-gridster ul' ).css( 'width', '100%' );
+				$( '.uix-page-builder-gridster ul' ).css( 'width', '100%' );
 			}
 
 

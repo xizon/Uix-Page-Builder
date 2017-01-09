@@ -70,7 +70,7 @@
 				
 				
 				/*------------- Check whether the element is added for the first time ------------- */
-				if ( $( this ).parent( '.uix-pagebuilder-col' ).length > 0 ) {
+				if ( $( this ).parent( '.uix-page-builder-col' ).length > 0 ) {
 					action_first_add = true;
 				}
 				

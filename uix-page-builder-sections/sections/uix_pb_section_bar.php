@@ -16,7 +16,7 @@ $form_id = 'uix_pb_section_bar';
  */
 $sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 $pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-pagebuilder' );
+$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
 $colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
 $item    = '';
 
@@ -24,23 +24,23 @@ $item    = '';
 
 if ( $sid >= 0 ) {
 	
-	$builder_content   = UixPageBuilder::pagebuilder_array_newlist( get_post_meta( $pid, 'uix-pagebuilder-layoutdata', true ) );
+	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
 	$item              = [];
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
-			$con         = UixPageBuilder::pagebuilder_output( $value->content );
+			$con         = UixPageBuilder::page_builder_output( $value->content );
 			
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
 					
 					$$key[ 0 ] = $key[ 1 ];
-					$item[ UixPageBuilder::pagebuilder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+					$item[ UixPageBuilder::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
 				endforeach;
 			}
 	
 	        //loop content
-			$col_content = UixPageBuilder::pagebuilder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
+			$col_content = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
 			
 			
 			if ( $col_content && is_array( $col_content ) ) {
@@ -94,7 +94,7 @@ $uix_pb_bar_icon                        = UixPageBuilder::fvalue( $colid, $sid, 
 $uix_pb_bar_color                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_color', '#a2bf2f' );
 $uix_pb_bar_trackcolor                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_trackcolor', '#f1f1f1' );
 $uix_pb_bar_percent_icon_color          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color', '#473f3f' );
-$uix_pb_bar_title                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_title', __( 'Title', 'uix-pagebuilder' ) );
+$uix_pb_bar_title                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_title', __( 'Title', 'uix-page-builder' ) );
 $uix_pb_bar_desc                        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_desc', '' );
 $uix_pb_bar_show_units                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_show_units', '%' );
 
@@ -155,7 +155,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_shape' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_shape' ),
-			'title'          => __( 'Choose Style', 'uix-pagebuilder' ),
+			'title'          => __( 'Choose Style', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_shape,
 			'placeholder'    => '',
@@ -187,7 +187,7 @@ $args =
 			array(
 				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_circular_size' ),
 				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_circular_size' ),
-				'title'          => __( 'Bar Size', 'uix-pagebuilder' ),
+				'title'          => __( 'Bar Size', 'uix-page-builder' ),
 				'desc'           => '',
 				'value'          => $uix_pb_bar_circular_size,
 				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class', /*class of toggle item */
@@ -202,7 +202,7 @@ $args =
 			array(
 				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size' ),
 				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_square_size' ),
-				'title'          => __( 'Bar Size', 'uix-pagebuilder' ),
+				'title'          => __( 'Bar Size', 'uix-page-builder' ),
 				'desc'           => '',
 				'value'          => $uix_pb_bar_square_size,
 				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class', /*class of toggle item */
@@ -222,7 +222,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_percent' ),
-			'title'          => __( 'Percent', 'uix-pagebuilder' ),
+			'title'          => __( 'Percent', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_percent,
 			'placeholder'    => '',
@@ -237,7 +237,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_perc_icons_size' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_perc_icons_size' ),
-			'title'          => __( 'Percentage & Icon Size', 'uix-pagebuilder' ),
+			'title'          => __( 'Percentage & Icon Size', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_perc_icons_size,
 			'placeholder'    => '',
@@ -251,7 +251,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_linewidth' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_linewidth' ),
-			'title'          => __( 'Line Width', 'uix-pagebuilder' ),
+			'title'          => __( 'Line Width', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_linewidth,
 			'placeholder'    => '',
@@ -265,8 +265,8 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon_toggle' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_icon_toggle' ),
-			'title'          => __( 'Icon', 'uix-pagebuilder' ),
-			'desc'           => __( 'Using Icon instead of percentage.', 'uix-pagebuilder' ),
+			'title'          => __( 'Icon', 'uix-page-builder' ),
+			'desc'           => __( 'Using Icon instead of percentage.', 'uix-page-builder' ),
 			'value'          => $uix_pb_bar_icon_toggle,
 			'placeholder'    => '',
 			'type'           => 'checkbox',
@@ -300,7 +300,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_color' ),
-			'title'          => __( 'Bar Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Bar Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_color,
 			'placeholder'    => '',
@@ -314,7 +314,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_trackcolor' ),
-			'title'          => __( 'Track color', 'uix-pagebuilder' ),
+			'title'          => __( 'Track color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_trackcolor,
 			'placeholder'    => '',
@@ -326,7 +326,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_percent_icon_color' ),
-			'title'          => __( 'Percentage & Icon Color', 'uix-pagebuilder' ),
+			'title'          => __( 'Percentage & Icon Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_percent_icon_color,
 			'placeholder'    => '',
@@ -339,7 +339,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_title' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_title' ),
-			'title'          => __( 'Title', 'uix-pagebuilder' ),
+			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_title,
 			'placeholder'    => '',
@@ -350,7 +350,7 @@ $args =
 	    array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_desc' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_desc' ),
-			'title'          => __( 'Description', 'uix-pagebuilder' ),
+			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_desc,
 			'placeholder'    => '',
@@ -365,7 +365,7 @@ $args =
 		array(
 			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_show_units' ),
 			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_show_units' ),
-			'title'          => __( 'Displayed Units', 'uix-pagebuilder' ),
+			'title'          => __( 'Displayed Units', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => $uix_pb_bar_show_units,
 			'placeholder'    => '',
@@ -417,7 +417,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Progress Bar', 'uix-pagebuilder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Progress Bar', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
