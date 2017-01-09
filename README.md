@@ -5,7 +5,7 @@ Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Donate Me](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PYZLU7UZNQ6CE)
 
-[Plugin URI](https://uiux.cc/wp-plugins/uix-pagebuilder/)
+[Plugin URI](https://uiux.cc/wp-plugins/uix-page-builder/)
 
 [Video Demo](https://www.youtube.com/watch?v=uceBXY-45V4)
 

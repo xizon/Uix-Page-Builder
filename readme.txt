@@ -2,7 +2,7 @@
 Contributors: uiuxlab
 Donate link: https://uiux.cc
 Author URI: https://uiux.cc
-Plugin URL: https://uiux.cc/wp-plugins/uix-pagebuilder/
+Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.7
