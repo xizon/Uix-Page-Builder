@@ -37,11 +37,7 @@ Embed a shortcode into the editor of any post, page, or custom post type. Use `[
 
 = Advanced Customization (Optional) =
 
-> Refer to the default provided by the custom files in folders ( **"uix-page-builder/uix-page-builder-sections/"** and **"uix-page-builder/theme_templates/"** ).
-
-* Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
-* It is s easy to bind specific WordPress themes you want.
-* Allows completely customize your '.css', '.php', '.js', 'image' files for your builder structure, please refer to the usage.
+Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-sections/` to your theme directory `/wp-content/themes/{your-theme}/`.
 
 
 

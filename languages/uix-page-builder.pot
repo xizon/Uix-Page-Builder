@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Fri Jan 13 2017 12:55:21 GMT+0800 (CST)\n"
+"POT-Revision-Date: Fri Jan 13 2017 14:02:14 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -542,28 +542,14 @@ msgstr ""
 msgid "Advanced Customization (Optional) "
 msgstr ""
 
-#: ../helper/tabs/about.php:42
+#: ../helper/tabs/about.php:41
 msgid ""
-"Refer to the default provided by the custom files in folders ( \"uix-page-"
-"builder/uix-page-builder-sections/\" and \"uix-page-builder/theme_templates/\" "
-")."
-msgstr ""
-
-#: ../helper/tabs/about.php:45
-msgid ""
-"* Plugin allow handles builder controls of backend template usage so that we "
-"can use our own templates instead of the plugin."
-msgstr ""
-
-#: ../helper/tabs/about.php:46
-msgid "* It is s easy to bind specific WordPress themes you want."
-msgstr ""
-
-#: ../helper/tabs/about.php:47
-msgid ""
-"* Allows completely customize your <code>.css</code>, <code>.php</code>, "
-"<code>.js</code>, <code>image</code> files for your builder structure, "
-"please refer to the usage."
+"Plugin allow handles builder controls of backend template usage so that we "
+"can use our own templates instead of the plugin. If you want to custom your "
+"builder controls of backend for your theme, then just copy them from the "
+"directory <code>/wp-content/plugins/uix-page-builder/uix-page-builder-"
+"sections/</code> to your theme directory <code>/wp-content/themes/{your-"
+"theme}/</code>."
 msgstr ""
 
 #: ../helper/tabs/credits.php:11

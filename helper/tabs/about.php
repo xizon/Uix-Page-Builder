@@ -36,15 +36,9 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
         
         <h3>
             <?php _e( 'Advanced Customization (Optional) ', 'uix-page-builder' ); ?>
-        </h3> 
-        
-        <blockquote class="uix-bg-custom-blockquote">
-  	      <?php _e( 'Refer to the default provided by the custom files in folders ( "uix-page-builder/uix-page-builder-sections/" and "uix-page-builder/theme_templates/" ).', 'uix-page-builder' ); ?>
-        </blockquote>
+        </h3>
         <p>
-			<?php _e( '* Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin.', 'uix-page-builder' ); ?><br>
-            <?php _e( '* It is s easy to bind specific WordPress themes you want.', 'uix-page-builder' ); ?><br>
-            <?php _e( '* Allows completely customize your <code>.css</code>, <code>.php</code>, <code>.js</code>, <code>image</code> files for your builder structure, please refer to the usage.', 'uix-page-builder' ); ?><br>
+			<?php _e( 'Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory <code>/wp-content/plugins/uix-page-builder/uix-page-builder-sections/</code> to your theme directory <code>/wp-content/themes/{your-theme}/</code>.', 'uix-page-builder' ); ?><br>
             
            
         
