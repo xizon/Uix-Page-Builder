@@ -18,7 +18,7 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 
 Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form` and `portfolio`. To be continued.  
 
-You could add a new page with Uix Page Builder to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
+You could add any new pages using the plugin to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
 
 
 
@@ -109,34 +109,23 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/plug.jpg)
 
 
-2.Embed a shortcode into the editor of any post, page, or custom post type. Use `[uix_pb_sections]` to add it to your Post, Widgets or Page content.
+2.Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the **"Template"** for this page from the **"Attributes"** section. Enter page title like **"Custom One Page"**. Save the page and hit **"Preview"** to see how it looks. ( You could specify the template name, in this case I used `Uix Page Builder Template`.)
 
-    You could create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"** ) in your templates directory.
+> You could create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"** ) in your templates directory.
 	
-    
-
-3.Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the **"Template"** for this page from the **"Attributes"** section. Enter page title like **"Custom One Page"**. Save the page and hit **"Preview"** to see how it looks. ( You should specify the template name, in this case I used `Uix Page Builder Template`. The "Template Name: Uix Page Builder Template" tells WordPress that this will be a custom page template. )
-
+	
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/menu.jpg)
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/add-page.jpg)
 
 
-    Note: You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
+You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
+
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/active.jpg)
 
 
-4.You can pretty much custom every aspect of the look and feel of this page by modifying the `*.php` template files **(Access the path to the themes directory)**. **Best Practices for Editing WordPress Template Files:**
-
-　(1) WordPress comes with a theme and plugin editor as part of the core functionality. You can find it in your install by going to **"Appearance > Editor"** from your sidebar.
-  
-  ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/editor.jpg)
-
-　(2) You can connect to your site via an **FTP** client, download a copy of the file you want to change, make the changes and then upload the file back to the server, overwriting the file that’s on the server.
-
-
-5.Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
+3.(Optional) Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
 
 Backend templates are in the **"uix-page-builder-sections"** folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-sections/` to your theme directory `/wp-content/themes/{your-theme}/`.
   

@@ -54,23 +54,16 @@ Embed a shortcode into the editor of any post, page, or custom post type. Use `[
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
 
 
-2. Embed a shortcode into the editor of any post, page, or custom post type. Use `[uix_pb_sections]` to add it to your Post, Widgets or Page content.
-
-    You could create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"** ) in your templates directory.
+2. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You could specify the template name, in this case I used **"Uix Page Builder Template"**. )
 
 
-3. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You should specify the template name, in this case I used **"Uix Page Builder Template"**. The "Template Name: Uix Page Builder Template" tells WordPress that this will be a custom page template. )
+> You could create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"** ) in your templates directory.
 
-    Note: You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
+
+You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
 	
 
-4. You can pretty much custom every aspect of the look and feel of this page by modifying the "*.php" template files (Access the path to the themes directory) . Best Practices for Editing WordPress Template Files:
-
-  (1) WordPress comes with a theme and plugin editor as part of the core functionality. You can find it in your install by going to "Appearance > Editor" from your sidebar.
-
-  (2) You can connect to your site via an FTP client, download a copy of the file you want to change, make the changes and then upload the file back to the server, overwriting the file that’s on the server.
-
-5. Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
+3. (Optional) Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
 
   Backend templates are in the <strong>"uix-page-builder-sections"</strong> folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory  <strong>"/wp-content/plugins/uix-page-builder/uix-page-builder-sections/"</strong> to your theme directory  <strong>"/wp-content/themes/{your-theme}/"</strong>.
 

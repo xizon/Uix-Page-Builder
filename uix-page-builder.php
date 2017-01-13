@@ -44,7 +44,7 @@ class UixPageBuilder {
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
-		add_action( 'admin_notices', array( __CLASS__, 'template_notice_required' ) );
+		add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
 		
@@ -1000,29 +1000,37 @@ class UixPageBuilder {
 	}
 	
 	
-			
 	/*
 	 *  Add admin one-time notifications
 	 *
 	 *
 	 */
-	
-	public static function template_notice_required() {
+	public static function usage_notice_app() {
 		
 		if( get_post_type() == 'page' ) {
-			if( !self::tempfile_exists() ) {
-				echo '<div class="notice notice-warning"><p>';
-				printf( 
-					__('You could <a href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.', 'Anyword'), 
-					admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" )
-				);
-				echo '</p></div>';
 		
+			global $current_user ;
+			$user_id = $current_user->ID;
+
+			/* Check that the user hasn't already clicked to ignore the message */
+			if ( ! get_user_meta( $user_id, self::NOTICEID ) ) {
+
+
+				if( !self::tempfile_exists() ) {
+					echo '<div class="notice notice-warning"><p>';
+					printf( 
+						__('You could <a class="button button-small" href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.  ', 'Anyword'), 
+						admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" )
+					);
+					printf( __( '<a href="%1$s">Hide Notice</a>' ), '?post_type='.self::get_slug().'&'.self::NOTICEID.'=0');
+					echo '</p></div>';
+
+				}
 			}
+			
 		}
 	
-	}	
-	
+	}
 	
 	public static function nag_ignore() {
 		    global $current_user;
