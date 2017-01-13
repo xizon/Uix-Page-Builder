@@ -54,6 +54,7 @@ Embed a shortcode into the editor of any post, page, or custom post type. Use `[
 1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to "Appearance -> Install Plugins".
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
 
+
 2. Embed a shortcode into the editor of any post, page, or custom post type. Use `[uix_pb_sections]` to add it to your Post, Widgets or Page content.
 
     You may create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"** ) in your templates directory.

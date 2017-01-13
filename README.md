@@ -110,7 +110,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/plug.jpg)
 
 
-2. Embed a shortcode into the editor of any post, page, or custom post type. Use `[uix_pb_sections]` to add it to your Post, Widgets or Page content.
+2.Embed a shortcode into the editor of any post, page, or custom post type. Use `[uix_pb_sections]` to add it to your Post, Widgets or Page content.
 
     You may create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"** ) in your templates directory.
 	
