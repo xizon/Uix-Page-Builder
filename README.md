@@ -24,7 +24,7 @@ You could add any new pages using the plugin to your WordPress site, find the **
 
 = Displaying on Front-end Pages =
 
-Embed a shortcode into the editor of any post, page, or custom post type. Use `[uix_pb_sections]` to add it to your Page content.
+Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen**.
   
   
 = Features =

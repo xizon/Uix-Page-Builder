@@ -26,7 +26,7 @@ https://www.youtube.com/watch?v=uceBXY-45V4
 
 = Displaying on Front-end Pages =
 
-Embed a shortcode into the editor of any post, page, or custom post type. Use `[uix_pb_sections]` to add it to your Page content.
+Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <strong>Pages Add New Screen</strong>.
   
   
 = Features =
