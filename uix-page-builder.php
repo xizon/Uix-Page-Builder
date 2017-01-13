@@ -84,6 +84,7 @@ class UixPageBuilder {
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-googlemap.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-contactform.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-sections-output.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-xml.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/uixpbform/init.php';
 	}

@@ -338,6 +338,12 @@
 
 			$( '#uix-page-builder-status1' ).on( 'click', function() {
 				uix_page_builder_show();
+				
+				//Add shortcode to editor
+				if ( gridsterGetTinymceContent().indexOf( '[uix_pb_sections' ) < 0  ) {
+					window.send_to_editor( '[uix_pb_sections]' );
+				}
+				
 
 				//Auto set page template
 				if ( uix_page_builder_layoutdata.send_string_tempfiles_exists == 1 ) {
@@ -442,4 +448,27 @@ function gridsterItemElementsClose() {
 		jQuery( '.uixpbform-modal-box' ).removeClass( 'active' );
 		jQuery( 'html' ).css( 'overflow-y', 'auto' );
     });
+}
+
+
+
+/*!
+ *
+ * Get the content of the tinyMCE editor.
+ * ---------------------------------------------------
+ * Get the content of the tinyMCE editor.
+ * @link http://wordpress.stackexchange.com/questions/42652/how-to-get-the-input-of-a-tinymce-editor-when-using-on-the-front-end
+ * @return {string} Returns the content
+ */
+function gridsterGetTinymceContent(){
+
+	//change to name of editor set in wp_editor()
+	var editorID = 'content';
+
+	if (jQuery('#wp-'+editorID+'-wrap').hasClass("tmce-active"))
+		var content = tinyMCE.get(editorID).getContent({format : 'raw'});
+	else
+		var content = jQuery('#'+editorID).val();
+
+	return content;
 }

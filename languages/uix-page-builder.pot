@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Mon Jan 09 2017 17:01:46 GMT+0800 (CST)\n"
+"POT-Revision-Date: Fri Jan 13 2017 11:12:00 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,50 +42,50 @@ msgstr ""
 msgid "https://uiux.cc"
 msgstr ""
 
-#: ../uix-page-builder.php:216
+#: ../uix-page-builder.php:217
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: ../uix-page-builder.php:217 ../admin/post-extensions/post-extensions-init.php:
+#: ../uix-page-builder.php:218 ../admin/post-extensions/post-extensions-init.php:
 #: 332
 msgid "Uix Page Builder"
 msgstr ""
 
-#: ../uix-page-builder.php:228 ../uix-page-builder.php:229
+#: ../uix-page-builder.php:229 ../uix-page-builder.php:230
 msgid "Custom CSS"
 msgstr ""
 
-#: ../uix-page-builder.php:238 ../uix-page-builder.php:239
+#: ../uix-page-builder.php:239 ../uix-page-builder.php:240
 msgid "Helper"
 msgstr ""
 
-#: ../uix-page-builder.php:268 ../helper/settings.php:170
+#: ../uix-page-builder.php:269 ../helper/settings.php:170
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-page-builder.php:589
+#: ../uix-page-builder.php:590
 msgid "Add content"
 msgstr ""
 
-#: ../uix-page-builder.php:624
+#: ../uix-page-builder.php:625
 msgid "Choose Element You Want"
 msgstr ""
 
-#: ../uix-page-builder.php:633
+#: ../uix-page-builder.php:634
 msgid "Layout"
 msgstr ""
 
-#: ../uix-page-builder.php:1015
+#: ../uix-page-builder.php:1016
 msgid ""
 "<strong>You need to create Uix Page Builder template files in your templates "
 "directory. You can create the files on the WordPress admin panel.</strong>"
 msgstr ""
 
-#: ../uix-page-builder.php:1015 ../helper/tabs/usage.php:22
+#: ../uix-page-builder.php:1016
 msgid "Create now!"
 msgstr ""
 
-#: ../uix-page-builder.php:1015 ../helper/tabs/temp.php:73
+#: ../uix-page-builder.php:1016 ../helper/tabs/temp.php:73
 msgid ""
 "As a workaround you can use FTP, access the Uix Page Builder template files "
 "path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and "
@@ -93,34 +93,34 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../uix-page-builder.php:1086
+#: ../uix-page-builder.php:1087
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
 "blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: ../uix-page-builder.php:1158 ../uix-page-builder.php:1231
+#: ../uix-page-builder.php:1159 ../uix-page-builder.php:1232
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1160
+#: ../uix-page-builder.php:1161
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1165
+#: ../uix-page-builder.php:1166
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1168
+#: ../uix-page-builder.php:1169
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -633,29 +633,20 @@ msgstr ""
 
 #: ../helper/tabs/usage.php:18
 msgid ""
-"<h4 class=\"uix-bg-custom-title\">2. You need to create Uix Page Builder "
-"template files in your templates directory. You can create the files on the "
-"WordPress admin panel.</h4>"
+"<h4 class=\"uix-bg-custom-title\">2. Embed a shortcode into the editor of any "
+"post, page, or custom post type. Use <code>[uix_pb_sections]</code> to add "
+"it to your Post, Widgets or Page content.</h4>"
 msgstr ""
 
 #: ../helper/tabs/usage.php:26
+#, php-format
 msgid ""
-"&nbsp;&nbsp;&nbsp;&nbsp;As a workaround you can use FTP, access the Uix Page "
-"Builder template files path <code>/wp-content/plugins/uix-page-"
-"builder/theme_templates/</code> and upload files to your theme templates "
-"directory <code>/wp-content/themes/{your-theme}/</code>. "
+"You may <a href=\"%s\">create</a> Uix Page Builder template file (from the "
+"directory \"/wp-content/plugins/uix-page-builder/theme_templates/page-"
+"uix_page_builder.php\" ) in your templates directory."
 msgstr ""
 
-#: ../helper/tabs/usage.php:30
-msgid ""
-"&nbsp;&nbsp;&nbsp;&nbsp;Please check if you have the 1 template files "
-"<code>\"page-uix_page_builder.php\"</code> in your templates directory. If you "
-"can\"t find these files, then just copy them from the directory \"/wp-"
-"content/plugins/uix-page-builder/theme_templates/\" to your templates "
-"directory."
-msgstr ""
-
-#: ../helper/tabs/usage.php:38
+#: ../helper/tabs/usage.php:35
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">3. Create a new WordPress file or edit an "
 "existing one. Just make sure to select this new created template file as the "
@@ -666,7 +657,7 @@ msgid ""
 "WordPress that this will be a custom page template. )</h4>"
 msgstr ""
 
-#: ../helper/tabs/usage.php:45
+#: ../helper/tabs/usage.php:42
 msgid ""
 "<p>You will find <strong>\"Uix Page Builder Attributes\"</strong> settings in "
 "a meta box in your WordPress backend when you create a new page or when you "
@@ -674,7 +665,7 @@ msgid ""
 "\"Publish\" meta box.</p>"
 msgstr ""
 
-#: ../helper/tabs/usage.php:53
+#: ../helper/tabs/usage.php:50
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">4. You can pretty much custom every aspect "
 "of the look and feel of this page by modifying the <code>*.php</code> "
@@ -682,14 +673,14 @@ msgid ""
 "Best Practices for Editing WordPress Template Files:</h4>"
 msgstr ""
 
-#: ../helper/tabs/usage.php:56
+#: ../helper/tabs/usage.php:53
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(1) WordPress comes with a theme and plugin editor "
 "as part of the core functionality. You can find it in your install by going "
 "to <strong>\"Appearance > Editor\"</strong> from your sidebar."
 msgstr ""
 
-#: ../helper/tabs/usage.php:64
+#: ../helper/tabs/usage.php:61
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;(2) You can connect to your site via an "
 "<strong>FTP</strong> client, download a copy of the file you want to change, "
@@ -697,14 +688,14 @@ msgid ""
 "the file that’s on the server."
 msgstr ""
 
-#: ../helper/tabs/usage.php:69
+#: ../helper/tabs/usage.php:66
 msgid ""
 "<h4 class=\"uix-bg-custom-title\">5. Handles builder controls of backend "
 "template usage so that we can use our own templates instead of the plugin."
 "</h4>"
 msgstr ""
 
-#: ../helper/tabs/usage.php:72
+#: ../helper/tabs/usage.php:69
 msgid ""
 "Backend templates are in the <strong>uix-page-builder-sections</strong> "
 "folder. Includes custom \"css, js, php\" files. If you want to custom your "
