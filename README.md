@@ -32,7 +32,6 @@ Embed a shortcode into the editor of any post, page, or custom post type. Use `[
 * Support to save custom templates and export templates.
 * Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like "Uix Page Builder Anchor Links", from the left column to add to the menu.
 * Simple operation window, support loop list items.
-* Simple operation window, support loop list items.
 * Customizable core style sheets.
 
 
@@ -41,7 +40,7 @@ Embed a shortcode into the editor of any post, page, or custom post type. Use `[
 > Refer to the default provided by the custom files in folders ( **"uix-page-builder/uix-page-builder-sections/"** and **"uix-page-builder/theme_templates/"** ).
 
 * Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
-* Allows you to customize front-end templates and publish multiple pages based Uix Page Builder.
+* It is s easy to bind specific WordPress themes you want.
 * Allows completely customize your '.css', '.php', '.js', 'image' files for your builder structure, please refer to the usage.
 
 

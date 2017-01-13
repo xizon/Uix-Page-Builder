@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Fri Jan 13 2017 11:12:00 GMT+0800 (CST)\n"
+"POT-Revision-Date: Fri Jan 13 2017 11:21:24 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -492,7 +492,27 @@ msgid ""
 "and <code>\"portfolio\"</code>. To be continued."
 msgstr ""
 
-#: ../helper/tabs/about.php:15 ../uix-page-builder-sections/sections/config.php:
+#: ../helper/tabs/about.php:15
+msgid ""
+"You may add a new page with Uix Page Builder to your WordPress site, find "
+"the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. "
+"Click <strong>Add new</strong>. The <strong>\"Uix Page Builder "
+"Attributes\"</strong> section applies page builder templates to your new page."
+" "
+msgstr ""
+
+#: ../helper/tabs/about.php:18
+msgid "Displaying on Front-end Pages"
+msgstr ""
+
+#: ../helper/tabs/about.php:21
+msgid ""
+"Embed a shortcode into the editor of any post, page, or custom post type. "
+"Use <code>[uix_pb_sections]</code> to add it to your Post, Widgets or Page "
+"content."
+msgstr ""
+
+#: ../helper/tabs/about.php:26 ../uix-page-builder-sections/sections/config.php:
 #: 120 ../uix-page-builder-sections/sections/uix_pb_section_pricing1.php:428 ..
 #: /uix-page-builder-sections/sections/uix_pb_section_pricing1.php:577 ../uix-
 #: page-builder-sections/sections/uix_pb_section_pricing1.php:726 ../uix-page-
@@ -503,17 +523,11 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: ../helper/tabs/about.php:18
-msgid ""
-"* Plugin allow handles builder controls of backend template usage so that we "
-"can use our own templates instead of the plugin."
-msgstr ""
-
-#: ../helper/tabs/about.php:19
+#: ../helper/tabs/about.php:29
 msgid "* Support to save custom templates and export templates."
 msgstr ""
 
-#: ../helper/tabs/about.php:20
+#: ../helper/tabs/about.php:30
 msgid ""
 "* Support a key to add anchor links based Uix Page Builder to your "
 "navigation. Visit the Menus page (Appearance &laquo; Menus), choose items "
@@ -521,34 +535,40 @@ msgid ""
 "to add to the menu.  "
 msgstr ""
 
-#: ../helper/tabs/about.php:21
-msgid "* It is s easy to bind specific WordPress themes you want."
-msgstr ""
-
-#: ../helper/tabs/about.php:22
+#: ../helper/tabs/about.php:31
 msgid "* Simple operation window, support loop list items."
 msgstr ""
 
-#: ../helper/tabs/about.php:23
-msgid ""
-"* Allows you to customize front-end templates and publish multiple pages "
-"based Uix Page Builder."
+#: ../helper/tabs/about.php:32
+msgid "* Customizable core style sheets."
 msgstr ""
 
-#: ../helper/tabs/about.php:25
+#: ../helper/tabs/about.php:38
+msgid "Advanced Customization (Optional) "
+msgstr ""
+
+#: ../helper/tabs/about.php:42
+msgid ""
+"Refer to the default provided by the custom files in folders ( \"uix-page-"
+"builder/uix-page-builder-sections/\" and \"uix-page-builder/theme_templates/\" "
+")."
+msgstr ""
+
+#: ../helper/tabs/about.php:45
+msgid ""
+"* Plugin allow handles builder controls of backend template usage so that we "
+"can use our own templates instead of the plugin."
+msgstr ""
+
+#: ../helper/tabs/about.php:46
+msgid "* It is s easy to bind specific WordPress themes you want."
+msgstr ""
+
+#: ../helper/tabs/about.php:47
 msgid ""
 "* Allows completely customize your <code>.css</code>, <code>.php</code>, "
 "<code>.js</code>, <code>image</code> files for your builder structure, "
 "please refer to the usage."
-msgstr ""
-
-#: ../helper/tabs/about.php:26
-msgid ""
-"<blockquote class=\"uix-bg-custom-blockquote\"><strong>Note:</strong> "
-"Currently there is no detailed custom development documentation, can only "
-"refer to the default provided by the custom files in folders ( \"uix-page-"
-"builder/uix-page-builder-sections/\" and \"uix-page-builder/theme_templates/\" "
-").</blockquote>"
 msgstr ""
 
 #: ../helper/tabs/credits.php:11
