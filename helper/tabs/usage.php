@@ -23,7 +23,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 			<p class="uix-bg-custom-desc">
 			   <?php 
 				printf( 
-					__('You may <a href="%s">create</a> Uix Page Builder template file (from the directory "/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php" ) in your templates directory.', 'Anyword'), 
+					__('You could <a href="%s">create</a> Uix Page Builder template file (from the directory "/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php" ) in your templates directory.', 'Anyword'), 
 					admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" )
 				);
 				?>

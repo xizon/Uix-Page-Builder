@@ -1011,11 +1011,12 @@ class UixPageBuilder {
 		
 		if( get_post_type() == 'page' ) {
 			if( !self::tempfile_exists() ) {
-				echo '
-					<div class="error notice">
-						<p>' . __( '<strong>You need to create Uix Page Builder template files in your templates directory. You can create the files on the WordPress admin panel.</strong>', 'uix-page-builder' ) . ' <a class="button button-primary" href="' . admin_url( "admin.php?page=".self::HELPER."&tab=temp" ) . '">' . __( 'Create now!', 'uix-page-builder' ) . '</a><br>' . __( 'As a workaround you can use FTP, access the Uix Page Builder template files path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-page-builder' ) . '</p>
-					</div>
-				';
+				echo '<div class="notice notice-warning"><p>';
+				printf( 
+					__('You could <a href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.', 'Anyword'), 
+					admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" )
+				);
+				echo '</p></div>';
 		
 			}
 		}

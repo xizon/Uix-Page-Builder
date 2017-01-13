@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Fri Jan 13 2017 11:21:24 GMT+0800 (CST)\n"
+"POT-Revision-Date: Fri Jan 13 2017 11:46:22 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,51 +76,41 @@ msgid "Layout"
 msgstr ""
 
 #: ../uix-page-builder.php:1016
+#, php-format
 msgid ""
-"<strong>You need to create Uix Page Builder template files in your templates "
-"directory. You can create the files on the WordPress admin panel.</strong>"
+"You could <a href=\"%s\">create</a> Uix Page Builder template file (from the "
+"directory <strong>\"/wp-content/plugins/uix-page-builder/theme_templates/page-"
+"uix_page_builder.php\"</strong> ) in your templates directory."
 msgstr ""
 
-#: ../uix-page-builder.php:1016
-msgid "Create now!"
-msgstr ""
-
-#: ../uix-page-builder.php:1016 ../helper/tabs/temp.php:73
-msgid ""
-"As a workaround you can use FTP, access the Uix Page Builder template files "
-"path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and "
-"upload files to your theme templates directory <code>/wp-"
-"content/themes/{your-theme}/</code>. "
-msgstr ""
-
-#: ../uix-page-builder.php:1087
+#: ../uix-page-builder.php:1088
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
 "blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: ../uix-page-builder.php:1159 ../uix-page-builder.php:1232
+#: ../uix-page-builder.php:1160 ../uix-page-builder.php:1233
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1161
+#: ../uix-page-builder.php:1162
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1166
+#: ../uix-page-builder.php:1167
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1169
+#: ../uix-page-builder.php:1170
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -494,7 +484,7 @@ msgstr ""
 
 #: ../helper/tabs/about.php:15
 msgid ""
-"You may add a new page with Uix Page Builder to your WordPress site, find "
+"You could add a new page with Uix Page Builder to your WordPress site, find "
 "the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. "
 "Click <strong>Add new</strong>. The <strong>\"Uix Page Builder "
 "Attributes\"</strong> section applies page builder templates to your new page."
@@ -638,6 +628,14 @@ msgstr ""
 msgid "Copy Uix Page Builder template files in your templates directory:"
 msgstr ""
 
+#: ../helper/tabs/temp.php:73
+msgid ""
+"As a workaround you can use FTP, access the Uix Page Builder template files "
+"path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and "
+"upload files to your theme templates directory <code>/wp-"
+"content/themes/{your-theme}/</code>. "
+msgstr ""
+
 #: ../helper/tabs/temp.php:82
 msgid "Click This Button to Copy Uix Page Builder Files"
 msgstr ""
@@ -661,7 +659,7 @@ msgstr ""
 #: ../helper/tabs/usage.php:26
 #, php-format
 msgid ""
-"You may <a href=\"%s\">create</a> Uix Page Builder template file (from the "
+"You could <a href=\"%s\">create</a> Uix Page Builder template file (from the "
 "directory \"/wp-content/plugins/uix-page-builder/theme_templates/page-"
 "uix_page_builder.php\" ) in your templates directory."
 msgstr ""
