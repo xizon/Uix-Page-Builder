@@ -21,7 +21,7 @@ class UixPageBuilder {
 	const PREFIX      = 'uix';
 	const HELPER      = 'uix-page-builder-helper';
 	const NOTICEID    = 'uix-page-builder-helper-tip';
-	const CUSTOMTEMP  = 'uix-page-builder-sections/sections/';
+	const CUSTOMTEMP  = 'uix-page-builder-custom/sections/';
 	const MAPAPI      = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 	const CLEANTEMP   = 0;
 
@@ -294,18 +294,18 @@ class UixPageBuilder {
 		if ( self::tempfolder_exists() ) {
 			
 			if ( $type == 'uri' )  {
-				return get_template_directory_uri() .'/uix-page-builder-sections/';
+				return get_template_directory_uri() .'/uix-page-builder-custom/';
 			} else {
-				return get_template_directory() .'/uix-page-builder-sections/';
+				return get_template_directory() .'/uix-page-builder-custom/';
 			}
 			
 			
 		} else {
 			
 			if ( $type == 'uri' )  {
-				return self::plug_directory() .'uix-page-builder-sections/';
+				return self::plug_directory() .'uix-page-builder-custom/';
 			} else {
-				return self::plug_filepath() .'uix-page-builder-sections/';
+				return self::plug_filepath() .'uix-page-builder-custom/';
 				
 			}
 		}
@@ -517,7 +517,7 @@ class UixPageBuilder {
 	 */
 	public static function tempfolder_exists() {
 
-	      if( is_dir( get_stylesheet_directory() . '/uix-page-builder-sections' ) ) {
+	      if( is_dir( get_stylesheet_directory() . '/uix-page-builder-custom' ) ) {
 			  return true;
 		  } else {
 			  return false;

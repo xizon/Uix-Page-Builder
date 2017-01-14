@@ -186,6 +186,7 @@ function uix_page_builder_options_page(){
 	];	
 	
 	
+	
 	?>
     <h2 class="nav-tab-wrapper">
         <?php foreach ( $tabs as $key ) :  ?>

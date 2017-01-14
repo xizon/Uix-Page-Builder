@@ -37,12 +37,6 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
 * Customizable core style sheets.
 
 
-= Advanced Customization (Optional) =
-
-
-Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory  <strong>"/wp-content/plugins/uix-page-builder/uix-page-builder-sections/"</strong> to your theme directory  <strong>"/wp-content/themes/{your-theme}/"</strong>.
-
-
 
 
 == Installation ==
@@ -59,10 +53,6 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 
 You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
 	
-
-3. (Optional) Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
-
-  Backend templates are in the <strong>"uix-page-builder-sections"</strong> folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory  <strong>"/wp-content/plugins/uix-page-builder/uix-page-builder-sections/"</strong> to your theme directory  <strong>"/wp-content/themes/{your-theme}/"</strong>.
 
 
 == Frequently Asked Questions ==

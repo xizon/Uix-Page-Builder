@@ -33,16 +33,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
            
         
         </p>   
-        
-        <h3>
-            <?php _e( 'Advanced Customization (Optional) ', 'uix-page-builder' ); ?>
-        </h3>
-        <p>
-			<?php _e( 'Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory <code>/wp-content/plugins/uix-page-builder/uix-page-builder-sections/</code> to your theme directory <code>/wp-content/themes/{your-theme}/</code>.', 'uix-page-builder' ); ?><br>
-            
-           
-        
-        </p>   
+  
     
 <?php } ?>
 

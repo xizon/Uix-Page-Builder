@@ -134,9 +134,9 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 			}
 			
 			/*
-			 * Templates file: uix-page-builder-sections/sections/templates.xml
+			 * Templates file: uix-page-builder-custom/sections/templates.xml
 			 *
-			 * If you have moved to "uix-page-builder-sections/sections/" folder so yet, Uix Page Builder's templates 
+			 * If you have moved to "uix-page-builder-custom/sections/" folder so yet, Uix Page Builder's templates 
 			 * list will be reset to its default value as specified from the xml file.
 			*/
 			

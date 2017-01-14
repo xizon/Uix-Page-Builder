@@ -18,7 +18,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		
 		const PREFIX     = 'uix';
 		const VERSION    = '1.5';
-		const CUSTOMTEMP = 'uix-page-builder-sections/sections/';
+		const CUSTOMTEMP = 'uix-page-builder-custom/sections/';
 	
 		
 		/**
@@ -204,7 +204,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function tempfolder_exists() {
 	
-			  if( is_dir( get_stylesheet_directory() . '/uix-page-builder-sections' ) ) {
+			  if( is_dir( get_stylesheet_directory() . '/uix-page-builder-custom' ) ) {
 				  return true;
 			  } else {
 				  return false;

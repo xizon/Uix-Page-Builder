@@ -35,14 +35,13 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Customizable core style sheets.
 
 
-= Advanced Customization (Optional) =
 
-Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-sections/` to your theme directory `/wp-content/themes/{your-theme}/`.
-
+### Advanced Customization ( For Theme Developer )
 
 
+Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/` to your theme directory `/wp-content/themes/{your-theme}/`.
 
-### Updates 
+
 
 
 ##### = 1.0.0 =
@@ -119,13 +118,6 @@ You will find **"Uix Page Builder Attributes"** settings in a meta box in your W
 
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/active.jpg)
-
-
-3.(Optional) Handles builder controls of backend template usage so that we can use our own templates instead of the plugin.
-
-Backend templates are in the **"uix-page-builder-sections"** folder. Includes custom "css, js, php" files. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-sections/` to your theme directory `/wp-content/themes/{your-theme}/`.
-  
-![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/temp2.jpg)
 
 
 
