@@ -42,6 +42,8 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/` to your theme directory `/wp-content/themes/{your-theme}/`.
 
 
+### Updates
+
 
 
 ##### = 1.0.0 =
