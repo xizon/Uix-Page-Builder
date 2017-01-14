@@ -97,7 +97,7 @@ $title         =  ( !empty( $uix_pb_parallax_titlecolor ) ) ? '<span style="colo
 $desc          =  $uix_pb_parallax_desc;
 $bgcolor       = ( !empty( $uix_pb_parallax_bg_color ) ) ? 'style="background-color:'.esc_attr( $uix_pb_parallax_bg_color ).'"' : '';
 $bgcolor_class = ( !empty( $uix_pb_parallax_bg_color ) ) ? 'uix-pb-parallax-nospace' : '';
-$button        = ( !empty( $uix_pb_parallax_url ) ) ? '<p><a class="uix-pb-btn uix-pb-btn-blue" href="'.$uix_pb_parallax_url.'">'.uix_pb_kses( $uix_pb_parallax_url_text ).'</a></p>' : '';
+$button        = ( !empty( $uix_pb_parallax_url ) ) ? '<p><a class="uix-pb-btn uix-pb-btn-white" href="'.$uix_pb_parallax_url.'">'.uix_pb_kses( $uix_pb_parallax_url_text ).'</a></p>' : '';
 
 
 
@@ -397,7 +397,7 @@ if ( $sid >= 0 && is_admin() ) {
 					desc          =  uix_pb_parallax_desc,
 					bgcolor       =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != '' ) ? 'style="background-color:'+uixpbform_htmlEncode( uix_pb_parallax_bg_color )+'"' : '',
 					bgcolor_class =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != '' ) ? 'uix-pb-parallax-nospace' : '',
-					button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != '' ) ? '<p><a class="uix-pb-btn uix-pb-btn-blue" href="'+encodeURI( uix_pb_parallax_url )+'">'+uix_pb_parallax_url_text+'</a></p>' : '';
+					button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != '' ) ? '<p><a class="uix-pb-btn uix-pb-btn-white" href="'+encodeURI( uix_pb_parallax_url )+'">'+uix_pb_parallax_url_text+'</a></p>' : '';
 
 		
 				

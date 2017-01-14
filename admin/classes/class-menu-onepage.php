@@ -192,7 +192,8 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 	
 		 
 		public static function display_menu_custom_box() {
-			 
+ 
+			
 			 ?>
                 <p>
                 <select style=" width: 100%;" id="uix-page-builder-anchorlinks"> 
@@ -202,8 +203,8 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 				$pages = get_pages(); 
 				$pb_total = 0;
 				foreach ( $pages as $page ) {
-				
-					if ( get_page_template_slug( $page->ID ) ==  'page-uix_page_builder.php' ) {
+
+					if ( get_page_template_slug( $page->ID ) ==  'page-uix_page_builder.php' || UixPageBuilder::inc_str( $page->post_content, '[uix_pb_sections' ) ) {
 						$option = '<option value="'.esc_attr( $page->ID ).'">';
 						$option .= $page->post_title;
 						$option .= '</option>';

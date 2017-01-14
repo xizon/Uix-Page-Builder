@@ -160,7 +160,7 @@ $element_temp = '
 					<h2 class="uix-pb-price-num" style="color:{imcolor_one}">{currency_one}{price_one} <span class="uix-pb-price-period">{period_one}</span></h2>
 					<div class="uix-pb-price-excerpt">
 						<p>{desc_one}</p>
-					</div> <a href="{btnurl_one}" {win_one} class="uix-pb-btn uix-pb-btn-{btncolor_one}">{btnlabel_one}</a>
+					</div> <a href="{btnurl_one}" {win_one} class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-{btncolor_one}">{btnlabel_one}</a>
 					<hr>
 					<div class="uix-pb-price-detail">
 						<ul>
@@ -178,7 +178,7 @@ $element_temp = '
 					<h2 class="uix-pb-price-num" style="color:{imcolor_two}">{currency_two}{price_two} <span class="uix-pb-price-period">{period_two}</span></h2>
 					<div class="uix-pb-price-excerpt">
 						<p>{desc_two}</p>
-					</div> <a href="{btnurl_two}" {win_two} class="uix-pb-btn uix-pb-btn-{btncolor_two}">{btnlabel_two}</a>
+					</div> <a href="{btnurl_two}" {win_two} class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-{btncolor_two}">{btnlabel_two}</a>
 					<hr>
 					<div class="uix-pb-price-detail">
 						<ul>
@@ -197,7 +197,7 @@ $element_temp = '
 					<h2 class="uix-pb-price-num" style="color:{imcolor_three}">{currency_three}{price_three} <span class="uix-pb-price-period">{period_three}</span></h2>
 					<div class="uix-pb-price-excerpt">
 						<p>{desc_three}</p>
-					</div> <a href="{btnurl_three}" {win_three} class="uix-pb-btn uix-pb-btn-{btncolor_three}">{btnlabel_three}</a>
+					</div> <a href="{btnurl_three}" {win_three} class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-{btncolor_three}">{btnlabel_three}</a>
 					<hr>
 					<div class="uix-pb-price-detail">
 						<ul>
@@ -216,7 +216,7 @@ $element_temp = '
 					<h2 class="uix-pb-price-num" style="color:{imcolor_four}">{currency_four}{price_four} <span class="uix-pb-price-period">{period_four}</span></h2>
 					<div class="uix-pb-price-excerpt">
 						<p>{desc_four}</p>
-					</div> <a href="{btnurl_four}" {win_four} class="uix-pb-btn uix-pb-btn-{btncolor_four}">{btnlabel_four}</a>
+					</div> <a href="{btnurl_four}" {win_four} class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-{btncolor_four}">{btnlabel_four}</a>
 					<hr>
 					<div class="uix-pb-price-detail">
 						<ul>
