@@ -426,7 +426,7 @@ img.uix-pb-img,
 .uix-pb-container,
 .uix-pb-container.uix-pb-container-boxed {
 	margin: 0 auto;
-	max-width: none !important;
+	max-width: 100% !important; /*Required*/
 	padding: 0 15px !important;
 	position: relative;
 	overflow: hidden;
@@ -1660,10 +1660,11 @@ img.uix-pb-img,
 .uix-pb-parallax-wrapper h4,
 .uix-pb-parallax-wrapper h5,
 .uix-pb-parallax-wrapper h6 {
-    line-height: .5;
-	margin: 0;
-	padding: .5em;
+    line-height: 1.2 !important;
+	margin: 0 !important;
+	padding: 0 .5em .865em !important;
 }
+
 
 .uix-pb-parallax-wrapper .uix-pb-parallax-table {
 	height: 250px;

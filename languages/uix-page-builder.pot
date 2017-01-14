@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Sat Jan 14 2017 13:06:05 GMT+0800 (CST)\n"
+"POT-Revision-Date: Sat Jan 14 2017 17:20:24 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -507,7 +507,7 @@ msgid ""
 "<strong>Pages Add New Screen</strong>."
 msgstr ""
 
-#: ../helper/tabs/about.php:26 ../uix-page-builder-custom/sections/config.php:120 
+#: ../helper/tabs/about.php:26 ../uix-page-builder-custom/sections/config.php:120
 #: ../uix-page-builder-custom/sections/uix_pb_section_pricing1.php:428 ../uix-
 #: page-builder-custom/sections/uix_pb_section_pricing1.php:577 ../uix-page-
 #: builder-custom/sections/uix_pb_section_pricing1.php:726 ../uix-page-builder-

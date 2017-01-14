@@ -88,23 +88,31 @@ $uix_pb_parallax_height          = floatval( UixPageBuilder::fvalue( $colid, $si
 $uix_pb_parallax_height_units    = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_height_units', 'px' );
 $uix_pb_parallax_url             = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_url', '' ) );
 $uix_pb_parallax_url_text        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_url_text', __( 'Check Out', 'uix-page-builder' ) );
+$uix_pb_parallax_skew            = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_parallax_skew', 0 ) );
+
+
+$skew_px             = abs( rad2deg( $uix_pb_parallax_skew/2 ) );
+$skew_deg            = $uix_pb_parallax_skew;
+$skew_deg2           = ( $skew_deg > 0 ) ? '-'.$skew_deg : abs( $skew_deg );
+$skew_css            = ( $uix_pb_parallax_skew != 0 ) ? 'margin-top: -'.$skew_px.'px;margin-bottom:'.$skew_px.'px;-webkit-transform: skew(0deg, '.$skew_deg.'deg); transform: skew(0deg, '.$skew_deg.'deg);' : '';
+$skew_content_style  = ( $uix_pb_parallax_skew != 0 ) ? 'style="-webkit-transform: skew(0deg, '.$skew_deg2.'deg); transform: skew(0deg, '.$skew_deg2.'deg);"' : '';
 
 
 
 
-$bgimage_css   = ( !empty( $uix_pb_parallax_bg ) ) ? 'style="background:url('.esc_attr( $uix_pb_parallax_bg ).') '.( $uix_pb_parallax_speed > 0 ? '50%' : 'top' ).' '.( $uix_pb_parallax_speed > 0 ? 0 : 'left' ).' no-repeat '.( $uix_pb_parallax_speed > 0 ? 'fixed' : esc_attr( $uix_pb_parallax_bg_attachment ) ).';"' : '';
+$bgcolor       = ( !empty( $uix_pb_parallax_bg_color ) ) ? esc_attr( $uix_pb_parallax_bg_color ) : 'transparent';
+$bgimage_css   = ( !empty( $uix_pb_parallax_bg )  ? 'style="'.$skew_css.'background: '.$bgcolor.' url('.esc_attr( $uix_pb_parallax_bg ).') '.( $uix_pb_parallax_speed > 0 ? '50%' : 'top' ).' '.( $uix_pb_parallax_speed > 0 ? 0 : 'left' ).' no-repeat '.( $uix_pb_parallax_speed > 0 ? 'fixed' : esc_attr( $uix_pb_parallax_bg_attachment ) ).';"' : 'style="'.$skew_css.'background-color:'.esc_attr( $uix_pb_parallax_bg_color ).';"' );
 $title         =  ( !empty( $uix_pb_parallax_titlecolor ) ) ? '<span style="color:'.esc_attr( $uix_pb_parallax_titlecolor ).';">'.uix_pb_kses( $uix_pb_parallax_title ).'</span>' : uix_pb_kses( $uix_pb_parallax_title );
 $desc          =  $uix_pb_parallax_desc;
-$bgcolor       = ( !empty( $uix_pb_parallax_bg_color ) ) ? 'style="background-color:'.esc_attr( $uix_pb_parallax_bg_color ).'"' : '';
 $bgcolor_class = ( !empty( $uix_pb_parallax_bg_color ) ) ? 'uix-pb-parallax-nospace' : '';
 $button        = ( !empty( $uix_pb_parallax_url ) ) ? '<p><a class="uix-pb-btn uix-pb-btn-white" href="'.$uix_pb_parallax_url.'">'.uix_pb_kses( $uix_pb_parallax_url_text ).'</a></p>' : '';
 
 
 
 $element_temp = '
-<div class="uix-pb-parallax-wrapper uix-pb-parallax {bgcolor_class}" {mainstyle} data-parallax="{speed}" {bgcolor}>
+<div class="uix-pb-parallax-wrapper uix-pb-parallax {bgcolor_class}" {mainstyle} data-parallax="{speed}">
 	<div class="uix-pb-parallax-table" style="height:{height}{height_unit}">
-		<div class="uix-pb-parallax-content-box">
+		<div class="uix-pb-parallax-content-box" {skew_content_style}>
 			<h2>{title}</h2>
 			<p>{desc}</p>
 			{button}
@@ -113,15 +121,15 @@ $element_temp = '
 </div>
 ';
 
-
+						
 $uix_pb_section_parallax_temp = str_replace( '{mainstyle}', $bgimage_css, 
                                   str_replace( '{speed}', esc_attr( $uix_pb_parallax_speed ), 
 								  str_replace( '{height}', esc_attr( $uix_pb_parallax_height ), 
 								  str_replace( '{height_unit}', esc_attr( $uix_pb_parallax_height_units ), 
 								  str_replace( '{title}', $title, 
 								  str_replace( '{desc}', $desc,
-								  str_replace( '{bgcolor}', $bgcolor,
 								  str_replace( '{bgcolor_class}', $bgcolor_class,
+								  str_replace( '{skew_content_style}', $skew_content_style,
 								  str_replace( '{button}', $button,
 
 							     $element_temp 
@@ -189,6 +197,22 @@ $args =
 								)
 
 		),
+
+		array(
+			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_skew' ),
+			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_parallax_skew' ),
+			'title'          => __( 'Skew', 'uix-page-builder' ),
+			'desc'           => __( 'Suggest values: <strong>-10</strong> &nbsp;to&nbsp;<strong>10</strong>.', 'uix-page-builder' ),
+			'value'          => $uix_pb_parallax_skew,
+			'placeholder'    => '',
+			'type'           => 'short-text',
+			'default'        => array(
+									'units'  => 'deg'
+								)
+
+		),
+		
+		
 
 		
 	    array(
@@ -384,18 +408,29 @@ if ( $sid >= 0 && is_admin() ) {
 				uix_pb_parallax_height          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_height' ); ?>' ).val(),
 				uix_pb_parallax_height_units    = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_height_units' ); ?>' ).val(),
 				uix_pb_parallax_url             = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_url' ); ?>' ).val(),
-				uix_pb_parallax_url_text        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_url_text' ); ?>' ).val();
+				uix_pb_parallax_url_text        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_url_text' ); ?>' ).val(),
+				uix_pb_parallax_skew            = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_parallax_skew' ); ?>' ).val();
 				
+			
+			
 			
 			if ( tempcode.length > 0 ) {
 				
+				//Converts from radians to degrees.
+				var skewToPx           = Math.abs( ( uixpbform_floatval( uix_pb_parallax_skew ) * 180 / Math.PI )/2 ),
+					skewDeg            = uixpbform_floatval( uix_pb_parallax_skew ),
+					skewDeg2           = -( skewDeg ),
+					skew_css           = ( uix_pb_parallax_skew != 0 ) ? 'margin-top: -'+skewToPx+'px;margin-bottom:'+skewToPx+'px;-webkit-transform: skew(0deg, '+skewDeg+'deg); transform: skew(0deg, '+skewDeg+'deg);' : '',
+					skew_content_style = ( uix_pb_parallax_skew != 0 ) ? 'style="-webkit-transform: skew(0deg, '+skewDeg2+'deg); transform: skew(0deg, '+skewDeg2+'deg);"' : '';
+				
+				
 				var bg_pos_1      = ( uix_pb_parallax_speed > 0 ) ? '50%' : 'top',
 					bg_pos_2      = ( uix_pb_parallax_speed > 0 ) ? 0 : 'left',
+					bgcolor       =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != '' ) ? uixpbform_htmlEncode( uix_pb_parallax_bg_color ) : 'transparent',
 					speed         = ( uix_pb_parallax_speed > 0 ) ? 'fixed' : uixpbform_htmlEncode( uix_pb_parallax_bg_attachment ),
-					bgimage_css   = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != '' ) ? 'style="background:url('+encodeURI( uix_pb_parallax_bg )+') '+bg_pos_1+' '+bg_pos_2+' no-repeat '+speed+';"' : '',
+					bgimage_css   = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != '' ) ? 'style="'+skew_css+'background: '+bgcolor+' url('+encodeURI( uix_pb_parallax_bg )+') '+bg_pos_1+' '+bg_pos_2+' no-repeat '+speed+';"' : 'style="'+skew_css+'background-color:'+bgcolor+';"',
 					title         =  ( uix_pb_parallax_titlecolor != undefined && uix_pb_parallax_titlecolor != '' ) ? '<span style="color:'+uixpbform_htmlEncode( uix_pb_parallax_titlecolor )+';">' + uix_pb_parallax_title + '</span>' : uix_pb_parallax_title,
 					desc          =  uix_pb_parallax_desc,
-					bgcolor       =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != '' ) ? 'style="background-color:'+uixpbform_htmlEncode( uix_pb_parallax_bg_color )+'"' : '',
 					bgcolor_class =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != '' ) ? 'uix-pb-parallax-nospace' : '',
 					button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != '' ) ? '<p><a class="uix-pb-btn uix-pb-btn-white" href="'+encodeURI( uix_pb_parallax_url )+'">'+uix_pb_parallax_url_text+'</a></p>' : '';
 
@@ -409,12 +444,11 @@ if ( $sid >= 0 && is_admin() ) {
 				                  .replace(/{height_unit}/g, uixpbform_htmlEncode( uix_pb_parallax_height_units ) )
 								  .replace(/{title}/g, title )
 								  .replace(/{desc}/g, desc )
-				                  .replace(/{bgcolor}/g, bgcolor )
+				                  .replace(/{skew_content_style}/g, skew_content_style )
 				                  .replace(/{bgcolor_class}/g, bgcolor_class )
 				                  .replace(/{button}/g, button );
 								  
-					
-							
+				
 				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_parallax_temp' ); ?>" ).val( tempcode );
 			}
 			

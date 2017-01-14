@@ -463,10 +463,12 @@ class UixPageBuilder {
 		        str_replace( '&#039;', "'",
 		        str_replace( '&quot;', '"',
 			    str_replace( '&apos;', "'",
-				str_replace( '&amp;', '&',
+				str_replace( 'amp;', '',  //step 2
+				str_replace( '&amp;', '&', //step 1
+						
 				
 			    $data 
-			    ) ) ) ) ) ) ) );
+			    ) ) ) ) ) ) ) ) );
 				
 		if ( !is_admin() ) {
 			$data = str_replace( '&lt;br&gt;', '<br>',
@@ -474,10 +476,12 @@ class UixPageBuilder {
 					//Returns string in order to protect the security output of JSON
 					str_replace( '{rowcsql:}', '[', 
 					str_replace( '{rowcsqr:}', ']',
-					str_replace( '&amp;', '&',
+					str_replace( 'amp;', '',   //step 2
+					str_replace( '&amp;', '&', //step 1
+					
 								
 					$data 
-				   ) ) ) );	
+				   ) ) ) ) );	
 	
 		}
 			   
