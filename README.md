@@ -7,6 +7,8 @@ Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Plugin URI](https://uiux.cc/wp-plugins/uix-page-builder/)
 
+[Plugin for Wordpress at WordPress.org Repository](https://wordpress.org/plugins/uix-page-builder/)
+
 [Video Demo](https://www.youtube.com/watch?v=G8xHi6ymp7E)
 
 ### Licensing
