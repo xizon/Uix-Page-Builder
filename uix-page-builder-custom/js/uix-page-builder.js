@@ -14,6 +14,9 @@
     4. Parallax
     5. Testimonials
 	6. Filterable
+	7. Grid
+	
+	
 
 
 ************************************* */
@@ -661,6 +664,37 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
     return uix_pb;
 
 }( uix_pb, jQuery, window, document ) );
+
+
+
+
+/*!
+ *************************************
+ * 7. Grid
+ *************************************
+ */
+uix_pb = ( function ( uix_pb, $, window, document ) {
+    'use strict';
+
+
+    var documentReady = function( $ ) {
+
+		 $( '.uix-pb-col-last' ).each( function(){
+		    $( this ).after( '<div class="uix-pb-clear"></div>' );
+		 });	
+
+	};
+
+
+    uix_pb.grid = {
+        documentReady : documentReady
+    };
+
+    uix_pb.components.documentReady.push( documentReady );
+    return uix_pb;
+
+}( uix_pb, jQuery, window, document ) );
+
 
 
 

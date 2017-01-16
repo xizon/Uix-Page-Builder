@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -104,7 +104,26 @@ class UixPageBuilder {
 		}
 		if ( file_exists( self::backend_path( 'dir' ).'js/plugins.js' ) ) {
 			wp_enqueue_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/plugins.js', false, self::ver(), true );	
-		}	
+		} else {
+
+			// Shuffle
+			wp_enqueue_script( 'shuffle', self::plug_directory() .'assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
+
+			// Shuffle.js requires Modernizr..
+			wp_enqueue_script( 'modernizr', self::plug_directory() .'assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
+
+			// Easy Pie Chart
+			wp_enqueue_script( 'easypiechart', self::plug_directory() .'assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
+
+			//flexslider
+			wp_enqueue_script( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true	);
+			wp_enqueue_style( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
+
+			// Parallax
+			wp_enqueue_script( 'bgParallax', self::plug_directory() .'assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
+							  
+		}
+		
 		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder.js' ) ) {
 			wp_enqueue_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/uix-page-builder.js', array( 'jquery' ), self::ver(), true );	
 			

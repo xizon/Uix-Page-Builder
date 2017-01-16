@@ -35,11 +35,18 @@
 /* ====================================================== 
    1. Basic                               
 /* ====================================================== */
+.uix-pb-clear {
+    clear: both;
+    width: 100%;
+    height: 0;
+}
+
 .uix-pb-row {
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 
 }
+
 
 .uix-pb-row:before,
 .uix-pb-row:after {
@@ -59,8 +66,7 @@
 		float: left;
 		margin: 0 3% 0 0;
 	}
-    
-    
+
 
 	.uix-pb-col-1.uix-pb-col-last, .uix-pb-col-2.uix-pb-col-last, .uix-pb-col-3.uix-pb-col-last, .uix-pb-col-4.uix-pb-col-last, .uix-pb-col-5.uix-pb-col-last, .uix-pb-col-6.uix-pb-col-last, .uix-pb-col-7.uix-pb-col-last, .uix-pb-col-8.uix-pb-col-last, .uix-pb-col-9.uix-pb-col-last, .uix-pb-col-10.uix-pb-col-last, .uix-pb-col-11.uix-pb-col-last, .uix-pb-col-12 {
 		margin: 0;

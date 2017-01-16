@@ -108,6 +108,8 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 								endforeach;
 
+								
+								//Control the behavior of floating elements.
 								$matchCount = preg_match( '/(.*){last}(.*)$/', $element_code, $matches );
 								if ( $matchCount > 0 ) {
 
@@ -115,10 +117,9 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 													str_replace( '{last}'.$matches[2], 'uix-pb-col-last'.$matches[2], 
 													$element_code 
 													) );
-
-
+									
 								}
-
+								
 
 								//Section container
 								$return_string .=  '

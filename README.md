@@ -41,11 +41,18 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ### Advanced Customization ( For Theme Developer )
 
 
-Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/` to your theme directory `/wp-content/themes/{your-theme}/`.
+1) Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/` to your theme directory `/wp-content/themes/{your-theme}/`.
+
+
+2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_plugins.js"** to **"plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/js/`, and add the required script to "plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
 
 
 ### Updates
 
+##### = 1.0.1 =
+
+* Optimized enqueue scripts for front-end.
+* Enhanced theme compatibility.
 
 
 ##### = 1.0.0 =
