@@ -9,13 +9,16 @@ Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Plugin for Wordpress at WordPress.org Repository](https://wordpress.org/plugins/uix-page-builder/)
 
-[Video Demo](https://www.youtube.com/watch?v=G8xHi6ymp7E)
+
 
 ### Licensing
 
 Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 
 ### Description
+
+
+[![Uix Page Builder Live Demo](https://i.ytimg.com/vi/G8xHi6ymp7E/maxresdefault.jpg)](https://www.youtube.com/watch?v=G8xHi6ymp7E "Uix Page Builder Live Demo")
 
 
 Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form` and `portfolio`. To be continued.  
