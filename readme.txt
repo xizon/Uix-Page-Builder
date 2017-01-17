@@ -20,6 +20,10 @@ Uix Page Builder is a design system that it is simple content creation interface
 You could add a new page with Uix Page Builder to your WordPress site, find the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. Click <strong>Add new</strong>. The <strong>"Uix Page Builder Attributes"</strong> section applies page builder templates to your new page. 
 
 
+Here are <strong>3+</strong>  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
+
+
+
 https://www.youtube.com/watch?v=G8xHi6ymp7E
 
 
@@ -45,13 +49,13 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
 
 
-2. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You could specify the template name, in this case I used **"Uix Page Builder Template"**. )
+2. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You could specify the template name, in this case I used <strong>"Uix Page Builder Template"</strong>. )
 
 
-> You could create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"** ) in your templates directory.
+> You could create Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.
 
 
-You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
+You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
 	
 
 

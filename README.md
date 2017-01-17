@@ -26,6 +26,9 @@ Uix Page Builder is a design system that it is simple content creation interface
 You could add any new pages using the plugin to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
 
 
+Here are **3+**  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
+
+
 
 = Displaying on Front-end Pages =
 
