@@ -59,8 +59,8 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 * Optimized core stylesheets for front-end.
 * Added "Glory" template (new).
-* Added "Timeline" shortcode (new).
-* Enhanced "Comfortableness" module.
+* Added "Comfortableness" template (new).
+* Enhanced "Parallax" module.
 * Optimized for the editor.
 * Optimized for the color selector.
 * Fixed error in default template image path.
