@@ -485,12 +485,17 @@ img.uix-pb-img,
 
 
 
+
 /* ====================================================== 
    3. Section Styles                               
 /* ====================================================== */
 
 .uix-page-builder-section {
 	margin: 0 0 3em;
+}
+
+.nospace .uix-page-builder-section{
+	margin: 0;
 }
 
 .uix-pb-section-heading {
@@ -1069,6 +1074,7 @@ img.uix-pb-img,
 	.uix-pb-feature-title{
 		font-size: 18px;
 		letter-spacing: 0;
+		font-weight: 600;
 	}
 	
 	.uix-pb-feature-desc{
@@ -1277,6 +1283,11 @@ img.uix-pb-img,
 	position: relative;
 	margin: 1em 1em .7em 0;
 	display: inline-block;	
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
+
 }
 
 	.uix-pb-btn .fa{
@@ -1345,7 +1356,7 @@ img.uix-pb-img,
 	
 	.uix-pb-btn-black:hover{
 		background-color: #090909;
-		color: #ccc;
+		color: #fff;
 	}
 	
 
@@ -1668,7 +1679,8 @@ img.uix-pb-img,
 .uix-pb-parallax-wrapper h6 {
     line-height: 1.2 !important;
 	margin: 0 !important;
-	padding: 0 .5em .865em !important;
+	padding: 0 0 .865em !important;
+	font-weight: bold;
 }
 
 

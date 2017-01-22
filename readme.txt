@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.7
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ Uix Page Builder is a design system that it is simple content creation interface
 You could add a new page with Uix Page Builder to your WordPress site, find the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. Click <strong>Add new</strong>. The <strong>"Uix Page Builder Attributes"</strong> section applies page builder templates to your new page. 
 
 
-Here are <strong>3+</strong>  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
+Here are <strong>5+</strong>  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
 
 
 
@@ -77,6 +77,8 @@ The version number is the date of the revision of the [guidelines](https://make.
 8. screenshot-8.jpg
 9. screenshot-9.jpg
 10. screenshot-10.jpg
+11. screenshot-11.jpg
+12. screenshot-12.jpg
 
 
 == Upgrade Notice ==
@@ -86,6 +88,17 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+= 1.0.2 =
+
+* Optimized core stylesheets for front-end.
+* Added "Glory" template (new).
+* Added "Timeline" shortcode (new).
+* Enhanced "Comfortableness" module.
+* Optimized for the editor.
+* Optimized for the color selector.
+* Fixed error in default template image path.
+
 
 = 1.0.1 =
 

@@ -1179,6 +1179,10 @@ function uixpbform_colorTran( value ) {
 		case '#bebebe':
 		    return 'gray';
 		  break;
+			
+		case '#ffffff':
+		    return 'white';
+		  break;		
 
 
 		default:
@@ -1416,7 +1420,7 @@ function uixpbform_editorInit( id ){
 					height : 200,
 					menubar: false,
 					plugins: 'textcolor image media hr',
-				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent | hr uixpb_image',
+				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent alignleft aligncenter alignright | hr uixpb_image',
 					setup:function(ed) {
 					   ed.on( 'change', function(e) {
 						   var newvalue = ed.getContent()

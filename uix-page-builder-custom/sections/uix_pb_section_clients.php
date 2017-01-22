@@ -492,7 +492,7 @@ if ( $sid >= 0 && is_admin() ) {
 					    _item_v_urltag_before  = ( _url != undefined && _url != '' ) ? '<a href="'+encodeURI( _url )+'" target="_blank">' : '',
 						_item_v_urltag_after   = ( _url != undefined && _url != '' ) ? '</a>' : '';
 					
-					if ( _intro != undefined && _intro != '' ) {
+					if ( _logo != undefined ) {
 										
 						//Do not include spaces
 						show_list_item_content += '<div class="uix-pb-client-li uix-pb-client-li-'+uix_pb_clients_config_grid+'">';

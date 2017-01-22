@@ -63,6 +63,9 @@ if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
 			</items>
 			';
 			
+			//The default picture path
+			$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
+			
 			
 			if ( UixPageBuilder::CLEANTEMP == 1 ) {
 				update_option( 'uix-page-builder-templates', '' );
@@ -114,11 +117,13 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 				
 				foreach ( $tempdata as $key => $v ) {
 					
+					$newdata = str_replace( '{temp_placeholder_path}', UixPBFormCore::plug_directory(), $v[ 'data' ] );
+					
 					echo '
 					<label>
 						<input type="radio" name="temp" value="1" '.( $key == 0 ? 'checked' : '' ).'>
 						'.$v[ 'name' ].'
-						<textarea>'.$v[ 'data' ].'</textarea>
+						<textarea>'.$newdata.'</textarea>
 					</label>
 					';
 	
@@ -155,12 +160,14 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 					if ( is_array( $tempdata ) && sizeof( $tempdata ) > 0 ) {
 						$checked = '';
 					}
+					
+					$newdata = str_replace( '{temp_placeholder_path}', UixPBFormCore::plug_directory(), $xValue['item'][$xmli]['data'] );
 						
 					echo '
 					<label>
 						<input type="radio" name="temp" value="1" '.$checked.'>
 						'.$xValue['item'][$xmli]['name'].' <span class="default">'.__( 'Default', 'uix-page-builder' ).'</span>
-						<textarea>'.$xValue['item'][$xmli]['data'].'</textarea>
+						<textarea>'.$newdata.'</textarea>
 					</label>
 					';
 				}

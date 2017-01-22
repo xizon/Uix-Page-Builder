@@ -26,7 +26,7 @@ Uix Page Builder is a design system that it is simple content creation interface
 You could add any new pages using the plugin to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
 
 
-Here are **3+**  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
+Here are **5+**  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
 
 
 
@@ -54,6 +54,18 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 
 ### Updates
+
+##### = 1.0.2 =
+
+* Optimized core stylesheets for front-end.
+* Added "Glory" template (new).
+* Added "Timeline" shortcode (new).
+* Enhanced "Comfortableness" module.
+* Optimized for the editor.
+* Optimized for the color selector.
+* Fixed error in default template image path.
+
+
 
 ##### = 1.0.1 =
 
@@ -102,7 +114,10 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-9.jpg)
 
-![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-10.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-11.jpg)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-12.jpg)
+
 
 
 
