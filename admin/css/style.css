@@ -1,4 +1,4 @@
-/* Visual Editor Page 
+/* Visual Builder Page 
 -------------------------------------------------------------- */
 #uix-page-builder-themepreview {
 	position: fixed;
@@ -94,7 +94,7 @@
 }
 
 
-#uix-page-builder-visualeditor-loader {
+#uix-page-builder-visualBuilder-loader {
     position: fixed;
     top: 0;
     left: 0;
@@ -105,7 +105,7 @@
 	text-align: center;
 }
 
-#uix-page-builder-visualeditor-loader .loader {
+#uix-page-builder-visualBuilder-loader .loader {
     position: fixed;
     width: 50px;
     height: 50px;
@@ -122,37 +122,37 @@
 	
 }
 
-#uix-page-builder-visualeditor-loader .loader.ball {
+#uix-page-builder-visualBuilder-loader .loader.ball {
     box-shadow: inset 5px 5px 0 10px #333;
 }
 
-#uix-page-builder-visualeditor-loader .loader.spin {
+#uix-page-builder-visualBuilder-loader .loader.spin {
     border-width: 1px 1px 2px;
     border-color: #333;
     box-shadow: 0 1px #333;
 }
 
-#uix-page-builder-visualeditor-loader .loader.single {
+#uix-page-builder-visualBuilder-loader .loader.single {
     border-width: 1px;
     border-color: #333 transparent transparent;
 }
 
-#uix-page-builder-visualeditor-loader .loader.double {
+#uix-page-builder-visualBuilder-loader .loader.double {
     border-width: 1px;
     border-color: #333 transparent;
 }
 
-#uix-page-builder-visualeditor-loader .loader.triple {
+#uix-page-builder-visualBuilder-loader .loader.triple {
     border-width: 1px;
     border-color: #333;
     border-top-color: transparent;
 }
 
-#uix-page-builder-visualeditor-loader .loader.dots {
+#uix-page-builder-visualBuilder-loader .loader.dots {
     animation-timing-function: steps(8);
 }
 
-#uix-page-builder-visualeditor-loader .loader.dots:before, #uix-page-builder-visualeditor-loader .loader.dots:after {
+#uix-page-builder-visualBuilder-loader .loader.dots:before, #uix-page-builder-visualBuilder-loader .loader.dots:after {
     content: '';
     position: absolute;
     width: 10px;
@@ -162,14 +162,14 @@
     background: #333;
 }
 
-#uix-page-builder-visualeditor-loader .loader.dots:before {
+#uix-page-builder-visualBuilder-loader .loader.dots:before {
     top: 0;
     left: 0;
     right: 0;
     box-shadow: 20px 20px rgba(223, 32, 115, 0.8), 14px 6px rgba(223, 32, 115, 0.9), 14px 34px rgba(223, 32, 115, 0.7);
 }
 
-#uix-page-builder-visualeditor-loader .loader.dots:after {
+#uix-page-builder-visualBuilder-loader .loader.dots:after {
     left: 0;
     right: 0;
     bottom: 0;
@@ -323,7 +323,7 @@
 	transition: .2s linear;
 	width: 100%;
 }
-#uix-page-builder-gridster-wrapper.visualeditor {
+#uix-page-builder-gridster-wrapper.visualBuilder {
 	position: fixed;
 	width: 570px;
 	top: 0;
@@ -337,7 +337,7 @@
 	overflow-y: auto;
 }
 
-#uix-page-builder-gridster-wrapper.visualeditor .uix-page-builder-gridster-addbtn {
+#uix-page-builder-gridster-wrapper.visualBuilder .uix-page-builder-gridster-addbtn {
 	padding-top: 10px;
 }
 
@@ -529,7 +529,7 @@
 	border-color: #5EB83C !important;
 	color: #fff !important;
 }
-.uix-page-builder-gridster-addbtn a.visual-editor {
+.uix-page-builder-gridster-addbtn a.visual-builder {
 	background: rgba(214,135,30,1.00) !important;
 	border-color: rgba(175,109,6,1.00) !important;
 	color: #fff !important;
@@ -926,7 +926,7 @@
 }
 
 
-#uix-page-builder-gridster-wrapper.visualeditor .settings-temp-wrapper {
+#uix-page-builder-gridster-wrapper.visualBuilder .settings-temp-wrapper {
 	left: 14px;
 	top: 0;
 	position: fixed;

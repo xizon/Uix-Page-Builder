@@ -26,7 +26,9 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
             <?php _e( 'Features', 'uix-page-builder' ); ?>
         </h3>  
         <p>
- 			<?php _e( '* Support to save custom templates and export templates.', 'uix-page-builder' ); ?><br>          
+ 			<?php _e( '* You can switch between <strong>"Visual Builder"</strong> and <strong>"Default Editor"</strong> modes at any time.', 'uix-page-builder' ); ?><br>
+ 			<?php _e( '* Support to choose multiple default templates you want.', 'uix-page-builder' ); ?><br>       
+ 			<?php _e( '* Support to save custom templates and export templates.', 'uix-page-builder' ); ?><br> 
  			<?php _e( '* Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like <strong>"Uix Page Builder Anchor Links"</strong>, from the left column to add to the menu.  ', 'uix-page-builder' ); ?><br> 
             <?php _e( '* Simple operation window, support loop list items.', 'uix-page-builder' ); ?><br>
             <?php _e( '* Customizable core style sheets.', 'uix-page-builder' ); ?>

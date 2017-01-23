@@ -35,6 +35,8 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
   
 = Features =
 
+* You can switch between "Visual Builder" and "Default Editor" modes at any time.
+* Support to choose multiple default templates you want.
 * Support to save custom templates and export templates.
 * Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like "Uix Page Builder Anchor Links", from the left column to add to the menu.
 * Simple operation window, support loop list items.
@@ -92,7 +94,8 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 = 1.0.5 =
 
-* Added visual editing page (new).
+* Added visual builder mode (new).
+* You can switch between "Visual Builder" and "Default Editor" modes at any time.
 * Optimization of the admin panel structure.
 
 

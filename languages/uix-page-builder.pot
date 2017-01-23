@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Tue Jan 24 2017 00:35:37 GMT+0800 (CST)\n"
+"POT-Revision-Date: Tue Jan 24 2017 01:53:22 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,7 +239,7 @@ msgid "Add Section"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:373
-msgid "Visual Editor Mode"
+msgid "Visual Builder"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:377
@@ -339,16 +339,16 @@ msgstr ""
 msgid "HTML Code..."
 msgstr ""
 
-#: ../admin/post-extensions/visual-editor-init.php:90 ../admin/post-
-#: extensions/visual-editor-init.php:107
+#: ../admin/post-extensions/visual-builder-init.php:99 ../admin/post-
+#: extensions/visual-builder-init.php:116
 msgid "(no title)"
 msgstr ""
 
-#: ../admin/post-extensions/visual-editor-init.php:125
-msgid "Exit Visual Mode"
+#: ../admin/post-extensions/visual-builder-init.php:134
+msgid "Exit Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/visual-editor-init.php:125
+#: ../admin/post-extensions/visual-builder-init.php:134
 msgid "Hide Sidebar"
 msgstr ""
 
@@ -536,10 +536,20 @@ msgid "Features"
 msgstr ""
 
 #: ../helper/tabs/about.php:29
-msgid "* Support to save custom templates and export templates."
+msgid ""
+"* You can switch between <strong>\"Visual Builder\"</strong> and "
+"<strong>\"Default Editor\"</strong> modes at any time."
 msgstr ""
 
 #: ../helper/tabs/about.php:30
+msgid "* Support to choose multiple default templates you want."
+msgstr ""
+
+#: ../helper/tabs/about.php:31
+msgid "* Support to save custom templates and export templates."
+msgstr ""
+
+#: ../helper/tabs/about.php:32
 msgid ""
 "* Support a key to add anchor links based Uix Page Builder to your "
 "navigation. Visit the Menus page (Appearance &laquo; Menus), choose items "
@@ -547,11 +557,11 @@ msgid ""
 "to add to the menu.  "
 msgstr ""
 
-#: ../helper/tabs/about.php:31
+#: ../helper/tabs/about.php:33
 msgid "* Simple operation window, support loop list items."
 msgstr ""
 
-#: ../helper/tabs/about.php:32
+#: ../helper/tabs/about.php:34
 msgid "* Customizable core style sheets."
 msgstr ""
 

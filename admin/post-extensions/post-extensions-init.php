@@ -367,10 +367,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<span class="li">
 					<a class="button add" href="javascript:gridsterAddRow();"><i class="dashicons dashicons-plus"></i><?php _e( 'Add Section', 'uix-page-builder' ); ?></a>
 				</span>
-				<!-- Visual Editor -->
+				<!-- Visual Builder -->
 				<?php if ( !isset( $_GET['uix_page_builder_visual_mode'] ) ) { ?>
 					 <span class="li">
-						<a class="button visual-editor" href="<?php echo esc_url( uix_page_builder_get_visualEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Visual Editor Mode', 'uix-page-builder' ); ?></a>
+						<a class="button visual-builder" href="<?php echo esc_url( uix_page_builder_get_visualBuilder_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Visual Builder', 'uix-page-builder' ); ?></a>
 					</span>   
 				<?php } ?>    
 				<span class="li">
@@ -453,7 +453,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
 				gridsterWidth = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
 			} else {
-				jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualeditor' );
+				jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualBuilder' );
 				gridsterWidth = ( 620 - 80 ) - 40;
 			}
 			
@@ -776,10 +776,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				if ( jQuery( '#titlediv .inside' ).length == 0 ) {	
 
-					jQuery( '#uix-page-builder-visualeditor-loader, #uix-page-builder-visualeditor-loader .loader' ).show();
+					jQuery( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).show();
 
 					jQuery.post( ajaxurl, {
-						action               : 'uix_page_builder_savevisualEditor_settings',
+						action               : 'uix_page_builder_savevisualBuilder_settings',
 						layoutdata           : jQuery( "[name='uix-page-builder-layoutdata']" ).val(),
 						postID               : uix_page_builder_layoutdata.send_string_postid,
 						security             : uix_page_builder_layoutdata.send_string_nonce
@@ -789,7 +789,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 							jQuery( '#uix-page-builder-themepreview' ).attr( 'src', pURL );	
 
 							jQuery( '#uix-page-builder-themepreview' ).on( 'load', function() {
-								jQuery( '#uix-page-builder-visualeditor-loader, #uix-page-builder-visualeditor-loader .loader' ).hide();
+								jQuery( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).hide();
 							} );
 						}
 					});
@@ -868,7 +868,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
 					ow = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
 				} else {
-					jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualeditor' );
+					jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualBuilder' );
 					ow = ( 620 - 80 ) - 40;
 				}
 				

@@ -16,7 +16,7 @@ if ( !function_exists( 'uix_page_builder_previewControlpanel' ) ) {
 		
         if ( is_admin() ) {
 			if ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) {
-				add_action( 'admin_init', 'uix_page_builder_visualEditor_init' );
+				add_action( 'admin_init', 'uix_page_builder_visualBuilder_init' );
 				add_action( 'admin_menu', 'uix_page_builder_remove_redundant_menu' );
 				add_action( 'admin_head', 'uix_page_builder_remove_redundant_wapper' );
 				add_action( 'admin_head', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container_options' );
@@ -64,10 +64,10 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 
 
 
-//Initialize visual editor page 
-if ( !function_exists( 'uix_page_builder_visualEditor_init' ) ) {
+//Initialize visual builder page 
+if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 	
-    function uix_page_builder_visualEditor_init() {
+    function uix_page_builder_visualBuilder_init() {
 
 		$post_ID          = isset( $_GET['post_id'] ) ? $_GET['post_id'] : '';
 		$post_url         = esc_url( get_permalink( $post_ID ) );
@@ -75,8 +75,17 @@ if ( !function_exists( 'uix_page_builder_visualEditor_init' ) ) {
 		$current_screen   = get_current_screen();
 		$post_type        = get_post_type( $post_ID );
 		$user_ID          = isset( $current_user ) && isset( $current_user->ID ) ? (int) $current_user->ID : 0;
+		$post_title       = isset( $_GET['post_title'] ) ? $_GET['post_title'] : '';
+		$post_title       = str_replace( '{and}', '&', 
+							str_replace( '{space}', ' ', 
+							str_replace( '%7B', '{', 
+							str_replace( '%7D', '}', 
+							$post_title 
+						   ) ) ) );
+		
+		
 	
-		//Create visual editor page
+		//Create visual builder page
         if ( !current_user_can( 'edit_post', $post_ID ) ) {
             header( 'Location: ' . $post_url );
         }
@@ -87,7 +96,7 @@ if ( !function_exists( 'uix_page_builder_visualEditor_init' ) ) {
 				$post_data = array(
 					'ID'           => $post_ID,
 					'post_status'  => 'publish',
-					'post_title'   => esc_html__( '(no title)', 'uix-page-builder' ),
+					'post_title'   => empty( $post_title ) ? esc_html__( '(no title)', 'uix-page-builder' ) : $post_title,
 					'post_content' => '[uix_pb_sections]'
 				);
 				
@@ -122,7 +131,7 @@ if ( !function_exists( 'uix_page_builder_visualEditor_init' ) ) {
             
 			require_once ABSPATH . 'wp-admin/admin-header.php';
 			
-		    echo '<iframe id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="'.$post_url.'?preview=1"></iframe><a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Exit Visual Mode', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-back" href="'.esc_url( uix_page_builder_get_normalEditor_pageURL( $post_ID ) ).'">&ldca;</a><a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Hide Sidebar', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-close" href="javascript:">&ltrif;</a>';
+		    echo '<iframe id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="'.$post_url.'?preview=1"></iframe><a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Exit Visual Builder', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-back" href="'.esc_url( uix_page_builder_get_normalEditor_pageURL( $post_ID ) ).'">&ldca;</a><a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Hide Sidebar', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-close" href="javascript:">&ltrif;</a>';
 			
 			require_once ABSPATH . 'wp-admin/admin-footer.php';
 			
@@ -145,13 +154,13 @@ if ( !function_exists( 'uix_page_builder_allowInsertEmptyPost' ) ) {
 
 
 /*
- * Get URL of visual editor page
+ * Get URL of visual builder page
  *
  * 
  */
-if ( !function_exists( 'uix_page_builder_get_visualEditor_pageURL' ) ) {
+if ( !function_exists( 'uix_page_builder_get_visualBuilder_pageURL' ) ) {
 	
-    function uix_page_builder_get_visualEditor_pageURL( $id ) {
+    function uix_page_builder_get_visualBuilder_pageURL( $id ) {
         return admin_url( "post.php" ).'?post_id='.$id.'&post_type='.get_post_type( $id ).'&uix_page_builder_visual_mode=1';
     }
 
@@ -173,7 +182,7 @@ if ( !function_exists( 'uix_page_builder_get_normalEditor_pageURL' ) ) {
 
 
 /*
- * Remove redundant elements for admin panel of visual editor page
+ * Remove redundant elements for admin panel of visual builder page
  *
  * 
  */
@@ -205,7 +214,7 @@ if ( !function_exists( 'uix_page_builder_remove_redundant_wapper' ) ) {
 		    overflow: hidden;
 		}
 		</style>
-		<div id='uix-page-builder-visualeditor-loader'><div class='loader single'></div></div>
+		<div id='uix-page-builder-visualBuilder-loader'><div class='loader single'></div></div>
 		";
 	}
 }
@@ -216,9 +225,9 @@ if ( !function_exists( 'uix_page_builder_remove_redundant_wapper' ) ) {
  * Save live-render data with ajax 
  * 
  */
-if ( !function_exists( 'uix_page_builder_savevisualEditor' ) ) {
-	add_action( 'wp_ajax_uix_page_builder_savevisualEditor_settings', 'uix_page_builder_savevisualEditor' );		
-	function uix_page_builder_savevisualEditor() {
+if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_savevisualBuilder_settings', 'uix_page_builder_savevisualBuilder' );		
+	function uix_page_builder_savevisualBuilder() {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {

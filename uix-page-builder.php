@@ -81,7 +81,7 @@ class UixPageBuilder {
 	public static function includes() {
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/general.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/visual-editor-init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/visual-builder-init.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-googlemap.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-contactform.php';
