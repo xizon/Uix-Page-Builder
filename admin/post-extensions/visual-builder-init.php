@@ -118,6 +118,8 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 				);
 			}
 			
+			remove_all_actions( 'admin_notices', 3 );
+			remove_all_actions( 'network_admin_notices', 3 );
             add_filter( 'wp_insert_post_empty_content', 'uix_page_builder_allowInsertEmptyPost' );
             wp_update_post( $post_data, true );
 			
@@ -201,7 +203,8 @@ if ( !function_exists( 'uix_page_builder_remove_redundant_wapper' ) ) {
 		<style type='text/css'>
 		#adminmenuwrap, 
 		#adminmenuback,
-		#wpfooter {
+		#wpfooter,
+		.notice {
 			display: none;
 		}
 		#wpadminbar {
