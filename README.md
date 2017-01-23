@@ -55,6 +55,13 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+
+##### = 1.0.5 =
+
+* Added visual editing page (new).
+* Optimization of the admin panel structure.
+
+
 ##### = 1.0.2 =
 
 * Optimized core stylesheets for front-end.
@@ -64,7 +71,6 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Optimized for the editor.
 * Optimized for the color selector.
 * Fixed error in default template image path.
-
 
 
 ##### = 1.0.1 =

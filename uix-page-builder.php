@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.0.2
+ * Version:     1.0.5
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -81,6 +81,7 @@ class UixPageBuilder {
 	public static function includes() {
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/general.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/visual-editor-init.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-googlemap.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-contactform.php';
@@ -147,7 +148,7 @@ class UixPageBuilder {
 	 */
 	public static function backstage_scripts() {
 	
-		 if( get_post_type() == 'page' ) {
+		 if( self::page_builder_mode() ) {
 			  
 				//Drag and drop
 				wp_enqueue_script( self::PREFIX . '-gridster', self::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.6', true );	
@@ -381,11 +382,7 @@ class UixPageBuilder {
 	 */
 	public static function new_class( $classes ) {
 	
-	    global $uix_page_builder_temp;
-        if ( $uix_page_builder_temp === true ) { 
-			$classes[] = 'uix-page-builder-body';
-		}
-		
+	    $classes[] = 'uix-page-builder-body';
 		return $classes;
 
 	}
@@ -412,6 +409,20 @@ class UixPageBuilder {
 	 }
 
 		
+	/*
+	 * Check whether it is uix-page-builder mode
+	 *
+	 */
+	 public static function page_builder_mode() {
+      
+		if ( ( get_post_type() == 'page' ) || ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) ) {
+			return true;
+		} else {
+			return false;
+		}
+
+
+	 }
 	
 	/*
 	 * Sort multiple or multi-dimensional arrays for page builder
@@ -557,7 +568,7 @@ class UixPageBuilder {
 	 */
 	public static function call_sections( $name ) {
 		
-		if( get_post_type() == 'page' ) {
+		if( self::page_builder_mode() ) {
 			
 			if ( self::tempfolder_exists() ) {
 				include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
@@ -1033,7 +1044,7 @@ class UixPageBuilder {
 	 */
 	public static function usage_notice_app() {
 		
-		if( get_post_type() == 'page' ) {
+		if( self::page_builder_mode() ) {
 		
 			global $current_user ;
 			$user_id = $current_user->ID;

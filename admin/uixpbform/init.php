@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 1.6
+ * @version		: 1.7
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '1.6';
+		const VERSION    = '1.7';
 		const CUSTOMTEMP = 'uix-page-builder-custom/sections/';
 	
 		
@@ -60,7 +60,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function backstage_scripts() {
 		
-			 if( get_post_type() == 'page' ) {
+			 if( UixPageBuilder::page_builder_mode() ) {
 				  
 					////Register core functions
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
@@ -248,6 +248,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 * ========================================================================================================================================
 		 * ========================================================================================================================================
 		 */		
+
+	
 		
 		/*
 		 * Print icon selector
@@ -255,7 +257,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		 public static function icon_selector_win() {
 			 
-			 if( get_post_type() == 'page' ) {
+			 if( UixPageBuilder::page_builder_mode() ) {
 				 
 			     echo '<div class="uixpbform-sub-window uixpbform-icon-selector-btn-target" id="" style="display:none;">';
 				 require_once ( dirname( __FILE__ ) . '/'.self::icon_attr( 'selector' ) );
@@ -563,11 +565,12 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function uixpbform_callback( $form_js, $form_js_vars, $form_id, $title ) {
 			
-			global $post;
 			$old_formid = $form_id;
 			$formid     = '.'.$old_formid.'';
-			$postid     = $post->ID;
+			$postid     = empty( get_the_ID() ) ? $_GET['post_id'] : get_the_ID();
 			$title      = esc_attr( $title );
+			
+			
 	
 			return "{$form_js}
 			if( $.isFunction( $.fn.UixPBFormPop ) ){ $(document).UixPBFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'}); }; ";

@@ -463,7 +463,7 @@ $form_js_vars .= UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_
  */
 
 if ( $sid == -1 && is_admin() ) {
-	if( get_post_type() == 'page' ) {
+	if( UixPageBuilder::page_builder_mode() ) {
 		if ( is_admin()) {
 			
 			?>

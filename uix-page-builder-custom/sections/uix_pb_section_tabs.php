@@ -301,7 +301,7 @@ $clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPageBuilder::
  */
 
 if ( $sid == -1 && is_admin() ) {
-	if( get_post_type() == 'page' ) {
+	if( UixPageBuilder::page_builder_mode() ) {
 		if ( is_admin()) {
 			
 		/* List Item - Register clone vars ( step 1) */

@@ -101,6 +101,7 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 		  http://yoursite.com/wp-admin/admin-ajax.php?action=uix_page_builder_metaboxes_loadtemplist_settings&postID=1234
 		  
 		  echo '<iframe id="themepreview" name="themepreview"  frameborder="0" border="0" width="100%" height="500" src="'.esc_url( get_permalink( $_GET[ 'postID' ] ) ).'/?preview=1"></iframe>';
+		  
 		
 		*/
 		
@@ -226,8 +227,7 @@ if ( !function_exists( 'uix_page_builder_save' ) ) {
 if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 	add_action( 'admin_enqueue_scripts', 'uix_page_builder_save_script' );
 	function uix_page_builder_save_script() {
-        if ( get_post_type() == "page" ) {
-			global $post;
+        if ( UixPageBuilder::page_builder_mode() ) {
 			
 			// Register the script
 			wp_register_script( 'uix_page_builder_metaboxes_save_handle', UixPageBuilder::plug_directory() .'admin/js/core.js' );
@@ -240,7 +240,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			}
 			$translation_array = array(
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
-				'send_string_postid'           => $post->ID,
+				'send_string_postid'           => empty( get_the_ID() ) ? $_GET['post_id'] : get_the_ID(),
 				'send_string_name'             => __( 'Undefined', 'uix-page-builder' ),
 				'send_string_loadlist'         => __( 'Loading list...', 'uix-page-builder' ),
 				'send_string_tempfiles_exists' => $tempfile_exists
@@ -355,73 +355,87 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-page-builder' );
 		
 	
-		$old_layoutdata = get_post_meta( $object->ID, 'uix-page-builder-layoutdata', true );
+		$curid          = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
+		$old_layoutdata = get_post_meta( $curid, 'uix-page-builder-layoutdata', true );
 		
 	
     ?>
-   
-        <div class="uix-page-builder-gridster-addbtn">
-            
-            <span class="li">
-                <a class="button add" href="javascript:gridsterAddRow();"><i class="dashicons dashicons-plus"></i><?php _e( 'Add Section', 'uix-page-builder' ); ?></a>
-            </span>
-            <span class="li">
-                <a class="button select-temp" href="javascript:"><i class="dashicons dashicons-format-aside"></i><?php _e( 'Select a Template', 'uix-page-builder' ); ?></a>
-                <div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Choose Template You Want', 'uix-page-builder' ); ?></strong>
-                   <span id="uix-page-builder-templatelist"></span>
-                   <a class="button button-primary button-small confirm" id="uix-page-builder-templatelist-confirm" href="javascript:"><?php _e( 'Confirm', 'uix-page-builder' ); ?></a><span class="spinner"></span>
-
-                </div>
-
-            </span>
-            <span class="li">
-                <a class="button save-temp" href="javascript:"><i class="dashicons dashicons-image-rotate-right"></i><?php _e( 'Save as Template', 'uix-page-builder' ); ?></a>
-                <div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>
-                    <p>
-                        <label>
-                            <input size="20" name="tempname" type="text" value="<?php echo esc_attr__( 'Undefined', 'uix-page-builder' ); ?>">
-                        </label>
-                    </p>
-                    <a class="button button-primary button-small save" href="javascript:"><?php _e( 'Save', 'uix-page-builder' ); ?></a><span class="spinner"></span>
-                   
-                  
-                </div>
-            </span>
-             <span class="li">
-                <a class="button export-temp" href="javascript:"><i class="dashicons dashicons-redo"></i><?php _e( 'Export', 'uix-page-builder' ); ?></a>
-                <div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a>
-                    <p>
-                        <?php 
-						
-						$folder = ( UixPageBuilder::tempfolder_exists() ) ? get_stylesheet_directory(). "/".UixPageBuilder::CUSTOMTEMP : UixPageBuilder::plug_filepath().UixPageBuilder::CUSTOMTEMP;
-                 
-						echo sprintf( __( 'Please save the template you are editing before exporting. <br><br>Move this file <b><em>"templates.xml"</em></b> to the <code>%1$s</code> folder. If you have done so yet, Uix Page Builder\'s templates list will be reset to its default value as specified from the xml file.', 'uix-page-builder' ), $folder );
-						
-						?>
-                    </p>
-                    <a class="button button-primary button-small export" target="_blank" href="<?php echo esc_url( UixPageBuilder::plug_directory().'admin/export-templates.php' ); ?>"><?php _e( 'Export', 'uix-page-builder' ); ?></a>
-                  
-                </div>
-            </span> 
-            
-            
-
-        </div>
+        <div id="uix-page-builder-gridster-wrapper">
         
-        
-        <div class="gridster uix-page-builder-gridster">
-            <ul><?php
-            if ( empty( UixPageBuilder::page_builder_array_newlist( $old_layoutdata ) ) ) {
-				echo '<span id="uix-page-builder-layoutdata-none">';
-				_e( 'Add section here.', 'uix-page-builder' );
-				echo '</span>';
-			}
-			?>
-            </ul>
-        </div>
+           <div class="uix-page-builder-gridster-addbtn">
+
+				<span class="li">
+					<a class="button add" href="javascript:gridsterAddRow();"><i class="dashicons dashicons-plus"></i><?php _e( 'Add Section', 'uix-page-builder' ); ?></a>
+				</span>
+				<!-- Visual Editor -->
+				<?php if ( !isset( $_GET['uix_page_builder_visual_mode'] ) ) { ?>
+					 <span class="li">
+						<a class="button visual-editor" href="<?php echo esc_url( uix_page_builder_get_visualEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Visual Editor Mode', 'uix-page-builder' ); ?></a>
+					</span>   
+				<?php } ?>    
+				<span class="li">
+					<a class="button select-temp" href="javascript:"><i class="dashicons dashicons-format-aside"></i><?php _e( 'Select a Template', 'uix-page-builder' ); ?></a>
+					<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Choose Template You Want', 'uix-page-builder' ); ?></strong>
+					   <span id="uix-page-builder-templatelist"></span>
+					   <a class="button button-primary button-small confirm" id="uix-page-builder-templatelist-confirm" href="javascript:"><?php _e( 'Confirm', 'uix-page-builder' ); ?></a><span class="spinner"></span>
+
+					</div>
+
+				</span>
+				<span class="li">
+					<a class="button save-temp" href="javascript:"><i class="dashicons dashicons-image-rotate-right"></i><?php _e( 'Save as Template', 'uix-page-builder' ); ?></a>
+					<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>
+						<p>
+							<label>
+								<input size="20" name="tempname" type="text" value="<?php echo esc_attr__( 'Undefined', 'uix-page-builder' ); ?>">
+							</label>
+						</p>
+						<a class="button button-primary button-small save" href="javascript:"><?php _e( 'Save', 'uix-page-builder' ); ?></a><span class="spinner"></span>
+
+
+					</div>
+				</span>
+				 <span class="li">
+					<a class="button export-temp" href="javascript:"><i class="dashicons dashicons-redo"></i><?php _e( 'Export', 'uix-page-builder' ); ?></a>
+					<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a>
+						<p>
+							<?php 
+
+							$folder = ( UixPageBuilder::tempfolder_exists() ) ? get_stylesheet_directory(). "/".UixPageBuilder::CUSTOMTEMP : UixPageBuilder::plug_filepath().UixPageBuilder::CUSTOMTEMP;
+
+							echo sprintf( __( 'Please save the template you are editing before exporting. <br><br>Move this file <b><em>"templates.xml"</em></b> to the <code>%1$s</code> folder. If you have done so yet, Uix Page Builder\'s templates list will be reset to its default value as specified from the xml file.', 'uix-page-builder' ), $folder );
+
+							?>
+						</p>
+						<a class="button button-primary button-small export" target="_blank" href="<?php echo esc_url( UixPageBuilder::plug_directory().'admin/export-templates.php' ); ?>"><?php _e( 'Export', 'uix-page-builder' ); ?></a>
+
+					</div>
+				</span> 
+
+
+
+			</div>
+
+
+			<div class="gridster uix-page-builder-gridster">
+				<ul><?php
+				if ( empty( UixPageBuilder::page_builder_array_newlist( $old_layoutdata ) ) ) {
+					echo '<span id="uix-page-builder-layoutdata-none">';
+					_e( 'Add section here.', 'uix-page-builder' );
+					echo '</span>';
+				}
+				?>
+				</ul>
+			</div>
+      
+            <textarea name="uix-page-builder-layoutdata" id="uix-page-builder-layoutdata" ><?php echo esc_textarea( $old_layoutdata ); ?></textarea>
+      
+       
+        </div><!-- /#uix-page-builder-gridster-wrapper -->
+			
          
         
-        <textarea name="uix-page-builder-layoutdata" id="uix-page-builder-layoutdata" ><?php echo esc_textarea( $old_layoutdata ); ?></textarea>
+        
        
         <script type="text/javascript">
 		
@@ -435,8 +449,16 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			layoutdata          = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
 
 		jQuery( document ).ready( function() {
-			gridsterWidth = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
-			oww           = jQuery( window ).width();
+			
+			if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
+				gridsterWidth = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
+			} else {
+				jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualeditor' );
+				gridsterWidth = ( 620 - 80 ) - 40;
+			}
+			
+			
+			oww = jQuery( window ).width();
 			
 			/*-- Initialize gridster --*/
 			gridsterWidgetsInit();
@@ -478,6 +500,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 							
 							/*-- Initialize default value & form --*/
 							uixPBFormDataSave();	
+							
+							/*-- Refresh live preview --*/
+							uixPBFormVisualPreviewRefresh();
 							
 							var newpos = this.serialize($widget)[0];
 							var thispos = ui.$player[0].dataset;
@@ -640,6 +665,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 							security             : uix_page_builder_layoutdata.send_string_nonce
 						}, function ( response ) {
 							
+							/*-- Refresh live preview --*/
+							uixPBFormVisualPreviewRefresh();
+							
 							/*-- Initialize per column section buttons status (Has been clicked) --*/
 							gridsterItemElementsBTStatus( 1 );
 							
@@ -657,6 +685,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 			/*-- Initialize default value & form --*/
 			uixPBFormDataSave();
+			
+			/*-- Refresh live preview --*/
+			uixPBFormVisualPreviewRefresh();
 			
 			/*-- Initialize form action for entering --*/
 			gridsterFormEnterAction();	
@@ -715,6 +746,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					
 				/*-- Initialize default value & form --*/
 				uixPBFormDataSave();
+				
+				/*-- Refresh live preview --*/
+				uixPBFormVisualPreviewRefresh();
+				
 		
 			} );
 			e.preventDefault();
@@ -729,10 +764,50 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				/*-- Initialize gridster widgets status --*/
 				gridsterWidgetStatus();
+				
+
 
 			});
 			
 		}
+			
+		function uixPBFormVisualPreviewRefresh() {
+			jQuery( document ).ready( function() {
+				
+				if ( jQuery( '#titlediv .inside' ).length == 0 ) {	
+
+					jQuery( '#uix-page-builder-visualeditor-loader, #uix-page-builder-visualeditor-loader .loader' ).show();
+
+					jQuery.post( ajaxurl, {
+						action               : 'uix_page_builder_savevisualEditor_settings',
+						layoutdata           : jQuery( "[name='uix-page-builder-layoutdata']" ).val(),
+						postID               : uix_page_builder_layoutdata.send_string_postid,
+						security             : uix_page_builder_layoutdata.send_string_nonce
+					}, function ( response ) {
+						if ( response == 1 ) {
+							var pURL = '<?php echo esc_url( get_permalink( $curid ) ); ?>?preview=1';
+							jQuery( '#uix-page-builder-themepreview' ).attr( 'src', pURL );	
+
+							jQuery( '#uix-page-builder-themepreview' ).on( 'load', function() {
+								jQuery( '#uix-page-builder-visualeditor-loader, #uix-page-builder-visualeditor-loader .loader' ).hide();
+							} );
+						}
+					});
+
+					// stuff here
+					return false;		
+					
+				}
+		
+
+			});
+			
+		}	
+
+		
+		
+			
+			
 		function gridsterWidgetStatus(){
 			jQuery( document ).ready( function() {  
 				jQuery( '.gridster > ul > li' ).each( function() {
@@ -773,6 +848,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						
 						/*-- Initialize default value & form --*/
 						uixPBFormDataSave();
+						
+						/*-- Refresh live preview --*/
+						uixPBFormVisualPreviewRefresh();
+						
 					});
 		
 				});
@@ -784,7 +863,15 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		
 		function gridsterWidgetsInit() {
 			jQuery( document ).ready( function() {  
-				var ow = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
+				var ow;
+				
+				if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
+					ow = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
+				} else {
+					jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualeditor' );
+					ow = ( 620 - 80 ) - 40;
+				}
+				
 				jQuery( '.uix-page-builder-gridster-widget' ).css( {'width': ow + 'px' } );
 			});	
 		}
@@ -956,6 +1043,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						
 						/*-- Initialize default value & form --*/
 						uixPBFormDataSave();
+						
+						/*-- Refresh live preview --*/
+						uixPBFormVisualPreviewRefresh();
+						
+						
 						jQuery( item_sortable + '-'+uid+' li' ).removeClass( 'list-group-item-success' );
 			
 					}
@@ -1210,8 +1302,8 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 		if( $slug != $post->post_type ) return $post_id;
 		
 	
-		$layoutdata 	                         = wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] );
-		$builderstatus 	                     = sanitize_text_field( $_POST[ 'uix-page-builder-status' ] );
+		$layoutdata 	 = wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] );
+		$builderstatus 	 = sanitize_text_field( $_POST[ 'uix-page-builder-status' ] );
 		
 		
 		
