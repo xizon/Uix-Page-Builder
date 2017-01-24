@@ -124,7 +124,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 								//Section container
 								$return_string .=  '
 								<div class="uix-pb-container'.( $section_layout == 'boxed' ? ' uix-pb-container-boxed' : ' uix-pb-container-fullwidth' ).'">
-									<div class="uix-page-builder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'" data-row="'.esc_attr( $section_id ).'">
+									<div class="uix-page-builder-section" data-pb-section-id="'.esc_attr( $custom_id ).'" data-pb-section-title="'.esc_attr( $section_title ).'" id="'.esc_attr( $custom_id ).'">
 										<div class="uix-pb-row">
 										'.do_shortcode( $element_code ).'
 										</div>

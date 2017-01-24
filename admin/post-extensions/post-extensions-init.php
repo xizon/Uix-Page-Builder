@@ -357,10 +357,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 	
 		$curid          = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
 		$old_layoutdata = get_post_meta( $curid, 'uix-page-builder-layoutdata', true );
+		$gridster_class = ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) ? 'visualBuilder' : '';
+
 		
-	
     ?>
-        <div id="uix-page-builder-gridster-wrapper">
+        <div id="uix-page-builder-gridster-wrapper" class="<?php echo esc_attr( $gridster_class ); ?>">
         
            <div class="uix-page-builder-gridster-addbtn">
 
@@ -453,8 +454,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
 				gridsterWidth = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
 			} else {
-				jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualBuilder' );
-				gridsterWidth = ( 620 - 80 ) - 40;
+				gridsterWidth = ( 365 - 80 ) - 40;
 			}
 			
 			
@@ -487,9 +487,16 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		function gridsterEditRow( curdata ) {
 			jQuery( document ).ready( function() {
 				
-
+				var widget_minheight;
+				
+				if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
+					widget_minheight = 80;
+				} else {
+					widget_minheight = 250;
+				}
+				
 				jQuery( '.gridster ul' ).gridster({
-					widget_base_dimensions : [ gridsterWidth, 80 ],
+					widget_base_dimensions : [ gridsterWidth, widget_minheight ],
 					widget_margins         : [ 16, 25 ],
 					resize                 : {
 						enabled: false
@@ -547,7 +554,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				
 				
-					gridster.gridsterAddWidget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+uid+'" data-row="'+curdata[iii].row+'" data-col="'+curdata[iii].col+'" data-sizex="'+curdata[iii].size_x+'" data-sizey="'+curdata[iii].size_y+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="10" class="cusid-box" value="'+curdata[iii].customid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="boxed" '+layout_boxed+'><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="fullwidth" '+layout_fw+'><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ gridsterHtmlEscape( curdata[iii].title ) +'"><input type="hidden" class="sid-box" value="'+curdata[iii].secindex+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+gridsterHtmlUnescape( curdata[iii].content )+'</textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', curdata[iii].size_x, curdata[iii].size_y, curdata[iii].col, curdata[iii].row );
+					gridster.add_widget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+uid+'" data-row="'+curdata[iii].row+'" data-col="'+curdata[iii].col+'" data-sizex="'+curdata[iii].size_x+'" data-sizey="'+curdata[iii].size_y+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="15" class="cusid-box" value="'+curdata[iii].customid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="boxed" '+layout_boxed+'><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="fullwidth" '+layout_fw+'><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ gridsterHtmlEscape( curdata[iii].title ) +'"><input type="hidden" class="sid-box" value="'+curdata[iii].secindex+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+gridsterHtmlUnescape( curdata[iii].content )+'</textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', curdata[iii].size_x, curdata[iii].size_y, curdata[iii].col, curdata[iii].row );
 					
 					
 					if ( curdata[iii].content != '' ) {
@@ -709,11 +716,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				gLi         = gLi + 1,
 				titleid     = 'title-data-'+gLi,
 				contentid   = 'content-data-'+gLi,
-				uid         = gLi,
-				curid       = gLi + ''+gridsterRowUID()+'';
+				uid         = gLi + ''+gridsterRowUID()+'',
+				title_uid   = gLi;
 				
 			
-			gridster.gridsterAddWidget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+curid+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="10" class="cusid-box" value="section-'+uid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+uid+'" value="boxed" checked><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+uid+'" value="fullwidth"><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-page-builder' ); ?> '+uid+'"><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', 1, 1 ).fadeIn( 100, function() {
+			gridster.add_widget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+uid+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="15" class="cusid-box" value="section-'+uid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+uid+'" value="boxed" checked><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+uid+'" value="fullwidth"><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-page-builder' ); ?> '+title_uid+'"><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', 1, 1 ).fadeIn( 100, function() {
 				
 				    /*-- Initialize form action for entering --*/
 					gridsterFormEnterAction();
@@ -742,7 +749,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				currently_removing = e.srcElement.parentNode;
 				var thisWidget    = jQuery( currently_removing ).parent( '.uix-page-builder-gridster-widget' ); 
 					
-				gridster.gridsterRemoveWidget( thisWidget );
+				gridster.remove_widget( thisWidget );
 					
 				/*-- Initialize default value & form --*/
 				uixPBFormDataSave();
@@ -793,7 +800,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 							} );
 						}
 					});
-
+					
+					
 					// stuff here
 					return false;		
 					
@@ -868,11 +876,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
 					ow = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
 				} else {
-					jQuery( '#uix-page-builder-gridster-wrapper' ).addClass( 'visualBuilder' );
-					ow = ( 620 - 80 ) - 40;
+					ow = ( 365 - 80 ) - 40;
 				}
 				
 				jQuery( '.uix-page-builder-gridster-widget' ).css( {'width': ow + 'px' } );
+				
 			});	
 		}
 		

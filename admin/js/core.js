@@ -9,6 +9,7 @@
 		 * ---------------------------------------------------
 		 */
 		$( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).hide();
+		
 		$( document ).on( 'click', '#uix-page-builder-themepreview-btn-close', function( e ) {
 			e.preventDefault();
 			
@@ -18,15 +19,15 @@
 			if ( oldPo == 0 ) {
 				$( '#uix-page-builder-gridster-wrapper.visualBuilder' ).css( 'margin-left', '0' );
 				$( '#uix-page-builder-themepreview' ).css( {
-					'left': '570px',
-					'width': 'calc( 100vw - 570px )'
+					'left': '315px',
+					'width': 'calc( 100vw - 315px )'
 				} );
 
-				$( '.uix-page-builder-themepreview-btn' ).css( 'left', '570px' );	
+				$( '.uix-page-builder-themepreview-btn' ).css( 'left', '315px' );	
 				$( '.uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close' ).removeClass( 'reverse' )
 	
 			} else {
-				$( '#uix-page-builder-gridster-wrapper.visualBuilder' ).css( 'margin-left', '-570px' );
+				$( '#uix-page-builder-gridster-wrapper.visualBuilder' ).css( 'margin-left', '-315px' );
 				$( '#uix-page-builder-themepreview' ).css( {
 					'left': '0',
 					'width': '100vw'
@@ -52,6 +53,7 @@
 		$( document ).on( 'mousedown', '.uix-page-builder-gridster-addbtn .button', function() {
 			$( window ).unbind();
 		});
+		
 		
 		
 	   /*!
