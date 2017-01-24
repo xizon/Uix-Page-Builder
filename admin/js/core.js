@@ -27,7 +27,7 @@
 
 		});
 		
-		$( document ).on( 'mouseenter', '.uix-page-builder-gridster-addbtn .visual-builder', function() {
+		$( document ).on( 'mouseenter', '.uix-page-builder-visual-mode', function() {
 			var curtitle = $( '[name="post_title"]' ).val().replace(/&/g, '{and}' ).replace(/ /g, '{space}' ),
 				oldhref  = $( this ).attr( 'href' );
 			if ( curtitle.length > 0 ) {
@@ -36,7 +36,7 @@
 			
 		});
 		
-		$( document ).on( 'mousedown', '.uix-page-builder-gridster-addbtn .visual-builder', function() {
+		$( document ).on( 'mousedown', '.uix-page-builder-visual-mode', function() {
 			$( window ).unbind();
 		});
 		

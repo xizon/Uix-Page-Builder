@@ -13,7 +13,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'credits' ) {
         <p>
         
         <ul>
-            <li><a href="http://gridster.net/" target="_blank" rel="nofollow"><?php _e( 'Gridster', 'uix-page-builder' ); ?></a></li>
+            <li><a href="https://github.com/ducksboard/gridster.js" target="_blank" rel="nofollow"><?php _e( 'Gridster', 'uix-page-builder' ); ?></a></li>
          
         </ul>
         

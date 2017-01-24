@@ -1,6 +1,10 @@
-/*! gridster.js - v0.5.6 - 2014-09-25
-* http://gridster.net/
-* Copyright (c) 2014 ducksboard; Licensed MIT */
+/*! 
+* gridster.js 
+*
+* Version: 0.5.7 (2017-01-25)
+* Based https://github.com/ducksboard/gridster.js
+* Licensed under the MIT licenses.
+*/
 
 ;(function(root, factory) {
 
@@ -3972,6 +3976,60 @@
         return this;
     };
 
+	
+    /**
+    * [Visual Builder] Change the size of a widget. Width is limited to the current grid width.
+    *
+    * @method resize_widget_visualBuilder
+    * @param {HTMLElement} $widget The jQuery wrapped HTMLElement
+    *  representing the widget.
+    * @param {Number} size_x The number of columns that will occupy the widget.
+    *  By default <code>size_x</code> is limited to the space available from
+    *  the column where the widget begins, until the last column to the right.
+    * @param {Number} size_y The number of rows that will occupy the widget.
+    * @return {HTMLElement} Returns $widget.
+    */
+    fn.resize_widget_visualBuilder = function($widget, size_x, size_y ) {
+		
+        var wgd = $widget.coords().grid;
+        var col = wgd.col;
+        var max_cols = this.options.max_cols;
+        var old_size_y = wgd.size_y;
+        var old_col = wgd.col;
+        var new_col = old_col;
+
+        size_x || (size_x = wgd.size_x);
+        size_y || (size_y = wgd.size_y);
+
+        if (max_cols !== Infinity) {
+            size_x = Math.min(size_x, max_cols - col + 1);
+        }
+
+        if (size_y > old_size_y) {
+            this.add_faux_rows(Math.max(size_y - old_size_y, 0));
+        }
+
+        var player_rcol = (col + size_x - 1);
+        if (player_rcol > this.cols) {
+            this.add_faux_cols(player_rcol - this.cols);
+        }
+
+        var new_grid_data = {
+            col: new_col,
+            row: wgd.row,
+            size_x: size_x,
+            size_y: size_y
+        };
+
+        this.mutate_widget_in_gridmap($widget, wgd, new_grid_data);
+
+        this.set_dom_grid_height();
+        this.set_dom_grid_width();
+
+        return $widget;
+    };
+	
+ 
 
     //jQuery adapter
     $.fn.gridster = function(options) {
@@ -3985,3 +4043,5 @@
     return Gridster;
 
 }));
+
+

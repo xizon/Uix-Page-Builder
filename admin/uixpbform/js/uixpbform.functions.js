@@ -1200,7 +1200,7 @@ function uixpbform_colorTran( value ) {
 function uixpbform_formatTextarea( str ) {
 
 	//checking for "undefined" in replace-regexp
-	if ( str != undefined ) {
+	if( typeof str !== typeof undefined ) {
 		str = uixpbform_getHTML( str );
 		str = str.toString().replace(/\s/g," ").replace(/\"/g,"&quot;").replace(/\'/g,"&apos;");
 		str = str.replace(/<br\w*\/*>/g,"&lt;br&gt;");
@@ -1241,7 +1241,7 @@ function uixpbform_html_listTran( str, type ) {
 
 	if ( str != '' ) {
 
-		if ( str != undefined ) {
+		if( typeof str !== typeof undefined ) {
 			str = str.toString().replace(/(\r)*\n/g, '<br>' );
 		}
 
@@ -1410,8 +1410,8 @@ function uixpbform_editorInit( id ){
 	( function( $ ) {
 	"use strict";
 		$( function() {
-            
-			if ( id != undefined ) {
+			
+            if( typeof id !== typeof undefined ) {
 				
 				var vid = id.replace( '-editor', '' );
 				tinyMCE.execCommand( 'mceRemoveEditor', true, id );

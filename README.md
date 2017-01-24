@@ -57,11 +57,15 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+##### = 1.0.7 =
+
+* Optimized drag and drop controls.
+
+
 ##### = 1.0.6 =
 
 * Optimized visual builder panel.
 * Fixed a bug that added row misalignment.
-
 
 
 ##### = 1.0.5 =
@@ -140,7 +144,7 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 #####I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
 
-- [Gridster](http://gridster.net/)
+- [Gridster](https://github.com/ducksboard/gridster.js)
 
 
 ###How to use?

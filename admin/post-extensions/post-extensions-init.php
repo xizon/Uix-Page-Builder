@@ -284,18 +284,31 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
 	function uix_page_builder_page_ex_metaboxes_pagerbuilder_type_options( $object ) {  
 	
 		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-page-builder' );
+		
+		$curid = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
     ?>
 
+	<!-- Visual Builder -->
+	<?php if ( !isset( $_GET['uix_page_builder_visual_mode'] ) ) { ?>
+	
+	 <!-- Hide visualization mode button on side. -->
+	 <p style="display: none">
+		<a class="button visual-builder uix-page-builder-visual-mode side" href="<?php echo esc_url( uix_page_builder_get_visualBuilder_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Use Visual Builder', 'uix-page-builder' ); ?></a>
+	</p>  
+	<?php } ?> 
+
+   
     <div class="uix-metabox-group">
         <h3><?php _e( 'Page Builder Editor', 'uix-page-builder' ); ?></h3>
         <div class="uix-metabox-con">
+     
             <p>
                  <label for="uix-page-builder-status">
-                    <input name="uix-page-builder-status" id="uix-page-builder-status1" type="radio" value="enable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-status', true ) == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-page-builder' ); ?>
+                    <input name="uix-page-builder-status" id="uix-page-builder-status1" type="radio" value="enable" <?php echo ( get_post_meta( $curid, 'uix-page-builder-status', true ) == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-page-builder' ); ?>
                 </label>
                 
                 <label for="uix-page-builder-status2">
-                    <input name="uix-page-builder-status" id="uix-page-builder-status2" type="radio" value="disable" <?php echo ( get_post_meta( $object->ID, 'uix-page-builder-status', true ) == 'disable'  || empty( get_post_meta( $object->ID, 'uix-page-builder-status', true ) )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-page-builder' ); ?>
+                    <input name="uix-page-builder-status" id="uix-page-builder-status2" type="radio" value="disable" <?php echo ( get_post_meta( $curid, 'uix-page-builder-status', true ) == 'disable'  || empty( get_post_meta( $curid, 'uix-page-builder-status', true ) )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-page-builder' ); ?>
                 </label>  
     
             </p>
@@ -370,7 +383,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			<!-- Visual Builder -->
 			<?php if ( !isset( $_GET['uix_page_builder_visual_mode'] ) ) { ?>
 				 <span class="li">
-					<a class="button visual-builder" title="<?php echo esc_attr__( 'Visual Builder', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_visualBuilder_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Visual Builder', 'uix-page-builder' ); ?></a>
+					<a class="button visual-builder uix-page-builder-visual-mode" title="<?php echo esc_attr__( 'Visual Builder', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_visualBuilder_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Visual Builder', 'uix-page-builder' ); ?></a>
 				</span>   
 			<?php } ?>    
 			<span class="li">
@@ -452,6 +465,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
         <script type="text/javascript">
 		
 		var gridsterWidth       = 0,
+			gridsterMarginsX    = 16,
+			gridsterMarginsY    = 40,
+			gridsterMinheight   = 45,
 		    oww                 = 0,
 		    gridster            = null,
 			currently_editing   = null,
@@ -498,17 +514,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		function gridsterEditRow( curdata ) {
 			jQuery( document ).ready( function() {
 				
-				var widget_minheight;
-				
-				if ( jQuery( '#titlediv .inside' ).length > 0 ) {	
-					widget_minheight = 80;
-				} else {
-					widget_minheight = 250;
-				}
 				
 				jQuery( '.gridster ul' ).gridster({
-					widget_base_dimensions : [ gridsterWidth, widget_minheight ],
-					widget_margins         : [ 16, 25 ],
+					widget_base_dimensions : [ gridsterWidth, gridsterMinheight ],
+					widget_margins         : [ gridsterMarginsX, gridsterMarginsY ],
 					resize                 : {
 						enabled: false
 					},
@@ -530,15 +539,15 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					},
 					serialize_params: function( $w, wgd ){ 
 						var obj = {
-							col         : wgd.col, 
-							row         : wgd.row, 
-							size_x      : wgd.size_x, 
-							size_y      : wgd.size_y, 
-							content     : jQuery( $w[0] ).find( '.content-box' ).val(),
-							secindex    : jQuery( $w[0] ).find( '.sid-box' ).val(),
-							layout      : jQuery( $w[0] ).find( '.layout-box:checked' ).val(),
-							customid    : gridsterStrToSlug( jQuery( $w[0] ).find( '.cusid-box' ).val() ),
-							title       : jQuery( $w[0] ).find( '.title-box' ).val()
+							col          : wgd.col, 
+							row          : wgd.row, 
+							size_x       : wgd.size_x, 
+							size_y       : wgd.size_y,
+							content       : jQuery( $w[0] ).find( '.content-box' ).val(),
+							secindex     : jQuery( $w[0] ).find( '.sid-box' ).val(),
+							layout       : jQuery( $w[0] ).find( '.layout-box:checked' ).val(),
+							customid     : gridsterStrToSlug( jQuery( $w[0] ).find( '.cusid-box' ).val() ),
+							title        : jQuery( $w[0] ).find( '.title-box' ).val()
 							
 						} ;
 						return obj;
@@ -557,8 +566,18 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			    
 				for(var iii = 0; iii < curdata.length; iii++) {
 					
-					var uid            = gridsterContent( curdata[iii].content, 'id', curdata[iii].secindex ),
-						titleid        = 'title-data-'+uid,
+					
+					//current widget id
+					var row_index  = iii + 1,
+						uid        = gridsterContent( curdata[iii].content, 'id', curdata[iii].secindex );
+					
+					if( typeof uid === typeof undefined ) {
+						uid = curdata[iii].secindex;
+					}
+					
+				
+					
+					var titleid        = 'title-data-'+uid,
 						contentid      = 'content-data-'+uid,
 						layout_boxed   = ( curdata[iii].layout == 'boxed' ) ? 'checked' : '',
 						layout_fw      = ( curdata[iii].layout == 'fullwidth' ) ? 'checked' : '';
@@ -892,6 +911,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				jQuery( '.uix-page-builder-gridster-widget' ).css( {'width': ow + 'px' } );
 				
+				
+				
 			});	
 		}
 		
@@ -935,24 +956,25 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		function gridsterContent( str, type, repstr ){
 			
 			if ( typeof( str ) == 'string' && str.length > 0 ) {
-				
+
+
 				var nstr   = str.replace(/{rqt:}/g, '"');
-				
+
 				if ( type == 'id' ) {
 					var result = nstr.match( /row\",\"(.+?)\"\]/g );
-					
+
 					if ( result != null ) {
 						return result[0].replace( 'row","', '' )
 									   .replace( '"]', '' );
-	
-					}
-					
 
-	
+					}
+
+
+
 				}
 				if ( type == 'name' ) {
 					var result = nstr.match( /widgetname\",\"(.+?)\"\]/g );
-					
+
 					if ( result != null ) {
 						return result[0].replace( 'widgetname","', '' )
 									   .replace( '"]', '' );
@@ -961,17 +983,19 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				}	
 				if ( type == 'content' ) {
 					var result = nstr.match( /rowcontent\",\"(.+?)\"\]/g );
-					
+
 					if ( result != null ) {
 						return result[0].replace( 'rowcontent","', '' )
 									   .replace( '"]', '' );	
 					}
-				}
-	
+				}	
+
 			} else {
 				return repstr;
-			}
+			}	
 			
+			
+	
 		}
 		
 		function gridsterColsContent( str, type, index ){
@@ -1129,8 +1153,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				var result        = '',
 				    average_code  = '',
 					colid         = col,
-				    sid           = contentid.replace( 'content-data-', '' );
+				    sid           = contentid.replace( 'content-data-', '' ),
+					curwidget     = jQuery( '#uix-page-builder-gridster-widget-' + uid );
 				
+
 				
 				//default value
 				gridsterItemRowTextareaInit( content, uid );
@@ -1148,6 +1174,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						result += '<?php UixPageBuilder::list_page_sortable_li( '3_4' );?><?php UixPageBuilder::list_page_sortable_li( '1_4' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '3_4' );?>
 						<?php UixPageBuilder::list_page_sortable_li_btns( '1_4' );?>
+						
+						//resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 2 );
+						
 					}	
 			
 					
@@ -1156,6 +1186,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1_4' );?><?php UixPageBuilder::list_page_sortable_li( '3_4' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '1_4' );?>
 						<?php UixPageBuilder::list_page_sortable_li_btns( '3_4' );?>
+						
+						//resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 2 );
 		
 					}	
 					
@@ -1164,6 +1197,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						result += '<?php UixPageBuilder::list_page_sortable_li( '2_3' );?><?php UixPageBuilder::list_page_sortable_li( '1_3' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '2_3' );?>	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '1_3' );?>
+						
+						//resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 2 );
+						
 					}	
 					
 					
@@ -1171,7 +1208,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					if ( col == '1_3' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1_3' );?><?php UixPageBuilder::list_page_sortable_li( '2_3' );?>';	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '1_3' );?>	
-						<?php UixPageBuilder::list_page_sortable_li_btns( '2_3' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '2_3' );?>
+						
+						//resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 2 );	
+						
 					}		
 					
 					// 4 column
@@ -1181,6 +1222,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						<?php UixPageBuilder::list_page_sortable_li_btns( '4__2' );?>
 						<?php UixPageBuilder::list_page_sortable_li_btns( '4__3' );?>
 						<?php UixPageBuilder::list_page_sortable_li_btns( '4__4' );?>
+
+						//Resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 4 );
+						
+						
 					}	
 					
 					// 3 column
@@ -1188,19 +1234,31 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						result += '<?php UixPageBuilder::list_page_sortable_li( '3__1' );?><?php UixPageBuilder::list_page_sortable_li( '3__2' );?><?php UixPageBuilder::list_page_sortable_li( '3__3' );?>';
 						<?php UixPageBuilder::list_page_sortable_li_btns( '3__1' );?>	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '3__2' );?>	
-						<?php UixPageBuilder::list_page_sortable_li_btns( '3__3' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '3__3' );?>
+						
+						//resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 3 );
+						
 					}
 					// 2 column
 					if ( col == '2__1' || col == '2__2' ) {
 						result += '<?php UixPageBuilder::list_page_sortable_li( '2__1' );?><?php UixPageBuilder::list_page_sortable_li( '2__2' );?>';	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '2__1' );?>	
 						<?php UixPageBuilder::list_page_sortable_li_btns( '2__2' );?>	
+						
+						//resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 2 );	
+						
 					}
 					
 					// 1 column
 					if ( col == '1__1' ) {	
 						result += '<?php UixPageBuilder::list_page_sortable_li( '1__1' );?>';	
-						<?php UixPageBuilder::list_page_sortable_li_btns( '1__1' );?>	
+						<?php UixPageBuilder::list_page_sortable_li_btns( '1__1' );?>
+						
+						//resize widget size
+						if ( jQuery( '#titlediv .inside' ).length == 0 )  gridster.resize_widget_visualBuilder( curwidget, 1, 1 );
+																		  
 					}
 					
 					result += '</ul></div>';	
