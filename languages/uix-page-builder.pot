@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Tue Jan 24 2017 01:53:22 GMT+0800 (CST)\n"
+"POT-Revision-Date: Tue Jan 24 2017 15:39:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -234,15 +234,18 @@ msgid ""
 "URL field."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:368
+#: ../admin/post-extensions/post-extensions-init.php:368 ../admin/post-
+#: extensions/post-extensions-init.php:368
 msgid "Add Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:373
+#: ../admin/post-extensions/post-extensions-init.php:373 ../admin/post-
+#: extensions/post-extensions-init.php:373
 msgid "Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:377
+#: ../admin/post-extensions/post-extensions-init.php:377 ../admin/post-
+#: extensions/post-extensions-init.php:377
 msgid "Select a Template"
 msgstr ""
 
@@ -254,7 +257,8 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:386
+#: ../admin/post-extensions/post-extensions-init.php:386 ../admin/post-
+#: extensions/post-extensions-init.php:386
 msgid "Save as Template"
 msgstr ""
 
@@ -268,7 +272,8 @@ msgid "Save"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:399 ../admin/post-
-#: extensions/post-extensions-init.php:410
+#: extensions/post-extensions-init.php:399 ../admin/post-extensions/post-
+#: extensions-init.php:410
 msgid "Export"
 msgstr ""
 
@@ -281,38 +286,43 @@ msgid ""
 "default value as specified from the xml file."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:424
+#: ../admin/post-extensions/post-extensions-init.php:418 ../admin/post-
+#: extensions/post-extensions-init.php:418
+msgid "Exit Visual Builder"
+msgstr ""
+
+#: ../admin/post-extensions/post-extensions-init.php:433
 msgid "Add section here."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:550 ../admin/post-
-#: extensions/post-extensions-init.php:716
+#: ../admin/post-extensions/post-extensions-init.php:568 ../admin/post-
+#: extensions/post-extensions-init.php:734
 msgid "Settings"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:550 ../admin/post-
-#: extensions/post-extensions-init.php:716
+#: ../admin/post-extensions/post-extensions-init.php:568 ../admin/post-
+#: extensions/post-extensions-init.php:734
 msgid "Custom ID"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:550 ../admin/post-
-#: extensions/post-extensions-init.php:716
+#: ../admin/post-extensions/post-extensions-init.php:568 ../admin/post-
+#: extensions/post-extensions-init.php:734
 msgid "Container"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:550 ../admin/post-
-#: extensions/post-extensions-init.php:716
+#: ../admin/post-extensions/post-extensions-init.php:568 ../admin/post-
+#: extensions/post-extensions-init.php:734
 msgid "Boxed"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:550 ../admin/post-
-#: extensions/post-extensions-init.php:716
+#: ../admin/post-extensions/post-extensions-init.php:568 ../admin/post-
+#: extensions/post-extensions-init.php:734
 msgid "Full Width"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:550 ../admin/post-
-#: extensions/post-extensions-init.php:716 ../admin/post-extensions/post-
-#: extensions-init.php:716 ../uix-page-builder-
+#: ../admin/post-extensions/post-extensions-init.php:568 ../admin/post-
+#: extensions/post-extensions-init.php:734 ../admin/post-extensions/post-
+#: extensions-init.php:734 ../uix-page-builder-
 #: custom/sections/uix_pb_section_accordion.php:27 ../uix-page-builder-
 #: custom/sections/uix_pb_section_authorcard.php:18 ../uix-page-builder-
 #: custom/sections/uix_pb_section_bar.php:19 ../uix-page-builder-
@@ -334,8 +344,8 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:550 ../admin/post-
-#: extensions/post-extensions-init.php:716
+#: ../admin/post-extensions/post-extensions-init.php:568 ../admin/post-
+#: extensions/post-extensions-init.php:734
 msgid "HTML Code..."
 msgstr ""
 
@@ -344,11 +354,7 @@ msgstr ""
 msgid "(no title)"
 msgstr ""
 
-#: ../admin/post-extensions/visual-builder-init.php:134
-msgid "Exit Visual Builder"
-msgstr ""
-
-#: ../admin/post-extensions/visual-builder-init.php:134
+#: ../admin/post-extensions/visual-builder-init.php:136
 msgid "Hide Sidebar"
 msgstr ""
 

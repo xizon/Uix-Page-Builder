@@ -25,7 +25,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 		public static function enqueue_menu_page_scripts() {
 	
 			// Register the script
-			wp_register_script( 'uix_page_builder_anchorlinks_save_handle', UixPageBuilder::plug_directory() .'admin/js/menu.js' );
+			wp_register_script( 'uix_page_builder_anchorlinks_save_handle', UixPageBuilder::plug_directory() .'admin/js/menu.js', array( 'jquery' ), UixPageBuilder::ver(), true );
 		
 			wp_localize_script( 'uix_page_builder_anchorlinks_save_handle', 'uix_page_builder_anchorlinks_data', array(
 				'send_string_nonce' => wp_create_nonce( 'uix_page_builder_anchorlinks_save_nonce' ),
