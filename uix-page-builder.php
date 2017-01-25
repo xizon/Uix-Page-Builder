@@ -37,7 +37,6 @@ class UixPageBuilder {
 		
 		
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
-		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
@@ -138,38 +137,7 @@ class UixPageBuilder {
 		
 	}
 	
-	
 
-	
-	/*
-	 * Enqueue scripts and styles  in the backstage
-	 *
-	 *
-	 */
-	public static function backstage_scripts() {
-	
-		 if( self::page_builder_mode() ) {
-			  
-				//Drag and drop
-				wp_enqueue_script( self::PREFIX . '-gridster', self::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.6', false );	
-				wp_enqueue_style( self::PREFIX . '-gridster', self::plug_directory() .'admin/css/jquery.gridster.css', false, '0.5.6', 'all' );
-
-				//jQuery Accessible Tabs
-				wp_enqueue_script( 'accTabs', self::plug_directory() .'admin/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
-				wp_enqueue_style( 'accTabs-uix-page-builder', self::plug_directory() .'admin/css/jquery.accTabs.css', false, '0.1.1', 'all' );
-
-
-				//Main
-				wp_enqueue_style( self::PREFIX . '-page-builder-admin', self::plug_directory() .'admin/css/style.min.css', false, self::ver(), 'all' );
-
-				//Jquery UI
-				wp_enqueue_script( 'jquery-ui' );
-
-		  }
-		
-
-	}
-	
 	
 	
 	/**
@@ -410,11 +378,30 @@ class UixPageBuilder {
 
 		
 	/*
-	 * Check whether it is uix-page-builder mode
+	 * Check whether it is "uix-page-builder" visual mode
 	 *
 	 */
 	 public static function page_builder_mode() {
-      
+        
+
+		if ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) {
+			return true;
+		} else {
+			return false;
+		}
+
+
+	 }
+	
+	/*
+	 * Check whether it is "uix-page-builder" general mode
+	 *
+	 * @Note: If you want to call "UixPBFormCore" class on "Pages Add New Screen", you should 
+	 * use "page_builder_general_mode()" instead of  "page_builder_mode()".
+	 *
+	 */
+	 public static function page_builder_general_mode() {
+
 		if ( ( get_post_type() == 'page' ) || ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) ) {
 			return true;
 		} else {
@@ -423,6 +410,24 @@ class UixPageBuilder {
 
 
 	 }
+	
+	
+	/*
+	 * Check whether it is "Visual Builder" mode
+	 *
+	 *
+	 */
+	public static function vb_mode() {
+
+	      if ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) {
+			  return true;
+		  } else {
+			  return false;
+		  }
+
+	}	
+	
+	
 	
 	/*
 	 * Sort multiple or multi-dimensional arrays for page builder
@@ -665,7 +670,7 @@ class UixPageBuilder {
 		
 	public static function list_page_itembuttons() {
 	
-	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-page-builder' )."</button><div class=\"btnlist\"><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-1\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-2\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'4__1\',\'\',\'\');\" class=\"widget-items-col widget-items-col-average-4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_3\',\'\',\'\');\" class=\"widget-items-col widget-items-col-1_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2_3\',\'\',\'\');\" class=\"widget-items-col widget-items-col-2_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_4\',\'\',\'\');\" class=\"widget-items-col widget-items-col-1_4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3_4\',\'\',\'\');\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
+	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-page-builder' )."</button><div class=\"btnlist\"><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1__1\',\'\',\'\');\"  title=\"".esc_attr__( '1/1', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-1\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2__1\',\'\',\'\');\" title=\"".esc_attr__( '1/2', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-2\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3__1\',\'\',\'\');\" title=\"".esc_attr__( '1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'4__1\',\'\',\'\');\" title=\"".esc_attr__( '1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_3\',\'\',\'\');\" title=\"".esc_attr__( '1/3, 2/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2_3\',\'\',\'\');\" title=\"".esc_attr__( '2/3, 1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-2_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_4\',\'\',\'\');\" title=\"".esc_attr__( '1/4, 3/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3_4\',\'\',\'\');\" title=\"".esc_attr__( '3/4, 1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
 
 	}
 				
@@ -1102,6 +1107,8 @@ class UixPageBuilder {
 
 	}	
 		
+	
+	
 		
 	
 	/*

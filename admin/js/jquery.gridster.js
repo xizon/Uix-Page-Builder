@@ -1408,7 +1408,7 @@
         wgd.row = new_wgd.row;
         wgd.size_x = new_wgd.size_x;
         wgd.size_y = new_wgd.size_y;
-
+		
         this.add_to_gridmap(new_wgd, $widget);
 
         $widget.removeClass('player-revert');
@@ -1419,6 +1419,7 @@
                 ((new_wgd.size_x - 1) * this.options.widget_margins[0]) * 2),
             height: (new_wgd.size_y * this.options.widget_base_dimensions[1] +
                 ((new_wgd.size_y - 1) * this.options.widget_margins[1]) * 2)
+			
         });
 
         $widget.attr({
@@ -1450,7 +1451,9 @@
 
         return this;
     };
-
+	
+	
+	
 
     /**
     * Move down widgets in cells represented by the arguments col, row, size_x,
@@ -1479,7 +1482,10 @@
             if ( !(wgd.row <= (row + size_y - 1))) { return; }
             var diff =  (row + size_y) - wgd.row;
             this.move_widget_down($(w), diff);
+			
         }, this));
+		
+		
 
         this.set_dom_grid_height();
 
@@ -3668,6 +3674,7 @@
 
         this.generated_stylesheets.push(serialized_opts);
         Gridster.generated_stylesheets.push(serialized_opts);
+		
 
         /* generate CSS styles for cols */
         for (i = opts.cols; i >= 0; i--) {
@@ -3679,16 +3686,22 @@
 
         /* generate CSS styles for rows */
         for (i = opts.rows; i >= 0; i--) {
+
             styles += (opts.namespace + ' [data-row="' + (i + 1) + '"] { top:' +
                 ((i * opts.widget_base_dimensions[1]) +
                 (i * opts.widget_margins[1]) +
                 ((i + 1) * opts.widget_margins[1]) ) + 'px; }\n');
+			
+			
         }
 
         for (var y = 1; y <= opts.rows; y++) {
+			
             styles += (opts.namespace + ' [data-sizey="' + y + '"] { height:' +
                 (y * opts.widget_base_dimensions[1] +
-                (y - 1) * (opts.widget_margins[1] * 2)) + 'px; }\n');
+                (y - 1) * (opts.widget_margins[1] * 2)) + 'px;}\n');
+
+			
         }
 
         for (var x = 1; x <= max_size_x; x++) {
@@ -3782,7 +3795,7 @@
     fn.add_faux_cell = function(row, col) {
         var coords = $({
                         left: this.baseX + ((col - 1) * this.min_widget_width),
-                        top: this.baseY + (row -1) * this.min_widget_height,
+                        top: this.baseY + (row -1) * this.min_widget_height - 100,
                         width: this.min_widget_width,
                         height: this.min_widget_height,
                         col: col,
@@ -3820,7 +3833,7 @@
         }
 
         this.rows = max_rows;
-
+		
         if (this.options.autogenerate_stylesheet) {
             this.generate_stylesheet();
         }
@@ -3945,6 +3958,7 @@
         this.baseX = ($(window).width() - aw) / 2;
         this.baseY = this.$wrapper.offset().top;
 
+		
         if (this.options.autogenerate_stylesheet) {
             this.generate_stylesheet();
         }
@@ -3977,59 +3991,7 @@
     };
 
 	
-    /**
-    * [Visual Builder] Change the size of a widget. Width is limited to the current grid width.
-    *
-    * @method resize_widget_visualBuilder
-    * @param {HTMLElement} $widget The jQuery wrapped HTMLElement
-    *  representing the widget.
-    * @param {Number} size_x The number of columns that will occupy the widget.
-    *  By default <code>size_x</code> is limited to the space available from
-    *  the column where the widget begins, until the last column to the right.
-    * @param {Number} size_y The number of rows that will occupy the widget.
-    * @return {HTMLElement} Returns $widget.
-    */
-    fn.resize_widget_visualBuilder = function($widget, size_x, size_y ) {
-		
-        var wgd = $widget.coords().grid;
-        var col = wgd.col;
-        var max_cols = this.options.max_cols;
-        var old_size_y = wgd.size_y;
-        var old_col = wgd.col;
-        var new_col = old_col;
-
-        size_x || (size_x = wgd.size_x);
-        size_y || (size_y = wgd.size_y);
-
-        if (max_cols !== Infinity) {
-            size_x = Math.min(size_x, max_cols - col + 1);
-        }
-
-        if (size_y > old_size_y) {
-            this.add_faux_rows(Math.max(size_y - old_size_y, 0));
-        }
-
-        var player_rcol = (col + size_x - 1);
-        if (player_rcol > this.cols) {
-            this.add_faux_cols(player_rcol - this.cols);
-        }
-
-        var new_grid_data = {
-            col: new_col,
-            row: wgd.row,
-            size_x: size_x,
-            size_y: size_y
-        };
-
-        this.mutate_widget_in_gridmap($widget, wgd, new_grid_data);
-
-        this.set_dom_grid_height();
-        this.set_dom_grid_width();
-
-        return $widget;
-    };
-	
- 
+   
 
     //jQuery adapter
     $.fn.gridster = function(options) {

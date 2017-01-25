@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Wed Jan 25 2017 04:59:40 GMT+0800 (CST)\n"
+"POT-Revision-Date: Wed Jan 25 2017 21:54:36 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,40 +42,73 @@ msgstr ""
 msgid "https://uiux.cc"
 msgstr ""
 
-#: ../uix-page-builder.php:237
+#: ../uix-page-builder.php:205
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: ../uix-page-builder.php:238 ../admin/post-extensions/post-extensions-init.php:
-#: 352
+#: ../uix-page-builder.php:206 ../admin/post-extensions/post-extensions-init 
+#: [Pages Add New Screen].php:379 ../admin/post-extensions/post-extensions-init.
+#: php:371
 msgid "Uix Page Builder"
 msgstr ""
 
-#: ../uix-page-builder.php:249 ../uix-page-builder.php:250
+#: ../uix-page-builder.php:217 ../uix-page-builder.php:218
 msgid "Custom CSS"
 msgstr ""
 
-#: ../uix-page-builder.php:259 ../uix-page-builder.php:260
+#: ../uix-page-builder.php:227 ../uix-page-builder.php:228
 msgid "Helper"
 msgstr ""
 
-#: ../uix-page-builder.php:289 ../helper/settings.php:170
+#: ../uix-page-builder.php:257 ../helper/settings.php:170
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-page-builder.php:624
+#: ../uix-page-builder.php:629
 msgid "Add content"
 msgstr ""
 
-#: ../uix-page-builder.php:659
+#: ../uix-page-builder.php:664
 msgid "Choose Element You Want"
 msgstr ""
 
-#: ../uix-page-builder.php:668
+#: ../uix-page-builder.php:673
 msgid "Layout"
 msgstr ""
 
-#: ../uix-page-builder.php:1059
+#: ../uix-page-builder.php:673
+msgid "1/1"
+msgstr ""
+
+#: ../uix-page-builder.php:673
+msgid "1/2"
+msgstr ""
+
+#: ../uix-page-builder.php:673
+msgid "1/3"
+msgstr ""
+
+#: ../uix-page-builder.php:673
+msgid "1/4"
+msgstr ""
+
+#: ../uix-page-builder.php:673
+msgid "1/3, 2/3"
+msgstr ""
+
+#: ../uix-page-builder.php:673
+msgid "2/3, 1/3"
+msgstr ""
+
+#: ../uix-page-builder.php:673
+msgid "1/4, 3/4"
+msgstr ""
+
+#: ../uix-page-builder.php:673
+msgid "3/4, 1/4"
+msgstr ""
+
+#: ../uix-page-builder.php:1064
 #, php-format
 msgid ""
 "You could <a class=\"button button-small\" href=\"%s\">create</a> Uix Page "
@@ -84,39 +117,39 @@ msgid ""
 "templates directory.  "
 msgstr ""
 
-#: ../uix-page-builder.php:1062
+#: ../uix-page-builder.php:1067
 #, php-format
 msgid "<a href=\"%1$s\">Hide Notice</a>"
 msgstr ""
 
-#: ../uix-page-builder.php:1133
+#: ../uix-page-builder.php:1140
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
 "blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: ../uix-page-builder.php:1205 ../uix-page-builder.php:1278
+#: ../uix-page-builder.php:1212 ../uix-page-builder.php:1285
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1207
+#: ../uix-page-builder.php:1214
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1212
+#: ../uix-page-builder.php:1219
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1215
+#: ../uix-page-builder.php:1222
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
@@ -177,58 +210,72 @@ msgstr ""
 msgid "-"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:18 ../admin/post-
-#: extensions/post-extensions-init.php:244 ../admin/post-extensions/post-
-#: extensions-init.php:403
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:25 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:251 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:430 ..
+#: /admin/post-extensions/post-extensions-init.php:19 ../admin/post-
+#: extensions/post-extensions-init.php:245 ../admin/post-extensions/post-
+#: extensions-init.php:422
 msgid "Undefined"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:137
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:144 ..
+#: /admin/post-extensions/post-extensions-init.php:138
 msgid "Hmm... no templates yet."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:170
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:177 ..
+#: /admin/post-extensions/post-extensions-init.php:171
 msgid "Default"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:245
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:252 ..
+#: /admin/post-extensions/post-extensions-init.php:246
 msgid "Loading list..."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:272
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:299 ..
+#: /admin/post-extensions/post-extensions-init.php:290
 msgid ""
 "<i class=\"dashicons dashicons-editor-kitchensink\"></i>&nbsp;&nbsp;Uix Page "
 "Builder Attributes"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:296
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:323 ..
+#: /admin/post-extensions/post-extensions-init.php:314
 msgid "Use Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:302
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:329 ..
+#: /admin/post-extensions/post-extensions-init.php:320
 msgid "Page Builder Editor"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:307
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:334 ..
+#: /admin/post-extensions/post-extensions-init.php:325
 msgid "Enable"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:311
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:338 ..
+#: /admin/post-extensions/post-extensions-init.php:329
 msgid "Disable"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:320
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:347 ..
+#: /admin/post-extensions/post-extensions-init.php:338
 msgid "How To Create The One-Page Navigation? Here is an example:"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:323
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:350 ..
+#: /admin/post-extensions/post-extensions-init.php:341
 msgid ""
 "1. Under the <i class=\"dashicons dashicons-admin-generic\"></i> on the right "
 "per row, expand the Attributes tab. You can enter <code>my-portfolio</code> "
 "in the Custom ID field on the right."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:325
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:352 ..
+#: /admin/post-extensions/post-extensions-init.php:343
 #, php-format
 msgid ""
 "2. Create a new <a href=\"%1$s\">menu</a>, and add a Custom Link for each menu "
@@ -238,50 +285,66 @@ msgid ""
 "URL field."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:381 ../admin/post-
-#: extensions/post-extensions-init.php:381
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:408 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:408 ..
+#: /admin/post-extensions/post-extensions-init.php:400 ../admin/post-
+#: extensions/post-extensions-init.php:400
 msgid "Add Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:386 ../admin/post-
-#: extensions/post-extensions-init.php:386
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:413 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:413 ..
+#: /admin/post-extensions/post-extensions-init.php:405 ../admin/post-
+#: extensions/post-extensions-init.php:405
 msgid "Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:390 ../admin/post-
-#: extensions/post-extensions-init.php:390
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:417 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:417 ..
+#: /admin/post-extensions/post-extensions-init.php:409 ../admin/post-
+#: extensions/post-extensions-init.php:409
 msgid "Select a Template"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:391
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:418 ..
+#: /admin/post-extensions/post-extensions-init.php:410
 msgid "Choose Template You Want"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:393
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:420 ..
+#: /admin/post-extensions/post-extensions-init.php:412
 msgid "Confirm"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:399 ../admin/post-
-#: extensions/post-extensions-init.php:399
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:426 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:426 ..
+#: /admin/post-extensions/post-extensions-init.php:418 ../admin/post-
+#: extensions/post-extensions-init.php:418
 msgid "Save as Template"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:400
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:427 ..
+#: /admin/post-extensions/post-extensions-init.php:419
 msgid "Enter Template Name"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:406 ../admin/uixpbform/init.
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:433 ..
+#: /admin/post-extensions/post-extensions-init.php:425 ../admin/uixpbform/init.
 #: php:520
 msgid "Save"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:412 ../admin/post-
-#: extensions/post-extensions-init.php:412 ../admin/post-extensions/post-
-#: extensions-init.php:423
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:439 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:439 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:450 ..
+#: /admin/post-extensions/post-extensions-init.php:431 ../admin/post-
+#: extensions/post-extensions-init.php:431 ../admin/post-extensions/post-
+#: extensions-init.php:442
 msgid "Export"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:419
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:446 ..
+#: /admin/post-extensions/post-extensions-init.php:438
 #, php-format
 msgid ""
 "Please save the template you are editing before exporting. <br><br>Move this "
@@ -290,43 +353,59 @@ msgid ""
 "default value as specified from the xml file."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:431 ../admin/post-
-#: extensions/post-extensions-init.php:431
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:458 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:458 ..
+#: /admin/post-extensions/post-extensions-init.php:450 ../admin/post-
+#: extensions/post-extensions-init.php:450
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:446
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:473 ..
+#: /admin/post-extensions/post-extensions-init.php:465
 msgid "Add section here."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:587 ../admin/post-
-#: extensions/post-extensions-init.php:753
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:619 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init.php:611 ../admin/post-
+#: extensions/post-extensions-init.php:780
 msgid "Settings"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:587 ../admin/post-
-#: extensions/post-extensions-init.php:753
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:619 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init.php:611 ../admin/post-
+#: extensions/post-extensions-init.php:780
 msgid "Custom ID"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:587 ../admin/post-
-#: extensions/post-extensions-init.php:753
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:619 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init.php:611 ../admin/post-
+#: extensions/post-extensions-init.php:780
 msgid "Container"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:587 ../admin/post-
-#: extensions/post-extensions-init.php:753
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:619 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init.php:611 ../admin/post-
+#: extensions/post-extensions-init.php:780
 msgid "Boxed"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:587 ../admin/post-
-#: extensions/post-extensions-init.php:753
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:619 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init.php:611 ../admin/post-
+#: extensions/post-extensions-init.php:780
 msgid "Full Width"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:587 ../admin/post-
-#: extensions/post-extensions-init.php:753 ../admin/post-extensions/post-
-#: extensions-init.php:753 ../uix-page-builder-
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:619 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init.php:611 ../admin/post-
+#: extensions/post-extensions-init.php:780 ../admin/post-extensions/post-
+#: extensions-init.php:780 ../uix-page-builder-
 #: custom/sections/uix_pb_section_accordion.php:27 ../uix-page-builder-
 #: custom/sections/uix_pb_section_authorcard.php:18 ../uix-page-builder-
 #: custom/sections/uix_pb_section_bar.php:19 ../uix-page-builder-
@@ -348,8 +427,10 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:587 ../admin/post-
-#: extensions/post-extensions-init.php:753
+#: ../admin/post-extensions/post-extensions-init [Pages Add New Screen].php:619 ..
+#: /admin/post-extensions/post-extensions-init [Pages Add New Screen].php:788 ..
+#: /admin/post-extensions/post-extensions-init.php:611 ../admin/post-
+#: extensions/post-extensions-init.php:780
 msgid "HTML Code..."
 msgstr ""
 

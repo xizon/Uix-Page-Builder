@@ -1,8 +1,14 @@
 <?php
+/* ================================================================================
+ * Don't show Uix Page Builder core assets from "Pages Add New Screen"
+ * If you want, use this file to change the file name to "post-extensions-init.php", and call "UixPBFormCore" class.
+ * ================================================================================
+ */
+
+
 if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
-
 
 /*
  * Save template with ajax 
@@ -255,6 +261,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			wp_enqueue_script( 'uix_page_builder_metaboxes_save_handle' );
 			
 			
+			
 			//Drag and drop
 			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.7', false );	
 			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/css/jquery.gridster.css', false, '0.5.7', 'all' );
@@ -268,6 +275,8 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 
 			//Jquery UI
 			wp_enqueue_script( 'jquery-ui' );
+
+			
 			
 	
 		}
@@ -310,13 +319,13 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
 	<?php if ( ! UixPageBuilder::vb_mode() ) { ?>
 	
 	 <!-- Hide visualization mode button on side. -->
-	 <p>
+	 <p style="display: none">
 		<a class="button visual-builder uix-page-builder-visual-mode side" href="<?php echo esc_url( uix_page_builder_get_visualBuilder_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Use Visual Builder', 'uix-page-builder' ); ?></a>
 	</p>  
 	<?php } ?> 
 
    
-    <div class="uix-metabox-group" style="display: none">
+    <div class="uix-metabox-group">
         <h3><?php _e( 'Page Builder Editor', 'uix-page-builder' ); ?></h3>
         <div class="uix-metabox-con">
      
@@ -363,8 +372,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
  
 if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container' ) ) {
 	
-	/* Hide page builder core assets of "Pages Add New Screen" */
-	//add_action( 'admin_init', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container' );  
+	add_action( 'admin_init', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container' );  
 	function uix_page_builder_page_ex_metaboxes_pagerbuilder_container(){  
 		add_meta_box( 
 			'uix_page_builder_page_meta_pagerbuilder_container', 
@@ -1334,6 +1342,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				if ( col == '4__1' || col == '4__2' || col == '4__3' || col == '4__4' ) gridster.resize_widget( curwidget, 1, 4 );
 				if ( col == '3__1' || col == '3__2' || col == '3__3' ) gridster.resize_widget( curwidget, 1, 3 );
 				if ( col == '1__1' ) gridster.resize_widget( curwidget, 1, 1 );
+			} else {
+				gridster.resize_widget( curwidget, 1, 1 );
 			}
 		}	
 
@@ -1366,7 +1376,6 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			});
 		}
 			
-			
 		function gridsterFormatAllCodes( code ) {
 			var stringValue = code.toString();
 			stringValue = stringValue.replace( /{rqt:}/g, "{rowqt:}")
@@ -1376,6 +1385,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			return stringValue;
 
 		}
+	
+			
 			
 		function gridsterRowUID() {
 			return Math.floor( Math.random() * 10000);
@@ -1392,10 +1403,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 
  
 /*
- * Saving the Custom Data from "Pages Add New Screen"
+ * Saving the Custom Data
  * 
  */ 
-/*
 if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 	
 	add_action( 'save_post', 'uix_page_builder_page_save_custom_meta_box', 10, 3);
@@ -1421,7 +1431,7 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 	}
 
 }
-*/
+
 
 
 

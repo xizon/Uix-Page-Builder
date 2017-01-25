@@ -235,7 +235,7 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', wp_unslash( $_POST[ 'layoutdata' ] ) );
-			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-status', 'enable' );
+			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-status', 'disable' );
 			
 			echo 1;
 		}

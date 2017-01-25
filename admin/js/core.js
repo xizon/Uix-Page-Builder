@@ -13,8 +13,8 @@
 		$( document ).on( 'click', '#uix-page-builder-themepreview-btn-close', function( e ) {
 			e.preventDefault();
 			
-			var oldPo  = $( '#uix-page-builder-themepreview' ).css( 'left' ).replace( 'px', '' ),
-				target = $( '.uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-gridster-wrapper.visualBuilder, #uix-page-builder-themepreview, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close' );
+			var oldPo  = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'left' ) ),
+				target = $( '.uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-visualBuilder-loader, #uix-page-builder-gridster-wrapper.visualBuilder, #uix-page-builder-themepreview, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close' );
 			
 			
 			if ( oldPo == 0 ) {
@@ -202,7 +202,7 @@
 
 			var $set = $( this ).next( '.settings-temp-wrapper' );
 			$set.show();
-			if ( $( '#titlediv .inside' ).length > 0 )  $( '.uixpbform-modal-mask' ).show();
+			if ( uix_page_builder_layoutdata.send_string_vb_mode != 1 )  $( '.uixpbform-modal-mask' ).show();
 
 			//Close
 			$set.find( '.close, .export' ).on( 'click', function() {
