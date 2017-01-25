@@ -94,6 +94,9 @@ The version number is the date of the revision of the [guidelines](https://make.
 = 1.0.7 =
 
 * Optimized drag and drop controls.
+* Upgraded visual builder panel.
+* Fixed some bugs that loaded row misalignment.
+* Optimized backend scripts.
 
 
 = 1.0.6 =

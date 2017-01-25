@@ -60,6 +60,9 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ##### = 1.0.7 =
 
 * Optimized drag and drop controls.
+* Upgraded visual builder panel.
+* Fixed some bugs that loaded row misalignment.
+* Optimized backend scripts.
 
 
 ##### = 1.0.6 =

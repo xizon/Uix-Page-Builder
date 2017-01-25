@@ -234,8 +234,17 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
-			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', wp_unslash( $_POST[ 'layoutdata' ] ) );
-			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-status', 'disable' );
+			
+			$layoutdata 	 = wp_unslash( $_POST[ 'layoutdata' ] );
+			$builderstatus 	 = 'disable';
+
+			//Show page builder core assets of "Pages Add New Screen"
+			if ( UixPageBuilder::SHOWPAGESCREEN == 1 ) {
+				$builderstatus 	 = 'enable';
+			}
+			
+			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', $layoutdata );
+			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-status', $builderstatus );
 			
 			echo 1;
 		}

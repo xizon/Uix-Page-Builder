@@ -3,7 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
 
-
 /*
  * Save template with ajax 
  * 
@@ -306,17 +305,21 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
 		$curid = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
     ?>
 
-	<!-- Visual Builder -->
-	<?php if ( ! UixPageBuilder::vb_mode() ) { ?>
+	<?php if ( UixPageBuilder::SHOWPAGESCREEN == 0 ) { ?>
 	
-	 <!-- Hide visualization mode button on side. -->
-	 <p>
-		<a class="button visual-builder uix-page-builder-visual-mode side" href="<?php echo esc_url( uix_page_builder_get_visualBuilder_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Use Visual Builder', 'uix-page-builder' ); ?></a>
-	</p>  
+		<!-- Visual Builder -->
+		<?php if ( ! UixPageBuilder::vb_mode() ) { ?>
+
+		 <!-- Hide visualization mode button on side. -->
+		 <p>
+			<a class="button visual-builder uix-page-builder-visual-mode side" href="<?php echo esc_url( uix_page_builder_get_visualBuilder_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-visibility"></i><?php _e( 'Use Visual Builder', 'uix-page-builder' ); ?></a>
+		</p>  
+		<?php } ?> 
+
 	<?php } ?> 
 
-   
-    <div class="uix-metabox-group" style="display: none">
+
+    <div class="uix-metabox-group" <?php echo ( UixPageBuilder::SHOWPAGESCREEN == 0 ) ? 'style="display: none"' : ''; ?>>
         <h3><?php _e( 'Page Builder Editor', 'uix-page-builder' ); ?></h3>
         <div class="uix-metabox-con">
      
@@ -363,8 +366,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
  
 if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container' ) ) {
 	
-	/* Hide page builder core assets of "Pages Add New Screen" */
-	//add_action( 'admin_init', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container' );  
+	//Show page builder core assets of "Pages Add New Screen"
+	if ( UixPageBuilder::SHOWPAGESCREEN == 1 ) {
+		add_action( 'admin_init', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container' );  
+	}
+	
 	function uix_page_builder_page_ex_metaboxes_pagerbuilder_container(){  
 		add_meta_box( 
 			'uix_page_builder_page_meta_pagerbuilder_container', 
@@ -1395,10 +1401,14 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
  * Saving the Custom Data from "Pages Add New Screen"
  * 
  */ 
-/*
+
 if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 	
-	add_action( 'save_post', 'uix_page_builder_page_save_custom_meta_box', 10, 3);
+	//Show page builder core assets of "Pages Add New Screen"
+	if ( UixPageBuilder::SHOWPAGESCREEN == 1 ) {
+		add_action( 'save_post', 'uix_page_builder_page_save_custom_meta_box', 10, 3 );
+	}
+	
 	function uix_page_builder_page_save_custom_meta_box( $post_id, $post, $update ) {
 		if ( !isset( $_POST[ 'meta-box-nonce-page-builder' ] ) || !wp_verify_nonce($_POST[ 'meta-box-nonce-page-builder' ], basename( __FILE__ ) ) ) return $post_id;
 		if( !current_user_can( 'edit_post', $post_id ) )return $post_id;
@@ -1421,7 +1431,7 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 	}
 
 }
-*/
+
 
 
 

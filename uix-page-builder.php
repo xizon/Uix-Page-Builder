@@ -18,12 +18,13 @@
 
 class UixPageBuilder {
 	
-	const PREFIX      = 'uix';
-	const HELPER      = 'uix-page-builder-helper';
-	const NOTICEID    = 'uix-page-builder-helper-tip';
-	const CUSTOMTEMP  = 'uix-page-builder-custom/sections/';
-	const MAPAPI      = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
-	const CLEANTEMP   = 0;
+	const PREFIX           = 'uix';
+	const HELPER           = 'uix-page-builder-helper';
+	const NOTICEID         = 'uix-page-builder-helper-tip';
+	const CUSTOMTEMP       = 'uix-page-builder-custom/sections/';
+	const MAPAPI           = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
+	const CLEANTEMP        = 0; // Clear custom template data when this value is "1"
+	const SHOWPAGESCREEN   = 0; // Show page builder core assets from "Pages Add New Screen" when this value is "1"
 
 	
 	/**
@@ -384,20 +385,26 @@ class UixPageBuilder {
 	 public static function page_builder_mode() {
         
 
-		if ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) {
-			return true;
+		//Show page builder core assets of "Pages Add New Screen" & call "UixPBFormCore" class on "Pages Add New Screen".
+		if ( self::SHOWPAGESCREEN == 1 ) {
+			if ( ( get_post_type() == 'page' ) || ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) ) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
-			return false;
+			if ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) {
+				return true;
+			} else {
+				return false;
+			}	
 		}
-
-
+		 
 	 }
+	
 	
 	/*
 	 * Check whether it is "uix-page-builder" general mode
-	 *
-	 * @Note: If you want to call "UixPBFormCore" class on "Pages Add New Screen", you should 
-	 * use "page_builder_general_mode()" instead of  "page_builder_mode()".
 	 *
 	 */
 	 public static function page_builder_general_mode() {
