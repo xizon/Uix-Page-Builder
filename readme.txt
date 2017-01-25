@@ -24,7 +24,7 @@ Here are <strong>5+</strong>  templates for you to swipe and make your own. Here
 
 
 
-https://www.youtube.com/watch?v=G8xHi6ymp7E
+https://www.youtube.com/watch?v=QAgNtpaY0sw
 
 
 
@@ -57,7 +57,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 > You could create Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.
 
 
-You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.
+You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box. Click <strong>"Use Visual Builder"</strong> button to enter the visual editing mode.
 	
 
 

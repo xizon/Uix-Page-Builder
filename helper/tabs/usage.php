@@ -29,7 +29,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
         </p> 
         
          <p>
-           <?php _e( '<p>You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box.</p>', 'uix-page-builder' ); ?>
+           <?php _e( '<p>You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box. <br>Click <strong>"Use Visual Builder"</strong> button to enter the visual editing mode.</p>', 'uix-page-builder' ); ?>
         </p>   
         <p>
            <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/active.jpg" alt="">

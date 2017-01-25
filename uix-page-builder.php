@@ -1056,7 +1056,7 @@ class UixPageBuilder {
 	 */
 	public static function usage_notice_app() {
 		
-		if( self::page_builder_mode() ) {
+		if( self::page_builder_general_mode() ) {
 		
 			global $current_user ;
 			$user_id = $current_user->ID;
