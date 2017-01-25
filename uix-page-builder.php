@@ -23,8 +23,8 @@ class UixPageBuilder {
 	const NOTICEID         = 'uix-page-builder-helper-tip';
 	const CUSTOMTEMP       = 'uix-page-builder-custom/sections/';
 	const MAPAPI           = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
-	const CLEANTEMP        = 0; // Clear custom template data when this value is "1"
-	const SHOWPAGESCREEN   = 0; // Show page builder core assets from "Pages Add New Screen" when this value is "1"
+	const CLEANTEMP        = 0; // Clear custom template data when this value is "1" (For developer)
+	const SHOWPAGESCREEN   = 0; // Show page builder core assets from "Pages Add New Screen" when this value is "1" (For developer)
 
 	
 	/**

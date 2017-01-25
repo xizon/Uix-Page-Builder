@@ -147,7 +147,7 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 #####I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
 
-- [Gridster](https://github.com/ducksboard/gridster.js)
+- [Gridster](https://dsmorse.github.io/gridster.js/)
 
 
 ###How to use?

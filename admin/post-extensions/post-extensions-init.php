@@ -15,7 +15,7 @@ if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
 		if ( isset( $_POST[ 'curlayoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
 			
-			$name      = ( empty( $_POST[ 'tempname' ] ) ) ? __( 'Undefined', 'uix-page-builder' ) : $_POST[ 'tempname' ];
+			$name      = ( empty( $_POST[ 'tempname' ] ) ) ? sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $_POST[ 'postID' ] ) : $_POST[ 'tempname' ];
 		    $value     = array();
 			$xmlargs   = '';
 			$old       = get_option( 'uix-page-builder-templates' );
@@ -238,11 +238,14 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			} else {
 				$tempfile_exists = 0;
 			}
+			
+			$post_id = empty( get_the_ID() ) ? $_GET['post_id'] : get_the_ID();
+			
 			$translation_array = array(
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
-				'send_string_postid'           => empty( get_the_ID() ) ? $_GET['post_id'] : get_the_ID(),
-				'send_string_name'             => __( 'Undefined', 'uix-page-builder' ),
-				'send_string_loadlist'         => __( 'Loading list...', 'uix-page-builder' ),
+				'send_string_postid'           => $post_id,
+				'send_string_name'             => sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_id ),
+				'send_string_loadlist'         => esc_html__( 'Loading list...', 'uix-page-builder' ),
 				'send_string_tempfiles_exists' => $tempfile_exists,
 				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0
 			);
@@ -256,7 +259,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			
 			//Drag and drop
 			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.7', false );	
-			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/css/jquery.gridster.css', false, '0.5.7', 'all' );
+			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
 
 			//jQuery Accessible Tabs
 			wp_enqueue_script( 'accTabs', UixPageBuilder::plug_directory() .'admin/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
@@ -425,7 +428,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>
 					<p>
 						<label>
-							<input size="20" name="tempname" type="text" value="<?php echo esc_attr__( 'Undefined', 'uix-page-builder' ); ?>">
+							<input size="20" name="tempname" type="text" value="<?php echo sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $curid ); ?>">
 						</label>
 					</p>
 					<a class="button button-primary button-small save" href="javascript:"><?php _e( 'Save', 'uix-page-builder' ); ?></a><span class="spinner"></span>
@@ -490,9 +493,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
         <script type="text/javascript">
 		
 		var gridsterWidth       = 0,
-			gridsterMarginsX    = 16,
-			gridsterMarginsY    = 40,
-			gridsterMinheight   = 45,
+			gridsterMarginsX    = 20,
+			gridsterMarginsY    = 7,
+			gridsterMinheight   = 57,
+			gridsterWDiff       = 90,
+			gridsterVisualWidth = 345,
 			vbmode              = false,
 		    oww                 = 0,
 		    gridster            = null,
@@ -509,9 +514,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		jQuery( document ).ready( function() {
 			
 			if ( ! vbmode ) {	
-				gridsterWidth = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
+				gridsterWidth = jQuery( '#titlediv .inside' ).width() - gridsterWDiff;
 			} else {
-				gridsterWidth = ( 345 - 80 ) - 40;
+				gridsterWidth = gridsterVisualWidth - gridsterWDiff;
 			}
 			
 			
@@ -548,6 +553,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				jQuery( '.gridster ul' ).gridster({
 					widget_base_dimensions : [ gridsterWidth, gridsterMinheight ],
 					widget_margins         : [ gridsterMarginsX, gridsterMarginsY ],
+					max_cols               : 1,
 					resize                 : {
 						enabled: false
 					},
@@ -614,7 +620,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				
 				
-					gridster.add_widget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+uid+'" data-row="'+curdata[iii].row+'" data-col="'+curdata[iii].col+'" data-sizex="'+curdata[iii].size_x+'" data-sizey="'+curdata[iii].size_y+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="15" class="cusid-box" value="'+curdata[iii].customid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="boxed" '+layout_boxed+'><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="fullwidth" '+layout_fw+'><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ gridsterHtmlEscape( curdata[iii].title ) +'"><input type="hidden" class="sid-box" value="'+curdata[iii].secindex+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+gridsterHtmlUnescape( curdata[iii].content )+'</textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', curdata[iii].size_x, curdata[iii].size_y, curdata[iii].col, curdata[iii].row );
+					gridster.add_widget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+uid+'" data-row="'+curdata[iii].row+'" data-col="'+curdata[iii].col+'" data-sizex="'+curdata[iii].size_x+'" data-sizey="'+curdata[iii].size_y+'"><div><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="15" class="cusid-box" value="'+curdata[iii].customid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="boxed" '+layout_boxed+'><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+curdata[iii].row+'" value="fullwidth" '+layout_fw+'><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="'+ gridsterHtmlEscape( curdata[iii].title ) +'"><input type="hidden" class="sid-box" value="'+curdata[iii].secindex+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget('+uid+');"><i class="dashicons dashicons-no"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'">'+gridsterHtmlUnescape( curdata[iii].content )+'</textarea><?php UixPageBuilder::list_page_itembuttons();?></div></li>', curdata[iii].size_x, curdata[iii].size_y, curdata[iii].col, curdata[iii].row );
 					
 					
 					if ( curdata[iii].content != '' ) {
@@ -783,7 +789,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				title_uid   = gLi;
 				
 			
-			gridster.add_widget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+uid+'"><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="15" class="cusid-box" value="section-'+uid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+uid+'" value="boxed" checked><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+uid+'" value="fullwidth"><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><i class="dashicons dashicons-sort"></i><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-page-builder' ); ?> '+title_uid+'"><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget(event);"><i class="dashicons dashicons-no"></i></button><button class="edit-gridster-widget" data-target="'+contentid+'" onclick="gridsterEditWidget(event);"><i class="dashicons dashicons-edit"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></li>', 1, 1 ).fadeIn( 100, function() {
+			gridster.add_widget( '<li id="uix-page-builder-gridster-widget-'+uid+'" class="uix-page-builder-gridster-widget" data-id="'+uid+'"><div><i class="dashicons dashicons-admin-generic settings" title="<?php echo esc_attr__( 'Settings', 'uix-page-builder' ); ?>"></i><div class="settings-wrapper"><a href="javascript:" class="close">&times;</a><p><strong><?php _e( 'Custom ID', 'uix-page-builder' ); ?></strong><input type="text" size="15" class="cusid-box" value="section-'+uid+'"></p><p><strong><?php _e( 'Container', 'uix-page-builder' ); ?></strong><label><input type="radio" class="layout-box" name="layout'+uid+'" value="boxed" checked><?php _e( 'Boxed', 'uix-page-builder' ); ?></label><label><input type="radio" class="layout-box" name="layout'+uid+'" value="fullwidth"><?php _e( 'Full Width', 'uix-page-builder' ); ?></label></p></div><div class="uix-page-builder-gridster-drag"><input type="text" placeholder="<?php _e( 'Section', 'uix-page-builder' ); ?>" class="title-box '+titleid+'" id="'+titleid+'" value="<?php _e( 'Section', 'uix-page-builder' ); ?> '+title_uid+'"><input type="hidden" class="sid-box" value="'+uid+'"></div><button class="remove-gridster-widget" onclick="gridsterRemoveWidget('+uid+');"><i class="dashicons dashicons-no"></i></button><textarea placeholder="<?php _e( 'HTML Code...', 'uix-page-builder' ); ?>" class="content-box '+contentid+'" id="'+contentid+'"></textarea><?php UixPageBuilder::list_page_itembuttons();?></div></li>', 1, 2 ).fadeIn( 100, function() {
 				
 				    /*-- Initialize form action for entering --*/
 					gridsterFormEnterAction();
@@ -807,22 +813,18 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 
 		}
 		
-		function gridsterRemoveWidget( e ){
+		function gridsterRemoveWidget( uid ){
 			jQuery( document ).ready( function() {
-				currently_removing = e.srcElement.parentNode;
-				var thisWidget    = jQuery( currently_removing ).parent( '.uix-page-builder-gridster-widget' ); 
-					
-				gridster.remove_widget( thisWidget );
+				
+				gridster.remove_widget( jQuery( '#uix-page-builder-gridster-widget-' + uid ) );
 					
 				/*-- Initialize default value & form --*/
 				uixPBFormDataSave();
 				
 				/*-- Refresh live preview --*/
 				uixPBFormVisualPreviewRefresh();
-				
-		
+	
 			} );
-			e.preventDefault();
 		}
 		
 		function uixPBFormDataSave(){
@@ -894,23 +896,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 		}	
 		
-		
-		function gridsterEditWidget( e ) {
-			jQuery( document ).ready( function() {
-				currently_editing = e.srcElement.parentNode;
-				var thisWidget    = jQuery( currently_editing ).parent( '.uix-page-builder-gridster-widget' ),
-					thisID        = thisWidget.data( 'id' ),
-					oldValue      = gridsterHtmlUnescape( thisWidget.find( '.content-data-'+thisID ).val() ); 
-				
-				thisWidget.find( '.content-data-'+thisID ).focus().show();
-				
-		
-			} );
-			e.preventDefault();
-		}
-		
-		
-		
+
 		function gridsterFormEnterAction(){
 			jQuery( document ).ready( function() {  
 				jQuery( '.gridster > ul > li' ).each( function() {
@@ -937,9 +923,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				var ow;
 				
 				if ( ! vbmode ) {	
-					ow = ( jQuery( '#titlediv .inside' ).width() - 80 ) - 40;
+					ow = jQuery( '#titlediv .inside' ).width() - gridsterWDiff;
 				} else {
-					ow = ( 345 - 80 ) - 40;
+					ow = gridsterVisualWidth - gridsterWDiff;
 				}
 				
 				jQuery( '.uix-page-builder-gridster-widget' ).css( {'width': ow + 'px' } );
@@ -1339,7 +1325,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				if ( col == '3_4' || col == '1_4' || col == '2_3' || col == '1_3' || col == '2__1' || col == '2__2' ) gridster.resize_widget( curwidget, 1, 2 );
 				if ( col == '4__1' || col == '4__2' || col == '4__3' || col == '4__4' ) gridster.resize_widget( curwidget, 1, 4 );
 				if ( col == '3__1' || col == '3__2' || col == '3__3' ) gridster.resize_widget( curwidget, 1, 3 );
-				if ( col == '1__1' ) gridster.resize_widget( curwidget, 1, 1 );
+				if ( col == '1__1' ) gridster.resize_widget( curwidget, 1, 2 );
 			}
 		}	
 
