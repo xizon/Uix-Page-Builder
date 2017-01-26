@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Thu Jan 26 2017 02:40:24 GMT+0800 (CST)\n"
+"POT-Revision-Date: Thu Jan 26 2017 15:39:15 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,10 +61,6 @@ msgstr ""
 
 #: ../uix-page-builder.php:258 ../helper/settings.php:170
 msgid "How to use?"
-msgstr ""
-
-#: ../uix-page-builder.php:636
-msgid "Add content"
 msgstr ""
 
 #: ../uix-page-builder.php:671
@@ -156,7 +152,8 @@ msgstr ""
 msgid "Sorry, you are not allowed to export the content of this site."
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:136
+#: ../admin/classes/class-menu-onepage.php:136 ../admin/post-extensions/post-
+#: extensions-init.php:630 ../admin/post-extensions/post-extensions-init.php:799
 msgid "ID"
 msgstr ""
 
@@ -328,38 +325,33 @@ msgstr ""
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:474
+#: ../admin/post-extensions/post-extensions-init.php:472
 msgid "Add section here."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:623 ../admin/post-
-#: extensions/post-extensions-init.php:792
+#: ../admin/post-extensions/post-extensions-init.php:630 ../admin/post-
+#: extensions/post-extensions-init.php:799
 msgid "Settings"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:623 ../admin/post-
-#: extensions/post-extensions-init.php:792
-msgid "Custom ID"
-msgstr ""
-
-#: ../admin/post-extensions/post-extensions-init.php:623 ../admin/post-
-#: extensions/post-extensions-init.php:792
+#: ../admin/post-extensions/post-extensions-init.php:630 ../admin/post-
+#: extensions/post-extensions-init.php:799
 msgid "Container"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:623 ../admin/post-
-#: extensions/post-extensions-init.php:792
+#: ../admin/post-extensions/post-extensions-init.php:630 ../admin/post-
+#: extensions/post-extensions-init.php:799
 msgid "Boxed"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:623 ../admin/post-
-#: extensions/post-extensions-init.php:792
+#: ../admin/post-extensions/post-extensions-init.php:630 ../admin/post-
+#: extensions/post-extensions-init.php:799
 msgid "Full Width"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:623 ../admin/post-
-#: extensions/post-extensions-init.php:792 ../admin/post-extensions/post-
-#: extensions-init.php:792 ../uix-page-builder-
+#: ../admin/post-extensions/post-extensions-init.php:630 ../admin/post-
+#: extensions/post-extensions-init.php:799 ../admin/post-extensions/post-
+#: extensions-init.php:799 ../uix-page-builder-
 #: custom/sections/uix_pb_section_accordion.php:27 ../uix-page-builder-
 #: custom/sections/uix_pb_section_authorcard.php:18 ../uix-page-builder-
 #: custom/sections/uix_pb_section_bar.php:19 ../uix-page-builder-
@@ -381,8 +373,8 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:623 ../admin/post-
-#: extensions/post-extensions-init.php:792
+#: ../admin/post-extensions/post-extensions-init.php:630 ../admin/post-
+#: extensions/post-extensions-init.php:799
 msgid "HTML Code..."
 msgstr ""
 
