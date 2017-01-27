@@ -256,7 +256,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			// Enqueued script with localized data.
 			wp_enqueue_script( 'uix_page_builder_metaboxes_save_handle' );
 			
-			
+
 			//Drag and drop
 			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.7', false );	
 			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
@@ -402,6 +402,18 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 
 		
     ?>
+      
+		<?php if ( UixPageBuilder::vb_mode() ) { ?>
+
+			<ul class="uix-page-builder-res-selector">
+				<li data-size="[0,0]" class="active" title="<?php echo esc_attr__( 'Desktop', 'uix-page-builder' ); ?>"><i class="dashicons dashicons-desktop"></i></li>
+				<li data-size="[1024,768]" title="<?php echo esc_attr__( 'Tablet', 'uix-page-builder' ); ?>"><i class="dashicons dashicons-laptop"></i></li>
+				<li data-size="[768,1024]" title="<?php echo esc_attr__( 'Tablet (Portrait)', 'uix-page-builder' ); ?>"><i class="dashicons dashicons-tablet"></i></li>
+				<li data-size="[375,568]" title="<?php echo esc_attr__( 'Mobile', 'uix-page-builder' ); ?>"><i class="dashicons dashicons-smartphone"></i></li>
+			</ul>
+
+		<?php } ?> 
+      
        
         <div class="uix-page-builder-gridster-addbtn <?php echo esc_attr( $gridster_class ); ?>">
 

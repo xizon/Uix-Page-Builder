@@ -15,6 +15,8 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'credits' ) {
         <ul>
             <li><a href="https://dsmorse.github.io/gridster.js/" target="_blank" rel="nofollow"><?php _e( 'Gridster', 'uix-page-builder' ); ?></a></li>
          
+         
+         
         </ul>
         
         </p> 

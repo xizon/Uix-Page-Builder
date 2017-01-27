@@ -133,7 +133,10 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
             
 			require_once ABSPATH . 'wp-admin/admin-header.php';
 			
-		    echo '<iframe id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="'.$post_url.'?preview=1"></iframe><a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Hide Sidebar', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-close" href="javascript:"><i class="dashicons dashicons-arrow-left"></i></a>';
+		    echo '
+			<iframe id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="'.$post_url.'?preview=1"></iframe>
+			<a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Hide Sidebar', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-close" href="javascript:"><i class="dashicons dashicons-arrow-left"></i></a>
+			';
 			
 			require_once ABSPATH . 'wp-admin/admin-footer.php';
 			

@@ -57,6 +57,11 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+
+##### = 1.1.1 =
+
+* Added function of responsive switching preview (new).
+
 ##### = 1.1.0 =
 
 * Upgraded visual builder core UI.

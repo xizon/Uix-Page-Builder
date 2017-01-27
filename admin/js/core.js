@@ -2,6 +2,46 @@
 "use strict";
     $( function() {
 
+		/*!
+		 *
+		 * Responsive Switching Preview
+		 * ---------------------------------------------------
+		 */
+		$( document ).on( 'click', '.uix-page-builder-res-selector li', function( e ) {
+			e.preventDefault();
+
+			var $window      = $( window ),
+				$preview     = $( '#uix-page-builder-themepreview' ),
+				windowWidth  = $window.width(),
+				windowHeight = $window.height(),  
+				sidebarWidth = ( !$preview.hasClass( 'active' ) ) ? $( '#uix-page-builder-gridster-wrapper' ).width() : 0,
+				w            = $( this ).data( 'size' )[0],
+				h            = ( $( this ).data( 'size' )[1] > windowHeight ) ? windowHeight : $( this ).data( 'size' )[1],
+			    t            = ( windowHeight - h ) /2,
+				l            = ( !$preview.hasClass( 'active' ) ) ? ( ( windowWidth - sidebarWidth ) - w ) /2 : ( windowWidth - w ) /2;
+		
+			$( '.uix-page-builder-res-selector li' ).removeClass( 'active' );
+            $( this ).addClass( 'active' );
+			
+			if ( w == 0 ) {
+				$preview.css({
+					'width': ( windowWidth - sidebarWidth ) + 'px',
+					'height': windowHeight + 'px',
+					'margin-top': 0,
+					'margin-left': 0
+				}).removeClass( 'res' );
+			} else {
+				$preview.css({
+					'width': w + 'px',
+					'height': h + 'px',
+					'margin-top': t + 'px',
+					'margin-left': l + 'px'
+				}).addClass( 'res' );	
+			}
+
+			
+		});
+
 		
 	   /*!
 		 *
@@ -13,16 +53,20 @@
 		$( document ).on( 'click', '#uix-page-builder-themepreview-btn-close', function( e ) {
 			e.preventDefault();
 			
-			var oldPo  = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'left' ) ),
-				target = $( '.uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-visualBuilder-loader, #uix-page-builder-gridster-wrapper.visualBuilder, #uix-page-builder-themepreview, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close' );
+			var oldPo         = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'left' ) ),
+				target        = $( 'ul.uix-page-builder-res-selector, .uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-visualBuilder-loader, #uix-page-builder-gridster-wrapper.visualBuilder, #uix-page-builder-themepreview, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close' );
 			
 			
 			if ( oldPo == 0 ) {
 				target.removeClass( 'active' );
+				
 	
 			} else {
 				target.addClass( 'active' );
 			}
+			
+			//Responsive preview restores
+			$( '.uix-page-builder-res-selector li.active' ).trigger( 'click' );
 
 
 		});
@@ -513,3 +557,4 @@ function gridsterGetTinymceContent(){
 
 	return content;
 }
+
