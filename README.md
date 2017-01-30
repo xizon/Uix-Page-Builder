@@ -58,6 +58,14 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ### Updates
 
 
+##### = 1.1.2 =
+
+* Added Draft and Publish buttons in the visual builder screen.
+* some minor bugs for enqueue scripts.
+* Spy pop windows of editor for online preview.
+* Supported select the page template on visual builder screen.
+
+
 ##### = 1.1.1 =
 
 * Added function of responsive switching preview (new).

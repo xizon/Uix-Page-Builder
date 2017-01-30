@@ -35,12 +35,28 @@ if ( !function_exists( 'uix_page_builder_previewControlpanel' ) ) {
 
 
 if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
-	add_action( 'wp_footer', 'uix_page_builder_previewFrontend' );	
+	if ( current_user_can( 'edit_pages' ) ) {
+		add_action( 'wp_footer', 'uix_page_builder_previewFrontend' );
+	}
+	
 	function uix_page_builder_previewFrontend() {
-		echo "
+		$js = "
 		<script type='text/javascript'>										  
 		( function($) {
 		'use strict';
+		
+			jQuery.fn.simulateClick = function() {
+				return this.each(function() {
+					if('createEvent' in document) {
+						var doc = this.ownerDocument,
+							evt = doc.createEvent('MouseEvents');
+						evt.initMouseEvent('click', true, true, doc.defaultView, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+						this.dispatchEvent(evt);
+					} else {
+						this.click();
+					}
+				});
+			};
 		
 			$.urlParam = function(name){
 				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -53,15 +69,66 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 			};
 			
 			$( function() {
-			    if ( $.urlParam( 'preview' ) == 1 ) $( '#wpadminbar' ).css( 'visibility', 'hidden' );
+			    if ( $.urlParam( 'preview' ) == 1 ) {
+				    $( '#wpadminbar' ).css( 'visibility', 'hidden' );
+					$( '.uix-page-builder-section' ).css( {
+					    'cursor': 'pointer'
+					} );
+					
+					
+					$( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'mouseenter', function(){
+						$( this ).css( {
+							'-webkit-box-shadow': 'none',
+							'-moz-box-shadow'   : 'none',
+							'box-shadow'        : 'none',
+						} );
+					}).on( 'mouseleave' , function(){
+					
+						$( this ).css( {
+							'-webkit-box-shadow': 'none',
+							'-moz-box-shadow'   : 'none',
+							'box-shadow'        : 'none'
+						} );
+					});
+					
+					$( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'mouseenter', function() {
+
+						var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
+							curindex   = $(this).index(),
+							obj        = $('#uix-page-builder-gridster-widget-' + id, window.parent.document );
+
+						$('.uix-page-builder-gridster-widget', window.parent.document ).removeClass( 'hover' );
+						obj.addClass( 'hover' );
+
+					});	
+
+
+					$( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'click', function() {
+
+						var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
+							curindex   = $(this).index(),
+							obj        = $('#uix-page-builder-gridster-widget-' + id, window.parent.document );
+
+						obj.find( '.sortable-list > li:eq( '+curindex+' ) .widget-item-btn.used' ).simulateClick( 'click' );
+
+						return false;
+					});	
+					
+					
+				}
+				
+				
 				
 			}); 
 		} ) ( jQuery );
 		</script>
 		";
+		
+		echo UixPBFormCore::str_compression( $js );
+		
+		
 	}
 }
-
 
 
 //Initialize visual builder page 
@@ -92,10 +159,10 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 		
         if ( $post_ID ) {
 			
-			if ( 'publish' != get_post_status ( $post_ID ) ) {
+			if ( 'publish' != get_post_status ( $post_ID ) && 'draft' != get_post_status ( $post_ID ) ) {
 				$post_data = array(
 					'ID'           => $post_ID,
-					'post_status'  => 'publish',
+					'post_status'  => 'draft',
 					'post_title'   => empty( $post_title ) ? esc_html__( '(no title)', 'uix-page-builder' ) : $post_title,
 					'post_content' => '[uix_pb_sections]'
 				);
@@ -112,7 +179,6 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 				
 				$post_data = array(
 					'ID'           => $post_ID,
-					'post_status'  => 'publish',
 					'post_title'   => empty( $content_post->post_title ) ? esc_html__( '(no title)', 'uix-page-builder' ) : $content_post->post_title,
 					'post_content' => empty( $content_post->post_content ) ? '[uix_pb_sections]' : $content_post->post_content
 				);
@@ -239,6 +305,7 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
 			$layoutdata 	 = wp_unslash( $_POST[ 'layoutdata' ] );
+			$pagetemp 	     = sanitize_text_field( $_POST[ 'pageTemp' ] );
 			$builderstatus 	 = 'disable';
 
 			//Show page builder core assets of "Pages Add New Screen"
@@ -248,6 +315,7 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
 			
 			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', $layoutdata );
 			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-status', $builderstatus );
+			update_post_meta( $_POST[ 'postID' ], '_wp_page_template', $pagetemp );
 			
 			echo 1;
 		}
@@ -256,5 +324,33 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
 		wp_die();	
 	}
 }
+
+
+/*
+ * Publish live-render data with ajax 
+ * 
+ */
+if ( !function_exists( 'uix_page_builder_publishvisualBuilder' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_publishvisualBuilder_settings', 'uix_page_builder_publishvisualBuilder' );		
+	function uix_page_builder_publishvisualBuilder() {
+		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
+		
+		if ( isset( $_POST[ 'postID' ] ) ) {
+			
+			$post_data = array(
+				'ID'           => $_POST[ 'postID' ],
+				'post_status'  => 'publish'
+			);
+			
+            wp_update_post( $post_data, true );
+			
+			echo 1;
+		}
+		
+		
+		wp_die();	
+	}
+}
+
 
 

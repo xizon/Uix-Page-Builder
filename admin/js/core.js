@@ -80,6 +80,12 @@
 			
 		});
 		
+		$( document ).on( 'mouseenter', '#uix-page-builder-gridster-wrapper', function() {
+			$('.uix-page-builder-gridster-widget' ).removeClass( 'hover' );
+			
+		});	
+		
+		
 		$( document ).on( 'mousedown', '.uix-page-builder-visual-mode', function() {
 			$( window ).unbind();
 		});

@@ -450,7 +450,7 @@ ul.uix-page-builder-res-selector li.active {
 	position: fixed;
 	left: 0;
 	top: 0;
-	z-index: 3;
+	z-index: 26;
 	width: 315px;
 	height: 52px;
 	margin: 0;
@@ -477,7 +477,7 @@ ul.uix-page-builder-res-selector li.active {
 
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary) {
-	width: 60px;
+	width: 50px;
 	height: 52px;
 	line-height: 52px;
 	margin-bottom: 5px;
@@ -514,6 +514,14 @@ ul.uix-page-builder-res-selector li.active {
 	font-family: Verdana, "sans-serif";
 	text-align: center;
 }
+
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).publish-visual-builder:hover:after {
+	margin-left: -20px;
+}
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).exit-visual-builder:hover:after {
+	margin-left: -70px;
+}
+
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary):hover:before {
 	width: 0; 
 	height: 0; 
@@ -521,15 +529,11 @@ ul.uix-page-builder-res-selector li.active {
 	border-top: 6px solid transparent; 
 	border-right: 6px solid rgba(0,0,0,.8); 
     content: "";
-    top: 55px;
+    top: auto;
+	margin-top: 55px;
 	left: 48%;
     position: absolute;
     z-index: 22;
-	
-}
-
-.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).exit-visual-builder:hover:after {
-	margin-left: -50px;
 }
 
 
@@ -546,7 +550,8 @@ ul.uix-page-builder-res-selector li.active {
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).select-temp,
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).save-temp,
-.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).export-temp {
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).export-temp,
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).publish-visual-builder {
 	-webkit-border-radius: 0; 
 	-moz-border-radius: 0; 
 	border-radius: 0;
@@ -590,7 +595,7 @@ ul.uix-page-builder-res-selector li.active {
 }
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).exit-visual-builder:hover {
-	background: rgba(188,24,27,1.00) !important;
+	background: #D8181C !important;
 }
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).add {
@@ -653,12 +658,15 @@ ul.uix-page-builder-res-selector li.active {
 }
 
 .uix-page-builder-gridster-widget:hover,
-.uix-page-builder-gridster-widget:hover .uix-page-builder-gridster-drag {
+.uix-page-builder-gridster-widget:hover .uix-page-builder-gridster-drag,
+.uix-page-builder-gridster-widget.hover,
+.uix-page-builder-gridster-widget.hover .uix-page-builder-gridster-drag {
 	-webkit-box-shadow: inset 3px 0px 0px 0px #057eae;
 	-moz-box-shadow: inset 3px 0px 0px 0px #057eae;
 	box-shadow: inset 3px 0px 0px 0px #057eae;
 }
 
+.uix-page-builder-gridster-widget.hover .uix-page-builder-gridster-drag:before,
 .uix-page-builder-gridster-widget:hover .uix-page-builder-gridster-drag:before {
 	background-color: #057eae;
 }

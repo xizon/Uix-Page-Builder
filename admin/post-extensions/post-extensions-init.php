@@ -395,7 +395,6 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 	
 		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-page-builder' );
 		
-	
 		$curid          = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
 		$old_layoutdata = get_post_meta( $curid, 'uix-page-builder-layoutdata', true );
 		$gridster_class = ( UixPageBuilder::vb_mode() ) ? 'visualBuilder' : '';
@@ -428,7 +427,22 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			<?php } ?>    
 			<span class="li">
 				<a class="button select-temp" title="<?php echo esc_attr__( 'Select a Template', 'uix-page-builder' ); ?>" href="javascript:"><i class="dashicons dashicons-format-aside"></i><?php _e( 'Select a Template', 'uix-page-builder' ); ?></a>
-				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Choose Template You Want', 'uix-page-builder' ); ?></strong>
+				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a>
+			   
+					<p>
+					
+					    <strong><?php _e( 'Page Template', 'uix-page-builder' ); ?></strong>
+						<select style=" width: 100%;" name="uix-page-builder-cur-page-template"> 
+							<option value="default"><?php echo esc_html__( 'Default Template', 'uix-page-builder' ); ?></option>
+							<?php
+								$template = get_page_template_slug( $curid );
+								page_template_dropdown( $template, 'page' ) 
+							?>
+						</select>
+
+					</p>  
+		       
+			       <strong><?php _e( 'Content Template', 'uix-page-builder' ); ?></strong>
 				   <span id="uix-page-builder-templatelist"></span>
 				   <a class="button button-primary button-small confirm" id="uix-page-builder-templatelist-confirm" href="javascript:"><?php _e( 'Confirm', 'uix-page-builder' ); ?></a><span class="spinner"></span>
 
@@ -437,7 +451,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			</span>
 			<span class="li">
 				<a class="button save-temp" title="<?php echo esc_attr__( 'Save as Template', 'uix-page-builder' ); ?>" href="javascript:"><i class="dashicons dashicons-image-rotate-right"></i><?php _e( 'Save as Template', 'uix-page-builder' ); ?></a>
-				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>
+				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>  
 					<p>
 						<label>
 							<input size="20" name="tempname" type="text" value="<?php echo sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $curid ); ?>">
@@ -467,9 +481,15 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 
 			<?php if ( UixPageBuilder::vb_mode() ) { ?>
+			
+			<span class="li">
+				<a class="button publish-visual-builder" title="<?php echo esc_attr__( 'Save & Publish', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_normalEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-welcome-write-blog"></i><?php _e( 'Save & Publish', 'uix-page-builder' ); ?></a>
+			</span>
+			
 			<span class="li">
 				<a class="button exit-visual-builder" title="<?php echo esc_attr__( 'Exit Visual Builder', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_normalEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-no"></i><?php _e( 'Exit Visual Builder', 'uix-page-builder' ); ?></a>
 			</span>
+
 			<?php } ?>
 
 
@@ -489,7 +509,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			</div>
       
             <textarea name="uix-page-builder-layoutdata" id="uix-page-builder-layoutdata" ><?php echo esc_textarea( $old_layoutdata ); ?></textarea>
-      
+         
        
         </div><!-- /#uix-page-builder-gridster-wrapper -->
         
@@ -513,7 +533,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			currently_removing  = null,
 			saved_data          = '<?php echo json_encode( UixPageBuilder::page_builder_array_newlist( $old_layoutdata ) ); ?>',
 			saved_data          = JSON.parse( saved_data ),
-			layoutdata          = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
+			backURL             = '<?php echo uix_page_builder_get_normalEditor_pageURL( $curid ); ?>';
 
         <?php if ( UixPageBuilder::vb_mode() ) { ?>
         vbmode = true;
@@ -526,6 +546,17 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			} else {
 				gridsterWidth = gridsterVisualWidth;
 			}
+			
+			/* Page template changed*/
+			if ( vbmode ) {
+				jQuery( "[name='uix-page-builder-cur-page-template']" ).on( 'change', function() {
+					/*-- Refresh live preview --*/
+					uixPBFormVisualPreviewRefresh();
+
+				});
+			}
+			
+			
 			
 			
 			oww = jQuery( window ).width();
@@ -540,6 +571,29 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				gridsterWidgetsInit();
 		
 			});
+			
+			
+			/*-- Visual Builder Primary Buttons --*/
+			jQuery( '.exit-visual-builder' ).on( 'mouseenter', function(){
+				jQuery( '.li.full' ).show();
+			});
+			jQuery( '.li a, #uix-page-builder-themepreview, .sortable-list .row' ).not( '.exit-visual-builder, .publish-visual-builder' ).on( 'mouseenter', function(){
+				jQuery( '.li.full' ).hide();
+			});	
+			
+			jQuery( '.li.full' ).on( 'mouseleave', function(){
+				jQuery( this ).hide();
+			});
+	
+		
+
+			jQuery( document ).on( 'click', '.publish-visual-builder', function() {
+
+				uixPBFormVisualPublish();  
+				return false;		
+			});		
+
+			
 			
 		});
 			
@@ -872,6 +926,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					jQuery.post( ajaxurl, {
 						action               : 'uix_page_builder_savevisualBuilder_settings',
 						layoutdata           : jQuery( "[name='uix-page-builder-layoutdata']" ).val(),
+						pageTemp             : jQuery( "[name='uix-page-builder-cur-page-template']" ).val(),
 						postID               : uix_page_builder_layoutdata.send_string_postid,
 						security             : uix_page_builder_layoutdata.send_string_nonce
 					}, function ( response ) {
@@ -896,8 +951,34 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 		}	
 
+			
+		function uixPBFormVisualPublish() {
+			jQuery( document ).ready( function() {
+				
+				if ( vbmode ) {	
+
+					jQuery.post( ajaxurl, {
+						action               : 'uix_page_builder_publishvisualBuilder_settings',
+						postID               : uix_page_builder_layoutdata.send_string_postid,
+						security             : uix_page_builder_layoutdata.send_string_nonce
+					}, function ( response ) {
+						if ( response == 1 ) {
+							document.location.href = backURL;
+							
+						}
+					});
+					
+					
+					// stuff here
+					return false;		
+					
+				}
 		
-		
+
+			});
+			
+		}	
+
 			
 			
 		function gridsterWidgetStatus(){
