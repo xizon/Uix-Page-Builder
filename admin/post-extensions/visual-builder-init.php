@@ -314,6 +314,7 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
+			$id              = $_POST[ 'postID' ];
 			$layoutdata 	 = wp_unslash( $_POST[ 'layoutdata' ] );
 			$pagetemp 	     = sanitize_text_field( $_POST[ 'pageTemp' ] );
 			$builderstatus 	 = 'disable';
@@ -323,9 +324,9 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
 				$builderstatus 	 = 'enable';
 			}
 			
-			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', $layoutdata );
-			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-status', $builderstatus );
-			update_post_meta( $_POST[ 'postID' ], '_wp_page_template', $pagetemp );
+			update_post_meta( $id, 'uix-page-builder-layoutdata', $layoutdata );
+			update_post_meta( $id, 'uix-page-builder-status', $builderstatus );
+			update_post_meta( $id, '_wp_page_template', $pagetemp );
 			
 			echo 1;
 		}

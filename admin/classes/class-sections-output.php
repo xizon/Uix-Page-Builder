@@ -14,6 +14,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 	
 		public static function init() {
 			add_action( 'wp_head', array( __CLASS__, 'do_my_shortcodes' ) );
+			add_action( 'admin_init', array( __CLASS__, 'do_my_shortcodes' ) ); //When switching the page template
 		}
 	
 		
