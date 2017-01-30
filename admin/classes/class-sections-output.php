@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- *  Parse Google Map
+ *  Output the front-end code
  *
  */
 if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
