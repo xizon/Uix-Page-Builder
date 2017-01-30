@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.7
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,7 +91,7 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 == Changelog ==
 
-= 1.1.2 =
+= 1.1.3 =
 
 * Added Draft and Publish buttons in the visual builder screen.
 * some minor bugs for enqueue scripts.

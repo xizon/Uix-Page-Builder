@@ -446,6 +446,25 @@ ul.uix-page-builder-res-selector li.active {
 	width: 315px;
 }
 
+#uix-page-builder-save-status {
+	background: #201f1f;
+	color: #e3e3e3;
+	position: fixed;
+	left: 0;
+	top: 52px;
+	z-index: 3;
+	width: 300px;
+	text-indent: 10px;
+	font-size: 10px !important;
+	font-family: Verdana, "sans-serif";
+	display: none;
+}
+
+#uix-page-builder-save-status.wait {
+	display: block;
+}
+
+
 .uix-page-builder-gridster-addbtn.visualBuilder {
 	position: fixed;
 	left: 0;
@@ -474,6 +493,54 @@ ul.uix-page-builder-res-selector li.active {
 }
 
 
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).wait .wait {
+	content: '';
+	display: block;
+	width: 50px;
+	height: 52px;
+	position: absolute;
+	top: 0;
+	left: 0;
+    background-image: -webkit-linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    background-image: -moz-linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    background-image: -o-linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    -webkit-background-size: 30px 30px;
+    -moz-background-size: 30px 30px;
+    -o-background-size: 30px 30px;
+    background-size: 30px 30px;
+    -webkit-animation: move-waiting-stripes 0.5s linear infinite;
+    -moz-animation: move-waiting-stripes 0.5s linear infinite;
+    -ms-animation: move-waiting-stripes 0.5s linear infinite;
+    -o-animation: move-waiting-stripes 0.5s linear infinite;
+    animation: move-waiting-stripes 0.5s linear infinite;
+    cursor: wait;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+@-webkit-keyframes move-waiting-stripes {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 30px 0px;
+    }
+}
+
+@keyframes move-waiting-stripes {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 30px 0px;
+    }
+}
 
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary) {
@@ -589,13 +656,55 @@ ul.uix-page-builder-res-selector li.active {
 	border: 1px solid rgba(155,5,8,1.00) !important;
 }
 
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).publish-visual-builder {
+	background: #2C7EAE !important;
+	color: #fff !important;
+	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.52);
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.52);
+	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.52);
+	border: 1px solid #356586 !important;
+}
+
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary):hover {
 	background: #000 !important;
 }
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).exit-visual-builder:hover {
-	background: #D8181C !important;
+	background: rgba(188,24,27,1.00) !important;
+}
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).publish-visual-builder:hover {
+	background: #356586 !important;
+}
+
+
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).publish-visual-builder.wait:hover .wait{
+	content: '';
+	display: block;
+	width: 50px;
+	height: 52px;
+	position: absolute;
+	top: 0;
+	left: 0;
+    background-image: -webkit-linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    background-image: -moz-linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    background-image: -o-linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(-45deg,rgba(0,0,0,0.32) 25%,transparent 25%,transparent 50%,rgba(0,0,0,0.32) 50%,rgba(0,0,0,0.32) 75%,transparent 75%,transparent);
+    -webkit-background-size: 30px 30px;
+    -moz-background-size: 30px 30px;
+    -o-background-size: 30px 30px;
+    background-size: 30px 30px;
+    -webkit-animation: move-waiting-stripes 0.5s linear infinite;
+    -moz-animation: move-waiting-stripes 0.5s linear infinite;
+    -ms-animation: move-waiting-stripes 0.5s linear infinite;
+    -o-animation: move-waiting-stripes 0.5s linear infinite;
+    animation: move-waiting-stripes 0.5s linear infinite;
+    cursor: wait;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).add {
@@ -613,6 +722,7 @@ ul.uix-page-builder-res-selector li.active {
 	
 }
 
+.uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).publish-visual-builder .dashicons,
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).add .dashicons,
 .uix-page-builder-gridster-addbtn.visualBuilder .button:not(.button-primary).exit-visual-builder .dashicons {
 	color: #fff;

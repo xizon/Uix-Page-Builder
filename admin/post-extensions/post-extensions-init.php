@@ -410,6 +410,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<li data-size="[768,1024]" title="<?php echo esc_attr__( 'Tablet (Portrait)', 'uix-page-builder' ); ?>"><i class="dashicons dashicons-tablet"></i></li>
 				<li data-size="[375,568]" title="<?php echo esc_attr__( 'Mobile', 'uix-page-builder' ); ?>"><i class="dashicons dashicons-smartphone"></i></li>
 			</ul>
+			<div id="uix-page-builder-save-status"><?php _e( 'Saving...', 'uix-page-builder' ); ?></div>
 
 		<?php } ?> 
       
@@ -426,7 +427,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				</span>   
 			<?php } ?>    
 			<span class="li">
-				<a class="button select-temp" title="<?php echo esc_attr__( 'Select a Template', 'uix-page-builder' ); ?>" href="javascript:"><i class="dashicons dashicons-format-aside"></i><?php _e( 'Select a Template', 'uix-page-builder' ); ?></a>
+				<a class="button select-temp" title="<?php echo esc_attr__( 'Select a Template', 'uix-page-builder' ); ?>" href="javascript:"><i class="dashicons dashicons-art"></i><?php _e( 'Select a Template', 'uix-page-builder' ); ?></a>
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a>
 			   
 					<p>
@@ -463,7 +464,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				</div>
 			</span>
 			 <span class="li">
-				<a class="button export-temp" title="<?php echo esc_attr__( 'Export', 'uix-page-builder' ); ?>" href="javascript:"><i class="dashicons dashicons-redo"></i><?php _e( 'Export', 'uix-page-builder' ); ?></a>
+				<a class="button export-temp" title="<?php echo esc_attr__( 'Export', 'uix-page-builder' ); ?>" href="javascript:"><i class="dashicons dashicons-share-alt2"></i><?php _e( 'Export', 'uix-page-builder' ); ?></a>
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a>
 					<p>
 						<?php 
@@ -483,12 +484,14 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			<?php if ( UixPageBuilder::vb_mode() ) { ?>
 			
 			<span class="li">
-				<a class="button publish-visual-builder" title="<?php echo esc_attr__( 'Save & Publish', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_normalEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-welcome-write-blog"></i><?php _e( 'Save & Publish', 'uix-page-builder' ); ?></a>
+				<a class="button publish-visual-builder" title="<?php echo esc_attr__( 'Publish', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_normalEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-edit"></i><?php _e( 'Publish', 'uix-page-builder' ); ?><span class="wait"></span></a>
 			</span>
 			
 			<span class="li">
 				<a class="button exit-visual-builder" title="<?php echo esc_attr__( 'Exit Visual Builder', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_normalEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-no"></i><?php _e( 'Exit Visual Builder', 'uix-page-builder' ); ?></a>
 			</span>
+			
+			
 
 			<?php } ?>
 
@@ -586,8 +589,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			});
 	
 		
-
 			jQuery( document ).on( 'click', '.publish-visual-builder', function() {
+				
+				jQuery( this ).addClass( 'wait' );
 
 				uixPBFormVisualPublish();  
 				return false;		
@@ -920,8 +924,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			jQuery( document ).ready( function() {
 				
 				if ( vbmode ) {	
+					
+					var $saveobj = jQuery( '#uix-page-builder-save-status' );
 
 					jQuery( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).show();
+					$saveobj.addClass( 'wait' ).text( '<?php echo esc_html__( 'Saving...', 'uix-page-builder' ); ?>' );
 
 					jQuery.post( ajaxurl, {
 						action               : 'uix_page_builder_savevisualBuilder_settings',
@@ -931,12 +938,29 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						security             : uix_page_builder_layoutdata.send_string_nonce
 					}, function ( response ) {
 						if ( response == 1 ) {
-							var pURL = '<?php echo esc_url( get_permalink( $curid ) ); ?>?preview=1';
+							
+							var pURL = '';
+							
+							<?php if( UixPageBuilder::inc_str( esc_url( get_permalink( $curid ) ), '?' ) ) { ?>
+								pURL = '<?php echo esc_url( get_permalink( $curid ) ); ?>&preview=true&pb_preview=1';
+							<?php } else { ?>
+							    pURL = '<?php echo esc_url( get_permalink( $curid ) ); ?>?preview=true&pb_preview=1';
+							<?php } ?>
+							
 							jQuery( '#uix-page-builder-themepreview' ).attr( 'src', pURL );	
 
 							jQuery( '#uix-page-builder-themepreview' ).on( 'load', function() {
 								jQuery( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).hide();
 							} );
+							
+							//save status
+							
+							$saveobj.text( '<?php echo esc_html__( 'Data has been saved.', 'uix-page-builder' ); ?>' );
+							setTimeout( function() {
+								$saveobj.text( '<?php echo esc_html__( 'Saving...', 'uix-page-builder' ); ?>' ).removeClass( 'wait' );
+							}, 1500 );
+							
+							
 						}
 					});
 					
@@ -963,8 +987,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						security             : uix_page_builder_layoutdata.send_string_nonce
 					}, function ( response ) {
 						if ( response == 1 ) {
-							document.location.href = backURL;
 							
+							//publish button status
+							uixPBFormVisualPublishBtnStatusRestore();
+						
 						}
 					});
 					
@@ -979,6 +1005,20 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 		}	
 
+		function uixPBFormVisualPublishBtnStatusRestore() {
+			jQuery( document ).ready( function() {
+				
+                //publish button status
+				jQuery( '.publish-visual-builder' ).removeClass( 'wait' );
+				jQuery( '.publish-visual-builder i' ).attr( 'class', 'dashicons dashicons-yes' );
+				setTimeout( function() {
+					jQuery( '.publish-visual-builder i' ).attr( 'class', 'dashicons dashicons-edit' );
+				}, 1500 );
+
+			});
+			
+		}			
+			
 			
 			
 		function gridsterWidgetStatus(){

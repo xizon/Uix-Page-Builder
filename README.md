@@ -58,7 +58,7 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ### Updates
 
 
-##### = 1.1.2 =
+##### = 1.1.3 =
 
 * Added Draft and Publish buttons in the visual builder screen.
 * some minor bugs for enqueue scripts.

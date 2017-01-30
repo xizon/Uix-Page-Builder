@@ -23,7 +23,7 @@ if ( !function_exists( 'uix_page_builder_previewControlpanel' ) ) {
 				wp_enqueue_script( 'tinymce_js', includes_url( 'js/tinymce/' ) . 'wp-tinymce.php', array( 'jquery' ), false, true );
 			}    
         } else {
-			if ( isset( $_GET['preview'] ) && $_GET['preview'] == 1 ) {
+			if ( isset( $_GET['pb_preview'] ) && $_GET['pb_preview'] == 1 ) {
                 add_filter( 'show_admin_bar', '__return_false' );
 			}
         }
@@ -69,7 +69,8 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 			};
 			
 			$( function() {
-			    if ( $.urlParam( 'preview' ) == 1 ) {
+			
+			    if ( $.urlParam( 'pb_preview' ) == 1 ) {
 				    $( '#wpadminbar' ).css( 'visibility', 'hidden' );
 					$( '.uix-page-builder-section' ).css( {
 					    'cursor': 'pointer'
@@ -199,8 +200,17 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
             
 			require_once ABSPATH . 'wp-admin/admin-header.php';
 			
+			$previewURL = '';
+			
+			if( UixPageBuilder::inc_str( $post_url, '?' ) ) {
+				$previewURL = $post_url.'&preview=true&pb_preview=1';
+			} else {
+				$previewURL = $post_url.'?preview=true&pb_preview=1';
+			}
+			
+			
 		    echo '
-			<iframe id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="'.$post_url.'?preview=1"></iframe>
+			<iframe id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="'.$previewURL.'"></iframe>
 			<a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Hide Sidebar', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-close" href="javascript:"><i class="dashicons dashicons-arrow-left"></i></a>
 			';
 			
