@@ -58,6 +58,13 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ### Updates
 
 
+
+##### = 1.1.4 =
+
+* Resolved compatibility errors that may occur with the editor.
+* Optimized pop windows UI of editor for online preview.
+
+
 ##### = 1.1.3 =
 
 * Added Draft and Publish buttons in the visual builder screen.

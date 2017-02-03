@@ -432,7 +432,7 @@
 				
 				//Add shortcode to editor
 				if ( gridsterGetTinymceContent().indexOf( '[uix_pb_sections' ) < 0  ) {
-					window.send_to_editor( '[uix_pb_sections]' );
+					wp.media.editor.insert( '[uix_pb_sections]' );
 				}
 				
 
