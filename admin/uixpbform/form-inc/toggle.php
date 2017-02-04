@@ -68,7 +68,7 @@ class UixPBFormType_Toggle {
 						   <div class="uixpbform-box">
 								<a href="javascript:" class="'.$link_class.' '.( $link_class == 'table-link-icon' ? 'table-link-iconattr' : '' ).' uixpbform_btn_trigger-toggleshow '.$open_class.'" data-this-targetid="'.$id.'" data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" title="'.esc_attr( $btn_text ).'">'.( $link_class == 'table-link-icon' ? '<i class="fa fa-sort-desc"></i>'.__( 'More Options', 'uix-page-builder' ) : $btn_text ).'</a>
 								
-								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'" >' : '' ).'
+								'.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'" >' : '' ).'
 		
 								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 	
 								
@@ -81,7 +81,7 @@ class UixPBFormType_Toggle {
                 
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
 			
 

@@ -46,7 +46,7 @@ class UixPBFormType_Select {
                         <td>	
 						   <div class="uixpbform-box">	
                               
-                              '.( !empty( $id ) ? '<select class="uixpbform-normal" id="'.$id.'" name="'.$name.'">'.$optionlist.'</select>' : '' ).' 
+                              '.( !empty( $args[ 'id' ] ) ? '<select class="uixpbform-normal" id="'.$id.'" name="'.$name.'">'.$optionlist.'</select>' : '' ).' 
 
                                '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
@@ -57,7 +57,7 @@ class UixPBFormType_Select {
                 
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
 
         }	

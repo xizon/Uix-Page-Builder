@@ -54,13 +54,13 @@ class UixPBFormType_Editor {
 							
 							'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							
-							'.( !empty( $id ) ? '<textarea style="display:none;" id="'.$id.'" name="'.$name.'" chk-id-textarea="'.$id.'">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>' : '' ).' 	
+							'.( !empty( $args[ 'id' ] ) ? '<textarea style="display:none;" id="'.$id.'" name="'.$name.'" chk-id-textarea="'.$id.'">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>' : '' ).' 	
 						</td>
 					</tr> 
 				'.PHP_EOL;	
 
 			$jscode_vars = '
-				'.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
 			';	
 
 		}

@@ -40,7 +40,7 @@ class UixPBFormType_Note {
 						    
 							<div class="uixpbform-box">
 							
-							   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).' 	
+							   '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).' 	
 			   	   
 							   '.( !empty( $desc ) ? '<p class="info info-'.$infotype.'">'.$desc.'</p>' : '' ).' 
 							   
@@ -51,7 +51,7 @@ class UixPBFormType_Note {
 				'.PHP_EOL;	
 
 			$jscode_vars = '
-				'.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
 			';	
 
 		}

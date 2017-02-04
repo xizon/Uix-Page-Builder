@@ -55,7 +55,7 @@ class UixPBFormType_Slider {
                                
 								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" name="'.$unitsname.'" chk-id-input="'.$unitsid.'" value="'.$units.'">' : '' ).' 
 								   
-								   '.( !empty( $id ) ? '
+								   '.( !empty( $args[ 'id' ] ) ? '
 									<div class="uixpbform-range-container">
 										<input type="range" class="uixpbform-normal uixpbform-range" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'" min="'.$min.'" max="'.$max.'" step="'.$step.'" oninput="uixpbform_rangeSlider(this.id, \'slider_output_'.$id.'\', \''.$units.'\' )">
 										<output class="uixpbform-range-txt" id="slider_output_'.$id.'">'.$value.''.$units.'</output>
@@ -73,7 +73,7 @@ class UixPBFormType_Slider {
                 
 				
             $jscode_vars .= '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';	
 		
             

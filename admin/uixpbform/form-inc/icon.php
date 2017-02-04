@@ -61,7 +61,7 @@ class UixPBFormType_Icon {
 									
 								</div>
 								
-								'.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).'
+								'.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).'
 								'.$iconlist.'
 							
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
@@ -73,7 +73,7 @@ class UixPBFormType_Icon {
 				
 				
 			$jscode_vars = '
-				'.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
 				
 			';	
 					

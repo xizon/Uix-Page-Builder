@@ -97,11 +97,11 @@ class UixPBFormType_Checkbox {
                               
 								 '.( !empty( $toggle_trigger_id ) ? '<div class="onoffswitch uixpbform_btn_trigger-toggleswitch_checkbox '.$checked_txt.'" data-this-targetid="'.$id.'" data-targetid="'.rtrim( $target_id, ',' ).'" data-list="0" data-targetid-clone="{multID}" data-linked-no-toggleid="'.rtrim( $toggle_no_id, ',' ).'">' : '' ).'
 								 
-                                 '.( !empty( $id ) ? '<input value="" id="'.$id.'-checkbox" name="'.$name.'-checkbox" type="checkbox" data-this-targetid="'.$id.'" class="uixpbform-normal uixpbform-check uixpbform_btn_trigger-normalchk '.( !empty( $toggle_trigger_id ) ? 'onoffswitch-checkbox' : '' ).'" '.$checked_txt.'>' : '' ).'
+                                 '.( !empty( $args[ 'id' ] ) ? '<input value="" id="'.$id.'-checkbox" name="'.$name.'-checkbox" type="checkbox" data-this-targetid="'.$id.'" class="uixpbform-normal uixpbform-check uixpbform_btn_trigger-normalchk '.( !empty( $toggle_trigger_id ) ? 'onoffswitch-checkbox' : '' ).'" '.$checked_txt.'>' : '' ).'
 								 
 								 '.( !empty( $toggle_trigger_id ) ? '<label class="onoffswitch-label" for="myonoffswitch"></label></div>' : '' ).'
 								 
-								 '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" >' : '' ).'
+								 '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" value="'.$value.'" >' : '' ).'
 
 
                              </span>
@@ -115,11 +115,11 @@ class UixPBFormType_Checkbox {
                 
 			if ( is_array( $toggle ) && !empty( $toggle ) ) {
 				$jscode_vars = '
-					'.( !empty( $id ) ? 'var '.$args[ 'id' ].' = ( $( "#'.$id.'" ).val() == 1 ) ? true : false;'.PHP_EOL : '' ).'
+					'.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = ( $( "#'.$id.'" ).val() == 1 ) ? true : false;'.PHP_EOL : '' ).'
 				';	
 			} else {
 				$jscode_vars = '
-					'.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'-checkbox" ).is( ":checked" );'.PHP_EOL : '' ).'
+					'.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'-checkbox" ).is( ":checked" );'.PHP_EOL : '' ).'
 				';		
 			}
 					

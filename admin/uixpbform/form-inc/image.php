@@ -54,7 +54,7 @@ class UixPBFormType_Image {
 							  
 								<div class="uixpbform-upbtn-container">
 									
-									'.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text uixpbform-input-upload-text"  chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'" />' : '' ).' 
+									'.( !empty( $args[ 'id' ] ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text uixpbform-input-upload-text"  chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'" />' : '' ).' 
 									'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 									
 									
@@ -88,7 +88,7 @@ class UixPBFormType_Image {
 										  <span data-value="repeat-x" '.( $default[ 'prop_value' ][ 'repeat' ] == 'repeat-x' ? 'class="active"' : '' ).' >'.__( 'Tile Horizontally', 'uix-page-builder' ).'</span>
 										  <span data-value="repeat-y" '.( $default[ 'prop_value' ][ 'repeat' ] == 'repeat-y' ? 'class="active"' : '' ).' >'.__( 'Tile Vertically', 'uix-page-builder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'repeat' ].'" name="'.$default[ 'prop_name' ][ 'repeat' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'repeat' ].'" value="'.$default[ 'prop_value' ][ 'repeat' ].'">' : '' ).' 
+									   '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'repeat' ].'" name="'.$default[ 'prop_name' ][ 'repeat' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'repeat' ].'" value="'.$default[ 'prop_value' ][ 'repeat' ].'">' : '' ).' 
 								
 								</div>
 							</td>
@@ -108,7 +108,7 @@ class UixPBFormType_Image {
 										  <span data-value="center" '.( $default[ 'prop_value' ][ 'position' ] == 'center' ? 'class="active"' : '' ).' >'.__( 'Center', 'uix-page-builder' ).'</span>
 										  <span data-value="right" '.( $default[ 'prop_value' ][ 'position' ] == 'right' ? 'class="active"' : '' ).' >'.__( 'Right', 'uix-page-builder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'position' ].'" name="'.$default[ 'prop_name' ][ 'position' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'position' ].'" value="'.$default[ 'prop_value' ][ 'position' ].'">' : '' ).' 
+									   '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'position' ].'" name="'.$default[ 'prop_name' ][ 'position' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'position' ].'" value="'.$default[ 'prop_value' ][ 'position' ].'">' : '' ).' 
 								
 								</div>
 							</td>
@@ -127,7 +127,7 @@ class UixPBFormType_Image {
 										  <span data-value="scroll" '.( $default[ 'prop_value' ][ 'attachment' ] == 'scroll' ? 'class="active"' : '' ).' >'.__( 'Scroll', 'uix-page-builder' ).'</span>
 										  <span data-value="fixed"  '.( $default[ 'prop_value' ][ 'attachment' ] == 'fixed' ? 'class="active"' : '' ).' >'.__( 'Fixed', 'uix-page-builder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'attachment' ].'" name="'.$default[ 'prop_name' ][ 'attachment' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'attachment' ].'" value="'.$default[ 'prop_value' ][ 'attachment' ].'">' : '' ).' 
+									   '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'attachment' ].'" name="'.$default[ 'prop_name' ][ 'attachment' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'attachment' ].'" value="'.$default[ 'prop_value' ][ 'attachment' ].'">' : '' ).' 
 								
 								</div>
 							</td>
@@ -147,7 +147,7 @@ class UixPBFormType_Image {
 									      <span data-value="auto" '.( $default[ 'prop_value' ][ 'size' ] == 'auto' ? 'class="active"' : '' ).'>'.__( 'Auto', 'uix-page-builder' ).'</span>
 										  <span data-value="contain" '.( $default[ 'prop_value' ][ 'size' ] == 'contain' ? 'class="active"' : '' ).'>'.__( 'Contain', 'uix-page-builder' ).'</span>
 									   </div>
-									   '.( !empty( $id ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'size' ].'" name="'.$default[ 'prop_name' ][ 'size' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'size' ].'" value="'.$default[ 'prop_value' ][ 'size' ].'">' : '' ).' 
+									   '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$default[ 'prop_id' ][ 'size' ].'" name="'.$default[ 'prop_name' ][ 'size' ].'" chk-id-input="'.$default[ 'prop_id' ][ 'size' ].'" value="'.$default[ 'prop_value' ][ 'size' ].'">' : '' ).' 
 								
 								</div>
 							</td>
@@ -162,7 +162,7 @@ class UixPBFormType_Image {
                 
 		
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
 				'.( $image_prop ? 'var '.$args[ 'id' ].'_repeat = $( "#'.$id.'_repeat" ).val(); var '.$args[ 'id' ].'_position = $( "#'.$id.'_position" ).val(); var '.$args[ 'id' ].'_attachment = $( "#'.$id.'_attachment" ).val(); var '.$args[ 'id' ].'_size = $( "#'.$id.'_size" ).val();'.PHP_EOL : '' ).'
             ';
             $jscode .= '';	

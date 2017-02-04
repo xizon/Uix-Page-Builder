@@ -30,7 +30,7 @@ class UixPBFormType_Text {
 						    
 							<div class="uixpbform-box">
 							
-							   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
+							   '.( !empty( $args[ 'id' ] ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
 			   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
@@ -41,7 +41,7 @@ class UixPBFormType_Text {
 				'.PHP_EOL;	
 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
 
 		}

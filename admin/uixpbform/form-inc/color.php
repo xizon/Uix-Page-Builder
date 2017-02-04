@@ -43,7 +43,7 @@ class UixPBFormType_Color {
 								  <div class="uixpbform-color-selector uixpbform_btn_trigger-radio" data-targetid="'.$id.'">	
 								   '.$colorlist.' 
 								   </div>
-								   '.( !empty( $id ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).' 
+								   '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).' 
 	
 								   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							 </div> 
@@ -53,7 +53,7 @@ class UixPBFormType_Color {
                 
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
 			
             $jscode = '';

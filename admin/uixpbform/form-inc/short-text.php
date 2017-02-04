@@ -37,7 +37,7 @@ class UixPBFormType_ShortText {
 								   
 								<div class="uixpbform-input-text-short uixpbform-input-text-short-units">
 			
-								   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
+								   '.( !empty( $args[ 'id' ] ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
 								   
 								   <span class="units units-short">'.$units.'</span>
 								   
@@ -52,7 +52,7 @@ class UixPBFormType_ShortText {
                 '.PHP_EOL;	
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';		
             
 

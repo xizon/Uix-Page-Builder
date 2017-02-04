@@ -59,7 +59,7 @@ class UixPBFormType_ColorMap {
 				$field .= ' 
 				                <div class="uixpbform-input-text-short">
 				
-									   '.( !empty( $id ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixPBFormCore::readable_color( $value ).'"' : '' ).' chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
+									   '.( !empty( $args[ 'id' ] ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text color" '.( !empty( $value ) ? 'style="background:'.$value.';color:'.UixPBFormCore::readable_color( $value ).'"' : '' ).' chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 
 									   
 									  
 								</div>
@@ -82,7 +82,7 @@ class UixPBFormType_ColorMap {
           
                 
             $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+                '.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
             ';
 			
 			$jscode = '';

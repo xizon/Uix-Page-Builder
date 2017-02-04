@@ -60,7 +60,7 @@ class UixPBFormType_Margin {
 							   
 							   <div class="uixpbform-input-text-margin-container">
 							
-								   '.( !empty( $id ) ? '
+								   '.( !empty( $args[ 'id' ] ) ? '
 								   <div class="dir top"><label><em>&uarr;</em><input type="text" id="'.$id[ 'top' ].'" name="'.$name[ 'top' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$id[ 'top' ].'" value="'.$value[ 'top' ].'"></label></div>
 								   <div class="dir right"><label><em>&rarr;</em><input type="text" id="'.$id[ 'right' ].'" name="'.$name[ 'right' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$id[ 'right' ].'" value="'.$value[ 'right' ].'"></label></div>
 								   <div class="dir bottom"><label><em>&darr;</em><input type="text" id="'.$id[ 'bottom' ].'" name="'.$name[ 'bottom' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$id[ 'bottom' ].'" value="'.$value[ 'bottom' ].'"></label></div>
@@ -82,12 +82,10 @@ class UixPBFormType_Margin {
 				'.PHP_EOL;	
 
 			$jscode_vars = '
-				'.( !empty( $id ) ? '
-				var '.$args[ 'id' ][ 'top' ].' = $( "#'.$id[ 'top' ].'" ).val(),
-				    '.$args[ 'id' ][ 'right' ].' = $( "#'.$id[ 'right' ].'" ).val(),
-					'.$args[ 'id' ][ 'bottom' ].' = $( "#'.$id[ 'bottom' ].'" ).val(),
-					'.$args[ 'id' ][ 'left' ].' = $( "#'.$id[ 'left' ].'" ).val();
-				'.PHP_EOL : '' ).'
+			    '.( !empty( $args[ 'id' ][ 'top' ] ) ? 'var '.$args[ 'id' ][ 'top' ].' = $( "#'.$id[ 'top' ].'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ][ 'right' ] ) ? 'var '.$args[ 'id' ][ 'right' ].' = $( "#'.$id[ 'right' ].'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ][ 'bottom' ] ) ? 'var '.$args[ 'id' ][ 'bottom' ].' = $( "#'.$id[ 'bottom' ].'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ][ 'left' ] ) ? 'var '.$args[ 'id' ][ 'left' ].' = $( "#'.$id[ 'left' ].'" ).val();'.PHP_EOL : '' ).'
 			';	
 
 		}
