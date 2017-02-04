@@ -1,9 +1,10 @@
 <?php
 class UixPBFormType_ListClone {
 	
-	public static function add( $args, $_output, $section_row ) {
+	public static function add( $args, $args_config, $_output, $section_row ) {
 		
 		if ( !is_array( $args ) ) return;
+		if ( !is_array( $args_config ) ) return;
 		
 		//Section Row
 		$sid              = ( isset( $section_row ) ) ? $section_row : -1;
@@ -12,14 +13,19 @@ class UixPBFormType_ListClone {
 		$title            = ( isset( $args[ 'title' ] ) ) ? $args[ 'title' ] : '';
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
-		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
+		$value            = ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], $args[ 'value' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], '' );
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
+		
+		//ID of clone trigger
 		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
-		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
+		//Column ID of clone trigger
+		$colid            = ( isset( $args[ 'colid' ] ) ) ? $args[ 'colid' ] : '';
+		
+		$name             = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ] ) : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
-		$colid            = ( isset( $args[ 'colid' ] ) ) ? $args[ 'colid' ] : '';
+		
 		
 		$field = '';
 		$jscode = '';
@@ -48,6 +54,7 @@ class UixPBFormType_ListClone {
 				
 				//clone id
                 foreach ( $default[ 'clone_class' ] as $tid_value ) {
+					
 					
 					$clone_id .= '".'.$tid_value[ 'id' ].'",'; 
 					$loop_trigger_id = str_replace( 'dynamic-row-', '', $tid_value[ 'id' ] );
@@ -106,8 +113,6 @@ class UixPBFormType_ListClone {
                 '.PHP_EOL;	
 				
 			 
-            $jscode = '';	
-                
 
         }
 		

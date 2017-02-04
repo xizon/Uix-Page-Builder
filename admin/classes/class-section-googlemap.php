@@ -50,6 +50,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 			$map_longitude = $longitude; //Map longitude
 			$map_zoom = $zoom;	 //Map zoom
 			$map_name = $name;	 //Map place name
+			$map_width = $width;	 //Map width
 			$map_height = $height;	 //Map height
 			$map_marker = UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-location.png'; //Map marker 
 			 
@@ -65,7 +66,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 			<div class="uix-pb-map-output site-google-map" id="uix-pb-map-output-<?php echo $id; ?>">
 			
 				<div class="google-map-area">
-					<div id="google-container-<?php echo $id; ?>" style="position: relative; width: 100%; height: <?php echo $map_height;?>;"></div>
+					<div id="google-container-<?php echo $id; ?>" style="position: relative; width: <?php echo $map_width;?>; height: <?php echo $map_height;?>;"></div>
 					<div class="google-map-zoom-in" id="google-map-zoom-in-<?php echo $id; ?>"><?php _e( '+', 'uix-page-builder' ); ?></div>
 					<div class="google-map-zoom-out" id="google-map-zoom-out-<?php echo $id; ?>"><?php _e( '-', 'uix-page-builder' ); ?></div>
 				</div>	

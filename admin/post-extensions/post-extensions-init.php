@@ -231,7 +231,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			
 			// Register the script
 			wp_register_script( 'uix_page_builder_metaboxes_save_handle', UixPageBuilder::plug_directory() .'admin/js/core.min.js', array( 'jquery', UixPageBuilder::PREFIX . '-gridster' ), UixPageBuilder::ver(), false );
-			
+
 			// Localize the script with new data
 			if ( UixPageBuilder::tempfile_exists() ) {
 				$tempfile_exists = 1;
@@ -411,6 +411,17 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<li data-size="[375,568]" title="<?php echo esc_attr__( 'Mobile', 'uix-page-builder' ); ?>"><i class="dashicons dashicons-smartphone"></i></li>
 			</ul>
 			<div id="uix-page-builder-save-status"><?php _e( 'Saving...', 'uix-page-builder' ); ?></div>
+
+		 
+			 <div style="display: none">
+			  <?php
+				//Include tinymce editor in visual mode					
+				wp_editor( '', 'uix_page_builder_editor_content', array( 
+					'quicktags' => array( 'buttons' => 'strong,em,del,ul,ol,li,close' ), // note that spaces in this list seem to cause an issue
+				) );										
+			  ?>
+			 </div>
+
 
 		<?php } ?> 
       
@@ -1291,7 +1302,6 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 				jQuery( '#' + allcontentID ).val( result );
 				
-				
 				//Save All content
 				if ( jQuery( '#' + allcontentRpID ).length > 0 ) {
 					result = gridsterFormatAllCodes( result );
@@ -1299,8 +1309,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		            var newv = old.replace( '{allcontent}', '['+result+']' );
 					jQuery( '#' + sectionContentID ).val( newv );	
 				}
-			
 				
+		
 
 			});
 				

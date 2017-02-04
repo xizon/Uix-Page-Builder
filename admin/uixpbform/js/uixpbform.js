@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 1.0.0
+	* Version 2.0
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -280,17 +280,25 @@
 					
 				});
 				
-
+				var new_settings = JSON.stringify( colContent );
+				
 				//Save Item Content
-				uixpbform_insertCodes( formID, JSON.stringify( colContent ), colTextareaID, rowID );
+				uixpbform_insertCodes( formID, new_settings, colTextareaID, rowID );
 				gridsterItemSave( rowID );
 				
 				//Save All content
 				settings.push( [ 'rowcontent', '{allcontent}' ] );
+				var layoutdata_form_data = JSON.stringify( settings );
+				uixpbform_insertCodes( formID, layoutdata_form_data, 'cols-all-content-replace-' + rowID, rowID );
+
 				
+				// Update gridster data ( If the module is added for the first time, and there is no content. )
+				var init_settings     = $( "[name='uix-page-builder-layoutdata']" ).val();
+				if ( init_settings.indexOf( '"content":""' ) >= 0 ) {
+					$( this ).trigger( 'click' );	
+				}
+					
 				
-				uixpbform_insertCodes( formID, JSON.stringify( settings ), 'cols-all-content-replace-' + rowID, rowID );
-	
 				//Close window
 				$( '.uixpbform-modal-box' ).removeClass( 'active' );
 				$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );

@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.1.4
+ * Version:     1.1.5
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -681,56 +681,7 @@ class UixPageBuilder {
 
 	}
 				
-		
-	/*
-	 * Returns form id
-	 *
-	 *
-	 */
-	public static function fid( $col_id, $section_row, $field ) {
-		$colid = str_replace( 'col-item-', 'section_'.$section_row.'__', $col_id );
-		return $colid.'_'.$field;
-	}	
 
-	
-	
-	/*
-	 * Returns form name
-	 *
-	 *
-	 */
-	public static function fname( $col_id, $form_id, $field ) {
-		return $form_id.'|['.$col_id.']['.$field.']{index}';
-	}
-	
-		
-	/*
-	 * Returns form value
-	 *
-	 *
-	 */
-	public static function fvalue( $col_id, $section_row, $arr, $field, $default = '' ) {
-		
-		$result = '';
-		if ( is_array( $arr ) && array_key_exists( '['.$col_id.']['.$field.']['.$section_row.']', $arr ) ) {
-			$result = $arr[ '['.$col_id.']['.$field.']['.$section_row.']' ];
-		} else {
-			$result = $default;
-		}
-		
-		$result = str_replace( '{rowcapo:}', '&#039;',
-			 	 str_replace( '{rowcqt:}', '&quot;',
-				 
-
-			    $result
-			    ) );	
-				
-				
-		return $result;
-		
-	
-	}
-	
 	
 		
 	/*
@@ -779,7 +730,7 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function push_cloneform( $clone_trigger_id, $cur_id, $col_id, $clone_value, $section_row, $value, $clone_list_toggle_class = '' ) {
+	public static function push_cloneform( $uid, $clone_trigger_id, $cur_id, $col_id, $clone_value, $section_row, $value, $clone_list_toggle_class = '' ) {
 		
 		$widget_ID         = $section_row;
 		
@@ -851,11 +802,13 @@ class UixPageBuilder {
 		if ( $value && is_array( $value ) ) {
 			foreach ( $value as $t_value ) {
 				
-				if ( self::inc_str( $data, 'chk-id-input="'.$t_value[ 'id' ].'"' ) ) {
-					$data = str_replace( 'chk-id-input="'.$t_value[ 'id' ].'"', 'value="'.esc_attr( self::inputtextareavalue( $t_value[ 'default' ] ) ).'"', $data );	
+				$item_id = $uid.UixPBFormCore::fid( $col_id, $section_row, $t_value[ 'id' ] );
+			
+				if ( self::inc_str( $data, 'chk-id-input="'.$item_id.'"' ) ) {
+					$data = str_replace( 'chk-id-input="'.$item_id.'"', 'value="'.esc_attr( self::inputtextareavalue( $t_value[ 'default' ] ) ).'"', $data );	
 				}
-				if ( self::inc_str( $data, 'chk-id-textarea="'.$t_value[ 'id' ].'"' ) ) {
-					$data = str_replace( 'chk-id-textarea="'.$t_value[ 'id' ].'"', '>'.esc_textarea( self::inputtextareavalue( $t_value[ 'default' ] ) ).'</textarea>', $data );	
+				if ( self::inc_str( $data, 'chk-id-textarea="'.$item_id.'"' ) ) {
+					$data = str_replace( 'chk-id-textarea="'.$item_id.'"', '>'.esc_textarea( self::inputtextareavalue( $t_value[ 'default' ] ) ).'</textarea>', $data );	
 				}			
 				
 

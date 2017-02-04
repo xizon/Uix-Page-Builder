@@ -74,66 +74,6 @@ if ( $sid >= 0 ) {
 }
 
 /**
- * Element Template
- * ----------------------------------------------------
- */
-$uix_pb_authorcard_primary_color  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_primary_color', '#a2bf2f' );
-$uix_pb_authorcard_avatar         = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_avatar', '' ) );
-$uix_pb_authorcard_name           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_name', __( 'Your Name', 'uix-page-builder' ) );
-$uix_pb_authorcard_intro          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_intro', __( 'Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Tu vero, inquam, ducas licet, si sequetur; Ab his oratores, ab his imperatores ac rerum publicarum principes extiterunt. Igitur neque stultorum quisquam beatus neque sapientium non beatus.', 'uix-page-builder' ) );
-$uix_pb_authorcard_link_label     = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_link_label', __( '&rarr;', 'uix-page-builder' ) );
-$uix_pb_authorcard_link_link      = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_link_link', '#' ) );
-$uix_pb_authorcard_1_icon         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_1_icon', '' );
-$uix_pb_authorcard_2_icon         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_2_icon', '' );
-$uix_pb_authorcard_3_icon         = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_3_icon', '' );
-$uix_pb_authorcard_1_url          = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_1_url', '' ) );
-$uix_pb_authorcard_2_url          = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_2_url', '' ) );
-$uix_pb_authorcard_3_url          = esc_url( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_authorcard_3_url', '' ) );
-
-
-$element_temp = '
-<div class="uix-pb-authorcard-wrapper">
-	<div class="uix-pb-authorcard" style="border-top-color: {color};">
-		<div class="uix-pb-authorcard-top">
-			<div class="uix-pb-authorcard-text">
-				<h3 class="uix-pb-authorcard-title">{name}
-				{social_1}
-				{social_2}
-				{social_3}
-				</h3> 	 
-			</div>
-			<div class="uix-pb-authorcard-pic"><img src="{avatar}" alt="{name_attr}"></div>
-		</div>
-		<div class="uix-pb-authorcard-middle">{intro}</div> 
-		<a class="uix-pb-authorcard-final" href="{link_url}" rel="author">{link_label}</a> 
-	</div> 
-</div>
-';
- 
- 
-$avatarURL = ( !empty( $uix_pb_authorcard_avatar ) ) ? $uix_pb_authorcard_avatar : UixPBFormCore::photo_placeholder();
-$social_out_1 = ( !empty( $uix_pb_authorcard_1_url ) ) ? '<a href=\''.$uix_pb_authorcard_1_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_1_icon ) ? $uix_pb_authorcard_1_icon : 'link' ).'\'></i></a>' : '';
-$social_out_2 = ( !empty( $uix_pb_authorcard_2_url ) ) ? '<a href=\''.$uix_pb_authorcard_2_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_2_icon ) ? $uix_pb_authorcard_2_icon : 'link' ).'\'></i></a>' : '';
-$social_out_3 = ( !empty( $uix_pb_authorcard_3_url ) ) ? '<a href=\''.$uix_pb_authorcard_3_url.'\' target=\'_blank\'><i class=\'fa fa-'.( !empty( $uix_pb_authorcard_3_icon ) ? $uix_pb_authorcard_3_icon : 'link' ).'\'></i></a>' : '';
-
-
-$uix_pb_section_authorcard_temp = str_replace( '{name}', uix_pb_kses( $uix_pb_authorcard_name ), 
-                                  str_replace( '{name_attr}', esc_attr( $uix_pb_authorcard_name ), 
-								  str_replace( '{intro}', uix_pb_kses( $uix_pb_authorcard_intro ), 
-								  str_replace( '{link_url}', esc_url( $uix_pb_authorcard_link_link ), 
-								  str_replace( '{link_label}', uix_pb_kses( $uix_pb_authorcard_link_label ), 
-								  str_replace( '{avatar}',esc_url( $avatarURL ), 
-								  str_replace( '{color}', esc_attr( $uix_pb_authorcard_primary_color ), 
-								  str_replace( '{social_1}', $social_out_1, 
-								  str_replace( '{social_2}', $social_out_2, 
-								  str_replace( '{social_3}', $social_out_3, 
-
-							     $element_temp 
-								 ) ) ) ) ) ) ) ) ) );
-
-
-
-/**
  * Form Type & Parameters
  * ----------------------------------------------------
  */
@@ -142,16 +82,23 @@ $form_type = [
 ];
 
 
-						
+$args_config = [
+	'col_id'    => $colid,
+	'sid'       => $sid,
+	'form_id'   => $form_id,
+	'items'     => $item
+];						
+
 
 $args = 
 	[
+
+		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_primary_color' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_primary_color' ),
+			'id'             => 'uix_pb_authorcard_primary_color',
 			'title'          => __( 'Primary Color', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_primary_color,
+			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
 			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
@@ -159,11 +106,10 @@ $args =
 		),
 
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_avatar' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_avatar' ),
+			'id'             => 'uix_pb_authorcard_avatar',
 			'title'          => __( 'Author Picture', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_avatar,
+			'value'          => '',
 			'placeholder'    => __( 'Avatar URL', 'uix-page-builder' ),
 			'type'           => 'image',
 			'default'        => array(
@@ -176,11 +122,10 @@ $args =
 
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_name' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_name' ),
+			'id'             => 'uix_pb_authorcard_name',
 			'title'          => __( 'Author Name', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_name,
+			'value'          => __( 'Your Name', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'text'
 		
@@ -188,11 +133,10 @@ $args =
 	
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_intro' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_intro' ),
+			'id'             => 'uix_pb_authorcard_intro',
 			'title'          => __( 'Biographical Info', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_intro,
+			'value'          => __( 'Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Tu vero, inquam, ducas licet, si sequetur; Ab his oratores, ab his imperatores ac rerum publicarum principes extiterunt. Igitur neque stultorum quisquam beatus neque sapientium non beatus.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -204,21 +148,19 @@ $args =
 	
 
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_link_label' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_link_label' ),
+			'id'             => 'uix_pb_authorcard_link_label',
 			'title'          => __( 'Link Text', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_link_label,
+			'value'          => __( '&rarr;', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'text'
 		
 		),		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_link_link' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_link_link' ),
+			'id'             => 'uix_pb_authorcard_link_link',
 			'title'          => __( 'Link URL', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_link_link,
+			'value'          => esc_url( '#' ),
 			'placeholder'    => 'URL',
 			'type'           => 'text'
 		
@@ -227,11 +169,10 @@ $args =
 
 
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_1_url' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_1_url' ),
+			'id'             => 'uix_pb_authorcard_1_url',
 			'title'          => __( 'Social Network 1', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_1_url,
+			'value'          => '',
 			'placeholder'    => __( 'Your Social Network Page URL 1', 'uix-page-builder' ),
 			'type'           => 'text',
 			'default'        => ''
@@ -239,11 +180,10 @@ $args =
 		),
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_1_icon' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_1_icon' ),
+			'id'             => 'uix_pb_authorcard_1_icon',
 			'title'          => '',
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_1_icon,
+			'value'          => '',
 			'placeholder'    => __( 'Choose Social Icon 1', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
@@ -254,11 +194,10 @@ $args =
 		
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_2_url' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_2_url' ),
+			'id'             => 'uix_pb_authorcard_2_url',
 			'title'          => __( 'Social Network 2', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_2_url,
+			'value'          => '',
 			'placeholder'    => __( 'Your Social Network Page URL 2', 'uix-page-builder' ),
 			'type'           => 'text',
 			'default'        => ''
@@ -266,11 +205,10 @@ $args =
 		),
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_2_icon' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_2_icon' ),
+			'id'             => 'uix_pb_authorcard_2_icon',
 			'title'          => '',
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_2_icon,
+			'value'          => '',
 			'placeholder'    => __( 'Choose Social Icon 2', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
@@ -281,11 +219,10 @@ $args =
 			
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_3_url' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_3_url' ),
+			'id'             => 'uix_pb_authorcard_3_url',
 			'title'          => __( 'Social Network 3', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_3_url,
+			'value'          => '',
 			'placeholder'    => __( 'Your Social Network Page URL 3', 'uix-page-builder' ),
 			'type'           => 'text',
 			'default'        => ''
@@ -293,28 +230,25 @@ $args =
 		),
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_3_icon' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_authorcard_3_icon' ),
+			'id'             => 'uix_pb_authorcard_3_icon',
 			'title'          => '',
 			'desc'           => '',
-			'value'          => $uix_pb_authorcard_3_icon,
+			'value'          => '',
 			'placeholder'    => __( 'Choose Social Icon 3', 'uix-page-builder' ),
 			'type'           => 'icon',
 			'default'        => array(
 									'social'  => true
 								)
 		
-		),		
-
-
+		),	
+		
 
         //------- template
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_authorcard_temp' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_authorcard_temp' ),
+			'id'             => $form_id.'_temp',
 			'title'          => '',
 			'desc'           => '',
-			'value'          => $uix_pb_section_authorcard_temp,
+			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -324,13 +258,14 @@ $args =
 		),	
 
 	
+
+
 	]
 ;
 
-$form_html = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );
-$form_js = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js' );
-$form_js_vars = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
+$form_html    = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );
+$form_js_vars = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
 /**
@@ -347,7 +282,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Author Card', 'uix-page-builder' ) ); ?>         
+					<?php echo UixPBFormCore::uixpbform_callback( $form_id, __( 'Author Card', 'uix-page-builder' ) ); ?>         
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -366,7 +301,7 @@ if ( $sid == -1 && is_admin() ) {
  * ----------------------------------------------------
  */
 if ( $sid >= 0 && is_admin() ) {
-	echo $form_html;	
+	echo $form_html;
 	?>
     
 <script type="text/javascript">
@@ -374,61 +309,51 @@ if ( $sid >= 0 && is_admin() ) {
 'use strict';
 	$( document ).ready( function() {
 		
-		
-		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		function uix_pb_temp() {
 			
-			var tempcode                         = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
-				uix_pb_authorcard_primary_color  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_primary_color' ); ?>' ).val(),
-				uix_pb_authorcard_avatar         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_avatar' ); ?>' ).val(),
-				uix_pb_authorcard_name           = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_name' ); ?>' ).val(),
-				uix_pb_authorcard_intro          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_intro' ); ?>' ).val(),
-				uix_pb_authorcard_link_label     = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_link_label' ); ?>' ).val(),
-				uix_pb_authorcard_link_link      = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_link_link' ); ?>' ).val(),
-				uix_pb_authorcard_1_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_1_icon' ); ?>' ).val(),
-				uix_pb_authorcard_1_icon_cur     = ( uix_pb_authorcard_1_icon == undefined || uix_pb_authorcard_1_icon == '' ) ? 'link' : uix_pb_authorcard_1_icon,
-				uix_pb_authorcard_2_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_2_icon' ); ?>' ).val(),
-				uix_pb_authorcard_2_icon_cur     = ( uix_pb_authorcard_2_icon == undefined || uix_pb_authorcard_2_icon == '' ) ? 'link' : uix_pb_authorcard_2_icon,
-				uix_pb_authorcard_3_icon         = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_3_icon' ); ?>' ).val(),
-				uix_pb_authorcard_3_icon_cur     = ( uix_pb_authorcard_3_icon == undefined || uix_pb_authorcard_3_icon == '' ) ? 'link' : uix_pb_authorcard_3_icon,
-				uix_pb_authorcard_1_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_1_url' ); ?>' ).val(),
-				uix_pb_authorcard_2_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_2_url' ); ?>' ).val(),
-				uix_pb_authorcard_3_url          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_authorcard_3_url' ); ?>' ).val();
-				
-			
-			
-			if ( tempcode.length > 0 ) {
-				
-				
-				var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? encodeURI( uix_pb_authorcard_avatar ) : '<?php echo UixPBFormCore::photo_placeholder(); ?>',
-					social_out_1 = ( uix_pb_authorcard_1_url != undefined && uix_pb_authorcard_1_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_1_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon_cur+'"></i></a>' : '',
-					social_out_2 = ( uix_pb_authorcard_2_url != undefined && uix_pb_authorcard_2_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_2_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon_cur+'"></i></a>' : '',
-					social_out_3 = ( uix_pb_authorcard_3_url != undefined && uix_pb_authorcard_3_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_3_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon_cur+'"></i></a>' : '';
+			/* Vars */
+			<?php echo $form_js_vars; ?>
 
-				
-				
-				//---
-				tempcode = tempcode
-								  .replace(/{name}/g, uix_pb_authorcard_name )
-								  .replace(/{name_attr}/g, uixpbform_htmlEncode( uix_pb_authorcard_name ) )
-								  .replace(/{intro}/g, uix_pb_authorcard_intro )
-								  .replace(/{link_url}/g, encodeURI( uix_pb_authorcard_link_link ) )
-								  .replace(/{link_label}/g, uix_pb_authorcard_link_label )
-								  .replace(/{avatar}/g, avatarURL )
-								  .replace(/{color}/g, uixpbform_htmlEncode( uix_pb_authorcard_primary_color ) )
-								  .replace(/{social_1}/g, social_out_1 )
-								  .replace(/{social_2}/g, social_out_2 )
-								  .replace(/{social_3}/g, social_out_3 );
-								  
-					
-							
-				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_authorcard_temp' ); ?>" ).val( tempcode );
-			}
+
+			var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != '' ) ? encodeURI( uix_pb_authorcard_avatar ) : '<?php echo UixPBFormCore::photo_placeholder(); ?>',
+				uix_pb_authorcard_1_icon_cur     = ( uix_pb_authorcard_1_icon == undefined || uix_pb_authorcard_1_icon == '' ) ? 'link' : uix_pb_authorcard_1_icon,
+				uix_pb_authorcard_2_icon_cur     = ( uix_pb_authorcard_2_icon == undefined || uix_pb_authorcard_2_icon == '' ) ? 'link' : uix_pb_authorcard_2_icon,
+				uix_pb_authorcard_3_icon_cur     = ( uix_pb_authorcard_3_icon == undefined || uix_pb_authorcard_3_icon == '' ) ? 'link' : uix_pb_authorcard_3_icon,	
+				social_out_1 = ( uix_pb_authorcard_1_url != undefined && uix_pb_authorcard_1_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_1_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_1_icon_cur+'"></i></a>' : '',
+				social_out_2 = ( uix_pb_authorcard_2_url != undefined && uix_pb_authorcard_2_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_2_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_2_icon_cur+'"></i></a>' : '',
+				social_out_3 = ( uix_pb_authorcard_3_url != undefined && uix_pb_authorcard_3_url != '' ) ? '<a href="'+encodeURI( uix_pb_authorcard_3_url )+'" target="_blank"><i class="fa fa-'+uix_pb_authorcard_3_icon_cur+'"></i></a>' : '';
+
+
+			var temp = '';
+				temp += '<div class="uix-pb-authorcard-wrapper">';
+				temp += '<div class="uix-pb-authorcard" style="border-top-color: '+uixpbform_htmlEncode(uix_pb_authorcard_primary_color)+';">';
+				temp += '<div class="uix-pb-authorcard-top">';
+				temp += '<div class="uix-pb-authorcard-text">';
+				temp += '<h3 class="uix-pb-authorcard-title">'+uix_pb_authorcard_name+'';
+				temp += social_out_1;
+				temp += social_out_2;
+				temp += social_out_3;
+				temp += '</h3>';	 
+				temp += '</div>';
+				temp += '<div class="uix-pb-authorcard-pic"><img src="'+avatarURL+'" alt="'+uixpbform_htmlEncode(uix_pb_authorcard_name)+'"></div>';
+				temp += '</div>';
+				temp += '<div class="uix-pb-authorcard-middle">'+uix_pb_authorcard_intro+'</div>';
+				temp += '<a class="uix-pb-authorcard-final" href="'+encodeURI(uix_pb_authorcard_link_link)+'" rel="author">'+uix_pb_authorcard_link_label+'</a>';
+				temp += '</div>';
+				temp += '</div>';	
 			
+			/* Save data */
+			$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
 			
-			
-			
-		});
-				 
+		}
+		
+		uix_pb_temp();
+		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() { uix_pb_temp(); });
+		
+
+		
+		
+		 
 	} ); 
 } ) ( jQuery );
 </script> 

@@ -1,17 +1,18 @@
 <?php
 class UixPBFormType_Checkbox {
 	
-	public static function add( $args, $_output ) {
+	public static function add( $args, $args_config, $_output ) {
 		
 		if ( !is_array( $args ) ) return;
+		if ( !is_array( $args_config ) ) return;
 			
 		$title            = ( isset( $args[ 'title' ] ) ) ? $args[ 'title' ] : '';
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
-		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
+		$value            = ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], $args[ 'value' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], '' );
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
-		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
+		$id               = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ] ) : '';
+		$name             = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ] ) : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -24,19 +25,20 @@ class UixPBFormType_Checkbox {
         if ( $type == 'checkbox' ) {
             
             $checked = false;
-					
-            if ( is_array( $default ) && !empty( $default ) ) {
-                $checked = $default[ 'checked' ];
+			$checked_txt = '';
 			
-				
-                if ( $checked ) {
-                    $checked_txt = 'checked';
-                } else {
-                    $checked_txt = '';
-                }
-				
-	
-            }
+			if ( is_array( $default ) && !empty( $default ) ) {
+				$checked = $default[ 'checked' ];
+			} else {
+				$checked = ( $value == 1 ) ? true : false;
+			}
+			
+			if ( $checked ) {
+				$checked_txt = 'checked';
+			} else {
+				$checked_txt = '';
+			}
+			
 			
 			//Toggle for checkbox
 			$toggle_class = '';
@@ -49,7 +51,7 @@ class UixPBFormType_Checkbox {
              
 			 
 				$toggle_class = ( isset( $toggle[ 'toggle_class' ] ) ) ? $toggle[ 'toggle_class' ] : '';
-				$toggle_trigger_id = ( isset( $toggle[ 'trigger_id' ] ) ) ? $toggle[ 'trigger_id' ] : '';
+				$toggle_trigger_id = ( isset( $toggle[ 'trigger_id' ] ) ) ? $id.'-'.$toggle[ 'trigger_id' ] : '';
 				
 				if ( isset( $toggle[ 'toggle_class' ] ) ) {
 					foreach ( $toggle[ 'toggle_class' ] as $tid_value ) {
@@ -111,10 +113,16 @@ class UixPBFormType_Checkbox {
                     </tr> 
                 '.PHP_EOL;	
                 
-            $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'-checkbox" ).is( ":checked" );'.PHP_EOL : '' ).'
-                
-            ';						
+			if ( is_array( $toggle ) && !empty( $toggle ) ) {
+				$jscode_vars = '
+					'.( !empty( $id ) ? 'var '.$args[ 'id' ].' = ( $( "#'.$id.'" ).val() == 1 ) ? true : false;'.PHP_EOL : '' ).'
+				';	
+			} else {
+				$jscode_vars = '
+					'.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'-checkbox" ).is( ":checked" );'.PHP_EOL : '' ).'
+				';		
+			}
+					
                 
 			$jscode = '';
 				

@@ -1,17 +1,18 @@
 <?php
 class UixPBFormType_Slider {
 	
-	public static function add( $args, $_output ) {
+	public static function add( $args, $args_config, $_output ) {
 		
 		if ( !is_array( $args ) ) return;
+		if ( !is_array( $args_config ) ) return;
 			
 		$title            = ( isset( $args[ 'title' ] ) ) ? $args[ 'title' ] : '';
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
-		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
+		$value            = ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], $args[ 'value' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], '' );
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
-		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
+		$id               = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ] ) : '';
+		$name             = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ] ) : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -27,15 +28,21 @@ class UixPBFormType_Slider {
 			$min = '';
 			$max = '';
 			$step = '';
-			$units_id = '';
+			$unitsid = '';
 			
             if ( is_array( $default ) && !empty( $default ) ) {
 				$min = $default[ 'min' ];
 				$max = $default[ 'max' ];
 				$step = $default[ 'step' ];
 				$units = ( isset( $default[ 'units' ] ) ) ? $default[ 'units' ] : '';
-				$units_id = ( isset( $default[ 'units_id' ] ) ) ? $default[ 'units_id' ] : '';
-				$units_name = ( isset( $default[ 'units_name' ] ) ) ? $default[ 'units_name' ] : '';
+				$unitsid = ( isset( $default[ 'units_id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $default[ 'units_id' ] ) : '';
+				$unitsname = ( isset( $default[ 'units_id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $default[ 'units_id' ] ) : '';
+				
+				$jscode_vars .= '
+					'.( !empty( $unitsid ) ? 'var '.$default[ 'units_id' ].' = $( "#'.$unitsid.'" ).val();'.PHP_EOL : '' ).'
+				';		
+				
+				
             }
 	
             
@@ -46,7 +53,7 @@ class UixPBFormType_Slider {
 						
 						    <div class="uixpbform-box">
                                
-								   '.( !empty( $units_id ) ? '<input type="hidden" id="'.$units_id.'" name="'.$units_name.'" chk-id-input="'.$units_id.'" value="'.$units.'">' : '' ).' 
+								   '.( !empty( $unitsid ) ? '<input type="hidden" id="'.$unitsid.'" name="'.$unitsname.'" chk-id-input="'.$unitsid.'" value="'.$units.'">' : '' ).' 
 								   
 								   '.( !empty( $id ) ? '
 									<div class="uixpbform-range-container">
@@ -65,10 +72,9 @@ class UixPBFormType_Slider {
                 '.PHP_EOL;	
                 
 				
-            $jscode_vars = '
-				'.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
-				'.( !empty( $units_id ) ? 'var '.$units_id.' = $( "#'.$units_id.'" ).val();'.PHP_EOL : '' ).'
-            ';		
+            $jscode_vars .= '
+                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+            ';	
 		
             
 

@@ -20,7 +20,7 @@ if ( !function_exists( 'uix_page_builder_previewControlpanel' ) ) {
 				add_action( 'admin_menu', 'uix_page_builder_remove_redundant_menu' );
 				add_action( 'admin_head', 'uix_page_builder_remove_redundant_wapper' );
 				add_action( 'admin_head', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container_options' );
-				wp_enqueue_script( 'tinymce_js', includes_url( 'js/tinymce/' ) . 'wp-tinymce.php', array( 'jquery' ), false, true );
+
 			}    
         } else {
 			if ( isset( $_GET['pb_preview'] ) && $_GET['pb_preview'] == 1 ) {
@@ -31,7 +31,6 @@ if ( !function_exists( 'uix_page_builder_previewControlpanel' ) ) {
 		
 	}
 }
-
 
 
 if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
@@ -319,6 +318,7 @@ if ( !function_exists( 'uix_page_builder_remove_redundant_menu' ) ) {
 if ( !function_exists( 'uix_page_builder_remove_redundant_wapper' ) ) {
 		
 	function uix_page_builder_remove_redundant_wapper() {
+		
 		echo "
 		<style type='text/css'>
 		#adminmenuwrap, 

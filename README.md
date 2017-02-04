@@ -58,6 +58,12 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ### Updates
 
 
+##### = 1.1.5 =
+
+* Upgraded core API. ( For developers, custom modules are much simpler! )
+* Optimize the page builder form structure.
+* Fixed some bugs of TinyMCE editor.
+
 
 ##### = 1.1.4 =
 

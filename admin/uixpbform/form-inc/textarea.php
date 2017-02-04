@@ -1,17 +1,18 @@
 <?php
 class UixPBFormType_Textarea {
 	
-	public static function add( $args, $_output ) {
+	public static function add( $args, $args_config, $_output ) {
 		
 		if ( !is_array( $args ) ) return;
+		if ( !is_array( $args_config ) ) return;
 			
 		$title            = ( isset( $args[ 'title' ] ) ) ? $args[ 'title' ] : '';
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
-		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
+		$value            = ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], $args[ 'value' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], '' );
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
-		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
+		$id               = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ] ) : '';
+		$name             = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ] ) : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -20,26 +21,16 @@ class UixPBFormType_Textarea {
 		$jscode = '';
 		$jscode_vars = '';
 		
-		
 		if ( $type == 'textarea' ) {
 			
 			$row     = 5;
 			$format  = true;
-			$the_var = '';
 			
 			if ( is_array( $default ) && !empty( $default ) ) {
 				$row    = ( isset( $default[ 'row' ] ) ) ? $default[ 'row' ] : 5;
 				$format = ( isset( $default[ 'format' ] ) ) ? $default[ 'format' ] : true;
 				$hide   = ( isset( $default[ 'hide' ] ) ) ? $default[ 'hide' ] : false;
 				
-				if ( !$hide ) {
-					if ( $format ) {
-						$the_var = 'var '.$id.' = uixpbform_formatTextarea( $( "#'.$id.'" ).val() );';
-					} else {
-						$the_var = 'var '.$id.' = $( "#'.$id.'" ).val();';
-					}
-
-				}
 			}
 			
 			$field = '
@@ -57,9 +48,9 @@ class UixPBFormType_Textarea {
 					</tr> 
 				'.PHP_EOL;	
 				
-			$jscode_vars = '
-				'.( !empty( $id ) ? ''.$the_var.''.PHP_EOL : '' ).'
-			';	
+            $jscode_vars = '
+                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+            ';
 			
 			$jscode = '';
 			

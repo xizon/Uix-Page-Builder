@@ -74,22 +74,6 @@ if ( $sid >= 0 ) {
 }
 
 /**
- * Element Template
- * ----------------------------------------------------
- */
-
-$uix_pb_section_contactform1_code = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_section_contactform1_code', '[uix_pb_contact_form]' );
-
-$element_temp = '{contactform_shortcode}';
- 
- 
-$uix_pb_section_contactform1_temp = str_replace( '{contactform_shortcode}', $uix_pb_section_contactform1_code,
-
-								 $element_temp 
-								 );
-
-								  
-/**
  * Form Type & Parameters
  * ----------------------------------------------------
  */
@@ -98,18 +82,23 @@ $form_type = [
 ];
 
 
-						
+$args_config = [
+	'col_id'    => $colid,
+	'sid'       => $sid,
+	'form_id'   => $form_id,
+	'items'     => $item
+];						
+
 
 $args = 
 	[
 
-
+		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_contactform1_code' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_contactform1_code' ),
-			'title'          => __( 'Shortcode', 'uix-page-builder' ),
+			'id'             => 'uix_pb_contactform1_code',
+			'title'          => __( 'Shortcode & Content', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_section_contactform1_code,
+			'value'          => '[uix_pb_contact_form]',
 			'placeholder'    => '',
 			'type'           => 'editor',
 			'default'        => array(
@@ -120,8 +109,7 @@ $args =
 		),
 		
 	    array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_contactform1_tipinfo' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_contactform1_tipinfo' ),
+			'id'             => 'uix_pb_contactform1_tipinfo',
 			'desc'           => __( 'Output a complete commenting form with your theme by default. <strong>You can install a contact form plugin you want. When you\'re done, copy shortcode and paste into the editor.</strong>', 'uix-page-builder' ),
 			'type'           => 'note',
 			'default'        => array(
@@ -132,13 +120,13 @@ $args =
 		),	
 
 
+
         //------- template
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_contactform1_temp' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_contactform1_temp' ),
+			'id'             => $form_id.'_temp',
 			'title'          => '',
 			'desc'           => '',
-			'value'          => $uix_pb_section_contactform1_temp,
+			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -148,13 +136,14 @@ $args =
 		),	
 
 	
+
+
 	]
 ;
 
-$form_html = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );
-$form_js = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js' );
-$form_js_vars = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
+$form_html    = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );
+$form_js_vars = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
 /**
@@ -171,7 +160,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Contact Form', 'uix-page-builder' ) ); ?>         
+					<?php echo UixPBFormCore::uixpbform_callback( $form_id, __( 'Contact Form', 'uix-page-builder' ) ); ?>         
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -190,7 +179,7 @@ if ( $sid == -1 && is_admin() ) {
  * ----------------------------------------------------
  */
 if ( $sid >= 0 && is_admin() ) {
-	echo $form_html;	
+	echo $form_html;
 	?>
     
 <script type="text/javascript">
@@ -198,29 +187,26 @@ if ( $sid >= 0 && is_admin() ) {
 'use strict';
 	$( document ).ready( function() {
 		
+		function uix_pb_temp() {
+			
+			/* Vars */
+			<?php echo $form_js_vars; ?>
+
+
+			var temp = uix_pb_contactform1_code;	
+			
+			/* Save data */
+			$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
+			
+		}
 		
-		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
-			
-			var tempcode                          = "<?php echo UixPBFormCore::str_compression( $element_temp ); ?>",
-				uix_pb_section_contactform1_code  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_contactform1_code' ); ?>' ).val();
-				
-			
-			
-			
-			if ( tempcode.length > 0 ) {
-					
-				//---
-				tempcode = tempcode
-								  .replace(/{contactform_shortcode}/g, uix_pb_section_contactform1_code );
-				
-				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_contactform1_temp' ); ?>" ).val( tempcode );
-			}
-			
-			
-			
-			
-		});
-				 
+		uix_pb_temp();
+		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() { uix_pb_temp(); });
+		
+
+		
+		
+		 
 	} ); 
 } ) ( jQuery );
 </script> 

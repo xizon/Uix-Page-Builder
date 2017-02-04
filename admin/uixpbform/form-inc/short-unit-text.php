@@ -1,17 +1,18 @@
 <?php
 class UixPBFormType_ShortUnitsText {
 	
-	public static function add( $args, $_output ) {
+	public static function add( $args, $args_config, $_output ) {
 		
 		if ( !is_array( $args ) ) return;
+		if ( !is_array( $args_config ) ) return;
 			
 		$title            = ( isset( $args[ 'title' ] ) ) ? $args[ 'title' ] : '';
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
-		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
+		$value            = ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], $args[ 'value' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], '' );
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
-		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
+		$id               = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ] ) : '';
+		$name             = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ] ) : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
 		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
@@ -24,10 +25,16 @@ class UixPBFormType_ShortUnitsText {
         if ( $type == 'short-units-text' ) {
             
             $unitslist = '';
-			$unitsid = ( isset( $default[ 'units_id' ] ) ) ? $default[ 'units_id' ] : '';
-			$unitsname = ( isset( $default[ 'units_name' ] ) ) ? $default[ 'units_name' ] : '';
-			$unitsvalue = ( isset( $default[ 'units_value' ] ) ) ? $default[ 'units_value' ] : '';
+			$unitsid = ( isset( $default[ 'units_id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $default[ 'units_id' ] ) : '';
+			$unitsname = ( isset( $default[ 'units_id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $default[ 'units_id' ] ) : '';
+			$unitsvalue = ( isset( $default[ 'units_value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $default[ 'units_id' ], $default[ 'units_value' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $default[ 'units_id' ], '' );
 			$unitsfirst = '';
+			
+            $jscode_vars .= '
+				'.( !empty( $unitsid ) ? 'var '.$default[ 'units_id' ].' = $( "#'.$unitsid.'" ).val();'.PHP_EOL : '' ).'
+            ';	
+			
+			
 			$i = 1;
             if ( is_array( $default ) && !empty( $default ) ) {
 				$unitsfirst = $default[ 'units' ][0];
@@ -72,12 +79,9 @@ class UixPBFormType_ShortUnitsText {
                 '.PHP_EOL;	
                 
 				
-            $jscode_vars = '
-                '.( !empty( $id ) ? 'var '.$id.' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
-				'.( !empty( $unitsid ) ? 'var '.$unitsid.' = $( "#'.$unitsid.'" ).val();'.PHP_EOL : '' ).'
-            ';		
-			
-            $jscode = '';
+            $jscode_vars .= '
+                '.( !empty( $id ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
+            ';
             
 
         }

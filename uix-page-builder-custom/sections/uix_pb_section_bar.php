@@ -74,69 +74,6 @@ if ( $sid >= 0 ) {
 	
 	
 }
-
-
-/**
- * Element Template
- * ----------------------------------------------------
- */
-
-$uix_pb_bar_shape                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_shape', 'circular' );
-$uix_pb_bar_circular_size               = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_circular_size', 120 ) );
-$uix_pb_bar_square_size                 = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_square_size', 100 ) );
-$uix_pb_bar_square_size_units           = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_square_size_units', '%' );
-$uix_pb_bar_percent                     = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent', 75 ) );
-$uix_pb_bar_perc_icons_size             = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_perc_icons_size', 12 ) );
-$uix_pb_bar_linewidth                   = floatval( UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_linewidth', 3 ) );
-$uix_pb_bar_icon_toggle                 = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_icon_toggle', 0 ); // 0:false  1:true
-$uix_pb_bar_icon_toggle_chk             = ( $uix_pb_bar_icon_toggle == 1 ) ? true : false;
-$uix_pb_bar_icon                        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_icon', '' );
-$uix_pb_bar_color                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_color', '#a2bf2f' );
-$uix_pb_bar_trackcolor                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_trackcolor', '#f1f1f1' );
-$uix_pb_bar_percent_icon_color          = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_percent_icon_color', '#473f3f' );
-$uix_pb_bar_title                       = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_title', __( 'Title', 'uix-page-builder' ) );
-$uix_pb_bar_desc                        = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_desc', '' );
-$uix_pb_bar_show_units                  = UixPageBuilder::fvalue( $colid, $sid, $item, 'uix_pb_bar_show_units', '%' );
-
-
-
-if ( $uix_pb_bar_shape == 'square' ) {
-	
-	$content = '
-	<div class="uix-pb-bar-box uix-pb-bar-box-square">
-	    <div style="width:'.esc_attr( $uix_pb_bar_square_size.$uix_pb_bar_square_size_units ).';">
-			<div class="uix-pb-bar-info">
-				<h3 class="uix-pb-bar-title">'.$uix_pb_bar_title.'</h3>
-				<div class="uix-pb-bar-desc">'.$uix_pb_bar_desc.'</div>
-			</div>
-			<div class="uix-pb-bar" data-percent="'.esc_attr( $uix_pb_bar_percent ).'" data-linewidth="'.esc_attr( $uix_pb_bar_linewidth ).'" data-trackcolor="'.esc_attr( $uix_pb_bar_trackcolor ).'" data-barcolor="'.esc_attr( $uix_pb_bar_color ).'" data-units="'.esc_attr( $uix_pb_bar_show_units ).'" data-size="'.esc_attr( $uix_pb_bar_square_size.$uix_pb_bar_square_size_units ).'" data-icon="'.esc_attr( $uix_pb_bar_icon ).'">
-				<span class="uix-pb-bar-percent"></span>
-				<span class="uix-pb-bar-placeholder">0</span>
-				<span class="uix-pb-bar-text"  style="color:'.esc_attr( $uix_pb_bar_percent_icon_color ).';font-size:'.esc_attr( $uix_pb_bar_perc_icons_size ).'px;">'.( !empty( $uix_pb_bar_icon )  ? '<i class="fa fa-'.esc_attr( $uix_pb_bar_icon ).'"></i>' : ''.$uix_pb_bar_percent.''.$uix_pb_bar_show_units.'' ).'</span>
-			</div>
-		</div>
-	</div><!-- /.uix-pb-bar-box-square -->
-	';
-	
-	
-} else {
-	$content = '
-			<div class="uix-pb-bar-box uix-pb-bar-box-circular">
-				<div class="uix-pb-bar" data-percent="'.esc_attr( $uix_pb_bar_percent ).'" style="width:'.esc_attr( $uix_pb_bar_circular_size ).'px;">
-					<span class="uix-pb-bar-percent" data-linewidth="'.esc_attr( $uix_pb_bar_linewidth ).'" data-trackcolor="'.esc_attr( $uix_pb_bar_trackcolor ).'" data-barcolor="'.esc_attr( $uix_pb_bar_color ).'" data-units="'.esc_attr( $uix_pb_bar_show_units ).'" data-size="'.esc_attr( $uix_pb_bar_circular_size ).'px"  data-icon="'.esc_attr( $uix_pb_bar_icon ).'" style="color:'.esc_attr( $uix_pb_bar_percent_icon_color ).';font-size:'.esc_attr( $uix_pb_bar_perc_icons_size ).'px;"></span>
-				</div>
-				<h3 class="uix-pb-bar-title">'.$uix_pb_bar_title.'</h3>
-				<div class="uix-pb-bar-desc">'.$uix_pb_bar_desc.'</div>
-			</div><!-- /.uix-pb-bar-box-circular -->
-	';	
-	
-}
-
-$element_temp = '{content}';
-
-$uix_pb_section_bar_temp = str_replace( '{content}', $content,
-							 $element_temp 
-							 );
 								 
 
 /**
@@ -147,17 +84,22 @@ $form_type = [
 	'list' => false
 ];
 
+$args_config = [
+	'col_id'    => $colid,
+	'sid'       => $sid,
+	'form_id'   => $form_id,
+	'items'     => $item
+];						
 
 
 $args = 
 	[
 	
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_shape' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_shape' ),
+			'id'             => 'uix_pb_bar_shape',
 			'title'          => __( 'Choose Style', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_shape,
+			'value'          => 'circular',
 			'placeholder'    => '',
 			'type'           => 'radio',
 			'default'        => array(
@@ -167,15 +109,15 @@ $args =
 			/* If the toggle of switch with radio is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 			                        array(
-										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_shape' ).'-circular', /* {item id}-{option id} */
-										'toggle_class'         => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ]
+										'trigger_id'           => 'circular', /* {option id} */
+										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ],
+										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ]
 
 									),
 			                        array(
-										'trigger_id'           => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_shape' ).'-square', /* {item id}-{option id} */
-										'toggle_class'         => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ]
+										'trigger_id'           => 'square', /* {option id} */
+										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ],
+										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ]
 
 									),
 						
@@ -185,12 +127,11 @@ $args =
 		),
 		
 			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_circular_size' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_circular_size' ),
+				'id'             => 'uix_pb_bar_circular_size',
 				'title'          => __( 'Bar Size', 'uix-page-builder' ),
 				'desc'           => '',
-				'value'          => $uix_pb_bar_circular_size,
-				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class', /*class of toggle item */
+				'value'          => 120,
+				'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class', /*class of toggle item */
 				'placeholder'    => '',
 				'type'           => 'short-text',
 				'default'        => array(
@@ -200,19 +141,17 @@ $args =
 			),
 			
 			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_square_size' ),
+				'id'             => 'uix_pb_bar_square_size',
 				'title'          => __( 'Bar Size', 'uix-page-builder' ),
 				'desc'           => '',
-				'value'          => $uix_pb_bar_square_size,
-				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class', /*class of toggle item */
+				'value'          => 100,
+				'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class', /*class of toggle item */
 				'placeholder'    => '',
 				'type'           => 'short-units-text',
 				'default'        => array(
 										'units'      => [ '%', 'px' ],
-										'units_id'    => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size_units' ),
-										'units_name'  => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_square_size_units' ),
-										'units_value' => $uix_pb_bar_square_size_units
+										'units_id'    => 'uix_pb_bar_square_size_units',
+										'units_value' => '%'
 									)
 			
 			),	
@@ -220,11 +159,10 @@ $args =
 		
 	
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_percent' ),
+			'id'             => 'uix_pb_bar_percent',
 			'title'          => __( 'Percent', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_percent,
+			'value'          => 75,
 			'placeholder'    => '',
 			'type'           => 'short-text',
 			'default'        => array(
@@ -235,11 +173,10 @@ $args =
 	
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_perc_icons_size' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_perc_icons_size' ),
+			'id'             => 'uix_pb_bar_perc_icons_size',
 			'title'          => __( 'Percentage & Icon Size', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_perc_icons_size,
+			'value'          => 12,
 			'placeholder'    => '',
 			'type'           => 'short-text',
 			'default'        => array(
@@ -249,11 +186,10 @@ $args =
 		),	
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_linewidth' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_linewidth' ),
+			'id'             => 'uix_pb_bar_linewidth',
 			'title'          => __( 'Line Width', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_linewidth,
+			'value'          => 3,
 			'placeholder'    => '',
 			'type'           => 'short-text',
 			'default'        => array(
@@ -263,32 +199,27 @@ $args =
 		),
 		
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon_toggle' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_icon_toggle' ),
+			'id'             => 'uix_pb_bar_icon_toggle',
 			'title'          => __( 'Icon', 'uix-page-builder' ),
 			'desc'           => __( 'Using Icon instead of percentage.', 'uix-page-builder' ),
-			'value'          => $uix_pb_bar_icon_toggle,
+			'value'          => 0, // 0:false  1:true
 			'placeholder'    => '',
 			'type'           => 'checkbox',
-			'default'        => array(
-									'checked'  => $uix_pb_bar_icon_toggle_chk
-				                ),
 			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
-									'trigger_id'  => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon_toggle' ), /* {item id}-{option id} */
-									'toggle_class'  => [ ''.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class' ]
+									'trigger_id'    => '', /* {option id} */
+									'toggle_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class' ]
 				                )	
 		
 		
 		),	
 		
 			array(
-				'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon' ),
-				'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_icon' ),
+				'id'             => 'uix_pb_bar_icon',
 				'title'          => '',
 				'desc'           => '',
-				'value'          => $uix_pb_bar_icon,
-				'class'          => 'toggle-row '.UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class', /*class of toggle item */
+				'value'          => '',
+				'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class', /*class of toggle item */
 				'placeholder'    => '',
 				'type'           => 'icon',
 				'default'        => array(
@@ -298,11 +229,10 @@ $args =
 			),	
 			
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_color' ),
+			'id'             => 'uix_pb_bar_color',
 			'title'          => __( 'Bar Color', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_color,
+			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
 			'default'        => [ '#fffff0', '#f5f5dc', '#f5deb3', '#d2b48c', '#c3b091', '#c0c0c0', '#808080', '#464646', '#333333', '#000080', '#084c9e', '#007fff', '#0E90D2', '#4BB1CF', '#5F9EA0', '#00ffff', '#7fffd4', '#008080', '#228b22', '#808000', '#a2bf2f', '#7fff00', '#bfff00', '#ffd700', '#daa520', '#ff7f50', '#fa8072', '#fc0fc0', '#ff77ff', '#e0b0ff', '#b57edc', '#843179', '#E1A0A1', '#D84F51', '#dc143c', '#990002' ,'#800000' ]
@@ -312,11 +242,10 @@ $args =
 
 	
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_trackcolor' ),
+			'id'             => 'uix_pb_bar_trackcolor',
 			'title'          => __( 'Track color', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_trackcolor,
+			'value'          => '#f1f1f1',
 			'placeholder'    => '',
 			'type'           => 'color',
 			'default'        => [ '#ffffff', '#473f3f',  '#bebebe', '#dcdcdc', '#f1f1f1' ]
@@ -324,11 +253,10 @@ $args =
 		),
 	
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_percent_icon_color' ),
+			'id'             => 'uix_pb_bar_percent_icon_color',
 			'title'          => __( 'Percentage & Icon Color', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_percent_icon_color,
+			'value'          => '#473f3f',
 			'placeholder'    => '',
 			'type'           => 'color',
 			'default'        => [ '#ffffff', '#473f3f',  '#bebebe', '#dcdcdc', '#f1f1f1' ]
@@ -337,22 +265,20 @@ $args =
 		
 	
 	    array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_title' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_title' ),
+			'id'             => 'uix_pb_bar_title',
 			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_title,
+			'value'          => __( 'Title', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'text'
 		),	
 		
 		
 	    array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_desc' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_desc' ),
+			'id'             => 'uix_pb_bar_desc',
 			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_desc,
+			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -363,11 +289,10 @@ $args =
 		
 
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_show_units' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_bar_show_units' ),
+			'id'             => 'uix_pb_bar_show_units',
 			'title'          => __( 'Displayed Units', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => $uix_pb_bar_show_units,
+			'value'          => '%',
 			'placeholder'    => '',
 			'type'           => 'text'
 		
@@ -377,18 +302,17 @@ $args =
 		
         //------- template
 		array(
-			'id'             => UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_bar_temp' ),
-			'name'           => UixPageBuilder::fname( $colid, $form_id, 'uix_pb_section_bar_temp' ),
+			'id'             => $form_id.'_temp',
 			'title'          => '',
 			'desc'           => '',
-			'value'          => $uix_pb_section_bar_temp,
+			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
 									'hide' => true
 								)
 		
-		),		
+		),	
 	
 
 
@@ -397,9 +321,8 @@ $args =
 ;
 
 
-$form_html = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );
-$form_js = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js' );
-$form_js_vars = UixPBFormCore::add_form( $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
+$form_html    = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );
+$form_js_vars = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
 
@@ -417,7 +340,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_js, $form_js_vars, $form_id, __( 'Progress Bar', 'uix-page-builder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_id, __( 'Progress Bar', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -430,102 +353,80 @@ if ( $sid == -1 && is_admin() ) {
 	
 }
 
-
 /**
  * Returns forms with ajax
  * ----------------------------------------------------
  */
 if ( $sid >= 0 && is_admin() ) {
-	echo $form_html;	
+	echo $form_html;
 	?>
     
- <script type="text/javascript">
+<script type="text/javascript">
 ( function($) {
 'use strict';
 	$( document ).ready( function() {
 		
-		
-		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() {
+		function uix_pb_temp() {
 			
-			var tempcode                               = '<?php echo UixPBFormCore::str_compression( $element_temp ); ?>',
-				uix_pb_bar_margin_left                 = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_margin_left' ); ?>' ).val(),
-				uix_pb_bar_shape                       = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_shape' ); ?>' ).val(),
-				uix_pb_bar_circular_size               = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_circular_size' ); ?>' ).val(),
-				uix_pb_bar_square_size                 = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size' ); ?>' ).val(),
-				uix_pb_bar_square_size_units           = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_square_size_units' ); ?>' ).val(),
-				uix_pb_bar_percent                     = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent' ); ?>' ).val(),
-				uix_pb_bar_perc_icons_size             = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_perc_icons_size' ); ?>' ).val(),
-				uix_pb_bar_linewidth                   = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_linewidth' ); ?>' ).val(),
-				uix_pb_bar_icon                        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_icon' ); ?>' ).val(),
-				uix_pb_bar_color                       = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_color' ); ?>' ).val(),
-				uix_pb_bar_trackcolor                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_trackcolor' ); ?>' ).val(),
-				uix_pb_bar_percent_icon_color          = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_percent_icon_color' ); ?>' ).val(),
-				uix_pb_bar_title                       = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_title' ); ?>' ).val(),
-				uix_pb_bar_desc                        = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_desc' ); ?>' ).val(),
-				uix_pb_bar_show_units                  = $( '#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_bar_show_units' ); ?>' ).val();
-				
+			/* Vars */
+			<?php echo $form_js_vars; ?>
 
-			if ( tempcode.length > 0 ) {
-				
-				var  show_content                         = '',
-				     uix_pb_bar_result_color              = uix_pb_bar_color,
-					 uix_pb_bar_result_trackcolor         = uix_pb_bar_trackcolor,
-					 uix_pb_bar_result_percent_icon_color = uix_pb_bar_percent_icon_color,
-					 uix_pb_bar_result_size               = ( uix_pb_bar_shape == 'circular' ) ? uixpbform_floatval( uix_pb_bar_circular_size )+"px" : uixpbform_floatval( uix_pb_bar_square_size )+uix_pb_bar_square_size_units,
-					 uix_pb_bar_result_icon               = ( uix_pb_bar_icon != '' ) ? '<i class="fa fa-'+uixpbform_htmlEncode( uix_pb_bar_icon )+'"></i>' : uix_pb_bar_percent+uix_pb_bar_show_units;
-					 
-					 
-				
-				if ( uix_pb_bar_shape == 'square' ) {
-					
-					
-					show_content += '<div class="uix-pb-bar-box uix-pb-bar-box-square">';
-					show_content += '<div style="width:'+uix_pb_bar_result_size+';">';
-					show_content += '<div class="uix-pb-bar-info">';
-					show_content += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
-					show_content += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
-					show_content += '</div>';
-					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_floatval( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_floatval( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
-					show_content += '<span class="uix-pb-bar-percent"></span>';
-					show_content += '<span class="uix-pb-bar-placeholder">0</span>';
-					show_content += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+'px;">'+uix_pb_bar_result_icon+'</span>';
-					show_content += '</div>';
-					show_content += '</div>';
-					show_content += '</div>';
-				
-					
-					
-				} else {
-					
-					show_content += '<div class="uix-pb-bar-box uix-pb-bar-box-circular">';
-					show_content += '<div class="uix-pb-bar" data-percent="'+uixpbform_floatval( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
-					show_content += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_floatval( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+'px;"></span>';
-					show_content += '</div>';
-					show_content += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
-					show_content += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
-					show_content += '</div>';
-					
-					
-				}
-	
-				//---
-				
-				tempcode = tempcode.replace(/{content}/g, show_content );	
-							
-				$( "#<?php echo UixPageBuilder::fid( $colid, $sid, 'uix_pb_section_bar_temp' ); ?>" ).val( tempcode );
-	
-				
+
+			var  temp                                 = '',
+				 uix_pb_bar_result_color              = uix_pb_bar_color,
+				 uix_pb_bar_result_trackcolor         = uix_pb_bar_trackcolor,
+				 uix_pb_bar_result_percent_icon_color = uix_pb_bar_percent_icon_color,
+				 uix_pb_bar_result_size               = ( uix_pb_bar_shape == 'circular' ) ? uixpbform_floatval( uix_pb_bar_circular_size )+"px" : uixpbform_floatval( uix_pb_bar_square_size )+uix_pb_bar_square_size_units,
+				 uix_pb_bar_result_icon               = ( uix_pb_bar_icon != '' ) ? '<i class="fa fa-'+uixpbform_htmlEncode( uix_pb_bar_icon )+'"></i>' : uix_pb_bar_percent+uix_pb_bar_show_units;
+
+			if ( uix_pb_bar_shape == 'square' ) {
+
+
+				temp += '<div class="uix-pb-bar-box uix-pb-bar-box-square">';
+				temp += '<div style="width:'+uix_pb_bar_result_size+';">';
+				temp += '<div class="uix-pb-bar-info">';
+				temp += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
+				temp += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
+				temp += '</div>';
+				temp += '<div class="uix-pb-bar" data-percent="'+uixpbform_floatval( uix_pb_bar_percent )+'" data-linewidth="'+uixpbform_floatval( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'" data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'">';
+				temp += '<span class="uix-pb-bar-percent"></span>';
+				temp += '<span class="uix-pb-bar-placeholder">0</span>';
+				temp += '<span class="uix-pb-bar-text"  style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+'px;">'+uix_pb_bar_result_icon+'</span>';
+				temp += '</div>';
+				temp += '</div>';
+				temp += '</div>';
+
+
+
+			} else {
+
+				temp += '<div class="uix-pb-bar-box uix-pb-bar-box-circular">';
+				temp += '<div class="uix-pb-bar" data-percent="'+uixpbform_floatval( uix_pb_bar_percent )+'" style="width:'+uix_pb_bar_result_size+';">';
+				temp += '<span class="uix-pb-bar-percent" data-linewidth="'+uixpbform_floatval( uix_pb_bar_linewidth )+'" data-trackcolor="'+uix_pb_bar_result_trackcolor+'" data-barcolor="'+uix_pb_bar_result_color+'" data-units="'+uixpbform_htmlEncode( uix_pb_bar_show_units )+'" data-size="'+uix_pb_bar_result_size+'"  data-icon="'+uixpbform_htmlEncode( uix_pb_bar_icon )+'" style="color:'+uix_pb_bar_result_percent_icon_color+';font-size:'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+'px;"></span>';
+				temp += '</div>';
+				temp += '<h3 class="uix-pb-bar-title">'+uix_pb_bar_title+'</h3>';
+				temp += '<div class="uix-pb-bar-desc">'+uix_pb_bar_desc+'</div>';
+				temp += '</div>';
+
+
 			}
+
 			
+			/* Save data */
+			$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
 			
-			
-		});
-				 
+		}
+		
+		uix_pb_temp();
+		$( document ).on( "change keyup focusout", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]']", function() { uix_pb_temp(); });
+		
+
+		
+		
+		 
 	} ); 
 } ) ( jQuery );
-</script>  
+</script> 
     
-    <?php
-
-	
+    <?php	
 }
