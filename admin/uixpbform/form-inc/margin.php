@@ -10,26 +10,30 @@ class UixPBFormType_Margin {
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
+	
+		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
+		$name             = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
 		
 		$value            = ( is_array( $args[ 'value' ] ) && !empty( $args[ 'value' ] ) ) ? array(
-									'top'     => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'top' ], $args[ 'value' ][ 'top' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'top' ], '' ), 
-									'right'   => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'right' ], $args[ 'value' ][ 'right' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'right' ], '' ), 
-									'bottom'  => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'bottom' ], $args[ 'value' ][ 'bottom' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'bottom' ], '' ), 
-									'left'    => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'left' ], $args[ 'value' ][ 'left' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ][ 'left' ], '' ) 
+									'top'     => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_top', $args[ 'value' ][ 'top' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_top', '' ), 
+									'right'   => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_right', $args[ 'value' ][ 'right' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_right', '' ), 
+									'bottom'  => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_bottom', $args[ 'value' ][ 'bottom' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_bottom', '' ), 
+									'left'    => ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_left', $args[ 'value' ][ 'left' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $id.'_left', '' ) 
 				                ) : '';
 		
-		$id               = ( is_array( $args[ 'id' ] ) && !empty( $args[ 'id' ] ) ) ? array(
-									'top'     => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ][ 'top' ] ) : '', 
-									'right'   => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ][ 'right' ] ) : '', 
-									'bottom'  => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ][ 'bottom' ] ) : '', 
-									'left'    => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ][ 'left' ] ) : '' 
+		
+		$new_id           = ( isset( $args[ 'id' ] ) ) ? array(
+									'top'     => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $id.'_top' ) : '', 
+									'right'   => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $id.'_right' ) : '', 
+									'bottom'  => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $id.'_bottom' ) : '', 
+									'left'    => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $id.'_left' ) : '' 
 				                ) : '';
 			
-		$name             = ( is_array( $args[ 'id' ] ) && !empty( $args[ 'id' ] ) ) ? array(
-									'top'     => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ][ 'top' ] ) : '', 
-									'right'   => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ][ 'right' ] ) : '', 
-									'bottom'  => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ][ 'bottom' ] ) : '', 
-									'left'    => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ][ 'left' ] ) : ''
+		$new_name          = ( isset( $args[ 'id' ] ) ) ? array(
+									'top'     => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $id.'_top' ) : '', 
+									'right'   => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $id.'_right' ) : '', 
+									'bottom'  => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $id.'_bottom' ) : '', 
+									'left'    => ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $id.'_left' ) : ''
 				                ) : '';
 		
 		
@@ -61,10 +65,10 @@ class UixPBFormType_Margin {
 							   <div class="uixpbform-input-text-margin-container">
 							
 								   '.( !empty( $args[ 'id' ] ) ? '
-								   <div class="dir top"><label><em>&uarr;</em><input type="text" id="'.$id[ 'top' ].'" name="'.$name[ 'top' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$id[ 'top' ].'" value="'.$value[ 'top' ].'"></label></div>
-								   <div class="dir right"><label><em>&rarr;</em><input type="text" id="'.$id[ 'right' ].'" name="'.$name[ 'right' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$id[ 'right' ].'" value="'.$value[ 'right' ].'"></label></div>
-								   <div class="dir bottom"><label><em>&darr;</em><input type="text" id="'.$id[ 'bottom' ].'" name="'.$name[ 'bottom' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$id[ 'bottom' ].'" value="'.$value[ 'bottom' ].'"></label></div>
-								   <div class="dir left"><label><em>&larr;</em><input type="text" id="'.$id[ 'left' ].'" name="'.$name[ 'left' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$id[ 'left' ].'" value="'.$value[ 'left' ].'"></label></div>
+								   <div class="dir top"><label><em>&uarr;</em><input type="text" id="'.$new_id[ 'top' ].'" name="'.$new_name[ 'top' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$new_id[ 'top' ].'" value="'.$value[ 'top' ].'"></label></div>
+								   <div class="dir right"><label><em>&rarr;</em><input type="text" id="'.$new_id[ 'right' ].'" name="'.$new_name[ 'right' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$new_id[ 'right' ].'" value="'.$value[ 'right' ].'"></label></div>
+								   <div class="dir bottom"><label><em>&darr;</em><input type="text" id="'.$new_id[ 'bottom' ].'" name="'.$new_name[ 'bottom' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$new_id[ 'bottom' ].'" value="'.$value[ 'bottom' ].'"></label></div>
+								   <div class="dir left"><label><em>&larr;</em><input type="text" id="'.$new_id[ 'left' ].'" name="'.$new_name[ 'left' ].'" class="uixpbform-normal uixpbform-input-text uixpbform-input-text-margin" chk-id-input="'.$new_id[ 'left' ].'" value="'.$value[ 'left' ].'"></label></div>
 								   ' : '' ).' 	
 								   
 								   <div class="desc">
@@ -82,10 +86,10 @@ class UixPBFormType_Margin {
 				'.PHP_EOL;	
 
 			$jscode_vars = '
-			    '.( !empty( $args[ 'id' ][ 'top' ] ) ? 'var '.$args[ 'id' ][ 'top' ].' = $( "#'.$id[ 'top' ].'" ).val();'.PHP_EOL : '' ).'
-				'.( !empty( $args[ 'id' ][ 'right' ] ) ? 'var '.$args[ 'id' ][ 'right' ].' = $( "#'.$id[ 'right' ].'" ).val();'.PHP_EOL : '' ).'
-				'.( !empty( $args[ 'id' ][ 'bottom' ] ) ? 'var '.$args[ 'id' ][ 'bottom' ].' = $( "#'.$id[ 'bottom' ].'" ).val();'.PHP_EOL : '' ).'
-				'.( !empty( $args[ 'id' ][ 'left' ] ) ? 'var '.$args[ 'id' ][ 'left' ].' = $( "#'.$id[ 'left' ].'" ).val();'.PHP_EOL : '' ).'
+			    '.( !empty( $args[ 'id' ] ) ? 'var '.$id.'_top'.' = $( "#'.$new_id[ 'top' ].'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ] ) ? 'var '.$id.'_right'.' = $( "#'.$new_id[ 'right' ].'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ] ) ? 'var '.$id.'_bottom'.' = $( "#'.$new_id[ 'bottom' ].'" ).val();'.PHP_EOL : '' ).'
+				'.( !empty( $args[ 'id' ] ) ? 'var '.$id.'_left'.' = $( "#'.$new_id[ 'left' ].'" ).val();'.PHP_EOL : '' ).'
 			';	
 
 		}

@@ -8,10 +8,10 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
  * Form ID
  * ----------------------------------------------------
  */
-$form_id                 = 'uix_pb_section_accordion';
+$form_id                 = 'uix_pb_section_tabs';
 
 //clone list
-$clone_trigger_id        = 'uix_pb_accordion_list';    // ID of clone trigger 
+$clone_trigger_id        = 'uix_pb_tabs_list';    // ID of clone trigger 
 $clone_max               = 30;                         // Maximum of clone form 
 
 //clone list of toggle class value @var array
@@ -36,7 +36,7 @@ if ( $sid >= 0 ) {
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
-			
+		
 		
 			if ( $con && is_array( $con ) ) {
 				foreach ( $con as $key ) :
@@ -84,7 +84,6 @@ if ( $sid >= 0 ) {
 
 
 
-
 /**
  * Form Type & Parameters
  * ----------------------------------------------------
@@ -104,10 +103,24 @@ $args_config = [
 $args = 
 	[
 	
-	
 		
 		array(
-			'id'             => 'uix_pb_accordion_effect',
+			'id'             => 'uix_pb_tabs_style',
+			'title'          => __( 'Choose Style', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 'horizontal',
+			'placeholder'    => '',
+			'type'           => 'radio',
+			'default'        => array(
+									'vertical'  => 'vertical',
+									'horizontal'  => 'horizontal',
+								)
+		
+		),	
+		
+		
+		array(
+			'id'             => 'uix_pb_tabs_effect',
 			'title'          => __( 'Transition Effect', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 1,
@@ -119,18 +132,7 @@ $args =
 								)
 		
 		),
-	
-	
-		array(
-			'id'             => 'uix_pb_accordion_open_first',
-			'title'          => __( 'Open The First One Automatically', 'uix-page-builder' ),
-			'desc'           => '',
-			'value'          => 0, // 0:false  1:true
-			'placeholder'    => '',
-			'type'           => 'checkbox'
 		
-		
-		),		
 		
 		//------list begin
 
@@ -147,11 +149,11 @@ $args =
 									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
 									'clone_class'               => [ 
 										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ).'',
+											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_title' ).'',
 											'type'      => 'text'
 										), 
 										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ).'',
+											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_con' ).'',
 											'type'      => 'textarea'
 										), 
 	
@@ -163,22 +165,22 @@ $args =
 		),
 	
 			array(
-				'id'             => 'uix_pb_accordion_listitem_title',
+				'id'             => 'uix_pb_tabs_listitem_title',
 				'title'          => '',
 				'desc'           => '',
-				'value'          => __( 'Accordion Title', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ).'', /*class of list item */
+				'value'          => __( 'Tab Title', 'uix-page-builder' ),
+				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_title' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'text'
 			
 			),
 			
 			array(
-				'id'             => 'uix_pb_accordion_listitem_con',
+				'id'             => 'uix_pb_tabs_listitem_con',
 				'title'          => '',
 				'desc'           => '',
-				'value'          => __( 'Accordion content here.', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ).'', /*class of list item */
+				'value'          => __( 'This is content of the tab.', 'uix-page-builder' ),
+				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_con' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'textarea',
 				'default'        => array(
@@ -195,7 +197,6 @@ $args =
 		
 		
 		
-
         //------- template
 		array(
 			'id'             => $form_id.'_temp',
@@ -209,6 +210,7 @@ $args =
 								)
 		
 		),	
+	
 
 
 		
@@ -220,8 +222,8 @@ $form_html    = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $fo
 $form_js_vars = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'js_vars' );
 
 
-$clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ).'', $form_html )
-.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ).'', $form_html );
+$clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_title' ).'', $form_html )
+.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_con' ).'', $form_html );
 
 /**
  * Returns actions of javascript
@@ -240,7 +242,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_id, __( 'Accordion', 'uix-page-builder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_id, __( 'Tabs', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -253,8 +255,6 @@ if ( $sid == -1 && is_admin() ) {
 	
 }
 
-
-
 /**
  * Returns forms with ajax
  * ----------------------------------------------------
@@ -266,12 +266,12 @@ if ( $sid >= 0 && is_admin() ) {
     /*-- Dynamic Adding Input ( Default Value ) --*/
 	for ( $i = 2; $i <= $clone_max; $i++ ) {
 		$uid = $i.'-';
-		$field = 'uix_pb_accordion_listitem_title';
+		$field = 'uix_pb_tabs_listitem_title';
 		if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$uid.'['.$field.']['.$sid.']', $item ) ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [ 'uix_pb_accordion_listitem_title', 'uix_pb_accordion_listitem_con' ];
+			$value         =  [ 'uix_pb_tabs_listitem_title', 'uix_pb_tabs_listitem_con' ];
 							  
 			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
 	
@@ -279,8 +279,8 @@ if ( $sid >= 0 && is_admin() ) {
 	}
 	
 	?>
-    
- <script type="text/javascript">
+   
+<script type="text/javascript">
 ( function($) {
 'use strict';
 	$( document ).ready( function() {
@@ -291,11 +291,10 @@ if ( $sid >= 0 && is_admin() ) {
 			/* Vars */
 			<?php echo $form_js_vars; ?>
 
-			
 			/* Radio (Requires quotes) */
 			var transeffect = 'slide';
 
-			switch( uix_pb_accordion_effect ){ 
+			switch( uix_pb_tabs_effect ){ 
 				case '1': 
 					transeffect = 'slide';
 
@@ -317,43 +316,43 @@ if ( $sid >= 0 && is_admin() ) {
 
 
 			/* List Item */
-			var list_num       = <?php echo $clone_max; ?>,
-				show_list_item = '';
+			var list_num               = <?php echo $clone_max; ?>,
+				show_list_item_title   = '',
+				show_list_item_content = '';
 
 
 			for ( var i = 1; i <= list_num; i++ ){
 
 
-				var openfirst_class = ( uix_pb_accordion_open_first === true && i == 1 ) ? ' uix-pb-spoiler-closed' : '';
-
 				var _uid     = ( i >= 2 ) ? '#'+i+'-' : '#',
-					_title   = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_title' ); ?>' ).val(),
-					_con     = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ); ?>' ).val();
-
-				var _item_v_title = ( _title != undefined && _title != '' ) ? _title : '',
-					_item_v_con   = ( _con != undefined && _con != '' ) ? _con : '';
+					_title   = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_title' ); ?>' ).val(),
+					_con     = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_tabs_listitem_con' ); ?>' ).val();
 
 
 				if ( _title != undefined && _title != '' ) {
 
 					//Do not include spaces
-					show_list_item += '<div class="uix-pb-spoiler'+openfirst_class+'">';
-					show_list_item += '<div class="uix-pb-spoiler-title">'+_item_v_title+'</div>';
-					show_list_item += '<div class="uix-pb-spoiler-content">';
-					show_list_item += '<p>'+_item_v_con+'</p>';
-					show_list_item += '</div>';                 
-					show_list_item += '</div>';
+					show_list_item_title += '<li>'+_title+'</li>';
+
+					show_list_item_content += '<div class="uix-pb-spoiler-content">';
+					show_list_item_content += '<p>'+_con+'</p>';
+					show_list_item_content += '</div>';
 
 				}
 
 
 			}
 
-
+			
 			var temp = '';
 				temp += '<div class="uix-pb-accordion-box">';
-				temp += '<div class="uix-pb-accordion" data-effect="'+uixpbform_htmlEncode(transeffect)+'">';
-				temp += show_list_item;
+				temp += '<div class="uix-pb-accordion uix-pb-tabs uix-pb-tabs-'+uixpbform_htmlEncode(uix_pb_tabs_style)+'" data-effect="'+uixpbform_htmlEncode(transeffect)+'">';
+				temp += '<ul class="uix-pb-tabs-title">';
+				temp += show_list_item_title;
+				temp += '</ul>';
+				temp += '<div class="uix-pb-spoiler-group">';
+				temp += show_list_item_content;
+				temp += '</div>';
 				temp += '</div>';
 				temp += '</div>';
 			
@@ -375,5 +374,6 @@ if ( $sid >= 0 && is_admin() ) {
     <?php
 
 	
-}
-
+}    
+     
+ 

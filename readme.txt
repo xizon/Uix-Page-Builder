@@ -97,6 +97,7 @@ The version number is the date of the revision of the [guidelines](https://make.
 * Upgraded core API. ( For developers, custom modules are much simpler! )
 * Optimize the page builder form structure.
 * Fixed some bugs of TinyMCE editor.
+* Fixed some bugs of form elements.
 
 
 = 1.1.4 =

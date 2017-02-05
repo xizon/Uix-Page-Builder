@@ -8,11 +8,11 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
  * Form ID
  * ----------------------------------------------------
  */
-$form_id                 = 'uix_pb_section_clients';
+$form_id                 = 'uix_pb_section_testimonials';
 
 //clone list
-$clone_trigger_id        = 'uix_pb_clients_list';    // ID of clone trigger 
-$clone_max               = 50;                         // Maximum of clone form 
+$clone_trigger_id        = 'uix_pb_testimonials_list';    // ID of clone trigger 
+$clone_max               = 30;                         // Maximum of clone form 
 
 //clone list of toggle class value @var array
 $clone_list_toggle_class = '';
@@ -83,6 +83,8 @@ if ( $sid >= 0 ) {
 }
 
 
+
+
 /**
  * Form Type & Parameters
  * ----------------------------------------------------
@@ -91,6 +93,7 @@ if ( $sid >= 0 ) {
 $form_type_config = [
     'list' => 1
 ];
+
 
 $args_config = [
 	'col_id'    => $colid,
@@ -104,7 +107,7 @@ $module_config =
 	[
 	
 		array(
-			'id'             => 'uix_pb_clients_config_title',
+			'id'             => 'uix_pb_testimonials_config_title',
 			'title'          => __( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => __( 'Text Here', 'uix-page-builder' ),
@@ -115,7 +118,7 @@ $module_config =
 	
 		
 		array(
-			'id'             => 'uix_pb_clients_config_intro',
+			'id'             => 'uix_pb_testimonials_config_intro',
 			'title'          => __( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => __( 'This is the description text for the title.', 'uix-page-builder' ),
@@ -127,25 +130,6 @@ $module_config =
 								)
 		
 		),
-		
-	
-		array(
-			'id'             => 'uix_pb_clients_config_grid',
-			'title'          => __( 'Column', 'uix-page-builder' ),
-			'desc'           => '',
-			'value'          => 3,
-			'placeholder'    => '',
-			'type'           => 'radio',
-			'default'        => array(
-		                            '6'  => '6',
-		                            '5'  => '5',
-									'4'  => '4',
-									'3'  => '3',
-									'2'  => '2',
-								)
-		
-		),	
-		
 		
 	
 	]
@@ -176,19 +160,24 @@ $args =
 									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
 									'clone_class'               => [ 
 										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_logo' ).'',
+											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_avatar' ).'',
 											'type'      => 'image'
-										),
-									
+										), 
+										
 										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_url' ).'',
+											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_name' ).'',
+											'type'      => 'text'
+										), 										
+										
+										array(
+											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_position' ).'',
 											'type'      => 'text'
 										), 
-		
+									
 										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_intro' ).'',
+											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ).'',
 											'type'      => 'textarea'
-										), 		
+										), 
 										
 	
 
@@ -200,12 +189,12 @@ $args =
 	
 		
 			array(
-				'id'             => 'uix_pb_clients_listitem_logo',
+				'id'             => 'uix_pb_testimonials_listitem_avatar',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_logo' ).'', /*class of list item */
-				'placeholder'    => __( 'LOGO URL', 'uix-page-builder' ),
+				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_avatar' ).'', /*class of list item */
+				'placeholder'    => __( 'Avatar URL', 'uix-page-builder' ),
 				'type'           => 'image',
 				'default'        => array(
 										'remove_btn_text'  => __( 'Remove image', 'uix-page-builder' ),
@@ -213,25 +202,33 @@ $args =
 									)
 			
 			),	
-				
 			array(
-				'id'             => 'uix_pb_clients_listitem_url',
+				'id'             => 'uix_pb_testimonials_listitem_name',
 				'title'          => '',
 				'desc'           => '',
-				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_url' ).'', /*class of list item */
-				'placeholder'    => __( 'Destination URL, e.g., http://your.clientsite.com', 'uix-page-builder' ),
-				'type'           => 'text',
-				'default'        => ''
-
-			),
-		
+				'value'          => __( 'Name', 'uix-page-builder' ),
+				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_name' ).'', /*class of list item */
+				'placeholder'    => '',
+				'type'           => 'text'
+			
+			),			
+			
 			array(
-				'id'             => 'uix_pb_clients_listitem_intro',
+				'id'             => 'uix_pb_testimonials_listitem_position',
 				'title'          => '',
 				'desc'           => '',
-				'value'          => __( 'The Introduction of this client.', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_intro' ).'', /*class of list item */
+				'value'          => __( 'Position', 'uix-page-builder' ),
+				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_position' ).'', /*class of list item */
+				'placeholder'    => '',
+				'type'           => 'text'
+			
+			),			
+			array(
+				'id'             => 'uix_pb_testimonials_listitem_intro',
+				'title'          => '',
+				'desc'           => '',
+				'value'          => __( 'Enter some details for the customer giving this testimonial., E.g., Thank you from the bottom of our hearts.', 'uix-page-builder' ),
+				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'textarea',
 				'default'        => array(
@@ -240,6 +237,7 @@ $args =
 									)
 			
 			),
+		
 		
 			
 		
@@ -260,7 +258,7 @@ $args =
 								)
 		
 		),	
-	
+		
 
 
 		
@@ -283,9 +281,10 @@ $form_js_vars .= UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $f
 
 
 
-$clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_logo' ).'', $form_html )
-.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_url' ).'', $form_html )
-.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_intro' ).'', $form_html );
+$clone_value = UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_avatar' ).'', $form_html )
+.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_name' ).'', $form_html )
+.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_position' ).'', $form_html )
+.UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ).'', $form_html );
 
 /**
  * Returns actions of javascript
@@ -304,7 +303,7 @@ if ( $sid == -1 && is_admin() ) {
 			( function($) {
 			'use strict';
 				$( document ).ready( function() {  
-					<?php echo UixPBFormCore::uixpbform_callback( $form_id, __( 'Clients', 'uix-page-builder' ) ); ?>            
+					<?php echo UixPBFormCore::uixpbform_callback( $form_id, __( 'Testimonials Carousel', 'uix-page-builder' ) ); ?>            
 				} ); 
 			} ) ( jQuery );
 			</script>
@@ -328,12 +327,12 @@ if ( $sid >= 0 && is_admin() ) {
     /*-- Dynamic Adding Input ( Default Value ) --*/
 	for ( $i = 2; $i <= $clone_max; $i++ ) {
 		$uid = $i.'-';
-		$field = 'uix_pb_clients_listitem_logo';
+		$field = 'uix_pb_testimonials_listitem_intro';
 		if ( is_array( $item ) && array_key_exists( '['.$colid.']'.$uid.'['.$field.']['.$sid.']', $item ) ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [ 'uix_pb_clients_listitem_logo', 'uix_pb_clients_listitem_url', 'uix_pb_clients_listitem_intro' ];
+			$value         =  [ 'uix_pb_testimonials_listitem_avatar', 'uix_pb_testimonials_listitem_name', 'uix_pb_testimonials_listitem_position', 'uix_pb_testimonials_listitem_intro' ];
 							  
 			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
 	
@@ -341,7 +340,6 @@ if ( $sid >= 0 && is_admin() ) {
 	}
 	
 	?>
-    
  <script type="text/javascript">
 ( function($) {
 'use strict';
@@ -353,12 +351,13 @@ if ( $sid >= 0 && is_admin() ) {
 			/* Vars */
 			<?php echo $form_js_vars; ?>
 
-			var _config_t      = ( uix_pb_clients_config_title != undefined && uix_pb_clients_config_title != '' ) ? '<h2 class="uix-pb-section-heading">'+uix_pb_clients_config_title+'</h2><div class="uix-pb-section-hr"></div>' : '',
-				_config_desc   = ( uix_pb_clients_config_intro != undefined && uix_pb_clients_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_clients_config_intro+'</div>' : '';
 
+			var _config_t      = ( uix_pb_testimonials_config_title != undefined && uix_pb_testimonials_config_title != '' ) ? '<h2 class="uix-pb-section-heading">'+uix_pb_testimonials_config_title+'</h2><div class="uix-pb-section-hr"></div>' : '',
+				_config_desc   = ( uix_pb_testimonials_config_intro != undefined && uix_pb_testimonials_config_intro != '' ) ? '<div class="uix-pb-section-desc">'+uix_pb_testimonials_config_intro+'</div>' : '';
 
+					
 
-
+				
 			/* List Item */
 			var list_num               = <?php echo $clone_max; ?>,
 				show_list_item = '';
@@ -368,22 +367,24 @@ if ( $sid >= 0 && is_admin() ) {
 
 
 				var _uid      = ( i >= 2 ) ? '#'+i+'-' : '#',
-					_logo     = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_logo' ); ?>' ).val(),
-					_url      = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_url' ); ?>' ).val(),
-					_intro    = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_clients_listitem_intro' ); ?>' ).val();
+					_avatar   = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_avatar' ); ?>' ).val(),
+					_name     = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_name' ); ?>' ).val(),
+					_pos      = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_position' ); ?>' ).val(),
+					_intro    = $( _uid+'<?php echo UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ); ?>' ).val();
+
+				var _item_v_avatar     = ( _avatar != undefined && _avatar != '' ) ? '<img class="uix-pb-testimonials-avatar" src="'+encodeURI( _avatar )+'" alt="'+uixpbform_htmlEncode( _name )+'" />': '<span class="uix-pb-testimonials-no-avatar"></span>',
+					_item_v_posclass   = ( _avatar != undefined && _avatar != '' ) ? '': 'class="uix-pb-testimonials-pure-text"';
 
 
-				var _item_v_logoURL        = ( _logo != undefined && _logo != '' ) ? encodeURI( _logo ) : '<?php echo UixPBFormCore::logo_placeholder(); ?>',
-					_item_v_urltag_before  = ( _url != undefined && _url != '' ) ? '<a href="'+encodeURI( _url )+'" target="_blank">' : '',
-					_item_v_urltag_after   = ( _url != undefined && _url != '' ) ? '</a>' : '';
-
-				if ( _logo != undefined ) {
+				if ( _intro != undefined && _intro != '' ) {
 
 					//Do not include spaces
-					show_list_item += '<div class="uix-pb-client-li uix-pb-client-li-'+uix_pb_clients_config_grid+'">';
-					show_list_item += '<p class="uix-pb-img">'+_item_v_urltag_before+'<img src="'+_item_v_logoURL+'" alt="" />'+_item_v_urltag_after+'</p>';
-					show_list_item += '<p>'+_intro+'</p>';   
-					show_list_item += '</div>';
+					show_list_item += '<li>';
+					show_list_item += '<div class="uix-pb-testimonials-content">'+_intro+'</div>';
+					show_list_item += '<div class="uix-pb-testimonials-signature">'+_item_v_avatar+'';
+					show_list_item += '<strong '+_item_v_posclass+'>'+_name+'</strong> - '+_pos+'';
+					show_list_item += '</div>';										                                                    
+					show_list_item += '</li>';
 
 				}
 
@@ -391,13 +392,20 @@ if ( $sid >= 0 && is_admin() ) {
 			}
 
 
-
 			var temp = '';
 				temp += _config_t;
 				temp += _config_desc;
-				temp += '<div class="uix-pb-client">';
+				temp += '<div class="uix-pb-testimonials-wrapper">';
+				temp += '<div class="uix-pb-testimonials">';
+				temp += '<div class="uix-pb-testimonials-container">';
+				temp += '<div class="flexslider">';
+				temp += '<ul class="slides">';
 				temp += show_list_item;
-				temp += '</div>';	
+				temp += '</ul><!-- .uix-pb-testimonials-slides -->';
+				temp += '</div><!-- .flexslider -->';
+				temp += '</div><!-- .uix-pb-testimonials-container -->';
+				temp += '</div><!-- /.uix-pb-testimonials -->';
+				temp += '</div>';
 			
 			
 			
@@ -420,4 +428,5 @@ if ( $sid >= 0 && is_admin() ) {
 
 	
 }
+ 
 

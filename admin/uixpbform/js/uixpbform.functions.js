@@ -505,7 +505,7 @@ jQuery( document ).ready( function() {
 			if ( jQuery( cur_targetID ).length > 0 ) {
 				
 				if ( imgvalue.length == 0 ) {
-					jQuery( cur_previewID ).find( 'img' ).attr( 'src', '' );
+					jQuery( cur_previewID ).hide().find( 'img' ).attr( 'src', '' );
 				}
 				
 
@@ -513,7 +513,7 @@ jQuery( document ).ready( function() {
 
 					/*-- Show image properties and remove button --*/
 					jQuery( cur_closebtnID ).show().css( { 'display': 'block' } );
-					jQuery( cur_previewID ).find( 'img' ).attr( 'src', imgvalue );
+					jQuery( cur_previewID ).show().find( 'img' ).attr( 'src', imgvalue );
 
 					if ( cur_prop ) {
 						jQuery( "." + propIDPrefix + '_repeat' ).show();

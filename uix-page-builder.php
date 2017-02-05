@@ -658,7 +658,9 @@ class UixPageBuilder {
 			
 			foreach ( $v[ 'buttons' ] as $key ) {
 				
-				$btns .= "<div class=\"uix-page-builder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgpath.$key[ 'thumb' ] )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
+				$imgsrc = ( !empty( $key[ 'thumb' ] ) ) ? $imgpath.$key[ 'thumb' ] : $imgpath.'_none.png';
+				
+				$btns .= "<div class=\"uix-page-builder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgsrc )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
 			}		
 			
 			$btns .= '</div>';
@@ -730,10 +732,22 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function push_cloneform( $uid, $clone_trigger_id, $cur_id, $col_id, $clone_value, $section_row, $value, $clone_list_toggle_class = '' ) {
+	public static function push_cloneform( $uid, $items, $clone_trigger_id, $cur_id, $col_id, $clone_value, $section_row, $value, $clone_list_toggle_classes = '' ) {
 		
+		//Toggle class
+		$clone_list_toggle_class = '';
+		if ( $clone_list_toggle_classes && is_array( $clone_list_toggle_classes ) ) {
+			
+			foreach ( $clone_list_toggle_classes as $t_value ) {
+				$clone_list_toggle_class .= '#{colID}'.UixPBFormCore::fid( $col_id, $section_row, $t_value ).',';
+			}
+			$clone_list_toggle_class = rtrim( $clone_list_toggle_class, ',' );
+		}
+		
+		//Widget ID
 		$widget_ID         = $section_row;
 		
+		//Toggle target ID
 		$toggle_target_ID  = str_replace( '{colID}', $cur_id.'-', $clone_list_toggle_class );
 		
 		
@@ -802,13 +816,15 @@ class UixPageBuilder {
 		if ( $value && is_array( $value ) ) {
 			foreach ( $value as $t_value ) {
 				
-				$item_id = $uid.UixPBFormCore::fid( $col_id, $section_row, $t_value[ 'id' ] );
+				$item_id    = $uid.UixPBFormCore::fid( $col_id, $section_row, $t_value );
+				$item_value = self::inputtextareavalue( $items[ '['.$col_id.']'.$uid.'['.$t_value.']['.$section_row.']' ] );
 			
+				
 				if ( self::inc_str( $data, 'chk-id-input="'.$item_id.'"' ) ) {
-					$data = str_replace( 'chk-id-input="'.$item_id.'"', 'value="'.esc_attr( self::inputtextareavalue( $t_value[ 'default' ] ) ).'"', $data );	
+					$data = str_replace( 'chk-id-input="'.$item_id.'"', 'value="'.esc_attr( $item_value ).'"', $data );	
 				}
 				if ( self::inc_str( $data, 'chk-id-textarea="'.$item_id.'"' ) ) {
-					$data = str_replace( 'chk-id-textarea="'.$item_id.'"', '>'.esc_textarea( self::inputtextareavalue( $t_value[ 'default' ] ) ).'</textarea>', $data );	
+					$data = str_replace( 'chk-id-textarea="'.$item_id.'"', '>'.esc_textarea( $item_value ).'</textarea>', $data );	
 				}			
 				
 

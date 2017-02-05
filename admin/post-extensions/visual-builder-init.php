@@ -47,7 +47,7 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 			position: absolute;
 			left: 15px;
 			top: 15px;
-			z-index: 999999px;
+			z-index: 999999;
 			background-color: #2C7EAE;
 			width: 35px;
 			height: 35px;
@@ -71,6 +71,11 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 		}
 		.uix-page-builder-section > .uix-pb-row > div:hover .uix-page-builder-editicon {
 		    display: block;
+		}
+		
+		.uix-page-builder-section .editmode {
+			position: relative;
+			z-index: 999998 !important;
 		}
 		
 		</style>
@@ -118,13 +123,27 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 					
 					$( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'mouseenter', function(){
 					    
+						var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
+							curindex   = $(this).index(),
+							obj        = $('#uix-page-builder-gridster-widget-' + id, window.parent.document );
+
+						$('.uix-page-builder-gridster-widget', window.parent.document ).removeClass( 'hover' );
+						obj.addClass( 'hover' );
+						
+						$( this ).find( '> div' ).addClass( 'editmode' );
+
 						$( this ).css( {
 							'-webkit-box-shadow': 'none',
 							'-moz-box-shadow'   : 'none',
 							'box-shadow'        : 'none',
 						} );
+						
+						
+						
 					}).on( 'mouseleave' , function(){
 					
+						$( this ).find( '> div' ).removeClass( 'editmode' );
+						
 						$( this ).css( {
 							'-webkit-box-shadow': 'none',
 							'-moz-box-shadow'   : 'none',
@@ -132,17 +151,6 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 						} );
 					});
 					
-					$( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'mouseenter', function() {
-
-						var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
-							curindex   = $(this).index(),
-							obj        = $('#uix-page-builder-gridster-widget-' + id, window.parent.document );
-
-						$('.uix-page-builder-gridster-widget', window.parent.document ).removeClass( 'hover' );
-						obj.addClass( 'hover' );
-
-					});	
-
 
 					$( '.uix-page-builder-editicon' ).on( 'click', function() {
 

@@ -15,7 +15,7 @@ $clone_trigger_id_1        = 'uix_pb_features_col2_one_list';    // ID of clone 
 $clone_trigger_id_2        = 'uix_pb_features_col2_two_list';    // ID of clone trigger 
 $clone_max                 = 15;                                 // Maximum of clone form 
 
-//clone list of toggle class value
+//clone list of toggle class value @var array
 $clone_list_toggle_class = '';
 
 
@@ -432,24 +432,9 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [
-								array(
-									'id'       => 'uix_pb_features_col2_one_listitem_title',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col2_one_listitem_title]['.$sid.']' ]
-								),
-								array(
-									'id'       => 'uix_pb_features_col2_one_listitem_desc',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col2_one_listitem_desc]['.$sid.']' ]
-								),
-								array(
-									'id'       => 'uix_pb_features_col2_one_listitem_icon',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col2_one_listitem_icon]['.$sid.']' ]
-								),
-														
-								
-			                  ];
+			$value         =  [ 'uix_pb_features_col2_one_listitem_title', 'uix_pb_features_col2_one_listitem_desc', 'uix_pb_features_col2_one_listitem_icon' ];
 							  
-			UixPageBuilder::push_cloneform( $uid, $clone_trigger_id_1, $cur_id, $colid, $clone_value_1, $sid, $value, $clone_list_toggle_class );
+			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id_1, $cur_id, $colid, $clone_value_1, $sid, $value, $clone_list_toggle_class );
 	
 		} 
 	}
@@ -462,24 +447,9 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			$cur_id        = $ii;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [
-								array(
-									'id'       => 'uix_pb_features_col2_two_listitem_title',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col2_two_listitem_title]['.$sid.']' ]
-								),
-								
-								array(
-									'id'       => 'uix_pb_features_col2_two_listitem_desc',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col2_two_listitem_desc]['.$sid.']' ]
-								),
-								array(
-									'id'       => 'uix_pb_features_col2_two_listitem_icon',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col2_two_listitem_icon]['.$sid.']' ]
-								),							
-								
-			                  ];
+			$value         =  [ 'uix_pb_features_col2_two_listitem_title', 'uix_pb_features_col2_two_listitem_desc', 'uix_pb_features_col2_two_listitem_icon' ];
 							  
-			UixPageBuilder::push_cloneform( $uid, $clone_trigger_id_2, $cur_id, $colid, $clone_value_2, $sid, $value, $clone_list_toggle_class );
+			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id_2, $cur_id, $colid, $clone_value_2, $sid, $value, $clone_list_toggle_class );
 	
 		} 
 	}	

@@ -14,7 +14,7 @@ $form_id                 = 'uix_pb_section_features2';
 $clone_trigger_id        = 'uix_pb_features_col3_list';    // ID of clone trigger
 $clone_max               = 30;                                    // Maximum of clone form 
 
-//clone list of toggle class value
+//clone list of toggle class value @var array
 $clone_list_toggle_class = '';
 
 
@@ -316,25 +316,9 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [
-								array(
-									'id'       => 'uix_pb_features_col3_listitem_title',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_title]['.$sid.']' ]
-								),
-								
-								array(
-									'id'       => 'uix_pb_features_col3_listitem_desc',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_desc]['.$sid.']' ]
-								),
-								array(
-									'id'       => 'uix_pb_features_col3_listitem_icon',
-									'default'  => $item[ '['.$colid.']'.$uid.'[uix_pb_features_col3_listitem_icon]['.$sid.']' ]
-								),
-														
-								
-			                  ];
+			$value         =  [ 'uix_pb_features_col3_listitem_title', 'uix_pb_features_col3_listitem_desc', 'uix_pb_features_col3_listitem_icon' ];
 							  
-			UixPageBuilder::push_cloneform( $uid, $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
+			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
 	
 		} 
 	}

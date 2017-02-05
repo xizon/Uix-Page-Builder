@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 1.0.0
+	* Version 2.0
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -1025,6 +1025,23 @@
 .uixpbform-table-list .uixpbform-upbtn-container {
 	width: calc( 100% + 25px );
 }
+
+.uixpbform-form-container .uixpbform-upbtn-container a.removeimg {
+	position: absolute;
+    font-size: 18px;
+	text-shadow: 1px 1px rgba(0,0,0,0.15);
+	color: #D8181C;
+	text-decoration: none;
+	font-weight: 600;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	display: none;
+	z-index: 2;
+}
+
 
 .uixpbform-form-container .button.uixpbform-upbtn {
     width: 100px;
