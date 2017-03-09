@@ -24,7 +24,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -77,21 +77,21 @@ if ( $sid >= 0 ) {
  * Form Type & Parameters
  * ----------------------------------------------------
  */
-$form_type = [
+$form_type = array(
 	'list' => false
-];
+);
 
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 
 $args = 
-	[
+	array(
 
 		
 		array(
@@ -101,7 +101,7 @@ $args =
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
 
@@ -260,7 +260,7 @@ $args =
 	
 
 
-	]
+	)
 ;
 
 

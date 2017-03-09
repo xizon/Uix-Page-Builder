@@ -28,21 +28,21 @@ $item    = '';
  * ----------------------------------------------------
  */
 
-$form_type_config = [
+$form_type_config = array(
     'list' => 1
-];
+);
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 
 
 $module_config = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_features_col2_config_title',
@@ -70,18 +70,18 @@ $module_config =
 		),
 		
 	
-	]
+	)
 ;
 
 
 
-$form_type_col2 = [
+$form_type_col2 = array(
     'list'       => 2
-];
+);
 
 
 $args_col2_1 = 
-	[
+	array(
 	
 
 
@@ -156,12 +156,12 @@ $args_col2_1 =
 		),		
 		
 	
-	]
+	)
 ;
 
 
 $args_col2_2 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col2_2',
 			'title'          => __( 'Text2 - 2', 'uix-page-builder' ),
@@ -230,19 +230,19 @@ $args_col2_2 =
 		
 		),			
 	
-	]
+	)
 ;
 
 
 //---------
 
-$form_type_col3 = [
+$form_type_col3 = array(
     'list' => 3
-];
+);
 
 
 $args_col3_1 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col3_1',
 			'title'          => __( 'Text3 - 1', 'uix-page-builder' ),
@@ -254,11 +254,11 @@ $args_col3_1 =
 		),
 		
 	
-	]
+	)
 ;
 
 $args_col3_2 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col3_2',
 			'title'          => __( 'Text3 - 2', 'uix-page-builder' ),
@@ -270,12 +270,12 @@ $args_col3_2 =
 		),
 		
 	
-	]
+	)
 ;
 
 
 $args_col3_3 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col3_3',
 			'title'          => __( 'Text3 - 3', 'uix-page-builder' ),
@@ -287,20 +287,20 @@ $args_col3_3 =
 		),
 		
 	
-	]
+	)
 ;
 
 
 
 //---------
 
-$form_type_col4 = [
+$form_type_col4 = array(
     'list' => 4
-];
+);
 
 
 $args_col4_1 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col4_1',
 			'title'          => __( 'Text4 - 1', 'uix-page-builder' ),
@@ -312,11 +312,11 @@ $args_col4_1 =
 		),
 		
 	
-	]
+	)
 ;
 
 $args_col4_2 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col4_2',
 			'title'          => __( 'Text4 - 2', 'uix-page-builder' ),
@@ -328,10 +328,10 @@ $args_col4_2 =
 		),
 		
 	
-	]
+	)
 ;
 $args_col4_3 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col4_3',
 			'title'          => __( 'Text4 - 3', 'uix-page-builder' ),
@@ -343,10 +343,10 @@ $args_col4_3 =
 		),
 		
 	
-	]
+	)
 ;
 $args_col4_4 = 
-	[
+	array(
 		array(
 			'id'             => 'uix_pb_col_demo_col4_4',
 			'title'          => __( 'Text4 - 4', 'uix-page-builder' ),
@@ -374,7 +374,7 @@ $args_col4_4 =
 		
 		
 	
-	]
+	)
 ;
 
 

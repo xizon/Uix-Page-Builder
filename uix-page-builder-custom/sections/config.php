@@ -1,11 +1,11 @@
 <?php 
 
-$uix_pb_config = [
+$uix_pb_config = array(
 	
 	
 	array(
 		'sortname'        => __( 'Contents', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 	
 								array(
 									'title'           => __( 'Accordion', 'uix-page-builder' ),
@@ -30,7 +30,7 @@ $uix_pb_config = [
 								),							
 								
 				
-							]
+							)
 	
 	),
 	
@@ -39,7 +39,7 @@ $uix_pb_config = [
 	
 	array(
 		'sortname'        => __( 'Testimonials', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 							
 								array(
 									'title'           => __( 'Testimonials Carousel', 'uix-page-builder' ),
@@ -50,13 +50,13 @@ $uix_pb_config = [
 	
 								
 				
-							]
+							)
 	
 	),	
 	
 	array(
 		'sortname'        => __( 'Clients', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 							
 								array(
 									'title'           => __( 'Clients', 'uix-page-builder' ),
@@ -67,13 +67,13 @@ $uix_pb_config = [
 	
 								
 				
-							]
+							)
 	
 	),	
 	
 	array(
 		'sortname'        => __( 'Portfolio', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 							
 								array(
 									'title'           => __( 'Portfolio Grid', 'uix-page-builder' ),
@@ -84,7 +84,7 @@ $uix_pb_config = [
 	
 								
 				
-							]
+							)
 	
 	),	
 	
@@ -94,7 +94,7 @@ $uix_pb_config = [
 	
 	array(
 		'sortname'        => __( 'Team', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 							
 								array(
 									'title'           => __( 'Team Normal', 'uix-page-builder' ),
@@ -112,13 +112,13 @@ $uix_pb_config = [
 	
 								
 				
-							]
+							)
 	
 	),	
 	
 	array(
 		'sortname'        => __( 'Features', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 							
 								array(
 									'title'           => __( 'Features 2 Column', 'uix-page-builder' ),
@@ -136,13 +136,13 @@ $uix_pb_config = [
 	
 								
 				
-							]
+							)
 	
 	),		
 	
 	array(
 		'sortname'        => __( 'Pricing', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 	
 								array(
 									'title'           => __( 'Pricing 3 column', 'uix-page-builder' ),
@@ -160,14 +160,14 @@ $uix_pb_config = [
 	
 								
 				
-							]
+							)
 	
 	),	
 	
 	
 	array(
 		'sortname'        => __( 'Elements', 'uix-page-builder' ),
-		'buttons'         => [
+		'buttons'         => array(
 		
 								array(
 									'title'           => __( 'Author Card', 'uix-page-builder' ),
@@ -200,11 +200,11 @@ $uix_pb_config = [
 		
 										
 							
-							]
+							)
 	
 	),		
 	
 	
 		
 		
-];
+);

@@ -24,7 +24,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -79,21 +79,21 @@ if ( $sid >= 0 ) {
  * Form Type & Parameters
  * ----------------------------------------------------
  */
-$form_type = [
+$form_type = array(
 	'list' => false
-];
+);
 
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 					
 
 $args = 
-	[
+	array(
 
 	    array(
 			'id'             => 'uix_pb_map_style',
@@ -125,7 +125,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
 			'default'        => array(
-									'units'       => [ '%', 'px' ],
+									'units'       => array( '%', 'px' ),
 									'units_id'    => 'uix_pb_map_width_units',
 									'units_value' => '%',
 				                )
@@ -140,7 +140,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
 			'default'        => array(
-									'units'      => [ 'px', 'vh' ],
+									'units'      => array( 'px', 'vh' ),
 									'units_id'    => 'uix_pb_map_height_units',
 									'units_value' => 'px'
 								)
@@ -226,7 +226,7 @@ $args =
 		),	
 
 	
-	]
+	)
 ;
 
 $form_html    = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );

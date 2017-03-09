@@ -25,7 +25,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -80,20 +80,20 @@ if ( $sid >= 0 ) {
  * Form Type & Parameters
  * ----------------------------------------------------
  */
-$form_type = [
+$form_type = array(
 	'list' => false
-];
+);
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 
 $args = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_bar_shape',
@@ -110,14 +110,14 @@ $args =
 			'toggle'        => array(
 			                        array(
 										'trigger_id'           => 'circular', /* {option id} */
-										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ]
+										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ),
+										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' )
 
 									),
 			                        array(
 										'trigger_id'           => 'square', /* {option id} */
-										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ]
+										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ),
+										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' )
 
 									),
 						
@@ -149,7 +149,7 @@ $args =
 				'placeholder'    => '',
 				'type'           => 'short-units-text',
 				'default'        => array(
-										'units'      => [ '%', 'px' ],
+										'units'      => array( '%', 'px' ),
 										'units_id'    => 'uix_pb_bar_square_size_units',
 										'units_value' => '%'
 									)
@@ -208,7 +208,7 @@ $args =
 			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 									'trigger_id'    => '', /* {option id} */
-									'toggle_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class' ]
+									'toggle_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class' )
 				                )	
 		
 		
@@ -235,7 +235,7 @@ $args =
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#fffff0', '#f5f5dc', '#f5deb3', '#d2b48c', '#c3b091', '#c0c0c0', '#808080', '#464646', '#333333', '#000080', '#084c9e', '#007fff', '#0E90D2', '#4BB1CF', '#5F9EA0', '#00ffff', '#7fffd4', '#008080', '#228b22', '#808000', '#a2bf2f', '#7fff00', '#bfff00', '#ffd700', '#daa520', '#ff7f50', '#fa8072', '#fc0fc0', '#ff77ff', '#e0b0ff', '#b57edc', '#843179', '#E1A0A1', '#D84F51', '#dc143c', '#990002' ,'#800000' ]
+			'default'        => array( '#fffff0', '#f5f5dc', '#f5deb3', '#d2b48c', '#c3b091', '#c0c0c0', '#808080', '#464646', '#333333', '#000080', '#084c9e', '#007fff', '#0E90D2', '#4BB1CF', '#5F9EA0', '#00ffff', '#7fffd4', '#008080', '#228b22', '#808000', '#a2bf2f', '#7fff00', '#bfff00', '#ffd700', '#daa520', '#ff7f50', '#fa8072', '#fc0fc0', '#ff77ff', '#e0b0ff', '#b57edc', '#843179', '#E1A0A1', '#D84F51', '#dc143c', '#990002' ,'#800000' )
 		
 		),
 		
@@ -248,7 +248,7 @@ $args =
 			'value'          => '#f1f1f1',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#ffffff', '#473f3f',  '#bebebe', '#dcdcdc', '#f1f1f1' ]
+			'default'        => array( '#ffffff', '#473f3f',  '#bebebe', '#dcdcdc', '#f1f1f1' )
 		
 		),
 	
@@ -259,7 +259,7 @@ $args =
 			'value'          => '#473f3f',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#ffffff', '#473f3f',  '#bebebe', '#dcdcdc', '#f1f1f1' ]
+			'default'        => array( '#ffffff', '#473f3f',  '#bebebe', '#dcdcdc', '#f1f1f1' )
 		
 		),
 		
@@ -317,7 +317,7 @@ $args =
 
 
 	
-	]
+	)
 ;
 
 

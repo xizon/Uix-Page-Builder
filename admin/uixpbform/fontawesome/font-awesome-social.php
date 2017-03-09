@@ -1,7 +1,7 @@
 <?php
 $iconName     = isset( $_POST['iconName'] ) ? $_POST[ 'iconName' ] : ''; //default value with ajax
 $g            ='class="b social fontawesome"';
-$icons        = [
+$icons        = array(
 '<span '.$g.'><i class="fa fa-twitter"></i></span>',
 '<span '.$g.'><i class="fa fa-twitter-square"></i></span>',
 '<span '.$g.'><i class="fa fa-facebook"></i></span>',
@@ -112,7 +112,7 @@ $icons        = [
 '<span '.$g.'><i class="fa fa-xing-square"></i></span>',
 '<span '.$g.'><i class="fa fa-yahoo"></i></span>',
 '<span '.$g.'><i class="fa fa-yelp"></i></span>'
-];
+);
 
 echo '<div class="uixpbform-icon-selector uixpbform-icon-selector-s">';
 foreach ( $icons as $value ) {

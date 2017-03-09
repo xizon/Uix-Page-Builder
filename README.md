@@ -57,6 +57,11 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+##### = 1.1.6 =
+
+* Compatible with low version PHP (5.3+)
+* Fixed some minor errors in the low version of PHP.
+
 
 ##### = 1.1.5 =
 

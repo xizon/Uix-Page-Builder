@@ -176,7 +176,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				return false;
 		
 			// Define our variable as an empty array to avoid bugs if $plugin_array is empty
-			$slugs = [];
+			$slugs = array();
 		
 			foreach ( $plugin_array as $plugin_slug=>$values ){
 				$slugs[] = basename(
@@ -614,9 +614,10 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function uixpbform_callback( $form_id, $title ) {
 			
+			$id         = get_the_ID();
 			$old_formid = $form_id;
 			$formid     = '.'.$old_formid.'';
-			$postid     = empty( get_the_ID() ) ? $_GET['post_id'] : get_the_ID();
+			$postid     = empty( $id ) ? $_GET['post_id'] : $id;
 			$title      = esc_attr( $title );
 			
 			
@@ -875,7 +876,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					$_colid   = ( isset( $key['colid'] ) ) ? $key['colid'] : '';
 				
 					
-					$args = [
+					$args = array(
 						'title'             => $_title,
 						'desc'              => $_desc,
 						'default'           => $_default,
@@ -888,7 +889,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 						'toggle'            => $_toggle,
 						'colid'             => $_colid
 	
-					];
+					);
 				
 					
 					//icon

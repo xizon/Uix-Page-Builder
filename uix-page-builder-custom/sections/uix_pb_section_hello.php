@@ -15,7 +15,7 @@ $clone_trigger_id        = 'uix_pb_hello_hello_list';    // ID of clone trigger
 $clone_max               = 4;                     // Maximum of clone form 
                
 //clone list of toggle class value @var array
-$clone_list_toggle_class = [ 'uix_pb_hello_listitem_toggle_url', 'uix_pb_hello_listitem_toggle_icon' ];       
+$clone_list_toggle_class = array( 'uix_pb_hello_listitem_toggle_url', 'uix_pb_hello_listitem_toggle_icon' );       
 
 
 /**
@@ -33,7 +33,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -89,20 +89,20 @@ if ( $sid >= 0 ) {
  * Form Type & Parameters
  * ----------------------------------------------------
  */
-$form_type = [
+$form_type = array(
 	'list' => false
-];
+);
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 
 $args = 
-	[
+	array(
 	
 	    array(
 			'id'             => 'uix_pb_hello_tipinfo',
@@ -150,15 +150,15 @@ $args =
 			'toggle'        => array(
 			                        array(
 										'trigger_id'           => 'grand-fill-yellow', /* {option id} */
-										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_radioswitch_fillbg' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ]
+										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_radioswitch_fillbg' ).'_toggle_class' ),
+										'toggle_remove_class'  => array()
 
 									),
 									
 			                        array(
 										'trigger_id'           => 'grand', /* {option id} */
-										'toggle_class'         => [ ],
-										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_radioswitch_fillbg' ).'_toggle_class' ]
+										'toggle_class'         => array(),
+										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_radioswitch_fillbg' ).'_toggle_class' )
 
 									),	
 									
@@ -226,26 +226,26 @@ $args =
 			'toggle'        => array(
 			                        array(
 										'trigger_id'           => '1', /* {option id} */
-										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'xxx' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'yyy' ).'_toggle_class', 
+										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'xxx' ).'_toggle_class' ),
+										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'yyy' ).'_toggle_class', 
 																    ''.UixPBFormCore::fid( $colid, $sid, 'zzz' ).'_toggle_class' 
-																  ]
+																  )
 
 									),
 			                        array(
 										'trigger_id'           => '2', /* {option id} */
-										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'yyy' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'xxx' ).'_toggle_class', 
+										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'yyy' ).'_toggle_class' ),
+										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'xxx' ).'_toggle_class', 
 																    ''.UixPBFormCore::fid( $colid, $sid, 'zzz' ).'_toggle_class' 
-																  ]
+																  )
 
 									),
 				                    array(
 										'trigger_id'           => '3', /* {option id} */
-										'toggle_class'         => [ ''.UixPBFormCore::fid( $colid, $sid, 'zzz' ).'_toggle_class' ],
-										'toggle_remove_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'xxx' ).'_toggle_class',
+										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'zzz' ).'_toggle_class' ),
+										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'xxx' ).'_toggle_class',
 																    ''.UixPBFormCore::fid( $colid, $sid, 'yyy' ).'_toggle_class'
-																  ]
+																  )
 
 									),
 									
@@ -376,7 +376,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
 			'default'        => array(
-									'units'       => [ 'px', 'em', '%' ],
+									'units'       => array( 'px', 'em', '%' ),
 									'units_id'    => 'uix_pb_hello_shortunitstext_units',
 									'units_value' => 'px',
 				                )
@@ -394,7 +394,7 @@ $args =
 			'default'        => array(
 		                            //'btn_textclass' => 'table-link-icon',
 			                        'btn_text'      => __( 'set up links with toggle', 'uix-page-builder' ),
-									'toggle_class'  => [ UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_toggle_url' ).'_class' ]
+									'toggle_class'  => array( UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_toggle_url' ).'_class' )
 				                )
 		
 		),	
@@ -424,7 +424,7 @@ $args =
 			'value'          => '#f5f5dc',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#fffff0', '#f5f5dc', '#f5deb3', '#d2b48c', '#c3b091', '#c0c0c0', '#808080', '#464646', '#333333', '#000080', '#084c9e', '#007fff', '#0E90D2', '#4BB1CF', '#5F9EA0', '#00ffff', '#7fffd4', '#008080', '#228b22', '#808000', '#a2bf2f', '#7fff00', '#bfff00', '#ffd700', '#daa520', '#ff7f50', '#fa8072', '#fc0fc0', '#ff77ff', '#e0b0ff', '#b57edc', '#843179', '#E1A0A1', '#D84F51', '#dc143c', '#990002' ,'#800000' ]
+			'default'        => array( '#fffff0', '#f5f5dc', '#f5deb3', '#d2b48c', '#c3b091', '#c0c0c0', '#808080', '#464646', '#333333', '#000080', '#084c9e', '#007fff', '#0E90D2', '#4BB1CF', '#5F9EA0', '#00ffff', '#7fffd4', '#008080', '#228b22', '#808000', '#a2bf2f', '#7fff00', '#bfff00', '#ffd700', '#daa520', '#ff7f50', '#fa8072', '#fc0fc0', '#ff77ff', '#e0b0ff', '#b57edc', '#843179', '#E1A0A1', '#D84F51', '#dc143c', '#990002' ,'#800000' )
 		
 		),
 		
@@ -513,11 +513,11 @@ $args =
 			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 									'trigger_id'    => '', /* {option id} */
-									'toggle_class'  => [ ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_checkbox_toggle_text' ).'_class' ],
+									'toggle_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_checkbox_toggle_text' ).'_class' ),
 									
 									/* if this toggle contains another toggle, please specifies "toggle_not_class" in order that default hiding form is still valid . */
 									/*
-									'toggle_not_class'  => [ '' ]
+									'toggle_not_class'  => array()
 									*/
 									
 				                )	
@@ -560,7 +560,7 @@ $args =
 			'type'           => 'list',
 			'default'        => array(
 									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => [ 
+									'clone_class'               => array(
 										array(
 											'id'             => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_imgURL' ).'',
 											'type'      => 'image'
@@ -573,12 +573,12 @@ $args =
 										array(
 											'id'             => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle' ).'',
 											'type'            => 'toggle',
-											'toggle_class'    => [ 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).'', 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ).'' ]
+											'toggle_class'    => array( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).'', 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ).'' )
 										), 									
 										
 										
 
-									 ],
+									 ),
 									'max'                       => $clone_max
 				                )
 									
@@ -622,7 +622,7 @@ $args =
 				'type'           => 'toggle',
 				'default'        => array(
 										'btn_text'      => __( 'set up links with toggle', 'uix-page-builder' ),
-										'toggle_class'  => [ 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).'', 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ).'' ]
+										'toggle_class'  => array( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_url' ).'', 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_hello_listitem_toggle_icon' ).'' )
 									)
 			
 			),	
@@ -679,7 +679,7 @@ $args =
 
 	
 
-	]
+	)
 ;
 
 
@@ -741,7 +741,7 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [ 'uix_pb_hello_listitem_imgURL', 'uix_pb_hello_listitem_imgtitle', 'uix_pb_hello_listitem_toggle', 'uix_pb_hello_listitem_toggle_url', 'uix_pb_hello_listitem_toggle_icon' ];
+			$value         = array( 'uix_pb_hello_listitem_imgURL', 'uix_pb_hello_listitem_imgtitle', 'uix_pb_hello_listitem_toggle', 'uix_pb_hello_listitem_toggle_url', 'uix_pb_hello_listitem_toggle_icon' );
 							  
 			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
 	

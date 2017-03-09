@@ -24,7 +24,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -81,21 +81,21 @@ if ( $sid >= 0 ) {
  * ----------------------------------------------------
  */
 
-$form_type_config = [
+$form_type_config = array(
     'list' => 1
-];
+);
 
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 
 $module_config = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_pricing_col3_config_title',
@@ -123,17 +123,17 @@ $module_config =
 		),
 		
 	
-	]
+	)
 ;
 
 
-$form_type = [
+$form_type = array(
     'list' => 3
-];
+);
 
 
 $args_1 = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_pricing_col3_one_title',
@@ -160,7 +160,7 @@ $args_1 =
 			'value'          => '#d59a3e',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
 		
@@ -221,7 +221,7 @@ $args_1 =
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
 		
@@ -259,12 +259,12 @@ $args_1 =
 		),
 
 	
-	]
+	)
 ;
 
 
 $args_2 = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_pricing_col3_two_title',
@@ -291,7 +291,7 @@ $args_2 =
 			'value'          => '#d59a3e',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
 		
@@ -352,7 +352,7 @@ $args_2 =
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
 		
@@ -390,12 +390,12 @@ $args_2 =
 		),
 
 	
-	]
+	)
 ;
 
 
 $args_3 = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_pricing_col3_three_title',
@@ -422,7 +422,7 @@ $args_3 =
 			'value'          => '#d59a3e',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
 		
@@ -483,7 +483,7 @@ $args_3 =
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
 		
@@ -537,7 +537,7 @@ $args_3 =
 			
 
 	
-	]
+	)
 ;
 
 

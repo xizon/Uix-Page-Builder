@@ -161,29 +161,29 @@ function uix_page_builder_options_page(){
 	} 
 	
 	$tabs = array();
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'about', 
 		'title'   =>  __( 'About', 'uix-page-builder' )
-	];
-	$tabs[] = [
+	);
+	$tabs[] = array(
 	    'tab'     =>  'usage', 
 		'title'   =>  __( 'How to use?', 'uix-page-builder' )
-	];
+	);
 	
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'credits', 
 		'title'   =>  __( 'Credits', 'uix-page-builder' )
-	];
+	);
 	
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'temp', 
 		'title'   =>  __( 'Template Files', 'uix-page-builder' )
-	];
+	);
 	
-	$tabs[] = [
+	$tabs[] = array(
 	    'tab'     =>  'custom-css', 
 		'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-page-builder' )
-	];	
+	);	
 	
 	
 	

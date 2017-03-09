@@ -239,7 +239,9 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				$tempfile_exists = 0;
 			}
 			
-			$post_id = empty( get_the_ID() ) ? $_GET['post_id'] : get_the_ID();
+			$curid = get_the_ID();
+			
+			$post_id = empty( $curid ) ? $_GET['post_id'] : $curid;
 			
 			$translation_array = array(
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
@@ -306,6 +308,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
 		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-page-builder' );
 		
 		$curid = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
+		$status = get_post_meta( $curid, 'uix-page-builder-status', true );
     ?>
 
 	<?php if ( UixPageBuilder::SHOWPAGESCREEN == 0 ) { ?>
@@ -328,11 +331,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
      
             <p>
                  <label for="uix-page-builder-status">
-                    <input name="uix-page-builder-status" id="uix-page-builder-status1" type="radio" value="enable" <?php echo ( get_post_meta( $curid, 'uix-page-builder-status', true ) == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-page-builder' ); ?>
+                    <input name="uix-page-builder-status" id="uix-page-builder-status1" type="radio" value="enable" <?php echo ( $status == 'enable' ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Enable', 'uix-page-builder' ); ?>
                 </label>
                 
                 <label for="uix-page-builder-status2">
-                    <input name="uix-page-builder-status" id="uix-page-builder-status2" type="radio" value="disable" <?php echo ( get_post_meta( $curid, 'uix-page-builder-status', true ) == 'disable'  || empty( get_post_meta( $curid, 'uix-page-builder-status', true ) )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-page-builder' ); ?>
+                    <input name="uix-page-builder-status" id="uix-page-builder-status2" type="radio" value="disable" <?php echo ( $status == 'disable' || empty( $status )  ) ? esc_attr( 'checked' ) : ''; ?> /><?php _e( 'Disable', 'uix-page-builder' ); ?>
                 </label>  
     
             </p>
@@ -513,7 +516,8 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
        
 			<div class="gridster uix-page-builder-gridster">
 				<ul><?php
-				if ( empty( UixPageBuilder::page_builder_array_newlist( $old_layoutdata ) ) ) {
+		        $v = UixPageBuilder::page_builder_array_newlist( $old_layoutdata );
+				if ( empty( $v ) ) {
 					echo '<span id="uix-page-builder-layoutdata-none">';
 					_e( 'Add section here.', 'uix-page-builder' );
 					echo '</span>';

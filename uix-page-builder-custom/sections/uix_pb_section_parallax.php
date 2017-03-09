@@ -24,7 +24,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -78,21 +78,21 @@ if ( $sid >= 0 ) {
  * Form Type & Parameters
  * ----------------------------------------------------
  */
-$form_type = [
+$form_type = array(
 	'list' => false
-];
+);
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 						
 
 $args = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_parallax_title',
@@ -157,7 +157,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
 			'default'        => array(
-									'units'      => [ 'px', 'vh' ],
+									'units'      => array( 'px', 'vh' ),
 									'units_id'    => 'uix_pb_parallax_height_units',
 									'units_value' => 'px'
 								)
@@ -238,15 +238,15 @@ $args =
 			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
 			'toggle'        => array(
 									'trigger_id'  => '', /* {option id} */
-									'toggle_class'  => [ 
+									'toggle_class'  => array(
 		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_btn_color' ).'_class', 
 		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url' ).'_class', 
 		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text' ).'_class' 
-	                                 ],
+	                                 ),
 									
 									/* if this toggle contains another toggle, please specifies "toggle_not_class" in order that default hiding form is still valid . */
 									/*
-									'toggle_not_class'  => [ '' ]
+									'toggle_not_class'  => array()
 									*/
 									
 				                )	
@@ -263,7 +263,7 @@ $args =
 		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_btn_color' ).'_class', /*class of toggle item */
 			'placeholder'    => '',
 			'type'           => 'color',
-			'default'        => [ '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe',  '#ffffff' ]
+			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe',  '#ffffff' )
 		
 		),
 		
@@ -309,7 +309,7 @@ $args =
 		),	
 
 	
-	]
+	)
 ;
 
 $form_html    = UixPBFormCore::add_form( $args_config, $colid, $wname, $sid, $form_id, $form_type, $args, 'html' );

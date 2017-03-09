@@ -36,23 +36,23 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 			    $return_string     = '';
 				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( get_the_ID(), 'uix-page-builder-layoutdata', true ) );
-				$item              = [];
-				$cols              = [ 
-										[ '3_4', 'uix-pb-col-8' ],
-										[ '1_4', 'uix-pb-col-4' ],
-										[ '2_3', 'uix-pb-col-9' ],
-										[ '1_3', 'uix-pb-col-3' ],
-										[ '4__1', 'uix-pb-col-3' ],
-										[ '4__2', 'uix-pb-col-3' ],
-										[ '4__3', 'uix-pb-col-3' ],
-										[ '4__4', 'uix-pb-col-3' ],
-										[ '3__1', 'uix-pb-col-4' ],
-										[ '3__2', 'uix-pb-col-4' ],
-										[ '3__3', 'uix-pb-col-4' ],
-										[ '2__1', 'uix-pb-col-6' ],
-										[ '2__2', 'uix-pb-col-6' ],
-										[ '1__1', 'uix-pb-col-12' ]
-									];
+				$item              = array();
+				$cols              = array( 
+										array( '3_4', 'uix-pb-col-8' ),
+										array( '1_4', 'uix-pb-col-4' ),
+										array( '2_3', 'uix-pb-col-9' ),
+										array( '1_3', 'uix-pb-col-3' ),
+										array( '4__1', 'uix-pb-col-3' ),
+										array( '4__2', 'uix-pb-col-3' ),
+										array( '4__3', 'uix-pb-col-3' ),
+										array( '4__4', 'uix-pb-col-3' ),
+										array( '3__1', 'uix-pb-col-4' ),
+										array( '3__2', 'uix-pb-col-4' ),
+										array( '3__3', 'uix-pb-col-4' ),
+										array( '2__1', 'uix-pb-col-6' ),
+										array( '2__2', 'uix-pb-col-6' ),
+										array( '1__1', 'uix-pb-col-12' )
+									);
 
 				if ( $builder_content && is_array( $builder_content ) ) {
 					foreach ( $builder_content as $key => $value ) :
@@ -89,10 +89,14 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 									$colid           = $value[0][1]; //column id
 									$temp_index      = count( $value ) - 1;
+								
+								    $bool1 = UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' );
+								    $bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' );
 
-									if ( UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' ) || UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' ) ) {
+									if ( $bool1 || $bool2 ) {
 
-										$html = ( !empty( UixPageBuilder::theme_value( $value[$temp_index][1] ) ) ) ? UixPageBuilder::theme_value( $value[$temp_index][1] ) : '&nbsp;';
+										$value = UixPageBuilder::theme_value( $value[$temp_index][1] );
+										$html = ( !empty( $value ) ) ? $value : '&nbsp;';
 
 										//Determine the grid system
 										foreach ( $cols as $id ) :

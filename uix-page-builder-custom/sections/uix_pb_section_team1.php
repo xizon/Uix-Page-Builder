@@ -15,7 +15,7 @@ $clone_trigger_id        = 'uix_pb_team1_list';    // ID of clone trigger
 $clone_max               = 30;                         // Maximum of clone form 
 
 //clone list of toggle class value @var array
-$clone_list_toggle_class = [ 'uix_pb_team1_listitem_toggle_url1', 'uix_pb_team1_listitem_toggle_icon1', 'uix_pb_team1_listitem_toggle_url2', 'uix_pb_team1_listitem_toggle_icon2', 'uix_pb_team1_listitem_toggle_url3', 'uix_pb_team1_listitem_toggle_icon3' ];       
+$clone_list_toggle_class = array( 'uix_pb_team1_listitem_toggle_url1', 'uix_pb_team1_listitem_toggle_icon1', 'uix_pb_team1_listitem_toggle_url2', 'uix_pb_team1_listitem_toggle_icon2', 'uix_pb_team1_listitem_toggle_url3', 'uix_pb_team1_listitem_toggle_icon3' );       
 
 
 
@@ -33,7 +33,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -88,21 +88,21 @@ if ( $sid >= 0 ) {
  * ----------------------------------------------------
  */
 
-$form_type_config = [
+$form_type_config = array(
     'list' => 1
-];
+);
 
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 
 $module_config = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_team1_config_title',
@@ -170,18 +170,18 @@ $module_config =
 		),		
 		
 	
-	]
+	)
 ;
 
 
-$form_type = [
+$form_type = array(
     'list' => 1
-];
+);
 
 
 
 $args = 
-	[
+	array(
 		
 		//------list begin
 
@@ -196,7 +196,7 @@ $args =
 			'type'           => 'list',
 			'default'        => array(
 									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => [ 
+									'clone_class'               => array(
 										array(
 											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_avatar' ).'',
 											'type'      => 'image'
@@ -218,20 +218,20 @@ $args =
 										), 
 										
 										array(
-											'id'             => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle' ).'',
+											'id'              => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle' ).'',
 											'type'            => 'toggle',
-											'toggle_class'  => [ 
+											'toggle_class'  => array(
 												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url1' ).'', 
 												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon1' ).'',
 												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url2' ).'', 
 												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon2' ).'',
 												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url3' ).'', 
 												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon3' ).'',
-											 ]
+											 )
 										), 			
 		
 
-									 ],
+									 ),
 									'max'                       => $clone_max
 				                )
 									
@@ -300,14 +300,14 @@ $args =
 				'type'           => 'toggle',
 				'default'        => array(
 										'btn_text'      => __( 'set up links with toggle', 'uix-page-builder' ),
-										'toggle_class'  => [ 
+										'toggle_class'  => array(
 											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url1' ).'', 
 											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon1' ).'',
 											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url2' ).'', 
 											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon2' ).'',
 											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url3' ).'', 
 											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon3' ).'',
-	                                     ]
+	                                     )
 									)
 			
 			),	
@@ -411,7 +411,7 @@ $args =
 
 		
 	
-	]
+	)
 ;
 
 //---
@@ -487,7 +487,7 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [ 'uix_pb_team1_listitem_avatar', 'uix_pb_team1_listitem_name', 'uix_pb_team1_listitem_position', 'uix_pb_team1_listitem_intro', 'uix_pb_team1_listitem_toggle', 'uix_pb_team1_listitem_toggle_url1', 'uix_pb_team1_listitem_toggle_icon1', 'uix_pb_team1_listitem_toggle_url2', 'uix_pb_team1_listitem_toggle_icon2', 'uix_pb_team1_listitem_toggle_url3', 'uix_pb_team1_listitem_toggle_icon3' ];
+			$value         = array( 'uix_pb_team1_listitem_avatar', 'uix_pb_team1_listitem_name', 'uix_pb_team1_listitem_position', 'uix_pb_team1_listitem_intro', 'uix_pb_team1_listitem_toggle', 'uix_pb_team1_listitem_toggle_url1', 'uix_pb_team1_listitem_toggle_icon1', 'uix_pb_team1_listitem_toggle_url2', 'uix_pb_team1_listitem_toggle_icon2', 'uix_pb_team1_listitem_toggle_url3', 'uix_pb_team1_listitem_toggle_icon3' );
 							  
 			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id, $cur_id, $colid, $clone_value, $sid, $value, $clone_list_toggle_class );
 	

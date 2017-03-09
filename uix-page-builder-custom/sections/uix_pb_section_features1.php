@@ -33,7 +33,7 @@ $item    = '';
 if ( $sid >= 0 ) {
 	
 	$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-	$item              = [];
+	$item              = array();
 	if ( $builder_content && is_array( $builder_content ) ) {
 		foreach ( $builder_content as $key => $value ) :
 			$con         = UixPageBuilder::page_builder_output( $value->content );
@@ -89,20 +89,20 @@ if ( $sid >= 0 ) {
  * ----------------------------------------------------
  */
 
-$form_type_config = [
+$form_type_config = array(
     'list' => 1
-];
+);
 
-$args_config = [
+$args_config = array(
 	'col_id'    => $colid,
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-];						
+);						
 
 
 $module_config = 
-	[
+	array(
 	
 		array(
 			'id'             => 'uix_pb_features_col2_config_title',
@@ -130,19 +130,19 @@ $module_config =
 		),
 		
 	
-	]
+	)
 ;
 
 
 
-$form_type = [
+$form_type = array(
     'list' => 2
-];
+);
 
 
 
 $args_1 = 
-	[
+	array(
 	
 	
 		array(
@@ -162,7 +162,7 @@ $args_1 =
 			'type'           => 'list',
 			'default'        => array(
 									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => [ 
+									'clone_class'               => array(
 									
 										array(
 											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_features_col2_one_listitem_title' ).'',
@@ -181,7 +181,7 @@ $args_1 =
 										), 	
 																	
 
-									 ],
+									 ),
 									'max'                       => $clone_max
 				                )
 									
@@ -240,11 +240,11 @@ $args_1 =
 
 		
 	
-	]
+	)
 ;
 
 $args_2 = 
-	[
+	array(
 	
 		array(
 			'desc'           => __( 'Note: multiple items per column', 'uix-page-builder' ),
@@ -263,7 +263,7 @@ $args_2 =
 			'type'           => 'list',
 			'default'        => array(
 									'btn_text'                  => __( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => [ 
+									'clone_class'               => array(
 									
 										array(
 											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_features_col2_two_listitem_title' ).'',
@@ -282,7 +282,7 @@ $args_2 =
 										), 	
 																	
 
-									 ],
+									 ),
 									'max'                       => $clone_max
 				                )
 									
@@ -355,7 +355,7 @@ $args_2 =
 
 		
 	
-	]
+	)
 ;
 
 
@@ -432,7 +432,7 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			$cur_id        = $i;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [ 'uix_pb_features_col2_one_listitem_title', 'uix_pb_features_col2_one_listitem_desc', 'uix_pb_features_col2_one_listitem_icon' ];
+			$value         = array( 'uix_pb_features_col2_one_listitem_title', 'uix_pb_features_col2_one_listitem_desc', 'uix_pb_features_col2_one_listitem_icon' );
 							  
 			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id_1, $cur_id, $colid, $clone_value_1, $sid, $value, $clone_list_toggle_class );
 	
@@ -447,7 +447,7 @@ if ( $sid >= 0 && is_admin() ) {
 			
 			$cur_id        = $ii;
 			$cur_form_id   = '#'.$uid.$field;
-			$value         =  [ 'uix_pb_features_col2_two_listitem_title', 'uix_pb_features_col2_two_listitem_desc', 'uix_pb_features_col2_two_listitem_icon' ];
+			$value         = array( 'uix_pb_features_col2_two_listitem_title', 'uix_pb_features_col2_two_listitem_desc', 'uix_pb_features_col2_two_listitem_icon' );
 							  
 			UixPageBuilder::push_cloneform( $uid, $item, $clone_trigger_id_2, $cur_id, $colid, $clone_value_2, $sid, $value, $clone_list_toggle_class );
 	
