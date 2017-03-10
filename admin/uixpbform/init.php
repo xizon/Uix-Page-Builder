@@ -62,10 +62,16 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		
 			 if( UixPageBuilder::page_builder_mode() ) {
 				  
+					//Fix the image path of the editor
+					$upload_dir     = wp_upload_dir();
+				    $upload_dir_url = trailingslashit( $upload_dir[ 'baseurl' ] );
+			 
+				 
 					////Register core functions
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_page_builder_wp_plugin', array( 
 						'url'                       => self::plug_directory(),
+						'upload_dir_url'            => $upload_dir_url,
 						'lang_media_title'          => __( 'Select Files', 'uix-page-builder' ),
 						'lang_media_text'           => __( 'Insert', 'uix-page-builder' ),				
 						'lang_mce_image'            => __( 'Insert Image', 'uix-page-builder' ),

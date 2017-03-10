@@ -1425,7 +1425,8 @@ function uixpbform_editorInit( id ){
 					   ed.on( 'change', function(e) {
 						   var newvalue = ed.getContent()
 						                                 .replace(/\r?\n/gm, '')
-						                                 .replace(/&nbsp;/g, ' ');
+						                                 .replace(/&nbsp;/g, ' ')
+						                                 .replace( /..\/wp-content\/uploads\//g, uix_page_builder_wp_plugin.upload_dir_url );
 						   
 						   
 						   $( 'textarea#' + vid ).val( newvalue ).trigger( 'change' );
