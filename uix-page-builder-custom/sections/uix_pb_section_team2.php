@@ -558,7 +558,7 @@ if ( $sid >= 0 && is_admin() ) {
 					_item_v_social_out_1    = ( _toggleurl1 != undefined && _toggleurl1 != '' ) ? '<a href="'+encodeURI( _toggleurl1 )+'" target="_blank"><i class="fa fa-'+uixpbform_htmlEncode( _item_v_social_icon_1 )+'"></i></a>' : '',
 					_item_v_social_out_2    = ( _toggleurl2 != undefined && _toggleurl2 != '' ) ? '<a href="'+encodeURI( _toggleurl2 )+'" target="_blank"><i class="fa fa-'+uixpbform_htmlEncode( _item_v_social_icon_2 )+'"></i></a>' : '',
 					_item_v_social_out_3    = ( _toggleurl3 != undefined && _toggleurl3 != '' ) ? '<a href="'+encodeURI( _toggleurl3 )+'" target="_blank"><i class="fa fa-'+uixpbform_htmlEncode( _item_v_social_icon_3 )+'"></i></a>' : '',
-					_item_v_pos             = ( _pos != undefined && _pos != '' ) ? '<em>'+_pos+'</em>' : '';
+					_item_v_pos             = ( _pos != undefined && _pos != '' ) ? '<span class="uix-pb-gallery-list-position">'+_pos+'</span>' : '';
 
 
 

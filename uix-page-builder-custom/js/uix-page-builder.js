@@ -575,7 +575,14 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
             slideshowSpeed    : 7000,
             selector          : ".slides > li",
             start: function(slider) {
+				//Prevent to <a> of page transitions
+				$( 'a' ).each( function() {
+					var attr = $( this ).attr( 'href' );
 
+					if ( typeof attr === typeof undefined ) {
+						$( this ).attr( 'href', '#' );
+					}
+				});	
             }
 
         } );
