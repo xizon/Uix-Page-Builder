@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Sun Feb 05 2017 15:53:25 GMT+0800 (CST)\n"
+"POT-Revision-Date: Fri Mar 10 2017 14:59:42 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgid "Uix Page Builder Settings"
 msgstr ""
 
 #: ../uix-page-builder.php:207 ../admin/post-extensions/post-extensions-init.php:
-#: 380
+#: 383
 msgid "Uix Page Builder"
 msgstr ""
 
@@ -152,24 +152,24 @@ msgstr ""
 msgid "Sorry, you are not allowed to export the content of this site."
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:136 ../admin/post-extensions/post-
-#: extensions-init.php:711 ../admin/post-extensions/post-extensions-init.php:880
+#: ../admin/classes/class-menu-onepage.php:140 ../admin/post-extensions/post-
+#: extensions-init.php:715 ../admin/post-extensions/post-extensions-init.php:884
 msgid "ID"
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:185
+#: ../admin/classes/class-menu-onepage.php:189
 msgid "Uix Page Builder Anchor Links"
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:201
+#: ../admin/classes/class-menu-onepage.php:205
 msgid "Select page"
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:224
+#: ../admin/classes/class-menu-onepage.php:228
 msgid "<em>No custom pages based on Uix Page Builder.</em>"
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:227
+#: ../admin/classes/class-menu-onepage.php:231
 #, php-format
 msgid ""
 "<div style=\"background:#FCDBD6;border:1px solid #ECD5D8;-webkit-box-shadow:0 "
@@ -182,15 +182,15 @@ msgid ""
 "</div>"
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:229
+#: ../admin/classes/class-menu-onepage.php:233
 msgid "Loading..."
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:237
+#: ../admin/classes/class-menu-onepage.php:241
 msgid "Select All"
 msgstr ""
 
-#: ../admin/classes/class-menu-onepage.php:242
+#: ../admin/classes/class-menu-onepage.php:246
 msgid "Add to Menu"
 msgstr ""
 
@@ -207,8 +207,8 @@ msgid "-"
 msgstr ""
 
 #: ../admin/post-extensions/post-extensions-init.php:18 ../admin/post-
-#: extensions/post-extensions-init.php:247 ../admin/post-extensions/post-
-#: extensions-init.php:469
+#: extensions/post-extensions-init.php:249 ../admin/post-extensions/post-
+#: extensions-init.php:472
 #, php-format
 msgid "Untitled-%1$s"
 msgstr ""
@@ -221,44 +221,44 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:248
+#: ../admin/post-extensions/post-extensions-init.php:250
 msgid "Loading list..."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:292
+#: ../admin/post-extensions/post-extensions-init.php:294
 msgid ""
 "<i class=\"dashicons dashicons-editor-kitchensink\"></i>&nbsp;&nbsp;Uix Page "
 "Builder Attributes"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:318
+#: ../admin/post-extensions/post-extensions-init.php:321
 msgid "Use Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:326
+#: ../admin/post-extensions/post-extensions-init.php:329
 msgid "Page Builder Editor"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:331
+#: ../admin/post-extensions/post-extensions-init.php:334
 msgid "Enable"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:335
+#: ../admin/post-extensions/post-extensions-init.php:338
 msgid "Disable"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:344
+#: ../admin/post-extensions/post-extensions-init.php:347
 msgid "How To Create The One-Page Navigation? Here is an example:"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:347
+#: ../admin/post-extensions/post-extensions-init.php:350
 msgid ""
 "1. Under the <i class=\"dashicons dashicons-admin-generic\"></i> on the right "
 "per row, expand the Attributes tab. You can enter <code>my-portfolio</code> "
 "in the Custom ID field on the right."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:349
+#: ../admin/post-extensions/post-extensions-init.php:352
 #, php-format
 msgid ""
 "2. Create a new <a href=\"%1$s\">menu</a>, and add a Custom Link for each menu "
@@ -268,80 +268,80 @@ msgid ""
 "URL field."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:408
+#: ../admin/post-extensions/post-extensions-init.php:411
 msgid "Desktop"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:409
+#: ../admin/post-extensions/post-extensions-init.php:412
 msgid "Tablet"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:410
+#: ../admin/post-extensions/post-extensions-init.php:413
 msgid "Tablet (Portrait)"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:411
+#: ../admin/post-extensions/post-extensions-init.php:414
 msgid "Mobile"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:413 ../admin/post-
-#: extensions/post-extensions-init.php:942 ../admin/post-extensions/post-
-#: extensions-init.php:971
+#: ../admin/post-extensions/post-extensions-init.php:416 ../admin/post-
+#: extensions/post-extensions-init.php:946 ../admin/post-extensions/post-
+#: extensions-init.php:975
 msgid "Saving..."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:432 ../admin/post-
-#: extensions/post-extensions-init.php:432
+#: ../admin/post-extensions/post-extensions-init.php:435 ../admin/post-
+#: extensions/post-extensions-init.php:435
 msgid "Add Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:437 ../admin/post-
-#: extensions/post-extensions-init.php:437
+#: ../admin/post-extensions/post-extensions-init.php:440 ../admin/post-
+#: extensions/post-extensions-init.php:440
 msgid "Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:441 ../admin/post-
-#: extensions/post-extensions-init.php:441
+#: ../admin/post-extensions/post-extensions-init.php:444 ../admin/post-
+#: extensions/post-extensions-init.php:444
 msgid "Select a Template"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:446
+#: ../admin/post-extensions/post-extensions-init.php:449
 msgid "Page Template"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:448
+#: ../admin/post-extensions/post-extensions-init.php:451
 msgid "Default Template"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:457
+#: ../admin/post-extensions/post-extensions-init.php:460
 msgid "Content Template"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:459
+#: ../admin/post-extensions/post-extensions-init.php:462
 msgid "Confirm"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:465 ../admin/post-
-#: extensions/post-extensions-init.php:465
+#: ../admin/post-extensions/post-extensions-init.php:468 ../admin/post-
+#: extensions/post-extensions-init.php:468
 msgid "Save as Template"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:466
+#: ../admin/post-extensions/post-extensions-init.php:469
 msgid "Enter Template Name"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:472 ../admin/uixpbform/init.
+#: ../admin/post-extensions/post-extensions-init.php:475 ../admin/uixpbform/init.
 #: php:569
 msgid "Save"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:478 ../admin/post-
-#: extensions/post-extensions-init.php:478 ../admin/post-extensions/post-
-#: extensions-init.php:489
+#: ../admin/post-extensions/post-extensions-init.php:481 ../admin/post-
+#: extensions/post-extensions-init.php:481 ../admin/post-extensions/post-
+#: extensions-init.php:492
 msgid "Export"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:485
+#: ../admin/post-extensions/post-extensions-init.php:488
 #, php-format
 msgid ""
 "Please save the template you are editing before exporting. <br><br>Move this "
@@ -350,43 +350,43 @@ msgid ""
 "default value as specified from the xml file."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:498 ../admin/post-
-#: extensions/post-extensions-init.php:498
+#: ../admin/post-extensions/post-extensions-init.php:501 ../admin/post-
+#: extensions/post-extensions-init.php:501
 msgid "Publish"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:502 ../admin/post-
-#: extensions/post-extensions-init.php:502
+#: ../admin/post-extensions/post-extensions-init.php:505 ../admin/post-
+#: extensions/post-extensions-init.php:505
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:518
+#: ../admin/post-extensions/post-extensions-init.php:522
 msgid "Add section here."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:711 ../admin/post-
-#: extensions/post-extensions-init.php:880
+#: ../admin/post-extensions/post-extensions-init.php:715 ../admin/post-
+#: extensions/post-extensions-init.php:884
 msgid "Settings"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:711 ../admin/post-
-#: extensions/post-extensions-init.php:880
+#: ../admin/post-extensions/post-extensions-init.php:715 ../admin/post-
+#: extensions/post-extensions-init.php:884
 msgid "Container"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:711 ../admin/post-
-#: extensions/post-extensions-init.php:880
+#: ../admin/post-extensions/post-extensions-init.php:715 ../admin/post-
+#: extensions/post-extensions-init.php:884
 msgid "Boxed"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:711 ../admin/post-
-#: extensions/post-extensions-init.php:880
+#: ../admin/post-extensions/post-extensions-init.php:715 ../admin/post-
+#: extensions/post-extensions-init.php:884
 msgid "Full Width"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:711 ../admin/post-
-#: extensions/post-extensions-init.php:880 ../admin/post-extensions/post-
-#: extensions-init.php:880 ../uix-page-builder-
+#: ../admin/post-extensions/post-extensions-init.php:715 ../admin/post-
+#: extensions/post-extensions-init.php:884 ../admin/post-extensions/post-
+#: extensions-init.php:884 ../uix-page-builder-
 #: custom/sections/uix_pb_section_accordion.php:27 ../uix-page-builder-
 #: custom/sections/uix_pb_section_authorcard.php:18 ../uix-page-builder-
 #: custom/sections/uix_pb_section_bar.php:19 ../uix-page-builder-
@@ -408,12 +408,12 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:711 ../admin/post-
-#: extensions/post-extensions-init.php:880
+#: ../admin/post-extensions/post-extensions-init.php:715 ../admin/post-
+#: extensions/post-extensions-init.php:884
 msgid "HTML Code..."
 msgstr ""
 
-#: ../admin/post-extensions/post-extensions-init.php:969
+#: ../admin/post-extensions/post-extensions-init.php:973
 msgid "Data has been saved."
 msgstr ""
 
