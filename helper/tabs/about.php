@@ -36,6 +36,11 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
         
         </p>   
         
+         <p>
+           <?php _e( '<strong>If you like this plug-in, you can check out my free and high-quality themes with Uix Page Builder for you to download.</strong> <h4><a href="https://uiux.cc/" target="_blank">Click here to check out</a></h4>', 'uix-page-builder' ); ?>
+        </p>      
+
+        
           <p>
  			<iframe width="560" height="315" src="https://www.youtube.com/embed/vg3rPxcfZEg" frameborder="0" allowfullscreen></iframe>
         

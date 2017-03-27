@@ -22,7 +22,7 @@
 /* makes the font 33% larger relative to the icon container */
 .fa-lg {
   font-size: 1.33333333em;
-  line-height: 0.75em;
+  line-height: 0.75;
   vertical-align: -15%;
 }
 .fa-2x {
@@ -159,7 +159,7 @@
   display: inline-block;
   width: 2em;
   height: 2em;
-  line-height: 2em;
+  line-height: 2;
   vertical-align: middle;
 }
 .fa-stack-1x,

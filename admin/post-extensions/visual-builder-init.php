@@ -35,7 +35,7 @@ if ( !function_exists( 'uix_page_builder_previewControlpanel' ) ) {
 
 if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 	if ( current_user_can( 'edit_pages' ) ) {
-		add_action( 'wp_footer', 'uix_page_builder_previewFrontend' );
+		add_action( 'wp_head', 'uix_page_builder_previewFrontend' );
 	}
 	
 	function uix_page_builder_previewFrontend() {
@@ -64,6 +64,7 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 		}
 		.uix-page-builder-editicon .fa {
 		    margin-top: 12px;
+			color: #fff;
 		}
 		
 		.uix-page-builder-section > .uix-pb-row > div {

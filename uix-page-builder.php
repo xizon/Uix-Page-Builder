@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.1.6
+ * Version:     1.1.7
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -1038,7 +1038,7 @@ class UixPageBuilder {
 					echo '<div class="notice notice-warning"><p>';
 					printf( 
 						__('You could <a class="button button-small" href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.  ', 'Anyword'), 
-						admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" )
+						admin_url( "admin.php?page=".self::HELPER."&tab=temp" )
 					);
 					printf( __( '<a href="%1$s">Hide Notice</a>' ), '?post_type='.self::get_slug().'&'.self::NOTICEID.'=0');
 					echo '</p></div>';
@@ -1294,6 +1294,296 @@ class UixPageBuilder {
 		
 		  } 
 	}	 	
+	
+	
+		
+	/*
+	 * Returns template parameters
+	 *
+	 *
+	 */
+	public static function template_parameters( $form_id, $sid, $pid, $wname, $colid, $item = '' ) {
+		
+		if ( $sid >= 0 ) {
+
+			$builder_content   = self::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
+			$item              = array();
+			if ( $builder_content && is_array( $builder_content ) ) {
+				foreach ( $builder_content as $key => $value ) :
+					$con         = self::page_builder_output( $value->content );
+
+
+					if ( $con && is_array( $con ) ) {
+						foreach ( $con as $key ) :
+
+							$$key[ 0 ] = $key[ 1 ];
+							$item[ self::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
+						endforeach;
+					}
+
+					//loop content
+					$col_content = self::page_builder_analysis_rowcontent( self::prerow_value( $item ), 'content' );
+
+
+					if ( $col_content && is_array( $col_content ) ) {
+						foreach ( $col_content as $key ) :
+
+							$detail_content = $key;
+
+							//column id
+							$colname           = $form_id.'-col';
+							$cname             = str_replace( $form_id.'|', '', $key[1][0] );
+							$id                = $key[0][1];
+							$item[ $colname ]   =  $id;  //Usage: $item[ 'uix_pb_section_xxx-col' ];
+
+
+							foreach ( $detail_content as $value ) :	
+								$name           = str_replace( $form_id.'|', '', $value[0] );
+								$content        = $value[1];
+								$item[ $name ]  =  $content;	  //Usage:  $item[ 'uix_pb_section_xxx|[col-item-1_1---0][uix_pb_xxx_xxx][0]' ];
+
+							endforeach;
+
+
+						endforeach;
+					}	
+
+				endforeach;
+
+
+			}
+			
+			return $item;
+
+
+		} else {
+			return '';
+		}
+		
+		
+
+	}
+	
+	/*
+	 * Form javascripts output when in ajax or default state
+	 *
+	 *
+	 */
+	public static function form_scripts( $arr ) {
+		
+	
+		if ( is_array( $arr ) && sizeof( $arr ) >= 8 ) {
+		
+			//basic
+			$title            = $arr[ 'title' ];
+			$wname            = ( isset( $arr[ 'widget_name' ] ) ) ? $arr[ 'widget_name' ] : __( 'Section', 'uix-page-builder' );
+			$form_id          = $arr[ 'form_id' ];
+			$colid            = $arr[ 'column_id' ];
+			$sid              = $arr[ 'section_id' ];
+			$fields_args      = $arr[ 'fields' ];
+			$form_js_template = $arr[ 'js_template' ];
+			$defalt_value     = $arr[ 'defalt_value' ];
+			$multi_columns    = false;
+			$form_html        = '';
+			$form_js_vars     = '';
+
+			if ( is_array( $fields_args ) ) {
+
+				foreach( $fields_args as $v ) {
+					if ( isset( $v[ 'title' ] ) && !empty( $v[ 'title' ] ) ) {
+						$multi_columns = true;
+						break;
+						
+					}
+				}
+				
+				if ( $multi_columns ) $form_html .= UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
+				
+				foreach( $fields_args as $v ) {
+					$column_title = '';
+					if ( isset( $v[ 'title' ] ) && !empty( $v[ 'title' ] ) ) {
+						$column_title  = $v[ 'title' ];
+					}
+					
+					$form_html .= UixPBFormCore::add_form( $v[ 'config' ], $colid, $wname, $sid, $form_id, $v[ 'type' ], $v[ 'values' ], 'html', $column_title );
+					
+					$form_js_vars .= UixPBFormCore::add_form( $v[ 'config' ], $colid, $wname, $sid, $form_id, $v[ 'type' ], $v[ 'values' ], 'js_vars' );
+	
+				}	
+				
+				if ( $multi_columns ) $form_html .= UixPBFormCore::form_after();
+				
+
+			}
+			
+			
+			
+			//clone
+			$clone                       = $arr[ 'clone' ];
+			$clone_enable                = false;
+			$clone_trigger_id            = '';
+			$clone_max                   = 1;
+			$clone_list_toggle_class     = '';
+			$clone_fields_group          = '';
+		
+
+			if ( is_array( $clone ) && sizeof( $clone ) >= 2 ) {
+				$clone_enable                = true;
+				$clone_fields_group          = $clone[ 'fields_group' ];
+				$clone_list_toggle_class     = $clone[ 'list_toggle_class' ];
+
+				if ( isset( $clone[ 'max' ] ) ) {
+					$clone_max = $clone[ 'max' ];
+				}
+	
+			}
+
+
+
+			// ---------- Returns actions of javascript
+			if ( $sid == -1 && is_admin() ) {
+				if( self::page_builder_mode() ) {
+					if ( is_admin()) {
+
+
+						//List Item - Register clone vars ( step 1)
+						if ( $clone_enable && is_array( $clone_fields_group ) ) {
+						
+							foreach( $clone_fields_group as $v ) {
+								
+								$clone_fields        = $v[ 'fields' ];
+								$clone_trigger_id    = $v[ 'trigger_id' ];
+								$clone_fields_value  = '';
+								
+								
+								foreach( $clone_fields as $name ) {
+									
+									$toggle = '';
+									if( self::inc_str( $name, '_toggle' ) && !self::inc_str( $name, '_toggle_' ) ) {
+										$toggle = 'toggle';
+									}
+									if( self::inc_str( $name, '_toggle_' ) ) {
+										$toggle = 'toggle-row';
+									}								
+									
+									$clone_fields_value .= UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, $name ).'', $form_html, $toggle );
+								}	
+
+								UixPBFormCore::reg_clone_vars( $clone_trigger_id, $clone_fields_value );
+								
+							}	
+						
+						}
+
+
+						?>
+						<script type="text/javascript">
+						( function($) {
+						'use strict';
+							$( document ).ready( function() {  
+								<?php echo UixPBFormCore::uixpbform_callback( $form_id, $title ); ?>         
+							} ); 
+						} ) ( jQuery );
+						</script>
+
+						<?php
+
+
+					}
+				}
+
+			}
+
+
+			// ---------- Returns form with ajax
+			if ( $sid >= 0 && is_admin() ) {
+				echo $form_html;
+
+				// Dynamic Adding Input ( Default Value ) ( step 2)
+				if ( $clone_enable && is_array( $clone_fields_group ) ) {
+
+					foreach( $clone_fields_group as $v ) {
+	
+						$required_field     = $v[ 'required' ];
+						$clone_fields       = $v[ 'fields' ];
+						$clone_trigger_id   = $v[ 'trigger_id' ];
+						
+						if ( !isset( $v[ 'required' ] ) ) {
+							$required_field = $clone_fields[0];
+						}
+
+						
+						for ( $i = 2; $i <= $clone_max; $i++ ) {
+
+							$uid                = $i.'-';
+							$clone_fields_value = '';
+
+							foreach( $clone_fields as $name ) {
+								
+								$toggle = '';
+								if( self::inc_str( $name, '_toggle' ) && !self::inc_str( $name, '_toggle_' ) ) {
+									$toggle = 'toggle';
+								}
+								if( self::inc_str( $name, '_toggle_' ) ) {
+									$toggle = 'toggle-row';
+								}		
+								
+								$clone_fields_value .= UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, $name ).'', $form_html, $toggle );
+							}	
+							
+							if ( is_array( $defalt_value ) && array_key_exists( '['.$colid.']'.$uid.'['.$required_field.']['.$sid.']', $defalt_value ) ) {
+
+								$cur_id = $i;
+
+								self::push_cloneform( $uid, $defalt_value, $clone_trigger_id, $cur_id, $colid, $clone_fields_value, $sid, $clone_fields, $clone_list_toggle_class );
+
+							} 
+						}	
+					}	
+
+
+				}
+
+
+				?>
+
+				<script type="text/javascript">
+				( function($) {
+				'use strict';
+					$( document ).ready( function() {
+
+						function uix_pb_temp() {
+
+							/* Vars */
+							<?php echo $form_js_vars; ?>
+
+							/* Template */
+							<?php echo $form_js_template; ?>
+
+							/* Save data */
+							$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
+
+						}
+
+						uix_pb_temp();
+						$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() { uix_pb_temp(); });
+
+					} ); 
+				} ) ( jQuery );
+				</script> 
+
+				<?php	
+			}
+	
+			
+		}
+	
+
+	}
+
+
+	
+	
 	
 	
 }

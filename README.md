@@ -57,6 +57,18 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+##### = 1.1.7 =
+
+* Optimized front-end controller for your theme in admin panel.
+* Upgraded core API. ( For developers, custom modules are much simpler! )
+* Optimized core custom functions.
+* Added function of template parameters.
+* Added function of form javascripts output when in ajax or default state.
+* Improve the stability of the plug-in.
+* Optimized core stylesheets for front-end.
+
+
+
 ##### = 1.1.6 =
 
 * Compatible with low version PHP (5.3+)

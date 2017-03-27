@@ -13,9 +13,12 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'credits' ) {
         <p>
         
         <ul>
+            <li><a href="http://fontawesome.io" target="_blank" rel="nofollow"><?php _e( 'Font Awesome', 'uix-page-builder' ); ?></a></li>
             <li><a href="https://dsmorse.github.io/gridster.js/" target="_blank" rel="nofollow"><?php _e( 'Gridster', 'uix-page-builder' ); ?></a></li>
-         
-         
+            <li><a href="http://robert-fleischmann.de" target="_blank" rel="nofollow"><?php _e( 'easy-pie-chart', 'uix-page-builder' ); ?></a></li>
+            <li><a href="https://woocommerce.com/flexslider/" target="_blank" rel="nofollow"><?php _e( 'jQuery FlexSlider', 'uix-page-builder' ); ?></a></li>
+            <li><a href="http://www.ianlunn.co.uk/plugins/jquery-parallax/" target="_blank" rel="nofollow"><?php _e( 'jQuery Parallax', 'uix-page-builder' ); ?></a></li>
+            <li><a href="https://vestride.github.io/Shuffle/" target="_blank" rel="nofollow"><?php _e( 'Shuffle.js', 'uix-page-builder' ); ?></a></li>
          
         </ul>
         
