@@ -3,23 +3,16 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
-/**
- * Form ID
- * ----------------------------------------------------
- */
-$form_id = 'uix_pb_section_pricing1';
 
 /**
- * Sections template parameters
+ * Initialize sections template parameters
  * ----------------------------------------------------
  */
-$sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
-$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
-$colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
-$item    = UixPageBuilder::template_parameters( $form_id, $sid, $pid, $wname, $colid );
-
-
+$form_vars = UixPageBuilder::init_template_parameters( 'uix_pb_section_pricing1' );
+if ( !is_array( $form_vars ) ) return;
+foreach ( $form_vars as $key => $v ) :
+	$$key = $v;
+endforeach;
 
 
 /**

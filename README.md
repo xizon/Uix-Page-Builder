@@ -57,7 +57,7 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
-##### = 1.1.7 =
+##### = 1.1.8 =
 
 * Optimized front-end controller for your theme in admin panel.
 * Upgraded core API. ( For developers, custom modules are much simpler! )

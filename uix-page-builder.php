@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.1.7
+ * Version:     1.1.8
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -1298,6 +1298,39 @@ class UixPageBuilder {
 	
 		
 	/*
+	 * Initialize sections template parameters
+	 *
+	 *
+	 */
+	public static function init_template_parameters( $id ) {
+
+		//Form ID
+		$form_id = $id;
+
+		//Sections template parameters
+		$sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
+		$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
+		$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : esc_html__( 'Section', 'uix-page-builder' );
+		$colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
+		$item    = self::template_parameters( $form_id, $sid, $pid, $wname, $colid );
+		
+		$vars = array(
+			'sid'        => $sid,
+			'pid'        => $pid,
+			'wname'      => $wname,
+			'colid'      => $colid,
+			'item'       => $item,
+			'form_id'    => $form_id
+		);
+		
+		return $vars;
+
+	}
+			
+	
+	
+		
+	/*
 	 * Returns template parameters
 	 *
 	 *
@@ -1389,17 +1422,17 @@ class UixPageBuilder {
 
 			if ( is_array( $fields_args ) ) {
 
-				foreach( $fields_args as $v ) {
+				foreach( $fields_args as $v ) :
 					if ( isset( $v[ 'title' ] ) && !empty( $v[ 'title' ] ) ) {
 						$multi_columns = true;
 						break;
 						
 					}
-				}
+				endforeach;
 				
 				if ( $multi_columns ) $form_html .= UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
 				
-				foreach( $fields_args as $v ) {
+				foreach( $fields_args as $v ) :
 					$column_title = '';
 					if ( isset( $v[ 'title' ] ) && !empty( $v[ 'title' ] ) ) {
 						$column_title  = $v[ 'title' ];
@@ -1409,7 +1442,7 @@ class UixPageBuilder {
 					
 					$form_js_vars .= UixPBFormCore::add_form( $v[ 'config' ], $colid, $wname, $sid, $form_id, $v[ 'type' ], $v[ 'values' ], 'js_vars' );
 	
-				}	
+				endforeach;
 				
 				if ( $multi_columns ) $form_html .= UixPBFormCore::form_after();
 				
@@ -1449,14 +1482,14 @@ class UixPageBuilder {
 						//List Item - Register clone vars ( step 1)
 						if ( $clone_enable && is_array( $clone_fields_group ) ) {
 						
-							foreach( $clone_fields_group as $v ) {
+							foreach( $clone_fields_group as $v ) :
 								
 								$clone_fields        = $v[ 'fields' ];
 								$clone_trigger_id    = $v[ 'trigger_id' ];
 								$clone_fields_value  = '';
 								
 								
-								foreach( $clone_fields as $name ) {
+								foreach( $clone_fields as $name ) :
 									
 									$toggle = '';
 									if( self::inc_str( $name, '_toggle' ) && !self::inc_str( $name, '_toggle_' ) ) {
@@ -1467,11 +1500,12 @@ class UixPageBuilder {
 									}								
 									
 									$clone_fields_value .= UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, $name ).'', $form_html, $toggle );
-								}	
+							
+								endforeach;
 
 								UixPBFormCore::reg_clone_vars( $clone_trigger_id, $clone_fields_value );
 								
-							}	
+							endforeach;
 						
 						}
 
@@ -1502,7 +1536,7 @@ class UixPageBuilder {
 				// Dynamic Adding Input ( Default Value ) ( step 2)
 				if ( $clone_enable && is_array( $clone_fields_group ) ) {
 
-					foreach( $clone_fields_group as $v ) {
+					foreach( $clone_fields_group as $v ) :
 	
 						$required_field     = $v[ 'required' ];
 						$clone_fields       = $v[ 'fields' ];
@@ -1518,7 +1552,7 @@ class UixPageBuilder {
 							$uid                = $i.'-';
 							$clone_fields_value = '';
 
-							foreach( $clone_fields as $name ) {
+							foreach( $clone_fields as $name ) :
 								
 								$toggle = '';
 								if( self::inc_str( $name, '_toggle' ) && !self::inc_str( $name, '_toggle_' ) ) {
@@ -1529,7 +1563,8 @@ class UixPageBuilder {
 								}		
 								
 								$clone_fields_value .= UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, $name ).'', $form_html, $toggle );
-							}	
+							
+							endforeach;
 							
 							if ( is_array( $defalt_value ) && array_key_exists( '['.$colid.']'.$uid.'['.$required_field.']['.$sid.']', $defalt_value ) ) {
 
@@ -1538,8 +1573,9 @@ class UixPageBuilder {
 								self::push_cloneform( $uid, $defalt_value, $clone_trigger_id, $cur_id, $colid, $clone_fields_value, $sid, $clone_fields, $clone_list_toggle_class );
 
 							} 
-						}	
-					}	
+						} //end for
+					
+					endforeach;
 
 
 				}

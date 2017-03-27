@@ -2338,12 +2338,8 @@ img.uix-pb-img,
 	-o-transition: .2s ease-in-out;
 	-webkit-transition: .2s ease-in-out; 
 	transition: .2s ease-in-out;
-	
-	/* Centering text (multiple lines) */
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	height: 69%;
+
+	max-height: 69%;
 	
 	
 }

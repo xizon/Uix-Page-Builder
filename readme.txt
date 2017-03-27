@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.7
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,7 +92,7 @@ The version number is the date of the revision of the [guidelines](https://make.
 == Changelog ==
 
 
-= 1.1.7 =
+= 1.1.8 =
 
 * Optimized front-end controller for your theme in admin panel.
 * Upgraded core API. ( For developers, custom modules are much simpler! )

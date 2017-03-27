@@ -3,13 +3,21 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
-
 /**
- * Form ID
+ * Initialize sections template parameters
  * ----------------------------------------------------
  */
-$form_id                 = 'uix_pb_section_portfolio1';
+$form_vars = UixPageBuilder::init_template_parameters( 'uix_pb_section_portfolio1' );
+if ( !is_array( $form_vars ) ) return;
+foreach ( $form_vars as $key => $v ) :
+	$$key = $v;
+endforeach;
 
+
+/**
+ * Clone parameters
+ * ----------------------------------------------------
+ */
 //clone list
 $clone_trigger_id        = 'uix_pb_portfolio1_list';    // ID of clone trigger 
 $clone_max               = 30;                         // Maximum of clone form 
@@ -17,16 +25,6 @@ $clone_max               = 30;                         // Maximum of clone form
 //clone list of toggle class value @var array
 $clone_list_toggle_class = array( 'uix_pb_portfolio1_listitem_toggle_url' );       
 
-
-/**
- * Sections template parameters
- * ----------------------------------------------------
- */
-$sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
-$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
-$colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
-$item    = UixPageBuilder::template_parameters( $form_id, $sid, $pid, $wname, $colid );
 
 
 /**
@@ -217,7 +215,7 @@ $args =
 				'desc'           => '',
 				'value'          => '',
 				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_fullimage' ).'', /*class of list item */
-				'placeholder'    => esc_html__( 'Full Preview', 'uix-page-builder' ),
+				'placeholder'    => esc_html__( 'Full Preview (Optional)', 'uix-page-builder' ),
 				'type'           => 'image',
 				'default'        => array(
 										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),

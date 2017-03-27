@@ -3,13 +3,21 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
-
 /**
- * Form ID
+ * Initialize sections template parameters
  * ----------------------------------------------------
  */
-$form_id = 'uix_pb_section_hello';
+$form_vars = UixPageBuilder::init_template_parameters( 'uix_pb_section_hello' );
+if ( !is_array( $form_vars ) ) return;
+foreach ( $form_vars as $key => $v ) :
+	$$key = $v;
+endforeach;
 
+
+/**
+ * Clone parameters
+ * ----------------------------------------------------
+ */
 //clone list
 $clone_trigger_id        = 'uix_pb_hello_hello_list';    // ID of clone trigger 
 $clone_max               = 4;                     // Maximum of clone form 
@@ -17,16 +25,6 @@ $clone_max               = 4;                     // Maximum of clone form
 //clone list of toggle class value @var array
 $clone_list_toggle_class = array( 'uix_pb_hello_listitem_toggle_url', 'uix_pb_hello_listitem_toggle_icon' );       
 
-
-/**
- * Sections template parameters
- * ----------------------------------------------------
- */
-$sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
-$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : __( 'Section', 'uix-page-builder' );
-$colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
-$item    = UixPageBuilder::template_parameters( $form_id, $sid, $pid, $wname, $colid );
 
 
 /**
