@@ -2329,6 +2329,7 @@ img.uix-pb-img,
 	top: 0;
 	left: 0;
 	margin: 1.5em;
+	margin-top: .5em;
 	filter: alpha(opacity=0);  
 	-moz-opacity: 0;   
 	opacity: 0;
@@ -2338,10 +2339,22 @@ img.uix-pb-img,
 	-o-transition: .2s ease-in-out;
 	-webkit-transition: .2s ease-in-out; 
 	transition: .2s ease-in-out;
+	
+	/* Centering text (multiple lines) */
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	height: 69%;
+	
+	
+}
 
-	max-height: 69%;
-	
-	
+.uix-pb-portfolio-tiles .uix-pb-portfolio-item .uix-pb-portfolio-content a {
+	text-decoration: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+	border: none;
 }
 
 .uix-pb-portfolio-tiles .uix-pb-portfolio-item .uix-pb-portfolio-content a.uix-pb-portfolio-link{
