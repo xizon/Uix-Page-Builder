@@ -48,7 +48,7 @@ $args =
 	
 	    array(
 			'id'             => 'uix_pb_hello_tipinfo',
-			'desc'           => sprintf( __( 'You can custom the boxed width of the container for Uix Page Builder stylesheets. <a target="_blank" href="%1$s">click here to custom</a>', 'uix-page-builder' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ),
+			'desc'           => wp_kses( sprintf( __( 'You can custom the boxed width of the container for Uix Page Builder stylesheets. <a target="_blank" href="%1$s">click here to custom</a>', 'uix-page-builder' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ), wp_kses_allowed_html( 'post' ) ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
@@ -487,7 +487,7 @@ $args =
 		
 		//------list begin
 		array(
-			'desc'           => sprintf( wp_kses( __( '<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum of <strong>%1$s</strong>.', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ), $clone_max ),
+			'desc'           => wp_kses( sprintf( __( '<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum of <strong>%1$s</strong>.', 'uix-page-builder' ), $clone_max ), wp_kses_allowed_html( 'post' ) ),
 			'type'           => 'text'
 		
 		),
