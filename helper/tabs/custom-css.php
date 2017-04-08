@@ -45,12 +45,13 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
         <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
         <?php wp_nonce_field( 'uix_pb_customcss' ); ?>
         
-        <h4><?php _e( 'You can overview the original styles to overwrite it. It will be on creating new styles to your website, without modifying original <code>.css</code> files.', 'uix-page-builder' ); ?></h4>
-            
+      
         <table class="form-table">
           <tr>
             <th scope="row">
               <?php _e( 'Paste your CSS code', 'uix-page-builder' ); ?>
+              <hr>
+              <p class="uix-bg-custom-desc-note"><?php _e( 'You could add new styles code to your website, without modifying original .css files.', 'uix-page-builder' ); ?></p>
             </th>
             <td>
               <textarea name="uix_pb_opt_cssnewcode" class="regular-text" rows="25" style="width:98%;"><?php echo esc_textarea( get_option( 'uix_pb_opt_cssnewcode' ) ); ?></textarea>

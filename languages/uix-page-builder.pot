@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
 "POT-Creation-Date: 2015-06-12 21:51:31+0000\n"
-"POT-Revision-Date: Mon Mar 27 2017 23:45:49 GMT+0800 (CST)\n"
+"POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,55 +55,59 @@ msgstr ""
 msgid "Custom CSS"
 msgstr ""
 
-#: ../uix-page-builder.php:228 ../uix-page-builder.php:229
+#: ../uix-page-builder.php:226 ../uix-page-builder.php:227
+msgid "For Developer"
+msgstr ""
+
+#: ../uix-page-builder.php:236 ../uix-page-builder.php:237
 msgid "Helper"
 msgstr ""
 
-#: ../uix-page-builder.php:258 ../helper/settings.php:170
+#: ../uix-page-builder.php:266 ../helper/settings.php:188
 msgid "How to use?"
 msgstr ""
 
-#: ../uix-page-builder.php:673
+#: ../uix-page-builder.php:681
 msgid "Choose Element You Want"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "Layout"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "1/1"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "1/2"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "1/3"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "1/4"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "1/3, 2/3"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "2/3, 1/3"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "1/4, 3/4"
 msgstr ""
 
-#: ../uix-page-builder.php:682
+#: ../uix-page-builder.php:690
 msgid "3/4, 1/4"
 msgstr ""
 
-#: ../uix-page-builder.php:1040
+#: ../uix-page-builder.php:1048
 #, php-format
 msgid ""
 "You could <a class=\"button button-small\" href=\"%s\">create</a> Uix Page "
@@ -112,43 +116,43 @@ msgid ""
 "templates directory.  "
 msgstr ""
 
-#: ../uix-page-builder.php:1043
+#: ../uix-page-builder.php:1051
 #, php-format
 msgid "<a href=\"%1$s\">Hide Notice</a>"
 msgstr ""
 
-#: ../uix-page-builder.php:1116
+#: ../uix-page-builder.php:1124
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-write-"
 "blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: ../uix-page-builder.php:1188 ../uix-page-builder.php:1261
+#: ../uix-page-builder.php:1196 ../uix-page-builder.php:1269
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!"
 "</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1190
+#: ../uix-page-builder.php:1198
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying your "
 "template files:</strong> Please check your server settings. You can upload "
 "files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1195
+#: ../uix-page-builder.php:1203
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1198
+#: ../uix-page-builder.php:1206
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
-#: ../uix-page-builder.php:1313 ../uix-page-builder.php:1412 ../admin/post-
+#: ../uix-page-builder.php:1321 ../uix-page-builder.php:1420 ../admin/post-
 #: extensions/post-extensions-init.php:715 ../admin/post-extensions/post-
 #: extensions-init.php:884 ../admin/post-extensions/post-extensions-init.php:884
 msgid "Section"
@@ -530,24 +534,28 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: ../helper/settings.php:152
+#: ../helper/settings.php:170
 msgid "Uix Page Builder Helper"
 msgstr ""
 
-#: ../helper/settings.php:166
+#: ../helper/settings.php:184
 msgid "About"
 msgstr ""
 
-#: ../helper/settings.php:175
+#: ../helper/settings.php:193
 msgid "Credits"
 msgstr ""
 
-#: ../helper/settings.php:180
+#: ../helper/settings.php:198
 msgid "Template Files"
 msgstr ""
 
-#: ../helper/settings.php:185
+#: ../helper/settings.php:203
 msgid "<i class=\"dashicons dashicons-welcome-view-site\"></i> Custom CSS"
+msgstr ""
+
+#: ../helper/settings.php:208
+msgid "<i class=\"dashicons dashicons-networking\"></i> For Developer"
 msgstr ""
 
 #: ../helper/tabs/about.php:12
@@ -662,27 +670,50 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:48
-msgid ""
-"You can overview the original styles to overwrite it. It will be on creating "
-"new styles to your website, without modifying original <code>.css</code> "
-"files."
-msgstr ""
-
-#: ../helper/tabs/custom-css.php:53
+#: ../helper/tabs/custom-css.php:52
 msgid "Paste your CSS code"
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:90 ../helper/tabs/custom-css.php:127
+#: ../helper/tabs/custom-css.php:54
+msgid ""
+"You could add new styles code to your website, without modifying original ."
+"css files."
+msgstr ""
+
+#: ../helper/tabs/custom-css.php:91 ../helper/tabs/custom-css.php:128
 msgid "CSS file root directory:"
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:95
+#: ../helper/tabs/custom-css.php:96
 msgid "Close"
 msgstr ""
 
-#: ../helper/tabs/custom-css.php:147
+#: ../helper/tabs/custom-css.php:148
 msgid "<p>The .css file does not exist.</p>"
+msgstr ""
+
+#: ../helper/tabs/for-developer.php:13
+msgid "Advanced Customization ( For Theme Developer )"
+msgstr ""
+
+#: ../helper/tabs/for-developer.php:16
+msgid ""
+"1) Plugin allow handles builder controls of backend template usage so that "
+"we can use our own templates instead of the plugin. If you want to custom "
+"your builder controls of backend for your theme, then just copy them from "
+"the directory <code>/wp-content/plugins/uix-page-builder/uix-page-builder-"
+"custom/</code> to your theme directory <code>/wp-content/themes/{your-"
+"theme}/</code>."
+msgstr ""
+
+#: ../helper/tabs/for-developer.php:20
+msgid ""
+"2) Plugin allow handles plugin scripts of front-end. If you want to custom, "
+"rename the <strong>_plugins.js</strong> to <strong>plugins.js</strong> from "
+"the directory <code>/wp-content/plugins/uix-page-builder/uix-page-builder-"
+"custom/js/</code>, and add the required script to <strong>plugins."
+"js</strong>. ( If you done, the default Uix Page Builder plugin scripts "
+"can't queue. You can use your own scripts instead of the plugin only. )"
 msgstr ""
 
 #: ../helper/tabs/temp.php:44
@@ -703,19 +734,19 @@ msgid ""
 "theme}/</code> and remove Uix Page Builder template files."
 msgstr ""
 
-#: ../helper/tabs/temp.php:56 ../helper/tabs/temp.php:78
+#: ../helper/tabs/temp.php:58 ../helper/tabs/temp.php:85
 msgid "Template files list:"
 msgstr ""
 
-#: ../helper/tabs/temp.php:60
+#: ../helper/tabs/temp.php:62
 msgid "Remove Uix Page Builder Template Files"
 msgstr ""
 
-#: ../helper/tabs/temp.php:71
+#: ../helper/tabs/temp.php:73
 msgid "Copy Uix Page Builder template files in your templates directory:"
 msgstr ""
 
-#: ../helper/tabs/temp.php:73
+#: ../helper/tabs/temp.php:75
 msgid ""
 "As a workaround you can use FTP, access the Uix Page Builder template files "
 "path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and "
@@ -723,7 +754,14 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: ../helper/tabs/temp.php:82
+#: ../helper/tabs/temp.php:80
+msgid ""
+"Hi, there! It’s just a custom template file in the theme folder. Of course "
+"you doesn’t need to create it, you can use of the default page template or "
+"your own custom template file directly."
+msgstr ""
+
+#: ../helper/tabs/temp.php:89
 msgid "Click This Button to Copy Uix Page Builder Files"
 msgstr ""
 

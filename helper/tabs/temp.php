@@ -52,6 +52,8 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'temp' ) { ?>
                <?php _e( 'As a workaround you can use FTP, access path <code>/wp-content/themes/{your-theme}/</code> and remove Uix Page Builder template files.', 'uix-page-builder' ); ?>
              </p>   
              
+
+            
              <div class="uix-plug-note">
                 <h4><?php _e( 'Template files list:', 'uix-page-builder' ); ?></h4>
                 <?php UixPageBuilder::list_templates_name( 'theme' ); ?>
@@ -73,6 +75,11 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'temp' ) { ?>
                <?php _e( 'As a workaround you can use FTP, access the Uix Page Builder template files path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-page-builder' ); ?>
        
              </p>   
+             
+             <p>
+             <strong><?php _e( 'Hi, there! It’s just a custom template file in the theme folder. Of course you doesn’t need to create it, you can use of the default page template or your own custom template file directly.', 'uix-page-builder' ); ?></strong>
+             
+			</p> 
           
              <div class="uix-plug-note">
                 <h4><?php _e( 'Template files list:', 'uix-page-builder' ); ?></h4>

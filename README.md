@@ -57,6 +57,13 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+
+##### = 1.1.9 =
+
+* Optimized admin panel of Custom CSS.
+
+
+
 ##### = 1.1.8 =
 
 * Optimized front-end controller for your theme in admin panel.

@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.1.8
+ * Version:     1.1.9
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -221,7 +221,15 @@ class UixPageBuilder {
 			'admin.php?page='.self::HELPER.'&tab=custom-css'
 		);	 
 		 
-	
+		add_submenu_page(
+			self::HELPER,
+			__( 'For Developer', 'uix-page-builder' ),
+			__( 'For Developer', 'uix-page-builder' ),
+			'manage_options',
+			'admin.php?page='.self::HELPER.'&tab=for-developer'
+		);	 
+		 	 
+		 
         //Add sub links
 		add_submenu_page(
 			self::HELPER,
@@ -1037,7 +1045,7 @@ class UixPageBuilder {
 				if( !self::tempfile_exists() ) {
 					echo '<div class="notice notice-warning"><p>';
 					printf( 
-						__('You could <a class="button button-small" href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.  ', 'Anyword'), 
+						__('You could <a class="button button-small" href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.  ', 'uix-page-builder' ), 
 						admin_url( "admin.php?page=".self::HELPER."&tab=temp" )
 					);
 					printf( __( '<a href="%1$s">Hide Notice</a>' ), '?post_type='.self::get_slug().'&'.self::NOTICEID.'=0');
