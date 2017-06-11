@@ -58,13 +58,12 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ### Updates
 
 
-##### = 1.1.9 =
+##### = 1.1.9 (April 8, 2017) =
 
 * Optimized admin panel of Custom CSS.
 
 
-
-##### = 1.1.8 =
+##### = 1.1.8 (April 5, 2017)  =
 
 * Optimized front-end controller for your theme in admin panel.
 * Upgraded core API. ( For developers, custom modules are much simpler! )
@@ -75,14 +74,13 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Optimized core stylesheets for front-end.
 
 
-
-##### = 1.1.6 =
+##### = 1.1.6 (April 2, 2017)  =
 
 * Compatible with low version PHP (5.3+)
 * Fixed some minor errors in the low version of PHP.
 
 
-##### = 1.1.5 =
+##### = 1.1.5 (April 1, 2017) =
 
 * Upgraded core API. ( For developers, custom modules are much simpler! )
 * Optimize the page builder form structure.
@@ -90,13 +88,13 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Fixed some bugs of form elements.
 
 
-##### = 1.1.4 =
+##### = 1.1.4 (March 28, 2017) =
 
 * Resolved compatibility errors that may occur with the editor.
 * Optimized pop windows UI of editor for online preview.
 
 
-##### = 1.1.3 =
+##### = 1.1.3 (March 25, 2017) =
 
 * Added Draft and Publish buttons in the visual builder screen.
 * some minor bugs for enqueue scripts.
@@ -104,16 +102,18 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Supported select the page template on visual builder screen.
 
 
-##### = 1.1.1 =
+##### = 1.1.1 (March 1, 2017) =
 
 * Added function of responsive switching preview (new).
 
-##### = 1.1.0 =
+
+##### = 1.1.0 (February 25, 2017) =
 
 * Upgraded visual builder core UI.
 
 
-##### = 1.0.7 =
+
+##### = 1.0.7 (February 22, 2017) =
 
 * Optimized drag and drop controls.
 * Upgraded visual builder panel.
@@ -121,20 +121,20 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Optimized backend scripts.
 
 
-##### = 1.0.6 =
+##### = 1.0.6 (February 2, 2017) =
 
 * Optimized visual builder panel.
 * Fixed a bug that added row misalignment.
 
 
-##### = 1.0.5 =
+##### = 1.0.5 (January 28, 2017) =
 
 * Added visual builder mode (new).
 * You can switch between "Visual Builder" and "Default Editor" modes at any time.
 * Optimization of the admin panel structure.
 
 
-##### = 1.0.2 =
+##### = 1.0.2 (January 25, 2017) =
 
 * Optimized core stylesheets for front-end.
 * Added "Glory" template (new).
@@ -145,13 +145,14 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Fixed error in default template image path.
 
 
-##### = 1.0.1 =
+##### = 1.0.1 (January 22, 2017) =
 
 * Optimized enqueue scripts for front-end.
 * Enhanced theme compatibility.
 
 
-##### = 1.0.0 =
+
+##### = 1.0.0 (January 17, 2017) =
 
 * First release.
 
@@ -169,7 +170,8 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 - WP 4.5.2
 - WP 4.5.3
 - WP 4.6.*
-- WP 4.7
+- WP 4.7.*
+- WP 4.8
 
 
 ###Screenshot
