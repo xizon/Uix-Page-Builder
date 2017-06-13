@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- *  Parse Google ContactForm
+ *  Parse Comment Form
  *
  */
 if ( !class_exists( 'UixPB_ContactForm' ) ) {

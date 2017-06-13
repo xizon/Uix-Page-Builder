@@ -16,8 +16,6 @@
 	6. Filterable
 	7. Grid
 	
-	
-
 
 ************************************* */
 
@@ -32,7 +30,7 @@ var uix_pb = (function ( $, window, document ) {
 	if( $.isFunction( $.fn.waitForImages ) ){
 		$( 'body' ).waitForImages( pageLoaded );
 	} else {
-		$( window ).load( pageLoaded );
+		$( window ).on( 'load', pageLoaded );
 	}
 
     $( document ).ready( documentReady );
@@ -467,16 +465,18 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 			var $this        = $( this ),
 				hw           = 6,
-			    defaultColor = $this.find( '.uix-pb-price-border' ).css( 'border-color' );
+			    defaultColor = $this.find( '.uix-pb-price-border' ).css( 'border-color' ),
+				textColor    = $this.data( 'tcolor' ),
+				btnColor     = $this.data( 'bcolor' );
 
 			if ( $this.css( 'top' ) != '0px' ) {
 
 				$this.hover(function() {
 					$(this).find( '.uix-pb-price-border' ).css({
-						"border-color": $this.data( 'tcolor' ),
-						"-webkit-box-shadow": "inset 0 0px 0px "+hw+"px " + $this.data( 'tcolor' ),
-						"-moz-box-shadow": "inset 0 0px 0px "+hw+"px " + $this.data( 'tcolor' ),
-						"box-shadow": "inset 0 0px 0px "+hw+"px " + $this.data( 'tcolor' )
+						"border-color": textColor,
+						"-webkit-box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
+						"-moz-box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
+						"box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
 					});
 				},function() {
 					$(this).find( '.uix-pb-price-border' ).css({
@@ -492,6 +492,66 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 		});
 
+		
+		
+		/* -----------Style 2  -------------- */
+		//Initialize the height
+		$( '.uix-pb-price2' ).each( function(){
+			
+
+				//returns new id
+				var $this            = $( this ),
+					priceBGH         = Array(),
+					priceBGH_excerpt = Array(),
+					$initHeight      = $this.find( '.uix-pb-price2-init-height' );
+
+				$initHeight.each( function( index ) {
+					//Screen protection of height
+					$( this ).find( '.uix-pb-price2-border,.uix-pb-price2-excerpt' ).css( 'height', 'auto' );
+
+					var tempheight = $( this ).height();
+					var tempheight_excerpt = $( this ).find( '.uix-pb-price2-excerpt' ).height();
+					priceBGH.push( tempheight );
+					priceBGH_excerpt.push( tempheight_excerpt );
+
+
+				} );
+
+				var priceBGH_Max         = Math.max.apply( Math, priceBGH ),
+					priceBGH_Max_excerpt = Math.max.apply( Math, priceBGH_excerpt );
+
+
+
+				if ( priceBGH_Max > 0 ) {
+					if ( $( document.body ).width() > 768 ){
+						
+					    // Initialize the height of all columns
+						$initHeight.find( '.uix-pb-price2-border' ).css( 'height', priceBGH_Max + 'px' );
+						
+						// Actived columns
+						$initHeight.find( '.uix-pb-price2-border.uix-pb-price2-important' ).each( function() {
+					
+							var textColor = $( this ).closest( '.uix-pb-price2-border-hover' ).data( 'tcolor' ),
+								btnColor  = $( this ).closest( '.uix-pb-price2-border-hover' ).data( 'bcolor' );
+
+							$( this ).css( 'background-color', btnColor );
+					
+						});	
+						
+					
+
+
+					} else {
+						$initHeight.find( '.uix-pb-price2-border' ).css( 'height', 'auto' );
+					}
+
+				}
+
+
+		});
+
+	
+		
 
     };
 

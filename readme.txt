@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.1.9
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Uix Page Builder is a design system that it is simple content creation interface
 
 == Description ==
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form` and `portfolio`. To be continued. 
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `portfolio`, `blog`. To be continued. More importantly, each module may contain a variety of styles.
 
 You could add a new page with Uix Page Builder to your WordPress site, find the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. Click <strong>Add new</strong>. The <strong>"Uix Page Builder Attributes"</strong> section applies page builder templates to your new page. 
 
@@ -90,6 +90,15 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+= 1.2.0 (June 13, 2017) =
+
+* Added two Pricing styles (new).
+* Added a new module type: Blog (new).
+* Optimized pricing styles of front-end.
+* Fixed a bug of duplicated buttons clone when multiple button IDs are similar in the visual builder screen.
+* Fixed a bug of the on/off switch button can not be effective in real time.
+
 
 = 1.1.9 (April 8, 2017) =
 

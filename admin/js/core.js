@@ -504,9 +504,10 @@ function gridsterItemElementsBTStatus( type ) {
 
 					if ( $sort_container.find( 'textarea' ).length > 0 ) {
 
-						if ( cur_defaultvalue.indexOf( cur_slug ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
+						// Using '|' in order to avoid duplicated buttons clone when multiple button IDs are similar
+						if ( cur_defaultvalue.indexOf( cur_slug + '|' ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
 
-
+							
 							//The click action has not yet been performed.
 							if ( type == 0 ) {
 								ele_btn.after( jQuery( this ).clone().addClass( 'used' ).text( widget_name ) ).hide();

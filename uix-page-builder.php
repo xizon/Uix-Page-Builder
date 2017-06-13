@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.1.9
+ * Version:     1.2.0
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -85,7 +85,10 @@ class UixPageBuilder {
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-googlemap.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-contactform.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-blog.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-sections-output.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-get-excerpt.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-get-category.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-xml.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/uixpbform/init.php';
 	}
@@ -122,6 +125,7 @@ class UixPageBuilder {
 
 			// Parallax
 			wp_enqueue_script( 'bgParallax', self::plug_directory() .'assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
+
 							  
 		}
 		
@@ -930,6 +934,56 @@ class UixPageBuilder {
 
 		}
 	}
+	
+	
+	/*
+	 * Append associative array elements
+	 *
+	 *
+	 */
+	public static function array_push_associative(&$arr) {
+	   $args = func_get_args();
+	   $ret  = null;
+	   foreach ($args as $arg) {
+		   if (is_array($arg)) {
+			   foreach ($arg as $key => $value) {
+				   $arr[$key] = $value;
+				   $ret++;
+			   }
+		   }else{
+			   $arr[$arg] = "";
+		   }
+	   }
+	   return $ret;
+	}	
+	
+	
+	/*
+	 * Decode template for shortcode attributes
+	 *
+	 *
+	 */
+	public static function decode( $str ) {
+
+
+         if ( $str ) {
+			 $restr = str_replace( '&#8217;', '\'',
+					   str_replace( '&#8221;', '"',
+					   str_replace( '&apos;', '\'',
+					   str_replace( '&quot;', '"',
+					   wp_specialchars_decode( $str )
+					   ))));
+					   
+	 
+		 } else {
+		    $restr = $str;
+		 }
+		 
+		 return $restr;
+
+	}
+	
+	
 	
 	
 	/*

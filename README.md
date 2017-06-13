@@ -3,8 +3,6 @@ This is a WordPress Plugin. Uix Page Builder is a design system that it is simpl
 
 Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
-[Donate Me](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PYZLU7UZNQ6CE)
-
 [Plugin URI](https://uiux.cc/wp-plugins/uix-page-builder/)
 
 [Plugin for Wordpress at WordPress.org Repository](https://wordpress.org/plugins/uix-page-builder/)
@@ -21,7 +19,7 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 [![Uix Page Builder Live Demo](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/video-cover.jpg)](https://www.youtube.com/watch?v=vg3rPxcfZEg "Uix Page Builder Live Demo")
 
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form` and `portfolio`. To be continued.  
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `portfolio`, `blog`. To be continued. More importantly, each module may contain a variety of styles.
 
 You could add any new pages using the plugin to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
 
@@ -56,6 +54,16 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 
 ### Updates
+
+##### = 1.2.0 (June 13, 2017) =
+
+* Added two Pricing styles (new).
+* Added a new module type: Blog (new).
+* Optimized pricing styles of front-end.
+* Fixed a bug of duplicated buttons clone when multiple button IDs are similar in the visual builder screen.
+* Fixed a bug of the on/off switch button can not be effective in real time.
+
+
 
 
 ##### = 1.1.9 (April 8, 2017) =
@@ -235,3 +243,9 @@ Click **"Use Visual Builder"** button to enter the visual editing mode.
 
 
 
+
+
+### Donations
+Donations would be more than welcome :)
+
+[![Donate](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PYZLU7UZNQ6CE)

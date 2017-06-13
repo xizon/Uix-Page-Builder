@@ -788,6 +788,10 @@ jQuery( document ).ready( function() {
 				} else {
 					jQuery( cur_targetThisID ).val( 0 );
 				}
+				
+				//Dynamic listening for the latest value
+				jQuery( cur_targetThisID ).focus().blur();	
+				
 
 				//Dynamic button id
 				if ( cur_targetCloneID != '{multID}' && cur_targetCloneID != '' ) {
@@ -1116,6 +1120,25 @@ function uixpbform_htmlEncode( s ) {
                     });
 };
 
+
+/*! 
+ * ************************************
+ * Transform to usable HTML tags and add to attributes of shortcode tags
+ *************************************
+ */	
+function uixpbform_shortcodeUsableHtmlToAttr( str ) {
+	
+	return (typeof str != "string") ? str :
+	  str.replace(/'/g,'"').replace(/“/g,'"').replace(/<|>/g,
+				function($0){
+					var c = $0.charCodeAt(0), r = ["&#"];
+					c = (c == 0x20) ? 0xA0 : c;
+					r.push(c); r.push(";");
+					return r.join("");
+				});
+
+
+}
 
 
 

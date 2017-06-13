@@ -34,6 +34,22 @@ $uix_pb_config = array(
 	),
 	
 
+	array(
+		'sortname'        => esc_html__( 'Blog', 'uix-page-builder' ),
+		'buttons'         => array(
+							
+								array(
+									'title'           => esc_html__( 'Blog Posts List', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_blog1',
+									'thumb'           => 'blog-1.jpg',
+								
+								),
+	
+								
+				
+							)
+	
+	),	
 	
 	
 	array(
@@ -77,7 +93,7 @@ $uix_pb_config = array(
 								array(
 									'title'           => esc_html__( 'Portfolio Grid', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_portfolio1',
-									'thumb'           => 'portfolio1.jpg',
+									'thumb'           => 'portfolio-1.jpg',
 								
 								),
 	
@@ -149,6 +165,13 @@ $uix_pb_config = array(
 									'thumb'           => 'pricing-1.jpg',
 								
 								),	
+	
+								array(
+									'title'           => esc_html__( 'Pricing 3 column', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_pricing1_2',
+									'thumb'           => 'pricing-1_2.jpg',
+								
+								),	
 								
 								array(
 									'title'           => esc_html__( 'Pricing 4 column', 'uix-page-builder' ),
@@ -158,7 +181,13 @@ $uix_pb_config = array(
 								),		
 	
 								
-				
+								array(
+									'title'           => esc_html__( 'Pricing 4 column', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_pricing2_2',
+									'thumb'           => 'pricing-2_2.jpg',
+								
+								),	
+	
 							)
 	
 	),	
