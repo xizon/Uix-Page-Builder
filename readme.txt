@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,20 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
 * Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like "Uix Page Builder Anchor Links", from the left column to add to the menu.
 * Simple operation window, support loop list items.
 * Customizable core style sheets.
+
+
+
+= Advanced Customization ( For Theme Developer ) =
+
+
+1) Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/` to your theme directory `/wp-content/themes/{your-theme}/`.
+
+
+> Note: You could move the **/wp-content/themes/{your-theme}/uix-page-builder-custom/js/**, **/wp-content/themes/{your-theme}/uix-page-builder-custom/images/** and **/wp-content/themes/{your-theme}/uix-page-builder-custom/css/** folders to your theme assets directory **/wp-content/themes/{your-theme}/assets/**
+
+
+
+2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_uix-page-builder-plugins.js"** to **"uix-page-builder-plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/js/` or `/wp-content/themes/{your-theme}/uix-page-builder-custom/js/` or `/wp-content/themes/{your-theme}/assets/js/`, and add the required script to "uix-page-builder-plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
 
 
 
@@ -90,6 +104,15 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+
+= 1.2.1 (June 17, 2017) =
+
+* Upgraded core API. ( For developers, custom modules are much simpler! )
+* Upgraded "Uix Page Builder Anchor Links" form the Menus editor page.
+
+
+
 
 = 1.2.0 (June 13, 2017) =
 

@@ -50,10 +50,21 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 1) Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/` to your theme directory `/wp-content/themes/{your-theme}/`.
 
 
-2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_plugins.js"** to **"plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/js/`, and add the required script to "plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
+> Note: You could move the **/wp-content/themes/{your-theme}/uix-page-builder-custom/js/**, **/wp-content/themes/{your-theme}/uix-page-builder-custom/images/** and **/wp-content/themes/{your-theme}/uix-page-builder-custom/css/** folders to your theme assets directory **/wp-content/themes/{your-theme}/assets/**
+
+
+
+2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_uix-page-builder-plugins.js"** to **"uix-page-builder-plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/js/` or `/wp-content/themes/{your-theme}/uix-page-builder-custom/js/` or `/wp-content/themes/{your-theme}/assets/js/`, and add the required script to "uix-page-builder-plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
 
 
 ### Updates
+
+##### = 1.2.1 (June 17, 2017) =
+
+* Upgraded core API. ( For developers, custom modules are much simpler! )
+* Upgraded "Uix Page Builder Anchor Links" form the Menus editor page.
+
+
 
 ##### = 1.2.0 (June 13, 2017) =
 

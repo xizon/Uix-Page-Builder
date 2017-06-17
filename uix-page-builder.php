@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.2.0
+ * Version:     1.2.1
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -106,8 +106,8 @@ class UixPageBuilder {
 		if ( file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.css' ) ) {
 			wp_enqueue_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/uix-page-builder.css', false, self::ver(), 'all' );
 		}
-		if ( file_exists( self::backend_path( 'dir' ).'js/plugins.js' ) ) {
-			wp_enqueue_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/plugins.js', false, self::ver(), true );	
+		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder-plugins.js' ) ) {
+			wp_enqueue_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/uix-page-builder-plugins.js', false, self::ver(), true );	
 		} else {
 
 			// Shuffle
@@ -294,12 +294,22 @@ class UixPageBuilder {
 	
 		if ( self::tempfolder_exists() ) {
 			
-			if ( $type == 'uri' )  {
-				return get_template_directory_uri() .'/uix-page-builder-custom/';
-			} else {
-				return get_template_directory() .'/uix-page-builder-custom/';
-			}
 			
+			if ( file_exists( get_template_directory() .'/uix-page-builder-custom/css/uix-page-builder.css' ) ) {
+				if ( $type == 'uri' )  {
+					return get_template_directory_uri() .'/uix-page-builder-custom/';
+				} else {
+					return get_template_directory() .'/uix-page-builder-custom/';
+				}
+			}
+
+			if ( file_exists( get_template_directory() .'/assets/css/uix-page-builder.css' ) ) {
+				if ( $type == 'uri' )  {
+					return get_template_directory_uri() .'/assets/';
+				} else {
+					return get_template_directory() .'/assets/';
+				}
+			}
 			
 		} else {
 			
@@ -659,7 +669,7 @@ class UixPageBuilder {
 			include self::plug_filepath().self::CUSTOMTEMP."config.php";
 		}
 		
-		$imgpath = self::backend_path( 'uri' ).'images/preview_thumbnail/';
+		$imgpath = self::backend_path( 'uri' ).'images/UixPageBuilderThumb/';
 		
 		
 		$btns = '<div class="uix-page-builder-col-tabs">';

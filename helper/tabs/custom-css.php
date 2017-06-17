@@ -63,8 +63,8 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 <?php
 
 	
-	$org_cssname_uix_shortcodes = 'uix-page-builder.css';
-	$org_csspath_uix_shortcodes = UixPageBuilder::backend_path( 'uri' ).'css/uix-page-builder.css';
+	$org_cssname_uix_page_builder = 'uix-page-builder.css';
+	$org_csspath_uix_page_builder = UixPageBuilder::backend_path( 'uri' ).'css/uix-page-builder.css';
 	$filepath                   = 'uix-page-builder-custom/css/';
 	
 	
@@ -78,22 +78,22 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	// capture output from WP_Filesystem
 	ob_start();
 	
-		UixPageBuilder::wpfilesystem_read_file( 'uix_pb_customcss', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_shortcodes, $filetype );
-		$filesystem_uix_shortcodes_out = ob_get_contents();
+		UixPageBuilder::wpfilesystem_read_file( 'uix_pb_customcss', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_page_builder, $filetype );
+		$filesystem_uix_page_builder_out = ob_get_contents();
 	ob_end_clean();
 	
-	if ( empty( $filesystem_uix_shortcodes_out ) ) {
+	if ( empty( $filesystem_uix_page_builder_out ) ) {
 		
-		$style_org_code_uix_shortcodes = UixPageBuilder::wpfilesystem_read_file( 'uix_pb_customcss', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_shortcodes, $filetype );
+		$style_org_code_uix_page_builder = UixPageBuilder::wpfilesystem_read_file( 'uix_pb_customcss', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css', $filepath, $org_cssname_uix_page_builder, $filetype );
 		
 		echo '
 		
 		         <p>'.__( 'CSS file root directory:', 'uix-page-builder' ).' 
-				     <a href="javascript:" id="uix_shortcodes_view_css" >'.$org_csspath_uix_shortcodes.'</a>
+				     <a href="javascript:" id="uix_page_builder_view_css" >'.$org_csspath_uix_page_builder.'</a>
 					 <div class="uix-page-builder-dialog-mask"></div>
 					 <div class="uix-page-builder-dialog" id="uix-page-builder-view-css-container">  
-						<textarea rows="15" style=" width:95%;" class="regular-text">'.$style_org_code_uix_shortcodes.'</textarea>
-						<a href="javascript:" id="uix_shortcodes_close_css" class="close button button-primary">'.__( 'Close', 'uix-page-builder' ).'</a>  
+						<textarea rows="15" style=" width:95%;" class="regular-text">'.$style_org_code_uix_page_builder.'</textarea>
+						<a href="javascript:" id="uix_page_builder_close_css" class="close button button-primary">'.__( 'Close', 'uix-page-builder' ).'</a>  
 					</div>
 				 </p><hr />
 				<script type="text/javascript">
@@ -104,13 +104,13 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 					
 					$( function() {
 						
-						var dialog_uix_shortcodes = $( "#uix-page-builder-view-css-container, .uix-page-builder-dialog-mask" );  
+						var dialog_uix_page_builder = $( "#uix-page-builder-view-css-container, .uix-page-builder-dialog-mask" );  
 						
-						$( "#uix_shortcodes_view_css" ).click( function() {
-							dialog_uix_shortcodes.show();
+						$( "#uix_page_builder_view_css" ).click( function() {
+							dialog_uix_page_builder.show();
 						});
-						$( "#uix_shortcodes_close_css" ).click( function() {
-							dialog_uix_shortcodes.hide();
+						$( "#uix_page_builder_close_css" ).click( function() {
+							dialog_uix_page_builder.hide();
 						});
 					
 			
@@ -126,7 +126,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 		
 		echo '
 		         <p>'.__( 'CSS file root directory:', 'uix-page-builder' ).' 
-				     <a href="'.$org_csspath_uix_shortcodes.'" target="_blank">'.$org_csspath_uix_shortcodes.'</a>
+				     <a href="'.$org_csspath_uix_page_builder.'" target="_blank">'.$org_csspath_uix_page_builder.'</a>
 				 </p><hr />
 
 		';	

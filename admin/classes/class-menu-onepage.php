@@ -224,7 +224,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
                 
                 </p>    
              <?php
-			 if ( !UixPageBuilder::tempfile_exists() || $pb_total == 0 ) {
+			 if ( $pb_total == 0 ) {
 				 _e( '<em>No custom pages based on Uix Page Builder.</em>', 'uix-page-builder' );
 				 
 			 } else {
