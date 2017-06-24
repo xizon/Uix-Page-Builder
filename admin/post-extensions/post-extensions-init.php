@@ -100,7 +100,7 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 		  
 		  http://yoursite.com/wp-admin/admin-ajax.php?action=uix_page_builder_metaboxes_loadtemplist_settings&postID=1234
 		  
-		  echo '<iframe id="themepreview" name="themepreview"  frameborder="0" border="0" width="100%" height="500" src="'.esc_url( get_permalink( $_GET[ 'postID' ] ) ).'/?preview=1"></iframe>';
+		  echo '<'.tag_escape( 'iframe' ).' id="themepreview" name="themepreview"  frameborder="0" border="0" width="100%" height="500" src="'.esc_url( get_permalink( $_GET[ 'postID' ] ) ).'/?preview=1"></'.tag_escape( 'iframe' ).'>';
 		  
 		
 		*/
@@ -239,9 +239,17 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				$tempfile_exists = 0;
 			}
 			
-			$curid = get_the_ID();
+			$curid      = get_the_ID();
+			$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
+			$post_url   = esc_url( get_permalink( $post_id ) );
+			$previewURL = '';
 			
-			$post_id = empty( $curid ) ? $_GET['post_id'] : $curid;
+			if( UixPageBuilder::inc_str( $post_url, '?' ) ) {
+				$previewURL = $post_url.'&preview=true&pb_preview=1';
+			} else {
+				$previewURL = $post_url.'?preview=true&pb_preview=1';
+			}
+			
 			
 			$translation_array = array(
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
@@ -249,7 +257,10 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_name'             => sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_id ),
 				'send_string_loadlist'         => esc_html__( 'Loading list...', 'uix-page-builder' ),
 				'send_string_tempfiles_exists' => $tempfile_exists,
-				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0
+				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
+				'send_string_preview_url'      => $previewURL,
+				'send_string_render_count'     => 1,
+				
 			);
 			
 			
@@ -260,7 +271,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			
 
 			//Drag and drop
-			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery' ), '0.5.7', false );	
+			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/js/jquery.gridster.min.js', array( 'jquery', 'uixpbform' ), '0.5.7', false );	
 			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
 
 			//jQuery Accessible Tabs
@@ -273,6 +284,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			//Jquery UI
 			wp_enqueue_script( 'jquery-ui' );
 			
+		
 	
 		}
 			
@@ -404,7 +416,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 
 		
     ?>
-      
+     
 		<?php if ( UixPageBuilder::vb_mode() ) { ?>
 
 			<ul class="uix-page-builder-res-selector">
@@ -569,11 +581,13 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			if ( vbmode ) {
 				jQuery( "[name='uix-page-builder-cur-page-template']" ).on( 'change', function() {
 					/*-- Refresh live preview --*/
-					uixPBFormVisualPreviewRefresh();
+					uixPBFormVisualPreviewRefresh(1);
 
 				});
 			}
 			
+			/*-- Refresh live preview --*/
+			uixPBFormVisualPreviewRefresh(0); //Render the entire page
 			
 			
 			
@@ -581,8 +595,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 			/*-- Initialize gridster --*/
 			gridsterWidgetsInit();
-			
-			
+
 			jQuery( window ).on( 'resize', function() {
 				
 				/*-- Initialize gridster --*/
@@ -653,7 +666,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 							uixPBFormDataSave();	
 							
 							/*-- Refresh live preview --*/
-							uixPBFormVisualPreviewRefresh();
+							uixPBFormVisualPreviewRefresh(0); //Render the entire page
 							
 							var newpos    = this.serialize($widget)[0],
 								thispos   = ui.$player[0].dataset,
@@ -821,6 +834,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				jQuery( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
 					e.preventDefault();
 					
+					var $form           = jQuery( this ).closest( 'form' ),
+						tmplValueEmpty  = $form.find( '.uixpbform-tmpl-textarea' ).data( 'tmpl-value' );
+					
+					
 					setTimeout( function() {
 						var settings = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
 						//console.log( settings );
@@ -833,8 +850,14 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 							security             : uix_page_builder_layoutdata.send_string_nonce
 						}, function ( response ) {
 							
+							
 							/*-- Refresh live preview --*/
-							uixPBFormVisualPreviewRefresh();
+							if ( tmplValueEmpty == 0 ) {
+								uixPBFormVisualPreviewRefresh(0); //Render the entire page
+							} else {
+								uixPBFormVisualPreviewRefresh(1);
+							}
+							
 							
 							/*-- Initialize per column section buttons status (Has been clicked) --*/
 							gridsterItemElementsBTStatus( 1 );
@@ -855,7 +878,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			uixPBFormDataSave();
 			
 			/*-- Refresh live preview --*/
-			uixPBFormVisualPreviewRefresh();
+			uixPBFormVisualPreviewRefresh(1);
 			
 			/*-- Initialize form action for entering --*/
 			gridsterFormEnterAction();	
@@ -890,12 +913,16 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 			/*-- Initialize default value & form --*/
 			uixPBFormDataSave();
+
 			
 			/*-- Initialize gridster --*/
 			gridsterWidgetsInit();
 			
 			/*-- Welcome text --*/
 			jQuery( '#uix-page-builder-layoutdata-none' ).hide();
+			
+			
+			
 			
 			/*-- Navigate to the current row --*/
 			/*
@@ -914,7 +941,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				uixPBFormDataSave();
 				
 				/*-- Refresh live preview --*/
-				uixPBFormVisualPreviewRefresh();
+				uixPBFormVisualPreviewRefresh(0); //Render the entire page
 	
 			} );
 		}
@@ -928,21 +955,26 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				
 				/*-- Initialize gridster widgets status --*/
 				gridsterWidgetStatus();
-				
+
 
 
 			});
 			
 		}
 			
-		function uixPBFormVisualPreviewRefresh() {
+		function uixPBFormVisualPreviewRefresh( type ) {
 			jQuery( document ).ready( function() {
 				
 				if ( vbmode ) {	
 					
+					//show loader
+					if ( type == 0 ) {
+						jQuery( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).show();
+					}
+					
+
 					var $saveobj = jQuery( '#uix-page-builder-save-status' );
 
-					jQuery( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).show();
 					$saveobj.addClass( 'wait' ).text( '<?php echo esc_html__( 'Saving...', 'uix-page-builder' ); ?>' );
 
 					jQuery.post( ajaxurl, {
@@ -953,23 +985,12 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						security             : uix_page_builder_layoutdata.send_string_nonce
 					}, function ( response ) {
 						if ( response == 1 ) {
-							
-							var pURL = '';
-							
-							<?php if( UixPageBuilder::inc_str( esc_url( get_permalink( $curid ) ), '?' ) ) { ?>
-								pURL = '<?php echo esc_url( get_permalink( $curid ) ); ?>&preview=true&pb_preview=1';
-							<?php } else { ?>
-							    pURL = '<?php echo esc_url( get_permalink( $curid ) ); ?>?preview=true&pb_preview=1';
-							<?php } ?>
-							
-							jQuery( '#uix-page-builder-themepreview' ).attr( 'src', pURL );	
-
-							jQuery( '#uix-page-builder-themepreview' ).on( 'load', function() {
-								jQuery( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).hide();
-							} );
+			
+				
+							//render page viewport
+							jQuery( document ).UixPBRenderPage({ enable: type});
 							
 							//save status
-							
 							$saveobj.text( '<?php echo esc_html__( 'Data has been saved.', 'uix-page-builder' ); ?>' );
 							setTimeout( function() {
 								$saveobj.text( '<?php echo esc_html__( 'Saving...', 'uix-page-builder' ); ?>' ).removeClass( 'wait' );
@@ -1062,7 +1083,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						uixPBFormDataSave();
 						
 						/*-- Refresh live preview --*/
-						uixPBFormVisualPreviewRefresh();
+						uixPBFormVisualPreviewRefresh(1);
 						
 					});
 		
@@ -1262,7 +1283,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 						uixPBFormDataSave();
 						
 						/*-- Refresh live preview --*/
-						uixPBFormVisualPreviewRefresh();
+						uixPBFormVisualPreviewRefresh(0); //Render the entire page
 						
 						
 						jQuery( item_sortable + '-'+uid+' li' ).removeClass( 'list-group-item-success' );

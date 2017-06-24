@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.2.1
+ * Version:     1.2.5
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -37,6 +37,7 @@ class UixPageBuilder {
 		self::includes();
 		
 		
+		add_action( 'init', array( __CLASS__, 'register_scripts' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
@@ -94,6 +95,43 @@ class UixPageBuilder {
 	}
 	
 	
+	/*
+	 * Register scripts and styles.
+	 *
+	 *
+	 */
+	public static function register_scripts() {
+		
+		// Core
+		wp_register_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/uix-page-builder.js', array( 'jquery' ), self::ver(), true );
+		wp_register_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/uix-page-builder-plugins.js', false, self::ver(), true );
+		wp_register_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/uix-page-builder.css', false, self::ver(), 'all' );
+		wp_localize_script( self::PREFIX . '-page-builder',  'wp_theme_root_path', array( 
+			'templateUrl' => get_stylesheet_directory_uri()
+		 ) );
+		
+
+		// Shuffle
+		wp_register_script( 'shuffle', self::plug_directory() .'assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
+
+		// Shuffle.js requires Modernizr..
+		wp_register_script( 'modernizr', self::plug_directory() .'assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
+
+		// Easy Pie Chart
+		wp_register_script( 'easypiechart', self::plug_directory() .'assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
+		
+		//flexslider
+		wp_register_script( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true );
+		wp_register_style( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
+		
+		// Parallax
+		wp_register_script( 'bgParallax', self::plug_directory() .'assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
+
+		
+
+	}
+	
+	
 	
 	/*
 	 * Enqueue scripts and styles.
@@ -104,39 +142,24 @@ class UixPageBuilder {
 		
 		//Core
 		if ( file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.css' ) ) {
-			wp_enqueue_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/uix-page-builder.css', false, self::ver(), 'all' );
+			wp_enqueue_style( self::PREFIX . '-page-builder' );
 		}
 		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder-plugins.js' ) ) {
-			wp_enqueue_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/uix-page-builder-plugins.js', false, self::ver(), true );	
+			wp_enqueue_script( self::PREFIX . '-page-builder-plugins' );	
 		} else {
 
-			// Shuffle
-			wp_enqueue_script( 'shuffle', self::plug_directory() .'assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
-
-			// Shuffle.js requires Modernizr..
-			wp_enqueue_script( 'modernizr', self::plug_directory() .'assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
-
-			// Easy Pie Chart
-			wp_enqueue_script( 'easypiechart', self::plug_directory() .'assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
-
-			//flexslider
-			wp_enqueue_script( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true	);
-			wp_enqueue_style( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
-
-			// Parallax
-			wp_enqueue_script( 'bgParallax', self::plug_directory() .'assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
+			wp_enqueue_script( 'shuffle' );
+			wp_enqueue_script( 'modernizr' );
+			wp_enqueue_script( 'easypiechart' );
+			wp_enqueue_script( 'flexslider' );
+			wp_enqueue_style( 'flexslider' );
+			wp_enqueue_script( 'bgParallax' );
 
 							  
 		}
 		
 		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder.js' ) ) {
-			wp_enqueue_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/uix-page-builder.js', array( 'jquery' ), self::ver(), true );	
-			
-			// Theme path in javascript file ( var templateUrl = wp_theme_root_path.templateUrl; )
-			wp_localize_script( self::PREFIX . '-page-builder',  'wp_theme_root_path', array( 
-				'templateUrl' => get_stylesheet_directory_uri()
-			 ) );		
-			
+			wp_enqueue_script( self::PREFIX . '-page-builder' );	
 		}	
 		
 		
@@ -746,7 +769,33 @@ class UixPageBuilder {
 		
 	
 	}
+	
+	
+	/*
+	 * Returns wrapper ID from per column in the front end
+	 *
+	 *
+	 */
+	public static function frontend_wrapper_id( $str, $section_id = '', $column_id = '' ) {
+	
+		$column_id = str_replace( 'col-item-', '', $column_id );
+		$id        = '';
 
+		if ( !empty( $str ) ) {
+			$id = $str;
+		} else {
+			$id = 'section_'.str_replace( 'section-', '', $section_id ).'__'.$column_id;
+		}
+		
+		if ( self::inc_str( $id, '---' ) ) {
+			$arr = split ( '\-\-\-', $id ); 
+			return $arr[0];
+		} else {
+			return $id;
+		}	
+		
+
+	}
 	
 	
 	/*
@@ -1491,9 +1540,14 @@ class UixPageBuilder {
 			$multi_columns    = false;
 			$form_html        = '';
 			$form_js_vars     = '';
+			$last_fields_args = end( $fields_args ); //Determine whether to add a template form
 
+			
+
+			
 			if ( is_array( $fields_args ) ) {
-
+				
+			
 				foreach( $fields_args as $v ) :
 					if ( isset( $v[ 'title' ] ) && !empty( $v[ 'title' ] ) ) {
 						$multi_columns = true;
@@ -1510,11 +1564,36 @@ class UixPageBuilder {
 						$column_title  = $v[ 'title' ];
 					}
 					
+				
+					//------- template textarea
+					if( $v == $last_fields_args ) {
+						 // 'you can do something here as this condition states it just entered last element of an array'; 
+						array_push( $v[ 'values' ], array(
+													'id'             => $form_id.'_temp',
+													'title'          => '',
+													'desc'           => '',
+													'value'          => '',
+													'placeholder'    => '',
+													'type'           => 'textarea',
+													'default'        => array(
+																			'hide' => true,
+							                                                'tmpl' => true,
+							
+																		)
+											)
+						);	
+						
+					}
+						
+				
 					$form_html .= UixPBFormCore::add_form( $v[ 'config' ], $colid, $wname, $sid, $form_id, $v[ 'type' ], $v[ 'values' ], 'html', $column_title );
 					
 					$form_js_vars .= UixPBFormCore::add_form( $v[ 'config' ], $colid, $wname, $sid, $form_id, $v[ 'type' ], $v[ 'values' ], 'js_vars' );
 	
 				endforeach;
+				
+				
+				
 				
 				if ( $multi_columns ) $form_html .= UixPBFormCore::form_after();
 				
@@ -1587,7 +1666,8 @@ class UixPageBuilder {
 						( function($) {
 						'use strict';
 							$( document ).ready( function() {  
-								<?php echo UixPBFormCore::uixpbform_callback( $form_id, $title ); ?>         
+								<?php echo UixPBFormCore::uixpbform_callback( $form_id, $title ); ?>
+
 							} ); 
 						} ) ( jQuery );
 						</script>
@@ -1670,11 +1750,16 @@ class UixPageBuilder {
 
 							/* Save data */
 							$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
+							
+							/* Render HTML Viewport */
+							$( document ).UixPBRenderHTML({ divID: '#<?php echo UixPageBuilder::frontend_wrapper_id( '', $sid, $colid ); ?>', value: temp });
 
 						}
 
 						uix_pb_temp();
-						$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() { uix_pb_temp(); });
+						$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() { 
+							uix_pb_temp();
+						});
 
 					} ); 
 				} ) ( jQuery );

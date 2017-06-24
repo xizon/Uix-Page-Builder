@@ -61,6 +61,9 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 			-webkit-box-shadow: 0px 1px 12px 0px rgba(36, 104, 143,0.34);
 			-moz-box-shadow: 0px 1px 12px 0px rgba(36, 104, 143,0.34);
 			box-shadow: 0px 1px 12px 0px rgba(36, 104, 143,0.34);
+			-webkit-animation:  pbicon .2s linear forwards;
+			animation: pbicon .2s linear forwards;
+
 		}
 		.uix-page-builder-editicon .fa {
 		    margin-top: 12px;
@@ -78,7 +81,31 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 			position: relative;
 			z-index: 999998 !important;
 		}
-		
+
+		@-webkit-keyframes pbicon {
+			0%   { 
+				-webkit-transform: scale(0);
+				-ms-transform: scale(0);
+				transform: scale(0);
+			}
+			100% {
+				-webkit-transform: scale(1);
+				-ms-transform: scale(1);
+				transform: scale(1);
+			}
+		}
+		@keyframes pbicon {
+			0%   { 
+				-webkit-transform: scale(0);
+				-ms-transform: scale(0);
+				transform: scale(0);
+			}
+			100% {
+				-webkit-transform: scale(1);
+				-ms-transform: scale(1);
+				transform: scale(1);
+			}
+		}
 		</style>
 		<script type='text/javascript'>										  
 		( function($) {
@@ -249,17 +276,12 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
             
 			require_once ABSPATH . 'wp-admin/admin-header.php';
 			
-			$previewURL = '';
-			
-			if( UixPageBuilder::inc_str( $post_url, '?' ) ) {
-				$previewURL = $post_url.'&preview=true&pb_preview=1';
-			} else {
-				$previewURL = $post_url.'?preview=true&pb_preview=1';
-			}
-			
 			
 		    echo '
-			<iframe id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="'.$previewURL.'"></iframe>
+			<script type="text/html" id="uix_page_builder_viewport_preview_tmpl">
+				 <'.tag_escape( 'iframe' ).' id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="<%=url%>"></'.tag_escape( 'iframe' ).'>
+			</script>	
+			<div id="uix-page-builder-viewport-preview-container"></div>
 			<a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Hide Sidebar', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-close" href="javascript:"><i class="dashicons dashicons-arrow-left"></i></a>
 			';
 			

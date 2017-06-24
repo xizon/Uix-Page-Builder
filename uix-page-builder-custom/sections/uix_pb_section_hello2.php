@@ -350,20 +350,6 @@ $args_col4_4 =
 		),
 		
 		
-        //------- template
-		array(
-			'id'             => $form_id.'_temp',
-			'title'          => '',
-			'desc'           => '',
-			'value'          => '',
-			'placeholder'    => '',
-			'type'           => 'textarea',
-			'default'        => array(
-									'hide' => true
-								)
-		
-		),	
-		
 		
 	
 	)

@@ -59,6 +59,15 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+##### = 1.2.5 (June 24, 2017) =
+
+* Simplified core API. ( For developers, custom modules are much simpler! )
+* Rebuilt WYSIWYG Editor For Inline Web Content.
+* Optimized response speed for back-end.
+* Fix the display of posts that do not match the error. ( For blog module )
+
+
+
 ##### = 1.2.1 (June 17, 2017) =
 
 * Upgraded core API. ( For developers, custom modules are much simpler! )

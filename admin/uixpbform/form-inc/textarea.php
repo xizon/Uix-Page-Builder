@@ -30,6 +30,7 @@ class UixPBFormType_Textarea {
 				$row    = ( isset( $default[ 'row' ] ) ) ? $default[ 'row' ] : 5;
 				$format = ( isset( $default[ 'format' ] ) ) ? $default[ 'format' ] : true;
 				$hide   = ( isset( $default[ 'hide' ] ) ) ? $default[ 'hide' ] : false;
+				$tmpl   = ( isset( $default[ 'tmpl' ] ) ) ? $default[ 'tmpl' ] : false;
 				
 			}
 			
@@ -39,8 +40,8 @@ class UixPBFormType_Textarea {
 						<th scope="row"><label>'.$title.'</label></th>
 						<td>	
 						    <div class="uixpbform-box">
-						
-							   '.( !empty( $args[ 'id' ] ) ? '<textarea rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'" chk-id-textarea="'.$id.'">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>' : '' ).' 					   	   
+						  
+							   '.( !empty( $args[ 'id' ] ) ? '<textarea '.( empty( $value ) ? 'data-tmpl-value="0"' : 'data-tmpl-value="1"' ).' '.( $tmpl ? 'data-tmpl-id="'.UixPageBuilder::frontend_wrapper_id( $id ).'"' : '' ).' rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text '.( $tmpl ? 'uixpbform-tmpl-textarea' : '' ).'" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'" chk-id-textarea="'.$id.'">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>' : '' ).' 					   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
 							</div>

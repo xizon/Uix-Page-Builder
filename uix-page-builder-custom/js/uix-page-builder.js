@@ -15,6 +15,7 @@
     5. Testimonials
 	6. Filterable
 	7. Grid
+	Required: Apply the original scripts
 	
 
 ************************************* */
@@ -85,134 +86,140 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 		$( '.uix-pb-accordion' ).each( function(){
 
-				//returns new id
+				//Returns new id
 				var $this              = $( this ),
+					activated          = $this.data( 'activated' ),
 					tranEfftct         = $this.data( 'effect' ),
 					spoilerContent     = '.uix-pb-spoiler-content',
 					speed              = 300,
 					spoilerCloseClass  = 'uix-pb-spoiler-closed',
 					$spoilerBox        = $this.find( '.uix-pb-spoiler' );
+			
+			    if ( typeof activated === typeof undefined || activated === 0 ) {
+					
+					//Tabs
+					if ( $this.hasClass( 'uix-pb-tabs' ) ) {
+
+						var $tabsLi = $this.find( '.uix-pb-tabs-title li' );
+
+						$this.find( '.uix-pb-tabs-title li:eq(0)' ).addClass( 'active' );
+						$this.find( '.uix-pb-spoiler-content:eq(0)' ).show().addClass( 'active' );
 
 
 
-				//Tabs
-				if ( $this.hasClass( 'uix-pb-tabs' ) ) {
 
-					var $tabsLi = $this.find( '.uix-pb-tabs-title li' );
+						$tabsLi.on( 'click', function( e ) {
 
-					$this.find( '.uix-pb-tabs-title li:eq(0)' ).addClass( 'active' );
-					$this.find( '.uix-pb-spoiler-content:eq(0)' ).show().addClass( 'active' );
-
-
-
-
-					$tabsLi.on( 'click', function( e ) {
-
-						var  contentIndex = $( this ).index(),
-							$title = $( this ),
-							$content = $this.find( spoilerContent+':eq('+contentIndex+')' ),
-							toggleClass = 'active';
+							var  contentIndex = $( this ).index(),
+								$title = $( this ),
+								$content = $this.find( spoilerContent+':eq('+contentIndex+')' ),
+								toggleClass = 'active';
 
 
 
-							$tabsLi.removeClass( toggleClass );
-							$this.find( spoilerContent ).removeClass( toggleClass );
+								$tabsLi.removeClass( toggleClass );
+								$this.find( spoilerContent ).removeClass( toggleClass );
 
-							$title.toggleClass( toggleClass );
-							$content.toggleClass( toggleClass );
-
-							//Open/close content
-							if ( tranEfftct == 'slide' ) {
-								$this.find( spoilerContent ).not( '.' + toggleClass ).slideUp( speed );
-								$content.slideDown( speed );
-
-							}
-							if ( tranEfftct == 'fade' ) {
-
-								$this.find( spoilerContent ).not( '.' + toggleClass ).hide();
-								$content.fadeIn( speed );
-
-							}
-							if ( tranEfftct == 'none' ) {
-								$this.find( spoilerContent ).not( '.' + toggleClass ).hide();
-								$content.show();
-
-							}
-
-
-							// Scroll in spoiler in accordion
-							e.preventDefault();
-
-
-					} );
-
-
-				} else {
-
-					$( '.uix-pb-accordion .'+spoilerCloseClass ).find( spoilerContent ).show();
-
-
-					$spoilerBox.on( 'click', function( e ) { //prevent the extra click event from $spoilerBox
-
-						var $title = $( '.uix-pb-spoiler-title', this ),
-							$spoiler = $title.parent(),
-							$content = $( this ).find( spoilerContent );
-
-
-							if ( $title.css( 'widows' ) != 2 ) {
-
-								// Open/close spoiler
-								$spoiler.toggleClass( spoilerCloseClass );
-
-								// Close other spoilers in accordion
-								$spoilerBox.removeClass( spoilerCloseClass );
-
-								$( this ).addClass( spoilerCloseClass );
+								$title.toggleClass( toggleClass );
+								$content.toggleClass( toggleClass );
 
 								//Open/close content
 								if ( tranEfftct == 'slide' ) {
-									$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).slideUp( speed );
+									$this.find( spoilerContent ).not( '.' + toggleClass ).slideUp( speed );
 									$content.slideDown( speed );
 
 								}
 								if ( tranEfftct == 'fade' ) {
-									$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).hide();
+
+									$this.find( spoilerContent ).not( '.' + toggleClass ).hide();
 									$content.fadeIn( speed );
 
 								}
 								if ( tranEfftct == 'none' ) {
-									$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).hide();
+									$this.find( spoilerContent ).not( '.' + toggleClass ).hide();
 									$content.show();
 
 								}
 
 
-							} else {
+								// Scroll in spoiler in accordion
+								e.preventDefault();
 
-								$( this ).removeClass( spoilerCloseClass );
 
-								//Open/close content
-								if ( tranEfftct == 'slide' ) {
-									$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).slideUp( speed );
+						} );
+
+
+					} else {
+
+						$( '.uix-pb-accordion .'+spoilerCloseClass ).find( spoilerContent ).show();
+
+
+						$spoilerBox.on( 'click', function( e ) { //prevent the extra click event from $spoilerBox
+
+							var $title = $( '.uix-pb-spoiler-title', this ),
+								$spoiler = $title.parent(),
+								$content = $( this ).find( spoilerContent );
+
+
+								if ( $title.css( 'widows' ) != 2 ) {
+
+									// Open/close spoiler
+									$spoiler.toggleClass( spoilerCloseClass );
+
+									// Close other spoilers in accordion
+									$spoilerBox.removeClass( spoilerCloseClass );
+
+									$( this ).addClass( spoilerCloseClass );
+
+									//Open/close content
+									if ( tranEfftct == 'slide' ) {
+										$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).slideUp( speed );
+										$content.slideDown( speed );
+
+									}
+									if ( tranEfftct == 'fade' ) {
+										$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).hide();
+										$content.fadeIn( speed );
+
+									}
+									if ( tranEfftct == 'none' ) {
+										$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).hide();
+										$content.show();
+
+									}
+
+
+								} else {
+
+									$( this ).removeClass( spoilerCloseClass );
+
+									//Open/close content
+									if ( tranEfftct == 'slide' ) {
+										$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).slideUp( speed );
+									}
+									if ( tranEfftct == 'fade' ) {
+										$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).fadeOut( speed );
+									}
+									if ( tranEfftct == 'none' ) {
+										$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).hide();
+									}
+
 								}
-								if ( tranEfftct == 'fade' ) {
-									$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).fadeOut( speed );
-								}
-								if ( tranEfftct == 'none' ) {
-									$this.find( spoilerContent ).not( '.' + spoilerCloseClass ).hide();
-								}
-
-							}
 
 
-							// Scroll in spoiler in accordion
-							e.preventDefault();
+								// Scroll in spoiler in accordion
+								e.preventDefault();
 
 
-					} );
+						} );
 
 
+					}
+					
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );
 				}
+					
 
 
 		});
@@ -250,6 +257,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 		$( '.uix-pb-bar-box-square' ).each(function() {
 			var $this       = $( this ),
+				activated   = $this.data( 'activated' ),
 			    perc        = $( '.uix-pb-bar', this).data( 'percent' ),
 				size        = $( '.uix-pb-bar', this).data( 'size' ),
 				linewidth   = $( '.uix-pb-bar', this).data( 'linewidth' ),
@@ -259,51 +267,60 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				iconName    = $( '.uix-pb-bar', this).data( 'icon' ),
 				boxheight   = $( '.uix-pb-bar-info', this).height();
 
-			if ( boxheight > 0 ) $( this ).css( { 'height': linewidth + boxheight + 'px' } );
-			$( '.uix-pb-bar', this).css( { 'height': linewidth + 'px', 'width': '100%', 'background': trackcolor } );
-			$( '.uix-pb-bar .uix-pb-bar-percent', this).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } );
-			$( '.uix-pb-bar .uix-pb-bar-text', this).html( '' );
+			
+			if ( typeof activated === typeof undefined || activated === 0 ) {
 
 
-			$this.find( '.uix-pb-bar .uix-pb-bar-text' ).each( function()  {
-
-				if ( $this.find( '.uix-pb-bar .uix-pb-bar-percent' ).width() == 0 ) {
-
-					$this.find( '.uix-pb-bar .uix-pb-bar-percent' ).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } ).animate( { percentage: perc, width: perc + '%'  }, {duration: barspeed } );
-
-					var $el = $( this ),
-						value = perc;
+				if ( boxheight > 0 ) $( this ).css( { 'height': linewidth + boxheight + 'px' } );
+				$( '.uix-pb-bar', this).css( { 'height': linewidth + 'px', 'width': '100%', 'background': trackcolor } );
+				$( '.uix-pb-bar .uix-pb-bar-percent', this).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } );
+				$( '.uix-pb-bar .uix-pb-bar-text', this).html( '' );
 
 
-					$( { percentage: 0 } ).stop(true).animate( { percentage: value }, {
-						duration : barspeed,
-						step: function () {
-							// percentage with 1 decimal;
-							var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
+				$this.find( '.uix-pb-bar .uix-pb-bar-text' ).each( function()  {
 
+					if ( $this.find( '.uix-pb-bar .uix-pb-bar-percent' ).width() == 0 ) {
+
+						$this.find( '.uix-pb-bar .uix-pb-bar-percent' ).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } ).animate( { percentage: perc, width: perc + '%'  }, {duration: barspeed } );
+
+						var $el = $( this ),
+							value = perc;
+
+
+						$( { percentage: 0 } ).stop(true).animate( { percentage: value }, {
+							duration : barspeed,
+							step: function () {
+								// percentage with 1 decimal;
+								var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
+
+								if ( iconName != '' ) {
+									$el.html( '<i class="fa fa-'+iconName+'"></i>' );
+								} else {
+									$el.html( percentageVal + units );
+								}
+
+							}
+						}).promise().done(function () {
+							// hard set the value after animation is done to be
+							// sure the value is correct
 							if ( iconName != '' ) {
 								$el.html( '<i class="fa fa-'+iconName+'"></i>' );
 							} else {
-								$el.html( percentageVal + units );
+								$el.html( value + units );
 							}
 
-						}
-					}).promise().done(function () {
-						// hard set the value after animation is done to be
-						// sure the value is correct
-						if ( iconName != '' ) {
-							$el.html( '<i class="fa fa-'+iconName+'"></i>' );
-						} else {
-							$el.html( value + units );
-						}
+
+						});
 
 
-					});
+					}
 
+				});			
 
-				}
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}
 
-			});
 
 		});
 
@@ -311,6 +328,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		$( '.uix-pb-bar-box-circular' ).each(function() {
 
 			var $this      = $( this ),
+				activated  = $this.data( 'activated' ),
 				perc       = $( '.uix-pb-bar', this).data( 'percent' ),
 				size       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'size' ),
 				sizeNum    = parseFloat( size ),
@@ -320,17 +338,26 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				units      = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'units' ),
 				icon       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'icon' );
 
-			$( '.uix-pb-bar', this ).easyPieChart({
-				animate: barspeed,
-				barColor: barcolor,
-				trackColor: trackcolor,
-				scaleLength: 0,
-				lineWidth: linewidth,
-				size: sizeNum
-			});
 
-			$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( 0 );
+			if ( typeof activated === typeof undefined || activated === 0 ) {
 
+				$( '.uix-pb-bar', this ).easyPieChart({
+					animate: barspeed,
+					barColor: barcolor,
+					trackColor: trackcolor,
+					scaleLength: 0,
+					lineWidth: linewidth,
+					size: sizeNum
+				});
+
+				$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( 0 );
+
+				
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}	
+
+	
 
 
 		});
@@ -340,6 +367,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 			if ( $( '.uix-pb-bar .uix-pb-bar-percent', this ).text().length == 0 ) {
 
 				var $this      = $( this ),
+					activated  = $this.data( 'activated' ),
 					perc       = $( '.uix-pb-bar', this).data( 'percent' ),
 					size       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'size' ),
 					sizeNum    = parseFloat( size ),
@@ -350,34 +378,41 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 					icon       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'icon' ),
 					$txtcont   = $( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' );
 
+				
+			    if ( typeof activated === typeof undefined || activated === 0 ) {
+					
 
-				$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( perc );
-				$( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' ).css( { 'line-height': size, 'width': size } ).animate( { percentage: perc }, {duration: barspeed } );
-				$( { percentage: 0 } ).stop(true).animate( { percentage: perc }, {
-					duration : barspeed,
-					step: function () {
-						// percentage with 1 decimal;
-						var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
+					$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( perc );
+					$( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' ).css( { 'line-height': size, 'width': size } ).animate( { percentage: perc }, {duration: barspeed } );
+					$( { percentage: 0 } ).stop(true).animate( { percentage: perc }, {
+						duration : barspeed,
+						step: function () {
+							// percentage with 1 decimal;
+							var percentageVal = parseInt( Math.round(this.percentage * 10) / 10 );
 
+							if ( icon != '' ) {
+								$txtcont.html( '<i class="fa fa-'+icon+'"></i>' );
+							} else {
+								$txtcont.html( percentageVal + units );
+							}
+
+						}
+					}).promise().done(function () {
+						// hard set the value after animation is done to be
+						// sure the value is correct
 						if ( icon != '' ) {
 							$txtcont.html( '<i class="fa fa-'+icon+'"></i>' );
 						} else {
-							$txtcont.html( percentageVal + units );
+							$txtcont.html( perc + units );
 						}
 
-					}
-				}).promise().done(function () {
-					// hard set the value after animation is done to be
-					// sure the value is correct
-					if ( icon != '' ) {
-						$txtcont.html( '<i class="fa fa-'+icon+'"></i>' );
-					} else {
-						$txtcont.html( perc + units );
-					}
 
-
-				});
-
+					});
+					
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
+				}	
+				
 
 			}
 
@@ -417,46 +452,55 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 				//returns new id
 				var $this            = $( this ),
+					activated        = $this.data( 'activated' ),
 					priceBGH         = Array(),
 					priceBGH_excerpt = Array(),
 					$initHeight      = $this.find( '.uix-pb-price-init-height' );
 
-				$initHeight.each( function( index ) {
-					//Screen protection of height
-					$( this ).find( '.uix-pb-price-border,.uix-pb-price-excerpt' ).css( 'height', 'auto' );
+			
+			    if ( typeof activated === typeof undefined || activated === 0 ) {
+					
+					$initHeight.each( function( index ) {
+						//Screen protection of height
+						$( this ).find( '.uix-pb-price-border,.uix-pb-price-excerpt' ).css( 'height', 'auto' );
 
-					var tempheight = $( this ).height();
-					var tempheight_excerpt = $( this ).find( '.uix-pb-price-excerpt' ).height();
-					priceBGH.push( tempheight );
-					priceBGH_excerpt.push( tempheight_excerpt );
-
-
-				} );
-
-				var priceBGH_Max         = Math.max.apply( Math, priceBGH ),
-					priceBGH_Max_excerpt = Math.max.apply( Math, priceBGH_excerpt );
+						var tempheight = $( this ).height();
+						var tempheight_excerpt = $( this ).find( '.uix-pb-price-excerpt' ).height();
+						priceBGH.push( tempheight );
+						priceBGH_excerpt.push( tempheight_excerpt );
 
 
+					} );
 
-				if ( priceBGH_Max > 0 ) {
-					if ( $( document.body ).width() > 768 ){
+					var priceBGH_Max         = Math.max.apply( Math, priceBGH ),
+						priceBGH_Max_excerpt = Math.max.apply( Math, priceBGH_excerpt );
 
-						$initHeight.find( '.uix-pb-price-border' ).css( 'height', priceBGH_Max + 'px' );
-						if ( $initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).length > 0 ) {
-							var ty = Math.abs(parseInt($initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).css('transform').split(',')[5]));
-							if ( !isNaN(ty) ) {
-								$initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).css( 'height', priceBGH_Max + ty*2 + 'px' );
+
+
+					if ( priceBGH_Max > 0 ) {
+						if ( $( document.body ).width() > 768 ){
+
+							$initHeight.find( '.uix-pb-price-border' ).css( 'height', priceBGH_Max + 'px' );
+							if ( $initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).length > 0 ) {
+								var ty = Math.abs(parseInt($initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).css('transform').split(',')[5]));
+								if ( !isNaN(ty) ) {
+									$initHeight.find( '.uix-pb-price-border.uix-pb-price-important' ).css( 'height', priceBGH_Max + ty*2 + 'px' );
+								}
+
 							}
 
+
+						} else {
+							$initHeight.find( '.uix-pb-price-border' ).css( 'height', 'auto' );
 						}
 
-
-					} else {
-						$initHeight.find( '.uix-pb-price-border' ).css( 'height', 'auto' );
 					}
-
+					
+					
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
 				}
-
+		
 
 		});
 
@@ -464,30 +508,39 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		$( '.uix-pb-price-border-hover' ).each( function(){
 
 			var $this        = $( this ),
+				activated    = $this.data( 'activated' ),
 				hw           = 6,
 			    defaultColor = $this.find( '.uix-pb-price-border' ).css( 'border-color' ),
 				textColor    = $this.data( 'tcolor' ),
 				btnColor     = $this.data( 'bcolor' );
 
-			if ( $this.css( 'top' ) != '0px' ) {
+			
+			if ( typeof activated === typeof undefined || activated === 0 ) {
 
-				$this.hover(function() {
-					$(this).find( '.uix-pb-price-border' ).css({
-						"border-color": textColor,
-						"-webkit-box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
-						"-moz-box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
-						"box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
-					});
-				},function() {
-					$(this).find( '.uix-pb-price-border' ).css({
-						"border-color": defaultColor,
-						"-webkit-box-shadow": "none",
-						"-moz-box-shadow": "none",
-						"box-shadow": "none"
-					});
-				});
+				if ( $this.css( 'top' ) != '0px' ) {
 
+					$this.hover(function() {
+						$(this).find( '.uix-pb-price-border' ).css({
+							"border-color": textColor,
+							"-webkit-box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
+							"-moz-box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
+							"box-shadow": "inset 0 0px 0px "+hw+"px " + textColor,
+						});
+					},function() {
+						$(this).find( '.uix-pb-price-border' ).css({
+							"border-color": defaultColor,
+							"-webkit-box-shadow": "none",
+							"-moz-box-shadow": "none",
+							"box-shadow": "none"
+						});
+					});
+
+				}				
+
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
 			}
+			
 
 
 		});
@@ -501,51 +554,61 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 				//returns new id
 				var $this            = $( this ),
+					activated        = $this.data( 'activated' ),
 					priceBGH         = Array(),
 					priceBGH_excerpt = Array(),
 					$initHeight      = $this.find( '.uix-pb-price2-init-height' );
 
-				$initHeight.each( function( index ) {
-					//Screen protection of height
-					$( this ).find( '.uix-pb-price2-border,.uix-pb-price2-excerpt' ).css( 'height', 'auto' );
-
-					var tempheight = $( this ).height();
-					var tempheight_excerpt = $( this ).find( '.uix-pb-price2-excerpt' ).height();
-					priceBGH.push( tempheight );
-					priceBGH_excerpt.push( tempheight_excerpt );
-
-
-				} );
-
-				var priceBGH_Max         = Math.max.apply( Math, priceBGH ),
-					priceBGH_Max_excerpt = Math.max.apply( Math, priceBGH_excerpt );
-
-
-
-				if ( priceBGH_Max > 0 ) {
-					if ( $( document.body ).width() > 768 ){
-						
-					    // Initialize the height of all columns
-						$initHeight.find( '.uix-pb-price2-border' ).css( 'height', priceBGH_Max + 'px' );
-						
-						// Actived columns
-						$initHeight.find( '.uix-pb-price2-border.uix-pb-price2-important' ).each( function() {
+			
+			    if ( typeof activated === typeof undefined || activated === 0 ) {
 					
-							var textColor = $( this ).closest( '.uix-pb-price2-border-hover' ).data( 'tcolor' ),
-								btnColor  = $( this ).closest( '.uix-pb-price2-border-hover' ).data( 'bcolor' );
+					$initHeight.each( function( index ) {
+						//Screen protection of height
+						$( this ).find( '.uix-pb-price2-border,.uix-pb-price2-excerpt' ).css( 'height', 'auto' );
 
-							$( this ).css( 'background-color', btnColor );
-					
-						});	
-						
-					
+						var tempheight = $( this ).height();
+						var tempheight_excerpt = $( this ).find( '.uix-pb-price2-excerpt' ).height();
+						priceBGH.push( tempheight );
+						priceBGH_excerpt.push( tempheight_excerpt );
 
 
-					} else {
-						$initHeight.find( '.uix-pb-price2-border' ).css( 'height', 'auto' );
+					} );
+
+					var priceBGH_Max         = Math.max.apply( Math, priceBGH ),
+						priceBGH_Max_excerpt = Math.max.apply( Math, priceBGH_excerpt );
+
+
+
+					if ( priceBGH_Max > 0 ) {
+						if ( $( document.body ).width() > 768 ){
+
+							// Initialize the height of all columns
+							$initHeight.find( '.uix-pb-price2-border' ).css( 'height', priceBGH_Max + 'px' );
+
+							// Actived columns
+							$initHeight.find( '.uix-pb-price2-border.uix-pb-price2-important' ).each( function() {
+
+								var textColor = $( this ).closest( '.uix-pb-price2-border-hover' ).data( 'tcolor' ),
+									btnColor  = $( this ).closest( '.uix-pb-price2-border-hover' ).data( 'bcolor' );
+
+								$( this ).css( 'background-color', btnColor );
+
+							});	
+
+
+
+
+						} else {
+							$initHeight.find( '.uix-pb-price2-border' ).css( 'height', 'auto' );
+						}
+
 					}
 
+					
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
 				}
+			
 
 
 		});
@@ -587,7 +650,20 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
         function uix_pb_parallaxInit() {
             $( '.uix-pb-parallax' ).each(function() {
-                $( this ).bgParallax( "50%", $( this ).data( 'parallax' ) );
+				
+				var $this     = $( this ),
+					activated = $this.data( 'activated' );
+				
+			    if ( typeof activated === typeof undefined || activated === 0 ) {
+					
+				     $this.bgParallax( "50%", $this.data( 'parallax' ) );
+					
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
+				}
+				
+				
+               
             });
         };
 		
@@ -675,49 +751,56 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		 $( '.uix-pb-filterable' ).each( function(){
 
 			var $this              = $( this ),
+				activated          = $this.data( 'activated' ),
 				classprefix        = $this.data( 'classprefix' ),
 				fid                = $this.data( 'filter-id' ),
 				filterBox          = $( '#'+classprefix+'filter-stage-'+fid+'' ),
 				filterNav          = $( '#'+classprefix+'cat-list-'+fid+'' ),
 				filterItemSelector = '.'+classprefix+'item';
 
+			if ( typeof activated === typeof undefined || activated === 0 ) {
 
-			 filterBox.shuffle({
-				itemSelector: filterItemSelector,
-				speed: 550, // Transition/animation speed (milliseconds).
-				easing: 'ease-out', // CSS easing function to use.
-				sizer: null // Sizer element. Use an element to determine the size of columns and gutters.
-			  });
+				 filterBox.shuffle({
+					itemSelector: filterItemSelector,
+					speed: 550, // Transition/animation speed (milliseconds).
+					easing: 'ease-out', // CSS easing function to use.
+					sizer: null // Sizer element. Use an element to determine the size of columns and gutters.
+				  });
 
-			//init
-			imagesLoaded( '#'+classprefix+'filter-stage-'+fid+'' ).on( 'always', function() {
-				 $( '#'+classprefix+'cat-list-'+fid+' li:first a' ).trigger( 'click' );
-			 });
-
-
-			filterNav.find( 'li > a' ).on( 'click', function( e ) {
-
-				  var thisBtn = $( this ),
-					  activeClass = 'current',
-					  isActive = thisBtn.hasClass( activeClass ),
-					  group = isActive ? 'all' : thisBtn.data( 'group' );
-
-				  // Hide current label, show current label in title
-				  if ( !isActive ) {
-					filterNav.find( '.' + activeClass ).removeClass( activeClass );
-				  }
-
-				  thisBtn.toggleClass( activeClass );
-
-				  // Filter elements
-				  filterBox.shuffle( 'shuffle', group );
-
-				  return false;
+				//init
+				imagesLoaded( '#'+classprefix+'filter-stage-'+fid+'' ).on( 'always', function() {
+					 $( '#'+classprefix+'cat-list-'+fid+' li:first a' ).trigger( 'click' );
+				 });
 
 
-			} ); 		
+				filterNav.find( 'li > a' ).on( 'click', function( e ) {
+
+					  var thisBtn = $( this ),
+						  activeClass = 'current',
+						  isActive = thisBtn.hasClass( activeClass ),
+						  group = isActive ? 'all' : thisBtn.data( 'group' );
+
+					  // Hide current label, show current label in title
+					  if ( !isActive ) {
+						filterNav.find( '.' + activeClass ).removeClass( activeClass );
+					  }
+
+					  thisBtn.toggleClass( activeClass );
+
+					  // Filter elements
+					  filterBox.shuffle( 'shuffle', group );
+
+					  return false;
 
 
+				} ); 	
+				
+
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}
+			 
+	
 		 });	
 
 	};
@@ -747,7 +830,20 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
     var documentReady = function( $ ) {
 
 		 $( '.uix-pb-col-last' ).each( function(){
-		    $( this ).after( '<div class="uix-pb-clear"></div>' );
+			 
+			 var $this     = $( this ),
+				 activated = $this.data( 'activated' );
+			 
+			 
+			if ( typeof activated === typeof undefined || activated === 0 ) {
+
+                $this.after( '<div class="uix-pb-clear"></div>' );
+
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}
+			 
+		    
 		 });	
 
 	};
@@ -764,4 +860,54 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 
 
+/*! 
+ * ************************************
+ * Apply the original scripts
+ *
+ * !!!! Required Method !!!!
+ * This is a method that joint back-end panel and front-end javascripts preview in real time.
+ * 
+ *
+ *************************************
+ */	
+( function($) {
+    'use strict';
+
+	$.extend( { 
+		uix_pb_init:function () {
+
+			var scipts_pageLoaded    = uix_pb.components.pageLoaded,
+				scipts_documentReady = uix_pb.components.documentReady;
+			
+			
+			for ( var i = 0, len = scipts_pageLoaded.length; i < len; i++ ) {
+			     scipts_pageLoaded[i]();
+			}
+			for ( var i = 0, len = scipts_documentReady.length; i < len; i++ ) {
+			     scipts_documentReady[i]( $ );
+			}	
+	
+			
+		} 
+	});
+	
+} ) ( jQuery );
+
+
+( function( $ ) {
+"use strict";
+    
+    $( document ).ready( function() {
+		
+		//Reload the front-end javascripts to make the live preview take effect.
+		var backendPanel = $( '.uix-page-builder-gridster-addbtn', window.parent.document ).length;
+		if ( backendPanel > 0 ) {
+			$( document ).on( 'mouseenter', function() {
+				$.uix_pb_init();
+			});
+		}
+			
+    } );
+    
+} ) ( jQuery );
 

@@ -105,7 +105,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 											}
 										endforeach;
 
-										$element_code .= $element_grid_before.$html.$element_grid_after;
+										$element_code .= $element_grid_before.'<div id="'.UixPageBuilder::frontend_wrapper_id( '', $row, $colid ).'">'.$html.'</div>'.$element_grid_after;
 
 									}
 

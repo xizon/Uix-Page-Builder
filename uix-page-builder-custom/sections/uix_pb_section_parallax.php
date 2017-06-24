@@ -117,7 +117,7 @@ $args =
 			'default'        => array(
 			                        'units_id'    => 'uix_pb_parallax_speed_units',
 									'units'       => '',
-									'min'         => 0,
+									'min'         => -10,
 									'max'         => 10,
 									'step'        => 0.1
 				                )
@@ -234,21 +234,6 @@ $args =
 
 		),		
 		
-
-
-        //------- template
-		array(
-			'id'             => $form_id.'_temp',
-			'title'          => '',
-			'desc'           => '',
-			'value'          => '',
-			'placeholder'    => '',
-			'type'           => 'textarea',
-			'default'        => array(
-									'hide' => true
-								)
-		
-		),	
 
 	
 	)

@@ -46,20 +46,16 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 			 ), $atts ) );
 			
 			
-			
-
-
-			 $before = wp_specialchars_decode( $before ).PHP_EOL;
-			 $after  = wp_specialchars_decode( $after ).PHP_EOL;	
+			 $before         = wp_specialchars_decode( $before ).PHP_EOL;
+			 $after          = wp_specialchars_decode( $after ).PHP_EOL;	
 			 $readmore_class = str_replace( '&nbsp;', ' ' , str_replace( '&#160;', ' ' , $readmore_class ));
-  
+		
 
 			if ( $cat != 'all' ) {
 
 				if ( $order != 'rand' ) {
 					$wp_query = new WP_Query( array(
 									'post_type'       => 'post',
-									'orderby'         => 'title',
 									'order'           => $order,
 									'cat'             => $cat,
 									'posts_per_page'  => $show ,
@@ -84,7 +80,6 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 				if ( $order != 'rand' ) {
 					$wp_query = new WP_Query( array(
 									'post_type'       => 'post',
-									'orderby'         => 'title',
 									'order'           => $order,
 									'posts_per_page'  => $show ,
 									'post_status'     => 'publish',
@@ -110,7 +105,6 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 
 			if ( $wp_query->have_posts() ) {
 			  while ( $wp_query->have_posts() ) : $wp_query->the_post();
-				
 				
 				//excerpt
 				if ( $readmore_enable == 0 ) {
@@ -166,6 +160,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 
 			// Reset post data to prevent conflicts with the main query 
 			wp_reset_postdata();
+			
 	
 			return do_shortcode( UixPBFormCore::str_compression(  $before.$return_string.$after ) );
 
