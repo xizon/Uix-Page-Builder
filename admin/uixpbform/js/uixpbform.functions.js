@@ -1446,12 +1446,12 @@ function uixpbform_editorInit( id ){
 				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent alignleft aligncenter alignright | hr uixpb_image',
 					setup:function(ed) {
 					   ed.on( 'change', function(e) {
+						   
 						   var newvalue = ed.getContent()
-						                                 .replace(/\r?\n/gm, '')
-						                                 .replace(/&nbsp;/g, ' ')
-						                                 .replace( /..\/wp-content\/uploads\//g, uix_page_builder_wp_plugin.upload_dir_url );
-						   
-						   
+						                                 .replace(/\r?\n/gm, '' )
+						                                 .replace(/&nbsp;/g, ' ' )
+						                                 .replace(/\.\.\/wp-content\/uploads\//g, uix_page_builder_wp_plugin.upload_dir_url );
+						  
 						   $( 'textarea#' + vid ).val( newvalue ).trigger( 'change' );
 					   });
 						

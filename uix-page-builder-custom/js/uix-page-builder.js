@@ -336,11 +336,14 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				trackcolor = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'trackcolor' ),
 				barcolor   = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'barcolor' ),
 				units      = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'units' ),
-				icon       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'icon' );
+				icon       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'icon' ),
+				$txtcont   = $( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' );
 
 
 			if ( typeof activated === typeof undefined || activated === 0 ) {
 
+				
+				//---------------------------
 				$( '.uix-pb-bar', this ).easyPieChart({
 					animate: barspeed,
 					barColor: barcolor,
@@ -353,34 +356,8 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( 0 );
 
 				
-				//Prevents front-end javascripts that are activated in the background to repeat loading.
-				$this.data( 'activated', 1 );	
-			}	
-
-	
-
-
-		});
-
-        $( '.uix-pb-bar-box-circular' ).each(function() {
-
-			if ( $( '.uix-pb-bar .uix-pb-bar-percent', this ).text().length == 0 ) {
-
-				var $this      = $( this ),
-					activated  = $this.data( 'activated' ),
-					perc       = $( '.uix-pb-bar', this).data( 'percent' ),
-					size       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'size' ),
-					sizeNum    = parseFloat( size ),
-					linewidth  = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'linewidth' ),
-					trackcolor = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'trackcolor' ),
-					barcolor   = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'barcolor' ),
-					units      = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'units' ),
-					icon       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'icon' ),
-					$txtcont   = $( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' );
-
-				
-			    if ( typeof activated === typeof undefined || activated === 0 ) {
-					
+				//---------------------------
+				if ( $( '.uix-pb-bar .uix-pb-bar-percent', this ).text().length == 0 ) {
 
 					$( '.uix-pb-bar', this ).data( 'easyPieChart' ).update( perc );
 					$( '.uix-pb-bar', this ).find( '.uix-pb-bar-percent' ).css( { 'line-height': size, 'width': size } ).animate( { percentage: perc }, {duration: barspeed } );
@@ -408,19 +385,17 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 
 					});
-					
-					//Prevents front-end javascripts that are activated in the background to repeat loading.
-					$this.data( 'activated', 1 );	
-				}	
-				
 
-			}
+
+				}
+				
+				
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}	
 
 
 		});
-
-
-
 
 	};
 

@@ -71,6 +71,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_page_builder_wp_plugin', array( 
 						'url'                       => self::plug_directory(),
+						'site_url'                  => site_url(),
+						'site_domain'               => parse_url( site_url(), PHP_URL_SCHEME ).'://'.parse_url( site_url(), PHP_URL_HOST ),
 						'upload_dir_url'            => $upload_dir_url,
 						'lang_media_title'          => __( 'Select Files', 'uix-page-builder' ),
 						'lang_media_text'           => __( 'Insert', 'uix-page-builder' ),				

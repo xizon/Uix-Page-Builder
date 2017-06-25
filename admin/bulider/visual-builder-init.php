@@ -106,99 +106,43 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 				transform: scale(1);
 			}
 		}
+		
+
+		.uix-page-builder-editicon.active:after {
+			position: absolute;
+			left: -8px;
+			top: -8px;
+			z-index: 1000000;
+			content: '';
+			display: block;
+			width: 50px;
+			height: 50px;
+			-webkit-border-radius: 100%; 
+			-moz-border-radius: 100%;
+			border-radius: 100%;
+			border-style: solid;
+			-webkit-animation: pbloader 500ms linear infinite;
+			animation: pbloader 500ms linear infinite;
+			border-width: 1px;
+			border-color: #2C7EAE transparent transparent;			
+
+		}
+
+
+		@-webkit-keyframes pbloader {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes pbloader {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		
 		</style>
-		<script type='text/javascript'>										  
-		( function($) {
-		'use strict';
-		
-			jQuery.fn.simulateClick = function() {
-				return this.each(function() {
-					if('createEvent' in document) {
-						var doc = this.ownerDocument,
-							evt = doc.createEvent('MouseEvents');
-						evt.initMouseEvent('click', true, true, doc.defaultView, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
-						this.dispatchEvent(evt);
-					} else {
-						this.click();
-					}
-				});
-			};
-		
-			$.urlParam = function(name){
-				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-				if (results==null){
-				   return null;
-				}
-				else{
-				   return results[1] || 0;
-				}
-			};
-			
-			$( function() {
-			
-			    if ( $.urlParam( 'pb_preview' ) == 1 ) {
-				    $( '#wpadminbar' ).css( 'visibility', 'hidden' );
-
-					$( '.uix-page-builder-section > .uix-pb-row > div' ).each( function( index ) {
-					    var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
-							curindex   = $(this).index(),
-							obj        = $('#uix-page-builder-gridster-widget-' + id, window.parent.document );
-				
-						
-					    $( this ).append(  '<a data-id=\"'+id+'\" data-index=\"'+curindex+'\" class=\"uix-page-builder-editicon\" href=\"javascript:void(0);\" role=\"button\"><i class=\"fa fa-edit\"></i></a>' );
-					});
-						
-					
-					$( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'mouseenter', function(){
-					    
-						var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
-							curindex   = $(this).index(),
-							obj        = $('#uix-page-builder-gridster-widget-' + id, window.parent.document );
-
-						$('.uix-page-builder-gridster-widget', window.parent.document ).removeClass( 'hover' );
-						obj.addClass( 'hover' );
-						
-						$( this ).find( '> div' ).addClass( 'editmode' );
-
-						$( this ).css( {
-							'-webkit-box-shadow': 'none',
-							'-moz-box-shadow'   : 'none',
-							'box-shadow'        : 'none',
-						} );
-						
-						
-						
-					}).on( 'mouseleave' , function(){
-					
-						$( this ).find( '> div' ).removeClass( 'editmode' );
-						
-						$( this ).css( {
-							'-webkit-box-shadow': 'none',
-							'-moz-box-shadow'   : 'none',
-							'box-shadow'        : 'none'
-						} );
-					});
-					
-
-					$( '.uix-page-builder-editicon' ).on( 'click', function() {
-
-						var id         = parseFloat( $( this ).data( 'id' ) ),
-							index      = parseFloat( $( this ).data( 'index' ) ),
-							obj        = $('#uix-page-builder-gridster-widget-' + id, window.parent.document );
-						
-						obj.find( '.sortable-list > li:eq( '+index+' ) .widget-item-btn.used' ).simulateClick( 'click' );
-
-						return false;
-					});	
-					
-					
-				}
-				
-				
-				
-			}); 
-		} ) ( jQuery );
-		</script>
 		";
 		
 		echo UixPBFormCore::str_compression( $code );

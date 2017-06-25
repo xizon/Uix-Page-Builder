@@ -81,17 +81,18 @@ class UixPageBuilder {
 	 */
 	public static function includes() {
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/general.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/post-extensions-init.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/post-extensions/visual-builder-init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/bulider/post-extensions-init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/bulider/visual-builder-init.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-googlemap.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-contactform.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-section-blog.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-sections-output.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-frontend-render.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-get-excerpt.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-get-category.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-xml.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/uixpbform/init.php';
+		
+		//section shortcodes
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-blog.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-googlemap.php';
 	}
 	
 	
@@ -110,22 +111,25 @@ class UixPageBuilder {
 			'templateUrl' => get_stylesheet_directory_uri()
 		 ) );
 		
+		
+		// Google Map API
+		wp_register_script( 'googleapis', '//maps.googleapis.com/maps/api/js?key='.UixPageBuilder::MAPAPI, false, '2.0', true );		
 
 		// Shuffle
-		wp_register_script( 'shuffle', self::plug_directory() .'assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
+		wp_register_script( 'shuffle', self::plug_directory() .'admin/assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
 
 		// Shuffle.js requires Modernizr..
-		wp_register_script( 'modernizr', self::plug_directory() .'assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
+		wp_register_script( 'modernizr', self::plug_directory() .'admin/assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
 
 		// Easy Pie Chart
-		wp_register_script( 'easypiechart', self::plug_directory() .'assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
+		wp_register_script( 'easypiechart', self::plug_directory() .'admin/assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
 		
 		//flexslider
-		wp_register_script( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true );
-		wp_register_style( 'flexslider', self::plug_directory() .'assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
+		wp_register_script( 'flexslider', self::plug_directory() .'admin/assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true );
+		wp_register_style( 'flexslider', self::plug_directory() .'admin/assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
 		
 		// Parallax
-		wp_register_script( 'bgParallax', self::plug_directory() .'assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
+		wp_register_script( 'bgParallax', self::plug_directory() .'admin/assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
 
 		
 
@@ -240,6 +244,24 @@ class UixPageBuilder {
 			
 		);
 		 
+		 
+		 
+		add_submenu_page(
+			self::HELPER,
+			__( 'How to use?', 'uix-page-builder' ),
+			__( 'How to use?', 'uix-page-builder' ),
+			'manage_options',
+			'admin.php?page='.self::HELPER.'&tab=usage'
+		);	  
+		 
+		add_submenu_page(
+			self::HELPER,
+			__( 'Template Files', 'uix-page-builder' ),
+			__( 'Template Files', 'uix-page-builder' ),
+			'manage_options',
+			'admin.php?page='.self::HELPER.'&tab=temp'
+		);	 
+		 
 		add_submenu_page(
 			self::HELPER,
 			__( 'Custom CSS', 'uix-page-builder' ),
@@ -247,6 +269,8 @@ class UixPageBuilder {
 			'manage_options',
 			'admin.php?page='.self::HELPER.'&tab=custom-css'
 		);	 
+		 
+		 
 		 
 		add_submenu_page(
 			self::HELPER,
@@ -537,6 +561,22 @@ class UixPageBuilder {
 	
 	
 	/*
+	 * Format the JSON code before output the render viewport.
+	 *
+	 */	
+	public static function format_render_codes( $str ) {
+		
+		//Returns string in order to protect the security output of JSON
+		return str_replace( '{rowcsql:}', '[', 
+				str_replace( '{rowcsqr:}', ']',
+				str_replace( 'amp;', '',   //step 2
+				str_replace( '&amp;', '&', //step 1		
+				$str 
+			   ) ) ) );			   
+		
+	}		
+	
+	/*
 	 * Output content of page builder
 	 *
 	 */	
@@ -558,17 +598,8 @@ class UixPageBuilder {
 			    ) ) ) ) ) ) ) ) );
 				
 		if ( !is_admin() ) {
-			$data = str_replace( '&lt;br&gt;', '<br>',
-								
-					//Returns string in order to protect the security output of JSON
-					str_replace( '{rowcsql:}', '[', 
-					str_replace( '{rowcsqr:}', ']',
-					str_replace( 'amp;', '',   //step 2
-					str_replace( '&amp;', '&', //step 1
-					
-								
-					$data 
-				   ) ) ) ) );	
+			$data = self::format_render_codes( $data );
+			$data = str_replace( '&lt;br&gt;', '<br>', $data );	
 	
 		}
 			   
@@ -576,6 +607,8 @@ class UixPageBuilder {
 		
 	}		
 		
+	
+	
 		
 	public static function page_builder_analysis_rowcontent( $str ) {
 		
@@ -1760,6 +1793,7 @@ class UixPageBuilder {
 						$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() { 
 							uix_pb_temp();
 						});
+
 
 					} ); 
 				} ) ( jQuery );

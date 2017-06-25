@@ -19,7 +19,7 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 [![Uix Page Builder Live Demo](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/video-cover.jpg)](https://www.youtube.com/watch?v=vg3rPxcfZEg "Uix Page Builder Live Demo")
 
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `portfolio`, `blog`. To be continued. More importantly, each module may contain a variety of styles.
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `portfolio`, `blog`. To be continued. More importantly, each module may contain a variety of styles.
 
 You could add any new pages using the plugin to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
 
@@ -59,12 +59,15 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
-##### = 1.2.5 (June 24, 2017) =
+##### = 1.2.5 (June 26, 2017) =
 
 * Simplified core API. ( For developers, custom modules are much simpler! )
 * Rebuilt WYSIWYG Editor For Inline Web Content.
 * Optimized response speed for back-end.
-* Fix the display of posts that do not match the error. ( For blog module )
+* Fix the display of posts that do not match the error.  ( For blog module )
+* Optimized core stylesheets and scripts for front-end.
+* Removed "Contact Form" module based on WP comment form.
+* Fixed some minor bugs.
 
 
 

@@ -15,7 +15,7 @@ Uix Page Builder is a design system that it is simple content creation interface
 
 == Description ==
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `portfolio`, `blog`. To be continued. More importantly, each module may contain a variety of styles.
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `portfolio`, `blog`. To be continued. More importantly, each module may contain a variety of styles.
 
 You could add a new page with Uix Page Builder to your WordPress site, find the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. Click <strong>Add new</strong>. The <strong>"Uix Page Builder Attributes"</strong> section applies page builder templates to your new page. 
 
@@ -106,12 +106,16 @@ The version number is the date of the revision of the [guidelines](https://make.
 == Changelog ==
 
 
-= 1.2.5 (June 24, 2017) =
+= 1.2.5 (June 26, 2017) =
 
 * Simplified core API. ( For developers, custom modules are much simpler! )
 * Rebuilt WYSIWYG Editor For Inline Web Content.
 * Optimized response speed for back-end.
 * Fix the display of posts that do not match the error.  ( For blog module )
+* Optimized core stylesheets and scripts for front-end.
+* Removed "Contact Form" module based on WP comment form.
+* Fixed some minor bugs.
+
 
 
 = 1.2.1 (June 17, 2017) =

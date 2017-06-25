@@ -4,7 +4,6 @@
     $( function() {
 		
 		
-	
 		/*!
 		 *
 		 * Responsive Switching Preview
@@ -306,7 +305,8 @@
 
 		});
 
-		$( document ).on( 'click', '.settings-temp-wrapper .confirm', function() {
+		$( document ).on( 'click', '.settings-temp-wrapper .confirm', function( e ) {
+			e.preventDefault();
 
 			var $this = $( this ),
 			    v     = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="temp"]:checked' ).parent().find( 'textarea' ).html();
@@ -338,6 +338,9 @@
 					security             : uix_page_builder_layoutdata.send_string_nonce
 				}, function ( response ) {
 
+					/*-- Render and save page data --*/
+					gridsterRenderAndSavePage(2); //Render the entire page
+					
 				});
 
 
@@ -352,8 +355,6 @@
 
 			});
 			
-			// stuff here
-			return false;	
 
 
 
@@ -391,6 +392,7 @@
 				$this.parent().hide();
 				$( '.uixpbform-modal-mask' ).hide();
 				$this.next( '.spinner' ).removeClass( 'is-active' );
+		
 
 			});
 			
@@ -549,17 +551,128 @@ function gridsterItemElementsBTStatus( type ) {
 function gridsterGetTinymceContent(){
 
 	//change to name of editor set in wp_editor()
-	var editorID = 'content';
+	var editorID = 'content',
+		content  = '';
 
-	if (jQuery('#wp-'+editorID+'-wrap').hasClass("tmce-active"))
-		var content = tinyMCE.get(editorID).getContent({format : 'raw'});
-	else
-		var content = jQuery('#'+editorID).val();
-
+	if (jQuery( '#wp-'+editorID+'-wrap' ).hasClass( 'tmce-active' ) ) {
+		content = tinyMCE.get( editorID ).getContent({format : 'raw'});
+	} else {
+		content = jQuery('#'+editorID).val();
+	}
 	return content;
 }
 
 
+/*!
+ *
+ * Add shortcut buttons to front-end page 
+ * ---------------------------------------------------
+ */
+function gridsterAddShortcutButtons() {
+
+	( function($) {
+	'use strict';
+
+		var $ifm = $( '#uix-page-builder-themepreview' ).contents();
+
+		jQuery.fn.UixPBSimulateClick = function() {
+			return this.each(function() {
+				if('createEvent' in document) {
+					var doc = this.ownerDocument,
+						evt = doc.createEvent('MouseEvents');
+					evt.initMouseEvent('click', true, true, doc.defaultView, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+					this.dispatchEvent(evt);
+				} else {
+					this.click();
+				}
+			});
+		};
+
+
+		$( function() {
+
+
+			$ifm.find( '#wpadminbar' ).css( 'visibility', 'hidden' );
+
+			$ifm.find( '.uix-page-builder-section > .uix-pb-row > div' ).each( function( index ) {
+				var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
+					curindex   = $(this).index(),
+					obj        = $('#uix-page-builder-gridster-widget-' + id );
+
+
+				$( this ).append(  '<a data-id=\"'+id+'\" data-index=\"'+curindex+'\" class=\"uix-page-builder-editicon\" href=\"javascript:void(0);\" role=\"button\"><i class=\"fa fa-edit\"></i></a>' );
+			});
+
+
+			$ifm.find( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'mouseenter', function(){
+
+				var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
+					curindex   = $(this).index(),
+					obj        = $('#uix-page-builder-gridster-widget-' + id );
+
+				$('.uix-page-builder-gridster-widget' ).removeClass( 'hover' );
+				obj.addClass( 'hover' );
+
+				$( this ).find( '> div' ).addClass( 'editmode' );
+
+				$( this ).css( {
+					'-webkit-box-shadow': 'none',
+					'-moz-box-shadow'   : 'none',
+					'box-shadow'        : 'none',
+				} );
+
+
+
+			}).on( 'mouseleave' , function(){
+
+				$( this ).find( '> div' ).removeClass( 'editmode' );
+
+				$( this ).css( {
+					'-webkit-box-shadow': 'none',
+					'-moz-box-shadow'   : 'none',
+					'box-shadow'        : 'none'
+				} );
+			});
+
+
+			$ifm.find( '.uix-page-builder-editicon' ).on( 'click', function() {
+
+				var id         = parseFloat( $( this ).data( 'id' ) ),
+					index      = parseFloat( $( this ).data( 'index' ) ),
+					obj        = $('#uix-page-builder-gridster-widget-' + id );
+
+				obj.find( '.sortable-list > li:eq( '+index+' ) .widget-item-btn.used' ).UixPBSimulateClick( 'click' );
+
+				return false;
+			});	
+
+
+
+		}); 
+	} ) ( jQuery );
+}
+
+
+
+			
+/*! 
+ * 
+ * Format the JSON code before output the render viewport.
+ * ---------------------------------------------------
+ */	
+function UixPBFormatRenderCodes( code ) {
+	var stringValue = code.toString();
+	
+	//Returns string in order to protect the security output of JSON
+	stringValue = stringValue.replace(/&amp;/g, '&' ) //step 1
+	                         .replace(/amp;/g, '' ) //step 2
+		                     .replace(/{rowcsql:}/g, '[' )
+							 .replace(/{rowcsqr:}/g, ']' );
+
+	
+	return stringValue;
+
+}
 
 /*!
  *
@@ -624,11 +737,21 @@ function gridsterGetTinymceContent(){
     return this.each(function(){
 		
 		var curData = $.UixPBTmpl( str, data );
-        $( this ).html( curData );
+        $( this ).html( curData ).promise().done( function() {
+			
+			//Get and modify content of an iframe
+		   $( '#uix-page-builder-themepreview' ).load( function() {
+			   if ( $( this ).contents().text().search( '[uix_pb_sections]' ) > 0 ) {
+				   $( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );  
+			   }
+			});
+			
+		});
 		
     });
   };
 })(jQuery);	
+
 
 
 
@@ -659,6 +782,7 @@ function gridsterGetTinymceContent(){
 				append      = '&cache=' + new Date().getTime() + 'a' + Math.random();
 			
 		
+			//-------- Initialize the page container
 			if ( $enable == 0 ) {
 
 				$( $previewID ).UixPBTmpl( $tmplID, {
@@ -666,13 +790,17 @@ function gridsterGetTinymceContent(){
 				} );
 				
 				//console.log( 'render ' + uix_page_builder_layoutdata.send_string_render_count + ' Ok!' );
-				
 				uix_page_builder_layoutdata.send_string_render_count++;
-	
-
+				
 			}
 			
-			//remove loader
+			//-------- Render the entire page
+			if ( $enable == 2 ) {
+				$( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );
+			}
+			
+			
+			//-------- Remove loader
 			$( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).hide();
 
 				
@@ -699,15 +827,56 @@ function gridsterGetTinymceContent(){
 			
 			var $this       = $( this ),
 				$divID      = settings.divID,
-				$value      = settings.value;
-			
-			$( '#uix-page-builder-themepreview' ).contents().find( $divID ).html( $value ).promise().done( function(){
-				//do something
+				newValue    = UixPBFormatRenderCodes( settings.value ),
+				container   = $( '#uix-page-builder-themepreview' ).contents().find( $divID );
+		
+
+			$( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
+				e.preventDefault();
+				container.next( '.uix-page-builder-editicon' ).addClass( 'active' );
+
 			});
+			
+			//Filter shortcodes of each column widget HTML code through their hooks.
+			if ( newValue.indexOf( '[uix_pb_' ) == -1 ) {
+				container.html( newValue );
+			}
+			
+
+			
+			
 			
 		})
 	}
 })(jQuery);
 
+
+/*!
+ *
+ * Render WP Shortcode
+ * ---------------------------------------------------
+ * Separate rendering "WP Shortcode" module for front-end page
+ */
+(function($){
+	$.fn.UixPBRenderWPShortcode=function(options){
+		var settings=$.extend({
+			'postID'  : '1234',
+		}
+		,options);
+		this.each(function(){
+			
+			var $this       = $( this ),
+				$postID     = settings.postID;
+			
+			$( '#uix-page-builder-themepreview' ).contents().find( '.uix-page-builder-themepreview-wp-shortcode' ).load( ajaxurl + '?action=uix_page_builder_output_frontend_settings&post_id='+$postID+'&pb_render_entire_page=1', function( response, status, xhr ) {
+				//Add shortcut buttons to front-end page 
+				gridsterAddShortcutButtons();
+			});
+			
+
+			
+		})
+	}
+})(jQuery);
 
 

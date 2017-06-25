@@ -24,18 +24,34 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 *
 		 */
 		public static function do_my_shortcodes() {
-			add_shortcode( 'uix_pb_sections', array( __CLASS__, 'func' ) );
+			if ( !isset( $_GET['pb_preview'] ) ) {
+				add_shortcode( 'uix_pb_sections', array( __CLASS__, 'func_frontend' ) );
+			} else {
+				add_shortcode( 'uix_pb_sections', array( __CLASS__, 'func_backend_render' ) );
+			}
+			
 			
 		}
 	
+		
 		/**
-		 * Shortcode
+		 * Shortcode of back-end render
 		 *
 		 */
-		public static function func( $atts, $content = null ) {
+		public static function func_backend_render( $atts, $content = null ) {
+			return '<div class="uix-page-builder-themepreview-wp-shortcode"></div>';
+		}
 
+		
+		/**
+		 * Shortcode of front-end page
+		 *
+		 */
+		public static function func_frontend( $atts, $content = null ) {
+
+			    $id                = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
 			    $return_string     = '';
-				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( get_the_ID(), 'uix-page-builder-layoutdata', true ) );
+				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $id, 'uix-page-builder-layoutdata', true ) );
 				$item              = array();
 				$cols              = array( 
 										array( '3_4', 'uix-pb-col-8' ),
