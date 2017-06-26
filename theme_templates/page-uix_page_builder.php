@@ -17,11 +17,11 @@ get_header(); ?>
 		<?php
 		if ( class_exists( 'UixPageBuilder' ) ) {
 			echo do_shortcode( "[uix_pb_sections]" );
+		} else {
+			the_content();
 		}
         ?>                      
-                         
-                               
-    
+   
     <?php endwhile; ?>  
 
 <?php get_footer(); ?>

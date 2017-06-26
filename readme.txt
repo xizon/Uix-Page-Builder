@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,13 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+= 1.2.6 (June 27, 2017) =
+
+* Rebuild the core scripts for back-end.
+* Fixed a little bug of TinyMCE Editor.
+* Added default template preview images before you selected.
+
 
 
 = 1.2.5 (June 26, 2017) =

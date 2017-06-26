@@ -1319,13 +1319,10 @@ function uixpbform_insertCodes( formid, code, conid, sid ) {
 
 	} ) ( jQuery );
 
-
-	//Synchronize other plug-ins
-	if(typeof uixPBFormDataSave == 'function'){
-
-		/*-- Initialize default value & form --*/
-		uixPBFormDataSave();
-	}
+	//Initialize default value & form
+	var gridsterInit = new UixPBGridsterMain();
+	gridsterInit.formDataSave(); 
+	
 };
 
 
@@ -1439,6 +1436,11 @@ function uixpbform_editorInit( id ){
 				var vid = id.replace( '-editor', '' );
 				tinyMCE.execCommand( 'mceRemoveEditor', true, id );
 				tinymce.init({
+					//tinyMCE Image Displaying Correctly, but not Updating src
+					relative_urls : false,
+					content_css : '',
+					convert_urls : false,
+					//---
 					selector:  'textarea#' + id,
 					height : 200,
 					menubar: false,

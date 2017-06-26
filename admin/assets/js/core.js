@@ -123,10 +123,11 @@
 						$( '#' + ele_target ).find( 'textarea' ).val( nv );
 
 
-						gridsterItemSave( cur_rowID );
-
-						/*-- Initialize default value & form --*/
-						uixPBFormDataSave();
+						var gridsterInit = new UixPBGridsterMain();
+						//Save the data for each sortable item
+						gridsterInit.itemSave( cur_rowID );
+						//Initialize default value & form
+						gridsterInit.formDataSave(); 
 
 
 					}
@@ -144,9 +145,8 @@
 			}
 
 
-
-			//Gridster elements close for Uix Page Builder Form
-			$( document ).gridsterCloseForUixPBFormPop();
+			//Switch between different pop-up windows when the pop-up windows is not fully closed.
+			$( document ).UixPBFormPopSwitchTransition();
 
 
 		});
@@ -196,8 +196,8 @@
 			$('.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 				e.preventDefault();
 				
-				//Gridster elements close for Uix Page Builder Form
-				$( document ).gridsterCloseForUixPBFormPop();
+				//Switch between different pop-up windows when the pop-up windows is not fully closed.
+				$( document ).UixPBFormPopSwitchTransition();
 				
 				//Remove mask
 				$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
@@ -326,8 +326,10 @@
 								.replace( /:,/g, ':"",' );
 
 
-				//Initialize gridster
-				gridsterEditRow( JSON.parse( data ) );
+				//Load and initialize editable widgets
+				var gridsterInit = new UixPBGridsterMain();
+				gridsterInit.editRow( JSON.parse( data ) );
+				
 
 				//Save options for gridster data
 				var settings = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
@@ -338,8 +340,10 @@
 					security             : uix_page_builder_layoutdata.send_string_nonce
 				}, function ( response ) {
 
-					/*-- Render and save page data --*/
-					gridsterRenderAndSavePage(2); //Render the entire page
+					//Render and save page data
+					var gridsterInit = new UixPBGridsterMain();
+					gridsterInit.renderAndSavePage(2); //Render the entire page
+					
 					
 				});
 
@@ -485,13 +489,263 @@
 } ) ( jQuery );
 
 
+/*! 
+ * 
+ * [Gridster] Decodes an encoded string.
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - Any string.
+ * @return {string}                - A new string.
+ */		
+function gridsterHtmlUnescape( str ){
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		return str
+			.replace(/&quot;/g, '"')
+			.replace(/&#39;/g, "'")
+			.replace(/&lt;/g, '<')
+			.replace(/&gt;/g, '>');
+
+	}
+
+}
+
+
+/*! 
+ * 
+ * [Gridster] Escapes a HTML string.
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - Any string.
+ * @return {string}                - A new string.
+ */		
+function gridsterHtmlEscape( str ){
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		return str
+			.replace(/"/g, '&quot;')
+			.replace(/'/g, '&#39;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;');
+
+	}
+}
+
+/*! 
+ * 
+ * [Gridster] Convert a string to slug.
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - Any string.
+ * @return {string}                - A new string.
+ */			
+function gridsterStrToSlug( str ){
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		var pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]");
+		var rs = ""; 
+		for (var i = 0; i < str.length; i++) { 
+			rs = rs+str.substr( i, 1 ).replace( pattern, '' ); 
+		} 
+
+		rs = rs.replace(/ /g, '-').toLowerCase();
+		return rs;
+
+	}
+}
+
+/*! 
+ * 
+ * [Gridster] Get a widget content with JSON
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - The contents of all widgets with JSON.
+ * @param  {string} type           - Returns the data type. The optional values: "id", "name", content"
+ * @param  {string} repstr         - The string that will be returned without any processing.
+ * @return {string}                - A new string.
+ */		
+function gridsterContent( str, type, repstr ){
+
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+
+
+		var nstr   = str.replace(/{rqt:}/g, '"');
+
+		if ( type == 'id' ) {
+			var result = nstr.match( /row\",\"(.+?)\"\]/g );
+
+			if ( result != null ) {
+				return result[0].replace( 'row","', '' )
+							   .replace( '"]', '' );
+
+			}
+
+
+
+		}
+		if ( type == 'name' ) {
+			var result = nstr.match( /widgetname\",\"(.+?)\"\]/g );
+
+			if ( result != null ) {
+				return result[0].replace( 'widgetname","', '' )
+							   .replace( '"]', '' );
+			}
+
+		}	
+		if ( type == 'content' ) {
+			var result = nstr.match( /rowcontent\",\"(.+?)\"\]/g );
+
+			if ( result != null ) {
+				return result[0].replace( 'rowcontent","', '' )
+							   .replace( '"]', '' );	
+			}
+		}	
+
+	} else {
+		return repstr;
+	}	
+
+
+
+}
+
+
+/*! 
+ * 
+ * [Gridster] Get a widget content of the current column with JSON
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - The contents of all widgets with JSON.
+ * @param  {string} type           - Returns the data type. The optional values: "length", "col", "name", "form_id", "content"
+ * @param  {string} index          - Retrieves the array index of the data.
+ * @return {string}                - A new string.
+ */		
+function gridsterColsContent( str, type, index ){
+
+	if ( index < 1 ) index = 1;
+
+	index = index - 1;
+
+
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		var nstr   = str.replace(/{rowqt:}/g, '"'),
+			result = '';
+		nstr = eval( nstr );
+
+
+
+		//item array
+		var ia         = nstr[index],
+			rescontent = [];
+		for( var j in ia ) {
+			rescontent.push( '[{rqt:}'+ia[j][0]+'{rqt:},{rqt:}'+ia[j][1]+'{rqt:}]' );
+		}
+
+		if ( type == 'length' ) {
+			result = nstr.length;
+		}
+
+		if ( type == 'col' ) {
+			result = nstr[index][0][1];
+		}
+		if ( type == 'name' ) {
+			result =  nstr[index][1][0];
+		}	
+
+		if ( type == 'form_id' ) {
+			var r = nstr[index][1][0],
+				a = r.split("|");
+
+			result =  a[0];
+		}		
+
+		if ( type == 'content' ) {
+			result =  '{'+nstr[index][0][1]+'}['+rescontent+']';	
+		}		
+
+		return result;
+
+	} else {
+		return '';
+	}
+
+}	
+
+
+/*! 
+ * 
+ * [Gridster] Initialize the widget data with JSON
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - The content with JSON to add.
+ * @param  {number} uid            - The widget ID number.
+ * @return {void}                  - The constructor.
+ */		
+function gridsterItemRowTextareaInit( str, uid ) {
+	jQuery( document ).ready( function() {  
+		if ( Object.prototype.toString.call( str ) === '[object Array]' ) {
+
+			var result = ''
+				cid    = [ '3_4', '1_4', '2_3', '1_3', '4__1', '4__2', '4__3', '4__4', '3__1', '3__2', '3__3', '2__1', '2__2', '1__1' ];
+
+			for( var j in str ) {
+
+				for( var i in cid ) {
+					if ( str[j].indexOf( cid[i] ) >= 0  ) {
+
+						result = str[j];
+						result = result.replace( '{'+cid[i]+'}', '' );	
+
+						jQuery( '#col-item-'+cid[i]+'---' + uid ).val( gridsterHtmlUnescape( result ) );
+
+					}
+
+				}
+
+			}
+
+
+		}
+
+	});
+}
+
+/*! 
+ * 
+ * [Gridster] Format the JSON code before saving the data.
+ * ---------------------------------------------------
+ *
+ * @param  {string} code           - The data with JSON.
+ * @return {string}                - New code.
+ */	
+function gridsterFormatAllCodes( code ) {
+	var stringValue = code.toString();
+	stringValue = stringValue.replace( /{rqt:}/g, "{rowqt:}")
+							.replace( /{cqt:}/g, "{rowcqt:}")
+							.replace( /{apo:}/g, "{rowcapo:}")
+							.replace( /"/g, "{rowqt:}");
+	return stringValue;
+
+}
+
+/*! 
+ * 
+ * [Gridster] Returns a random widget ID
+ * ---------------------------------------------------
+ *
+ * @return {string}                - A new string.
+ */	
+function gridsterRowUID() {
+	return Math.floor( Math.random() * 10000);
+}
 
 
 /*!
  *
- * Per column section buttons status
+ * [Gridster] Per column section buttons status
  * ---------------------------------------------------
- */
+ *
+ * @param  {number} type           - Initialize per column section buttons status. 
+ *                                  ( 1: Has been clicked | 0: The click action has not yet been performed )
+ * @return {void}                  - The constructor.
+ */	
 function gridsterItemElementsBTStatus( type ) {
 	jQuery( document ).ready( function() {
 
@@ -542,7 +796,7 @@ function gridsterItemElementsBTStatus( type ) {
 
 /*!
  *
- * Get the content of the tinyMCE editor.
+ * [Gridster] Get the content of the tinyMCE editor.
  * ---------------------------------------------------
  * Get the content of the tinyMCE editor.
  * @link http://wordpress.stackexchange.com/questions/42652/how-to-get-the-input-of-a-tinymce-editor-when-using-on-the-front-end
@@ -565,9 +819,11 @@ function gridsterGetTinymceContent(){
 
 /*!
  *
- * Add shortcut buttons to front-end page 
+ * [Gridster] Add shortcut buttons to front-end page 
  * ---------------------------------------------------
- */
+ *
+ * @return {void}                  - The constructor.
+ */	
 function gridsterAddShortcutButtons() {
 
 	( function($) {
@@ -659,6 +915,9 @@ function gridsterAddShortcutButtons() {
  * 
  * Format the JSON code before output the render viewport.
  * ---------------------------------------------------
+ *
+ * @param  {string} code           - Any JSON string.
+ * @return {string}                - A new string.
  */	
 function UixPBFormatRenderCodes( code ) {
 	var stringValue = code.toString();
@@ -674,25 +933,6 @@ function UixPBFormatRenderCodes( code ) {
 
 }
 
-/*!
- *
- * Gridster elements close for Uix Page Builder Form
- * ---------------------------------------------------
- */	
-(function($){
-	$.fn.gridsterCloseForUixPBFormPop=function(options){
-		var settings=$.extend({
-			
-		}
-		,options);
-		this.each(function(){
-			
-			$( '.uixpbform-modal-box' ).removeClass( 'active' );
-			$( 'html' ).css( 'overflow-y', 'auto' );
-			
-		})
-	}
-})(jQuery);
 
 
 /*!

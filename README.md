@@ -59,6 +59,14 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+##### = 1.2.6 (June 27, 2017) =
+
+* Rebuild the core scripts for back-end.
+* Fixed a little bug of TinyMCE Editor.
+* Added default template preview images before you selected.
+
+
+
 ##### = 1.2.5 (June 26, 2017) =
 
 * Simplified core API. ( For developers, custom modules are much simpler! )

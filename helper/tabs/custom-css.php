@@ -106,10 +106,12 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 						
 						var dialog_uix_page_builder = $( "#uix-page-builder-view-css-container, .uix-page-builder-dialog-mask" );  
 						
-						$( "#uix_page_builder_view_css" ).click( function() {
+						$( "#uix_page_builder_view_css" ).on( "click", function( e ) {
+						    e.preventDefault();
 							dialog_uix_page_builder.show();
 						});
-						$( "#uix_page_builder_close_css" ).click( function() {
+						$( "#uix_page_builder_close_css" ).on( "click", function( e ) {
+						    e.preventDefault();
 							dialog_uix_page_builder.hide();
 						});
 					

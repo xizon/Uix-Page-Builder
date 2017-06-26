@@ -1468,6 +1468,11 @@ ul.uix-page-builder-res-selector li.active {
 	min-height: 152px;
 }
 
+.settings-temp-wrapper #uix-page-builder-templatelist {
+	display: block;
+	position: relative;
+}
+
 .settings-temp-wrapper strong {
 	display: block;
 	margin-bottom: 15px;
@@ -1496,6 +1501,33 @@ ul.uix-page-builder-res-selector li.active {
 	display: inline-block;
 	margin-left: 4px;
 }
+
+.settings-temp-wrapper label .preview-thumb {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 315px;
+	filter: alpha(opacity=0);  
+	-moz-opacity: 0;   
+	opacity: 0;
+	margin-top: 10px;
+	max-width: 300px;
+	-moz-transition: .1s ease-in-out; 
+	-o-transition: .1s ease-in-out;
+	-webkit-transition: .1s ease-in-out; 
+	transition: .1s ease-in-out;
+	background: #fff;
+	border: 1px solid #DDDDDD;
+	padding: 8px;
+	-webkit-box-shadow: 0px 11px 41px 0px rgba(0,0,0,0.21);
+	-moz-box-shadow: 0px 11px 41px 0px rgba(0,0,0,0.21);
+	box-shadow: 0px 11px 41px 0px rgba(0,0,0,0.21);
+	-webkit-border-radius: 15px; 
+	-moz-border-radius: 15px; 
+	border-radius: 15px;
+
+}
+
 
 .settings-temp-wrapper a.close {
 	background: #D8181C;

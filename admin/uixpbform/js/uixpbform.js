@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 2.3
+	* Version 2.4
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -280,7 +280,10 @@
 				
 				//Save Item Content
 				uixpbform_insertCodes( formID, new_settings, colTextareaID, rowID );
-				gridsterItemSave( rowID );
+				
+				//Save the data for each sortable item
+				var gridsterInit = new UixPBGridsterMain();
+				gridsterInit.itemSave( rowID );
 				
 				//Save All content
 				settings.push( [ 'rowcontent', '{allcontent}' ] );
@@ -326,12 +329,36 @@
 		this.each(function(){
 			
 			$( '.uixpbform-modal-box' ).removeClass( 'active' );
-			$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 			$( 'html' ).css( 'overflow-y', 'auto' );
+			
+			//mask div
+			$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
 	
 		})
 	}
 })(jQuery);
 
+
+/*!
+ *
+ * Switch between different pop-up windows when the pop-up windows is not fully closed.
+ * ---------------------------------------------------
+ * In order to keep the mask div.
+ *
+ */	
+(function($){
+	$.fn.UixPBFormPopSwitchTransition=function(options){
+		var settings=$.extend({
+			
+		}
+		,options);
+		this.each(function(){
+			
+			$( '.uixpbform-modal-box' ).removeClass( 'active' );
+			$( 'html' ).css( 'overflow-y', 'auto' );
+			
+		})
+	}
+})(jQuery);
 
 

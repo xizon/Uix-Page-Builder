@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.2.5
+ * Version:     1.2.6
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -45,7 +45,7 @@ class UixPageBuilder {
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
-		add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
+		//add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
 		
@@ -754,10 +754,12 @@ class UixPageBuilder {
 		
 	}
 	
+	
+	
 		
 	public static function list_page_itembuttons() {
 	
-	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-page-builder' )."</button><div class=\"btnlist\"><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1__1\',\'\',\'\');\"  title=\"".esc_attr__( '1/1', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-1\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2__1\',\'\',\'\');\" title=\"".esc_attr__( '1/2', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-2\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3__1\',\'\',\'\');\" title=\"".esc_attr__( '1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'4__1\',\'\',\'\');\" title=\"".esc_attr__( '1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_3\',\'\',\'\');\" title=\"".esc_attr__( '1/3, 2/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'2_3\',\'\',\'\');\" title=\"".esc_attr__( '2/3, 1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-2_3\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'1_4\',\'\',\'\');\" title=\"".esc_attr__( '1/4, 3/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_4\"></a><a href=\"javascript:gridsterItemAddRow(0,'+uid+',\''+contentid+'\',\'3_4\',\'\',\'\');\" title=\"".esc_attr__( '3/4, 1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
+	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-page-builder' )."</button><div class=\"btnlist\"><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"1__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\"  title=\"".esc_attr__( '1/1', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-1\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"2__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/2', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-2\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"3__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-3\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"4__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-4\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"1_3\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/3, 2/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_3\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"2_3\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '2/3, 1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-2_3\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"1_4\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/4, 3/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_4\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"3_4\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '3/4, 1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
 
 	}
 				
