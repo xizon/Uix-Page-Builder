@@ -4,7 +4,7 @@
  *
  * @package WordPress
  */
-require_once( dirname( dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) ) . '/wp-load.php' );
+require_once( dirname( dirname( dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) ) ) . '/wp-load.php' );
 
 header( 'Content-Type: text/html; charset=utf-8' );
 
@@ -20,9 +20,10 @@ $map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_G
 ?>
 
 <!DOCTYPE html>
-<html lang="en-US">
+<html <?php echo language_attributes();?>>
 <head>
-	<meta charset="utf-8">
+	<meta charset="<?php echo bloginfo('charset');?>">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
     <title></title>
 	<script type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/jquery/jquery.js"></script>
     <script type="text/javascript" src="<?php echo site_url(); ?>/wp-includes/js/jquery/jquery-migrate.min.js"></script> 
@@ -257,7 +258,7 @@ $map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_G
 
 	 </div><!-- /.uix-pb-map-output -->
 	 
-	 <script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=<?php echo UixPageBuilder::MAPAPI; ?>&ver=2.0'></script>
+	 <script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=<?php echo UixPBFormCore::MAPAPI; ?>&ver=2.0'></script>
 
 
 </body>

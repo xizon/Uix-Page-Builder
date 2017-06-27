@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,13 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+
+= 1.2.7 (June 27, 2017) =
+
+* Optimize the embedding method of Google Maps.
+
+
 
 = 1.2.6 (June 27, 2017) =
 

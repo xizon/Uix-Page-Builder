@@ -944,11 +944,14 @@ function UixPBFormatRenderCodes( code ) {
   var cache = {};
 
   $.UixPBTmpl = function UixPBTmpl(str, data){
+	  
+
   // Figure out if we're getting a template, or if we need to
   // load the template - and be sure to cache the result.
+   // The HTML code "<div data-tmpl="0"></div>" is order to fixed "Maximum call stack size exceeded"
   var fn = !/\W/.test(str) ?
       cache[str] = cache[str] ||
-      UixPBTmpl(document.getElementById(str).innerHTML) :
+      UixPBTmpl( ( document.getElementById( str ) === null ? '<div data-tmpl="0"></div>' + str : document.getElementById(str).innerHTML ) ) :
 
       // Generate a reusable function that will serve as a template
       // generator (and which will be cached).
@@ -975,13 +978,14 @@ function UixPBFormatRenderCodes( code ) {
 
   $.fn.UixPBTmpl = function(str, data){
     return this.each(function(){
-		
+
 		var curData = $.UixPBTmpl( str, data );
         $( this ).html( curData ).promise().done( function() {
 			
 			//Get and modify content of an iframe
 		   $( '#uix-page-builder-themepreview' ).load( function() {
 			   if ( $( this ).contents().text().search( '[uix_pb_sections]' ) > 0 ) {
+				   //Render WP Shortcode
 				   $( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );  
 			   }
 			});
@@ -1007,6 +1011,7 @@ function UixPBFormatRenderCodes( code ) {
 	$.fn.UixPBRenderPage=function(options){
 		var settings=$.extend({
 			'enable'     : 0,
+			'frameID'    : '#uix-page-builder-viewport-preview-tmpl',
 			'previewID'  : '#uix-page-builder-viewport-preview-container',
 			'tmplID'     : 'uix_page_builder_viewport_preview_tmpl',
 			'previewURL' : uix_page_builder_layoutdata.send_string_preview_url
@@ -1016,19 +1021,24 @@ function UixPBFormatRenderCodes( code ) {
 			
 			var $this       = $( this ),
 				$enable     = settings.enable,
+				$frameID    = settings.frameID,
 				$previewID  = settings.previewID,
 				$tmplID     = settings.tmplID,
 				$previewURL = settings.previewURL,
 				append      = '&cache=' + new Date().getTime() + 'a' + Math.random();
 			
-		
+
 			//-------- Initialize the page container
 			if ( $enable == 0 ) {
 
-				$( $previewID ).UixPBTmpl( $tmplID, {
-					url : $previewURL + append,
-				} );
 				
+				$( $frameID ).load( uix_page_builder_layoutdata.send_string_plugin_url + 'admin/preview/viewport.html', function( response, status, xhr ) {
+					$( $previewID ).UixPBTmpl( $tmplID, {
+						url : $previewURL + append,
+					} );
+				});
+				
+	
 				//console.log( 'render ' + uix_page_builder_layoutdata.send_string_render_count + ' Ok!' );
 				uix_page_builder_layoutdata.send_string_render_count++;
 				
@@ -1108,12 +1118,47 @@ function UixPBFormatRenderCodes( code ) {
 			var $this       = $( this ),
 				$postID     = settings.postID;
 			
+			
 			$( '#uix-page-builder-themepreview' ).contents().find( '.uix-page-builder-themepreview-wp-shortcode' ).load( ajaxurl + '?action=uix_page_builder_output_frontend_settings&post_id='+$postID+'&pb_render_entire_page=1', function( response, status, xhr ) {
+				
+				var $frontend = $( this );
+				
 				//Add shortcut buttons to front-end page 
 				gridsterAddShortcutButtons();
+				
+				
+				//Initialize the map container
+				$frontend.find( '.uix-page-builder-map-preview-container' ).filter( function( index ) {
+					var $frame = $( this );
+					
+					$frame.prev( '.uix-page-builder-map-preview-tmpl' ).load( uix_page_builder_layoutdata.send_string_plugin_url + 'admin/preview/map.html', function( response, status, xhr ) {
+					
+						response = response.replace(/\<script([^>]+)\>/g, '' ).replace(/\<\/script\>/g, '' );
+
+						$frame.UixPBTmpl( response, {
+							pluginPath : uix_page_builder_layoutdata.send_string_plugin_url,
+							width      : $frame.data( 'width' ),
+							height     : $frame.data( 'height' ),
+							style      : $frame.data( 'style' ),
+							latitude   : $frame.data( 'latitude' ),
+							longitude  : $frame.data( 'longitude' ),
+							zoom       : $frame.data( 'zoom' ),
+							name       : $frame.data( 'name' ),
+							marker     : $frame.data( 'marker' )
+						} );
+					});
+					
+				});
+		
+				
 			});
 			
 
+		
+				
+						
+			
+			
 			
 		})
 	}

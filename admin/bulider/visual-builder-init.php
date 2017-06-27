@@ -222,9 +222,7 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 			
 			
 		    echo '
-			<script type="text/html" id="uix_page_builder_viewport_preview_tmpl">
-				 <'.tag_escape( 'iframe' ).' id="uix-page-builder-themepreview" name="uix-page-builder-themepreview"  frameborder="0" border="0" width="100%" height="100%" src="<%=url%>"></'.tag_escape( 'iframe' ).'>
-			</script>	
+			<div id="uix-page-builder-viewport-preview-tmpl"></div>
 			<div id="uix-page-builder-viewport-preview-container"></div>
 			<a class="uix-page-builder-themepreview-btn" title="'.esc_attr__( 'Hide Sidebar', 'uix-page-builder' ).'" id="uix-page-builder-themepreview-btn-close" href="javascript:"><i class="dashicons dashicons-arrow-left"></i></a>
 			';

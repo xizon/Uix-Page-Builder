@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.2.6
+ * Version:     1.2.7
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -22,7 +22,6 @@ class UixPageBuilder {
 	const HELPER           = 'uix-page-builder-helper';
 	const NOTICEID         = 'uix-page-builder-helper-tip';
 	const CUSTOMTEMP       = 'uix-page-builder-custom/sections/';
-	const MAPAPI           = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 	const CLEANTEMP        = 0; // Clear custom template data when this value is "1" (For developer)
 	const SHOWPAGESCREEN   = 0; // Show page builder core assets from "Pages Add New Screen" when this value is "1" (For developer)
 
@@ -45,10 +44,9 @@ class UixPageBuilder {
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
-		//add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
-		
+		//add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
 	
 	}
 	
@@ -110,10 +108,7 @@ class UixPageBuilder {
 		wp_localize_script( self::PREFIX . '-page-builder',  'wp_theme_root_path', array( 
 			'templateUrl' => get_stylesheet_directory_uri()
 		 ) );
-		
-		
-		// Google Map API
-		wp_register_script( 'googleapis', '//maps.googleapis.com/maps/api/js?key='.UixPageBuilder::MAPAPI, false, '2.0', true );		
+			
 
 		// Shuffle
 		wp_register_script( 'shuffle', self::plug_directory() .'admin/assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );

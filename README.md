@@ -59,6 +59,11 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+##### = 1.2.7 (June 27, 2017) =
+
+* Optimize the embedding method of Google Maps.
+
+
 ##### = 1.2.6 (June 27, 2017) =
 
 * Rebuild the core scripts for back-end.

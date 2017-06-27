@@ -17,7 +17,7 @@
 	5. Accordion 
 	6. Tabs 
 	7. Progress Bar
-	8. Google Map
+	8. Blog Posts List
 	9. Features   
 	10. Pricing      
     11. Buttons
@@ -27,8 +27,7 @@
     15. Gallery list (Team) 
     16. Card list  (Team)
     17. Portfolio
-    18. Image Slider 
-    19. Blog Posts List
+    18. Image Slider
 
 */
 
@@ -960,51 +959,116 @@ img.uix-pb-img,
 }
 		
 		
-		
+
 /* ====================================================== 
-   8. Google Map                 
-/* ====================================================== */	
-.uix-pb-map-output .full-map {
-    height: 100vh !important;
+   8. Blog Posts List         
+/* ====================================================== */
+.uix-pb-blog-posts {
+    margin-bottom: 1.625em;
 }
 
-.google-map-zoom-in, 
-.google-map-zoom-out {
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-    margin-left: 10px;
-    background-repeat: no-repeat;
-    -webkit-background-size: 32px 64px;
-    -moz-background-size: 32px 64px;
-    background-size: 32px 64px;
-    opacity: .7;
-    z-index: 3;
-    font-size: 30px;
-    color: #fff;
+.uix-pb-blog-posts-grid ul,
+	.uix-pb-blog-posts-grid li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.no-touch .google-map-zoom-in:hover, 
-.no-touch .google-map-zoom-out:hover {
-    opacity: 1;
+.uix-pb-blog-posts-grid li {
+    float: left;
 }
 
-.google-map-zoom-in:hover, 
-.google-map-zoom-out:hover {
-    opacity: 1;
-}
-
-@media only screen and (min-width: 768px) {
-    .google-map-zoom-in, 
-	.google-map-zoom-out {
-        margin-left: 50px;
+@media screen and (min-width: 769px) {
+    .uix-pb-blog-posts-grid.uix-pb-blog-posts-grid4 > ul li:nth-child(3n+1) {
+        clear: both;
     }
 }
 
-.google-map-zoom-in {
-    margin-top: 50px;
-    margin-bottom: 1px;
-}	  	
+@media screen and (min-width: 769px) {
+    .uix-pb-blog-posts-grid.uix-pb-blog-posts-grid6 > ul li:nth-child(2n+1) {
+        clear: both;
+    }
+}
+
+.uix-pb-blog-posts-grid .grid-item {
+	padding-bottom: 30px;
+}
+
+.uix-pb-blog-posts-grid .grid-item figure {
+    display: block;
+    padding: 12px;
+    -moz-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    -webkit-box-shadow: 0px 6px 40px -9px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 6px 40px -9px rgba(0,0,0,0.35);
+    box-shadow: 0px 6px 40px -9px rgba(0,0,0,0.35);
+    background: #fff;
+	margin-right: 30px;
+	position: relative;
+}
+
+@media all and (max-width: 768px) {
+    .uix-pb-blog-posts-grid .grid-item figure {
+         margin-right: 0;
+    }
+}
+
+.uix-pb-blog-posts-grid .grid-item figure img {
+    display: block;
+    width: 100%;
+}
+
+.uix-pb-blog-posts-grid .grid-item figure iframe {
+    width: 100%;
+}
+
+
+.uix-pb-blog-posts-grid .grid-item figcaption h3 {
+    margin: 0;
+    padding: .4em 0;
+	text-decoration: none;
+	font-size: 18px;
+}
+.uix-pb-blog-posts-grid .grid-item .post-date {
+	background: rgba(0,0,0,.75);
+	-webkit-border-radius: 25px; 
+	-moz-border-radius: 25px; 
+	border-radius: 25px;
+	color: #fff;
+	padding: .2em 1em;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	font-size: 10px;
+}
+
+
+.uix-pb-blog-posts-grid .grid-item .post-cat  {
+	margin: 0;
+	padding: 0;
+	padding-top: .5em;
+}
+.uix-pb-blog-posts-grid .grid-item .post-cat a {
+    color: #898989;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.uix-pb-blog-posts-grid .grid-item .post-cat a:hover {
+    color: #333;
+}
+
+
+.uix-pb-blog-posts-excerpt-content {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	/* number of lines to show */
+}
 
 
 /* ====================================================== 
@@ -2651,114 +2715,4 @@ img.uix-pb-img,
 }
 		 
 
-
-/* ====================================================== 
-   19. Blog Posts List         
-/* ====================================================== */
-.uix-pb-blog-posts {
-    margin-bottom: 1.625em;
-}
-
-.uix-pb-blog-posts-grid ul,
-	.uix-pb-blog-posts-grid li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.uix-pb-blog-posts-grid li {
-    float: left;
-}
-
-@media screen and (min-width: 769px) {
-    .uix-pb-blog-posts-grid.uix-pb-blog-posts-grid4 > ul li:nth-child(3n+1) {
-        clear: both;
-    }
-}
-
-@media screen and (min-width: 769px) {
-    .uix-pb-blog-posts-grid.uix-pb-blog-posts-grid6 > ul li:nth-child(2n+1) {
-        clear: both;
-    }
-}
-
-.uix-pb-blog-posts-grid .grid-item {
-	padding-bottom: 30px;
-}
-
-.uix-pb-blog-posts-grid .grid-item figure {
-    display: block;
-    padding: 12px;
-    -moz-transition: .2s ease-in-out;
-    -o-transition: .2s ease-in-out;
-    -webkit-transition: .2s ease-in-out;
-    transition: .2s ease-in-out;
-    -webkit-box-shadow: 0px 6px 40px -9px rgba(0,0,0,0.35);
-    -moz-box-shadow: 0px 6px 40px -9px rgba(0,0,0,0.35);
-    box-shadow: 0px 6px 40px -9px rgba(0,0,0,0.35);
-    background: #fff;
-	margin-right: 30px;
-	position: relative;
-}
-
-@media all and (max-width: 768px) {
-    .uix-pb-blog-posts-grid .grid-item figure {
-         margin-right: 0;
-    }
-}
-
-.uix-pb-blog-posts-grid .grid-item figure img {
-    display: block;
-    width: 100%;
-}
-
-.uix-pb-blog-posts-grid .grid-item figure iframe {
-    width: 100%;
-}
-
-
-.uix-pb-blog-posts-grid .grid-item figcaption h3 {
-    margin: 0;
-    padding: .4em 0;
-	text-decoration: none;
-	font-size: 18px;
-}
-.uix-pb-blog-posts-grid .grid-item .post-date {
-	background: rgba(0,0,0,.75);
-	-webkit-border-radius: 25px; 
-	-moz-border-radius: 25px; 
-	border-radius: 25px;
-	color: #fff;
-	padding: .2em 1em;
-	position: absolute;
-	right: 20px;
-	top: 20px;
-	font-size: 10px;
-}
-
-
-.uix-pb-blog-posts-grid .grid-item .post-cat  {
-	margin: 0;
-	padding: 0;
-	padding-top: .5em;
-}
-.uix-pb-blog-posts-grid .grid-item .post-cat a {
-    color: #898989;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-
-.uix-pb-blog-posts-grid .grid-item .post-cat a:hover {
-    color: #333;
-}
-
-
-.uix-pb-blog-posts-excerpt-content {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 4;
-	/* number of lines to show */
-}
 
