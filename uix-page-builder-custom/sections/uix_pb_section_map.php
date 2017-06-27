@@ -39,7 +39,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_map_style',
 			'title'          => esc_html__( 'Map Style', 'uix-page-builder' ),
-			'desc'           => wp_kses( sprintf( __( 'You can make a search, use the name of a place, city, state, or address, or click the location on the map to get lat long coordinates. &rarr; <a href="%1$s" target="_blank" rel="nofollow">Get Latitude Longitude</a>', 'uix-page-builder' ), '//www.latlong.net' ), wp_kses_allowed_html( 'post' ) ),
+			'desc'           => wp_kses( sprintf( __( 'Click on the exact location you\'d like coordinates for. Right-click on the pin and select "What\'s here?" <a href="%1$s" target="_blank" rel="nofollow">Get Latitude Longitude</a>', 'uix-page-builder' ), 'https://www.google.ch/maps/' ), wp_kses_allowed_html( 'post' ) ),
 			'value'          => 'normal',
 			'placeholder'    => '',
 			'type'           => 'radio-image',
