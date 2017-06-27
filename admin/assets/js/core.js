@@ -1129,16 +1129,28 @@ function UixPBFormatRenderCodes( code ) {
 				
 				//Initialize the map container
 				$frontend.find( '.uix-page-builder-map-preview-container' ).filter( function( index ) {
-					var $frame = $( this );
+					
+					var $frame    = $( this ),
+						fullclass = $frame.parent( 'div' ).attr( 'class' ),
+						curheight = $frame.data( 'height' );
 					
 					$frame.prev( '.uix-page-builder-map-preview-tmpl' ).load( uix_page_builder_layoutdata.send_string_plugin_url + 'admin/preview/map.html', function( response, status, xhr ) {
 					
 						response = response.replace(/\<script([^>]+)\>/g, '' ).replace(/\<\/script\>/g, '' );
 
+						//If it is full screen map
+						if( typeof fullclass != typeof undefined ) {
+							if ( fullclass.indexOf( 'full' ) > 0 ) {
+
+								$frame.css( 'height', $( window ).height() + 'px' );
+								curheight = '100%';
+							} 		
+						}
+						
 						$frame.UixPBTmpl( response, {
 							pluginPath : uix_page_builder_layoutdata.send_string_plugin_url,
 							width      : $frame.data( 'width' ),
-							height     : $frame.data( 'height' ),
+							height     : curheight,
 							style      : $frame.data( 'style' ),
 							latitude   : $frame.data( 'latitude' ),
 							longitude  : $frame.data( 'longitude' ),

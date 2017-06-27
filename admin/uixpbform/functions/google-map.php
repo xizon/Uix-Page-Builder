@@ -100,7 +100,7 @@ $map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_G
 
 
 						<?php if ( $map_height == '100%' ) { ?>
-						$( '#google-container-<?php echo $id; ?>' ).css( 'height', $( document.body ).height() + 'px' );
+						$( '#google-container-<?php echo $id; ?>' ).css( 'height', $( window ).height() + 'px' );
 						<?php } ?>
 
 
