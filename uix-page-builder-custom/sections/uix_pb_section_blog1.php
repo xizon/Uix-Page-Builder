@@ -94,7 +94,7 @@ $categories = get_categories( array(
     'orderby' => 'name',
     'order'   => 'ASC'
 ) );
-$categories_value = array( 'all' => esc_html__( '- All -', 'uix-shortcodes' ) );
+$categories_value = array( 'all' => esc_html__( '- All -', 'uix-page-builder' ) );
 
 
 if ( ! empty( $categories ) ) {
