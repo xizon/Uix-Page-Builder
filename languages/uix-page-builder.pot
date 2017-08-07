@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-06-27 10:59+0000\n"
+"POT-Creation-Date: 2017-08-07 14:22+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: uix-page-builder.php:233 admin/bulider/post-extensions-init.php:430
+#: uix-page-builder.php:233 admin/bulider/post-extensions-init.php:432
 msgid "Uix Page Builder"
 msgstr ""
 
@@ -133,9 +133,9 @@ msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
 #: uix-page-builder.php:1464 uix-page-builder.php:1563
-#: admin/bulider/post-extensions-init.php:873
-#: admin/bulider/post-extensions-init.php:1075
-#: admin/bulider/post-extensions-init.php:1075
+#: admin/bulider/post-extensions-init.php:875
+#: admin/bulider/post-extensions-init.php:1078
+#: admin/bulider/post-extensions-init.php:1078
 msgid "Section"
 msgstr ""
 
@@ -165,7 +165,7 @@ msgstr ""
 
 #: admin/bulider/post-extensions-init.php:18
 #: admin/bulider/post-extensions-init.php:292
-#: admin/bulider/post-extensions-init.php:519
+#: admin/bulider/post-extensions-init.php:521
 #, php-format
 msgid "Untitled-%1$s"
 msgstr ""
@@ -188,112 +188,116 @@ msgstr ""
 msgid "Loading list..."
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:341
+#: admin/bulider/post-extensions-init.php:298
+msgid "Can not be submitted in the live preview page."
+msgstr ""
+
+#: admin/bulider/post-extensions-init.php:343
 msgid ""
 "<i class=\"dashicons dashicons-editor-kitchensink\"></i>&nbsp;&nbsp;Uix Page "
 "Builder Attributes"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:368
+#: admin/bulider/post-extensions-init.php:370
 msgid "Use Visual Builder"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:376
+#: admin/bulider/post-extensions-init.php:378
 msgid "Page Builder Editor"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:381
+#: admin/bulider/post-extensions-init.php:383
 msgid "Enable"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:385
+#: admin/bulider/post-extensions-init.php:387
 msgid "Disable"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:394
+#: admin/bulider/post-extensions-init.php:396
 msgid "How To Create The One-Page Navigation? Here is an example:"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:397
+#: admin/bulider/post-extensions-init.php:399
 msgid ""
 "1. Under the <i class=\"dashicons dashicons-admin-generic\"></i> on the "
 "right per row, expand the Attributes tab. You can enter <code>my-"
 "portfolio</code> in the Custom ID field on the right."
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:458
+#: admin/bulider/post-extensions-init.php:460
 msgid "Desktop"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:459
+#: admin/bulider/post-extensions-init.php:461
 msgid "Tablet"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:460
+#: admin/bulider/post-extensions-init.php:462
 msgid "Tablet (Portrait)"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:461
+#: admin/bulider/post-extensions-init.php:463
 msgid "Mobile"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:463
-#: admin/bulider/post-extensions-init.php:1182
-#: admin/bulider/post-extensions-init.php:1200
+#: admin/bulider/post-extensions-init.php:465
+#: admin/bulider/post-extensions-init.php:1185
+#: admin/bulider/post-extensions-init.php:1203
 msgid "Saving..."
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:482
-#: admin/bulider/post-extensions-init.php:482
+#: admin/bulider/post-extensions-init.php:484
+#: admin/bulider/post-extensions-init.php:484
 msgid "Add Section"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:487
-#: admin/bulider/post-extensions-init.php:487
+#: admin/bulider/post-extensions-init.php:489
+#: admin/bulider/post-extensions-init.php:489
 msgid "Visual Builder"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:491
-#: admin/bulider/post-extensions-init.php:491
+#: admin/bulider/post-extensions-init.php:493
+#: admin/bulider/post-extensions-init.php:493
 msgid "Select a Template"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:496
+#: admin/bulider/post-extensions-init.php:498
 msgid "Page Template"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:498
+#: admin/bulider/post-extensions-init.php:500
 msgid "Default Template"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:507
+#: admin/bulider/post-extensions-init.php:509
 msgid "Content Template"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:509
+#: admin/bulider/post-extensions-init.php:511
 msgid "Confirm"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:515
-#: admin/bulider/post-extensions-init.php:515
+#: admin/bulider/post-extensions-init.php:517
+#: admin/bulider/post-extensions-init.php:517
 msgid "Save as Template"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:516
+#: admin/bulider/post-extensions-init.php:518
 msgid "Enter Template Name"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:522 admin/uixpbform/init.php:578
+#: admin/bulider/post-extensions-init.php:524 admin/uixpbform/init.php:578
 msgid "Save"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:528
-#: admin/bulider/post-extensions-init.php:528
-#: admin/bulider/post-extensions-init.php:539
+#: admin/bulider/post-extensions-init.php:530
+#: admin/bulider/post-extensions-init.php:530
+#: admin/bulider/post-extensions-init.php:541
 msgid "Export"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:535
+#: admin/bulider/post-extensions-init.php:537
 #, php-format
 msgid ""
 "Please save the template you are editing before exporting. <br><br>Move this "
@@ -302,52 +306,52 @@ msgid ""
 "default value as specified from the xml file."
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:548
-#: admin/bulider/post-extensions-init.php:548
+#: admin/bulider/post-extensions-init.php:550
+#: admin/bulider/post-extensions-init.php:550
 msgid "Publish"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:552
-#: admin/bulider/post-extensions-init.php:552
+#: admin/bulider/post-extensions-init.php:554
+#: admin/bulider/post-extensions-init.php:554
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:569
+#: admin/bulider/post-extensions-init.php:571
 msgid "Add a first module here. You can also choose a template to use."
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:873
-#: admin/bulider/post-extensions-init.php:1075
+#: admin/bulider/post-extensions-init.php:875
+#: admin/bulider/post-extensions-init.php:1078
 msgid "Settings"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:873
-#: admin/bulider/post-extensions-init.php:1075
+#: admin/bulider/post-extensions-init.php:875
+#: admin/bulider/post-extensions-init.php:1078
 #: admin/classes/class-menu-onepage.php:140
 msgid "ID"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:873
-#: admin/bulider/post-extensions-init.php:1075
+#: admin/bulider/post-extensions-init.php:875
+#: admin/bulider/post-extensions-init.php:1078
 msgid "Container"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:873
-#: admin/bulider/post-extensions-init.php:1075
+#: admin/bulider/post-extensions-init.php:875
+#: admin/bulider/post-extensions-init.php:1078
 msgid "Boxed"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:873
-#: admin/bulider/post-extensions-init.php:1075
+#: admin/bulider/post-extensions-init.php:875
+#: admin/bulider/post-extensions-init.php:1078
 msgid "Full Width"
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:873
-#: admin/bulider/post-extensions-init.php:1075
+#: admin/bulider/post-extensions-init.php:875
+#: admin/bulider/post-extensions-init.php:1078
 msgid "HTML Code..."
 msgstr ""
 
-#: admin/bulider/post-extensions-init.php:1198
+#: admin/bulider/post-extensions-init.php:1201
 msgid "Data has been saved."
 msgstr ""
 
@@ -813,6 +817,11 @@ msgstr ""
 msgid "Google Map"
 msgstr ""
 
+#: uix-page-builder-custom/sections/config.php:225
+#: uix-page-builder-custom/sections/uix_pb_section_contactform1.php:93
+msgid "Contact Form"
+msgstr ""
+
 #: uix-page-builder-custom/sections/uix_pb_section_accordion.php:54
 #: uix-page-builder-custom/sections/uix_pb_section_tabs.php:67
 msgid "Transition Effect"
@@ -1220,6 +1229,19 @@ msgstr ""
 msgid "The Introduction of this client."
 msgstr ""
 
+#: uix-page-builder-custom/sections/uix_pb_section_contactform1.php:40
+msgid "Shortcode & Content"
+msgstr ""
+
+#: uix-page-builder-custom/sections/uix_pb_section_contactform1.php:55
+#, php-format
+msgid ""
+"You can install a contact form plugin you want. Such as <a href=\"%1$s\" "
+"target=\"_blank\">Contact Form 7</a> When you're done, copy shortcode and "
+"paste into the editor. <strong>You can change ID for shortcode [contact-form-"
+"7] .</strong>"
+msgstr ""
+
 #: uix-page-builder-custom/sections/uix_pb_section_features1.php:95
 #: uix-page-builder-custom/sections/uix_pb_section_features1.php:196
 msgid "Note: multiple items per column"
@@ -1490,9 +1512,9 @@ msgstr ""
 #: uix-page-builder-custom/sections/uix_pb_section_map.php:42
 #, php-format
 msgid ""
-"You can make a search, use the name of a place, city, state, or address, or "
-"click the location on the map to get lat long coordinates. &rarr; <a "
-"href=\"%1$s\" target=\"_blank\" rel=\"nofollow\">Get Latitude Longitude</a>"
+"Click on the exact location you'd like coordinates for. Right-click on the "
+"pin and select \"What's here?\" <a href=\"%1$s\" target=\"_blank\" "
+"rel=\"nofollow\">Get Latitude Longitude</a>"
 msgstr ""
 
 #: uix-page-builder-custom/sections/uix_pb_section_map.php:63
