@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 2.4
+	* Version 2.6
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -101,7 +101,11 @@
 							
 							
 							/*-- Init tinymce --*/
-							uixpbform_editorInit( $obj.find( '.uixpbform-mce-editor textarea.mce' ).attr( 'id' ) );
+							$obj.find( '.uixpbform-mce-editor' ).each( function()  {
+								uixpbform_editorInit( $( this ).find( 'textarea.mce' ).attr( 'id' ) );
+							});
+							
+							
 							
 							
 							
