@@ -59,6 +59,14 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 ### Updates
 
+
+##### = 1.2.8 (August 7, 2017) =
+
+* Fixed a display bug for the editor form type.
+* Added a new module type: Contact Form (new). Compatible with WP plugin Contact Form 7.
+* Added the editor's source code mode.
+
+
 ##### = 1.2.7 (June 27, 2017) =
 
 * Optimize the embedding method of Google Maps.

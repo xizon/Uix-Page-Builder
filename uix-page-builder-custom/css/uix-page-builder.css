@@ -28,6 +28,7 @@
     16. Card list  (Team)
     17. Portfolio
     18. Image Slider
+    19. Contact Form 7
 
 */
 
@@ -2715,4 +2716,56 @@ img.uix-pb-img,
 }
 		 
 
+/* ====================================================== 
+   19. Contact Form 7         
+/* ====================================================== */
+.uix-page-builder-section .wpcf7-form label {
+	width: 100%;
+	display: block;
+	font-weight: normal;
+	letter-spacing: normal;
+}
 
+
+.uix-page-builder-section .wpcf7-form .wpcf7-form-control {
+    background-color: #fff;
+	border: 1px solid #E2E2E2;
+	outline: none;
+	padding: .35em 1em;
+	width: calc( 100% - 2em);
+	margin-top: .2em;
+	-webkit-border-radius: 2px; 
+	-moz-border-radius: 2px; 
+	border-radius: 2px;
+}
+
+
+.uix-page-builder-section .wpcf7-form .wpcf7-submit {
+    color: #FFFFFF;
+    background-color: #A2BF2F;
+	outline: none;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    color: #fff;
+    padding: .8em 3em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    margin: 1em 1em .7em 0;
+}
+
+.uix-page-builder-section .wpcf7-form .wpcf7-submit:hover {
+    color: #333;
+    background-color: #fff;
+}
+
+.uix-page-builder-section .wpcf7-form .ajax-loader {
+	
+}

@@ -901,6 +901,16 @@ function gridsterAddShortcutButtons() {
 
 				return false;
 			});	
+			
+			
+			
+			
+			//Prevent form submission
+			$ifm.find( '.uix-page-builder-section form' ).on( 'submit', function( e ) {
+				e.preventDefault();
+				alert( uix_page_builder_layoutdata.send_string_formsubmit_info );
+			});
+
 
 
 
@@ -1088,7 +1098,7 @@ function UixPBFormatRenderCodes( code ) {
 			});
 			
 			//Filter shortcodes of each column widget HTML code through their hooks.
-			if ( newValue.indexOf( '[uix_pb_' ) == -1 ) {
+			if ( newValue.indexOf( '[uix_pb_' ) == -1 && newValue.indexOf( '[contact-form' ) == -1 ) {
 				container.html( newValue );
 			}
 			
@@ -1116,10 +1126,11 @@ function UixPBFormatRenderCodes( code ) {
 		this.each(function(){
 			
 			var $this       = $( this ),
-				$postID     = settings.postID;
+				$postID     = settings.postID,
+				$ifm        = $( '#uix-page-builder-themepreview' ).contents();
 			
 			
-			$( '#uix-page-builder-themepreview' ).contents().find( '.uix-page-builder-themepreview-wp-shortcode' ).load( ajaxurl + '?action=uix_page_builder_output_frontend_settings&post_id='+$postID+'&pb_render_entire_page=1', function( response, status, xhr ) {
+			$ifm.find( '.uix-page-builder-themepreview-wp-shortcode' ).load( ajaxurl + '?action=uix_page_builder_output_frontend_settings&post_id='+$postID+'&pb_render_entire_page=1', function( response, status, xhr ) {
 				
 				var $frontend = $( this );
 				
@@ -1164,12 +1175,8 @@ function UixPBFormatRenderCodes( code ) {
 		
 				
 			});
-			
 
 		
-				
-						
-			
 			
 			
 		})

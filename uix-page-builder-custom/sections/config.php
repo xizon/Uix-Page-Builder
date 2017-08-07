@@ -220,6 +220,13 @@ $uix_pb_config = array(
 								),	
 	
 	
+	
+								array(
+									'title'           => esc_html__( 'Contact Form', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_contactform1',
+									'thumb'           => 'contactform.jpg',
+								
+								),
 		
 										
 							

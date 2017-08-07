@@ -295,6 +295,8 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
 				'send_string_preview_url'      => $previewURL,
 				'send_string_render_count'     => 1,
+				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
+				
 				
 			);
 			
@@ -980,9 +982,10 @@ var UixPBGridsterMain = function( obj ) {
 				jQuery( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
 					e.preventDefault();
 					
-					var $form           = jQuery( this ).closest( 'form' ),
-						tmplValueEmpty  = $form.find( '.uixpbform-tmpl-textarea' ).data( 'tmpl-value' ),
-						existShortcode  = $form.find( '.uixpbform-tmpl-textarea' ).val().indexOf( '[uix_pb_' );
+					var $form            = jQuery( this ).closest( 'form' ),
+						tmplValueEmpty   = $form.find( '.uixpbform-tmpl-textarea' ).data( 'tmpl-value' ),
+						existShortcode1  = $form.find( '.uixpbform-tmpl-textarea' ).val().indexOf( '[uix_pb_' ),
+						existShortcode2  = $form.find( '.uixpbform-tmpl-textarea' ).val().indexOf( '[contact-form' );
 					
 					
 					setTimeout( function() {
@@ -999,7 +1002,7 @@ var UixPBGridsterMain = function( obj ) {
 							
 							
 							/*-- Render and save page data --*/
-							if ( existShortcode == -1 ) {
+							if ( existShortcode1 == -1 && existShortcode2 == -1 ) {
 								if ( tmplValueEmpty == 0 ) {
 									UixPBGridsterConstructor.prototype.renderAndSavePage.call( this, 2 ); //Render the entire page
 								} else {

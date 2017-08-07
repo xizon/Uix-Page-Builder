@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 2.4
+	* Version 2.6
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -2249,10 +2249,10 @@ a.uixpbform-icon-clear {
 	border: 1px solid #ccc;
 }
 
-.mce-branding-powered-by {
+.uixpbform-mce-editor .mce-branding-powered-by {
 	visibility: hidden;
 }
-.mce-toolbar-grp {
+.uixpbform-mce-editor .mce-toolbar-grp {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f6f6f6+0,ffffff+100 */
 	background: #f6f6f6 !important; /* Old browsers */
 	background: -moz-linear-gradient(top, #f6f6f6 0%, #ffffff 100%) !important; /* FF3.6-15 */
@@ -2260,6 +2260,18 @@ a.uixpbform-icon-clear {
 	background: linear-gradient(to bottom, #f6f6f6 0%,#ffffff 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0 ) !important; /* IE6-9 */
 }
+
+
+#mce-modal-block {
+	z-index: 559902 !important; 
+}
+.mce-container[role="dialog"],
+.mce-floatpanel {
+	z-index: 559903 !important; 
+}
+
+
+
 
 /* Default
 --------------------------------------------------------------
