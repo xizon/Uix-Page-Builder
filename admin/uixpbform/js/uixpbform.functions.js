@@ -1439,79 +1439,85 @@ function uixpbform_strToSlug( str ){
 "use strict";
     $( function() {
 
-		tinymce.PluginManager.add('customCode', function(editor) {
-			function showDialog() {
-				var win = editor.windowManager.open({
-					title: "Source code",
-					body: {
-						type: 'textbox',
-						name: 'customCode',
-						multiline: true,
-						minWidth: editor.getParam("code_dialog_width", 600),
-						minHeight: editor.getParam("code_dialog_height", Math.min(tinymce.DOM.getViewPort().h - 200, 500)),
-						spellcheck: false,
-						style: 'direction: ltr; text-align: left'
-					},
-					onSubmit: function(e) {
-						// We get a lovely "Wrong document" error in IE 11 if we
-						// don't move the focus to the editor before creating an undo
-						// transation since it tries to make a bookmark for the current selection
-						editor.focus();
+		
+		if ( typeof(tinymce) !== 'undefined' ) {
+			
+			tinymce.PluginManager.add('customCode', function(editor) {
+				function showDialog() {
+					var win = editor.windowManager.open({
+						title: "Source code",
+						body: {
+							type: 'textbox',
+							name: 'customCode',
+							multiline: true,
+							minWidth: editor.getParam("code_dialog_width", 600),
+							minHeight: editor.getParam("code_dialog_height", Math.min(tinymce.DOM.getViewPort().h - 200, 500)),
+							spellcheck: false,
+							style: 'direction: ltr; text-align: left'
+						},
+						onSubmit: function(e) {
+							// We get a lovely "Wrong document" error in IE 11 if we
+							// don't move the focus to the editor before creating an undo
+							// transation since it tries to make a bookmark for the current selection
+							editor.focus();
 
-						if(editor.readonly != true){
-							editor.undoManager.transact(function() {
-								editor.setContent(e.data.customCode);
-							});
+							if(editor.readonly != true){
+								editor.undoManager.transact(function() {
+									editor.setContent(e.data.customCode);
+								});
+							}
+
+							editor.selection.setCursorLocation();
+							editor.nodeChanged();
+
 						}
+					});
 
-						editor.selection.setCursorLocation();
-						editor.nodeChanged();
 
+					// Gecko has a major performance issue with textarea
+					// contents so we need to set it when all reflows are done
+					win.find('#customCode').value(editor.getContent({source_view: true}));
+
+					//disable source code editing while in readonly mode
+					if(editor.readonly){
+						var id = win.find('#customCode')[0]._id;
+						$(win.find('#customCode')[0]._elmCache[id]).prop('readonly', true);
 					}
-				});
 
-
-				// Gecko has a major performance issue with textarea
-				// contents so we need to set it when all reflows are done
-				win.find('#customCode').value(editor.getContent({source_view: true}));
-
-				//disable source code editing while in readonly mode
-				if(editor.readonly){
-					var id = win.find('#customCode')[0]._id;
-					$(win.find('#customCode')[0]._elmCache[id]).prop('readonly', true);
+					//This was an attempt to disable the "save" button but nothing I've tried is working. 
+					//So far we are good because the user cannot modify the source code anyway
+					/*for (var property in win.find('#code')[0].rootControl.controlIdLookup) {
+						if (win.find('#code')[0].rootControl.controlIdLookup.hasOwnProperty(property)) {
+							var realProperty = win.find('#code')[0].rootControl.controlIdLookup[property];
+							var element = $($(realProperty._elmCache[realProperty._id])[0].children[0]);
+							if(element.prop('type') == 'button'){
+								$(element).prop('disabled', true);
+								console.log(element.attr('disabled'));
+								console.log(element.prop('disabled'));
+							}
+						}
+					}*/
 				}
 
-				//This was an attempt to disable the "save" button but nothing I've tried is working. 
-				//So far we are good because the user cannot modify the source code anyway
-				/*for (var property in win.find('#code')[0].rootControl.controlIdLookup) {
-					if (win.find('#code')[0].rootControl.controlIdLookup.hasOwnProperty(property)) {
-						var realProperty = win.find('#code')[0].rootControl.controlIdLookup[property];
-						var element = $($(realProperty._elmCache[realProperty._id])[0].children[0]);
-						if(element.prop('type') == 'button'){
-							$(element).prop('disabled', true);
-							console.log(element.attr('disabled'));
-							console.log(element.prop('disabled'));
-						}
-					}
-				}*/
-			}
+				editor.addCommand("mceCustomCodeEditor", showDialog);
 
-			editor.addCommand("mceCustomCodeEditor", showDialog);
+				editor.addButton('customCode', {
+					icon: 'code',
+					tooltip: 'Source code',
+					onclick: showDialog,
+					classes:'customCode'
+				});
 
-			editor.addButton('customCode', {
-				icon: 'code',
-				tooltip: 'Source code',
-				onclick: showDialog,
-				classes:'customCode'
-			});
+				editor.addMenuItem('customCode', {
+					icon: 'code',
+					text: 'Source code',
+					context: 'tools',
+					onclick: showDialog
+				});
+			});	
+			
+		}
 
-			editor.addMenuItem('customCode', {
-				icon: 'code',
-				text: 'Source code',
-				context: 'tools',
-				onclick: showDialog
-			});
-		});
 
 
 	} );
