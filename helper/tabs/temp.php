@@ -72,7 +72,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'temp' ) { ?>
             
              <h3><?php _e( 'Copy Uix Page Builder template files in your templates directory:', 'uix-page-builder' ); ?></h3>
              <p>
-               <?php _e( 'As a workaround you can use FTP, access the Uix Page Builder template files path <code>/wp-content/plugins/uix-page-builder/theme_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-page-builder' ); ?>
+               <?php _e( 'As a workaround you can use FTP, access the Uix Page Builder template files path <code>/wp-content/plugins/uix-page-builder/uixpb_templates/</code> and upload files to your theme templates directory <code>/wp-content/themes/{your-theme}/</code>. ', 'uix-page-builder' ); ?>
        
              </p>   
              

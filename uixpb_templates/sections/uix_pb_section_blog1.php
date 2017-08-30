@@ -169,7 +169,7 @@ $args =
 			'id'             => 'uix_pb_blog_excerpt_length',
 			'title'          => esc_html__( 'Excerpt Length', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => 50,
+			'value'          => 35,
 			'placeholder'    => '',
 			'type'           => 'short-text',
 			'default'        => array(
@@ -250,15 +250,18 @@ $args =
 		{uix_pb_blog_attrs_date_y}           --> Year
 		{uix_pb_blog_attrs_cat_link}         --> Categories for a post (Contains hyperlinks)
 		{uix_pb_blog_attrs_cat_text}         --> Categories for a post
+		{uix_pb_blog_attrs_cat_attr}         --> Escaping for categories HTML attributes.
+		{uix_pb_blog_attrs_cat_groupattr}    --> Escaping for categories group HTML attributes.  Like this: data-groups='["discovery","featured"]'
 		{uix_pb_blog_attrs_excerpt}          --> Excerpt with read more button
 		{uix_pb_blog_attrs_thumbnail}        --> Featured image HTML code
+		{uix_pb_blog_attrs_thumbnail_url}    --> Featured image URL
 
  
  */
 	
 $loop_template_code = '
 
-	<li class="grid-item uix-pb-col-{col}">
+	<li class="grid-item uix-pb-col-{col}" {uix_pb_blog_attrs_cat_groupattr}>
 		<figure>
 			<a data-id="{uix_pb_blog_attrs_id}" title="{uix_pb_blog_attrs_title_attr}" href="{uix_pb_blog_attrs_link}">
 				{uix_pb_blog_attrs_thumbnail}
@@ -297,7 +300,7 @@ UixPageBuilder::form_scripts( array(
 							),
 
 					),
-		'title'        => esc_html__( 'Blog Posts List', 'uix-page-builder' ),
+		'title'        => esc_html__( 'WP Posts List', 'uix-page-builder' ),
 	    'js_template'  => '
 		
 		
@@ -308,10 +311,10 @@ UixPageBuilder::form_scripts( array(
 		
 		
 		    var uix_pb_blog_result_readmore_checkbox_toggle    = 1,
-			    uix_pb_blog_result_dateformat                  = 1111,
+			    uix_pb_blog_result_dateformat                  = \'\',
                 before_html                                    = \'<div class="uix-pb-blog-posts-grid uix-pb-blog-posts-grid\'+uix_pb_blog_config_grid+\'"><ul class="uix-pb-row">\',
                 after_html                                     = \'</ul></div>\',
-				loop_temp                                      = \''.UixPBFormCore::str_compression( $loop_template_code ).'\';
+				show_list_item                                 = \''.UixPBFormCore::str_compression( $loop_template_code ).'\';
 			
 			switch ( uix_pb_blog_dateformat ) {
 				case \'1\':
@@ -329,10 +332,10 @@ UixPageBuilder::form_scripts( array(
 					
 			}
 			
-			loop_temp = loop_temp
-			             .replace( \'{date}\', uix_pb_blog_result_dateformat )
-						 .replace( \'{col}\', uix_pb_blog_config_grid );
-			
+			show_list_item = show_list_item
+							 .replace( /{date}/g, uix_pb_blog_result_dateformat )
+							 .replace( /{col}/g, uix_pb_blog_config_grid );
+
 			
 			
 			
@@ -342,7 +345,7 @@ UixPageBuilder::form_scripts( array(
 			var temp = \'\';
 				temp += _config_t;
 				temp += _config_desc;
-				temp += \'[uix_pb_blog excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\'	]\'+loop_temp+\'[/uix_pb_blog]\';
+				temp += \'[uix_pb_blog excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog]\';
 		
 		
 		'

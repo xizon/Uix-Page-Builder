@@ -208,7 +208,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 				$pb_total = 0;
 				foreach ( $pages as $page ) {
 
-					if ( get_page_template_slug( $page->ID ) ==  'page-uix_page_builder.php' || UixPageBuilder::inc_str( $page->post_content, '[uix_pb_sections' ) ) {
+					if ( get_page_template_slug( $page->ID ) ==  'tmpl-uix_page_builder.php' || UixPageBuilder::inc_str( $page->post_content, '[uix_pb_sections' ) ) {
 						$option = '<option value="'.esc_attr( $page->ID ).'">';
 						$option .= $page->post_title;
 						$option .= '</option>';

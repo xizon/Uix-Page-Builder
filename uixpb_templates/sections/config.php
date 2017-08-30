@@ -3,7 +3,7 @@ $uix_pb_config = array(
 	
 	
 	array(
-		'sortname'        => esc_html__( 'Contents', 'uix-page-builder' ),
+		'sortname'        => esc_html__( 'Accordion/Tabs', 'uix-page-builder' ),
 		'buttons'         => array(
 	
 								array(
@@ -20,6 +20,15 @@ $uix_pb_config = array(
 									'thumb'           => 'tabs.jpg',
 								
 								),
+				
+							)
+	
+	),
+	
+	array(
+		'sortname'        => esc_html__( 'Parallax', 'uix-page-builder' ),
+		'buttons'         => array(
+
 	
 								array(
 									'title'           => esc_html__( 'Parallax', 'uix-page-builder' ),
@@ -33,13 +42,12 @@ $uix_pb_config = array(
 	
 	),
 	
-
 	array(
 		'sortname'        => esc_html__( 'Blog', 'uix-page-builder' ),
 		'buttons'         => array(
 							
 								array(
-									'title'           => esc_html__( 'Blog Posts List', 'uix-page-builder' ),
+									'title'           => esc_html__( 'WP Posts List', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_blog1',
 									'thumb'           => 'blog-1.jpg',
 								
@@ -234,7 +242,36 @@ $uix_pb_config = array(
 	
 	),		
 	
-	
 		
 		
 );
+
+
+/*
+ * Require the WP plugin "Uix Products"
+ * 
+ */
+if ( class_exists( 'UixProducts' ) ) { 
+
+	array_push( $uix_pb_config, 
+			   
+		array(
+			'sortname'        => esc_html__( 'Uix Products', 'uix-page-builder' ),
+			'buttons'         => array(
+
+									array(
+										'title'           => esc_html__( 'Uix Products List', 'uix-page-builder' ),
+										'id'              => 'uix_pb_section_uix_products1',
+										'thumb'           => 'portfolio-1.jpg',
+
+									),
+
+
+
+								)
+
+		)		  
+			  
+    );
+
+}

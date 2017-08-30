@@ -65,7 +65,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 	
 	$org_cssname_uix_page_builder = 'uix-page-builder.css';
 	$org_csspath_uix_page_builder = UixPageBuilder::backend_path( 'uri' ).'css/uix-page-builder.css';
-	$filepath                   = 'uix-page-builder-custom/css/';
+	$filepath                   = 'uixpb_templates/css/';
 	
 	
 	if ( UixPageBuilder::tempfolder_exists() ) {

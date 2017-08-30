@@ -37,14 +37,18 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 				'show'            => 10, 
 				'cat'             => 'all', 
 				'order'           => 'desc',
-				'excerpt_length'  => 50,
+				'excerpt_length'  => 35,
 				'readmore_enable' => 0, 
 				'readmore_text'   => esc_html__( 'Read More', 'uix-page-builder' ),
 				'readmore_class'  => '', 
-				'before'          => '<div class="uix-pb-blog-posts-grid"><ul class="uix-pb-row">', 
-				'after'           => '</ul></div>', 
+				'before'          => '', 
+				'after'           => '', 
 
 			 ), $atts ) );
+			
+			
+			//Update except length 
+			update_option( 'uix-page-builder-excerptlength', $excerpt_length );
 			
 			
 			 $before         = wp_specialchars_decode( $before ).PHP_EOL;
@@ -109,9 +113,9 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 				
 				//excerpt
 				if ( $readmore_enable == 0 ) {
-					$excerpt_html = UixPB_BlogExcerpt::uix_pb_excerpt( $excerpt_length, false );
+					$excerpt_html = UixPB_BlogExcerpt::output( $excerpt_length, false );
 				} else {
-					$excerpt_html = UixPB_BlogExcerpt::uix_pb_excerpt( $excerpt_length, true, $readmore_text, $readmore_class );
+					$excerpt_html = UixPB_BlogExcerpt::output( $excerpt_length, true, $readmore_text, $readmore_class );
 				}
 				
 				
@@ -136,6 +140,33 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 				
 				
 				
+				//categories filterable
+				$cat_text  = wp_strip_all_tags( UixPB_BlogCategories::entry_categories() );
+				$cat_attr  = UixPageBuilder::transform_slug( $cat_text );
+				$cat_group = '';
+				if ( UixPageBuilder::inc_str( $cat_text, ',' ) ) {
+					$cat_arr = explode( ',',$cat_text );
+					$cat_new = array();
+					if ( is_array( $cat_arr ) ) {
+						foreach ( $cat_arr as $key ) {
+							array_push( $cat_new, UixPageBuilder::transform_slug( rtrim( ltrim( $key ) ) ) );
+						}
+					}	
+					
+					$cat_group .= '[';
+					foreach ( $cat_new as $key ) {
+						$cat_group .= '"'.$key.'",';
+					}
+					$cat_group = rtrim( $cat_group, ',' );
+					$cat_group .= ']';
+
+				} else {
+					$cat_group = '["'.$cat_attr.'"]';
+				}
+				
+
+				
+				
 				$return_string .= str_replace( '{uix_pb_blog_attrs_link}', esc_url( get_permalink() ),
 						   str_replace( '{uix_pb_blog_attrs_id}', esc_attr( get_the_ID() ),
 						   str_replace( '{uix_pb_blog_attrs_title_attr}', esc_attr( get_the_title() ),
@@ -145,11 +176,14 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 						   str_replace( '{uix_pb_blog_attrs_date_d}', get_the_time('d'),
 						   str_replace( '{uix_pb_blog_attrs_date_y}', get_the_time('y'),
 						   str_replace( '{uix_pb_blog_attrs_cat_link}', UixPB_BlogCategories::entry_categories(),	
-						   str_replace( '{uix_pb_blog_attrs_cat_text}', wp_strip_all_tags( UixPB_BlogCategories::entry_categories() ),	  
+						   str_replace( '{uix_pb_blog_attrs_cat_text}', $cat_text,  
+						   str_replace( '{uix_pb_blog_attrs_cat_attr}', $cat_attr,  
+						   str_replace( '{uix_pb_blog_attrs_cat_groupattr}', 'data-groups=\''.$cat_group.'\'', 
 						   str_replace( '{uix_pb_blog_attrs_excerpt}', $excerpt_html,
 						   str_replace( '{uix_pb_blog_attrs_thumbnail}', $post_thumbnail,
+						   str_replace( '{uix_pb_blog_attrs_thumbnail_url}', esc_url( $post_thumbnail_src ),      
 						   UixPageBuilder::decode( $content )
-						   ))))))))))))
+						   )))))))))))))))
 						   .PHP_EOL;	
 
 				

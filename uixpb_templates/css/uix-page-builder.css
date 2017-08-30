@@ -2454,7 +2454,6 @@ img.uix-pb-img,
     overflow: hidden;
     height: 15px;
 /* Compatible with IE */
-    text-overflow: ellipsis;
     white-space: nowrap;
     margin: 1em 0 .3em;
     font-size: 16px;
@@ -2618,10 +2617,10 @@ img.uix-pb-img,
 /*-- Categories --*/ 
 .uix-pb-portfolio-cat-list {
     clear: both;
-    margin-bottom: 25px;
+    margin-top: -4.5em;
     font-size: 13px;
     text-align: center;
-    padding: .5em 0 1.5em;
+    padding: .5em 0 .5em;
 }
 
 .uix-pb-portfolio-cat-list:before,
@@ -2648,14 +2647,17 @@ img.uix-pb-img,
 }
 
 .uix-pb-portfolio-cat-list li a {
-    color: #666;
-    text-decoration: none;
+    color: #666 !important;
+    text-decoration: none !important;
+	border-bottom: none !important;
 }
 
 .uix-pb-portfolio-cat-list li a:hover,
 .uix-pb-portfolio-cat-list li.current > a,
 .uix-pb-portfolio-cat-list li a.current {
-    color: #000;
+    color: #000 !important;
+	text-decoration: none !important;
+	border-bottom: 1px solid #000 !important;
 }
 
 

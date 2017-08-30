@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
 
+
 /*
  * Save template with ajax 
  * 
@@ -20,70 +21,72 @@ if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
 			$xmlargs            = '';
 			$old                = get_option( 'uix-page-builder-templates' );
 			$tmpl_default_thumb = '{temp_preview_thumb_path}images/UixPageBuilderThumb/tmpl/_default.jpg';
-			
-		
-		    array_push( $value, array(
-									'name'  => sanitize_text_field( $name ),
-				                    'thumb' => $tmpl_default_thumb,
-									'data'  => wp_unslash( $_POST[ 'curlayoutdata' ] )
-								)
-			);
-			
-			$xmlargs   .= '
-				<item>
-					<name><![CDATA['.sanitize_text_field( $name ).']]></name>
-					<thumb><![CDATA['.$tmpl_default_thumb.']]></thumb>
-					<data><![CDATA['.wp_unslash( $_POST[ 'curlayoutdata' ] ).']]></data>
-				</item>
-			';
+			$tmpl_data          = wp_unslash( $_POST[ 'curlayoutdata' ] );
+			$tmpl_name          = sanitize_text_field( $name );
 			
 			
-			if ( is_array( $old ) && sizeof( $old ) > 0 ) {
+			//If the array item is empty, it will cause the script to read incorrectly
+			if ( !empty( $tmpl_data ) && $tmpl_data != '[]' ) {
 				
-				foreach ( $old as $v ) {
-					
-					array_push( $value, array(
-											'name'  => $v[ 'name' ],
-						                    'thumb' => $v[ 'thumb' ],
-											'data'  => $v[ 'data' ]
-										)
-					);
-							
-					
-					$xmlargs   .= '
-						<item>
-							<name><![CDATA['.$v[ 'name' ].']]></name>
-							<thumb><![CDATA['.$v[ 'thumb' ].']]></thumb>
-							<data><![CDATA['.$v[ 'data' ].']]></data>
-						</item>
-					';
-					
-	
-				}
-	
-			}
-		    
-			$xmlvalue =  '<?xml version="1.0" encoding="utf-8"?>
-			<items>
-				'.$xmlargs.'
-			</items>
-			';
-			
-			//The default picture path
-			$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
-			
-			
-			if ( UixPageBuilder::CLEANTEMP == 1 ) {
-				update_option( 'uix-page-builder-templates', '' );
-			} else {
-				update_option( 'uix-page-builder-templates', $value );
-			}
-			
-			
-			update_option( 'uix-page-builder-templates-xml', $xmlvalue );
-			
-			
+				array_push( $value, array(
+										'name'  => $tmpl_name,
+										'thumb' => $tmpl_default_thumb,
+										'data'  => $tmpl_data
+									)
+				);
 
+				$xmlargs   .= '
+					<item>
+						<name><![CDATA['.$tmpl_name.']]></name>
+						<thumb><![CDATA['.$tmpl_default_thumb.']]></thumb>
+						<data><![CDATA['.$tmpl_data.']]></data>
+					</item>
+				';
+
+
+				if ( is_array( $old ) && sizeof( $old ) > 0 ) {
+
+					foreach ( $old as $v ) {
+
+						array_push( $value, array(
+												'name'  => $v[ 'name' ],
+												'thumb' => $v[ 'thumb' ],
+												'data'  => $v[ 'data' ]
+											)
+						);
+
+
+						$xmlargs   .= '
+							<item>
+								<name><![CDATA['.$v[ 'name' ].']]></name>
+								<thumb><![CDATA['.$v[ 'thumb' ].']]></thumb>
+								<data><![CDATA['.$v[ 'data' ].']]></data>
+							</item>
+						';
+
+
+					}
+
+				}
+
+				$xmlvalue =  '<?xml version="1.0" encoding="utf-8"?>
+				<items>
+					'.$xmlargs.'
+				</items>
+				';
+
+				//The default picture path
+				$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
+
+				//Update the WP data
+                update_option( 'uix-page-builder-templates', $value );
+				
+				//Update the XML data
+				update_option( 'uix-page-builder-templates-xml', $xmlvalue );	
+				
+				
+			}
+	
 			
 		}
 		
@@ -121,7 +124,7 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 					echo '
 					<label>
 						<input type="radio" name="temp" value="1" '.( $key == 0 ? 'checked' : '' ).'>
-						'.$v[ 'name' ].'
+						<span id="id-'.sanitize_title_with_dashes( $v[ 'name' ] ).'">'.$v[ 'name' ].'</span> <a data-del-id="id-'.sanitize_title_with_dashes( $v[ 'name' ] ).'" href="javascript:" class="close-tmpl">×</a>
 						<img class="preview-thumb" style="display:none" src="'.$preview_thumb.'" alt="">
 						<textarea>'.$newdata.'</textarea>
 					</label>
@@ -139,9 +142,9 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 			}
 			
 			/*
-			 * Templates file: uix-page-builder-custom/sections/templates.xml
+			 * Templates file: uixpb_templates/sections/templates.xml
 			 *
-			 * If you have moved to "uix-page-builder-custom/sections/" folder so yet, Uix Page Builder's templates 
+			 * If you have moved to "uixpb_templates/sections/" folder so yet, Uix Page Builder's templates 
 			 * list will be reset to its default value as specified from the xml file.
 			*/
 			
@@ -396,7 +399,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
         <h3><?php _e( 'How To Create The One-Page Navigation? Here is an example:', 'uix-page-builder' ); ?></h3>
         <div class="uix-metabox-con">
             <p>
-             <?php _e( '1. Under the <i class="dashicons dashicons-admin-generic"></i> on the right per row, expand the Attributes tab. You can enter <code>my-portfolio</code> in the Custom ID field on the right.', 'uix-page-builder' ); ?></p>
+             <?php _e( '1. On visual builder page, expand the <i class="dashicons dashicons-admin-generic"></i> from Drag & Drop modules of left sidebar. You can enter any string in the custom <strong>ID</strong> field on the right. Such as <code>my-portfolio</code>.', 'uix-page-builder' ); ?></p>
              <p>
              <?php printf( __( '2. Create a new <a href="%1$s">menu</a>, and add a Custom Link for each menu item you plan on having. For each menu item, enter an id that you will assign later to the corresponding section. For example, for the menu item <code>My Portfolio</code>, you would enter <code>#my-portfolio</code> in the URL field.', 'my-text-domain' ), admin_url( "nav-menus.php" ) ); ?>
              </p>
@@ -1185,7 +1188,7 @@ var UixPBGridsterMain = function( obj ) {
 					$saveobj.addClass( 'wait' ).text( '<?php echo esc_html__( 'Saving...', 'uix-page-builder' ); ?>' );
 
 					jQuery.post( ajaxurl, {
-						action               : 'uix_page_builder_savevisualBuilder_settings',
+						action               : 'uix_page_builder_saveLiveRender_settings',
 						layoutdata           : jQuery( "[name='uix-page-builder-layoutdata']" ).val(),
 						pageTemp             : jQuery( "[name='uix-page-builder-cur-page-template']" ).val(),
 						postID               : uix_page_builder_layoutdata.send_string_postid,
@@ -1468,7 +1471,7 @@ var UixPBGridsterMain = function( obj ) {
 				if ( vbmode ) {	
 
 					jQuery.post( ajaxurl, {
-						action               : 'uix_page_builder_publishvisualBuilder_settings',
+						action               : 'uix_page_builder_publishLiveRender_settings',
 						postID               : uix_page_builder_layoutdata.send_string_postid,
 						security             : uix_page_builder_layoutdata.send_string_nonce
 					}, function ( response ) {

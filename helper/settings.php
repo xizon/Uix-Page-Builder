@@ -205,7 +205,7 @@ function uix_page_builder_options_page(){
 	
 	$tabs[] = array(
 		'tab'     =>  'for-developer', 
-		'title'   =>  __( '<i class="dashicons dashicons-networking"></i> For Developer', 'uix-page-builder' )
+		'title'   =>  __( '<i class="dashicons dashicons-networking"></i> For Theme Developer', 'uix-page-builder' )
 	);		
 	
 	

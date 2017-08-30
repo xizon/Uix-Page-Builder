@@ -1473,6 +1473,27 @@ ul.uix-page-builder-res-selector li.active {
 	position: relative;
 }
 
+.settings-temp-wrapper #uix-page-builder-templatelist .close-tmpl {
+	color: #D8181C;
+    font-size: 16px;
+	margin-left: 10px;
+	text-decoration: none;
+	font-weight: 600;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	-webkit-border-radius: 100%; 
+	-moz-border-radius: 100%; 
+	border-radius: 100%; 
+}
+
+.settings-temp-wrapper #uix-page-builder-templatelist .close-tmpl:hover {
+	background: #D8181C;
+	color: #fff;
+}
+
 .settings-temp-wrapper strong {
 	display: block;
 	margin-bottom: 15px;

@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * 
  */
-if ( !function_exists( 'uix_page_builder_previewControlpanel' ) ) {
+if ( !function_exists( 'uix_page_builder_previewControlPanel' ) ) {
 	
-	add_action( 'init', 'uix_page_builder_previewControlpanel' );		
-	function uix_page_builder_previewControlpanel() {
+	add_action( 'init', 'uix_page_builder_previewControlPanel' );		
+	function uix_page_builder_previewControlPanel() {
 		
 		
         if ( is_admin() ) {
@@ -190,7 +190,7 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 				
 				//Using default template
 				if ( UixPageBuilder::tempfile_exists() ) {
-					update_post_meta( $post_ID, '_wp_page_template', 'page-uix_page_builder.php' );
+					update_post_meta( $post_ID, '_wp_page_template', 'tmpl-uix_page_builder.php' );
 				}
 				
 				
@@ -321,9 +321,9 @@ if ( !function_exists( 'uix_page_builder_remove_redundant_wapper' ) ) {
  * Save live-render data with ajax 
  * 
  */
-if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
-	add_action( 'wp_ajax_uix_page_builder_savevisualBuilder_settings', 'uix_page_builder_savevisualBuilder' );		
-	function uix_page_builder_savevisualBuilder() {
+if ( !function_exists( 'uix_page_builder_saveLiveRender' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_saveLiveRender_settings', 'uix_page_builder_saveLiveRender' );		
+	function uix_page_builder_saveLiveRender() {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
@@ -355,9 +355,9 @@ if ( !function_exists( 'uix_page_builder_savevisualBuilder' ) ) {
  * Publish live-render data with ajax 
  * 
  */
-if ( !function_exists( 'uix_page_builder_publishvisualBuilder' ) ) {
-	add_action( 'wp_ajax_uix_page_builder_publishvisualBuilder_settings', 'uix_page_builder_publishvisualBuilder' );		
-	function uix_page_builder_publishvisualBuilder() {
+if ( !function_exists( 'uix_page_builder_publishLiveRender' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_publishLiveRender_settings', 'uix_page_builder_publishLiveRender' );		
+	function uix_page_builder_publishLiveRender() {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_POST[ 'postID' ] ) ) {
@@ -373,6 +373,61 @@ if ( !function_exists( 'uix_page_builder_publishvisualBuilder' ) ) {
 		}
 		
 		
+		wp_die();	
+	}
+}
+
+
+
+/*
+ * Delete data of custom content template with ajax
+ * 
+ */
+if ( !function_exists( 'uix_page_builder_delContentTemplate' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_delContentTemplate_settings', 'uix_page_builder_delContentTemplate' );		
+	function uix_page_builder_delContentTemplate() {
+		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
+		
+		if ( isset( $_POST[ 'tempName' ] ) ) {
+			
+			//Update the WP data
+			$old = get_option( 'uix-page-builder-templates' );
+			$new = UixPageBuilder::remove_element_withvalue( $old, 'name', $_POST[ 'tempName' ] );
+			update_option( 'uix-page-builder-templates', $new );
+			
+			//Update the XML data
+			$xmlargs    = '';
+			if ( is_array( $new ) && sizeof( $new ) > 0 ) {
+
+				foreach ( $new as $v ) {
+
+					$xmlargs   .= '
+						<item>
+							<name><![CDATA['.$v[ 'name' ].']]></name>
+							<thumb><![CDATA['.$v[ 'thumb' ].']]></thumb>
+							<data><![CDATA['.$v[ 'data' ].']]></data>
+						</item>
+					';
+
+
+				}
+
+			}
+
+			$xmlvalue =  '<?xml version="1.0" encoding="utf-8"?>
+			<items>
+				'.$xmlargs.'
+			</items>
+			';
+
+			$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
+			update_option( 'uix-page-builder-templates-xml', $xmlvalue );	
+
+			
+	
+			
+		}
+
 		wp_die();	
 	}
 }

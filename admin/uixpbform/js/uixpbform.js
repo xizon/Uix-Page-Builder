@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 2.6
+	* Version 2.7
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc

@@ -9,7 +9,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 ?>
 
         <p>
-            <?php _e( 'Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: <code>"parallax"</code>, <code>"google maps"</code>, <code>"pricing table"</code>, <code>"features boxes"</code>, <code>"testimonials carousel"</code>, <code>"team"</code>, <code>"list of clients"</code>, <code>"accordion"</code>, <code>"tabs"</code>, <code>"author card"</code>, <code>"portfolio"</code>, <code>"blog"</code>. To be continued. More importantly, each module may contain a variety of styles.', 'uix-page-builder' ); ?>
+            <?php _e( 'Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: <code>"parallax"</code>, <code>"google maps"</code>, <code>"pricing"</code>, <code>"features"</code>, <code>"testimonials carousel"</code>, <code>"team"</code>, <code>"list of clients"</code>, <code>"accordion"</code>, <code>"tabs"</code>, <code>"author card"</code>, <code>"contact form"</code>, <code>"progress bar"</code>, <code>"portfolio"</code>, <code>"blog"</code>, <code>"uix products"</code>. To be continued. More importantly, each module may contain a variety of styles.', 'uix-page-builder' ); ?>
         </p> 
         <p>
             <?php _e( 'You could add any new pages using the plugin to your WordPress site, find the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. Click <strong>Add new</strong>. The <strong>"Uix Page Builder Attributes"</strong> section applies page builder templates to your new page. ', 'uix-page-builder' ); ?>
@@ -26,7 +26,14 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
             <?php _e( 'Features', 'uix-page-builder' ); ?>
         </h3>  
         <p>
- 			<?php _e( '* You can switch between <strong>"Visual Builder"</strong> and <strong>"Default Editor"</strong> modes at any time.', 'uix-page-builder' ); ?><br>
+        
+             <?php 
+				printf( 
+					__('* Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin <a href="%s" target="_blank">Uix Products</a>)', 'uix-page-builder' ), 
+					esc_url( 'https://wordpress.org/plugins/uix-products/' )
+				);
+			?><br>
+ 			<?php _e( '* You can switch between <strong>"Visual Builder"</strong> and <strong>"Default Editor"</strong> modes at any time on the Pages Add New/Edit Screen.', 'uix-page-builder' ); ?><br>
  			<?php _e( '* Support to choose multiple default templates you want.', 'uix-page-builder' ); ?><br>       
  			<?php _e( '* Support to save custom templates and export templates.', 'uix-page-builder' ); ?><br> 
  			<?php _e( '* Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like <strong>"Uix Page Builder Anchor Links"</strong>, from the left column to add to the menu.  ', 'uix-page-builder' ); ?><br> 

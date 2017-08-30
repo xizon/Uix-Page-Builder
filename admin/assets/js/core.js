@@ -407,6 +407,36 @@
 		});
 
 
+		 //--------delete
+		$( document ).on( 'click', '#uix-page-builder-templatelist .close-tmpl', function( e ) {
+			e.preventDefault();
+			
+			var tid  = $( this ).data( 'del-id' ),
+				name = $( '#' + tid ).html();
+
+			$.ajax({
+				url       : ajaxurl,
+				type      : 'POST',
+				data: {
+					action     : 'uix_page_builder_delContentTemplate_settings',
+					tempName   : name,
+					security   : uix_page_builder_layoutdata.send_string_nonce
+				},
+				success   : function( result ){
+					$( '#' + tid ).closest( 'label' ).remove();
+					
+					// stuff here
+					return false;	
+					
+
+				}
+			});
+
+
+		});
+	
+		
+		
 
 		/*!
 		 *
@@ -449,7 +479,7 @@
 
 				//Auto set page template
 				if ( uix_page_builder_layoutdata.send_string_tempfiles_exists == 1 ) {
-					$('[name="page_template"] option[value="page-uix_page_builder.php"]').attr( 'selected', 'selected' );
+					$('[name="page_template"] option[value="tmpl-uix_page_builder.php"]').attr( 'selected', 'selected' );
 				}
 
 			});

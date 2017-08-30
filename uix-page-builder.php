@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.2.8
+ * Version:     1.3.0
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -21,8 +21,7 @@ class UixPageBuilder {
 	const PREFIX           = 'uix';
 	const HELPER           = 'uix-page-builder-helper';
 	const NOTICEID         = 'uix-page-builder-helper-tip';
-	const CUSTOMTEMP       = 'uix-page-builder-custom/sections/';
-	const CLEANTEMP        = 0; // Clear custom template data when this value is "1" (For developer)
+	const CUSTOMTEMP       = 'uixpb_templates/sections/';
 	const SHOWPAGESCREEN   = 0; // Show page builder core assets from "Pages Add New Screen" when this value is "1" (For developer)
 
 	
@@ -91,6 +90,7 @@ class UixPageBuilder {
 		//section shortcodes
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-blog.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-googlemap.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-uix_products.php';
 	}
 	
 	
@@ -269,8 +269,8 @@ class UixPageBuilder {
 		 
 		add_submenu_page(
 			self::HELPER,
-			__( 'For Developer', 'uix-page-builder' ),
-			__( 'For Developer', 'uix-page-builder' ),
+			__( 'For Theme Developer', 'uix-page-builder' ),
+			__( 'For Theme Developer', 'uix-page-builder' ),
 			'manage_options',
 			'admin.php?page='.self::HELPER.'&tab=for-developer'
 		);	 
@@ -337,11 +337,11 @@ class UixPageBuilder {
 		if ( self::tempfolder_exists() ) {
 			
 			
-			if ( file_exists( get_template_directory() .'/uix-page-builder-custom/css/uix-page-builder.css' ) ) {
+			if ( file_exists( get_template_directory() .'/uixpb_templates/css/uix-page-builder.css' ) ) {
 				if ( $type == 'uri' )  {
-					return get_template_directory_uri() .'/uix-page-builder-custom/';
+					return get_template_directory_uri() .'/uixpb_templates/';
 				} else {
-					return get_template_directory() .'/uix-page-builder-custom/';
+					return get_template_directory() .'/uixpb_templates/';
 				}
 			}
 
@@ -356,9 +356,9 @@ class UixPageBuilder {
 		} else {
 			
 			if ( $type == 'uri' )  {
-				return self::plug_directory() .'uix-page-builder-custom/';
+				return self::plug_directory() .'uixpb_templates/';
 			} else {
-				return self::plug_filepath() .'uix-page-builder-custom/';
+				return self::plug_filepath() .'uixpb_templates/';
 				
 			}
 		}
@@ -636,7 +636,7 @@ class UixPageBuilder {
 	 */
 	public static function tempfolder_exists() {
 
-	      if( is_dir( get_stylesheet_directory() . '/uix-page-builder-custom' ) ) {
+	      if( is_dir( get_stylesheet_directory() . '/uixpb_templates' ) ) {
 			  return true;
 		  } else {
 			  return false;
@@ -1047,6 +1047,22 @@ class UixPageBuilder {
 	}	
 	
 	
+	
+	/*
+	 * Delete element from multidimensional-array based on value
+	 *
+	 *
+	 */
+	function remove_element_withvalue($array, $key, $value){
+		 foreach($array as $subKey => $subArray){
+			  if($subArray[$key] == $value){
+				   unset($array[$subKey]);
+			  }
+		 }
+		 return $array;
+	}
+	
+	
 	/*
 	 * Decode template for shortcode attributes
 	 *
@@ -1129,44 +1145,6 @@ class UixPageBuilder {
 	}
 	
 	
-	/*
-	 * Display categories on page
-	 *
-	 *
-	 */
-	public static function cat_list( $str, $classprefix = 'uix-pb-portfolio-' ) {
-
-		$list = array();  
-		$html = array();  
-		$c = preg_match_all( '/\<div class="'.$classprefix.'type">(.*?)\<\/div\>/', $str, $m ); 
-		$code = '';
-		if( count( $m[1] ) > 0 ) { 
-			for( $i=0; $i < $c; $i++ ) { 
-			
-				$new = !empty($m[1][$i]) ? $m[1][$i] : '';
-				array_push( $list, array(
-				    'slug' => self::transform_slug( $new ),
-					'name' => $new
-				));
-				
-			}  
-			
-			foreach ( $list as $key ) {
-				array_push( $html, '<li><a href="javascript:" data-group="'.$key[ 'slug' ].'">'.$key[ 'name' ].'</a></li>' );
-			}
-			$html = array_unique( $html );
-			
-			foreach ( $html as $key ) {
-				$code .= $key;
-			}	
-			
-			return $code;
-
-		} else {
-			return '';
-		}
-	
-	}
 	
 	
 	/*
@@ -1188,7 +1166,7 @@ class UixPageBuilder {
 				if( !self::tempfile_exists() ) {
 					echo '<div class="notice notice-warning"><p>';
 					printf( 
-						__('You could <a class="button button-small" href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.  ', 'uix-page-builder' ), 
+						__('You could <a class="button button-small" href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php"</strong> ) in your templates directory.  ', 'uix-page-builder' ), 
 						admin_url( "admin.php?page=".self::HELPER."&tab=temp" )
 					);
 					printf( __( '<a href="%1$s">Hide Notice</a>' ), '?post_type='.self::get_slug().'&'.self::NOTICEID.'=0');
@@ -1226,7 +1204,7 @@ class UixPageBuilder {
 	 */
 	public static function tempfile_exists() {
 
-	      if( !file_exists( get_stylesheet_directory() . '/page-uix_page_builder.php' ) ) {
+	      if( !file_exists( get_stylesheet_directory() . '/tmpl-uix_page_builder.php' ) ) {
 			  return false;
 		  } else {
 			  return true;
@@ -1247,11 +1225,11 @@ class UixPageBuilder {
 	
 		
 		$filenames = array();
-		$filepath = UIX_PAGE_BUILDER_PLUGIN_DIR. 'theme_templates/';
+		$filepath = UIX_PAGE_BUILDER_PLUGIN_DIR. 'uixpb_templates/';
 		$themepath = get_stylesheet_directory() . '/';
 		
-		foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
-		    $filenames[] = str_replace( dirname(__FILE__). "/theme_templates/", '', $file );
+		foreach ( glob( dirname(__FILE__). "/uixpb_templates/*.php") as $file ) {
+		    $filenames[] = str_replace( dirname(__FILE__). "/uixpb_templates/", '', $file );
 		}	
 		
 		echo '<ul>';
@@ -1286,11 +1264,11 @@ class UixPageBuilder {
 		  global $wp_filesystem;
 			
 		  $filenames = array();
-		  $filepath = UIX_PAGE_BUILDER_PLUGIN_DIR. 'theme_templates/';
+		  $filepath = UIX_PAGE_BUILDER_PLUGIN_DIR. 'uixpb_templates/';
 		  $themepath = get_stylesheet_directory() . '/';
 
-	      foreach ( glob( dirname(__FILE__). "/theme_templates/*") as $file ) {
-			$filenames[] = str_replace( dirname(__FILE__). "/theme_templates/", '', $file );
+	      foreach ( glob( dirname(__FILE__). "/uixpb_templates/*.php") as $file ) {
+			$filenames[] = str_replace( dirname(__FILE__). "/uixpb_templates/", '', $file );
 		  }	
 		  
 

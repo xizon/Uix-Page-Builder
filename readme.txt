@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.2.8
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,7 +15,7 @@ Uix Page Builder is a design system that it is simple content creation interface
 
 == Description ==
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing table`, `features boxes`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `portfolio`, `blog`. To be continued. More importantly, each module may contain a variety of styles.
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing`, `features`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `progress bar`, `portfolio`, `blog`, `uix products`. To be continued. More importantly, each module may contain a variety of styles.
 
 You could add a new page with Uix Page Builder to your WordPress site, find the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. Click <strong>Add new</strong>. The <strong>"Uix Page Builder Attributes"</strong> section applies page builder templates to your new page. 
 
@@ -35,7 +35,8 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
   
 = Features =
 
-* You can switch between "Visual Builder" and "Default Editor" modes at any time.
+* Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin [Uix Products](https://wordpress.org/plugins/uix-products/))
+* You can switch between <strong>"Visual Builder"</strong> and <strong>"Default Editor"</strong> modes at any time on the Pages Add New/Edit Screen.
 * Support to choose multiple default templates you want.
 * Support to save custom templates and export templates.
 * Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like "Uix Page Builder Anchor Links", from the left column to add to the menu.
@@ -47,14 +48,14 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
 = Advanced Customization ( For Theme Developer ) =
 
 
-1) Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/` to your theme directory `/wp-content/themes/{your-theme}/`.
+1) Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uixpb_templates/` to your theme directory `/wp-content/themes/{your-theme}/`.
 
 
-> Note: You could move the **/wp-content/themes/{your-theme}/uix-page-builder-custom/js/**, **/wp-content/themes/{your-theme}/uix-page-builder-custom/images/** and **/wp-content/themes/{your-theme}/uix-page-builder-custom/css/** folders to your theme assets directory **/wp-content/themes/{your-theme}/assets/**
+> Note: You could move the **/wp-content/themes/{your-theme}/uixpb_templates/js/**, **/wp-content/themes/{your-theme}/uixpb_templates/images/** and **/wp-content/themes/{your-theme}/uixpb_templates/css/** folders to your theme assets directory **/wp-content/themes/{your-theme}/assets/**
 
 
 
-2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_uix-page-builder-plugins.js"** to **"uix-page-builder-plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uix-page-builder-custom/js/` or `/wp-content/themes/{your-theme}/uix-page-builder-custom/js/` or `/wp-content/themes/{your-theme}/assets/js/`, and add the required script to "uix-page-builder-plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
+2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_uix-page-builder-plugins.js"** to **"uix-page-builder-plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uixpb_templates/js/` or `/wp-content/themes/{your-theme}/uixpb_templates/js/` or `/wp-content/themes/{your-theme}/assets/js/`, and add the required script to "uix-page-builder-plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
 
 
 
@@ -68,7 +69,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 2. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You could specify the template name, in this case I used <strong>"Uix Page Builder Template"</strong>. )
 
 
-> You could create Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/theme_templates/page-uix_page_builder.php"</strong> ) in your templates directory.
+> You could create Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php"</strong> ) in your templates directory.
 
 
 You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box. Click <strong>"Use Visual Builder"</strong> button to enter the visual editing mode.
@@ -104,6 +105,21 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+= 1.3.0 (August 30, 2017) =
+
+* Fixed possible compatibility errors.
+* Added a new module type: Uix Products (new). Require the WP plugin "Uix Products".
+* Simplifies the templates directory for theme developer customization.
+* Optimized the responsiveness of the visual editor.
+* Optimize class of the excerpt.
+* Optimized portfolio styles of front-end.
+* Added new feature: Support to delete data of custom Content Template.
+* Support Custom Post Types to create a portfolio list in WordPress.
+* Removed some functions that is useless.
+
+
+
 
 = 1.2.8 (August 7, 2017) =
 
