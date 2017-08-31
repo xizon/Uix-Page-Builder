@@ -30,5 +30,11 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'for-developer' ) {
 		</p>       
        
 
+	   	<p class="uix-bg-custom-desc">
+	   	    <?php printf( __( '3) <a href="%1$s">Online API Documentation</a>', 'uix-page-builder' ), esc_url( '#' ) ); ?>
+		</p>   
+   
+   
+    
     
 <?php } ?>

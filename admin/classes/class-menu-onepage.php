@@ -77,6 +77,8 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 					
 		
 					foreach ( $builder_content as $key => $value ) :
+					
+					
 						$con                  = UixPageBuilder::page_builder_output( $value->content );
 						$col                  = $value->col;
 						$row                  = $value->row;
@@ -87,54 +89,54 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 						$element_code         = '';
 						$element_grid_before  = '';
 						$element_grid_after   = '</div>';
-						
+
 						if ( empty( $custom_id ) ) $custom_id = 'uix-page-builder-section-'.$row;
-						
-					
+
+
 						if ( $con && is_array( $con ) ) {
 							foreach ( $con as $key ) :
-								
+
 								$$key[0] = $key[ 1 ];
 								$item[ UixPageBuilder::page_builder_item_name( $key[0] ) ]  =  $$key[0];
 							endforeach;
 						}
-				
+
 						//------------------------------------   loop sections
 						if ( sizeof( $item ) > 3 && !empty( $value->content ) ) {
-							
+
 							$col_content   = UixPageBuilder::page_builder_analysis_rowcontent( UixPageBuilder::prerow_value( $item ), 'content' );
-							
+
 							if ( $col_content && is_array( $col_content ) ) {
 								foreach ( $col_content as $key => $value ) :
-									
+
 									$colid           = $value[0][1]; //column id
 									$temp_index      = count( $value ) - 1;
-								
-								    $bool1 = UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' );
-								    $bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' );
-								
+
+									$bool1 = UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' );
+									$bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' );
+
 									if ( $bool1 || $bool2 ) {
-										
+
 										$value = UixPageBuilder::theme_value( $value[$temp_index][1] );
 										$html = ( !empty( $value ) ) ? $value : '&nbsp;';
-										
+
 										//Determine the grid system
 										foreach ( $cols as $id ) :
 											if ( $colid == $id[0] ) {
 												$element_grid_before = '<div class="'.$id[1].' {last}">';
 											}
 										endforeach;
-										
+
 										$element_code .= $element_grid_before.$html.$element_grid_after;	
-									
-										
+
+
 									}
-		
-								
-								
+
+
+
 								endforeach;
-								
-							    echo '
+
+								echo '
 								<li>
 									<label class="menu-item-title">
 										<input type="checkbox" class="menu-item-checkbox" name="menu-item['.esc_attr( $section_id ).'][menu-item-object-id]" value="'.esc_attr( $section_id ).'"> '.$section_title.'<br><span class="custom-prop"><strong>'.__( 'ID', 'uix-page-builder' ).':</strong> '.$custom_id.'</span>
@@ -145,12 +147,13 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 									<input type="hidden" class="menu-item-classes" name="menu-item['.esc_attr( $section_id ).'][menu-item-classes]" value="nav-anchor">
 								</li>
 								';
-								
+
 							}
-							
-			
+
+
 						}
-						
+
+					
 						//------------------------------------ end sections
 		
 						

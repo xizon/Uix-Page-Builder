@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,12 +15,12 @@ Uix Page Builder is a design system that it is simple content creation interface
 
 == Description ==
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing`, `features`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `progress bar`, `portfolio`, `blog`, `uix products`. To be continued. More importantly, each module may contain a variety of styles.
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing`, `features`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `progress bar`, `portfolio`, `blog`, `uix products`, `slider`. To be continued. More importantly, each module may contain a variety of styles.
 
 You could add a new page with Uix Page Builder to your WordPress site, find the <strong>Pages</strong> menu in the WordPress Dashboard Navigation menu. Click <strong>Add new</strong>. The <strong>"Uix Page Builder Attributes"</strong> section applies page builder templates to your new page. 
 
 
-Here are <strong>5+</strong>  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
+Here are <strong>6+</strong>  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
 
 
 
@@ -105,6 +105,17 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 
 == Changelog ==
+
+= 1.3.1 (August 31, 2017) =
+
+* Simplifies the templates directory for theme developer customization.
+* Added a new module type: Slider (new).
+* Added "Classic" template (new).
+* Improved using instructions.
+* Optimized template file(.xml) structure.
+* Fixed a small bug when the template was exported.
+
+
 
 = 1.3.0 (August 30, 2017) =
 

@@ -19,12 +19,12 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 [![Uix Page Builder Live Demo](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/video-cover.jpg)](https://www.youtube.com/watch?v=vg3rPxcfZEg "Uix Page Builder Live Demo")
 
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing`, `features`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `progress bar`, `portfolio`, `blog`, `uix products`. To be continued. More importantly, each module may contain a variety of styles.
+Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing`, `features`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `progress bar`, `portfolio`, `blog`, `uix products`, `slider`. To be continued. More importantly, each module may contain a variety of styles.
 
 You could add any new pages using the plugin to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
 
 
-Here are **5+**  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
+Here are **6+**  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
 
 
 
@@ -59,6 +59,16 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 
 ### Updates
+
+##### = 1.3.1 (August 31, 2017) =
+
+* Simplifies the templates directory for theme developer customization.
+* Added a new module type: Slider (new).
+* Added "Classic" template (new).
+* Improved using instructions.
+* Optimized template file(.xml) structure.
+* Fixed a small bug when the template was exported.
+
 
 
 ##### = 1.3.0 (August 30, 2017) =

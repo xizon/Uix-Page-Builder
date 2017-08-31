@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.3.0
+ * Version:     1.3.1
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -327,6 +327,36 @@ class UixPageBuilder {
 	
 	}
 	
+	/*
+	 * Generates the template data name created by the current builder
+	 *
+	 *
+	 */
+	public static function get_tempname( $slug = false ) {
+
+		if( ! isset( $_SESSION ) ) session_start();
+		
+		if( array_key_exists( 'uix-page-builder-tempname', $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-tempname' ] ) ) {
+			$tempname = $_SESSION[ 'uix-page-builder-tempname' ];	
+		}  else {
+			$curid      = get_the_ID();
+			$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
+			$tempname   = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_id );
+			
+			$_SESSION[ 'uix-page-builder-tempname' ] = $tempname;
+		}
+
+
+		if ( $slug ) {
+			return sanitize_title_with_dashes( $tempname );
+		} else {
+			return $tempname;
+		}
+		
+	
+	}
+	
+	
 	
 	/*
 	 * Returns custom back-end panel directory or directory URL
@@ -506,6 +536,10 @@ class UixPageBuilder {
 	 */
 	public static function page_builder_array_newlist( $arr ) {
 		
+		//Format the JSON code (remove value of "tempname")
+		$arr = self::format_render_codes_remove_tempname( $arr );
+
+	
 		$data = esc_textarea( $arr );
 		$data = str_replace( '&quot;col&quot;', '"col"', 
 		       str_replace( '&quot;row&quot;', '"row"',
@@ -526,7 +560,9 @@ class UixPageBuilder {
 			$new_list = array();
 			if ( is_array( $old_arr ) ) {
 				foreach( $old_arr as $key => $value ){
-					$new_list[] = $value->row;
+					
+				    $new_list[] = $value->row;
+				
 				}
 				array_multisort( $new_list, SORT_ASC, $old_arr );
 				
@@ -569,7 +605,54 @@ class UixPageBuilder {
 				$str 
 			   ) ) ) );			   
 		
-	}		
+	}	
+	
+	
+	/*
+	 * Format the JSON code (remove value of "tempname")
+	 *
+	 */	
+	public static function format_render_codes_remove_tempname( $str ) {
+		
+		// Value of "tempname" is class for the <body> of each builder content
+		if ( self::inc_str( $str, '"tempname"' ) ) {
+			$result  = '';
+			$newstr  = json_decode( $str, true );
+			unset( $newstr[0] );
+			$total   = count( $newstr );
+
+			$result .= '[';
+
+			for ( $i = 1; $i <= $total; $i++ ) {
+				$result .= json_encode( $newstr[ $i ] ).',';
+			}
+
+			$result = rtrim( $result, ',' );
+			$result .= ']';
+
+		} else {
+			$result = $str;
+		}
+
+		
+		return $result;	
+
+	}	
+
+
+	public static function format_layoutdata_remove_tempname( $str ) {
+		
+		// Value of "tempname" is class for the <body> of each builder content
+		if ( self::inc_str( $str, '"tempname"' ) ) {
+			$newstr = $str;
+		} else {
+			$json_tempname = '{"tempname":"'.self::get_tempname().'"},';
+			$newstr = '['.$json_tempname.ltrim( rtrim( $str, ']' ), '[' ).']';
+		}
+		
+		return $newstr;	
+
+	}	
 	
 	/*
 	 * Output content of page builder
@@ -660,8 +743,10 @@ class UixPageBuilder {
 				foreach ( $uix_pb_config as $v ) {
 					foreach ( $v[ 'buttons' ] as $key ) {
 						
-						if ( file_exists( get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php" ) ) {
-							include get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$key[ 'id' ].".php";
+						$keyid = str_replace( '.php', '', $key[ 'id' ] );
+						
+						if ( file_exists( get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$keyid.".php" ) ) {
+							include get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$keyid.".php";
 						}
 						
 					}						
@@ -673,8 +758,10 @@ class UixPageBuilder {
 				foreach ( $uix_pb_config as $v ) {
 					foreach ( $v[ 'buttons' ] as $key ) {
 						
-						if ( file_exists( self::plug_filepath().self::CUSTOMTEMP."".$key[ 'id' ].".php" ) ) {
-							include self::plug_filepath().self::CUSTOMTEMP."".$key[ 'id' ].".php";
+						$keyid = str_replace( '.php', '', $key[ 'id' ] );
+						
+						if ( file_exists( self::plug_filepath().self::CUSTOMTEMP."".$keyid.".php" ) ) {
+							include self::plug_filepath().self::CUSTOMTEMP."".$keyid.".php";
 						}
 						
 					}						
@@ -731,9 +818,11 @@ class UixPageBuilder {
 			
 			foreach ( $v[ 'buttons' ] as $key ) {
 				
+				
+				$keyid  = str_replace( '.php', '', $key[ 'id' ] );
 				$imgsrc = ( !empty( $key[ 'thumb' ] ) ) ? $imgpath.$key[ 'thumb' ] : $imgpath.'_none.png';
 				
-				$btns .= "<div class=\"uix-page-builder-col\"><a class=\"widget-item-btn ".$key[ 'id' ]."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$key[ 'id' ]."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgsrc )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
+				$btns .= "<div class=\"uix-page-builder-col\"><a class=\"widget-item-btn ".$keyid."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$keyid."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgsrc )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
 			}		
 			
 			$btns .= '</div>';
@@ -1472,7 +1561,8 @@ class UixPageBuilder {
 			$item              = array();
 			if ( $builder_content && is_array( $builder_content ) ) {
 				foreach ( $builder_content as $key => $value ) :
-					$con         = self::page_builder_output( $value->content );
+		
+					$con = self::page_builder_output( $value->content );
 
 
 					if ( $con && is_array( $con ) ) {
@@ -1510,6 +1600,7 @@ class UixPageBuilder {
 						endforeach;
 					}	
 
+				
 				endforeach;
 
 

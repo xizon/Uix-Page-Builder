@@ -259,8 +259,6 @@ img.uix-pb-img,
 .uix-pb-card:after,
 .uix-pb-client:before,
 .uix-pb-client:after,
-.uix-pb-imageslider:before,
-.uix-pb-imageslider:after,
 .uix-pb-testimonials:before,
 .uix-pb-testimonials:after {
     display: table;
@@ -276,7 +274,6 @@ img.uix-pb-img,
 .uix-pb-gallery:after,
 .uix-pb-card:after,
 .uix-pb-client:after,
-.uix-pb-imageslider:after,
 .uix-pb-testimonials:after {
     padding-top: 0;
     clear: both;

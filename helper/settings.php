@@ -161,7 +161,35 @@ function uix_page_builder_options_page(){
 	}
 	
 }
+	
+/* FAQ area */
+.uix-page-builder-faq-group {
+	padding: 10px;
+	background: #FFFEEE;
+	border: 1px solid #EEECCE;
+	margin-bottom: 8px;
+	margin: 1em 0;
+}
+	
+.uix-page-builder-faq-group p {
+	margin: 0;
+	padding: 0;
+}
+	
+.uix-page-builder-faq-group img {
+	margin-top: .5em;
+}
 
+.uix-page-builder-faq-group > h3 {
+	font-size: 15px;
+	margin: 0;
+	padding: 8px 0;
+	border-bottom: 1px dashed #EEECCE;
+	display: block;
+	color: #A39954;
+}
+
+	
 	
 </style>
 

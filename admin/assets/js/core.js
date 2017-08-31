@@ -312,6 +312,9 @@
 			    v     = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="temp"]:checked' ).parent().find( 'textarea' ).html();
 
 			$this.next( '.spinner' ).addClass( 'is-active' );
+			
+			//Format the JSON code (remove value of "tempname")
+			v = gridsterFormatRenderCodesRemoveTempname( v );
 
 			$.post( ajaxurl, {
 				action               : 'uix_page_builder_metaboxes_loadtemp_settings',
@@ -517,6 +520,50 @@
 	} );
 
 } ) ( jQuery );
+
+
+	
+
+
+/*! 
+ * 
+ * [Gridster] Format the JSON code (remove value of "tempname")
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - Any string.
+ * @return {string}                - A new string.
+ */		
+function gridsterFormatRenderCodesRemoveTempname( str ){
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		
+		if (/^[\],:{}\s]*$/.test( str.replace(/\\["\\\/bfnrtu]/g, '@' ).
+		replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+		replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+
+			var newstr        = JSON.parse( str ),
+				tempnameValue = '',
+				result        = '';
+
+			
+			for( var i = 0; i < 1; i++ ) {
+				tempnameValue = newstr[i].tempname;
+			}
+			
+			str = str.replace( '{"tempname":"'+tempnameValue+'"},', '' );
+
+			return str;
+
+		}else{
+
+		    return str;
+
+		}
+
+
+	}
+
+}
+
 
 
 /*! 

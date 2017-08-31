@@ -3,11 +3,12 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+
 /**
  * Initialize sections template parameters
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::init_template_parameters( 'uix_pb_section_portfolio1' );
+$form_vars = UixPageBuilder::init_template_parameters( basename( __FILE__, '.php' ) );
 if ( !is_array( $form_vars ) ) return;
 foreach ( $form_vars as $key => $v ) :
 	$$key = $v;

@@ -51,6 +51,8 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 			    $id                = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
 			    $return_string     = '';
+		
+			
 				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $id, 'uix-page-builder-layoutdata', true ) );
 				$item              = array();
 				$cols              = array( 
@@ -72,6 +74,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 				if ( $builder_content && is_array( $builder_content ) ) {
 					foreach ( $builder_content as $key => $value ) :
+					
 						$con                  = UixPageBuilder::page_builder_output( $value->content );
 						$col                  = $value->col;
 						$row                  = $value->row;
@@ -83,6 +86,9 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 						$element_code         = '';
 						$element_grid_before  = '';
 						$element_grid_after   = '</div>';
+
+
+
 
 						if ( empty( $custom_id ) ) $custom_id = 'uix-page-builder-section-'.$row;
 
@@ -105,9 +111,9 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 									$colid           = $value[0][1]; //column id
 									$temp_index      = count( $value ) - 1;
-								
-								    $bool1 = UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' );
-								    $bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' );
+
+									$bool1 = UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' );
+									$bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' );
 
 									if ( $bool1 || $bool2 ) {
 
@@ -129,7 +135,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 								endforeach;
 
-								
+
 								//Control the behavior of floating elements.
 								$matchCount = preg_match( '/(.*){last}(.*)$/', $element_code, $matches );
 								if ( $matchCount > 0 ) {
@@ -138,9 +144,9 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 													str_replace( '{last}'.$matches[2], 'uix-pb-col-last'.$matches[2], 
 													$element_code 
 													) );
-									
+
 								}
-								
+
 								//Fix the image path of the editor
 								$upload_dir = wp_upload_dir();
 								$element_code = str_replace( '../wp-content/uploads/', trailingslashit( $upload_dir[ 'baseurl' ] ), $element_code );
@@ -161,8 +167,8 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 							}
 
 
-						}
-
+						}	
+							
 						//------------------------------------ end sections
 
 
@@ -173,7 +179,6 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 
 				}
-		
 		
 			
 			return do_shortcode( $return_string );

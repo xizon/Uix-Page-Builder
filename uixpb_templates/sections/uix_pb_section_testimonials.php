@@ -7,7 +7,7 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
  * Initialize sections template parameters
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::init_template_parameters( 'uix_pb_section_testimonials' );
+$form_vars = UixPageBuilder::init_template_parameters( basename( __FILE__, '.php' ) );
 if ( !is_array( $form_vars ) ) return;
 foreach ( $form_vars as $key => $v ) :
 	$$key = $v;

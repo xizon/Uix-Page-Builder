@@ -15,6 +15,7 @@
     5. Testimonials
 	6. Filterable
 	7. Grid
+	8. Image Slider
 	Required: Apply the original scripts
 	
 
@@ -834,6 +835,69 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 }( uix_pb, jQuery, window, document ) );
 
 
+
+
+/*!
+ *************************************
+ * 8. Image Slider
+ *************************************
+ */
+uix_pb = ( function ( uix_pb, $, window, document ) {
+    'use strict';
+
+
+    var documentReady = function( $ ) {
+
+		$( '.uix-pb-imageslider-container .flexslider' ).each( function()  {
+			var $this        = $( this ),
+				dataSpeed    = $this.data( 'speed' ),
+				dataTiming   = $this.data( 'timing' ),
+				dataLoop     = $this.data( 'loop' ),
+				dataPrev     = $this.data( 'prev' ),
+				dataNext     = $this.data( 'next' ),
+				dataAnim     = $this.data( 'animation' ),
+				dataPaging   = $this.data( 'paging' ),
+				dataArrows   = $this.data( 'arrows' );
+
+			// If there is no data-xxx, save current source to it
+			if( typeof dataSpeed === typeof undefined ) dataSpeed = 600;
+			if( typeof dataTiming === typeof undefined ) dataTiming = 10000;
+			if( typeof dataLoop === typeof undefined ) dataLoop = true;
+			if( typeof dataPrev === typeof undefined ) dataPrev = "<i class='fa fa-chevron-left'></i>";
+			if( typeof dataNext === typeof undefined ) dataNext = "<i class='fa fa-chevron-right'></i>";
+			if( typeof dataAnim === typeof undefined ) dataAnim = 'slide';
+			if( typeof dataPaging === typeof undefined ) dataPaging = true;
+			if( typeof dataArrows === typeof undefined ) dataArrows = true;
+
+			$this.flexslider({
+				namespace	      : 'uix-pb-flex-',
+				animation         : dataAnim,
+				selector          : '.slides > li',
+				controlNav        : dataPaging,
+				smoothHeight      : true,
+				prevText          : dataPrev,
+				nextText          : dataNext,
+				animationSpeed    : dataSpeed,
+				slideshowSpeed    : dataTiming,
+				slideshow         : true,
+				animationLoop     : dataLoop,
+				directionNav      : dataArrows
+			});
+
+
+		});
+
+	};
+
+
+    uix_pb.slideshow = {
+        documentReady : documentReady
+    };
+
+    uix_pb.components.documentReady.push( documentReady );
+    return uix_pb;
+
+}( uix_pb, jQuery, window, document ) );
 
 /*! 
  * ************************************

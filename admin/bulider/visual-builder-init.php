@@ -329,7 +329,7 @@ if ( !function_exists( 'uix_page_builder_saveLiveRender' ) ) {
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
 			$id              = $_POST[ 'postID' ];
-			$layoutdata 	 = wp_unslash( $_POST[ 'layoutdata' ] );
+			$layoutdata 	 = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'layoutdata' ] ) );
 			$pagetemp 	     = sanitize_text_field( $_POST[ 'pageTemp' ] );
 			$builderstatus 	 = 'disable';
 

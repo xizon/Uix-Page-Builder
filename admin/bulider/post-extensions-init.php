@@ -16,12 +16,12 @@ if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
 		if ( isset( $_POST[ 'curlayoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
 			
-			$name               = ( empty( $_POST[ 'tempname' ] ) ) ? sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $_POST[ 'postID' ] ) : $_POST[ 'tempname' ];
+			$name               = ( empty( $_POST[ 'tempname' ] ) ) ? UixPageBuilder::get_tempname() : $_POST[ 'tempname' ];
 		    $value              = array();
 			$xmlargs            = '';
 			$old                = get_option( 'uix-page-builder-templates' );
 			$tmpl_default_thumb = '{temp_preview_thumb_path}images/UixPageBuilderThumb/tmpl/_default.jpg';
-			$tmpl_data          = wp_unslash( $_POST[ 'curlayoutdata' ] );
+			$tmpl_data          = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'curlayoutdata' ] ) );
 			$tmpl_name          = sanitize_text_field( $name );
 			
 			
@@ -210,7 +210,7 @@ if ( !function_exists( 'uix_page_builder_output_frontend' ) ) {
 			
 			$content = UixPageBuilder::format_render_codes( do_shortcode( '[uix_pb_sections]' ) );
 			
-			if ( empty( $content ) ) $content = '<i class="fa fa-plus-circle"></i> '.esc_html__( 'Add a first module from the side panel. You can also choose a template to use.', 'uix-page-builder' );
+			if ( empty( $content ) ) $content = '<div style="text-align:center;padding: 1.5em 0;"><i class="fa fa-plus-circle"></i> '.esc_html__( 'Add a first module from the side panel. You can also choose a template to use.', 'uix-page-builder' ).'</div>';
 			
 			echo $content;
 		}
@@ -254,7 +254,10 @@ if ( !function_exists( 'uix_page_builder_save' ) ) {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
-			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', wp_unslash( $_POST[ 'layoutdata' ] ) );
+			
+			$layoutdata = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'layoutdata' ] ) );
+			
+			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', $layoutdata );
 		}
 		
 		wp_die();	
@@ -292,7 +295,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_plugin_url'       => UixPageBuilder::plug_directory(),
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
 				'send_string_postid'           => $post_id,
-				'send_string_name'             => sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_id ),
+				'send_string_name'             => UixPageBuilder::get_tempname(),
 				'send_string_loadlist'         => esc_html__( 'Loading list...', 'uix-page-builder' ),
 				'send_string_tempfiles_exists' => $tempfile_exists,
 				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
@@ -396,19 +399,20 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
     </div>
     
     <div class="uix-metabox-group">
-        <h3><?php _e( 'How To Create The One-Page Navigation? Here is an example:', 'uix-page-builder' ); ?></h3>
-        <div class="uix-metabox-con">
-            <p>
-             <?php _e( '1. On visual builder page, expand the <i class="dashicons dashicons-admin-generic"></i> from Drag & Drop modules of left sidebar. You can enter any string in the custom <strong>ID</strong> field on the right. Such as <code>my-portfolio</code>.', 'uix-page-builder' ); ?></p>
-             <p>
-             <?php printf( __( '2. Create a new <a href="%1$s">menu</a>, and add a Custom Link for each menu item you plan on having. For each menu item, enter an id that you will assign later to the corresponding section. For example, for the menu item <code>My Portfolio</code>, you would enter <code>#my-portfolio</code> in the URL field.', 'my-text-domain' ), admin_url( "nav-menus.php" ) ); ?>
-             </p>
-            
-
-        </div>
-
+        <h3>
+			<?php _e( 'FAQ 1: How To Create a Full Width or Boxed Layout?', 'uix-page-builder' ); ?>
+        </h3>
+        <h3>
+			<?php _e( 'FAQ 2: How To Create The One-Page Navigation?', 'uix-page-builder' ); ?>
+        </h3>
+        <h3>
+			<?php _e( 'FAQ 2: How to use a custom page builder template?', 'uix-page-builder' ); ?>
+        </h3>
+		<p><?php printf( __( '<a href="%1$s" target="_blank">Check out</a>' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=usage' ) ); ?></p>
     
     </div>
+    
+
 
 
         
@@ -521,7 +525,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>  
 					<p>
 						<label>
-							<input size="20" name="tempname" type="text" value="<?php echo sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $curid ); ?>">
+							<input size="20" name="tempname" type="text" value="<?php echo UixPageBuilder::get_tempname(); ?>">
 						</label>
 					</p>
 					<a class="button button-primary button-small save" href="javascript:"><?php _e( 'Save', 'uix-page-builder' ); ?></a><span class="spinner"></span>
@@ -1747,10 +1751,8 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 		if( $slug != $post->post_type ) return $post_id;
 		
 	
-		$layoutdata 	 = wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] );
+		$layoutdata 	 = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] ) );
 		$builderstatus 	 = sanitize_text_field( $_POST[ 'uix-page-builder-status' ] );
-		
-		
 		
 		if( isset( $_POST[ 'uix-page-builder-layoutdata' ] ) ) update_post_meta( $post_id, 'uix-page-builder-layoutdata', $layoutdata );
 		if( isset( $_POST[ 'uix-page-builder-status' ] ) ) update_post_meta( $post_id, 'uix-page-builder-status', $builderstatus );
