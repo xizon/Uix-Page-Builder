@@ -78,9 +78,23 @@ You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta 
 
 == Frequently Asked Questions ==
 
-= What's with the version numbers? =
+= FAQ 1: How To Create a Full Width or Boxed Layout? =
 
-The version number is the date of the revision of the [guidelines](https://make.wordpress.org/themes/handbook/review/) used to create it.
+On visual builder page, expand the Settings Icon from Drag & Drop modules of left sidebar. You can easily choose the type of container.
+
+
+= FAQ 2: How To Create The One-Page Navigation? =
+
+1) On visual builder page, expand the Settings Icon from Drag & Drop modules of left sidebar. You can enter any string in the custom **ID** field on the right. Such as `my-portfolio`.
+
+2) Create a new menu, and add a Custom Link for each menu item you plan on having. For each menu item, enter an id that you will assign later to the corresponding section. For example, for the menu item `My Portfolio`, you would enter `#my-portfolio` in the URL field.
+
+
+= FAQ 3: How to use a custom page builder template? =
+
+You could create Uix Page Builder template file (from the directory "/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php" ) in your templates directory. It’s just a custom template file in the theme folder. Of course you doesn’t need to create it, you can use of the default page template or your own custom template file directly.
+
+
 
 
 == Screenshots ==
@@ -96,7 +110,7 @@ The version number is the date of the revision of the [guidelines](https://make.
 10. screenshot-10.jpg
 11. screenshot-11.jpg
 12. screenshot-12.jpg
-
+13. screenshot-13.jpg
 
 == Upgrade Notice ==
 
@@ -108,12 +122,13 @@ The version number is the date of the revision of the [guidelines](https://make.
 
 = 1.3.1 (August 31, 2017) =
 
-* Simplifies the templates directory for theme developer customization.
+* Upgraded core API for theme developer customization.
 * Added a new module type: Slider (new).
 * Added "Classic" template (new).
 * Improved using instructions.
 * Optimized template file(.xml) structure.
 * Fixed a small bug when the template was exported.
+* Fixed an issue for the layout of the html editor & textarea in page builder.
 
 
 

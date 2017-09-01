@@ -56,8 +56,7 @@ $module_config =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 3,
-									'format'  => true
+									'row'     => 3
 								)
 		
 		),
@@ -131,8 +130,7 @@ $args_1 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 2,
-									'format'  => true
+									'row'     => 2
 				                )
 		
 		),	
@@ -182,8 +180,7 @@ $args_1 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'                       => 5,
-									'format'                    => true
+									'row'   => 5
 									
 				                )
 		
@@ -262,8 +259,7 @@ $args_2 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 2,
-									'format'  => true
+									'row'     => 2
 				                )
 		
 		),	
@@ -313,8 +309,7 @@ $args_2 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'                       => 5,
-									'format'                    => true
+									'row'  => 5
 									
 				                )
 		
@@ -393,8 +388,7 @@ $args_3 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 2,
-									'format'  => true
+									'row'     => 2
 				                )
 		
 		),	
@@ -444,8 +438,7 @@ $args_3 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'                       => 5,
-									'format'                    => true
+									'row'  => 5
 									
 				                )
 		
@@ -524,8 +517,7 @@ $args_4 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 2,
-									'format'  => true
+									'row'     => 2
 				                )
 		
 		),	
@@ -575,8 +567,7 @@ $args_4 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'                       => 5,
-									'format'                    => true
+									'row'  => 5
 									
 				                )
 		

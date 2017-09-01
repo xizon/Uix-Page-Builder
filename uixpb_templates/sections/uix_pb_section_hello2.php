@@ -55,8 +55,7 @@ $module_config =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 3,
-									'format'  => true
+									'row'     => 3
 								)
 		
 		),
@@ -96,8 +95,7 @@ $args_col2_1 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 2,
-									'format'  => true
+									'row'     => 2
 								)
 		
 		),
@@ -172,8 +170,7 @@ $args_col2_2 =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 2,
-									'format'  => true
+									'row'     => 2
 								)
 		
 		),

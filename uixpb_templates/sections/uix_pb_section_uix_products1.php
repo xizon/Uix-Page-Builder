@@ -63,8 +63,7 @@ $module_config =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 3,
-									'format'  => true
+									'row'     => 3
 								)
 		
 		),
@@ -368,7 +367,7 @@ UixPageBuilder::form_scripts( array(
 		
 			var _config_id            = uixpbform_uid(),
 			    _config_t             = ( uix_pb_uix_products_config_title != undefined && uix_pb_uix_products_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_uix_products_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_uix_products_config_intro != undefined && uix_pb_uix_products_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_uix_products_config_intro+\'</div>\' : \'\',
+				_config_desc          = ( uix_pb_uix_products_config_intro != undefined && uix_pb_uix_products_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_uix_products_config_intro+\'</div>\' : \'<div class="uix-pb-section-desc"></div>\',
 				_config_urlwindow     = ( uix_pb_uix_products_config_urlwindow === true ) ? \' target="_blank"\' : \'\',
 				_config_avatar_fillet = uixpbform_floatval( uix_pb_uix_products_config_thumbnail_fillet ) + \'%\';
 

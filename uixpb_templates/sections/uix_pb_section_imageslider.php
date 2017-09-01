@@ -213,8 +213,7 @@ $args =
 				'placeholder'    => esc_html__( 'Slider introduction', 'uix-page-builder' ),
 				'type'           => 'textarea',
 				'default'        => array(
-										'row'     => 5,
-										'format'  => true
+										'row'     => 5
 									)
 			
 			),
@@ -296,8 +295,7 @@ UixPageBuilder::form_scripts( array(
 					//Do not include spaces
 					
 					var __t = \'\',
-					    __d = \'\',
-						__i = \'<img src="\'+_item_v_photo+\'" alt="">\';
+					    __d = \'\';
 						
 					if ( _item_v_title != \'\' || _item_v_desc != \'\' ) {
 					
@@ -313,16 +311,24 @@ UixPageBuilder::form_scripts( array(
 						
 					}
 					
+
+					show_list_item += \'<li>\';
+					show_list_item += \'<img src="\'+_item_v_photo+\'" alt="">\';
+					
 					if ( _item_v_url != \'\' ) {
-					    __i = \'<a href="\'+_item_v_url+\'"><img src="\'+_item_v_photo+\'" alt=""></a>\';
+					   show_list_item += \'<a href="\'+_item_v_url+\'">\';
 					}
 					
-		
-					show_list_item += \'<li>\';
-					show_list_item += __i;
 					show_list_item += _item_v_intro;
+					
+					if ( _item_v_url != \'\' ) {
+					   show_list_item += \'</a>\';
+					}
+				
+					
 					show_list_item += \'</li>\';
 				
+
 				}
 
 

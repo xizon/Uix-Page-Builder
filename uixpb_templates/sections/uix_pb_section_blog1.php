@@ -55,8 +55,7 @@ $module_config =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 3,
-									'format'  => true
+									'row'     => 3
 								)
 		
 		),

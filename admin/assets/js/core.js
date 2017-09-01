@@ -822,6 +822,11 @@ function gridsterFormatAllCodes( code ) {
 	stringValue = stringValue.replace( /{rqt:}/g, "{rowqt:}")
 							.replace( /{cqt:}/g, "{rowcqt:}")
 							.replace( /{apo:}/g, "{rowcapo:}")
+	
+							//Clear duplicate "&"
+							.replace( /&amp;/g, "&") //step 1
+							.replace( /amp;/g, "") //step 2
+	
 							.replace( /"/g, "{rowqt:}");
 	return stringValue;
 
@@ -1035,8 +1040,11 @@ function UixPBFormatRenderCodes( code ) {
 	var stringValue = code.toString();
 	
 	//Returns string in order to protect the security output of JSON
-	stringValue = stringValue.replace(/&amp;/g, '&' ) //step 1
-	                         .replace(/amp;/g, '' ) //step 2
+	stringValue = stringValue
+							//Clear duplicate "&"
+							.replace( /&amp;/g, "&") //step 1
+							.replace( /amp;/g, "") //step 2
+	
 		                     .replace(/{rowcsql:}/g, '[' )
 							 .replace(/{rowcsqr:}/g, ']' );
 

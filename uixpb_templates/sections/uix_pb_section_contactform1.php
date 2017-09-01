@@ -43,8 +43,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'editor',
 			'default'        => array(
-									'row'     => 3,
-									'format'  => true
+									'row'     => 3
 								)
 		
 		),

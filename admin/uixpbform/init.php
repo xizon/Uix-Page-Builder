@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 2.7 (August 29, 2017)
+ * @version		: 2.8 (September 1, 2017)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '2.7';
+		const VERSION    = '2.8';
 		const CUSTOMTEMP = 'uixpb_templates/sections/';
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 	
@@ -554,19 +554,6 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		}
 		
 
-
-		/*
-		 * Not formatted as HTML
-		 *
-		 *
-		 */
-		public static function html_textareaTran( $str ) {
-
-			return $str;
-
-		}
-
-	
 	
 		/*
 		 * Callback before tag of form

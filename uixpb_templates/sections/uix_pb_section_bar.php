@@ -222,8 +222,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 2,
-									'format'  => true
+									'row'     => 2
 								)
 		),	
 		

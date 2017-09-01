@@ -69,8 +69,7 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'editor',
 			'default'        => array(
-									'row'     => 5,
-									'format'  => true
+									'row'     => 5
 								)
 
 		),
@@ -127,7 +126,7 @@ $args =
 		array(
 			'id'             => 'uix_pb_parallax_bg_color',
 			'title'          => esc_html__( 'Background Color', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Seamless display when the background color is not empty.', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'colormap',
@@ -165,6 +164,18 @@ $args =
 									'fixed'  => 'fixed',
 									'scroll'  => 'scroll',
 				                )
+		
+		),
+		
+		
+		array(
+			'id'             => 'uix_pb_parallax_bg_space',
+			'title'          => esc_html__( 'Seamless Display', 'uix-page-builder' ),
+			'desc'           => esc_html__( 'Set the parallax module top & bottom margin to be 0px for your page.', 'uix-page-builder' ),
+			'value'          => 0, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		
 		
 		),
 
@@ -277,19 +288,17 @@ UixPageBuilder::form_scripts( array(
 				bgimage_css   = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != \'\' ) ? \'style="\'+skew_css+\'background: \'+bgcolor+\' url(\'+encodeURI( uix_pb_parallax_bg )+\') \'+bg_pos_1+\' \'+bg_pos_2+\' no-repeat \'+speed+\';"\' : \'style="\'+skew_css+\'background-color:\'+bgcolor+\';"\',
 				title         =  ( uix_pb_parallax_titlecolor != undefined && uix_pb_parallax_titlecolor != \'\' ) ? \'<span style="color:\'+uixpbform_htmlEncode( uix_pb_parallax_titlecolor )+\';">\' + uix_pb_parallax_title + \'</span>\' : uix_pb_parallax_title,
 				desc          =  uix_pb_parallax_desc,
-				bgcolor_class =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != \'\' ) ? \'uix-pb-parallax-nospace\' : \'\',
+				space_class   =  ( uix_pb_parallax_bg_space === true ) ? \'uix-pb-parallax-nospace\' : \'\',
 				button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != \'\' ) ? \'<p><a class="uix-pb-btn uix-pb-btn-\'+btncolor+\'" href="\'+encodeURI( uix_pb_parallax_url )+\'">\'+uix_pb_parallax_url_text+\'</a></p>\' : \'\';
 
-			
-			if ( uix_pb_parallax_button_checkbox_toggle === false ) button = \'\';
-
+		
 
 			var temp = \'\';
-				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+bgcolor_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
+				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+space_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
 				temp += \'<div class="uix-pb-parallax-table" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
 				temp += \'<div class="uix-pb-parallax-content-box" \'+skew_content_style+\'>\';
 				temp += \'<h2>\'+title+\'</h2>\';
-				temp += \'<p>\'+desc+\'</p>\';
+				temp += desc;
 				temp += button;
 				temp += \'</div>\';
 				temp += \'</div>\';

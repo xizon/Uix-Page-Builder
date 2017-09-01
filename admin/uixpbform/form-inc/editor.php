@@ -25,11 +25,9 @@ class UixPBFormType_Editor {
 		if ( $type == 'editor' ) {
 			
 			$row     = 5;
-			$format  = true;
 			
 			if ( is_array( $default ) && !empty( $default ) ) {
 				$row    = ( isset( $default[ 'row' ] ) ) ? $default[ 'row' ] : 5;
-				$format = ( isset( $default[ 'format' ] ) ) ? $default[ 'format' ] : true;
 				
 			}
 			
@@ -46,7 +44,7 @@ class UixPBFormType_Editor {
 						    
 							<div class="uixpbform-box uixpbform-mce-editor">
 							
-							   <textarea class="mce" rows="'.$row.'" id="'.$id.'-editor">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>
+							   <textarea class="mce" rows="'.$row.'" id="'.$id.'-editor">'.$value.'</textarea>
 							   
 							   
 							   
@@ -54,7 +52,7 @@ class UixPBFormType_Editor {
 							
 							'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							
-							'.( !empty( $args[ 'id' ] ) ? '<textarea style="display:none;" id="'.$id.'" name="'.$name.'" chk-id-textarea="'.$id.'">'.( $format ? $value : UixPBFormCore::html_textareaTran( $value ) ).'</textarea>' : '' ).' 	
+							'.( !empty( $args[ 'id' ] ) ? '<textarea style="display:none;" id="'.$id.'" name="'.$name.'" chk-id-textarea="'.$id.'">'.$value.'</textarea>' : '' ).' 	
 						</td>
 					</tr> 
 				'.PHP_EOL;	

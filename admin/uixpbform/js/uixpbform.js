@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 2.7
+	* Version 2.8
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -265,17 +265,40 @@
 				var cols = colTextareaID.split( '---' );
 				var colID = cols[0].replace( 'col-item-', '' );
 			
-				var fields = $( "[name^='"+formID+"|["+colTextareaID+"]']" ).serializeArray();
+				var $jsonTextarea = $( "[name^='"+formID+"|["+colTextareaID+"]']" ),
+				    fields        = $jsonTextarea.serializeArray();
+				
 				colContent.push( [ 'col', colID ] );
 				settings.push( [ 'section', formID ] );
 				settings.push( [ 'row', rowID ] );
 				settings.push( [ 'widgetname', 'Section ' + rowID ] );
 				
-			
+				
+				//Format all contents of <textarea> 
+				$form.find( 'textarea' ).each( function()  {
+					
+					var tempID = $( this ).data( 'tmpl-id' );
+						
+					//Warning: Does not include JSON and MCE Sync data.
+					if ( !$( this ).hasClass( 'mce-sync' ) && ( typeof tempID === typeof undefined ) ) {
+						var oldValue = $( this ).val(),
+							newValue = uixpbform_htmlEscape_not_JSON( oldValue );
+
+						$( this ).val( newValue );
+
+					}
+				
+				});
+				
+			    
 				
 				$.each( fields, function( i, field ) {
-					var v = uixpbform_htmlEscape( field.value ),
-					    n = field.name;
+					var v      = field.value,
+					    n      = field.name;
+					
+					//Warning: Includes JSON data from <textarea>.
+					v = uixpbform_htmlEscape( v );
+					
 					colContent.push( [ n, v ] );
 					
 				});

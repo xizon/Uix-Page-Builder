@@ -701,11 +701,9 @@ class UixPageBuilder {
 		
 		//Returns string in order to protect the security output of JSON
 		return str_replace( '{rowcsql:}', '[', 
-				str_replace( '{rowcsqr:}', ']',
-				str_replace( 'amp;', '',   //step 2
-				str_replace( '&amp;', '&', //step 1		
+				str_replace( '{rowcsqr:}', ']',	
 				$str 
-			   ) ) ) );			   
+			   ) );			   
 		
 	}	
 	
@@ -780,15 +778,18 @@ class UixPageBuilder {
 				str_replace( '{apo:}', '&#039;',
 				str_replace( '{cqt:}', '&quot;',
 				str_replace( '{br:}', '<br>',
+				str_replace( '{nbsp:}', '&nbsp;',
 		        str_replace( '&#039;', "'",
 		        str_replace( '&quot;', '"',
 			    str_replace( '&apos;', "'",
+							
+				//Clear duplicate "&"
 				str_replace( 'amp;', '',  //step 2
 				str_replace( '&amp;', '&', //step 1
 						
 				
 			    $data 
-			    ) ) ) ) ) ) ) ) );
+			    ) ) ) ) ) ) ) ) ) );
 				
 		if ( !is_admin() ) {
 			$data = self::format_render_codes( $data );

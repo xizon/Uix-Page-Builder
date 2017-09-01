@@ -67,8 +67,7 @@ $module_config =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 3,
-									'format'  => true
+									'row'     => 3
 								)
 		
 		),
@@ -242,8 +241,7 @@ $args =
 				'placeholder'    => '',
 				'type'           => 'textarea',
 				'default'        => array(
-										'row'     => 5,
-										'format'  => true
+										'row'     => 5
 									)
 			
 			),
@@ -439,7 +437,7 @@ UixPageBuilder::form_scripts( array(
 
 
 
-				if ( _intro != undefined && _intro != \'\' ) {
+				if ( _name != undefined && _name != \'\' ) {
 
 					//Do not include spaces
 

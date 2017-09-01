@@ -669,6 +669,23 @@ jQuery( document ).ready( function() {
 			jQuery( '.uixpbform_btn_trigger-upload' ).uixpbform_mediaStatus();
 
 
+			
+			/*-- Format all contents of <textarea>  --*/
+			jQuery( cur_appendID ).closest( '.uixpbform-table-wrapper' ).find( 'textarea' ).each( function()  {
+
+				var tempID = $( this ).data( 'tmpl-id' );
+
+				//Warning: Does not include JSON and MCE Sync data.
+				if ( !$( this ).hasClass( 'mce-sync' ) && ( typeof tempID === typeof undefined ) ) {
+					var oldValue = $( this ).val(),
+						newValue = uixpbform_htmlEscape_dynamic_textarea( oldValue );
+
+					$( this ).val( newValue );
+				}
+				
+
+			});		
+			
 
 			/*-- The form focus --*/
 			var srow            = jQuery( cur_appendID ).parent( 'td' ).find( ' > .dynamic-row' ),
@@ -1340,13 +1357,42 @@ function uixpbform_formatAllCodes( code ) {
 /*!
  * ************************************
  * Page builder textarea format
+ *
+ * Warning: Includes JSON data from <textarea>.
+ *
  *************************************
  */
 function uixpbform_htmlEscape( str ){
 	return str
 		.replace(/"/g, '{cqt:}')
 		.replace(/'/g, "{apo:}")
-		.replace(/(\r)*\n/g, "{br:}");
+	    .replace(/(\r)*\n/g, "{br:}");
+}
+
+/*!
+ * ************************************
+ * Page builder textarea format
+ *
+ * Warning: Does not include JSON data.
+ * When you enter a string in <textarea>, convert special characters to save JSON data.
+ *
+ *************************************
+ */
+function uixpbform_htmlEscape_not_JSON( str ){
+	return str.replace(/ /g, "{nbsp:}");
+}
+
+/*!
+ * ************************************
+ * Dynamic Adding Input textarea format
+ *
+ * Warning: Does not include JSON data.
+ * When you enter a string in <textarea>, convert special characters to save JSON data.
+ *
+ *************************************
+ */
+function uixpbform_htmlEscape_dynamic_textarea( str ){
+	return str.replace(/&nbsp;/g, " ");
 }
 
 
@@ -1549,11 +1595,14 @@ function uixpbform_editorInit( id ){
 					plugins: 'textcolor image media hr customCode',
 				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent alignleft aligncenter alignright | hr uixpb_image customCode',
 					setup:function(ed) {
+						
+					   //Avoid formatting all contents of <textarea> 
+					   $( 'textarea#' + vid ).addClass( 'mce-sync' );
+						
 					   ed.on( 'change', function(e) {
 						   
 						   var newvalue = ed.getContent()
 						                                 .replace(/\r?\n/gm, '' )
-						                                 .replace(/&nbsp;/g, ' ' )
 						                                 .replace(/\.\.\/wp-content\/uploads\//g, uix_page_builder_wp_plugin.upload_dir_url );
 						  
 						   $( 'textarea#' + vid ).val( newvalue ).trigger( 'change' );

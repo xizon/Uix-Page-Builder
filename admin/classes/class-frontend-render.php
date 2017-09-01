@@ -27,6 +27,9 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 			$id        = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
 			$tempclass = UixPageBuilder::page_builder_array_tempname( get_post_meta( $id, 'uix-page-builder-layoutdata', true ), true );
+
+			if ( empty( $tempclass ) ) $tempclass = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $id );
+
 			$classes[] = 'uix-page-builder-body';
 			$classes[] = 'uix-page-builder-'.$tempclass;
 			$classes[] = $tempclass;
@@ -136,7 +139,10 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 									if ( $bool1 || $bool2 ) {
 
 										$value = UixPageBuilder::theme_value( $value[$temp_index][1] );
+										
+										//The contents of attribute
 										$html = ( !empty( $value ) ) ? $value : '&nbsp;';
+										
 
 										//Determine the grid system
 										foreach ( $cols as $id ) :

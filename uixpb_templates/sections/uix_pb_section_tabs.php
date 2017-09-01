@@ -127,8 +127,7 @@ $args =
 				'placeholder'    => '',
 				'type'           => 'textarea',
 				'default'        => array(
-										'row'     => 5,
-										'format'  => true
+										'row'     => 5
 									)
 			
 			),

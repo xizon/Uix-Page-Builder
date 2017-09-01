@@ -67,8 +67,7 @@ $module_config =
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
-									'row'     => 3,
-									'format'  => true
+									'row'     => 3
 								)
 		
 		),
@@ -255,8 +254,7 @@ $args =
 				'placeholder'    => '',
 				'type'           => 'textarea',
 				'default'        => array(
-										'row'     => 5,
-										'format'  => true
+										'row'     => 5
 									)
 			
 			),
@@ -343,7 +341,7 @@ UixPageBuilder::form_scripts( array(
 	    'js_template'             => '
 			var _config_id            = uixpbform_uid(),
 				_config_t             = ( uix_pb_portfolio1_config_title != undefined && uix_pb_portfolio1_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_portfolio1_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_portfolio1_config_intro+\'</div>\' : \'\',
+				_config_desc          = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_portfolio1_config_intro+\'</div>\' : \'<div class="uix-pb-section-desc"></div>\',
 				_config_avatar_fillet = uixpbform_floatval( uix_pb_portfolio1_config_thumbnail_fillet ) + \'%\';
 			
 

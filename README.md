@@ -58,16 +58,43 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_uix-page-builder-plugins.js"** to **"uix-page-builder-plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uixpb_templates/js/` or `/wp-content/themes/{your-theme}/uixpb_templates/js/` or `/wp-content/themes/{your-theme}/assets/js/`, and add the required script to "uix-page-builder-plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
 
 
+
+### Frequently Asked Questions
+
+
+##### FAQ 1: How To Create a Full Width or Boxed Layout?
+
+On visual builder page, expand the Settings Icon from Drag & Drop modules of left sidebar. You can easily choose the type of container.
+
+
+##### FAQ 2: How To Create The One-Page Navigation?
+
+1) On visual builder page, expand the Settings Icon from Drag & Drop modules of left sidebar. You can enter any string in the custom **ID** field on the right. Such as `my-portfolio`.
+
+2) Create a new menu, and add a Custom Link for each menu item you plan on having. For each menu item, enter an id that you will assign later to the corresponding section. For example, for the menu item `My Portfolio`, you would enter `#my-portfolio` in the URL field.
+
+
+##### FAQ 3: How to use a custom page builder template?
+
+You could create Uix Page Builder template file (from the directory "/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php" ) in your templates directory. It’s just a custom template file in the theme folder. Of course you doesn’t need to create it, you can use of the default page template or your own custom template file directly.
+
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/set-layout-1.jpg)
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/set-layout-2.jpg)
+
+
+
 ### Updates
 
 ##### = 1.3.1 (August 31, 2017) =
 
-* Simplifies the templates directory for theme developer customization.
+* Upgraded core API for theme developer customization.
 * Added a new module type: Slider (new).
 * Added "Classic" template (new).
 * Improved using instructions.
 * Optimized template file(.xml) structure.
 * Fixed a small bug when the template was exported.
+* Fixed an issue for the layout of the html editor & textarea in page builder.
 
 
 
@@ -274,6 +301,8 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-11.jpg)
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-12.jpg)
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-13.jpg)
 
 
 
