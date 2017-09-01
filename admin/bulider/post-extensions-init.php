@@ -5,6 +5,61 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /*
+ * Delete data of custom content template with ajax
+ * 
+ */
+if ( !function_exists( 'uix_page_builder_delContentTemplate' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_delContentTemplate_settings', 'uix_page_builder_delContentTemplate' );		
+	function uix_page_builder_delContentTemplate() {
+		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
+		
+		if ( isset( $_POST[ 'tempName' ] ) ) {
+			
+			//Update the WP data
+			$old = get_option( 'uix-page-builder-templates' );
+			$new = UixPageBuilder::remove_element_withvalue( $old, 'name', $_POST[ 'tempName' ] );
+			update_option( 'uix-page-builder-templates', $new );
+			
+			//Update the XML data
+			$xmlargs    = '';
+			if ( is_array( $new ) && sizeof( $new ) > 0 ) {
+
+				foreach ( $new as $v ) {
+
+					$xmlargs   .= '
+						<item>
+							<name><![CDATA['.$v[ 'name' ].']]></name>
+							<thumb><![CDATA['.$v[ 'thumb' ].']]></thumb>
+							<data><![CDATA['.$v[ 'data' ].']]></data>
+						</item>
+					';
+
+
+				}
+
+			}
+
+			$xmlvalue =  '<?xml version="1.0" encoding="utf-8"?>
+			<items>
+				'.$xmlargs.'
+			</items>
+			';
+
+			$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
+			update_option( 'uix-page-builder-templates-xml', $xmlvalue );	
+
+			
+	
+			
+		}
+
+		wp_die();	
+	}
+}
+
+
+
+/*
  * Save template with ajax 
  * 
  */
@@ -14,17 +69,17 @@ if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_POST[ 'curlayoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
-			
-			
+	
+	
 			$name               = ( empty( $_POST[ 'tempname' ] ) ) ? UixPageBuilder::get_tempname() : $_POST[ 'tempname' ];
 		    $value              = array();
 			$xmlargs            = '';
 			$old                = get_option( 'uix-page-builder-templates' );
 			$tmpl_default_thumb = '{temp_preview_thumb_path}images/UixPageBuilderThumb/tmpl/_default.jpg';
-			$tmpl_data          = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'curlayoutdata' ] ) );
 			$tmpl_name          = sanitize_text_field( $name );
+			$tmpl_data          = UixPageBuilder::format_layoutdata_add_tempname( $_POST[ 'postID' ], wp_unslash( $_POST[ 'curlayoutdata' ] ), $tmpl_name );
 			
-			
+
 			//If the array item is empty, it will cause the script to read incorrectly
 			if ( !empty( $tmpl_data ) && $tmpl_data != '[]' ) {
 				
@@ -76,7 +131,7 @@ if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
 				';
 
 				//The default picture path
-				$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
+				$xmlvalue = UixPageBuilder::convert_img_path( $xmlvalue, 'save' );
 
 				//Update the WP data
                 update_option( 'uix-page-builder-templates', $value );
@@ -116,10 +171,14 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 			
 			if ( is_array( $tempdata ) && sizeof( $tempdata ) > 0 ) {
 				
+				
 				foreach ( $tempdata as $key => $v ) {
 					
-					$newdata       = str_replace( '{temp_placeholder_path}', UixPBFormCore::plug_directory(), $v[ 'data' ] );
-					$preview_thumb = str_replace( '{temp_preview_thumb_path}', UixPageBuilder::backend_path( 'uri' ), $v['thumb'] );
+					
+					$newdata       = UixPageBuilder::convert_img_path( $v[ 'data' ], 'load' );
+					$preview_thumb = UixPageBuilder::convert_img_path( $v['thumb'], 'load' );
+					$tempname      = UixPageBuilder::page_builder_array_tempname( $newdata );
+					
 					
 					echo '
 					<label>
@@ -129,6 +188,7 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 						<textarea>'.$newdata.'</textarea>
 					</label>
 					';
+					
 	
 	
 				}
@@ -164,8 +224,8 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 						$checked = '';
 					}
 					
-					$newdata       = str_replace( '{temp_placeholder_path}', UixPBFormCore::plug_directory(), $xValue['item'][$xmli]['data'] );
-					$preview_thumb = str_replace( '{temp_preview_thumb_path}', UixPageBuilder::backend_path( 'uri' ), $xValue['item'][$xmli]['thumb'] );
+					$newdata       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'load' );
+					$preview_thumb = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'load' );
 					
 					
 					echo '
@@ -189,6 +249,8 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 		wp_die();	
 	}
 }
+
+
 
 
 
@@ -233,10 +295,25 @@ if ( !function_exists( 'uix_page_builder_loadtemp' ) ) {
 	function uix_page_builder_loadtemp() {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
+
+		//Save with Ajax
+		if ( isset( $_POST[ 'curlayoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
+			
+			//Define session for the template name
+			if ( isset( $_POST[ 'tempname' ] ) ) {
+				UixPageBuilder::session_default_tempname( $_POST[ 'tempname' ], $_POST[ 'postID' ] );
+			}
+			
+			$layoutdata = UixPageBuilder::format_layoutdata_add_tempname( $_POST[ 'postID' ], wp_unslash( $_POST[ 'curlayoutdata' ] ) );
+			
+			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', $layoutdata );
+		}
+		
+		//Load the template JSON data
 		if ( isset( $_POST[ 'curlayoutdata' ] ) ) {
 			echo $_POST[ 'curlayoutdata' ];
-			echo json_encode( UixPageBuilder::page_builder_array_newlist( $_POST[ 'curlayoutdata' ] ) );
 		}
+		
 		
 		wp_die();	
 	}
@@ -255,7 +332,7 @@ if ( !function_exists( 'uix_page_builder_save' ) ) {
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
-			$layoutdata = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'layoutdata' ] ) );
+			$layoutdata = UixPageBuilder::format_layoutdata_add_tempname( $_POST[ 'postID' ], wp_unslash( $_POST[ 'layoutdata' ] ) );
 			
 			update_post_meta( $_POST[ 'postID' ], 'uix-page-builder-layoutdata', $layoutdata );
 		}
@@ -295,7 +372,6 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_plugin_url'       => UixPageBuilder::plug_directory(),
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
 				'send_string_postid'           => $post_id,
-				'send_string_name'             => UixPageBuilder::get_tempname(),
 				'send_string_loadlist'         => esc_html__( 'Loading list...', 'uix-page-builder' ),
 				'send_string_tempfiles_exists' => $tempfile_exists,
 				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
@@ -434,6 +510,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 	}
 	
 	function uix_page_builder_page_ex_metaboxes_pagerbuilder_container(){  
+		
 		add_meta_box( 
 			'uix_page_builder_page_meta_pagerbuilder_container', 
 			__( 'Uix Page Builder', 'uix-page-builder' ), 
@@ -525,7 +602,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>  
 					<p>
 						<label>
-							<input size="20" name="tempname" type="text" value="<?php echo UixPageBuilder::get_tempname(); ?>">
+							<input size="20" name="tempname" type="text" maxlength="20" value="<?php echo UixPageBuilder::get_tempname(); ?>">
 						</label>
 					</p>
 					<a class="button button-primary button-small save" href="javascript:"><?php _e( 'Save', 'uix-page-builder' ); ?></a><span class="spinner"></span>
@@ -1751,7 +1828,7 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 		if( $slug != $post->post_type ) return $post_id;
 		
 	
-		$layoutdata 	 = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] ) );
+		$layoutdata 	 = UixPageBuilder::format_layoutdata_add_tempname( $post_id, wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] ) );
 		$builderstatus 	 = sanitize_text_field( $_POST[ 'uix-page-builder-status' ] );
 		
 		if( isset( $_POST[ 'uix-page-builder-layoutdata' ] ) ) update_post_meta( $post_id, 'uix-page-builder-layoutdata', $layoutdata );

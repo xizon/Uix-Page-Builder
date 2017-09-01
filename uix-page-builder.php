@@ -41,7 +41,6 @@ class UixPageBuilder {
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
-		add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
@@ -328,23 +327,18 @@ class UixPageBuilder {
 	}
 	
 	/*
-	 * Generates the template data name created by the current builder
+	 * Generates the template name created by the current builder
 	 *
 	 *
 	 */
 	public static function get_tempname( $slug = false ) {
 
-		if( ! isset( $_SESSION ) ) session_start();
+		$curid      = get_the_ID();
+		$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
 		
-		if( array_key_exists( 'uix-page-builder-tempname', $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-tempname' ] ) ) {
-			$tempname = $_SESSION[ 'uix-page-builder-tempname' ];	
-		}  else {
-			$curid      = get_the_ID();
-			$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
-			$tempname   = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_id );
-			
-			$_SESSION[ 'uix-page-builder-tempname' ] = $tempname;
-		}
+		if ( empty( $post_id ) ) $post_id = uniqid();
+	
+		$tempname   = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_id );
 
 
 		if ( $slug ) {
@@ -353,8 +347,85 @@ class UixPageBuilder {
 			return $tempname;
 		}
 		
+		
 	
 	}
+	
+
+	/*
+	 * Define session for the current post ID
+	 *
+	 *
+	 */
+	public static function session_post_id() {
+
+		$curid      = get_the_ID();
+		$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
+		
+		if( ! isset( $_SESSION ) ) session_start();
+		
+		if( array_key_exists( 'uix-page-builder-postid', $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-postid' ] ) ) {
+			$post_id = $_SESSION[ 'uix-page-builder-postid' ];	
+		}  else {
+			$_SESSION[ 'uix-page-builder-postid' ] = $post_id;
+		}
+		
+		return $post_id;
+
+	}
+	
+	
+	/*
+	 * Define session for the template name
+	 *
+	 *
+	 */
+	public static function session_default_tempname( $str, $id ) {
+		
+		if( ! isset( $_SESSION ) ) session_start();
+		$_SESSION[ 'uix-page-builder-tempname' . $id ] = $str;
+
+	}
+	
+	
+	/*
+	 * Remove session for the template name
+	 *
+	 *
+	 */
+	public static function unset_session_default_tempname( $id ) {
+		
+		if( ! isset( $_SESSION ) ) session_start();
+		unset( $_SESSION[ 'uix-page-builder-tempname' . $id ] );
+
+	}
+	
+	
+	/*
+	 * Convert the template image path
+	 *
+	 *
+	 */
+	public static function convert_img_path( $str, $type ) {
+
+		if ( $type == 'load' ) {
+
+			$str = str_replace( '{temp_placeholder_path}', UixPBFormCore::plug_directory(),
+				   str_replace( '{temp_preview_thumb_path}', self::backend_path( 'uri' ),
+				   $str 
+				   ) );
+			
+		} elseif ( $type == 'save' ) {
+			$str = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}',
+				   str_replace( self::backend_path( 'uri' ), '{temp_preview_thumb_path}',
+				   $str 
+				   ) );	
+		}
+		
+		return $str;
+
+	}
+	
 	
 	
 	
@@ -437,20 +508,6 @@ class UixPageBuilder {
 	}
 	
 
-	
-	/*
-	 * Extend the default WordPress body classes.
-	 *
-	 *
-	 */
-	public static function new_class( $classes ) {
-	
-	    $classes[] = 'uix-page-builder-body';
-		return $classes;
-
-	}
-	
-	
 
 	/*
 	 * Print Custom Stylesheet
@@ -534,13 +591,13 @@ class UixPageBuilder {
 	 * Sort multiple or multi-dimensional arrays for page builder
 	 *
 	 */
-	public static function page_builder_array_newlist( $arr ) {
+	public static function page_builder_array_newlist( $json_code_pb_encode ) {
 		
 		//Format the JSON code (remove value of "tempname")
-		$arr = self::format_render_codes_remove_tempname( $arr );
+		$json_code_pb_encode = self::format_render_codes_remove_tempname( $json_code_pb_encode );
 
 	
-		$data = esc_textarea( $arr );
+		$data = esc_textarea( $json_code_pb_encode );
 		$data = str_replace( '&quot;col&quot;', '"col"', 
 		       str_replace( '&quot;row&quot;', '"row"',
 			   str_replace( '&quot;size_x&quot;', '"size_x"',
@@ -575,6 +632,51 @@ class UixPageBuilder {
 		}
 		
 	}
+	
+	
+	/*
+	 * Returns the template name from the template data
+	 *
+	 */
+	public static function page_builder_array_tempname( $json_code_pb_encode, $slug = false ) {
+		
+		
+		$data = esc_textarea( $json_code_pb_encode );
+		$data = str_replace( '&quot;tempname&quot;:&quot;', '"tempname":"',
+				str_replace( '&quot;col&quot;', '"col"', 
+		       str_replace( '&quot;row&quot;', '"row"',
+			   str_replace( '&quot;size_x&quot;', '"size_x"',
+			   str_replace( '&quot;size_y&quot;', '"size_y"',
+			   str_replace( '&quot;,&quot;title&quot;:&quot;', '","title":"',
+			   str_replace( '&quot;content&quot;:&quot;', '"content":"',
+			   str_replace( '&quot;,&quot;secindex&quot;:&quot;', '","secindex":"',
+			   str_replace( '&quot;,&quot;customid&quot;:&quot;', '","customid":"',
+			   str_replace( '&quot;,&quot;layout&quot;:&quot;', '","layout":"',
+			   str_replace( '&quot;}', '"}',
+			   $data 
+			   ) ) ) ) ) ) ) ) ) ) );
+		
+	
+		if ( self::inc_str( $data, '"tempname"' ) ) {
+			$newstr  = json_decode( $data, true );
+			$tempname = $newstr[0]['tempname'];
+
+		} else {
+			$tempname = '';
+		}
+		
+		
+		if ( $slug ) {
+			return sanitize_title_with_dashes( $tempname );
+		} else {
+			return $tempname;
+		}	
+	
+		
+		
+	}
+	
+	
 	
 	/*
 	 * Returns pre row content
@@ -612,12 +714,12 @@ class UixPageBuilder {
 	 * Format the JSON code (remove value of "tempname")
 	 *
 	 */	
-	public static function format_render_codes_remove_tempname( $str ) {
+	public static function format_render_codes_remove_tempname( $json_code ) {
 		
 		// Value of "tempname" is class for the <body> of each builder content
-		if ( self::inc_str( $str, '"tempname"' ) ) {
+		if ( self::inc_str( $json_code, '"tempname"' ) ) {
 			$result  = '';
-			$newstr  = json_decode( $str, true );
+			$newstr  = json_decode( $json_code, true );
 			unset( $newstr[0] );
 			$total   = count( $newstr );
 
@@ -631,7 +733,7 @@ class UixPageBuilder {
 			$result .= ']';
 
 		} else {
-			$result = $str;
+			$result = $json_code;
 		}
 
 		
@@ -639,28 +741,41 @@ class UixPageBuilder {
 
 	}	
 
-
-	public static function format_layoutdata_remove_tempname( $str ) {
+    //add value of "tempname"
+	public static function format_layoutdata_add_tempname( $id, $str, $custom = '' ) {
 		
-		// Value of "tempname" is class for the <body> of each builder content
-		if ( self::inc_str( $str, '"tempname"' ) ) {
-			$newstr = $str;
+		//If loaded the default template, use the session name
+		if ( empty( $custom ) ) {
+			if( ! isset( $_SESSION ) ) session_start();
+			if( array_key_exists( 'uix-page-builder-tempname' . $id, $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-tempname' . $id ] ) ) {
+				$custom = $_SESSION[ 'uix-page-builder-tempname' . $id ];	
+			}	
 		} else {
-			$json_tempname = '{"tempname":"'.self::get_tempname().'"},';
-			$newstr = '['.$json_tempname.ltrim( rtrim( $str, ']' ), '[' ).']';
+			//Define session for the template name
+			self::session_default_tempname( $custom, $id );
 		}
+		
+		$custom_name = $custom;
+
+		if ( empty( $custom_name ) ) $custom_name = self::get_tempname();
+		
+		
+		//Format the JSON code (remove value of "tempname")
+		$str           = self::format_render_codes_remove_tempname( $str );
+		$json_tempname = '{"tempname":"'.$custom_name.'"},';
+		$newstr        = '['.$json_tempname.ltrim( rtrim( $str, ']' ), '[' ).']';
 		
 		return $newstr;	
 
-	}	
+	}
 	
 	/*
 	 * Output content of page builder
 	 *
 	 */	
-	public static function page_builder_output( $arr ) {
+	public static function page_builder_output( $json_code ) {
 		
-		$data = wp_specialchars_decode( $arr );
+		$data = wp_specialchars_decode( $json_code );
 		$data = str_replace( '{rqt:}', '"',
 				str_replace( '{apo:}', '&#039;',
 				str_replace( '{cqt:}', '&quot;',
@@ -688,10 +803,10 @@ class UixPageBuilder {
 	
 	
 		
-	public static function page_builder_analysis_rowcontent( $str ) {
+	public static function page_builder_analysis_rowcontent( $json_code ) {
 		
-		$data = 	str_replace( '{rowqt:}', '"',
-			    $str 
+		$data = str_replace( '{rowqt:}', '"',
+			    $json_code 
 			    );
 		return json_decode( $data );
 		

@@ -15,6 +15,24 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		public static function init() {
 			add_action( 'wp_head', array( __CLASS__, 'do_my_shortcodes' ) );
 			add_action( 'admin_init', array( __CLASS__, 'do_my_shortcodes' ) ); //When switching the page template
+			add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
+		}
+		
+		/*
+		 * Extend the default WordPress body classes.
+		 *
+		 *
+		 */
+		public static function new_class( $classes ) {
+
+			$id        = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
+			$tempclass = UixPageBuilder::page_builder_array_tempname( get_post_meta( $id, 'uix-page-builder-layoutdata', true ), true );
+			$classes[] = 'uix-page-builder-body';
+			$classes[] = 'uix-page-builder-'.$tempclass;
+			$classes[] = $tempclass;
+			
+			return $classes;
+
 		}
 	
 		
@@ -180,7 +198,6 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 
 				}
 		
-			
 			return do_shortcode( $return_string );
 		}
 

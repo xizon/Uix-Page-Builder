@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
 
+
 /*
  * Add a preview to a Wordpress Control Panel
  *
@@ -12,7 +13,6 @@ if ( !function_exists( 'uix_page_builder_previewControlPanel' ) ) {
 	
 	add_action( 'init', 'uix_page_builder_previewControlPanel' );		
 	function uix_page_builder_previewControlPanel() {
-		
 		
         if ( is_admin() ) {
 			if ( isset( $_GET['uix_page_builder_visual_mode'] ) && $_GET['uix_page_builder_visual_mode'] == 1 ) {
@@ -329,7 +329,7 @@ if ( !function_exists( 'uix_page_builder_saveLiveRender' ) ) {
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
 			$id              = $_POST[ 'postID' ];
-			$layoutdata 	 = UixPageBuilder::format_layoutdata_remove_tempname( wp_unslash( $_POST[ 'layoutdata' ] ) );
+			$layoutdata 	 = UixPageBuilder::format_layoutdata_add_tempname( $_POST[ 'postID' ], wp_unslash( $_POST[ 'layoutdata' ] ) );
 			$pagetemp 	     = sanitize_text_field( $_POST[ 'pageTemp' ] );
 			$builderstatus 	 = 'disable';
 
@@ -377,60 +377,6 @@ if ( !function_exists( 'uix_page_builder_publishLiveRender' ) ) {
 	}
 }
 
-
-
-/*
- * Delete data of custom content template with ajax
- * 
- */
-if ( !function_exists( 'uix_page_builder_delContentTemplate' ) ) {
-	add_action( 'wp_ajax_uix_page_builder_delContentTemplate_settings', 'uix_page_builder_delContentTemplate' );		
-	function uix_page_builder_delContentTemplate() {
-		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
-		
-		if ( isset( $_POST[ 'tempName' ] ) ) {
-			
-			//Update the WP data
-			$old = get_option( 'uix-page-builder-templates' );
-			$new = UixPageBuilder::remove_element_withvalue( $old, 'name', $_POST[ 'tempName' ] );
-			update_option( 'uix-page-builder-templates', $new );
-			
-			//Update the XML data
-			$xmlargs    = '';
-			if ( is_array( $new ) && sizeof( $new ) > 0 ) {
-
-				foreach ( $new as $v ) {
-
-					$xmlargs   .= '
-						<item>
-							<name><![CDATA['.$v[ 'name' ].']]></name>
-							<thumb><![CDATA['.$v[ 'thumb' ].']]></thumb>
-							<data><![CDATA['.$v[ 'data' ].']]></data>
-						</item>
-					';
-
-
-				}
-
-			}
-
-			$xmlvalue =  '<?xml version="1.0" encoding="utf-8"?>
-			<items>
-				'.$xmlargs.'
-			</items>
-			';
-
-			$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
-			update_option( 'uix-page-builder-templates-xml', $xmlvalue );	
-
-			
-	
-			
-		}
-
-		wp_die();	
-	}
-}
 
 
 

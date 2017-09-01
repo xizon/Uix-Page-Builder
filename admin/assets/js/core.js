@@ -308,74 +308,68 @@
 		$( document ).on( 'click', '.settings-temp-wrapper .confirm', function( e ) {
 			e.preventDefault();
 
-			var $this = $( this ),
-			    v     = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="temp"]:checked' ).parent().find( 'textarea' ).html();
+			var $this         = $( this ),
+			    v             = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="temp"]:checked' ).parent().find( 'textarea' ).html(),
+				tempname      = gridsterRenderCodesTempnameValue( v ); //Get the JSON code value of "tempname"
 
+			//Display load animation
 			$this.next( '.spinner' ).addClass( 'is-active' );
+			
 			
 			//Format the JSON code (remove value of "tempname")
 			v = gridsterFormatRenderCodesRemoveTempname( v );
-
-			$.post( ajaxurl, {
-				action               : 'uix_page_builder_metaboxes_loadtemp_settings',
-				curlayoutdata        : v,
-				security             : uix_page_builder_layoutdata.send_string_nonce
-			}, function ( response ) {
-
-				var data      = response
-								.toString()
-								.replace( /\\/g, '' )
-								.replace( /""/g, '' )
-								.replace( /:,/g, ':"",' );
-
-
-				//Load and initialize editable widgets
-				var gridsterInit = new UixPBGridsterMain();
-				gridsterInit.editRow( JSON.parse( data ) );
-				
-
-				//Save options for gridster data
-				var settings = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
-				$.post( ajaxurl, {
-					action               : 'uix_page_builder_metaboxes_save_settings',
-					layoutdata           : settings,
+			
+			
+			$.ajax({
+				url       : ajaxurl,
+				type      : 'POST',
+				data: {
+					action               : 'uix_page_builder_metaboxes_loadtemp_settings',
+					curlayoutdata        : v,
+					tempname             : tempname,
 					postID               : uix_page_builder_layoutdata.send_string_postid,
 					security             : uix_page_builder_layoutdata.send_string_nonce
-				}, function ( response ) {
+				},
+				success   : function( result ){
+					
+					var data      = result
+									.toString()
+									.replace( /\\/g, '' )
+									.replace( /""/g, '' )
+									.replace( /:,/g, ':"",' );
 
+					
+					//Load and initialize editable widgets
+					var gridsterInit = new UixPBGridsterMain();
+					gridsterInit.editRow( JSON.parse( data ) );
+
+
+					//Save options for gridster data
+					var settings = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
+
+					
 					//Render and save page data
 					var gridsterInit = new UixPBGridsterMain();
 					gridsterInit.renderAndSavePage(2); //Render the entire page
 					
+
+					//close
+					$this.parent().hide();
+					$( '.uixpbform-modal-mask' ).hide();
+					$this.next( '.spinner' ).removeClass( 'is-active' );
+
+					// stuff here
+					return false;					
 					
-				});
-
-
-				//close
-				$this.parent().hide();
-				$( '.uixpbform-modal-mask' ).hide();
-				$this.next( '.spinner' ).removeClass( 'is-active' );
-
-				// stuff here
-				return false;		
-
-
+				}
 			});
 			
-
-
+		
 
 		});
 
 
 		//--------save
-		$( document ).on( 'click', '.uix-page-builder-gridster-addbtn .save-temp', function( e ) {
-			e.preventDefault();
-
-	        $( this ).next( '.settings-temp-wrapper' ).find( '[name="tempname"]' ).val( uix_page_builder_layoutdata.send_string_name );
-
-		});
-
 		$( document ).on( 'click', '.settings-temp-wrapper .save', function( e ) {
 			e.preventDefault();
 
@@ -386,22 +380,27 @@
 
 			$this.next( '.spinner' ).addClass( 'is-active' );
 
-			$.post( ajaxurl, {
-				action               : 'uix_page_builder_metaboxes_savetemp_settings',
-				curlayoutdata        : v,
-				tempname             : n,
-				postID               : uix_page_builder_layoutdata.send_string_postid,
-				security             : uix_page_builder_layoutdata.send_string_nonce
-			}, function ( response ) {
-				//console.log( response )
+			
+			$.ajax({
+				url       : ajaxurl,
+				type      : 'POST',
+				data: {
+					action               : 'uix_page_builder_metaboxes_savetemp_settings',
+					curlayoutdata        : v,
+					tempname             : n,
+					postID               : uix_page_builder_layoutdata.send_string_postid,
+					security             : uix_page_builder_layoutdata.send_string_nonce
+				},
+				success   : function( result ){
+					//console.log( result )
 
-				//close
-				$this.parent().hide();
-				$( '.uixpbform-modal-mask' ).hide();
-				$this.next( '.spinner' ).removeClass( 'is-active' );
-		
-
+					//close
+					$this.parent().hide();
+					$( '.uixpbform-modal-mask' ).hide();
+					$this.next( '.spinner' ).removeClass( 'is-active' );
+				}
 			});
+
 			
 			// stuff here
 			return false;	
@@ -530,7 +529,7 @@
  * [Gridster] Format the JSON code (remove value of "tempname")
  * ---------------------------------------------------
  *
- * @param  {string} str            - Any string.
+ * @param  {string} str            - JSON string.
  * @return {string}                - A new string.
  */		
 function gridsterFormatRenderCodesRemoveTempname( str ){
@@ -541,14 +540,9 @@ function gridsterFormatRenderCodesRemoveTempname( str ){
 		replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
 
 			var newstr        = JSON.parse( str ),
-				tempnameValue = '',
+				tempnameValue = newstr[0].tempname,
 				result        = '';
 
-			
-			for( var i = 0; i < 1; i++ ) {
-				tempnameValue = newstr[i].tempname;
-			}
-			
 			str = str.replace( '{"tempname":"'+tempnameValue+'"},', '' );
 
 			return str;
@@ -565,6 +559,37 @@ function gridsterFormatRenderCodesRemoveTempname( str ){
 }
 
 
+
+/*! 
+ * 
+ * [Gridster] Get the JSON code value of "tempname"
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - JSON string.
+ * @return {string}                - A new string.
+ */		
+function gridsterRenderCodesTempnameValue( str ){
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		
+		if (/^[\],:{}\s]*$/.test( str.replace(/\\["\\\/bfnrtu]/g, '@' ).
+		replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
+		replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+
+			var newstr        = JSON.parse( str ),
+				tempnameValue = newstr[0].tempname;
+
+			return tempnameValue;
+
+		}else{
+
+		    return '';
+
+		}
+
+
+	}
+
+}
 
 /*! 
  * 

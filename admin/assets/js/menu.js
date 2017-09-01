@@ -17,19 +17,26 @@
 			
 	
 			// retrieve the widget settings form
-			$.post( ajaxurl, {
-				action               : 'uix_page_builder_anchorlinks_save_settings',
-				postID               : id,
-				security             : uix_page_builder_anchorlinks_data.send_string_nonce
-			}, function ( response ) {
-				$( '#uix-page-builder-anchorlinks-result' ).html( response );
-				$( '#uix-page-builder-anchorlinks-selectall, #uix-page-builder-anchorlinks-addbtn' ).show();
-				if ( response == '' ) {
-					$( '#uix-page-builder-anchorlinks-selectall, #uix-page-builder-anchorlinks-addbtn' ).hide();
+			$.ajax({
+				url       : ajaxurl,
+				type      : 'POST',
+				data: {
+					action               : 'uix_page_builder_anchorlinks_save_settings',
+					postID               : id,
+					security             : uix_page_builder_anchorlinks_data.send_string_nonce
+				},
+				success   : function( result ){
+					
+					$( '#uix-page-builder-anchorlinks-result' ).html( result );
+					$( '#uix-page-builder-anchorlinks-selectall, #uix-page-builder-anchorlinks-addbtn' ).show();
+					if ( result == '' ) {
+						$( '#uix-page-builder-anchorlinks-selectall, #uix-page-builder-anchorlinks-addbtn' ).hide();
+					}
+
+					$( '#uix_page_builder_anchorlinks_loader' ).hide();
 				}
-				
-				$( '#uix_page_builder_anchorlinks_loader' ).hide();
 			});
+			
 			
 			// stuff here
 			return false;	
