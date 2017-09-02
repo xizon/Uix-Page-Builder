@@ -176,7 +176,7 @@ UixPageBuilder::form_scripts( array(
 						),
 		'title'        => esc_html__( 'Google Map', 'uix-page-builder' ),
 	    'js_template'  => '
-			var temp = \'[uix_pb_map style=\\\'\'+uixpbform_htmlEncode( uix_pb_map_style )+\'\\\' width=\\\'\'+uixpbform_floatval( uix_pb_map_width )+\'\'+uixpbform_htmlEncode( uix_pb_map_width_units )+\'\\\' height=\\\'\'+uixpbform_floatval( uix_pb_map_height )+\'\'+uixpbform_htmlEncode( uix_pb_map_height_units )+\'\\\' latitude=\\\'\'+uixpbform_floatval( uix_pb_map_latitude )+\'\\\' longitude=\\\'\'+uixpbform_floatval( uix_pb_map_longitude )+\'\\\' zoom=\\\'\'+uixpbform_floatval( uix_pb_map_zoom )+\'\\\' name=\\\'\'+uixpbform_htmlEncode( uix_pb_map_name )+\'\\\' marker=\\\'\'+encodeURI( uix_pb_map_marker )+\'\\\' ]\';
+			var temp = \'[uix_pb_map style=\\\'\'+uixpbform_htmlEncode( uix_pb_map_style )+\'\\\' width=\\\'\'+uixpbform_floatval( uix_pb_map_width )+\'\'+uixpbform_htmlEncode( uix_pb_map_width_units )+\'\\\' height=\\\'\'+uixpbform_floatval( uix_pb_map_height )+\'\'+uixpbform_htmlEncode( uix_pb_map_height_units )+\'\\\' latitude=\\\'\'+uixpbform_floatval( uix_pb_map_latitude )+\'\\\' longitude=\\\'\'+uixpbform_floatval( uix_pb_map_longitude )+\'\\\' zoom=\\\'\'+uixpbform_floatval( uix_pb_map_zoom )+\'\\\' name=\\\'\'+uixpbform_htmlEncode( uix_pb_map_name )+\'\\\' marker=\\\'\'+encodeURI( uix_pb_map_marker )+\'\\\']\';
 		'
     )
 );

@@ -41,7 +41,7 @@ echo $xValue['item']['title'];
 
 $xml             = new UixPB_XML;  
 $xml -> xml_path = '???.xml';
-$xLength         =  $xml -> get_xmlLength();
+$xLength         = $xml -> get_xmlLength();
 $xValue          = $xml -> xml_read();
 
 

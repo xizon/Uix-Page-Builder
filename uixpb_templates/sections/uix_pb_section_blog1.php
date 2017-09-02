@@ -88,7 +88,7 @@ $form_type = array(
 );
 
 
-//Show All Categories as Links
+//Show All Categories as Links. In order to get all posts related to particular category name.
 $categories = get_categories( array(
     'orderby' => 'name',
     'order'   => 'ASC'
@@ -107,10 +107,26 @@ $args =
 	array(
 	
 
+		array(
+			'id'             => 'uix_pb_blog_loop_layout',
+			'title'          => esc_html__( 'Loop Posts Layout', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 1,
+			'placeholder'    => '',
+			'type'           => 'select',
+			'default'        => array(
+									'1'  => esc_html__( 'loop posts with this plugin.', 'uix-page-builder' ),
+									'2'  => esc_html__( 'loop posts with your current theme.', 'uix-page-builder' ),
+				                ),
+		
+		
+		),	
+		
+		
 	    array(
 			'id'             => 'uix_pb_blog_num',
-			'title'          => esc_html__( 'Posts Number', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Choose how much posts you would like to display per page.', 'uix-page-builder' ),
+			'title'          => esc_html__( 'Show Number of Posts', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => 10,
 			'placeholder'    => '',
 			'type'           => 'short-text',
@@ -138,7 +154,7 @@ $args =
 		array(
 			'id'             => 'uix_pb_blog_cats',
 			'title'          => esc_html__( 'Select Category', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Get all posts related to particular category name.', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'select',
@@ -203,7 +219,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_blog_readmore_text',
 			'title'          => esc_html__( 'Read More Text', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Change the “read more” text/link that appears after each block.', 'uix-page-builder' ),
+			'desc'           => esc_html__( 'Change the "read more" text/link that appears after each block.', 'uix-page-builder' ),
 			'value'          => esc_html__( 'Read More', 'uix-page-builder' ),
 		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog_readmore_text' ).'_class', /*class of toggle item */
 			'placeholder'    => '',
@@ -254,6 +270,8 @@ $args =
 		{uix_pb_blog_attrs_excerpt}          --> Excerpt with read more button
 		{uix_pb_blog_attrs_thumbnail}        --> Featured image HTML code
 		{uix_pb_blog_attrs_thumbnail_url}    --> Featured image URL
+		{uix_pb_blog_attrs_format}           --> Retrieve the format slug for a post
+		
 
  
  */
@@ -344,7 +362,7 @@ UixPageBuilder::form_scripts( array(
 			var temp = \'\';
 				temp += _config_t;
 				temp += _config_desc;
-				temp += \'[uix_pb_blog excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog]\';
+				temp += \'[uix_pb_blog loop_layout=\\\'\'+uix_pb_blog_loop_layout+\'\\\'  excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog]\';
 		
 		
 		'

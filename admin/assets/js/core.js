@@ -1208,13 +1208,22 @@ function UixPBFormatRenderCodes( code ) {
 			});
 			
 			//Filter shortcodes of each column widget HTML code through their hooks.
-			if ( newValue.indexOf( '[uix_pb_' ) == -1 && newValue.indexOf( '[contact-form' ) == -1 ) {
+			// Discard the rendering of separated module when the module contains these WP shortcodes, "*" represents a wildcard.
+			var arr                   = uix_page_builder_layoutdata.send_string_render_entire.split( ',' ),
+				renderSeparatedModule = true;
+			for( var j in arr ) {
+				var thisStr = arr[j].replace( '*', '' ).replace( ']', '' );
+				if ( newValue.indexOf( thisStr ) >= 0 ) {
+					renderSeparatedModule = false;
+				}
+			}
+			
+			
+			if ( renderSeparatedModule ) {
 				container.html( newValue );
 			}
 			
 
-			
-			
 			
 		})
 	}

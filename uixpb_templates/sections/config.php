@@ -271,14 +271,7 @@ $uix_pb_config = array(
 									'thumb'           => 'blog-1.jpg',
 								
 								),
-	
-	
-								array(
-									'title'           => esc_html__( 'WP Posts List', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_blog2.php',
-									'thumb'           => 'blog-2.jpg',
-								
-								),
+
 				
 							)
 	

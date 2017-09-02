@@ -152,7 +152,7 @@ $form_type = array(
 );
 
 
-//Show All Categories as Links
+//Show All Categories as Links. In order to get all posts related to particular category name.
 $categories = get_categories( array(
     'orderby'  => 'name',
     'order'    => 'ASC',
@@ -170,12 +170,12 @@ if ( ! empty( $categories ) ) {
 
 $args = 
 	array(
-	
 
+		
 	    array(
 			'id'             => 'uix_pb_uix_products_num',
-			'title'          => esc_html__( 'Portfolio Number', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Choose how much posts you would like to display per page.', 'uix-page-builder' ),
+			'title'          => esc_html__( 'Show Number of Products', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => 9,
 			'placeholder'    => '',
 			'type'           => 'short-text',
@@ -203,7 +203,7 @@ $args =
 		array(
 			'id'             => 'uix_pb_uix_products_cats',
 			'title'          => esc_html__( 'Select Category', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Get all posts related to particular category name.', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'select',
@@ -268,7 +268,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_uix_products_readmore_text',
 			'title'          => esc_html__( 'Read More Text', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Change the “read more” text/link that appears after each block.', 'uix-page-builder' ),
+			'desc'           => esc_html__( 'Change the "read more" text/link that appears after each block.', 'uix-page-builder' ),
 			'value'          => esc_html__( 'Read More', 'uix-page-builder' ),
 		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_uix_products_readmore_text' ).'_class', /*class of toggle item */
 			'placeholder'    => '',
@@ -319,6 +319,7 @@ $args =
 		{uix_pb_uix_products_attrs_excerpt}          --> Excerpt with read more button
 		{uix_pb_uix_products_attrs_thumbnail}        --> Featured image HTML code
         {uix_pb_uix_products_attrs_thumbnail_url}    --> Featured image URL
+		{uix_pb_uix_products_attrs_format}           --> Retrieve the format slug for a post
  
  */
 

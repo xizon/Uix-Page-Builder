@@ -98,6 +98,8 @@ class UixPageBuilder {
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-blog.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-googlemap.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-uix_products.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-sidebar.php';
+		
 	}
 	
 	
@@ -420,19 +422,34 @@ class UixPageBuilder {
 
 			$str = str_replace( '{temp_placeholder_path}', UixPBFormCore::plug_directory(),
 				   str_replace( '{temp_preview_thumb_path}', self::backend_path( 'uri' ),
+				   str_replace( '{temp_img_path}', self::backend_path( 'uri' ),
 				   $str 
-				   ) );
+				   ) ) );
 			
 		} elseif ( $type == 'save' ) {
 			$str = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}',
 				   str_replace( self::backend_path( 'uri' ), '{temp_preview_thumb_path}',
+				   str_replace( self::backend_path( 'uri' ), '{temp_img_path}',
 				   $str 
-				   ) );	
+				   ) ) );	
 		}
 		
 		return $str;
 
 	}
+	
+	/*
+	 * Returns the module thumbnails path
+	 *
+	 *
+	 */
+	public static function module_thumbnails_path() {
+
+		return '{temp_preview_thumb_path}images/UixPageBuilderThumb/tmpl/_default.jpg';
+
+	}
+	
+	
 	
 	
 	/**
@@ -1461,7 +1478,7 @@ class UixPageBuilder {
 	}
 	
 	/*
-	 * Checks whether a template file or directory exists
+	 * Checks whether a template file exists from your current theme.
 	 *
 	 *
 	 */
@@ -1476,8 +1493,88 @@ class UixPageBuilder {
 	}	
 		
 	
-	
+	/*
+	 * Checks whether the modules template file(.xml) exists from your current theme.
+	 *
+	 *
+	 */
+	public static function tempfile_modules_exists() {
 		
+		  $theme_template_dir_name = self::get_theme_template_dir_name();
+
+	      if( !file_exists( get_stylesheet_directory() . '/'.$theme_template_dir_name.'.xml' ) ) {
+			  return false;
+		  } else {
+			  return true;
+		  }
+
+	}	
+		
+	/*
+	 * Returns the modules template file(.xml) directory or directory URL
+	 *
+	 * Templates file: 
+	 * 
+	 *  a) /wp-content/plugins/{your-plugin}/uixpb_templates/sections/templates.xml  
+	 *  b) /wp-content/plugins/{your-theme}/uixpb_templates/sections/templates.xml  
+	 *  c) /wp-content/themes/{your-theme}/uixpb_templates.xml
+	 *
+	 */
+	public static function tempfile_modules_path( $type = 'uri', $locate = 'all', $folder = false ) {
+		
+		$theme_template_dir_name = self::get_theme_template_dir_name();
+		$theme_name              = $theme_template_dir_name.'.xml';
+		$plug_name               = 'templates.xml';
+		
+		if ( $folder ) {
+			$theme_name = '';
+			$plug_name  = '';
+		}
+		
+		
+		//Plugin or Theme
+		if ( $locate == 'all' ) {
+			if ( self::tempfile_modules_exists() ) {
+
+				if ( $type == 'uri' )  {
+					return get_template_directory_uri() .'/'.$theme_name;
+				} else {
+					return get_template_directory() .'/'.$theme_name;
+				}
+
+			} else {
+
+				if ( $type == 'uri' )  {
+					return self::backend_path( 'uri' ).'sections/'.$plug_name;
+				} else {
+					return self::backend_path( 'dir' ).'sections/'.$plug_name;
+				}
+
+			}	
+		}
+
+		
+		//Only Plugin
+		if ( $locate == 'plug' ) {
+			if ( $type == 'uri' )  {
+				return self::backend_path( 'uri' ).'sections/'.$plug_name;
+			} else {
+				return self::backend_path( 'dir' ).'sections/'.$plug_name;
+			}	
+		}
+		
+		//Only Theme
+		if ( $locate == 'theme' ) {
+			if ( $type == 'uri' )  {
+				return get_template_directory_uri() .'/'.$theme_name;
+			} else {
+				return get_template_directory() .'/'.$theme_name;
+			}
+		}
+		
+
+	}	
+	
 	
 	/*
 	 * Returns template files directory
@@ -2021,7 +2118,7 @@ class UixPageBuilder {
 							$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
 							
 							/* Render HTML Viewport */
-							$( document ).UixPBRenderHTML({ divID: '#<?php echo UixPageBuilder::frontend_wrapper_id( '', $sid, $colid ); ?>', value: temp });
+							$( document ).UixPBRenderHTML({ divID: '#<?php echo self::frontend_wrapper_id( '', $sid, $colid ); ?>', value: temp });
 
 						}
 

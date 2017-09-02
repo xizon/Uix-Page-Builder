@@ -40,7 +40,7 @@ The currently available default elements:
 * Author Card 
 * Progress Bar 
 * Portfolio 
-* Blog (2 layouts) 
+* Blog
 * Slider 
 * Instagram Feed 
 * Sidebar   
@@ -152,7 +152,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Added a WP filter "uixpb_templates_filter". Theme template directory name of front-end can use filter "uixpb_templates_filter" to change it.
 * Added a new module: Sidebar (new). Subordinate to WP Widgets.
 * Added a new module: Instagram Feed (new).
-* Added a new module: Blog (new layout).
+* Added a new option of Blog module.
 * Optimized the "Parallax" module.
 
 
