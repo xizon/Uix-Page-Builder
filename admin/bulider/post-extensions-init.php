@@ -616,8 +616,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a>
 					<p>
 						<?php 
-
-						$folder = ( UixPageBuilder::tempfolder_exists() ) ? get_stylesheet_directory(). "/".UixPageBuilder::CUSTOMTEMP : UixPageBuilder::plug_filepath().UixPageBuilder::CUSTOMTEMP;
+		
+		                $theme_template_modules_path = UixPageBuilder::get_theme_template_modules_path();
+						$folder                      = ( UixPageBuilder::tempfolder_exists() ) ? get_stylesheet_directory(). "/".$theme_template_modules_path : UixPageBuilder::plug_filepath().UixPageBuilder::CUSTOMTEMP;
 
 						echo sprintf( __( 'Please save the template you are editing before exporting. <br><br>Move this file <b><em>"templates.xml"</em></b> to the <code>%1$s</code> folder. If you have done so yet, Uix Page Builder\'s templates list will be reset to its default value as specified from the xml file.', 'uix-page-builder' ), $folder );
 

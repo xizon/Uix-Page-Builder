@@ -19,12 +19,37 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 [![Uix Page Builder Live Demo](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/video-cover.jpg)](https://www.youtube.com/watch?v=vg3rPxcfZEg "Uix Page Builder Live Demo")
 
 
-Uix Page Builder is a design system that it is simple content creation interface. The currently available default elements: `parallax`, `google maps`,  `pricing`, `features`, `testimonials carousel`, `team`, `list of clients`, `accordion`, `tabs`, `author card`, `contact form`, `progress bar`, `portfolio`, `blog`, `uix products`, `slider`. To be continued. More importantly, each module may contain a variety of styles.
+Uix Page Builder is a design system that it is simple content creation interface. Drag & Drop, User-friendly and online Visual Editing.
 
-You could add any new pages using the plugin to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
+Here are **6+** templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from. More importantly, each module may contain a variety of styles.
 
 
-Here are **6+**  templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from.
+You could add a new page with Uix Page Builder to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
+
+
+
+**Included Modules**
+
+The currently available default elements:
+
+- parallax
+- google maps
+- pricing
+- features
+- testimonials carousel
+- team
+- list of clients
+- accordion
+- tabs
+- author card
+- contact form
+- progress bar
+- portfolio
+- blog
+- uix products
+- slider
+- instagram feed
+- sidebar
 
 
 
@@ -85,6 +110,17 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 
 ### Updates
+
+
+##### = 1.3.2 (September 2, 2017) =
+
+* Added a WP filter "uixpb_templates_filter". Theme template directory name of front-end can use filter "uixpb_templates_filter" to change it.
+* Added a new module: Sidebar (new). Subordinate to WP Widgets.
+* Added a new module: Instagram Feed (new).
+* Added a new module: Blog (new layout).
+* Optimized the "Parallax" module.
+
+
 
 ##### = 1.3.1 (August 31, 2017) =
 

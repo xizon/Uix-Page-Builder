@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.3.1
+ * Version:     1.3.2
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -21,8 +21,16 @@ class UixPageBuilder {
 	const PREFIX           = 'uix';
 	const HELPER           = 'uix-page-builder-helper';
 	const NOTICEID         = 'uix-page-builder-helper-tip';
-	const CUSTOMTEMP       = 'uixpb_templates/sections/';
 	const SHOWPAGESCREEN   = 0; // Show page builder core assets from "Pages Add New Screen" when this value is "1" (For developer)
+
+	/**
+	 * Modules path of template directory with admin panel, not recommend changing it
+	 *
+	 * For admin panel only, template directory name of front-end can use filter "uixpb_templates_filter"
+	 *
+	 */
+	const CUSTOMTEMP       = 'uixpb_templates/sections/';
+
 
 	
 	/**
@@ -427,22 +435,49 @@ class UixPageBuilder {
 	}
 	
 	
+	/**
+	 * Returns the template directory name in order to your current theme.
+	 *
+	 * Themes can filter this by using the "uixpb_templates_filter" filter.
+	 * 
+	 */
+	public static function get_theme_template_dir_name() {
+
+		return untrailingslashit( apply_filters( 'uixpb_templates_filter', 'uixpb_templates' ) );
+	}
+
+	
+	/**
+	 * Returns the modules path of template directory in order to your current theme.
+	 *
+	 * Output:  uixpb_templates/sections/
+	 *
+	 * 
+	 */
+	public static function get_theme_template_modules_path() {
+
+		return trailingslashit( self::get_theme_template_dir_name().'/sections' );
+	}	
+	
 	
 	
 	/*
 	 * Returns custom back-end panel directory or directory URL
 	 *
+	 *
 	 */
 	public static function backend_path( $type = 'uri' ) {
-	
+		
+		$theme_template_dir_name = self::get_theme_template_dir_name();
+		
 		if ( self::tempfolder_exists() ) {
 			
 			
-			if ( file_exists( get_template_directory() .'/uixpb_templates/css/uix-page-builder.css' ) ) {
+			if ( file_exists( get_template_directory() .'/'.$theme_template_dir_name.'/css/uix-page-builder.css' ) ) {
 				if ( $type == 'uri' )  {
-					return get_template_directory_uri() .'/uixpb_templates/';
+					return get_template_directory_uri() .'/'.$theme_template_dir_name.'/';
 				} else {
-					return get_template_directory() .'/uixpb_templates/';
+					return get_template_directory() .'/'.$theme_template_dir_name.'/';
 				}
 			}
 
@@ -834,8 +869,10 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function tempfolder_exists() {
+		
+		  $theme_template_dir_name = self::get_theme_template_dir_name();
 
-	      if( is_dir( get_stylesheet_directory() . '/uixpb_templates' ) ) {
+	      if( is_dir( get_stylesheet_directory() . '/'.$theme_template_dir_name ) ) {
 			  return true;
 		  } else {
 			  return false;
@@ -855,14 +892,18 @@ class UixPageBuilder {
 		if( self::page_builder_mode() ) {
 			
 			if ( self::tempfolder_exists() ) {
-				include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
+				
+				$theme_template_modules_path = self::get_theme_template_modules_path();
+			
+				
+				include get_stylesheet_directory(). "/".$theme_template_modules_path."config.php";
 				foreach ( $uix_pb_config as $v ) {
 					foreach ( $v[ 'buttons' ] as $key ) {
 						
 						$keyid = str_replace( '.php', '', $key[ 'id' ] );
 						
-						if ( file_exists( get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$keyid.".php" ) ) {
-							include get_stylesheet_directory(). "/".self::CUSTOMTEMP."".$keyid.".php";
+						if ( file_exists( get_stylesheet_directory(). "/".$theme_template_modules_path."".$keyid.".php" ) ) {
+							include get_stylesheet_directory(). "/".$theme_template_modules_path."".$keyid.".php";
 						}
 						
 					}						
@@ -892,7 +933,10 @@ class UixPageBuilder {
 	public static function call_sections_frontend() {
 		
 		if ( self::tempfolder_exists() ) {
-			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
+			
+			$theme_template_modules_path = self::get_theme_template_modules_path();
+			
+			include get_stylesheet_directory(). "/".$theme_template_modules_path."config.php";
 
 		} else {
 			include self::plug_filepath().self::CUSTOMTEMP."config.php";
@@ -917,7 +961,10 @@ class UixPageBuilder {
 	public static function list_page_sortable_li_btns( $col = '' ) {
 	
 		if ( self::tempfolder_exists() ) {
-			include get_stylesheet_directory(). "/".self::CUSTOMTEMP."config.php";
+			
+			$theme_template_modules_path = self::get_theme_template_modules_path();
+			
+			include get_stylesheet_directory(). "/".$theme_template_modules_path."config.php";
 			
 		} else {
 			include self::plug_filepath().self::CUSTOMTEMP."config.php";
@@ -1428,10 +1475,9 @@ class UixPageBuilder {
 	 */
 	public static function list_templates_name( $show = 'plug' ){
 	
-		
-		$filenames = array();
-		$filepath = UIX_PAGE_BUILDER_PLUGIN_DIR. 'uixpb_templates/';
-		$themepath = get_stylesheet_directory() . '/';
+		$filenames               = array();
+		$filepath                = UIX_PAGE_BUILDER_PLUGIN_DIR. 'uixpb_templates/';
+		$themepath               = get_stylesheet_directory() . '/';
 		
 		foreach ( glob( dirname(__FILE__). "/uixpb_templates/*.php") as $file ) {
 		    $filenames[] = str_replace( dirname(__FILE__). "/uixpb_templates/", '', $file );
@@ -1440,10 +1486,7 @@ class UixPageBuilder {
 		echo '<ul>';
 		
 		foreach ( $filenames as $filename ) {
-			$file1 = trailingslashit( $filepath ) . $filename;
-			
-			$file2 = trailingslashit( $themepath ) . $filename;	
-			
+	
 			if ( $show == 'plug' ) {
 				echo '<li>'.trailingslashit( $filepath ) . $filename.'</li>';
 			} else {

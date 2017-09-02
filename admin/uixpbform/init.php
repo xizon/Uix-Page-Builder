@@ -17,9 +17,17 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '2.8';
-		const CUSTOMTEMP = 'uixpb_templates/sections/';
+		const VERSION    = '2.8';	
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
+		
+		/**
+		 * Modules path of template directory with admin panel, not recommend changing it
+		 *
+		 * For admin panel only, template directory name of front-end can use filter "uixpb_templates_filter"
+		 *
+		 */
+		const CUSTOMTEMP = 'uixpb_templates/sections/';
+	
 	
 		
 		/**
@@ -213,7 +221,9 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function tempfolder_exists() {
 	
-			  if( is_dir( get_stylesheet_directory() . '/uixpb_templates' ) ) {
+			  $theme_template_dir_name = self::get_theme_template_dir_name();
+			
+			  if( is_dir( get_stylesheet_directory() . '/'.$theme_template_dir_name ) ) {
 				  return true;
 			  } else {
 				  return false;
@@ -221,7 +231,32 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	
 		}
 		
-	
+		
+		/**
+		 * Returns the template directory name in order to your current theme.
+		 *
+		 * Themes can filter this by using the "uixpb_templates_filter" filter.
+		 * 
+		 */
+		public static function get_theme_template_dir_name() {
+
+			return untrailingslashit( apply_filters( 'uixpb_templates_filter', 'uixpb_templates' ) );
+		}
+
+
+		/**
+		 * Returns the modules path of template directory in order to your current theme.
+		 *
+		 * Output:  uixpb_templates/sections/
+		 *
+		 * 
+		 */
+		public static function get_theme_template_modules_path() {
+
+			return trailingslashit( self::get_theme_template_dir_name().'/sections' );
+		}	
+
+		
 		
 		/*
 		 * Call the specified page sections
@@ -231,7 +266,10 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		public static function call_ajax_sections_tempfilepath( $name ) {
 			
 			if ( self::tempfolder_exists() ) {
-				include get_stylesheet_directory(). "/".self::CUSTOMTEMP."{$name}.php";
+				
+				$theme_template_modules_path = self::get_theme_template_modules_path();
+				
+				include get_stylesheet_directory(). "/".$theme_template_modules_path."{$name}.php";
 	
 			} else {
 				include self::plug_filepath().self::CUSTOMTEMP."{$name}.php";
