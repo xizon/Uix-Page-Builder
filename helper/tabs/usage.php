@@ -7,16 +7,16 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 ?>
 
     
-		<div class="uix-page-builder-faq-group">
+		<div class="uix-bg-custom-faq-group">
 			<h3><?php _e( 'FAQ 1: How To Create a Full Width or Boxed Layout?', 'uix-page-builder' ); ?>
 			</h3>
-			<div class="uix-page-builder-faq-con">
+			<div class="uix-bg-custom-faq-con">
 				<p>
 				 <?php _e( 'On visual builder page, expand the <i class="dashicons dashicons-admin-generic"></i> from Drag & Drop modules of left sidebar. You can easily choose the type of container.', 'uix-page-builder' ); ?></p>
 
 			</div>
 			<h3><?php _e( 'FAQ 2: How To Create The One-Page Navigation?', 'uix-page-builder' ); ?></h3>
-			<div class="uix-page-builder-faq-con">
+			<div class="uix-bg-custom-faq-con">
 				<p>
 				 <?php _e( '1. On visual builder page, expand the <i class="dashicons dashicons-admin-generic"></i> from Drag & Drop modules of left sidebar. You can enter any string in the custom <strong>ID</strong> field on the right. Such as <code>my-portfolio</code>.', 'uix-page-builder' ); ?></p>
 				 <p>
@@ -33,7 +33,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 			
 			<h3><?php _e( 'FAQ 3: How to use a custom page builder template?', 'uix-page-builder' ); ?>
 			</h3>
-			<div class="uix-page-builder-faq-con">
+			<div class="uix-bg-custom-faq-con">
 				<p>
 			   <?php 
 				printf( 

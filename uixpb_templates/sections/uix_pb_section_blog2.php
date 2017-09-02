@@ -37,7 +37,7 @@ $module_config =
 	array(
 	
 		array(
-			'id'             => 'uix_pb_blog_config_title',
+			'id'             => 'uix_pb_blog2_config_title',
 			'title'          => esc_html__( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => esc_html__( 'Text Here', 'uix-page-builder' ),
@@ -48,7 +48,7 @@ $module_config =
 	
 		
 		array(
-			'id'             => 'uix_pb_blog_config_intro' ,
+			'id'             => 'uix_pb_blog2_config_intro' ,
 			'title'          => esc_html__( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => esc_html__( 'This is the description text for the title.', 'uix-page-builder' ),
@@ -61,7 +61,7 @@ $module_config =
 		),
 
 		array(
-			'id'             => 'uix_pb_blog_config_grid',
+			'id'             => 'uix_pb_blog2_config_grid',
 			'title'          => esc_html__( 'Column', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 6,
@@ -108,7 +108,7 @@ $args =
 	
 
 	    array(
-			'id'             => 'uix_pb_blog_num',
+			'id'             => 'uix_pb_blog2_num',
 			'title'          => esc_html__( 'Posts Number', 'uix-page-builder' ),
 			'desc'           => esc_html__( 'Choose how much posts you would like to display per page.', 'uix-page-builder' ),
 			'value'          => 10,
@@ -121,7 +121,7 @@ $args =
 		),
 		
 	    array(
-			'id'             => 'uix_pb_blog_order',
+			'id'             => 'uix_pb_blog2_order',
 			'title'          => esc_html__( 'Order By', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
@@ -136,7 +136,7 @@ $args =
 		),
 	
 		array(
-			'id'             => 'uix_pb_blog_cats',
+			'id'             => 'uix_pb_blog2_cats',
 			'title'          => esc_html__( 'Select Category', 'uix-page-builder' ),
 			'desc'           => esc_html__( 'Get all posts related to particular category name.', 'uix-page-builder' ),
 			'value'          => '',
@@ -148,7 +148,7 @@ $args =
 
 
 	    array(
-			'id'             => 'uix_pb_blog_dateformat',
+			'id'             => 'uix_pb_blog2_dateformat',
 			'title'          => esc_html__( 'Meta Date Format', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 1,
@@ -165,7 +165,7 @@ $args =
 		
 		
 	    array(
-			'id'             => 'uix_pb_blog_excerpt_length',
+			'id'             => 'uix_pb_blog2_excerpt_length',
 			'title'          => esc_html__( 'Excerpt Length', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 35,
@@ -179,7 +179,7 @@ $args =
 		
 		
 		array(
-			'id'             => 'uix_pb_blog_readmore_checkbox_toggle',
+			'id'             => 'uix_pb_blog2_readmore_checkbox_toggle',
 			'title'          => esc_html__( 'Read More Button', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 0, // 0:close  1:open
@@ -190,8 +190,8 @@ $args =
 			'toggle'        => array(
 									'trigger_id'  => '', /* {option id} */
 									'toggle_class'  => array(
-		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog_readmore_text' ).'_class',
-		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog_readmore_class' ).'_class'
+		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog2_readmore_text' ).'_class',
+		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog2_readmore_class' ).'_class'
 	                                 ),
 				                )	
 		
@@ -201,22 +201,22 @@ $args =
 
 		
 	    array(
-			'id'             => 'uix_pb_blog_readmore_text',
+			'id'             => 'uix_pb_blog2_readmore_text',
 			'title'          => esc_html__( 'Read More Text', 'uix-page-builder' ),
 			'desc'           => esc_html__( 'Change the “read more” text/link that appears after each block.', 'uix-page-builder' ),
 			'value'          => esc_html__( 'Read More', 'uix-page-builder' ),
-		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog_readmore_text' ).'_class', /*class of toggle item */
+		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog2_readmore_text' ).'_class', /*class of toggle item */
 			'placeholder'    => '',
 			'type'           => 'text'
 		
 		),	
 
 	    array(
-			'id'             => 'uix_pb_blog_readmore_class',
+			'id'             => 'uix_pb_blog2_readmore_class',
 			'title'          => esc_html__( 'Class Name', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 'uix-pb-btn uix-pb-btn-small-small uix-pb-btn-black',
-		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog_readmore_class' ).'_class', /*class of toggle item */
+		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog2_readmore_class' ).'_class', /*class of toggle item */
 			'placeholder'    => '',
 			'type'           => 'text'
 		
@@ -239,38 +239,38 @@ $args =
  * Use this template to display content on your website. You can use the following placeholders 
  * in the post list item templates, which will be replaced by the actual values when the content is displayed:
  
-		{uix_pb_blog_attrs_link}             --> Permalink
-		{uix_pb_blog_attrs_id}               --> Post ID 
-		{uix_pb_blog_attrs_title_attr}       --> Title attribute escaping
-		{uix_pb_blog_attrs_title}            --> Title
-		{uix_pb_blog_attrs_date_m}           --> Month  
-		{uix_pb_blog_attrs_date_M}           --> Month display in English
-		{uix_pb_blog_attrs_date_d}           --> Day
-		{uix_pb_blog_attrs_date_y}           --> Year
-		{uix_pb_blog_attrs_cat_link}         --> Categories for a post (Contains hyperlinks)
-		{uix_pb_blog_attrs_cat_text}         --> Categories for a post
-		{uix_pb_blog_attrs_cat_attr}         --> Escaping for categories HTML attributes.
-		{uix_pb_blog_attrs_cat_groupattr}    --> Escaping for categories group HTML attributes.  Like this: data-groups='["discovery","featured"]'
-		{uix_pb_blog_attrs_excerpt}          --> Excerpt with read more button
-		{uix_pb_blog_attrs_thumbnail}        --> Featured image HTML code
-		{uix_pb_blog_attrs_thumbnail_url}    --> Featured image URL
+		{uix_pb_blog2_attrs_link}             --> Permalink
+		{uix_pb_blog2_attrs_id}               --> Post ID 
+		{uix_pb_blog2_attrs_title_attr}       --> Title attribute escaping
+		{uix_pb_blog2_attrs_title}            --> Title
+		{uix_pb_blog2_attrs_date_m}           --> Month  
+		{uix_pb_blog2_attrs_date_M}           --> Month display in English
+		{uix_pb_blog2_attrs_date_d}           --> Day
+		{uix_pb_blog2_attrs_date_y}           --> Year
+		{uix_pb_blog2_attrs_cat_link}         --> Categories for a post (Contains hyperlinks)
+		{uix_pb_blog2_attrs_cat_text}         --> Categories for a post
+		{uix_pb_blog2_attrs_cat_attr}         --> Escaping for categories HTML attributes.
+		{uix_pb_blog2_attrs_cat_groupattr}    --> Escaping for categories group HTML attributes.  Like this: data-groups='["discovery","featured"]'
+		{uix_pb_blog2_attrs_excerpt}          --> Excerpt with read more button
+		{uix_pb_blog2_attrs_thumbnail}        --> Featured image HTML code
+		{uix_pb_blog2_attrs_thumbnail_url}    --> Featured image URL
 
  
  */
 	
 $loop_template_code = '
 
-	<li class="grid-item uix-pb-col-{col}" {uix_pb_blog_attrs_cat_groupattr}>
+	<li class="grid-item uix-pb-col-{col}" {uix_pb_blog2_attrs_cat_groupattr}>
 		<figure>
-			<a data-id="{uix_pb_blog_attrs_id}" title="{uix_pb_blog_attrs_title_attr}" href="{uix_pb_blog_attrs_link}">
-				{uix_pb_blog_attrs_thumbnail}
+			<a data-id="{uix_pb_blog2_attrs_id}" title="{uix_pb_blog2_attrs_title_attr}" href="{uix_pb_blog2_attrs_link}">
+				{uix_pb_blog2_attrs_thumbnail}
 			</a>
 			<figcaption>
 				<p class="post-date">{date}</p>
-				<p class="post-cat">{uix_pb_blog_attrs_cat_link}</p>
-				<h3><a data-id="{uix_pb_blog_attrs_id}" title="{uix_pb_blog_attrs_title_attr}" href="{uix_pb_blog_attrs_link}">{uix_pb_blog_attrs_title}</a></h3>
+				<p class="post-cat">{uix_pb_blog2_attrs_cat_link}</p>
+				<h3><a data-id="{uix_pb_blog2_attrs_id}" title="{uix_pb_blog2_attrs_title_attr}" href="{uix_pb_blog2_attrs_link}">{uix_pb_blog2_attrs_title}</a></h3>
 				<div class="post-excerpt">
-					{uix_pb_blog_attrs_excerpt} 
+					{uix_pb_blog2_attrs_excerpt} 
 				</div>
 			</figcaption>
 		</figure>
@@ -303,48 +303,48 @@ UixPageBuilder::form_scripts( array(
 	    'js_template'  => '
 		
 		
-			var _config_t             = ( uix_pb_blog_config_title != undefined && uix_pb_blog_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_blog_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_blog_config_intro != undefined && uix_pb_blog_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_blog_config_intro+\'</div>\' : \'\';
+			var _config_t             = ( uix_pb_blog2_config_title != undefined && uix_pb_blog2_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_blog2_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
+				_config_desc          = ( uix_pb_blog2_config_intro != undefined && uix_pb_blog2_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_blog2_config_intro+\'</div>\' : \'\';
 
 
 		
 		
-		    var uix_pb_blog_result_readmore_checkbox_toggle    = 1,
-			    uix_pb_blog_result_dateformat                  = \'\',
-                before_html                                    = \'<div class="uix-pb-blog-posts-grid uix-pb-blog-posts-grid\'+uix_pb_blog_config_grid+\'"><ul class="uix-pb-row">\',
+		    var uix_pb_blog2_result_readmore_checkbox_toggle    = 1,
+			    uix_pb_blog2_result_dateformat                  = \'\',
+                before_html                                    = \'<div class="uix-pb-blog-posts-grid uix-pb-blog-posts-grid\'+uix_pb_blog2_config_grid+\'"><ul class="uix-pb-row">\',
                 after_html                                     = \'</ul></div>\',
 				show_list_item                                 = \''.UixPBFormCore::str_compression( $loop_template_code ).'\';
 			
-			switch ( uix_pb_blog_dateformat ) {
+			switch ( uix_pb_blog2_dateformat ) {
 				case \'1\':
-					uix_pb_blog_result_dateformat = \'{uix_pb_blog_attrs_date_M} {uix_pb_blog_attrs_date_d}, {uix_pb_blog_attrs_date_y}\';
+					uix_pb_blog2_result_dateformat = \'{uix_pb_blog2_attrs_date_M} {uix_pb_blog2_attrs_date_d}, {uix_pb_blog2_attrs_date_y}\';
 					break;
 				case \'2\':
-					uix_pb_blog_result_dateformat = \'{uix_pb_blog_attrs_date_y}-{uix_pb_blog_attrs_date_m}-{uix_pb_blog_attrs_date_d}\';
+					uix_pb_blog2_result_dateformat = \'{uix_pb_blog2_attrs_date_y}-{uix_pb_blog2_attrs_date_m}-{uix_pb_blog2_attrs_date_d}\';
 					break;
 				case \'3\':
-					uix_pb_blog_result_dateformat = \'{uix_pb_blog_attrs_date_m}/{uix_pb_blog_attrs_date_d}/{uix_pb_blog_attrs_date_y}\';
+					uix_pb_blog2_result_dateformat = \'{uix_pb_blog2_attrs_date_m}/{uix_pb_blog2_attrs_date_d}/{uix_pb_blog2_attrs_date_y}\';
 					break;
 				case \'4\':
-					uix_pb_blog_result_dateformat = \'{uix_pb_blog_attrs_date_d}/{uix_pb_blog_attrs_date_m}/{uix_pb_blog_attrs_date_y}\';
+					uix_pb_blog2_result_dateformat = \'{uix_pb_blog2_attrs_date_d}/{uix_pb_blog2_attrs_date_m}/{uix_pb_blog2_attrs_date_y}\';
 					break;
 					
 			}
 			
 			show_list_item = show_list_item
-							 .replace( /{date}/g, uix_pb_blog_result_dateformat )
-							 .replace( /{col}/g, uix_pb_blog_config_grid );
+							 .replace( /{date}/g, uix_pb_blog2_result_dateformat )
+							 .replace( /{col}/g, uix_pb_blog2_config_grid );
 
 			
 			
 			
-			if ( uix_pb_blog_readmore_checkbox_toggle === false ) uix_pb_blog_result_readmore_checkbox_toggle = 0;
+			if ( uix_pb_blog2_readmore_checkbox_toggle === false ) uix_pb_blog2_result_readmore_checkbox_toggle = 0;
 		
 		
 			var temp = \'\';
 				temp += _config_t;
 				temp += _config_desc;
-				temp += \'[uix_pb_blog excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog]\';
+				temp += \'[uix_pb_blog2 excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog2_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog2_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog2_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog2_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog2_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog2_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog2_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog2]\';
 		
 		
 		'

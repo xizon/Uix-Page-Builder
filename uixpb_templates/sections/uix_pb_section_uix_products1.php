@@ -357,11 +357,11 @@ UixPageBuilder::form_scripts( array(
 								 'config'  => $args_config,
 								 'type'    => $form_type,
 								 'values'  => $args,
-								 'title'   => esc_html__( 'Content', 'uix-page-builder' )
+								 'title'   => esc_html__( 'Content Settings', 'uix-page-builder' )
 							),
 
 					),
-		'title'        => esc_html__( 'WP Portfolio List', 'uix-page-builder' ),
+		'title'        => esc_html__( 'Uix Products Grid', 'uix-page-builder' ),
 	    'js_template'  => '
 		
 		

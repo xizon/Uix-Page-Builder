@@ -900,11 +900,14 @@ class UixPageBuilder {
 				foreach ( $uix_pb_config as $v ) {
 					foreach ( $v[ 'buttons' ] as $key ) {
 						
-						$keyid = str_replace( '.php', '', $key[ 'id' ] );
-						
-						if ( file_exists( get_stylesheet_directory(). "/".$theme_template_modules_path."".$keyid.".php" ) ) {
-							include get_stylesheet_directory(). "/".$theme_template_modules_path."".$keyid.".php";
+						if ( !empty( $key[ 'id' ] ) ) {
+							$keyid = str_replace( '.php', '', $key[ 'id' ] );
+
+							if ( file_exists( get_stylesheet_directory(). "/".$theme_template_modules_path."".$keyid.".php" ) ) {
+								include get_stylesheet_directory(). "/".$theme_template_modules_path."".$keyid.".php";
+							}		
 						}
+
 						
 					}						
 				}
@@ -915,11 +918,15 @@ class UixPageBuilder {
 				foreach ( $uix_pb_config as $v ) {
 					foreach ( $v[ 'buttons' ] as $key ) {
 						
-						$keyid = str_replace( '.php', '', $key[ 'id' ] );
 						
-						if ( file_exists( self::plug_filepath().self::CUSTOMTEMP."".$keyid.".php" ) ) {
-							include self::plug_filepath().self::CUSTOMTEMP."".$keyid.".php";
+						if ( !empty( $key[ 'id' ] ) ) {
+							$keyid = str_replace( '.php', '', $key[ 'id' ] );
+
+							if ( file_exists( self::plug_filepath().self::CUSTOMTEMP."".$keyid.".php" ) ) {
+								include self::plug_filepath().self::CUSTOMTEMP."".$keyid.".php";
+							}		
 						}
+
 						
 					}						
 				}
@@ -981,11 +988,15 @@ class UixPageBuilder {
 			
 			foreach ( $v[ 'buttons' ] as $key ) {
 				
-				
-				$keyid  = str_replace( '.php', '', $key[ 'id' ] );
-				$imgsrc = ( !empty( $key[ 'thumb' ] ) ) ? $imgpath.$key[ 'thumb' ] : $imgpath.'_none.png';
-				
-				$btns .= "<div class=\"uix-page-builder-col\"><a class=\"widget-item-btn ".$keyid."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$keyid."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgsrc )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
+				if ( !empty( $key[ 'id' ] ) ) {
+					$keyid  = str_replace( '.php', '', $key[ 'id' ] );
+					$imgsrc = ( !empty( $key[ 'thumb' ] ) ) ? $imgpath.$key[ 'thumb' ] : $imgpath.'_none.png';
+
+					$btns .= "<div class=\"uix-page-builder-col\"><a class=\"widget-item-btn ".$keyid."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$keyid."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgsrc )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
+					
+				}
+
+
 			}		
 			
 			$btns .= '</div>';

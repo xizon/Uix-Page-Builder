@@ -1,30 +1,36 @@
 <?php 
+
+/*
+ * Require the WP plugin "Uix Products"
+ * 
+ */
+if ( class_exists( 'UixProducts' ) ) { 
+
+	$module_uix_products = array(
+			'title'           => esc_html__( 'Uix Products Grid', 'uix-page-builder' ),
+			'id'              => 'uix_pb_section_uix_products1.php',
+			'thumb'           => 'portfolio-2.jpg',
+
+		);  
+
+
+} else {
+	$module_uix_products = array(
+			'title'           => '',
+			'id'              => '',
+			'thumb'           => '',
+
+		);  
+}
+
+
+/*
+ * Add the required modules to the page builder
+ * 
+ */
 $uix_pb_config = array(
 	
-	
-	array(
-		'sortname'        => esc_html__( 'Accordion/Tabs', 'uix-page-builder' ),
-		'buttons'         => array(
-	
-								array(
-									'title'           => esc_html__( 'Accordion', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_accordion.php',
-									'thumb'           => 'accordion.jpg',
-								
-								),	
-								
-								
-								array(
-									'title'           => esc_html__( 'Tabs', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_tabs.php',
-									'thumb'           => 'tabs.jpg',
-								
-								),
-				
-							)
-	
-	),
-		
+
 	array(
 		'sortname'        => esc_html__( 'Slider', 'uix-page-builder' ),
 		'buttons'         => array(
@@ -59,82 +65,10 @@ $uix_pb_config = array(
 	),
 	
 	array(
-		'sortname'        => esc_html__( 'Blog', 'uix-page-builder' ),
-		'buttons'         => array(
-							
-								array(
-									'title'           => esc_html__( 'WP Posts List', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_blog1.php',
-									'thumb'           => 'blog-1.jpg',
-								
-								),
-	
-								
-				
-							)
-	
-	),	
-	
-	
-	array(
-		'sortname'        => esc_html__( 'Testimonials', 'uix-page-builder' ),
-		'buttons'         => array(
-							
-								array(
-									'title'           => esc_html__( 'Testimonials Carousel', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_testimonials.php',
-									'thumb'           => 'testimonials.jpg',
-								
-								),
-	
-								
-				
-							)
-	
-	),	
-	
-	array(
-		'sortname'        => esc_html__( 'Clients', 'uix-page-builder' ),
-		'buttons'         => array(
-							
-								array(
-									'title'           => esc_html__( 'Clients', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_clients.php',
-									'thumb'           => 'clients.jpg',
-								
-								),
-	
-								
-				
-							)
-	
-	),	
-	
-	array(
-		'sortname'        => esc_html__( 'Portfolio', 'uix-page-builder' ),
-		'buttons'         => array(
-							
-								array(
-									'title'           => esc_html__( 'Portfolio Grid', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_portfolio1.php',
-									'thumb'           => 'portfolio-1.jpg',
-								
-								),
-	
-								
-				
-							)
-	
-	),	
-	
-	
-	
-	
-	
-	array(
 		'sortname'        => esc_html__( 'Team', 'uix-page-builder' ),
 		'buttons'         => array(
-							
+
+	
 								array(
 									'title'           => esc_html__( 'Team Normal', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_team1.php',
@@ -147,18 +81,17 @@ $uix_pb_config = array(
 									'id'              => 'uix_pb_section_team2.php',
 									'thumb'           => 'team-2.jpg',
 								
-								),
-	
+								),						
 								
 				
 							)
 	
-	),	
+	),
 	
 	array(
 		'sortname'        => esc_html__( 'Features', 'uix-page-builder' ),
 		'buttons'         => array(
-							
+
 								array(
 									'title'           => esc_html__( 'Features 2 Column', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_features1.php',
@@ -177,11 +110,14 @@ $uix_pb_config = array(
 				
 							)
 	
-	),		
+	),
+	
 	
 	array(
 		'sortname'        => esc_html__( 'Pricing', 'uix-page-builder' ),
 		'buttons'         => array(
+
+						
 	
 								array(
 									'title'           => esc_html__( 'Pricing 3 column', 'uix-page-builder' ),
@@ -210,17 +146,59 @@ $uix_pb_config = array(
 									'id'              => 'uix_pb_section_pricing2_2.php',
 									'thumb'           => 'pricing-2_2.jpg',
 								
-								),	
-	
+								),			
+				
 							)
 	
-	),	
+	),
 	
 	
 	array(
-		'sortname'        => esc_html__( 'Elements', 'uix-page-builder' ),
+		'sortname'        => esc_html__( 'Testimonial', 'uix-page-builder' ),
+		'buttons'         => array(
+
+						
+								array(
+									'title'           => esc_html__( 'Testimonials Carousel', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_testimonials.php',
+									'thumb'           => 'testimonials.jpg',
+								
+								),
+
+							
+								array(
+									'title'           => esc_html__( 'Clients', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_clients.php',
+									'thumb'           => 'clients.jpg',
+								
+								),					
+				
+							)
+	
+	),
+	
+	
+
+	array(
+		'sortname'        => esc_html__( 'Web Elements', 'uix-page-builder' ),
 		'buttons'         => array(
 		
+	
+								array(
+									'title'           => esc_html__( 'Accordion', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_accordion.php',
+									'thumb'           => 'accordion.jpg',
+								
+								),	
+								
+								
+								array(
+									'title'           => esc_html__( 'Tabs', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_tabs.php',
+									'thumb'           => 'tabs.jpg',
+								
+								),
+	
 								array(
 									'title'           => esc_html__( 'Author Card', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_authorcard.php',
@@ -243,7 +221,12 @@ $uix_pb_config = array(
 								
 								),	
 	
-	
+								array(
+									'title'           => esc_html__( 'Instagram Feed', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_instagram.php',
+									'thumb'           => 'instagram.jpg',
+								
+								),
 	
 								array(
 									'title'           => esc_html__( 'Contact Form', 'uix-page-builder' ),
@@ -258,36 +241,70 @@ $uix_pb_config = array(
 	
 	),		
 	
-		
+	
+	
+	array(
+		'sortname'        => esc_html__( 'Sidebar', 'uix-page-builder' ),
+		'buttons'         => array(
+
+	
+								array(
+									'title'           => esc_html__( 'WP Sidebar', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_sidebar.php',
+									'thumb'           => 'sidebar.jpg',
+								
+								),
+	
+							)
+	
+	),	
+	
+	
+	array(
+		'sortname'        => esc_html__( 'Blog', 'uix-page-builder' ),
+		'buttons'         => array(
+
+	
+								array(
+									'title'           => esc_html__( 'WP Posts List', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_blog1.php',
+									'thumb'           => 'blog-1.jpg',
+								
+								),
+	
+	
+								array(
+									'title'           => esc_html__( 'WP Posts List', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_blog2.php',
+									'thumb'           => 'blog-2.jpg',
+								
+								),
+				
+							)
+	
+	),	
+	
+	
+	array(
+		'sortname'        => esc_html__( 'Portfolio', 'uix-page-builder' ),
+		'buttons'         => array(
+							
+
+								array(
+									'title'           => esc_html__( 'Portfolio Grid', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_portfolio1.php',
+									'thumb'           => 'portfolio-1.jpg',
+								
+								),
+	
+                                $module_uix_products
+	
+							)
+	
+	),	
+	
+
 		
 );
 
 
-/*
- * Require the WP plugin "Uix Products"
- * 
- */
-if ( class_exists( 'UixProducts' ) ) { 
-
-	array_push( $uix_pb_config, 
-			   
-		array(
-			'sortname'        => esc_html__( 'Uix Products', 'uix-page-builder' ),
-			'buttons'         => array(
-
-									array(
-										'title'           => esc_html__( 'Uix Products List', 'uix-page-builder' ),
-										'id'              => 'uix_pb_section_uix_products1.php',
-										'thumb'           => 'portfolio-1.jpg',
-
-									),
-
-
-
-								)
-
-		)		  
-			  
-    );
-
-}

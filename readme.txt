@@ -28,24 +28,24 @@ You could add a new page with Uix Page Builder to your WordPress site, find the 
 
 The currently available default elements:
 
-- parallax
-- google maps
-- pricing
-- features
-- testimonials carousel
-- team
-- list of clients
-- accordion
-- tabs
-- author card
-- contact form
-- progress bar
-- portfolio
-- blog
-- uix products
-- slider
-- instagram feed
-- sidebar
+* Parallax 
+* Google Maps 
+* Pricing (4 layouts) 
+* Features (2 layouts) 
+* Testimonials carousel 
+* Team (2 layouts) 
+* Clients 
+* Accordion 
+* Tabs 
+* Author Card 
+* Progress Bar 
+* Portfolio 
+* Blog (2 layouts) 
+* Slider 
+* Instagram Feed 
+* Sidebar   
+* Uix Products (Require the WP plugin "Uix Products") 
+* Contact Form (Require the WP plugin "Contact Form 7")
 
 
 
@@ -67,6 +67,7 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
 * Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like "Uix Page Builder Anchor Links", from the left column to add to the menu.
 * Simple operation window, support loop list items.
 * Customizable core style sheets.
+* Drag and Drop Responsive Website Builder.
 
 
 

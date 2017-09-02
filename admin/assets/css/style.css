@@ -374,7 +374,7 @@ ul.uix-page-builder-res-selector li.active {
 }
 
 .uix-page-builder-col:hover .t {
-	background:rgba(0,0,0,.7);
+	background: #0085ba;
 	color: #fff;
 	
 }
