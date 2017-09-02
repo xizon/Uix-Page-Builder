@@ -21,7 +21,7 @@ Licensed under the [GPL3.0](http://www.gnu.org/licenses/gpl-3.0.en.html).
 
 Uix Page Builder is a design system that it is simple content creation interface. Drag & Drop, User-friendly and online Visual Editing.
 
-Here are **6+** templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from. More importantly, each module may contain a variety of styles.
+Here are **6+** One-Page Templates for you to swipe and make your own. Here, you will find free, professional design for Uix Page Builder. We add new, fresh designs regularly in order to provide you with large variety of templates to chose from. More importantly, each module may contain a variety of styles.
 
 
 You could add a new page with Uix Page Builder to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
