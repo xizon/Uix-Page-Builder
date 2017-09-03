@@ -7,6 +7,27 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 ?>
 
     
+        <h3>
+            <?php _e( '(1) How to use?', 'uix-page-builder' ); ?>
+        </h3>  
+        <p class="uix-bg-custom-desc">
+           <?php _e( '1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to <strong>"Appearance -> Install Plugins"</strong>.
+Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)', 'uix-page-builder' ); ?>
+        </p>  
+        <p class="uix-bg-custom-desc">
+           <?php _e( '2. Go to your WordPress admin panel, edit or create a new page. You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. ( You could specify the template name, in this case I used "Uix Page Builder Template". )', 'uix-page-builder' ); ?>
+        </p>  
+   
+        <p>
+           <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/menu.jpg" alt=""> 
+			<img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/active.jpg" alt="">
+        </p> 
+
+        <h3>
+            <?php _e( '(2) FAQ', 'uix-page-builder' ); ?>
+        </h3> 
+
+
 		<div class="uix-bg-custom-faq-group">
 			<h3><?php _e( 'FAQ 1: How To Create a Full Width or Boxed Layout?', 'uix-page-builder' ); ?>
 			</h3>
@@ -23,13 +44,12 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 				 <?php printf( __( '2. Create a new <a href="%1$s">menu</a>, and add a Custom Link for each menu item you plan on having. For each menu item, enter an id that you will assign later to the corresponding section. For example, for the menu item <code>My Portfolio</code>, you would enter <code>#my-portfolio</code> in the URL field.', 'uix-page-builder' ), admin_url( "nav-menus.php" ) ); ?>
 				 </p>
 
-
+				<p>
+				   <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/set-layout-1.jpg" alt=""> 
+				   <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/set-layout-2.jpg" alt="">
+				</p> 
 			</div>
 
-			<p>
-			   <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/set-layout-1.jpg" alt=""> 
-			   <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/set-layout-2.jpg" alt="">
-			</p> 
 			
 			<h3><?php _e( 'FAQ 3: How to use a custom page builder template?', 'uix-page-builder' ); ?>
 			</h3>
@@ -50,23 +70,24 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 
 			</div>
 
+			<h3><?php _e( 'FAQ 4: How to customize the Uix Page Builder templates and modules in admin panel?', 'uix-page-builder' ); ?>
+			</h3>
+			<div class="uix-bg-custom-faq-con">
+				<p>
+			   <?php 
+				printf( 
+					__('<a href="%s">Check out here</a>', 'uix-page-builder' ), 
+					admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=for-developer" )
+				);
+				?>
+				 
+				</p>
+       
+
+			</div>
 
 		</div>
-             
-             
-
-        <p>
-           <?php _e( '<h4 class="uix-bg-custom-title">1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to <strong>"Appearance -> Install Plugins"</strong>.
-Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)</h4>', 'uix-page-builder' ); ?>
-        </p>  
-        <p>
-           <?php _e( '<h4 class="uix-bg-custom-title">2. Go to your WordPress admin panel, edit or create a new page. You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. ( You could specify the template name, in this case I used "Uix Page Builder Template". )</h4>', 'uix-page-builder' ); ?>
-        </p>  
-   
-        <p>
-           <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/menu.jpg" alt=""> 
-			<img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/active.jpg" alt="">
-        </p> 
-
+                
+      
        
 <?php } ?>

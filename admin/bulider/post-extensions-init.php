@@ -487,6 +487,11 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
         <h3>
 			<?php _e( 'FAQ 2: How to use a custom page builder template?', 'uix-page-builder' ); ?>
         </h3>
+        <h3>
+			<?php _e( 'FAQ 4: How to customize the Uix Page Builder templates and modules in admin panel?', 'uix-page-builder' ); ?>
+        </h3>    
+        
+        
 		<p><?php printf( __( '<a href="%1$s" target="_blank">Check out</a>' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=usage' ) ); ?></p>
     
     </div>

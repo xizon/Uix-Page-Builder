@@ -147,7 +147,10 @@ ul.uix-bg-custom-list li {
 	color: #A39954;
 }
 
-	
+.uix-bg-custom-faq-group .uix-bg-custom-faq-con {
+	padding-bottom: 1.5em;
+}
+
 	
 	
 /* Code preview container */
