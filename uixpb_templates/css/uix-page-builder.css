@@ -29,6 +29,7 @@
     17. Portfolio
     18. Image Slider
     19. Contact Form 7
+    20. Pagination         
 
 */
 
@@ -1885,7 +1886,10 @@ img.uix-pb-img,
 }
 
 .uix-pb-parallax-wrapper a:not(.uix-pb-btn) {
-	border: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
 }
 
 .uix-pb-parallax-wrapper img {
@@ -2122,11 +2126,10 @@ img.uix-pb-img,
 
 .uix-pb-gallery-list .uix-pb-gallery-list-social a {
     text-align: center;
-    text-decoration: none !important;
-    -webkit-box-shadow: none  !important;
-    -moz-box-shadow: none  !important;
-    box-shadow: none  !important;
-    border: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
 }
 
 .uix-pb-gallery-list .uix-pb-gallery-list-social a .fa {
@@ -2287,11 +2290,10 @@ img.uix-pb-img,
 
 .uix-pb-card-item-social a {
     text-align: center;
-    text-decoration: none !important;
-    -webkit-box-shadow: none  !important;
-    -moz-box-shadow: none  !important;
-    box-shadow: none  !important;
-    border: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
 }
 
 .uix-pb-card-item-social em {
@@ -2699,7 +2701,10 @@ img.uix-pb-img,
 
 a.uix-pb-flex-next,
 a.uix-pb-flex-prev {
-	border: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
 }
 
 .uix-pb-imageslider .slides li img {
@@ -2868,4 +2873,72 @@ a.uix-pb-flex-prev {
 
 .uix-page-builder-section .wpcf7-form .ajax-loader {
 	
+}
+
+
+/* ====================================================== 
+   20. Pagination                         
+/* ====================================================== */
+.uix-pb-pagination-container {
+    padding: 2em;
+	text-align: center;
+}
+
+.uix-pb-pagination-container:before,
+.uix-pb-pagination-container:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.uix-pb-pagination-container:after {
+    clear: both;
+}
+
+.uix-pb-pagination-container li {
+    display: inline-block;
+	*display: inline;
+}
+
+.uix-pb-pagination-container li a {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.uix-pb-pagination-container li a,
+.uix-pb-pagination-container li.active > span,
+.uix-pb-pagination-container li > span.current {
+    display: inline-block;
+    width: 3.54545454545454em;
+    height: 3.54545454545454em;
+    padding-top: 4px;
+    text-align: center;
+    background: none;
+    border: none;
+    color: #333 !important;
+    font-variant-ligatures: common-ligatures; /*Ligatures and contextual forms are ways of combining glyphs to produce more harmonized forms.*/
+    margin-bottom: 0;
+    font-size: 1em;
+    line-height: 3.25;
+    margin-top: 0;
+    margin-bottom: 2.36363636363636em;
+}
+
+.uix-pb-pagination-container li a:hover {
+    background: #efefef;
+    color: #232323;
+	text-decoration: none !important;
+}
+
+.uix-pb-pagination-container li.active a,
+.uix-pb-pagination-container li.active > span {
+    color: #989898 !important;
+	font-style: italic;
+}
+
+.uix-pb-pagination-container li.active a:hover {
+    background: #e7e7e7 !important;
+    color: #232323;
 }

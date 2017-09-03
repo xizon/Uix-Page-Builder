@@ -34,6 +34,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 		 */
 		public static function func( $atts, $content = null ) {
 			extract( shortcode_atts( array( 
+				'pagination'      => 'true',
 				'loop_layout'     => 1,
 				'show'            => 10, 
 				'cat'             => 'all', 
@@ -56,11 +57,24 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 			 $after          = wp_specialchars_decode( $after ).PHP_EOL;	
 			 $readmore_class = str_replace( '&nbsp;', ' ' , str_replace( '&#160;', ' ' , $readmore_class ));
 		
+				
+			
+			//static front page & custom page @https://codex.wordpress.org/Pagination
+			if ( get_query_var( 'paged' ) ) { 
+				$paged = get_query_var( 'paged' ); 
+			} elseif ( get_query_var( 'page' ) ) { 
+				$paged = get_query_var( 'page' ); 
+			} else { 
+				$paged = 1; 
+			}
 
+			
+			
 			if ( $cat != 'all' ) {
 
 				if ( $order != 'rand' ) {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'post',
 									'order'           => $order,
 									'cat'             => $cat,
@@ -70,6 +84,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 					);	
 				} else {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'post',
 									'orderby'         => 'rand',
 									'cat'             => $cat,
@@ -85,6 +100,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 
 				if ( $order != 'rand' ) {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'post',
 									'order'           => $order,
 									'posts_per_page'  => $show ,
@@ -93,6 +109,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 					);	
 				} else {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'post',
 									'orderby'         => 'rand',
 									'posts_per_page'  => $show ,
@@ -114,15 +131,30 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 			  
 		      if ( $loop_layout == 2 ) {
 				    //---------------- Loop posts with your current theme.
-				  
+				    
+				    $out = '';
 					ob_start();
 				        while ( $wp_query->have_posts() ) : $wp_query->the_post();
 							get_template_part( 'content', get_post_format() );
 						endwhile;
 				  
-						$return_string .= ob_get_contents();
+						$out = ob_get_contents();
 					ob_end_clean();
+				  
+				    if ( empty( $out ) ) {
+						ob_start();
+							while ( $wp_query->have_posts() ) : $wp_query->the_post();
+								get_template_part( 'template-parts/content', get_post_format() );
+							endwhile;
 
+							$out = ob_get_contents();
+						ob_end_clean();	
+						
+					}
+				  
+				    $return_string .= $out;
+
+				  
 			  } else {
 				    //---------------- Loop posts with this plugin.
 				  
@@ -211,6 +243,94 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 					endwhile;
 				  
 			  }
+				
+				
+				/*
+				 * Display Pagination
+				 *
+				 * Note: At this time, the_posts_pagination function is not working.
+				 *
+				 */
+			   $pagecode = '';
+			   if ( $pagination == 'true' ) {
+				   
+					$GLOBALS[ 'paged_temp' ]  = 1;
+					$pagehtml                = '';
+					$pageshow                = '';
+					$pagehtml_before         = '<ul>'.PHP_EOL;
+					$pagehtml_after          = '</ul>'.PHP_EOL;
+
+
+					// Get currect number of pages and define total var
+					$total = $wp_query->max_num_pages;
+
+
+					// Display pagination if total var is greater then 1 ( current query is paginated )
+					if ( $total > 1 )  {
+
+						// Set current page if not defined
+						if ( ! $current_page = get_query_var( 'paged') ) {
+							 $current_page = 1;
+						 }
+
+						// Get currect format
+						if ( get_option( 'permalink_structure') ) {
+							$format = 'page/%#%/';
+						} else {
+							$format = '&paged=%#%';
+						}
+
+						// Display pagination @https://codex.wordpress.org/Function_Reference/paginate_links
+						$paginate = paginate_links(array(
+							'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+							'format'    => $format,
+							'current'   => max( 1, $paged ),
+							'total'     => $total,
+							'mid_size'  => 3,
+							'type'      => 'array',
+							'prev_text' => '<i class="fa fa-angle-left"></i>',
+							'next_text' => '<i class="fa fa-angle-right"></i>',
+						) );
+
+						if( is_array( $paginate ) ) {
+
+							foreach ( $paginate as $page ) {
+
+									if ( strpos( $page, 'prev') ){
+										$pagehtml .= '<li class="previous">'.$page.'</li>'.PHP_EOL;
+									}elseif ( strpos( $page, 'next' ) ){
+										$pagehtml .= '<li class="next">'.$page.'</li>'.PHP_EOL;
+									}elseif ( strpos( $page, 'current' ) ){
+										$pagehtml .= '<li class="active">'.$page.'</li>'.PHP_EOL;
+									}else{
+										$pagehtml .= '<li>'.$page.'</li>'.PHP_EOL;
+									}
+
+							}
+
+						}
+
+
+						$pageshow = $pagehtml_before.$pagehtml.$pagehtml_after;
+
+					}
+
+				
+
+				   $pagecode .= '<div class="uix-pb-pagination-container">';
+				   $pagecode .= $pageshow;
+				/*
+				   $pagecode .= paginate_links( array(
+						'base'    => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+						'format'  => '?paged=%#%',
+						'current' => max( 1, $paged ),
+						'total'   => $wp_query->max_num_pages,
+							'before_page_number' => ''
+					) );
+
+				   */
+				   $pagecode .= '</div>';
+			   } 
 		
 				
 			}
@@ -219,12 +339,24 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 			wp_reset_postdata();
 			
 	
-			return do_shortcode( UixPBFormCore::str_compression(  $before.$return_string.$after ) );
+			return do_shortcode( UixPBFormCore::str_compression(  $before.$return_string.$after.$pagecode ) );
 
 		   
 		}
 
 		
+		
+		/*
+		 * Display Pagination
+		 *
+		 *
+		 */
+		public static function pagination( $show = 3, $custom_prev = '&larr;', $custom_next = '&rarr;', $li = true, $inf_enable = false ) {
+
+
+
+		}
+
 		
 	}
 		

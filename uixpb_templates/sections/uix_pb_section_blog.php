@@ -123,6 +123,15 @@ $args =
 		),	
 		
 		
+		array(
+			'id'             => 'uix_pb_blog_pagination',
+			'title'          => esc_html__( 'Display Pagination', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 1, // 0:close  1:open
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		),	
+		
 	    array(
 			'id'             => 'uix_pb_blog_num',
 			'title'          => esc_html__( 'Show Number of Posts', 'uix-page-builder' ),
@@ -360,10 +369,12 @@ UixPageBuilder::form_scripts( array(
 			if ( uix_pb_blog_readmore_checkbox_toggle === false ) uix_pb_blog_result_readmore_checkbox_toggle = 0;
 		
 		
+		
+		
 			var temp = \'\';
 				temp += _config_t;
 				temp += _config_desc;
-				temp += \'[uix_pb_blog loop_layout=\\\'\'+uix_pb_blog_loop_layout+\'\\\'  excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog]\';
+				temp += \'[uix_pb_blog pagination=\\\'\'+uix_pb_blog_pagination+\'\\\' loop_layout=\\\'\'+uix_pb_blog_loop_layout+\'\\\'  excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog]\';
 		
 		
 		'
