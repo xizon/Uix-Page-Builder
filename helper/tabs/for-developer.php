@@ -10,7 +10,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'for-developer' ) {
 
        
         <h3>
-            <?php _e( 'Advanced Customization ( For Theme Developer )', 'uix-page-builder' ); ?>
+            <?php _e( 'Creating the Theme Location', 'uix-page-builder' ); ?>
         </h3>  
 	   	<p class="uix-bg-custom-desc">
 		   <?php _e( '1) Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory <code>/wp-content/plugins/uix-page-builder/uixpb_templates/</code> to your theme directory <code>/wp-content/themes/{your-theme}/</code>.', 'uix-page-builder' ); ?>
@@ -30,8 +30,20 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'for-developer' ) {
 		</p>       
        
 
+        <h3>
+            <?php _e( 'Available Template Folders & Files', 'uix-page-builder' ); ?>
+        </h3>  
+		<p>
+		   <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/directory-structure.jpg" alt="">
+		</p> 
+        
+        
+        <h3>
+            <?php _e( 'API', 'uix-page-builder' ); ?>
+        </h3>  
+   	
 	   	<p class="uix-bg-custom-desc">
-	   	    <?php printf( __( '3) <a href="%1$s">Online API Documentation</a>', 'uix-page-builder' ), esc_url( '#' ) ); ?>
+	   	    <?php printf( __( '<a href="%1$s">Online API Documentation</a>', 'uix-page-builder' ), esc_url( '#' ) ); ?>
 		</p>   
    
    

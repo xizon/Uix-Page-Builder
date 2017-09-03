@@ -1212,7 +1212,7 @@ function UixPBFormatRenderCodes( code ) {
 			var arr                   = uix_page_builder_layoutdata.send_string_render_entire.split( ',' ),
 				renderSeparatedModule = true;
 			for( var j in arr ) {
-				var thisStr = arr[j].replace( '*', '' ).replace( ']', '' );
+				var thisStr = arr[j].replace( '*', '' ).replace( ']', '' ).replace(/ /g, '' );
 				if ( newValue.indexOf( thisStr ) >= 0 ) {
 					renderSeparatedModule = false;
 				}

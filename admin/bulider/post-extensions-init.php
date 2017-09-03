@@ -44,7 +44,7 @@ if ( !function_exists( 'uix_page_builder_delContentTemplate' ) ) {
 			</items>
 			';
 
-			$xmlvalue = str_replace( UixPBFormCore::plug_directory(), '{temp_placeholder_path}', $xmlvalue );
+			$xmlvalue = UixPageBuilder::convert_img_path( $xmlvalue, 'save' );
 			update_option( 'uix-page-builder-templates-xml', $xmlvalue );	
 
 			
@@ -1084,7 +1084,7 @@ var UixPBGridsterMain = function( obj ) {
 					var arr                   = uix_page_builder_layoutdata.send_string_render_entire.split( ',' ),
 						renderSeparatedModule = true;
 					for( var j in arr ) {
-						var thisStr  = arr[j].replace( '*', '' ).replace( ']', '' );
+						var thisStr  = arr[j].replace( '*', '' ).replace( ']', '' ).replace(/ /g, '' );
 						
 						if ( newValue.indexOf( thisStr ) >= 0 ) {
 							renderSeparatedModule = false;

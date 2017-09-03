@@ -319,7 +319,6 @@ $args =
 		{uix_pb_uix_products_attrs_excerpt}          --> Excerpt with read more button
 		{uix_pb_uix_products_attrs_thumbnail}        --> Featured image HTML code
         {uix_pb_uix_products_attrs_thumbnail_url}    --> Featured image URL
-		{uix_pb_uix_products_attrs_format}           --> Retrieve the format slug for a post
  
  */
 

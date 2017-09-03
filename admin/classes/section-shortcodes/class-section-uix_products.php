@@ -208,10 +208,9 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 							   str_replace( '{uix_pb_uix_products_attrs_cat_groupattr}', 'data-groups=\''.$cat_group.'\'',  		   
 							   str_replace( '{uix_pb_uix_products_attrs_excerpt}', $excerpt_html,
 							   str_replace( '{uix_pb_uix_products_attrs_thumbnail}', $post_thumbnail,
-							   str_replace( '{uix_pb_uix_products_attrs_thumbnail_url}', esc_url( $post_thumbnail_src ),   
-							   str_replace( '{uix_pb_uix_products_attrs_format}', get_post_format(),
+							   str_replace( '{uix_pb_uix_products_attrs_thumbnail_url}', esc_url( $post_thumbnail_src ),
 							   UixPageBuilder::decode( $content )
-							   ))))))))))))))))
+							   )))))))))))))))
 							   .PHP_EOL;	
 
 

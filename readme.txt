@@ -55,13 +55,13 @@ https://www.youtube.com/watch?v=vg3rPxcfZEg
 
 = Displaying on Front-end Pages =
 
-Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <strong>Pages Add New Screen</strong>.
+Embed a shortcode **"[uix_pb_sections]"** into the editor of **Pages Add New Screen**.
   
   
 = Features =
 
 * Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin [Uix Products](https://wordpress.org/plugins/uix-products/))
-* You can switch between <strong>"Visual Builder"</strong> and <strong>"Default Editor"</strong> modes at any time on the Pages Add New/Edit Screen.
+* You can switch between **"Visual Builder"** and **"Default Editor"** modes at any time on the Pages Add New/Edit Screen.
 * Support to choose multiple default templates you want.
 * Support to save custom templates and export templates.
 * Support a key to add anchor links based Uix Page Builder to your navigation. Visit the Menus page (Appearance &laquo; Menus), choose items like "Uix Page Builder Anchor Links", from the left column to add to the menu.
@@ -73,16 +73,7 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
 
 = Advanced Customization ( For Theme Developer ) =
 
-
-1) Plugin allow handles builder controls of backend template usage so that we can use our own templates instead of the plugin. If you want to custom your builder controls of backend for your theme, then just copy them from the directory `/wp-content/plugins/uix-page-builder/uixpb_templates/` to your theme directory `/wp-content/themes/{your-theme}/`.
-
-
-> Note: You could move the **/wp-content/themes/{your-theme}/uixpb_templates/js/**, **/wp-content/themes/{your-theme}/uixpb_templates/images/** and **/wp-content/themes/{your-theme}/uixpb_templates/css/** folders to your theme assets directory **/wp-content/themes/{your-theme}/assets/**
-
-
-
-2) Plugin allow handles plugin scripts of front-end. If you want to custom, rename the **"_uix-page-builder-plugins.js"** to **"uix-page-builder-plugins.js"** from the directory `/wp-content/plugins/uix-page-builder/uixpb_templates/js/` or `/wp-content/themes/{your-theme}/uixpb_templates/js/` or `/wp-content/themes/{your-theme}/assets/js/`, and add the required script to "uix-page-builder-plugins.js". ( If you done, the default Uix Page Builder plugin scripts can't queue. You can use your own scripts instead of the plugin only. )
-
+Please install the plugin and check out the **"Uix Page Builder Helper"** directly in admin panel.
 
 
 
@@ -92,13 +83,13 @@ Embed a shortcode <strong>"[uix_pb_sections]"</strong> into the editor of <stron
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
 
 
-2. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You could specify the template name, in this case I used <strong>"Uix Page Builder Template"</strong>. )
+2. Create a new WordPress file or edit an existing one. Just make sure to select this new created template file as the "Template" for this page from the "Attributes" section. Enter page title like "Custom One Page". Save the page and hit "Preview" to see how it looks. ( You could specify the template name, in this case I used **"Uix Page Builder Template"**. )
 
 
-> You could create Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php"</strong> ) in your templates directory.
+> You could create Uix Page Builder template file (from the directory **"/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php"** ) in your templates directory.
 
 
-You will find <strong>"Uix Page Builder Attributes"</strong> settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box. Click <strong>"Use Visual Builder"</strong> button to enter the visual editing mode.
+You will find **"Uix Page Builder Attributes"** settings in a meta box in your WordPress backend when you create a new page or when you are editing an existing one. This box is usually directly above the "Publish" meta box. Click **"Use Visual Builder"** button to enter the visual editing mode.
 	
 
 

@@ -115,8 +115,8 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'select',
 			'default'        => array(
-									'1'  => esc_html__( 'loop posts with this plugin.', 'uix-page-builder' ),
-									'2'  => esc_html__( 'loop posts with your current theme.', 'uix-page-builder' ),
+									'1'  => esc_html__( 'loop posts with this plugin', 'uix-page-builder' ),
+									'2'  => esc_html__( 'loop posts with your current theme', 'uix-page-builder' ),
 				                ),
 		
 		
@@ -293,7 +293,24 @@ $loop_template_code = '
 			</figcaption>
 		</figure>
 	</li>
-';			
+';		
+
+
+//Post Format
+$loop_template_code_json = array(
+	'normal'  => '',
+	'aside'   => '',
+	'gallery' => '',
+	'link'    => '',
+	'image'   => '',
+	'quote'   => '',
+	'status'  => '',
+	'video'   => '',
+	'audio'   => '',
+	'chat'    => '',
+);
+
+
 			
 UixPageBuilder::form_scripts( array(
 	    'clone'        => '',
