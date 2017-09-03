@@ -293,23 +293,7 @@ $loop_template_code = '
 			</figcaption>
 		</figure>
 	</li>
-';		
-
-
-//Post Format
-$loop_template_code_json = array(
-	'normal'  => '',
-	'aside'   => '',
-	'gallery' => '',
-	'link'    => '',
-	'image'   => '',
-	'quote'   => '',
-	'status'  => '',
-	'video'   => '',
-	'audio'   => '',
-	'chat'    => '',
-);
-
+';
 
 			
 UixPageBuilder::form_scripts( array(
