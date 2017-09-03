@@ -116,6 +116,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Upgraded the premade templates API.
 * Fixed some minor bugs.
 * Supports multiple structures of custom template.
+* Added the latest video demo.
 
 
 
