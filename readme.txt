@@ -138,13 +138,16 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 == Changelog ==
 
 
-= 1.3.2 (September 2, 2017) =
+= 1.3.2 (September 3, 2017) =
 
 * Added a WP filter "uixpb_templates_filter". Theme template directory name of front-end can use filter "uixpb_templates_filter" to change it.
 * Added a new module: Sidebar (new). Subordinate to WP Widgets.
 * Added a new module: Instagram Feed (new).
 * Added a new option of Blog module.
 * Optimized the "Parallax" module.
+* Upgraded the premade templates API.
+* Fixed some minor bugs.
+* Supports multiple structures of custom template.
 
 
 = 1.3.1 (August 31, 2017) =
