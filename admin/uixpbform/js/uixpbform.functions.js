@@ -5,7 +5,6 @@
  */
 jQuery( document ).ready( function() {
 
-	
 
     /*!
 	 *
@@ -1372,7 +1371,7 @@ function uixpbform_htmlEscape( str ){
 		str = str
 			.replace(/"/g, '{cqt:}')
 			.replace(/'/g, "{apo:}")
-			.replace(/(\r)*\n/g, "{br:}");
+			.replace(/(\r)*\n/g, "<br>");
 		
 	}
 
@@ -1393,7 +1392,7 @@ function uixpbform_format_textarea_notJSON_save( str ){
 	
 	if( typeof str !== typeof undefined ) {
 	
-		str = str.replace(/\s/g, "{nbsp:}");
+		str = str.replace(/\s/g, "&nbsp;");
 		
 	}
 
@@ -1415,8 +1414,8 @@ function uixpbform_format_textarea_entering( str ){
 	if( typeof str !== typeof undefined ) {
 	
 		str = str
-				.replace(/(\r)*\n/g, "{br:}") //step 1
-				.replace(/\s/g, "{nbsp:}"); //step 2
+				.replace(/(\r)*\n/g, "<br>") //step 1
+				.replace(/\s/g, "&nbsp;"); //step 2
 
 	}
 
@@ -1466,7 +1465,8 @@ function uixpbform_per_module_has_shortcode( str ){
 	
 		var arr          = uix_page_builder_layoutdata.send_string_render_entire.split( ',' );
 		for( var j in arr ) {
-			var thisStr  = arr[j].replace( '*', '' ).replace( ']', '' ).replace(/\s/g, '' );
+			
+			var thisStr = arr[j].toString().replace( '*', '' ).replace( ']', '' ).replace(/\s/g, '' );
 
 			if ( str.indexOf( thisStr ) >= 0 ) {
 				hasShortcode = true;
@@ -1900,15 +1900,29 @@ function uixpbform_catlist( str, classprefix ) {
 			  });	
 
 		Array.prototype.uniqueArr = function() {
-			var res = [];
-			var json = {};
-			for( var i = 0; i < this.length; i++ ) {
-				if(!json[this[i]]){
-					res.push(this[i]);
-					json[this[i]] = 1;
+			
+			//Because the template is too fast to switch, it will lead to script loading error.
+			//Catch a possible error:  Syntax error, unrecognized expression
+			try {
+
+				var res  = [],
+					json = {};
+
+				for( var i = 0; i < this.length; i++ ) {
+
+					var s = this[i].toString();
+					if( !json[ s ] ) {
+						res.push( s );
+						json[ s ] = 1;
+					}
 				}
+				return res;
+				
+			} catch( err ) {
+				console.log( err.message );
 			}
-			return res;
+			
+
 		}
 
 

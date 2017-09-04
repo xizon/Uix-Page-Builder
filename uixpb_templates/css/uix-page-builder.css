@@ -1910,6 +1910,22 @@ img.uix-pb-img,
     height: 250px;
 }
 
+.uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto {
+	height: auto !important;
+}
+.uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto .uix-pb-parallax-content-box {
+	position: relative;
+	top: 0;
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
+}
+
+.uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto .uix-pb-parallax-content-box {
+	padding: 1.5em .2em;
+}
+
+
 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
     position: relative;
     top: 50%;

@@ -371,7 +371,7 @@ UixPageBuilder::form_scripts( array(
 						_item_v_targetcode   = ( uix_pb_portfolio1_config_urlwindow === true ) ? \' target="_blank"\' : \'\';
 						_item_v_fullimageURL = _url;
 					} else {
-						_item_v_targetcode = ( uix_pb_portfolio1_config_urlwindow === true ) ? \' target="_blank" rel="uix-pb-prettyPhoto"\' : \'rel="uix-pb-prettyPhoto"\';
+						_item_v_targetcode = ( uix_pb_portfolio1_config_urlwindow === true ) ? \' target="_blank" rel="alternate"\' : \'rel="alternate"\';
 					}
 
 

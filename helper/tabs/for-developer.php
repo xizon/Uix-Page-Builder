@@ -45,8 +45,8 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'for-developer' ) {
             <?php _e( '(3) API', 'uix-page-builder' ); ?>
         </h3>  
    	
-	   	<p class="uix-bg-custom-desc">
-	   	    <?php printf( __( '<a href="%1$s">Online API Documentation</a>', 'uix-page-builder' ), esc_url( '#' ) ); ?>
+	   	<p>
+	   	    <?php printf( __( '<a href="%1$s" target="_blank">Online API Documentation</a>', 'uix-page-builder' ), esc_url( 'https://uiux.cc/wp-plugins-helper/uix-page-builder' ) ); ?>
 		</p>   
    
    

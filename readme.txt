@@ -148,10 +148,13 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Added a new module: Instagram Feed (new).
 * Added a new option of Blog module.
 * Optimized the "Parallax" module.
+* Optimized all default templates and all certified by W3C.
+* Optimized some functions of character escape and removed unnecessary escapes.
 * Upgraded the premade templates API.
 * Fixed a bug of the grid system.
 * Fixed a bug of textarea tag white space display.
-* Fixed some minor bugs.
+* Fixed some scripts error that could have occurred during template switching.
+* Fixed some minor bugs of stylesheets.
 * Supports multiple structures of custom template.
 * Added the latest video demo.
 * Modify the front-end style sheets & scripts priority to the last.

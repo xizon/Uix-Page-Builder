@@ -93,7 +93,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_parallax_height',
 			'title'          => esc_html__( 'Height', 'uix-page-builder' ),
-			'desc'           => '',
+			'desc'           => esc_html__( 'If the value is 0, the height is automatically calculated.', 'uix-page-builder' ),
 			'value'          => 300,
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
@@ -293,11 +293,12 @@ UixPageBuilder::form_scripts( array(
 				
 				
 			var title_show = ( uix_pb_parallax_title != undefined && uix_pb_parallax_title != \'\' ) ? \'<h2>\'+title+\'</h2>\' : \'\';
+			var height_auto = ( uix_pb_parallax_height == 0 ) ? \'uix-pb-parallax-table-auto\' : \'\';
 
 
 			var temp = \'\';
 				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+space_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
-				temp += \'<div class="uix-pb-parallax-table" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
+				temp += \'<div class="uix-pb-parallax-table \'+height_auto+\'" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
 				temp += \'<div class="uix-pb-parallax-content-box" \'+skew_content_style+\'>\';
 				temp += title_show;
 				temp += desc;

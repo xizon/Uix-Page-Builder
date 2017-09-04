@@ -23,6 +23,7 @@ $tempdata = str_replace( '</items>', '', get_option( 'uix-page-builder-templates
 //Display the list by loading the template file (.xml)
 if ( file_exists( $xmlfile ) ) {
 
+
 	$xml             = new UixPB_XML;  
 	$xml -> xml_path = UixPageBuilder::tempfile_modules_path( 'uri' );
 	$xLength         = $xml -> get_xmlLength();
@@ -36,12 +37,18 @@ if ( file_exists( $xmlfile ) ) {
 		$json_data       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'save' );			
 		$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'save' );
 		$temp_name       = $xValue['item'][$xmli]['name'];
+		$tmpl_author     = $xValue['item'][$xmli]['author'];
+		$tmpl_email      = $xValue['item'][$xmli]['email'];
+		$tmpl_release    = $xValue['item'][$xmli]['release'];
 
 		if ( $temp_name != 'null' ) {
 			$tempdata     .= '
 				<item>
 					<name><![CDATA['.$temp_name.']]></name>
 					<thumb><![CDATA['.$preview_thumb.']]></thumb>
+					<author><![CDATA['.$tmpl_author.']]></author>
+					<email><![CDATA['.$tmpl_email.']]></email>
+					<release><![CDATA['.$tmpl_release.']]></release>
 					<data><![CDATA['.$json_data.']]></data>
 				</item>
 			';
@@ -57,6 +64,9 @@ $tempdata .= '
 	<item>
 		<name><![CDATA[null]]></name>
 		<thumb><![CDATA['.UixPageBuilder::module_thumbnails_path().']]></thumb>
+		<author><![CDATA[null]]></author>
+		<email><![CDATA[null]]></email>
+		<release><![CDATA[null]]></release>
 		<data><![CDATA[[{"tempname":"null"},{"col":1,"row":1,"size_x":1,"size_y":2,"content":"","secindex":"0","layout":"boxed","customid":"section-0","title":"Section 1"}]]]></data>
 	</item>
 	

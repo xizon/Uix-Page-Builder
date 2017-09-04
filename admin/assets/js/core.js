@@ -790,9 +790,9 @@ function gridsterItemRowTextareaInit( str, uid ) {
 			for( var j in str ) {
 
 				for( var i in cid ) {
-					if ( str[j].indexOf( cid[i] ) >= 0  ) {
+					if ( str[j].toString().indexOf( cid[i] ) >= 0  ) {
 
-						result = str[j];
+						result = str[j].toString();
 						result = result.replace( '{'+cid[i]+'}', '' );	
 
 						jQuery( '#col-item-'+cid[i]+'---' + uid ).val( gridsterHtmlUnescape( result ) );
@@ -1035,16 +1035,6 @@ function gridsterAddShortcutButtons() {
  * @return {string}                - A new unescaped code.
  */	
 function UixPBFormatRenderSeparateModuleCode( str ){
-	
-	
-	if( typeof str !== typeof undefined ) {
-	
-		str = str
-				.replace(/{br:}/g, "<br>") //step 1
-				.replace(/{nbsp:}/g, "&nbsp;"); //step 2
-
-	}
-
 	return str;
 }
 

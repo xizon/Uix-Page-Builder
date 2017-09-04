@@ -869,8 +869,6 @@ class UixPageBuilder {
 		$data = str_replace( '{rqt:}', '"',
 				str_replace( '{apo:}', '&#039;',
 				str_replace( '{cqt:}', '&quot;',
-				str_replace( '{br:}', '<br>',
-				str_replace( '{nbsp:}', '&nbsp;',
 		        str_replace( '&#039;', "'",
 		        str_replace( '&quot;', '"',
 			    str_replace( '&apos;', "'",
@@ -881,19 +879,12 @@ class UixPageBuilder {
 						
 				
 			    $data 
-			    ) ) ) ) ) ) ) ) ) );
+			    ) ) ) ) ) ) ) );
 				
 		
 		//Format the JSON code before output the render viewport.
 		if ( !is_admin() ) {
 			$data = self::format_render_codes( $data );
-			$data = str_replace( '&lt;br&gt;', '<br>',
-					str_replace( '{nbsp:}', '&nbsp;',
-					$data 
-				    ) );	
-	
-			
-			
 		}
 			   
 		return json_decode( $data, true );
@@ -927,6 +918,8 @@ class UixPageBuilder {
 		
 	}			
 
+		
+	
 	/*
 	 * Checks whether a template folder or directory exists
 	 *
