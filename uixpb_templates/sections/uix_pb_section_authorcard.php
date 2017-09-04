@@ -235,7 +235,7 @@ UixPageBuilder::form_scripts( array(
 				temp += \'</div>\';
 				temp += \'<div class="uix-pb-authorcard-pic"><img src="\'+avatarURL+\'" alt="\'+uixpbform_htmlEncode(uix_pb_authorcard_name)+\'"></div>\';
 				temp += \'</div>\';
-				temp += \'<div class="uix-pb-authorcard-middle">\'+uix_pb_authorcard_intro+\'</div>\';
+				temp += \'<div class="uix-pb-authorcard-middle">\'+uixpbform_format_textarea_entering( uix_pb_authorcard_intro )+\'</div>\';
 				temp += \'<a class="uix-pb-authorcard-final" href="\'+encodeURI(uix_pb_authorcard_link_link)+\'" rel="author">\'+uix_pb_authorcard_link_label+\'</a>\';
 				temp += \'</div>\';
 				temp += \'</div>\';		

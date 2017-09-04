@@ -515,7 +515,7 @@ UixPageBuilder::form_scripts( array(
 
 
 			var _config_t      = ( uix_pb_pricing2_col3_config_title != undefined && uix_pb_pricing2_col3_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_pricing2_col3_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc   = ( uix_pb_pricing2_col3_config_intro != undefined && uix_pb_pricing2_col3_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_pricing2_col3_config_intro+\'</div>\' : \'\';
+				_config_desc   = ( uix_pb_pricing2_col3_config_intro != undefined && uix_pb_pricing2_col3_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_config_intro )+\'</div>\' : \'\';
 
 			
 
@@ -532,7 +532,7 @@ UixPageBuilder::form_scripts( array(
 				temp += \'<h5 class="uix-pb-price2-level">\'+uix_pb_pricing2_col3_one_title+\'</h5>\';
 				temp += \'<h2 class="uix-pb-price2-num" style="color:\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_one_emphasis_color )+\'"><span class="uix-pb-price2-currency">\'+uix_pb_pricing2_col3_one_currency+\'</span><span class="uix-pb-price2-num-text">\'+uixpbform_floatval( uix_pb_pricing2_col3_one_price )+\'</span><span class="uix-pb-price2-period">\'+uix_pb_pricing2_col3_one_period+\'</span></h2>\';
 				temp += \'<div class="uix-pb-price2-excerpt">\';
-				temp += \'<p>\'+uix_pb_pricing2_col3_one_desc+\'</p>\';
+				temp += \'<p>\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_one_desc )+\'</p>\';
 				temp += \'</div> <a href="\'+encodeURI( uix_pb_pricing2_col3_one_btn_link )+\'" \'+win_one+\' class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-\'+btncolor_one+\'">\'+uix_pb_pricing2_col3_one_btn_label+\'</a>\';
 				temp += \'<div class="uix-pb-price2-hr"></div>\';
 				temp += \'<div class="uix-pb-price2-detail">\';
@@ -551,7 +551,7 @@ UixPageBuilder::form_scripts( array(
 				temp += \'<h5 class="uix-pb-price2-level">\'+uix_pb_pricing2_col3_two_title+\'</h5>\';
 				temp += \'<h2 class="uix-pb-price2-num" style="color:\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_two_emphasis_color )+\'"><span class="uix-pb-price2-currency">\'+uix_pb_pricing2_col3_two_currency+\'</span><span class="uix-pb-price2-num-text">\'+uixpbform_floatval( uix_pb_pricing2_col3_two_price )+\'</span><span class="uix-pb-price2-period">\'+uix_pb_pricing2_col3_two_period+\'</span></h2>\';
 				temp += \'<div class="uix-pb-price2-excerpt">\';
-				temp += \'<p>\'+uix_pb_pricing2_col3_two_desc+\'</p>\';
+				temp += \'<p>\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_two_desc )+\'</p>\';
 				temp += \'</div> <a href="\'+encodeURI( uix_pb_pricing2_col3_two_btn_link )+\'" \'+win_two+\' class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-\'+btncolor_two+\'">\'+uix_pb_pricing2_col3_two_btn_label+\'</a>\';
 				temp += \'<div class="uix-pb-price2-hr"></div>\';
 				temp += \'<div class="uix-pb-price2-detail">\';
@@ -571,7 +571,7 @@ UixPageBuilder::form_scripts( array(
 				temp += \'<h5 class="uix-pb-price2-level">\'+uix_pb_pricing2_col3_three_title+\'</h5>\';
 				temp += \'<h2 class="uix-pb-price2-num" style="color:\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_three_emphasis_color )+\'"><span class="uix-pb-price2-currency">\'+uix_pb_pricing2_col3_three_currency+\'</span><span class="uix-pb-price2-num-text">\'+uixpbform_floatval( uix_pb_pricing2_col3_three_price )+\'</span><span class="uix-pb-price2-period">\'+uix_pb_pricing2_col3_three_period+\'</span></h2>\';
 				temp += \'<div class="uix-pb-price2-excerpt">\';
-				temp += \'<p>\'+uix_pb_pricing2_col3_three_desc+\'</p>\';
+				temp += \'<p>\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_three_desc )+\'</p>\';
 				temp += \'</div> <a href="\'+encodeURI( uix_pb_pricing2_col3_three_btn_link )+\'" \'+win_three+\' class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-\'+btncolor_three+\'">\'+uix_pb_pricing2_col3_three_btn_label+\'</a>\';
 				temp += \'<div class="uix-pb-price2-hr"></div>\';
 				temp += \'<div class="uix-pb-price2-detail">\';

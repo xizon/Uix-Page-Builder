@@ -216,7 +216,7 @@ UixPageBuilder::form_scripts( array(
 					_con     = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_accordion_listitem_con' ).'\' ).val();
 
 				var _item_v_title = ( _title != undefined && _title != \'\' ) ? _title : \'\',
-					_item_v_con   = ( _con != undefined && _con != \'\' ) ? _con : \'\';
+					_item_v_con   = ( _con != undefined && _con != \'\' ) ? uixpbform_format_textarea_entering( _con ) : \'\';
 
 
 				if ( _title != undefined && _title != \'\' ) {

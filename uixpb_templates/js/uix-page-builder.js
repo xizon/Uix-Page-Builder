@@ -899,6 +899,8 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 }( uix_pb, jQuery, window, document ) );
 
+
+
 /*! 
  * ************************************
  * Apply the original scripts
@@ -912,6 +914,10 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 ( function($) {
     'use strict';
 
+	/* 
+	 * Default scripts of this plugin
+	 * --------------------------------
+	*/
 	$.extend( { 
 		uix_pb_init:function () {
 
@@ -930,23 +936,40 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		} 
 	});
 	
-} ) ( jQuery );
-
-
-( function( $ ) {
-"use strict";
-    
-    $( document ).ready( function() {
+	/* 
+	 * Reload the front-end javascripts to make the live preview take effect.   
+	 * --------------------------------
+	 * 
+	 * This function can be used in your theme script.
+	 * Usage: if ( $.isFunction( $.uix_pb_render ) ) { $.uix_pb_render( { action: function(){ ... } } ); }    
+	 *
+	*/
+	$.extend({ 
+		uix_pb_render:function ( options ) { 
 		
-		//Reload the front-end javascripts to make the live preview take effect.
-		var backendPanel = $( '.uix-page-builder-gridster-addbtn', window.parent.document ).length;
-		if ( backendPanel > 0 ) {
-			$( document ).on( 'mouseenter', function() {
-				$.uix_pb_init();
-			});
-		}
-			
+			var settings=$.extend({
+				"action": function(){
+					
+				},
+			}
+			,options);
+		
+			var backendPanel = $( '.uix-page-builder-gridster-addbtn', window.parent.document ).length;
+			if ( backendPanel > 0 ) {
+				$( document ).on( 'mouseenter', function() {
+					$.uix_pb_init();
+					settings.action();
+				});
+			}
+	
+		   
+	
+		} 
+	}); 
+	
+    $( document ).ready( function() {
+		$.uix_pb_render();		
     } );
-    
+	
+	
 } ) ( jQuery );
-

@@ -6,6 +6,7 @@
 jQuery( document ).ready( function() {
 
 	
+
     /*!
 	 *
 	 * Remove current icon from icons list
@@ -673,16 +674,10 @@ jQuery( document ).ready( function() {
 			/*-- Format all contents of <textarea>  --*/
 			jQuery( cur_appendID ).closest( '.uixpbform-table-wrapper' ).find( 'textarea' ).each( function()  {
 
-				var tempID = $( this ).data( 'tmpl-id' );
-
-				//Warning: Does not include JSON and MCE Sync data.
-				if ( !$( this ).hasClass( 'mce-sync' ) && ( typeof tempID === typeof undefined ) ) {
-					var oldValue = $( this ).val(),
-						newValue = uixpbform_htmlEscape_dynamic_textarea( oldValue );
-
-					$( this ).val( newValue );
+				var curdata = uixpbform_format_textarea( $( this ), true );
+				if ( curdata != '' ) {
+					$( this ).val( curdata );
 				}
-				
 
 			});		
 			
@@ -1138,6 +1133,8 @@ function uixpbform_htmlEncode( s ) {
 };
 
 
+
+
 /*! 
  * ************************************
  * Transform to usable HTML tags and add to attributes of shortcode tags
@@ -1145,15 +1142,17 @@ function uixpbform_htmlEncode( s ) {
  */	
 function uixpbform_shortcodeUsableHtmlToAttr( str ) {
 	
-	return (typeof str != "string") ? str :
-	  str.replace(/'/g,'"').replace(/“/g,'"').replace(/<|>/g,
+	if (typeof str == "string" ) {
+	    return str.replace(/'/g,'"').replace(/“/g,'"').replace(/<|>/g,
 				function($0){
 					var c = $0.charCodeAt(0), r = ["&#"];
 					c = (c == 0x20) ? 0xA0 : c;
 					r.push(c); r.push(";");
 					return r.join("");
 				});
-
+	} else {
+		return str;
+	}
 
 }
 
@@ -1239,7 +1238,7 @@ function uixpbform_colorTran( value ) {
  */
 function uixpbform_formatTextarea( str ) {
 
-	//checking for "undefined" in replace-regexp
+	
 	if( typeof str !== typeof undefined ) {
 		str = uixpbform_getHTML( str );
 		str = str.toString().replace(/\s/g," ").replace(/\"/g,"&quot;").replace(/\'/g,"&apos;");
@@ -1256,15 +1255,18 @@ function uixpbform_formatTextarea( str ) {
 
 function uixpbform_getHTML( str ) {
 
-    var v = str;
-    v = v.replace(/\r?\n/gm, '<br/>');
-    v = v.replace(/(?!<br\/>)(.{5})<br\/><br\/>(?!<br\/>)/gi, '$1</p><p>');
-    if (v.indexOf("<p>") > v.indexOf("</p>")) v = "<p>" + v;
-    if (v.lastIndexOf("</p>") < v.lastIndexOf("<p>")) v += "</p>";
-    if (v.length > 1 && v.indexOf("<p>") == -1) v = "<p>" + v + "</p>";
+	
+	if( typeof str !== typeof undefined ) {
+	
+		str = str.replace(/\r?\n/gm, '<br/>');
+		str = str.replace(/(?!<br\/>)(.{5})<br\/><br\/>(?!<br\/>)/gi, '$1</p><p>');
+		if ( str.indexOf( "<p>" ) > str.indexOf( "</p>" ) ) str = "<p>" + str;
+		if ( str.lastIndexOf( "</p>" ) < str.lastIndexOf( "<p>" ) ) str += "</p>";
+		if ( str.length > 1 && str.indexOf( "<p> ") == -1 ) str = "<p>" + str + "</p>";
+		
+	}
 
-
-	return v;
+	return str;
 
 }
 
@@ -1363,10 +1365,18 @@ function uixpbform_formatAllCodes( code ) {
  *************************************
  */
 function uixpbform_htmlEscape( str ){
-	return str
-		.replace(/"/g, '{cqt:}')
-		.replace(/'/g, "{apo:}")
-	    .replace(/(\r)*\n/g, "{br:}");
+	
+	
+	if( typeof str !== typeof undefined ) {
+	
+		str = str
+			.replace(/"/g, '{cqt:}')
+			.replace(/'/g, "{apo:}")
+			.replace(/(\r)*\n/g, "{br:}");
+		
+	}
+
+	return str;
 }
 
 /*!
@@ -1374,13 +1384,46 @@ function uixpbform_htmlEscape( str ){
  * Page builder textarea format
  *
  * Warning: Does not include JSON data.
- * When you enter a string in <textarea>, convert special characters to save JSON data.
+ * When you enter a string in <textarea> will be saving, convert special characters to save JSON data.
  *
  *************************************
  */
-function uixpbform_htmlEscape_not_JSON( str ){
-	return str.replace(/ /g, "{nbsp:}");
+function uixpbform_format_textarea_notJSON_save( str ){
+	
+	
+	if( typeof str !== typeof undefined ) {
+	
+		str = str.replace(/\s/g, "{nbsp:}");
+		
+	}
+
+	return str;
 }
+
+
+/*!
+ * ************************************
+ * Page builder textarea format when you are entering
+ *
+ * Before saving HTML code (do not include shortcode) of <textarea> tag for a single module.
+ *
+ *************************************
+ */
+function uixpbform_format_textarea_entering( str ){
+	
+	
+	if( typeof str !== typeof undefined ) {
+	
+		str = str
+				.replace(/(\r)*\n/g, "{br:}") //step 1
+				.replace(/\s/g, "{nbsp:}"); //step 2
+
+	}
+
+	return str;
+}
+
+
 
 /*!
  * ************************************
@@ -1391,9 +1434,93 @@ function uixpbform_htmlEscape_not_JSON( str ){
  *
  *************************************
  */
-function uixpbform_htmlEscape_dynamic_textarea( str ){
-	return str.replace(/&nbsp;/g, " ");
+function uixpbform_format_textarea_dynamic( str ){
+	
+	
+	if( typeof str !== typeof undefined ) {
+	
+		str = str.replace(/&nbsp;/g, " ");
+		
+	}
+
+	return str;
 }
+
+
+
+/*!
+ * ************************************
+ * Determine if the per module content contains WP shortcode
+ *
+ * Filter shortcodes of each column widget HTML code through their hooks.
+ * Discard the rendering of separated module when the module contains these WP shortcodes, "*" represents a wildcard.
+ *
+ *************************************
+ */
+function uixpbform_per_module_has_shortcode( str ){
+	
+	var hasShortcode = false;
+	
+	
+	if( typeof str !== typeof undefined ) {
+	
+		var arr          = uix_page_builder_layoutdata.send_string_render_entire.split( ',' );
+		for( var j in arr ) {
+			var thisStr  = arr[j].replace( '*', '' ).replace( ']', '' ).replace(/\s/g, '' );
+
+			if ( str.indexOf( thisStr ) >= 0 ) {
+				hasShortcode = true;
+			}
+		}
+		
+	}
+
+
+	return hasShortcode;
+
+}
+
+/*!
+ * ************************************
+ * Format all contents of <textarea> when you will save or display data
+ *
+ * Determine if the per module content contains "WP Shortcode", "MCE Sync Data" and "Per Module HTML Data"
+ *
+ *************************************
+ */
+function uixpbform_format_textarea( obj, dynamic, val ){
+
+	var newstr = '';
+	
+	if( typeof obj !== typeof undefined ) {
+	    
+		var tempID       = obj.data( 'tmpl-id' ),
+			value        = ( typeof val !== typeof undefined && val != '' ) ? val : obj.val(),
+			hasShortcode = uixpbform_per_module_has_shortcode( value );
+
+		if ( value != '' ) {
+			if ( 
+				 ! hasShortcode && 
+				 ! obj.hasClass( 'mce-sync' ) &&  
+				 ( typeof tempID === typeof undefined )
+
+			 ) {
+
+				if ( dynamic ) {
+					newstr = uixpbform_format_textarea_dynamic( value );
+				} else {
+					newstr = uixpbform_format_textarea_notJSON_save( value );
+				}
+
+			}	
+		}
+
+	}
+
+	return newstr;
+}
+
+
 
 
 /*! 
@@ -1454,13 +1581,14 @@ function uixpbform_curModalID() {
  */	
 function uixpbform_strToSlug( str ){
 	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		
 		var pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]");
 		var rs = ""; 
 		for (var i = 0; i < str.length; i++) { 
 			rs = rs+str.substr( i, 1 ).replace( pattern, '' ); 
 		} 
 
-		rs = rs.replace(/ /g, '-').toLowerCase();
+		rs = rs.replace(/\s/g, '-').toLowerCase();
 		return rs;
 	}
 }
@@ -1758,6 +1886,7 @@ function uixpbform_uid() {
  *************************************
  */	
 function uixpbform_catlist( str, classprefix ) {
+	
     if ( typeof( str ) == 'string' && str.length > 0 ) {
 		
 		var re      = new RegExp("(.*?)\<\/div\>","gim"),

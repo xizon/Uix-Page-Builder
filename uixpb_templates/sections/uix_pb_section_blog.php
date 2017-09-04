@@ -115,8 +115,8 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'select',
 			'default'        => array(
-									'1'  => esc_html__( 'loop posts with this plugin', 'uix-page-builder' ),
-									'2'  => esc_html__( 'loop posts with your current theme', 'uix-page-builder' ),
+									'1'  => esc_html__( 'With this plugin', 'uix-page-builder' ),
+									'2'  => esc_html__( 'With your current theme ( The "Column" setting will be invalid )', 'uix-page-builder' ),
 				                ),
 		
 		
@@ -127,7 +127,7 @@ $args =
 			'id'             => 'uix_pb_blog_pagination',
 			'title'          => esc_html__( 'Display Pagination', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => 1, // 0:close  1:open
+			'value'          => 0, // 0:false  1:true
 			'placeholder'    => '',
 			'type'           => 'checkbox'
 		),	
@@ -332,7 +332,7 @@ UixPageBuilder::form_scripts( array(
 		
 		
 			var _config_t             = ( uix_pb_blog_config_title != undefined && uix_pb_blog_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_blog_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_blog_config_intro != undefined && uix_pb_blog_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_blog_config_intro+\'</div>\' : \'\';
+				_config_desc          = ( uix_pb_blog_config_intro != undefined && uix_pb_blog_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_blog_config_intro )+\'</div>\' : \'\';
 
 
 		

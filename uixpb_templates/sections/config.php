@@ -1,14 +1,14 @@
 <?php 
 
 /*
- * Require the WP plugin "Uix Products"
+ * Expansion module of Portfolio. ( Require the WP plugin "Uix Products" )
  * 
  */
 if ( class_exists( 'UixProducts' ) ) { 
 
 	$module_uix_products = array(
 			'title'           => esc_html__( 'Uix Products Grid', 'uix-page-builder' ),
-			'id'              => 'uix_pb_section_uix_products1.php',
+			'id'              => 'uix_pb_section_uix_products.php',
 			'thumb'           => 'portfolio-2.jpg',
 
 		);  
@@ -25,6 +25,33 @@ if ( class_exists( 'UixProducts' ) ) {
 
 
 /*
+ * Expansion module of Slider. ( Require the WP plugin "Uix Slideshow" )
+ * 
+ */
+if ( class_exists( 'UixSlideshow' ) ) { 
+
+	$module_uix_slideshow = array(
+			'title'           => esc_html__( 'Uix Slideshow', 'uix-page-builder' ),
+			'id'              => 'uix_pb_section_uix_slideshow.php',
+			'thumb'           => 'imageslider-2.jpg',
+
+		);  
+
+
+} else {
+	$module_uix_slideshow = array(
+			'title'           => '',
+			'id'              => '',
+			'thumb'           => '',
+
+		);  
+}
+
+
+
+
+
+/*
  * Add the required modules to the page builder
  * 
  */
@@ -38,9 +65,11 @@ $uix_pb_config = array(
 								array(
 									'title'           => esc_html__( 'Image Slider', 'uix-page-builder' ),
 									'id'              => 'uix_pb_section_imageslider.php',
-									'thumb'           => 'imageslider.jpg',
+									'thumb'           => 'imageslider-1.jpg',
 								
-								),	
+								),
+	
+	                            $module_uix_slideshow
 								
 				
 							)
@@ -230,7 +259,7 @@ $uix_pb_config = array(
 	
 								array(
 									'title'           => esc_html__( 'Contact Form', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_contactform1.php',
+									'id'              => 'uix_pb_section_contactform.php',
 									'thumb'           => 'contactform.jpg',
 								
 								),

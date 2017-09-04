@@ -379,7 +379,7 @@ UixPageBuilder::form_scripts( array(
 	    'js_template'             => '
 		
 			var _config_t             = ( uix_pb_team1_config_title != undefined && uix_pb_team1_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_team1_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_team1_config_intro != undefined && uix_pb_team1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_team1_config_intro+\'</div>\' : \'\',
+				_config_desc          = ( uix_pb_team1_config_intro != undefined && uix_pb_team1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_team1_config_intro )+\'</div>\' : \'\',
 				_config_gray          = ( uix_pb_team1_config_avatar_gray === true ) ? \' uix-pb-gray\' : \'\',
 				_config_height        = ( uix_pb_team1_config_list_height > 0 ) ? \'style="height:\'+uixpbform_floatval( uix_pb_team1_config_list_height )+\'px;"\' : \'\',
 				_config_avatar_fillet = uixpbform_floatval( uix_pb_team1_config_avatar_fillet ) + \'%\';
@@ -437,7 +437,7 @@ UixPageBuilder::form_scripts( array(
 					show_list_item += _item_v_social_out_2;
 					show_list_item += _item_v_social_out_3;
 					show_list_item += \'<div class="uix-pb-card-item-desc">\';
-					show_list_item += \'<p>\'+_intro+\'</p>\';
+					show_list_item += \'<p>\'+uixpbform_format_textarea_entering( _intro )+\'</p>\';
 					show_list_item += \'</div>\';
 					show_list_item += \'</div>\';
 					show_list_item += \'</div>\';

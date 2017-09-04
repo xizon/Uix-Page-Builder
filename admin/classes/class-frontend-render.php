@@ -77,10 +77,10 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $id, 'uix-page-builder-layoutdata', true ) );
 				$item              = array();
 				$cols              = array( 
-										array( '3_4', 'uix-pb-col-8' ),
-										array( '1_4', 'uix-pb-col-4' ),
-										array( '2_3', 'uix-pb-col-9' ),
-										array( '1_3', 'uix-pb-col-3' ),
+										array( '3_4', 'uix-pb-col-9' ),
+										array( '1_4', 'uix-pb-col-3' ),
+										array( '2_3', 'uix-pb-col-8' ),
+										array( '1_3', 'uix-pb-col-4' ),
 										array( '4__1', 'uix-pb-col-3' ),
 										array( '4__2', 'uix-pb-col-3' ),
 										array( '4__3', 'uix-pb-col-3' ),

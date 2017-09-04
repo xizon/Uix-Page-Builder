@@ -44,8 +44,9 @@ class UixPageBuilder {
 		
 		
 		add_action( 'init', array( __CLASS__, 'register_scripts' ) );
+		add_action( 'init', array( __CLASS__, 'load_classes_core' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ), 99999 );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
@@ -87,20 +88,26 @@ class UixPageBuilder {
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/general.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/bulider/post-extensions-init.php';
 		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/bulider/visual-builder-init.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-menu-onepage.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-frontend-render.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-get-excerpt.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-get-category.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/class-xml.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/uixpbform/init.php';
-		
-		//section shortcodes
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-blog.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-googlemap.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-uix_products.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/classes/section-shortcodes/class-section-sidebar.php';
-		
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/uixpbform/init.php';	
 	}
+	
+	
+	/*
+	 * Load all core classes in the directory
+	 *
+	 */
+	 public static function load_classes_core() {
+
+		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "admin/classes/*.php") as $file ) {
+			include $file;
+		}
+
+		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "admin/classes/section-shortcodes/*.php") as $file ) {
+			include $file;
+		} 
+
+	 }
+		
 	
 	
 	/*
@@ -876,10 +883,17 @@ class UixPageBuilder {
 			    $data 
 			    ) ) ) ) ) ) ) ) ) );
 				
+		
+		//Format the JSON code before output the render viewport.
 		if ( !is_admin() ) {
 			$data = self::format_render_codes( $data );
-			$data = str_replace( '&lt;br&gt;', '<br>', $data );	
+			$data = str_replace( '&lt;br&gt;', '<br>',
+					str_replace( '{nbsp:}', '&nbsp;',
+					$data 
+				    ) );	
 	
+			
+			
 		}
 			   
 		return json_decode( $data, true );
@@ -2147,7 +2161,7 @@ class UixPageBuilder {
 							/* Template */
 							<?php echo $form_js_template; ?>
 
-							/* Save data */
+							/* Save all HTML code (include shortcode) for a single module, the necessary JavaScript variable: temp */
 							$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
 							
 							/* Render HTML Viewport */

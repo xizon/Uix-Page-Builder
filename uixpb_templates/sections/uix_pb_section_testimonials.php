@@ -230,7 +230,7 @@ UixPageBuilder::form_scripts( array(
 	    'js_template'             => '
 		
 			var _config_t      = ( uix_pb_testimonials_config_title != undefined && uix_pb_testimonials_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_testimonials_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc   = ( uix_pb_testimonials_config_intro != undefined && uix_pb_testimonials_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_testimonials_config_intro+\'</div>\' : \'\';
+				_config_desc   = ( uix_pb_testimonials_config_intro != undefined && uix_pb_testimonials_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_testimonials_config_intro )+\'</div>\' : \'\';
 
 					
 
@@ -257,7 +257,7 @@ UixPageBuilder::form_scripts( array(
 
 					//Do not include spaces
 					show_list_item += \'<li>\';
-					show_list_item += \'<div class="uix-pb-testimonials-content">\'+_intro+\'</div>\';
+					show_list_item += \'<div class="uix-pb-testimonials-content">\'+uixpbform_format_textarea_entering( _intro )+\'</div>\';
 					show_list_item += \'<div class="uix-pb-testimonials-signature">\'+_item_v_avatar+\'\';
 					show_list_item += \'<strong \'+_item_v_posclass+\'>\'+_name+\'</strong> - \'+_pos+\'\';
 					show_list_item += \'</div>\';										                                                    

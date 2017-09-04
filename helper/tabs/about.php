@@ -49,6 +49,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 		    <li><?php _e( 'Instagram Feed', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Sidebar', 'uix-page-builder' ); ?></li>   
 		    <li><?php _e( 'Uix Products (Require the WP plugin "Uix Products")', 'uix-page-builder' ); ?></li> 
+		    <li><?php _e( 'Uix Slideshow (Require the WP plugin "Uix Slideshow")', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Contact Form (Require the WP plugin "Contact Form 7")', 'uix-page-builder' ); ?></li>     
 		</ul> 
                    
@@ -72,6 +73,15 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 				printf( 
 					__('Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin <a href="%s" target="_blank">Uix Products</a>)', 'uix-page-builder' ), 
 					esc_url( 'https://wordpress.org/plugins/uix-products/' )
+				);
+			?>
+			</li>
+			<li>
+
+			 <?php 
+				printf( 
+					__('Support Custom Post Types to create a slideshow in WordPress. (Require the WP plugin <a href="%s" target="_blank">Uix Slideshow</a>)', 'uix-page-builder' ), 
+					esc_url( 'https://wordpress.org/plugins/uix-slideshow/' )
 				);
 			?>
 			</li>

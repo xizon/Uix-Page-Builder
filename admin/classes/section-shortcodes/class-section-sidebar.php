@@ -41,19 +41,18 @@ if ( !class_exists( 'UixPB_Sidebar' ) ) {
 			
 			if ( !empty( $id ) ) {
 				
+				$return_string .= '<div class="uix-pb-sidebar-container" role="complementary">';
+				
 				ob_start();
 				
-					
 					if ( is_active_sidebar( $id ) ) {
-
-						$return_string .= '<div class="uix-pb-sidebar-container sidebar-container" role="complementary">';
 						dynamic_sidebar( $id );
-						$return_string .= '</div>';
-
 					}
 				
 					$return_string .= ob_get_contents();
 				ob_end_clean();
+				
+				$return_string .= '</div>';
 			
 			}
 			

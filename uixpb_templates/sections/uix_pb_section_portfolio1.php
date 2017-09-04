@@ -341,7 +341,7 @@ UixPageBuilder::form_scripts( array(
 	    'js_template'             => '
 			var _config_id            = uixpbform_uid(),
 				_config_t             = ( uix_pb_portfolio1_config_title != undefined && uix_pb_portfolio1_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_portfolio1_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_portfolio1_config_intro+\'</div>\' : \'<div class="uix-pb-section-desc"></div>\',
+				_config_desc          = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_portfolio1_config_intro )+\'</div>\' : \'<div class="uix-pb-section-desc"></div>\',
 				_config_avatar_fillet = uixpbform_floatval( uix_pb_portfolio1_config_thumbnail_fillet ) + \'%\';
 			
 
@@ -392,7 +392,7 @@ UixPageBuilder::form_scripts( array(
 					show_list_item += \'<h3><a \'+_item_v_targetcode+\' href="\'+encodeURI( _item_v_fullimageURL )+\'" title="\'+uixpbform_htmlEncode( _title )+\'">\'+_title+\'</a></h3>\';
 					show_list_item += _item_v_catshow;
 					show_list_item += \'<div class="uix-pb-portfolio-content">\';
-					show_list_item += _intro;
+					show_list_item += uixpbform_format_textarea_entering( _intro );
 					show_list_item += \'<a class="uix-pb-portfolio-link" \'+_item_v_targetcode+\' href="\'+encodeURI( _item_v_fullimageURL )+\'" title="\'+uixpbform_htmlEncode( _title )+\'"></a>\';
 					show_list_item += \'</div>\';
 					show_list_item += \'</div>\';

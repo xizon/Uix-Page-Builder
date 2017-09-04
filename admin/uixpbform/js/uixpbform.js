@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 2.8
+	* Version 2.9
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -261,10 +261,13 @@
 				    settings      = [];
 					
 					
-				//Returns column ID
+				//-------------Returns column ID
 				var cols = colTextareaID.split( '---' );
 				var colID = cols[0].replace( 'col-item-', '' );
 			
+				
+				
+				//-------------Save begin
 				var $jsonTextarea = $( "[name^='"+formID+"|["+colTextareaID+"]']" ),
 				    fields        = $jsonTextarea.serializeArray();
 				
@@ -272,25 +275,7 @@
 				settings.push( [ 'section', formID ] );
 				settings.push( [ 'row', rowID ] );
 				settings.push( [ 'widgetname', 'Section ' + rowID ] );
-				
-				
-				//Format all contents of <textarea> 
-				$form.find( 'textarea' ).each( function()  {
-					
-					var tempID = $( this ).data( 'tmpl-id' );
-						
-					//Warning: Does not include JSON and MCE Sync data.
-					if ( !$( this ).hasClass( 'mce-sync' ) && ( typeof tempID === typeof undefined ) ) {
-						var oldValue = $( this ).val(),
-							newValue = uixpbform_htmlEscape_not_JSON( oldValue );
 
-						$( this ).val( newValue );
-
-					}
-				
-				});
-				
-			    
 				
 				$.each( fields, function( i, field ) {
 					var v      = field.value,
@@ -299,9 +284,24 @@
 					//Warning: Includes JSON data from <textarea>.
 					v = uixpbform_htmlEscape( v );
 					
+					
+					// When you enter a string in <textarea> will be saving, convert special characters to save JSON data.
+					var $cur    = $( '[name="'+n+'"]' );
+					if ( $cur.is( 'textarea' ) ) {
+						
+						var curdata = uixpbform_format_textarea( $cur, false, v );
+						if ( curdata != '' ) {
+							v = curdata;
+						}
+						
+					}
+					
 					colContent.push( [ n, v ] );
 					
+					
 				});
+				
+				
 				
 				var new_settings = JSON.stringify( colContent );
 				
@@ -318,14 +318,14 @@
 				uixpbform_insertCodes( formID, layoutdata_form_data, 'cols-all-content-replace-' + rowID, rowID );
 
 				
-				// Update gridster data ( If the module is added for the first time, and there is no content. )
+				//-------------Update gridster data ( If the module is added for the first time, and there is no content. )
 				var init_settings     = $( "[name='uix-page-builder-layoutdata']" ).val();
 				if ( init_settings.indexOf( '"content":""' ) >= 0 ) {
 					$( this ).trigger( 'click' );	
 				}
 					
 				
-				//All elements close for Uix Page Builder Form
+				//-------------All elements close for Uix Page Builder Form
 				$( document ).UixPBFormPopClose();
 	
 				

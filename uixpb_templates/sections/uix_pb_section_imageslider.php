@@ -285,7 +285,7 @@ UixPageBuilder::form_scripts( array(
 				var _item_v_photo = ( _photo != undefined ) ? encodeURI( _photo ) : \'\',
 					_item_v_url   = ( _url != undefined && _url != \'\' ) ? encodeURI( _url ) : \'\',
 					_item_v_title = ( _title != undefined && _title != \'\' ) ? _title : \'\',
-					_item_v_desc  = ( _desc != undefined && _desc != \'\' ) ? _desc : \'\',
+					_item_v_desc  = ( _desc != undefined && _desc != \'\' ) ? uixpbform_format_textarea_entering( _desc ) : \'\',
 					_item_v_intro = \'\';
 
 

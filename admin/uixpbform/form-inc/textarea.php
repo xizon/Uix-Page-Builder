@@ -39,7 +39,7 @@ class UixPBFormType_Textarea {
 						<td>	
 						    <div class="uixpbform-box">
 						  
-							   '.( !empty( $args[ 'id' ] ) ? '<textarea '.( empty( $value ) ? 'data-tmpl-value="0"' : 'data-tmpl-value="1"' ).' '.( $tmpl ? 'data-tmpl-id="'.UixPageBuilder::frontend_wrapper_id( $id ).'"' : '' ).' rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text '.( $tmpl ? 'uixpbform-tmpl-textarea' : '' ).'" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'" chk-id-textarea="'.$id.'">'.$value.'</textarea>' : '' ).' 					   	   
+							   '.( !empty( $args[ 'id' ] ) ? '<textarea '.( empty( $value ) ? 'data-tmpl-value="0"' : 'data-tmpl-value="1"' ).' '.( $tmpl ? 'data-tmpl-enable="1" data-tmpl-id="'.UixPageBuilder::frontend_wrapper_id( $id ).'"' : '' ).' rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text '.( $tmpl ? 'uixpbform-tmpl-textarea' : '' ).'" id="'.$id.'" name="'.$name.'" placeholder="'.$placeholder.'" chk-id-textarea="'.$id.'">'.$value.'</textarea>' : '' ).' 					   	   
 							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
 							   
 							</div>

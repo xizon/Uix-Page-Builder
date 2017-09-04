@@ -42,6 +42,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 		 */
 		public static function func( $atts, $content = null ) {
 			extract( shortcode_atts( array( 
+				'pagination'            => 'false',
 				'show'                  => 9, 
 				'cat'                   => 'all', 
 				'order'                 => 'desc',
@@ -60,21 +61,34 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 			 ), $atts ) );
 			
 			
-			
+
 			//Update except length 
 			update_option( 'uix-page-builder-portfolio-excerptlength', $excerpt_length );	
-			
-			
 
+			//Display all if filtering is enabled
+			 $show           = ( ( isset( $catslist_filterable ) &&  $catslist_filterable == 'true' ) ? -1 : intval( $show ) );
 			 $before         = wp_specialchars_decode( $before ).PHP_EOL;
 			 $after          = wp_specialchars_decode( $after ).PHP_EOL;	
 			 $readmore_class = str_replace( '&nbsp;', ' ' , str_replace( '&#160;', ' ' , $readmore_class ));
-		
 
+			
+			
+			//static front page & custom page @https://codex.wordpress.org/Pagination
+			if ( get_query_var( 'paged' ) ) { 
+				$paged = get_query_var( 'paged' ); 
+			} elseif ( get_query_var( 'page' ) ) { 
+				$paged = get_query_var( 'page' ); 
+			} else { 
+				$paged = 1; 
+			}
+	
+			
+			
 			if ( $cat != 'all' ) {
 
 				if ( $order != 'rand' ) {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'uix_products',
 									'order'           => $order,
 									'posts_per_page'  => $show ,
@@ -90,6 +104,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 					);	
 				} else {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'uix_products',
 									'orderby'         => 'rand',
 									'posts_per_page'  => $show ,
@@ -111,6 +126,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 
 				if ( $order != 'rand' ) {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'uix_products',
 									'order'           => $order,
 									'posts_per_page'  => $show ,
@@ -119,6 +135,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 					);	
 				} else {
 					$wp_query = new WP_Query( array(
+						            'paged'           => $paged,
 									'post_type'       => 'uix_products',
 									'orderby'         => 'rand',
 									'posts_per_page'  => $show ,
@@ -225,14 +242,101 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 			
 			
 			
-			//Display or retrieve the HTML list of categories.
+				/*
+				 * Display Pagination
+				 *
+				 * Note: At this time, the_posts_pagination function is not working.
+				 *
+				 */
+			   $pagecode = '';
+			   if ( $pagination == 'true' ) {
+				   
+					$GLOBALS[ 'paged_temp' ]  = 1;
+					$pagehtml                = '';
+					$pageshow                = '';
+					$pagehtml_before         = '<ul>'.PHP_EOL;
+					$pagehtml_after          = '</ul>'.PHP_EOL;
+
+
+					// Get currect number of pages and define total var
+					$total = $wp_query->max_num_pages;
+
+
+					// Display pagination if total var is greater then 1 ( current query is paginated )
+					if ( $total > 1 )  {
+
+						// Set current page if not defined
+						if ( ! $current_page = get_query_var( 'paged') ) {
+							 $current_page = 1;
+						 }
+
+						// Get currect format
+						if ( get_option( 'permalink_structure') ) {
+							$format = 'page/%#%/';
+						} else {
+							$format = '&paged=%#%';
+						}
+
+						// Display pagination @https://codex.wordpress.org/Function_Reference/paginate_links
+						$paginate = paginate_links(array(
+							'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+							'format'    => $format,
+							'current'   => max( 1, $paged ),
+							'total'     => $total,
+							'mid_size'  => 3,
+							'type'      => 'array',
+							'prev_text' => '<i class="fa fa-angle-left"></i>',
+							'next_text' => '<i class="fa fa-angle-right"></i>',
+						) );
+
+						if( is_array( $paginate ) ) {
+
+							foreach ( $paginate as $page ) {
+
+									if ( strpos( $page, 'prev') ){
+										$pagehtml .= '<li class="previous">'.$page.'</li>'.PHP_EOL;
+									}elseif ( strpos( $page, 'next' ) ){
+										$pagehtml .= '<li class="next">'.$page.'</li>'.PHP_EOL;
+									}elseif ( strpos( $page, 'current' ) ){
+										$pagehtml .= '<li class="active">'.$page.'</li>'.PHP_EOL;
+									}else{
+										$pagehtml .= '<li>'.$page.'</li>'.PHP_EOL;
+									}
+
+							}
+
+						}
+
+
+						$pageshow = $pagehtml_before.$pagehtml.$pagehtml_after;
+
+					}
+
+				
+
+				   $pagecode .= '<div class="uix-pb-pagination-container">';
+				   $pagecode .= $pageshow;
+				   $pagecode .= '</div>';
+			   } 
+		
+			
+			
+			
+			/*
+			 * Display or retrieve the HTML list of categories.
+			 *
+			 *
+			 */
 			$catlist = '';
 			if ( isset( $catslist_enable ) &&  $catslist_enable == 'true' ) {
 				
 				$catlist .= '<div class="uix-pb-portfolio-cat-list '.( ( isset( $catslist_filterable ) &&  $catslist_filterable == 'true' ) ? 'uix-pb-filterable' : '' ).'" data-classprefix="'.esc_attr( $catslist_classprefix ).'"  data-filter-id="'.esc_attr( $catslist_id ).'" id="uix-pb-portfolio-cat-list-'.esc_attr( $catslist_id ).'">';
 				$catlist .= '    <ul>';
-				$catlist .= '        <li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>';
-
+				
+				if ( isset( $catslist_filterable ) &&  $catslist_filterable == 'true' ) {
+					$catlist .= '        <li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>';
+				}
+				
 				
 				ob_start();
 				
@@ -278,7 +382,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 			wp_reset_postdata();
 			
 	
-			return do_shortcode( UixPBFormCore::str_compression(  $catlist.$before.$return_string.$after ) );
+			return do_shortcode( UixPBFormCore::str_compression(  $catlist.$before.$return_string.$after.$pagecode ) );
 
 		   
 		}

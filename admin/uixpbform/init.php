@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 2.8 (September 1, 2017)
+ * @version		: 2.9 (September 4, 2017)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '2.8';	
+		const VERSION    = '2.9';	
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 		
 		/**
@@ -76,7 +76,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				    $upload_dir_url = trailingslashit( $upload_dir[ 'baseurl' ] );
 			 
 				 
-					////Register core functions
+					////Register core functions (Require to enqueue the script before </body> instead of in the <head>.)
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_page_builder_wp_plugin', array( 
 						'url'                       => self::plug_directory(),
@@ -98,7 +98,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					//Add Icons
 					wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.min.css', array(), '4.5.0', 'all');
 
-					//UixForm
+					//UixForm (Require to enqueue the script before </body> instead of in the <head>.)
 					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.min.css', false, self::VERSION, 'all');
 					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.min.js', array( 'jquery' ), self::VERSION, true );
 					

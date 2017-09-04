@@ -34,7 +34,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 		 */
 		public static function func( $atts, $content = null ) {
 			extract( shortcode_atts( array( 
-				'pagination'      => 'true',
+				'pagination'      => 'false',
 				'loop_layout'     => 1,
 				'show'            => 10, 
 				'cat'             => 'all', 
@@ -53,10 +53,18 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 			update_option( 'uix-page-builder-excerptlength', $excerpt_length );
 			
 			
+			 $show           = intval( $show );
 			 $before         = wp_specialchars_decode( $before ).PHP_EOL;
 			 $after          = wp_specialchars_decode( $after ).PHP_EOL;	
 			 $readmore_class = str_replace( '&nbsp;', ' ' , str_replace( '&#160;', ' ' , $readmore_class ));
 		
+			
+			//Loop posts with your current theme.
+			if ( $loop_layout == 2 ) {
+				 $before = '';
+				 $after  = '';	
+			}
+			
 				
 			
 			//static front page & custom page @https://codex.wordpress.org/Pagination
@@ -319,16 +327,6 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 
 				   $pagecode .= '<div class="uix-pb-pagination-container">';
 				   $pagecode .= $pageshow;
-				/*
-				   $pagecode .= paginate_links( array(
-						'base'    => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-						'format'  => '?paged=%#%',
-						'current' => max( 1, $paged ),
-						'total'   => $wp_query->max_num_pages,
-							'before_page_number' => ''
-					) );
-
-				   */
 				   $pagecode .= '</div>';
 			   } 
 		

@@ -72,7 +72,7 @@
 		});
 		
 		$( document ).on( 'mouseenter', '.uix-page-builder-visual-mode', function() {
-			var curtitle = $( '[name="post_title"]' ).val().replace(/&/g, '{and}' ).replace(/ /g, '{space}' ),
+			var curtitle = $( '[name="post_title"]' ).val().replace(/&/g, '{and}' ).replace(/\s/g, '{space}' ),
 				oldhref  = $( this ).attr( 'href' );
 			if ( curtitle.length > 0 ) {
 				$( this ).attr( 'href', oldhref + '&post_title=' + encodeURI( curtitle ) )
@@ -647,7 +647,7 @@ function gridsterStrToSlug( str ){
 			rs = rs+str.substr( i, 1 ).replace( pattern, '' ); 
 		} 
 
-		rs = rs.replace(/ /g, '-').toLowerCase();
+		rs = rs.replace(/\s/g, '-').toLowerCase();
 		return rs;
 
 	}
@@ -1026,6 +1026,27 @@ function gridsterAddShortcutButtons() {
 }
 
 
+/*! 
+ * 
+ * Format the HTML data when separate rendering "div" module on front-end pages
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - HTML code.
+ * @return {string}                - A new unescaped code.
+ */	
+function UixPBFormatRenderSeparateModuleCode( str ){
+	
+	
+	if( typeof str !== typeof undefined ) {
+	
+		str = str
+				.replace(/{br:}/g, "<br>") //step 1
+				.replace(/{nbsp:}/g, "&nbsp;"); //step 2
+
+	}
+
+	return str;
+}
 
 			
 /*! 
@@ -1120,6 +1141,7 @@ function UixPBFormatRenderCodes( code ) {
 
 
 
+
 /*!
  *
  * Render Page Viewport
@@ -1184,7 +1206,7 @@ function UixPBFormatRenderCodes( code ) {
  *
  * Render HTML Viewport
  * ---------------------------------------------------
- * Separate rendering "div" module for front-end page
+ * Separate rendering "div" module on front-end pages
  */
 (function($){
 	$.fn.UixPBRenderHTML=function(options){
@@ -1207,20 +1229,11 @@ function UixPBFormatRenderCodes( code ) {
 
 			});
 			
-			//Filter shortcodes of each column widget HTML code through their hooks.
-			// Discard the rendering of separated module when the module contains these WP shortcodes, "*" represents a wildcard.
-			var arr                   = uix_page_builder_layoutdata.send_string_render_entire.split( ',' ),
-				renderSeparatedModule = true;
-			for( var j in arr ) {
-				var thisStr = arr[j].replace( '*', '' ).replace( ']', '' ).replace(/ /g, '' );
-				if ( newValue.indexOf( thisStr ) >= 0 ) {
-					renderSeparatedModule = false;
-				}
-			}
 			
-			
-			if ( renderSeparatedModule ) {
-				container.html( newValue );
+			// Discard the rendering of separated module when the module contains these WP shortcodes
+			var hasShortcode = uixpbform_per_module_has_shortcode( newValue );
+			if ( ! hasShortcode ) {
+				container.html( UixPBFormatRenderSeparateModuleCode( newValue ) );
 			}
 			
 
@@ -1234,7 +1247,7 @@ function UixPBFormatRenderCodes( code ) {
  *
  * Render WP Shortcode
  * ---------------------------------------------------
- * Separate rendering "WP Shortcode" module for front-end page
+ * Separate rendering "WP Shortcode" module on front-end pages
  */
 (function($){
 	$.fn.UixPBRenderWPShortcode=function(options){

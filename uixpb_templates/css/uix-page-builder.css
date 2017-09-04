@@ -29,7 +29,9 @@
     17. Portfolio
     18. Image Slider
     19. Contact Form 7
-    20. Pagination         
+    20. Pagination   
+    21. Instagram Feed
+    22. Sidebar
 
 */
 
@@ -2917,7 +2919,7 @@ a.uix-pb-flex-prev {
     text-align: center;
     background: none;
     border: none;
-    color: #333 !important;
+    color: #333;
     font-variant-ligatures: common-ligatures; /*Ligatures and contextual forms are ways of combining glyphs to produce more harmonized forms.*/
     margin-bottom: 0;
     font-size: 1em;
@@ -2929,16 +2931,182 @@ a.uix-pb-flex-prev {
 .uix-pb-pagination-container li a:hover {
     background: #efefef;
     color: #232323;
-	text-decoration: none !important;
 }
 
 .uix-pb-pagination-container li.active a,
 .uix-pb-pagination-container li.active > span {
-    color: #989898 !important;
+    color: #989898;
 	font-style: italic;
 }
 
 .uix-pb-pagination-container li.active a:hover {
-    background: #e7e7e7 !important;
+    background: #e7e7e7;
     color: #232323;
 }
+
+
+
+
+/* ====================================================== 
+   21. Instagram Feed
+/* ====================================================== */
+.uix-pb-instagram-container {
+	position: relative;
+	display: table;
+	
+}
+
+.uix-pb-instagram-feed-username {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.uix-pb-instagram-feed-username a {
+	position: absolute;
+	z-index: 1;
+	background: #24272B;
+	padding: .5em 2em;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+	color: #fff;
+}
+
+.uix-pb-instagram-box {
+    margin: 0 1px;
+	padding: 0;
+	position: relative;
+	display: block;
+	height: auto;
+}
+.uix-pb-instagram-box li a img {
+    display: block;
+    width: 100%!important;
+    height: auto;
+    -webkit-transition: all .4s cubic-bezier(.25,.8,.25,1);
+    transition: all .4s cubic-bezier(.25,.8,.25,1);
+    opacity: .8;
+    -webkit-backface-visibility: hidden;
+}
+
+.uix-pb-instagram-box li {
+    display: block;
+    float: left;
+    overflow: hidden;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear;
+	width: 10%;
+}
+
+.uix-pb-instagram-box.uix-pb-instagram-thumb-medium li {
+	width: 14.2857142857%;
+}
+
+.uix-pb-instagram-box.uix-pb-instagram-thumb-large li {
+	width: 20%;
+}
+
+.uix-pb-sidebar-container .uix-pb-instagram-box li {
+	width: 33.3333333333%;
+}
+
+.uix-pb-sidebar-container .uix-pb-instagram-box.uix-pb-instagram-thumb-medium li {
+	width: 50%;
+}
+
+.uix-pb-sidebar-container .uix-pb-instagram-box.uix-pb-instagram-thumb-large li {
+	width: 100%;
+}
+
+
+
+
+.uix-pb-instagram-box li a:hover img {
+    opacity: 1;
+}
+
+.uix-pb-instagram-box li a {
+    display: block;
+    overflow: hidden;
+    margin: 1px 1px;
+    border-radius: 0;
+    background: #373a41;
+}
+
+@media all and (max-width: 768px) {
+  
+    .uix-pb-instagram-box li {
+        width: 20% !important;
+    }
+	
+	.uix-pb-instagram-box.uix-pb-instagram-thumb-medium li {
+		width: 33.3333333333% !important;
+	}
+
+	.uix-pb-instagram-box.uix-pb-instagram-thumb-large li {
+		width: 50% !important;
+	}
+
+	
+}
+
+/* ====================================================== 
+   22. Sidebar
+/* ====================================================== */
+.uix-pb-sidebar-container {
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+	line-height: 1.825;
+	
+}
+
+.uix-pb-row > div:nth-child(2) .uix-pb-sidebar-container {
+	padding-left: 2.5em;
+}
+
+.uix-pb-row > div:nth-child(1) .uix-pb-sidebar-container {
+	padding-right: 2.5em;
+}
+
+
+@media all and (max-width: 768px) {
+	
+	.uix-pb-sidebar-container {
+		padding-left: 0;
+	}
+		
+	
+}
+
+.uix-pb-sidebar-container .widget {
+	padding-bottom: 3em;
+	font-size: 0.92857142857em;
+}
+
+
+.uix-pb-sidebar-container .widget-title {
+	margin: 0 0 1em;
+	position: relative;
+}
+
+.uix-pb-sidebar-container .widget-title:after {
+	content: '';
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	background: #EE6E73;
+	vertical-align: middle;
+	margin-left: .5em;
+	margin-top: -.3em;
+}
+

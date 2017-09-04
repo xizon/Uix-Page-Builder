@@ -3,7 +3,6 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
-
 /**
  * Initialize sections template parameters
  * ----------------------------------------------------
@@ -14,7 +13,6 @@ foreach ( $form_vars as $key => $v ) :
 	$$key = $v;
 endforeach;
 
-							 
 
 /**
  * Form Type & Parameters
@@ -30,41 +28,44 @@ $args_config = array(
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-);	
-
-
-//Show All Sidebars
-global $wp_registered_sidebars;
-$sidebars_value = array();
-
-if ( !empty( $wp_registered_sidebars ) ) {
-	foreach ( $wp_registered_sidebars as $value ) {
-		UixPageBuilder::array_push_associative( $sidebars_value, array( esc_attr( $value['id'] ) => esc_html( $value['name'] ) ) );
-	}
-	
-}
-
+);						
 
 
 $args = 
 	array(
-	
-
-	
-		array(
-			'id'             => 'uix_pb_sidebar_id',
-			'title'          => esc_html__( 'Select Sidebar', 'uix-page-builder' ),
-			'desc'           => wp_kses( sprintf( __( 'Calls each of the active widget callbacks in order, which prints the markup for the sidebar. <a href="%1$s" target="_blank">Customize Your Sidebar</a>', 'uix-page-builder' ), esc_url( admin_url( 'widgets.php' ) ) ), wp_kses_allowed_html( 'post' ) ),
-			'value'          => '',
-			'placeholder'    => '',
-			'type'           => 'select',
-			'default'        => $sidebars_value
-
-		),
 
 		
-
+		array(
+			'id'             => 'uix_pb_contactform_code',
+			'title'          => esc_html__( 'Shortcode & Content', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => '[contact-form-7 id="12345" title="Contact form 1"]',
+			'placeholder'    => '',
+			'type'           => 'textarea',
+			'default'        => array(
+									'row'     => 3
+								)
+		
+		),
+		
 	
+	    array(
+			'id'             => 'uix_pb_contactform_tipinfo',
+			'desc'           => wp_kses( sprintf( __( 'You can install a contact form plugin you want. Such as <a href="%1$s" target="_blank">Contact Form 7</a> When you\'re done, copy shortcode and paste into the editor. <strong>You can change ID for shortcode [contact-form-7] .</strong>', 'uix-page-builder' ), esc_url( 'https://wordpress.org/plugins/contact-form-7/' ) ), wp_kses_allowed_html( 'post' ) ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'warning'  //error, success, warning, note
+				                ),
+		
+		),	
+
+
+		
+		
+	
+
+
 	)
 ;
 
@@ -72,7 +73,7 @@ $args =
 /**
  * Returns form javascripts
  * ----------------------------------------------------
- */			
+ */
 UixPageBuilder::form_scripts( array(
 	    'clone'        => '',
 	    'defalt_value' => $item,
@@ -88,12 +89,9 @@ UixPageBuilder::form_scripts( array(
 							),
 
 						),
-		'title'        => esc_html__( 'WP Sidebar', 'uix-page-builder' ),
+		'title'        => esc_html__( 'Contact Form', 'uix-page-builder' ),
 	    'js_template'  => '
-		
-			var temp = \'[uix_pb_sidebar id=\\\'\'+uixpbform_htmlEncode( uix_pb_sidebar_id )+\'\\\']\';
-		
-		
+			var temp = uix_pb_contactform_code;
 		'
     )
 );

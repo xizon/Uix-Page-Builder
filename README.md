@@ -49,6 +49,7 @@ The currently available default elements:
 * Instagram Feed 
 * Sidebar   
 * Uix Products (Require the WP plugin "Uix Products") 
+* Uix Slideshow (Require the WP plugin "Uix Slideshow") 
 * Contact Form (Require the WP plugin "Contact Form 7")
 
 
@@ -61,6 +62,7 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 = Features =
 
 * Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin [Uix Products](https://wordpress.org/plugins/uix-products/))
+* Support Custom Post Types to create a slideshow in WordPress. (Require the WP plugin [Uix Slideshow](https://wordpress.org/plugins/uix-slideshow/))
 * You can switch between **"Visual Builder"** and **"Default Editor"** modes at any time on the Pages Add New/Edit Screen.
 * Support to choose multiple default templates you want.
 * Support to save custom templates and export templates.
@@ -106,17 +108,21 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 ### Updates
 
 
-##### = 1.3.2 (September 3, 2017) =
+##### = 1.3.2 (September 4, 2017) =
 
+* Added a new module type: Uix Slideshow (new). Require the WP plugin "Uix Slideshow".
 * Added a WP filter "uixpb_templates_filter". Theme template directory name of front-end can use filter "uixpb_templates_filter" to change it.
 * Added a new module: Sidebar (new). Subordinate to WP Widgets.
 * Added a new module: Instagram Feed (new).
 * Added a new option of Blog module.
 * Optimized the "Parallax" module.
 * Upgraded the premade templates API.
+* Fixed a bug of the grid system.
+* Fixed a bug of textarea tag white space display.
 * Fixed some minor bugs.
 * Supports multiple structures of custom template.
 * Added the latest video demo.
+* Modify the front-end style sheets & scripts priority to the last.
 
 
 

@@ -234,7 +234,7 @@ UixPageBuilder::form_scripts( array(
 	    'js_template'             => '
 		
 			var _config_t      = ( uix_pb_clients_config_title != undefined && uix_pb_clients_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_clients_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc   = ( uix_pb_clients_config_intro != undefined && uix_pb_clients_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_clients_config_intro+\'</div>\' : \'\';
+				_config_desc   = ( uix_pb_clients_config_intro != undefined && uix_pb_clients_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_clients_config_intro )+\'</div>\' : \'\';
 
 
 
@@ -262,7 +262,7 @@ UixPageBuilder::form_scripts( array(
 					//Do not include spaces
 					show_list_item += \'<div class="uix-pb-client-li uix-pb-client-li-\'+uix_pb_clients_config_grid+\'">\';
 					show_list_item += \'<p class="uix-pb-img">\'+_item_v_urltag_before+\'<img src="\'+_item_v_logoURL+\'" alt="" />\'+_item_v_urltag_after+\'</p>\';
-					show_list_item += \'<p>\'+_intro+\'</p>\';   
+					show_list_item += \'<p>\'+uixpbform_format_textarea_entering( _intro )+\'</p>\';   
 					show_list_item += \'</div>\';
 
 				}

@@ -68,7 +68,7 @@ $args =
 	
 	    array(
 			'id'             => 'uix_pb_hello_tipinfo',
-			'desc'           => wp_kses( sprintf( __( 'You can custom the boxed width of the container for Uix Page Builder stylesheets. <a target="_blank" href="%1$s">click here to custom</a>', 'uix-page-builder' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ), wp_kses_allowed_html( 'post' ) ),
+			'desc'           => wp_kses( sprintf( __( 'You can custom the boxed width of the container for Uix Page Builder stylesheets. <a target="_blank" href="%1$s">click here to custom</a>', 'uix-page-builder' ), esc_url( admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ) ), wp_kses_allowed_html( 'post' ) ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
@@ -760,7 +760,7 @@ UixPageBuilder::form_scripts( array(
 			var temp = \'\';
 				temp += \'<div id="uix-pb-hello">\';
 				temp += \'<h4>Text:</h4> \'+uix_pb_hello_text+\'\';
-				temp += \'<hr><h4>Textarea:</h4> \'+uix_pb_hello_textarea+\'\';
+				temp += \'<hr><h4>Textarea:</h4> \'+uixpbform_format_textarea_entering( uix_pb_hello_textarea )+\'\';
 				temp += \'<hr><h4>ToggleSwitch:</h4> \'+uix_pb_hello_checkbox_toggle;
 				temp += \'<hr><h4>Short Text:</h4> \'+uix_pb_hello_shorttext+\'\';
 				temp += \'<hr><h4>Short Units Text:</h4> \'+uix_pb_hello_shortunitstext+\'\'+uix_pb_hello_shortunitstext_units+\'\';

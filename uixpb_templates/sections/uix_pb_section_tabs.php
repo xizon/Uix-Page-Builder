@@ -223,7 +223,7 @@ UixPageBuilder::form_scripts( array(
 					show_list_item_title += \'<li>\'+_title+\'</li>\';
 
 					show_list_item_content += \'<div class="uix-pb-spoiler-content">\';
-					show_list_item_content += \'<p>\'+_con+\'</p>\';
+					show_list_item_content += \'<p>\'+uixpbform_format_textarea_entering( _con )+\'</p>\';
 					show_list_item_content += \'</div>\';
 
 				}

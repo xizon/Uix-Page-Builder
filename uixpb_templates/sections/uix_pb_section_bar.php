@@ -283,7 +283,7 @@ UixPageBuilder::form_scripts( array(
 				temp += \'<div style="width:\'+uix_pb_bar_result_size+\';">\';
 				temp += \'<div class="uix-pb-bar-info">\';
 				temp += \'<h3 class="uix-pb-bar-title">\'+uix_pb_bar_title+\'</h3>\';
-				temp += \'<div class="uix-pb-bar-desc">\'+uix_pb_bar_desc+\'</div>\';
+				temp += \'<div class="uix-pb-bar-desc">\'+uixpbform_format_textarea_entering( uix_pb_bar_desc )+\'</div>\';
 				temp += \'</div>\';
 				temp += \'<div class="uix-pb-bar" data-percent="\'+uixpbform_floatval( uix_pb_bar_percent )+\'" data-linewidth="\'+uixpbform_floatval( uix_pb_bar_linewidth )+\'" data-trackcolor="\'+uix_pb_bar_result_trackcolor+\'" data-barcolor="\'+uix_pb_bar_result_color+\'" data-units="\'+uixpbform_htmlEncode( uix_pb_bar_show_units )+\'" data-size="\'+uix_pb_bar_result_size+\'" data-icon="\'+uixpbform_htmlEncode( uix_pb_bar_icon )+\'">\';
 				temp += \'<span class="uix-pb-bar-percent"></span>\';
@@ -302,7 +302,7 @@ UixPageBuilder::form_scripts( array(
 				temp += \'<span class="uix-pb-bar-percent" data-linewidth="\'+uixpbform_floatval( uix_pb_bar_linewidth )+\'" data-trackcolor="\'+uix_pb_bar_result_trackcolor+\'" data-barcolor="\'+uix_pb_bar_result_color+\'" data-units="\'+uixpbform_htmlEncode( uix_pb_bar_show_units )+\'" data-size="\'+uix_pb_bar_result_size+\'"  data-icon="\'+uixpbform_htmlEncode( uix_pb_bar_icon )+\'" style="color:\'+uix_pb_bar_result_percent_icon_color+\';font-size:\'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+\'px;"></span>\';
 				temp += \'</div>\';
 				temp += \'<h3 class="uix-pb-bar-title">\'+uix_pb_bar_title+\'</h3>\';
-				temp += \'<div class="uix-pb-bar-desc">\'+uix_pb_bar_desc+\'</div>\';
+				temp += \'<div class="uix-pb-bar-desc">\'+uixpbform_format_textarea_entering( uix_pb_bar_desc )+\'</div>\';
 				temp += \'</div>\';
 
 

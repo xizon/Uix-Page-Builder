@@ -172,6 +172,17 @@ $args =
 	array(
 
 		
+		
+		array(
+			'id'             => 'uix_pb_uix_products_pagination',
+			'title'          => esc_html__( 'Display Pagination', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 0, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		),	
+		
+		
 	    array(
 			'id'             => 'uix_pb_uix_products_num',
 			'title'          => esc_html__( 'Show Number of Products', 'uix-page-builder' ),
@@ -367,7 +378,7 @@ UixPageBuilder::form_scripts( array(
 		
 			var _config_id            = uixpbform_uid(),
 			    _config_t             = ( uix_pb_uix_products_config_title != undefined && uix_pb_uix_products_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_uix_products_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_uix_products_config_intro != undefined && uix_pb_uix_products_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_uix_products_config_intro+\'</div>\' : \'<div class="uix-pb-section-desc"></div>\',
+				_config_desc          = ( uix_pb_uix_products_config_intro != undefined && uix_pb_uix_products_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_uix_products_config_intro )+\'</div>\' : \'<div class="uix-pb-section-desc"></div>\',
 				_config_urlwindow     = ( uix_pb_uix_products_config_urlwindow === true ) ? \' target="_blank"\' : \'\',
 				_config_avatar_fillet = uixpbform_floatval( uix_pb_uix_products_config_thumbnail_fillet ) + \'%\';
 
@@ -412,7 +423,7 @@ UixPageBuilder::form_scripts( array(
 			var temp = \'\';
 				temp += _config_t;
 				temp += _config_desc;
-				temp += \'[uix_pb_uix_products catslist_enable=\\\'\'+uix_pb_uix_products_config_display_cats+\'\\\' catslist_filterable=\\\'\'+uix_pb_uix_products_config_filterable+\'\\\' catslist_id=\\\'\'+_config_id+\'\\\' catslist_classprefix=\\\'uix-pb-portfolio-\\\' excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_uix_products_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_uix_products_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_uix_products]\';
+				temp += \'[uix_pb_uix_products pagination=\\\'\'+uix_pb_uix_products_pagination+\'\\\' catslist_enable=\\\'\'+uix_pb_uix_products_config_display_cats+\'\\\' catslist_filterable=\\\'\'+uix_pb_uix_products_config_filterable+\'\\\' catslist_id=\\\'\'+_config_id+\'\\\' catslist_classprefix=\\\'uix-pb-portfolio-\\\' excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_uix_products_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_uix_products_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_uix_products_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_uix_products]\';
 		
 		
 		'

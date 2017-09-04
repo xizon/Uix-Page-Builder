@@ -216,7 +216,7 @@ UixPageBuilder::form_scripts( array(
 	    'js_template'             => '
 		
 			var _config_t      = ( uix_pb_features_col2_config_title != undefined && uix_pb_features_col2_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_features_col2_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc   = ( uix_pb_features_col2_config_intro != undefined && uix_pb_features_col2_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uix_pb_features_col2_config_intro+\'</div>\' : \'\';
+				_config_desc   = ( uix_pb_features_col2_config_intro != undefined && uix_pb_features_col2_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_features_col2_config_intro )+\'</div>\' : \'\';
 
 
 			/* List Item */
@@ -247,7 +247,7 @@ UixPageBuilder::form_scripts( array(
 					show_list_item += \'<div class="uix-pb-feature-li uix-pb-feature-li-c3">\';
 					show_list_item += \'<p class="uix-pb-feature-icon">\'+_item_v_icon+\'</p>\';
 					show_list_item += \'<h3 class="uix-pb-feature-title">\'+_title+\'</h3>\';
-					show_list_item += \'<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>\'+_desc+\'</p></div>\';             
+					show_list_item += \'<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow"><p>\'+uixpbform_format_textarea_entering( _desc )+\'</p></div>\';             
 					show_list_item += \'</div>\';
 					show_list_item += \'</div>\';
 

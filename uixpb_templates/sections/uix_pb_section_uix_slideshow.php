@@ -4,6 +4,15 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
 }
 
 /**
+ * Require the WP plugin "Uix Slideshow"
+ * ----------------------------------------------------
+ */
+if ( !class_exists( 'UixSlideshow' ) ) {
+    return;
+}
+
+
+/**
  * Initialize sections template parameters
  * ----------------------------------------------------
  */
@@ -36,12 +45,12 @@ $args =
 
 		
 		array(
-			'id'             => 'uix_pb_contactform1_code',
+			'id'             => 'uix_pb_uix_slideshow_code',
 			'title'          => esc_html__( 'Shortcode & Content', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => '[contact-form-7 id="12345" title="Contact form 1"]',
+			'value'          => '[uix_slideshow_output show="-1"]',
 			'placeholder'    => '',
-			'type'           => 'editor',
+			'type'           => 'textarea',
 			'default'        => array(
 									'row'     => 3
 								)
@@ -50,8 +59,8 @@ $args =
 		
 	
 	    array(
-			'id'             => 'uix_pb_contactform1_tipinfo',
-			'desc'           => wp_kses( sprintf( __( 'You can install a contact form plugin you want. Such as <a href="%1$s" target="_blank">Contact Form 7</a> When you\'re done, copy shortcode and paste into the editor. <strong>You can change ID for shortcode [contact-form-7] .</strong>', 'uix-page-builder' ), esc_url( 'https://wordpress.org/plugins/contact-form-7/' ) ), wp_kses_allowed_html( 'post' ) ),
+			'id'             => 'uix_pb_uix_slideshow_tipinfo',
+			'desc'           => wp_kses( sprintf( __( 'You can install a slider plugin you want. Such as <a href="%1$s" target="_blank">Uix Slideshow</a> When you\'re done, copy shortcode and paste into the editor. <strong>You can change Show Number of Uix Slideshow for shortcode [uix_slideshow_output] .</strong>', 'uix-page-builder' ), esc_url( 'https://wordpress.org/plugins/uix-slideshow/' ) ), wp_kses_allowed_html( 'post' ) ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
@@ -89,9 +98,9 @@ UixPageBuilder::form_scripts( array(
 							),
 
 						),
-		'title'        => esc_html__( 'Contact Form', 'uix-page-builder' ),
+		'title'        => esc_html__( 'Uix Slideshow', 'uix-page-builder' ),
 	    'js_template'  => '
-			var temp = uix_pb_contactform1_code;
+			var temp = uix_pb_uix_slideshow_code;
 		'
     )
 );

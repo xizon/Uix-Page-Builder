@@ -290,14 +290,16 @@ UixPageBuilder::form_scripts( array(
 				desc          =  uix_pb_parallax_desc,
 				space_class   =  ( uix_pb_parallax_bg_space === true ) ? \'uix-pb-parallax-nospace\' : \'\',
 				button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != \'\' ) ? \'<p><a class="uix-pb-btn uix-pb-btn-\'+btncolor+\'" href="\'+encodeURI( uix_pb_parallax_url )+\'">\'+uix_pb_parallax_url_text+\'</a></p>\' : \'\';
+				
+				
+			var title_show = ( uix_pb_parallax_title != undefined && uix_pb_parallax_title != \'\' ) ? \'<h2>\'+title+\'</h2>\' : \'\';
 
-		
 
 			var temp = \'\';
 				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+space_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
 				temp += \'<div class="uix-pb-parallax-table" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
 				temp += \'<div class="uix-pb-parallax-content-box" \'+skew_content_style+\'>\';
-				temp += \'<h2>\'+title+\'</h2>\';
+				temp += title_show;
 				temp += desc;
 				temp += button;
 				temp += \'</div>\';
