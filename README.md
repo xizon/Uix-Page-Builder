@@ -108,7 +108,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 ### Updates
 
 
-##### = 1.3.2 (September 4, 2017) =
+##### = 1.3.5 (September 5, 2017) =
 
 * Added a new module type: Uix Slideshow (new). Require the WP plugin "Uix Slideshow".
 * Added a WP filter "uixpb_templates_filter". Theme template directory name of front-end can use filter "uixpb_templates_filter" to change it.
@@ -118,6 +118,8 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Optimized the "Parallax" module.
 * Optimized all default templates and all certified by W3C.
 * Optimized some functions of character escape and removed unnecessary escapes.
+* Optimize the core architecture.
+* Optimized page builder form control properties.
 * Upgraded the premade templates API.
 * Fixed a bug of the grid system.
 * Fixed a bug of textarea tag white space display.
@@ -126,6 +128,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Supports multiple structures of custom template.
 * Added the latest video demo.
 * Modify the front-end style sheets & scripts priority to the last.
+* Beautify the simple theme developer documentation.
 
 
 

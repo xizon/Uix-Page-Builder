@@ -89,7 +89,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 				//Returns new id
 				var $this              = $( this ),
-					activated          = $this.data( 'activated' ),
+					activated          = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 					tranEfftct         = $this.data( 'effect' ),
 					spoilerContent     = '.uix-pb-spoiler-content',
 					speed              = 300,
@@ -258,7 +258,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 		$( '.uix-pb-bar-box-square' ).each(function() {
 			var $this       = $( this ),
-				activated   = $this.data( 'activated' ),
+				activated   = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 			    perc        = $( '.uix-pb-bar', this).data( 'percent' ),
 				size        = $( '.uix-pb-bar', this).data( 'size' ),
 				linewidth   = $( '.uix-pb-bar', this).data( 'linewidth' ),
@@ -329,7 +329,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		$( '.uix-pb-bar-box-circular' ).each(function() {
 
 			var $this      = $( this ),
-				activated  = $this.data( 'activated' ),
+				activated  = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 				perc       = $( '.uix-pb-bar', this).data( 'percent' ),
 				size       = $( '.uix-pb-bar .uix-pb-bar-percent', this).data( 'size' ),
 				sizeNum    = parseFloat( size ),
@@ -428,7 +428,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 				//returns new id
 				var $this            = $( this ),
-					activated        = $this.data( 'activated' ),
+					activated        = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 					priceBGH         = Array(),
 					priceBGH_excerpt = Array(),
 					$initHeight      = $this.find( '.uix-pb-price-init-height' );
@@ -484,7 +484,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		$( '.uix-pb-price-border-hover' ).each( function(){
 
 			var $this        = $( this ),
-				activated    = $this.data( 'activated' ),
+				activated    = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 				hw           = 6,
 			    defaultColor = $this.find( '.uix-pb-price-border' ).css( 'border-color' ),
 				textColor    = $this.data( 'tcolor' ),
@@ -530,7 +530,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 				//returns new id
 				var $this            = $( this ),
-					activated        = $this.data( 'activated' ),
+					activated        = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 					priceBGH         = Array(),
 					priceBGH_excerpt = Array(),
 					$initHeight      = $this.find( '.uix-pb-price2-init-height' );
@@ -628,7 +628,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
             $( '.uix-pb-parallax' ).each(function() {
 				
 				var $this     = $( this ),
-					activated = $this.data( 'activated' );
+					activated = $this.data( 'activated' );//In order to avoid duplication of the running script with Uix Page Builder ( required )
 				
 			    if ( typeof activated === typeof undefined || activated === 0 ) {
 					
@@ -727,7 +727,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		 $( '.uix-pb-filterable' ).each( function(){
 
 			var $this              = $( this ),
-				activated          = $this.data( 'activated' ),
+				activated          = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 				classprefix        = $this.data( 'classprefix' ),
 				fid                = $this.data( 'filter-id' ),
 				filterBox          = $( '#'+classprefix+'filter-stage-'+fid+'' ),
@@ -808,7 +808,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		 $( '.uix-pb-col-last' ).each( function(){
 			 
 			 var $this     = $( this ),
-				 activated = $this.data( 'activated' );
+				 activated = $this.data( 'activated' );//In order to avoid duplication of the running script with Uix Page Builder ( required )
 			 
 			 
 			if ( typeof activated === typeof undefined || activated === 0 ) {
@@ -836,7 +836,6 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 
 
-
 /*!
  *************************************
  * 8. Image Slider
@@ -849,7 +848,10 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
     var documentReady = function( $ ) {
 
 		$( '.uix-pb-imageslider-container .flexslider' ).each( function()  {
+			
+	
 			var $this        = $( this ),
+				activated    = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
 				dataSpeed    = $this.data( 'speed' ),
 				dataTiming   = $this.data( 'timing' ),
 				dataLoop     = $this.data( 'loop' ),
@@ -859,32 +861,40 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				dataPaging   = $this.data( 'paging' ),
 				dataArrows   = $this.data( 'arrows' );
 
-			// If there is no data-xxx, save current source to it
-			if( typeof dataSpeed === typeof undefined ) dataSpeed = 600;
-			if( typeof dataTiming === typeof undefined ) dataTiming = 10000;
-			if( typeof dataLoop === typeof undefined ) dataLoop = true;
-			if( typeof dataPrev === typeof undefined ) dataPrev = "<i class='fa fa-chevron-left'></i>";
-			if( typeof dataNext === typeof undefined ) dataNext = "<i class='fa fa-chevron-right'></i>";
-			if( typeof dataAnim === typeof undefined ) dataAnim = 'slide';
-			if( typeof dataPaging === typeof undefined ) dataPaging = true;
-			if( typeof dataArrows === typeof undefined ) dataArrows = true;
+			if ( typeof activated === typeof undefined || activated === 0 ) {
 
-			$this.flexslider({
-				namespace	      : 'uix-pb-flex-',
-				animation         : dataAnim,
-				selector          : '.slides > li',
-				controlNav        : dataPaging,
-				smoothHeight      : true,
-				prevText          : dataPrev,
-				nextText          : dataNext,
-				animationSpeed    : dataSpeed,
-				slideshowSpeed    : dataTiming,
-				slideshow         : true,
-				animationLoop     : dataLoop,
-				directionNav      : dataArrows
-			});
+				// If there is no data-xxx, save current source to it
+				if( typeof dataSpeed === typeof undefined ) dataSpeed = 600;
+				if( typeof dataTiming === typeof undefined ) dataTiming = 10000;
+				if( typeof dataLoop === typeof undefined ) dataLoop = true;
+				if( typeof dataPrev === typeof undefined ) dataPrev = "<i class='fa fa-chevron-left'></i>";
+				if( typeof dataNext === typeof undefined ) dataNext = "<i class='fa fa-chevron-right'></i>";
+				if( typeof dataAnim === typeof undefined ) dataAnim = 'slide';
+				if( typeof dataPaging === typeof undefined ) dataPaging = true;
+				if( typeof dataArrows === typeof undefined ) dataArrows = true;
 
+				$this.flexslider({
+					namespace	      : 'uix-pb-flex-',
+					animation         : dataAnim,
+					selector          : '.slides > li',
+					controlNav        : dataPaging,
+					smoothHeight      : true,
+					prevText          : dataPrev,
+					nextText          : dataNext,
+					animationSpeed    : dataSpeed,
+					slideshowSpeed    : dataTiming,
+					slideshow         : true,
+					animationLoop     : dataLoop,
+					directionNav      : dataArrows
+				});
 
+				
+
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}
+			
+			
 		});
 
 	};
@@ -898,6 +908,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
     return uix_pb;
 
 }( uix_pb, jQuery, window, document ) );
+
 
 
 
@@ -955,11 +966,20 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 			,options);
 		
 			var backendPanel = $( '.uix-page-builder-gridster-addbtn', window.parent.document ).length;
+
 			if ( backendPanel > 0 ) {
-				$( document ).on( 'mouseenter', function() {
+
+				$( 'body', window.parent.document ).on( 'mouseover', function() {
 					$.uix_pb_init();
 					settings.action();
 				});
+				
+				$( document ).on( 'mouseover', 'body', function() {
+					$.uix_pb_init();
+					settings.action();
+				});
+				
+				
 			}
 	
 		   
