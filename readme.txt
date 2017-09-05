@@ -162,6 +162,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Added the latest video demo.
 * Modify the front-end style sheets & scripts priority to the last.
 * Beautify the simple theme developer documentation.
+* Enhanced all textarea field so that they all support HTML code and single line break.
 
 
 
