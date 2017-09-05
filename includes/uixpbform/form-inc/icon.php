@@ -64,7 +64,7 @@ class UixPBFormType_Icon {
 								'.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'">' : '' ).'
 								'.$iconlist.'
 							
-							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+							   '.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
 							   
 							</div>
 						</td>

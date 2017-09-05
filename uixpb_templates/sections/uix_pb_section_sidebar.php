@@ -54,7 +54,7 @@ $args =
 		array(
 			'id'             => 'uix_pb_sidebar_id',
 			'title'          => esc_html__( 'Select Sidebar', 'uix-page-builder' ),
-			'desc'           => wp_kses( sprintf( __( 'Calls each of the active widget callbacks in order, which prints the markup for the sidebar. <a href="%1$s" target="_blank">Customize Your Sidebar</a>', 'uix-page-builder' ), esc_url( admin_url( 'widgets.php' ) ) ), wp_kses_allowed_html( 'post' ) ),
+			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'select',
@@ -62,6 +62,17 @@ $args =
 
 		),
 
+		
+	    array(
+			'id'             => 'uix_pb_sidebar_id_tipinfo',
+			'desc'           => wp_kses( sprintf( __( 'Calls each of the active widget callbacks in order, which prints the markup for the sidebar. <a href="%1$s" target="_blank">Customize Your Sidebar</a>', 'uix-page-builder' ), esc_url( admin_url( 'widgets.php' ) ) ), wp_kses_allowed_html( 'post' ) ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'default'  //error, success, warning, note, default
+				                ),
+		
+		),	
 		
 
 	

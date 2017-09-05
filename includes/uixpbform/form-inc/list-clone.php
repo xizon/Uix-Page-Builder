@@ -93,7 +93,7 @@ class UixPBFormType_ListClone {
 					
 					    <div class="uixpbform-box">
                    
-								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+								'.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
 							  
 						</div>
                          

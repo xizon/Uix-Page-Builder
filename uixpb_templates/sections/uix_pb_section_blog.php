@@ -60,22 +60,6 @@ $module_config =
 		
 		),
 
-		array(
-			'id'             => 'uix_pb_blog_config_grid',
-			'title'          => esc_html__( 'Column', 'uix-page-builder' ),
-			'desc'           => '',
-			'value'          => 6,
-			'placeholder'    => '',
-			'type'           => 'radio',
-			'default'        => array(
-		                            '12'  => '1',
-									'6'   => '2',
-									'4'   => '3',
-									
-								)
-		
-		),		
-		
 		
 	
 	)
@@ -175,7 +159,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_blog_dateformat',
 			'title'          => esc_html__( 'Meta Date Format', 'uix-page-builder' ),
-			'desc'           => '',
+			'desc'           => esc_html__( 'It is not valid when using the Loop Posts Layout with your current theme.', 'uix-page-builder' ),
 			'value'          => 1,
 			'placeholder'    => '',
 			'type'           => 'select',
@@ -192,7 +176,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_blog_excerpt_length',
 			'title'          => esc_html__( 'Excerpt Length', 'uix-page-builder' ),
-			'desc'           => '',
+			'desc'           => esc_html__( 'It is not valid when using the Loop Posts Layout with your current theme.', 'uix-page-builder' ),
 			'value'          => 35,
 			'placeholder'    => '',
 			'type'           => 'short-text',
@@ -204,9 +188,27 @@ $args =
 		
 		
 		array(
+			'id'             => 'uix_pb_blog_grid',
+			'title'          => esc_html__( 'Column', 'uix-page-builder' ),
+			'desc'           => esc_html__( 'It is not valid when using the Loop Posts Layout with your current theme.', 'uix-page-builder' ),
+			'value'          => 6,
+			'placeholder'    => '',
+			'type'           => 'radio',
+			'default'        => array(
+		                            '12'  => '1',
+									'6'   => '2',
+									'4'   => '3',
+									
+								)
+		
+		),		
+		
+		
+		
+		array(
 			'id'             => 'uix_pb_blog_readmore_checkbox_toggle',
 			'title'          => esc_html__( 'Read More Button', 'uix-page-builder' ),
-			'desc'           => '',
+			'desc'           => esc_html__( 'It is not valid when using the Loop Posts Layout with your current theme.', 'uix-page-builder' ),
 			'value'          => 0, // 0:close  1:open
 			'placeholder'    => '',
 			'type'           => 'checkbox',
@@ -228,7 +230,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_blog_readmore_text',
 			'title'          => esc_html__( 'Read More Text', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Change the "read more" text/link that appears after each block.', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => esc_html__( 'Read More', 'uix-page-builder' ),
 		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_blog_readmore_text' ).'_class', /*class of toggle item */
 			'placeholder'    => '',
@@ -339,7 +341,7 @@ UixPageBuilder::form_scripts( array(
 		
 		    var uix_pb_blog_result_readmore_checkbox_toggle    = 1,
 			    uix_pb_blog_result_dateformat                  = \'\',
-                before_html                                    = \'<div class="uix-pb-blog-posts-grid uix-pb-blog-posts-grid\'+uix_pb_blog_config_grid+\'"><ul class="uix-pb-row">\',
+                before_html                                    = \'<div class="uix-pb-blog-posts-grid uix-pb-blog-posts-grid\'+uix_pb_blog_grid+\'"><ul class="uix-pb-row">\',
                 after_html                                     = \'</ul></div>\',
 				show_list_item                                 = \''.UixPBFormCore::str_compression( $loop_template_code ).'\';
 			
@@ -361,7 +363,7 @@ UixPageBuilder::form_scripts( array(
 			
 			show_list_item = show_list_item
 							 .replace( /{date}/g, uix_pb_blog_result_dateformat )
-							 .replace( /{col}/g, uix_pb_blog_config_grid );
+							 .replace( /{col}/g, uix_pb_blog_grid );
 
 			
 			

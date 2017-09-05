@@ -64,7 +64,7 @@ $args =
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
-									'type'       => 'warning'  //error, success, warning, note
+									'type'       => 'warning'  //error, success, warning, note, default
 				                ),
 		
 		),	

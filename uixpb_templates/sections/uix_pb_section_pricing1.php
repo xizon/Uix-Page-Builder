@@ -174,7 +174,7 @@ $args_1 =
 		array(
 			'id'             => 'uix_pb_pricing_col3_one_features',
 			'title'          => esc_html__( 'Features', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => UixPageBuilder::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
@@ -184,6 +184,18 @@ $args_1 =
 				                )
 		
 		),	
+		
+	    array(
+			'id'             => 'uix_pb_pricing_col3_one_features_tipinfo',
+			'desc'           => esc_html__( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'default'  //error, success, warning, note, default
+				                ),
+		
+		),	
+		
 		array(
 			'id'             => 'uix_pb_pricing_col3_one_active',
 			'title'          => esc_html__( 'Active', 'uix-page-builder' ),
@@ -303,7 +315,7 @@ $args_2 =
 		array(
 			'id'             => 'uix_pb_pricing_col3_two_features',
 			'title'          => esc_html__( 'Features', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => UixPageBuilder::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
@@ -313,6 +325,19 @@ $args_2 =
 				                )
 		
 		),	
+		
+	    array(
+			'id'             => 'uix_pb_pricing_col3_two_features_tipinfo',
+			'desc'           => esc_html__( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'default'  //error, success, warning, note, default
+				                ),
+		
+		),	
+		
+		
 		array(
 			'id'             => 'uix_pb_pricing_col3_two_active',
 			'title'          => esc_html__( 'Active', 'uix-page-builder' ),
@@ -432,7 +457,7 @@ $args_3 =
 		array(
 			'id'             => 'uix_pb_pricing_col3_three_features',
 			'title'          => esc_html__( 'Features', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => UixPageBuilder::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s><br>Another Feature Description', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
@@ -442,6 +467,19 @@ $args_3 =
 				                )
 		
 		),	
+		
+	    array(
+			'id'             => 'uix_pb_pricing_col3_three_features_tipinfo',
+			'desc'           => esc_html__( 'Type one word or sentence per line when press "ENTER".', 'uix-page-builder' ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'default'  //error, success, warning, note, default
+				                ),
+		
+		),	
+		
+		
 		array(
 			'id'             => 'uix_pb_pricing_col3_three_active',
 			'title'          => esc_html__( 'Active', 'uix-page-builder' ),

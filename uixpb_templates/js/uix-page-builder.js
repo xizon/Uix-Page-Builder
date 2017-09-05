@@ -16,6 +16,7 @@
 	6. Filterable
 	7. Grid
 	8. Image Slider
+	9. Layout effect
 	Required: Apply the original scripts
 	
 
@@ -643,14 +644,6 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
             });
         };
 		
-		
-		// Seamless display when the background color is not empty
-		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-container' ).addClass( 'nospace' );
-		$( '.uix-pb-parallax-nospace' ).closest( '.uix-page-builder-section' ).addClass( 'nospace' );	
-		$( '.uix-pb-parallax-nospace' ).closest( '.uix-pb-row > div' ).addClass( 'nospace' );
-		
-
-
 	};
 
 
@@ -910,6 +903,36 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 }( uix_pb, jQuery, window, document ) );
 
 
+
+/*!
+ *************************************
+ * 9. Layout effect
+ *************************************
+ */
+uix_pb = ( function ( uix_pb, $, window, document ) {
+    'use strict';
+
+
+    var documentReady = function( $ ) {
+
+		// Seamless display when the background color is not empty
+		$( '.uix-pb-section-nospace' ).closest( '.uix-pb-container' ).addClass( 'nospace' );
+		$( '.uix-pb-section-nospace' ).closest( '.uix-page-builder-section' ).addClass( 'nospace' );	
+		$( '.uix-pb-section-nospace' ).closest( '.uix-pb-row > div' ).addClass( 'nospace' );
+		
+
+
+	};
+
+
+    uix_pb.nospace = {
+        documentReady : documentReady
+    };
+
+    uix_pb.components.documentReady.push( documentReady );
+    return uix_pb;
+
+}( uix_pb, jQuery, window, document ) );
 
 
 /*! 

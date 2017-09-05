@@ -102,7 +102,7 @@ $module_config =
 		array(
 			'id'             => 'uix_pb_team1_config_list_height',
 			'title'          => esc_html__( 'Height of Grid', 'uix-page-builder' ),
-			'desc'           => wp_kses( __( 'Set height of grid so that it will fit its avatar photo. Browsers use a default stylesheet to render webpages if  the value is <strong>"0"</strong>.', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ),
+			'desc'           => '',
 			'value'          => 0,
 			'placeholder'    => '',
 			'type'           => 'short-text',
@@ -111,7 +111,19 @@ $module_config =
 								)
 		
 		
-		),		
+		),	
+		
+	    array(
+			'id'             => 'uix_pb_team1_config_list_height_tipinfo',
+			'desc'           => wp_kses( __( 'Set height of grid so that it will fit its avatar photo. Browsers use a default stylesheet to render if the value is <strong>"0"</strong>.', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'note'  //error, success, warning, note, default
+				                ),
+		
+		),	
+		
 		
 	
 	)

@@ -48,7 +48,7 @@ class UixPBFormType_Select {
                               
                               '.( !empty( $args[ 'id' ] ) ? '<select class="uixpbform-normal" id="'.$id.'" name="'.$name.'">'.$optionlist.'</select>' : '' ).' 
 
-                               '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+                               '.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
 							   
 							</div>
                         </td>

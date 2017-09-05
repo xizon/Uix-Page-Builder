@@ -328,7 +328,9 @@
 .uixpbform-modal-button-icon:hover:after{
     background: #333;
     background: rgba(0,0,0,.8);
-    border-radius: 5px;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
     bottom: 36px;
     color: #fff;
     content: attr(title);
@@ -416,6 +418,43 @@
 	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
 
+.uixpbform-form-container .info.info-fly {
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
+	background-color: rgba(238, 147, 49,.92);
+	position: absolute;
+	color: #fff;
+	z-index: 100;
+	padding: 7px;
+	display: none;
+	top: 0;
+	left: 0;
+	width: auto;
+	margin-top: -45px;
+	max-width: 320px;
+	height: 25px;
+}
+
+.uixpbform-form-container .info.info-fly:before{
+    border: solid;
+    border-color: rgba(238, 147, 49,.92) transparent;
+    border-width: 6px 6px 0 6px;
+    top: 38px;
+    content: "";
+    left: 10px;
+    position: absolute;
+    z-index: 100;
+}
+
+
+.uixpbform-form-container .uixpbform-box {
+	position: relative;
+}
+.uixpbform-form-container .uixpbform-box:hover .info.info-fly {
+	display: block;	
+}
+
 .uixpbform-form-container .info.info-error,
 .uixpbform-form-container .info.info-success,
 .uixpbform-form-container .info.info-warning,
@@ -452,10 +491,11 @@
 }
 
 
-.uixpbform-form-container .info.info-checkbox {
-    position: absolute;
-    top: 2px;
-    left: 50px;
+.uixpbform-form-container .info.info-default {
+	background: none;
+	border: none;
+    padding: 7px 0;
+    color: #AF7342;
 }
 
 .uixpbform-table-cols-wrapper .info,
@@ -1208,7 +1248,9 @@
 .uixpbform-form-container a.table-link-m:hover:after{
     background: #333;
     background: rgba(0,0,0,.8);
-    border-radius: 5px;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
     bottom: 26px;
     color: #fff;
     content: attr(title);
@@ -1268,7 +1310,9 @@
 .uixpbform-form-container a.table-link-iconattr:hover:after{
     background: #333;
     background: rgba(0,0,0,.8);
-    border-radius: 5px;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
     bottom: 26px;
     color: #fff;
     content: attr(title);
@@ -1760,6 +1804,7 @@ a.uixpbform-icon-clear {
 	width: 150px;
 }
 
+
 .uixpbform-table-list .item th {
     background: #434343;
     color: #fff;
@@ -1771,7 +1816,9 @@ a.uixpbform-icon-clear {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
+	border-bottom: 10px solid #fff;
 }
+
 
 .uixpbform-table-list tr td {
     position: relative;

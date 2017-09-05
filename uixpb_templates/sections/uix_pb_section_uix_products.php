@@ -279,13 +279,14 @@ $args =
 	    array(
 			'id'             => 'uix_pb_uix_products_readmore_text',
 			'title'          => esc_html__( 'Read More Text', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Change the "read more" text/link that appears after each block.', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => esc_html__( 'Read More', 'uix-page-builder' ),
 		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_uix_products_readmore_text' ).'_class', /*class of toggle item */
 			'placeholder'    => '',
 			'type'           => 'text'
 		
 		),	
+
 
 	    array(
 			'id'             => 'uix_pb_uix_products_readmore_class',

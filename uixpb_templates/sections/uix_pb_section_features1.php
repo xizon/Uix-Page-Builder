@@ -89,13 +89,6 @@ $form_type = array(
 $args_1 = 
 	array(
 	
-	
-		array(
-			'desc'           => esc_html__( 'Note: multiple items per column', 'uix-page-builder' ),
-			'type'           => 'text'
-		
-		),
-	 
 		//------list begin
 		array(
 			'id'             => $clone_trigger_id_1,
@@ -189,12 +182,7 @@ $args_1 =
 
 $args_2 = 
 	array(
-	
-		array(
-			'desc'           => esc_html__( 'Note: multiple items per column', 'uix-page-builder' ),
-			'type'           => 'text'
-		
-		),
+
 	 
 		//------list begin
 		array(

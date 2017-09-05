@@ -93,7 +93,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_parallax_height',
 			'title'          => esc_html__( 'Height', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'If the value is 0, the height is automatically calculated.', 'uix-page-builder' ),
+			'desc'           => esc_html__( 'If the value is "0", the height is automatically calculated.', 'uix-page-builder' ),
 			'value'          => 300,
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
@@ -194,7 +194,8 @@ $args =
 									'toggle_class'  => array(
 		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_btn_color' ).'_class', 
 		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url' ).'_class', 
-		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text' ).'_class' 
+		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text' ).'_class' ,
+										''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text_tipinfo' ).'_class' ,
 	                                 ),
 									
 									/* if this toggle contains another toggle, please specifies "toggle_not_class" in order that default hiding form is still valid . */
@@ -236,7 +237,7 @@ $args =
 		array(
 			'id'             => 'uix_pb_parallax_url_text',
 			'title'          => esc_html__( 'Link Text', 'uix-page-builder' ),
-			'desc'           => wp_kses( __( 'Valid when the value of <strong>"Destination URL"</strong> is not empty', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ),
+			'desc'           => '',
 		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text' ).'_class', /*class of toggle item */
 			'value'          => esc_html__( 'Check Out', 'uix-page-builder' ),
 			'placeholder'    => '',
@@ -244,6 +245,18 @@ $args =
 			'default'        => ''
 
 		),		
+		
+	    array(
+			'id'             => 'uix_pb_parallax_url_text_tipinfo',
+			'desc'           => wp_kses( __( 'Valid when the value of <strong>"Destination URL"</strong> is not empty', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ),
+		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text_tipinfo' ).'_class', /*class of toggle item */
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'default'  //error, success, warning, note, default
+				                ),
+		
+		),	
 		
 
 	
@@ -288,7 +301,7 @@ UixPageBuilder::form_scripts( array(
 				bgimage_css   = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != \'\' ) ? \'style="\'+skew_css+\'background: \'+bgcolor+\' url(\'+encodeURI( uix_pb_parallax_bg )+\') \'+bg_pos_1+\' \'+bg_pos_2+\' no-repeat \'+speed+\';"\' : \'style="\'+skew_css+\'background-color:\'+bgcolor+\';"\',
 				title         =  ( uix_pb_parallax_titlecolor != undefined && uix_pb_parallax_titlecolor != \'\' ) ? \'<span style="color:\'+uixpbform_htmlEncode( uix_pb_parallax_titlecolor )+\';">\' + uix_pb_parallax_title + \'</span>\' : uix_pb_parallax_title,
 				desc          =  uix_pb_parallax_desc,
-				space_class   =  ( uix_pb_parallax_bg_space === true ) ? \'uix-pb-parallax-nospace\' : \'\',
+				space_class   =  ( uix_pb_parallax_bg_space === true ) ? \'uix-pb-section-nospace\' : \'\',
 				button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != \'\' ) ? \'<p><a class="uix-pb-btn uix-pb-btn-\'+btncolor+\'" href="\'+encodeURI( uix_pb_parallax_url )+\'">\'+uix_pb_parallax_url_text+\'</a></p>\' : \'\';
 				
 				

@@ -106,7 +106,8 @@ class UixPBFormType_Checkbox {
 
                              </span>
                              
-                             '.( !empty( $desc ) ? '<span class="info info-checkbox">'.$desc.'</span>' : '' ).' 
+                             
+							 '.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
          
                             </div>
                         </td>

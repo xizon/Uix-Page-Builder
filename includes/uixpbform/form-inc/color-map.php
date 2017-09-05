@@ -47,7 +47,7 @@ class UixPBFormType_ColorMap {
 											<input type="text" class="wp-color-input" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">
 										</div>
 										
-										'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).'
+										'.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).'
 								
 								</div>
 
@@ -64,7 +64,7 @@ class UixPBFormType_ColorMap {
 									  
 								</div>
 								
-								'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).'
+								'.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).'
 				';	
 			}
 

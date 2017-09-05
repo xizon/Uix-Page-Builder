@@ -152,6 +152,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Optimized some functions of character escape and removed unnecessary escapes.
 * Optimize the core architecture.
 * Optimized page builder form control properties.
+* Optimize the form experience.
 * Upgraded the premade templates API.
 * Fixed a bug of the grid system.
 * Fixed a bug of textarea tag white space display.

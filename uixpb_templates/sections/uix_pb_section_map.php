@@ -39,7 +39,7 @@ $args =
 	    array(
 			'id'             => 'uix_pb_map_style',
 			'title'          => esc_html__( 'Map Style', 'uix-page-builder' ),
-			'desc'           => wp_kses( sprintf( __( 'Click on the exact location you\'d like coordinates for. Right-click on the pin and select "What\'s here?" <a href="%1$s" target="_blank" rel="nofollow">Get Latitude Longitude</a>', 'uix-page-builder' ), 'https://www.google.ch/maps/' ), wp_kses_allowed_html( 'post' ) ),
+			'desc'           => '',
 			'value'          => 'normal',
 			'placeholder'    => '',
 			'type'           => 'radio-image',
@@ -58,10 +58,23 @@ $args =
 		
 		),
 		
+		
+	    array(
+			'id'             => 'uix_pb_map_style_tipinfo',
+			'desc'           => wp_kses( sprintf( __( 'Click on the exact location you\'d like coordinates for. Right-click on the pin and select "What\'s here?" <a href="%1$s" target="_blank" rel="nofollow">Get Latitude Longitude</a>', 'uix-page-builder' ), 'https://www.google.ch/maps/' ), wp_kses_allowed_html( 'post' ) ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'note'  //error, success, warning, note, default
+				                ),
+		
+		),	
+		
+		
 	    array(
 			'id'             => 'uix_pb_map_width',
 			'title'          => esc_html__( 'Map Width', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'It default to using a 100% width.', 'uix-page-builder' ),
+			'desc'           => '',
 			'value'          => 100,
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
@@ -139,7 +152,7 @@ $args =
 		array(
 			'id'             => 'uix_pb_map_marker',
 			'title'          => esc_html__( 'Marker', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'By default, a marker uses a standard image. Markers can display custom images, in which case they are usually referred to as "icons."', 'uix-page-builder' ),
+			'desc'           => esc_html__( 'Markers can display custom images, in which case they are usually referred to as "icons."', 'uix-page-builder' ),
 			'value'          => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-location.png',
 			'placeholder'    => esc_html__( 'Image URL', 'uix-page-builder' ),
 			'type'           => 'image',

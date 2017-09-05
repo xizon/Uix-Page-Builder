@@ -32,7 +32,7 @@ class UixPBFormType_Text {
 							
 							   '.( !empty( $args[ 'id' ] ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text" chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'">' : '' ).' 	
 			   	   
-							   '.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+							   '.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
 							   
 							   
 							</div>

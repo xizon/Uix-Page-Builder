@@ -34,10 +34,11 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 		 */
 		public static function func( $atts, $content = null ) {
 			extract( shortcode_atts( array( 
-				'username'    => '',
-				'show'        => 10,
-				'thumbsize'   => 'small',
-				'displayname' => 'false',
+				'username'        => '',
+				'custom_classes'  => '',
+				'show'            => 10,
+				'thumbsize'       => 'small',
+				'displayname'     => 'false',
 				
 			 ), $atts ) );
 			
@@ -64,7 +65,7 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 					//An example of where to go from there
 					$latest_array  = $results_array['entry_data']['ProfilePage'][0]['user']['media']['nodes'];
 
-					$return_string .= '<div class="uix-pb-instagram-container">';
+					$return_string .= '<div class="uix-pb-instagram-container '.$custom_classes.'">';
 					if ( $displayname == 'true' ) {
 						$return_string .= '<div class="uix-pb-instagram-feed-username"><a href="https://www.instagram.com/'.esc_attr( $username ).'/" target="_blank">@'.esc_html( $username ).'</a></div>';
 					}

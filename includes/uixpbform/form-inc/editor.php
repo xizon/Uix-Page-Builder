@@ -50,7 +50,7 @@ class UixPBFormType_Editor {
 							   
 							</div>
 							
-							'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+							'.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
 							
 							'.( !empty( $args[ 'id' ] ) ? '<textarea class="mce-sync" style="display:none;" id="'.$id.'" name="'.$name.'" chk-id-textarea="'.$id.'">'.$value.'</textarea>' : '' ).' 	
 						</td>

@@ -55,7 +55,7 @@ class UixPBFormType_Image {
 								<div class="uixpbform-upbtn-container">
 									
 									'.( !empty( $args[ 'id' ] ) ? '<input type="text" id="'.$id.'" name="'.$name.'" class="uixpbform-normal uixpbform-input-text uixpbform-input-upload-text"  chk-id-input="'.$id.'" value="'.$value.'" placeholder="'.$placeholder.'" />' : '' ).' 
-									'.( !empty( $desc ) ? '<p class="info">'.$desc.'</p>' : '' ).' 
+									'.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
 									
 									
 									<input type="button" class="button uixpbform-upbtn uixpbform_btn_trigger-upload" data-prop="'.( $image_prop ? 1 : 0 ).'" data-btnid="trigger_id_'.$id.'" data-closebtnid="drop_trigger_id_'.$id.'" data-insert-img="'.$id.'" data-insert-preview="'.$id.'_preview" value="'.$upload_btn_text.'" />
