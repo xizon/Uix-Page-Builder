@@ -48,7 +48,7 @@ $args =
 			'id'             => 'uix_pb_uix_slideshow_code',
 			'title'          => esc_html__( 'Shortcode & Content', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => '[uix_slideshow_output show="-1"]',
+			'value'          => '[uix_slideshow_output]',
 			'placeholder'    => '',
 			'type'           => 'textarea',
 			'default'        => array(
@@ -60,7 +60,7 @@ $args =
 	
 	    array(
 			'id'             => 'uix_pb_uix_slideshow_tipinfo',
-			'desc'           => wp_kses( sprintf( __( 'You can install a slider plugin you want. Such as <a href="%1$s" target="_blank">Uix Slideshow</a> When you\'re done, copy shortcode and paste into the editor. <strong>You can change Show Number of Uix Slideshow for shortcode [uix_slideshow_output] .</strong>', 'uix-page-builder' ), esc_url( 'https://wordpress.org/plugins/uix-slideshow/' ) ), wp_kses_allowed_html( 'post' ) ),
+			'desc'           => wp_kses( sprintf( __( 'You can install a slider plugin you want. Such as <a href="%1$s" target="_blank">Uix Slideshow</a> When you\'re done, copy shortcode and paste into the editor.', 'uix-page-builder' ), esc_url( 'https://wordpress.org/plugins/uix-slideshow/' ) ), wp_kses_allowed_html( 'post' ) ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
@@ -100,7 +100,7 @@ UixPageBuilder::form_scripts( array(
 						),
 		'title'        => esc_html__( 'Uix Slideshow', 'uix-page-builder' ),
 	    'js_template'  => '
-			var temp = uix_pb_uix_slideshow_code;
+			var temp = uixpbform_format_textarea_entering( uix_pb_uix_slideshow_code );
 		'
     )
 );

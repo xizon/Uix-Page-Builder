@@ -1066,7 +1066,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function photo_placeholder() {
 			
-			return self::plug_directory().'images/no-photo.png';
+			return UixPageBuilder::plug_directory() .'uixpb_templates/images/UixPageBuilderTmpl/no-photo.png';
 	
 		}
 		
@@ -1077,7 +1077,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function logo_placeholder() {
 			
-			return self::plug_directory().'images/no-logo.png';
+			return UixPageBuilder::plug_directory() .'uixpb_templates/images/UixPageBuilderTmpl/no-logo.png';
 	
 		}
 		
@@ -1089,7 +1089,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function cover_placeholder() {
 			
-			return self::plug_directory().'images/default-cover.jpg';
+			return UixPageBuilder::plug_directory() .'uixpb_templates/images/UixPageBuilderTmpl/default-cover.jpg';
 	
 		}		
 		

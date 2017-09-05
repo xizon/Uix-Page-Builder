@@ -46,7 +46,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 				
 			 ), $atts ) );
 			 
-			if ( empty ( $marker ) ) $marker = UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-location.png';
+			if ( empty ( $marker ) ) $marker = UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-location.png';
 		
 			return '<div class="uix-page-builder-map-preview-tmpl"></div><div class="uix-page-builder-map-preview-container" data-width="'.esc_attr( $width ).'" data-height="'.esc_attr( $height ).'" data-style="'.esc_attr( $style ).'" data-latitude="'.floatval( $latitude ).'" data-longitude="'.floatval( $longitude ).'" data-zoom="'.floatval( $zoom ).'" data-name="'.urlencode_deep( $name ).'" data-marker="'.esc_url( $marker ).'"></div>';
 		}
@@ -72,7 +72,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 							fullclass = $frame.parent( "div" ).attr( "class" ),
 							curheight = $frame.data( "height" );
 
-							$frame.prev( ".uix-page-builder-map-preview-tmpl" ).load( "'.UixPageBuilder::plug_directory().'admin/preview/map.html", function( response, status, xhr ) {
+							$frame.prev( ".uix-page-builder-map-preview-tmpl" ).load( "'.UixPageBuilder::plug_directory().'includes/admin/preview/map.html", function( response, status, xhr ) {
 
 								response = response.replace(/\<script([^>]+)\>/g, "" ).replace(/\<\/script\>/g, "" );
 

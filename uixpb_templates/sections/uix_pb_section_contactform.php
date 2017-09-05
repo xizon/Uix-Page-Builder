@@ -91,7 +91,7 @@ UixPageBuilder::form_scripts( array(
 						),
 		'title'        => esc_html__( 'Contact Form', 'uix-page-builder' ),
 	    'js_template'  => '
-			var temp = uix_pb_contactform_code;
+			var temp = uixpbform_format_textarea_entering( uix_pb_contactform_code );
 		'
     )
 );

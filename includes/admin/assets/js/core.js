@@ -284,7 +284,7 @@
 				success   : function( result ){
 					$( '#uix-page-builder-templatelist' ).html( result );
 
-					if ( result == '' || result == '<p>Hmm... no templates yet.</p>' ) {
+					if ( result == '' || result == '<p>'+uix_page_builder_layoutdata.send_string_nodata+'</p>' ) {
 						$( '#uix-page-builder-templatelist-confirm' ).hide();
 					} else {
 						$( '#uix-page-builder-templatelist-confirm' ).show();
@@ -1164,7 +1164,7 @@ function UixPBFormatRenderCodes( code ) {
 			if ( $enable == 0 ) {
 
 				
-				$( $frameID ).load( uix_page_builder_layoutdata.send_string_plugin_url + 'admin/preview/viewport.html', function( response, status, xhr ) {
+				$( $frameID ).load( uix_page_builder_layoutdata.send_string_plugin_url + 'includes/admin/preview/viewport.html', function( response, status, xhr ) {
 					$( $previewID ).UixPBTmpl( $tmplID, {
 						url : $previewURL + append,
 					} );
@@ -1226,7 +1226,6 @@ function UixPBFormatRenderCodes( code ) {
 				container.html( UixPBFormatRenderSeparateModuleCode( newValue ) );
 			}
 			
-
 			
 		})
 	}
@@ -1267,7 +1266,7 @@ function UixPBFormatRenderCodes( code ) {
 						fullclass = $frame.parent( 'div' ).attr( 'class' ),
 						curheight = $frame.data( 'height' );
 					
-					$frame.prev( '.uix-page-builder-map-preview-tmpl' ).load( uix_page_builder_layoutdata.send_string_plugin_url + 'admin/preview/map.html', function( response, status, xhr ) {
+					$frame.prev( '.uix-page-builder-map-preview-tmpl' ).load( uix_page_builder_layoutdata.send_string_plugin_url + 'includes/admin/preview/map.html', function( response, status, xhr ) {
 					
 						response = response.replace(/\<script([^>]+)\>/g, '' ).replace(/\<\/script\>/g, '' );
 

@@ -1321,7 +1321,7 @@ ul.uix-page-builder-res-selector li.active {
 	display: inline-block;
 	width: 104px;
 	height: 38px;
-	background: url(../../uixpbform/images/layout-icon.png) no-repeat top center;
+	background: url(../../../uixpbform/images/layout-icon.png) no-repeat top center;
 }
 
 .widget-items-col-container:hover .btnlist {
@@ -1398,41 +1398,41 @@ ul.uix-page-builder-res-selector li.active {
 
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-average-4:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/average-4.png) no-repeat top center;
+	background:url(../../../uixpbform/images/column-style3/average-4.png) no-repeat top center;
 }
 
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-average-3:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/average-3.png) no-repeat  top center;
+	background:url(../../../uixpbform/images/column-style3/average-3.png) no-repeat  top center;
 }
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-average-2:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/average-2.png) no-repeat  top center;
+	background:url(../../../uixpbform/images/column-style3/average-2.png) no-repeat  top center;
 }
 
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-average-1:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/average-1.png) no-repeat  top center;
+	background:url(../../../uixpbform/images/column-style3/average-1.png) no-repeat  top center;
 }
 
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-1_3:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/1_3-2_3.png) no-repeat  top center;
+	background:url(../../../uixpbform/images/column-style3/1_3-2_3.png) no-repeat  top center;
 }
 
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-2_3:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/2_3-1_3.png) no-repeat  top center;
+	background:url(../../../uixpbform/images/column-style3/2_3-1_3.png) no-repeat  top center;
 }
 
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-1_4:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/1_4-3_4.png) no-repeat  top center;
+	background:url(../../../uixpbform/images/column-style3/1_4-3_4.png) no-repeat  top center;
 }
 
 .widget-items-col-container .btnlist > .widget-items-col.widget-items-col-3_4:before{
 	content:' ';
-	background:url(../../uixpbform/images/column-style3/3_4-1_4.png) no-repeat  top center;
+	background:url(../../../uixpbform/images/column-style3/3_4-1_4.png) no-repeat  top center;
 }
 
 

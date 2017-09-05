@@ -16,7 +16,7 @@ $map_zoom      = isset( $_GET[ 'zoom' ] ) && !empty( $_GET[ 'zoom' ] ) ? $_GET[ 
 $map_name      = isset( $_GET[ 'name' ] ) && !empty( $_GET[ 'name' ] ) ? $_GET[ 'name' ] : '';	 //Map place name
 $map_width     = isset( $_GET[ 'width' ] ) && !empty( $_GET[ 'width' ] ) ? $_GET[ 'width' ] : '100%';	 //Map width
 $map_height    = isset( $_GET[ 'height' ] ) && !empty( $_GET[ 'height' ] ) ? $_GET[ 'height' ] : '285px';	 //Map height
-$map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_GET[ 'marker' ] : UixPageBuilder::plug_directory() .'admin/uixpbform/images/map/map-location.png'; //Map marker 
+$map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_GET[ 'marker' ] : UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-location.png'; //Map marker 
 ?>
 
 <!DOCTYPE html>

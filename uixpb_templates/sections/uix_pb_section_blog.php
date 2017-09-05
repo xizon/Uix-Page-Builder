@@ -375,6 +375,8 @@ UixPageBuilder::form_scripts( array(
 				temp += _config_t;
 				temp += _config_desc;
 				temp += \'[uix_pb_blog pagination=\\\'\'+uix_pb_blog_pagination+\'\\\' loop_layout=\\\'\'+uix_pb_blog_loop_layout+\'\\\'  excerpt_length=\\\'\'+uixpbform_floatval( uix_pb_blog_excerpt_length )+\'\\\' readmore_enable=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_result_readmore_checkbox_toggle )+\'\\\' readmore_class=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_class )+\'\\\' readmore_text=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_readmore_text )+\'\\\' order=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_order )+\'\\\' cat=\\\'\'+uixpbform_htmlEncode( uix_pb_blog_cats )+\'\\\' show=\\\'\'+uixpbform_floatval( uix_pb_blog_num )+\'\\\' before=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( before_html )+\'\\\'  after=\\\'\'+uixpbform_shortcodeUsableHtmlToAttr( after_html )+\'\\\']\'+show_list_item+\'[/uix_pb_blog]\';
+				
+			
 		
 		
 		'

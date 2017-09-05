@@ -1283,9 +1283,28 @@ function uixpbform_html_listTran( str, type ) {
 	if ( str != '' ) {
 
 		if( typeof str !== typeof undefined ) {
-			str = str.toString().replace(/(\r)*\n/g, '<br>' );
+			str = str.toString()
+				     .replace(/(\r)*\n/g, '<br>' )
+				     .replace(/\s/g, "&nbsp;"); //step 2
 		}
 
+		//Convert an escape white space character
+		var reg  = new RegExp(/(<([^>]+)>)/ig),
+			result;
+		
+		while ( ( result  = reg.exec( str ) ) !== null ) {
+			
+			var oldValue, newValue;
+			
+			if ( result instanceof Array ) {
+			    oldValue = result[0].toString();	
+			}
+			
+			newValue = oldValue.replace(/&nbsp;/g, " ");	
+			str      = str.replace( oldValue, newValue );
+		}	
+		
+		
 
 		if ( str.indexOf( '<br>' ) >= 0 ) {
 
@@ -1311,6 +1330,7 @@ function uixpbform_html_listTran( str, type ) {
 			}
 
 		}
+
 
 	}
 
@@ -1404,7 +1424,7 @@ function uixpbform_format_textarea_notJSON_save( str ){
  * ************************************
  * Page builder textarea format when you are entering
  *
- * Before saving HTML code (do not include shortcode) of <textarea> tag for a single module.
+ * Before saving HTML code (include shortcode) of <textarea> tag for a single module.
  *
  *************************************
  */
@@ -1416,7 +1436,34 @@ function uixpbform_format_textarea_entering( str ){
 		str = str
 				.replace(/(\r)*\n/g, "<br>") //step 1
 				.replace(/\s/g, "&nbsp;"); //step 2
-
+		
+		
+		//Convert an escape white space character
+		var reg  = new RegExp(/(<([^>]+)>)/ig), // within an HTML tag
+			reg2 = new RegExp(/(\[([^\]]+)\])/ig), // within an WP shortcode
+			result,
+			result2;
+		
+		while ( 
+			( result  = reg.exec( str ) ) !== null   ||
+			( result2 = reg2.exec( str ) ) !== null
+		) {
+			
+			var oldValue, newValue;
+			
+			if ( result instanceof Array ) {
+			    oldValue = result[0].toString();	
+			}
+			if ( result2 instanceof Array ) {
+			    oldValue = result2[0].toString();	
+			}
+			
+			newValue = oldValue.replace(/&nbsp;/g, " ");	
+			str      = str.replace( oldValue, newValue );
+		}
+		
+		
+		
 	}
 
 	return str;
@@ -1459,22 +1506,17 @@ function uixpbform_format_textarea_dynamic( str ){
 function uixpbform_per_module_has_shortcode( str ){
 	
 	var hasShortcode = false;
-	
-	
+		
 	if( typeof str !== typeof undefined ) {
 	
-		var arr          = uix_page_builder_layoutdata.send_string_render_entire.split( ',' );
-		for( var j in arr ) {
-			
-			var thisStr = arr[j].toString().replace( '*', '' ).replace( ']', '' ).replace(/\s/g, '' );
-
-			if ( str.indexOf( thisStr ) >= 0 ) {
-				hasShortcode = true;
-			}
-		}
+		var reg = new RegExp(/(\[([^\]]+)\])/ig),
+			result;
 		
-	}
+		if ( reg.test( str ) ) {
+			hasShortcode = true;
+		}
 
+	}
 
 	return hasShortcode;
 
@@ -1484,7 +1526,7 @@ function uixpbform_per_module_has_shortcode( str ){
  * ************************************
  * Format all contents of <textarea> when you will save or display data
  *
- * Determine if the per module content contains "WP Shortcode", "MCE Sync Data" and "Per Module HTML Data"
+ * Determine if the per module content contains "MCE Sync Data" and "Per Module HTML Data"
  *
  *************************************
  */
@@ -1495,12 +1537,10 @@ function uixpbform_format_textarea( obj, dynamic, val ){
 	if( typeof obj !== typeof undefined ) {
 	    
 		var tempID       = obj.data( 'tmpl-id' ),
-			value        = ( typeof val !== typeof undefined && val != '' ) ? val : obj.val(),
-			hasShortcode = uixpbform_per_module_has_shortcode( value );
+			value        = ( typeof val !== typeof undefined && val != '' ) ? val : obj.val();
 
 		if ( value != '' ) {
 			if ( 
-				 ! hasShortcode && 
 				 ! obj.hasClass( 'mce-sync' ) &&  
 				 ( typeof tempID === typeof undefined )
 

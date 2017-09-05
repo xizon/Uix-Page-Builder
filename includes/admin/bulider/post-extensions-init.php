@@ -365,7 +365,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
         if ( UixPageBuilder::page_builder_general_mode() ) {
 			
 			// Register the script (Require to enqueue the script in the <head>.)
-			wp_register_script( 'uix_page_builder_metaboxes_save_handle', UixPageBuilder::plug_directory() .'admin/assets/js/core.min.js', array( 'jquery', UixPageBuilder::PREFIX . '-gridster' ), UixPageBuilder::ver(), false );
+			wp_register_script( 'uix_page_builder_metaboxes_save_handle', UixPageBuilder::plug_directory() .'includes/admin/assets/js/core.min.js', array( 'jquery', UixPageBuilder::PREFIX . '-gridster' ), UixPageBuilder::ver(), false );
 
 			// Localize the script with new data
 			if ( UixPageBuilder::tempfile_exists() ) {
@@ -396,11 +396,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_preview_url'      => $previewURL,
 				'send_string_render_count'     => 1,
 				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
-				
-				//Render the entire page from URL (Execution when the module contains these WP shortcodes, "*" represents a wildcard.)
-				'send_string_render_entire'    => '[uix_pb*],[contact-form*],[uix_slideshow*]', 
-				
-				
+				'send_string_nodata'           => esc_html__( 'Hmm... no templates yet.', 'uix-page-builder' ),
 			);
 			
 			
@@ -411,15 +407,15 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 			
 
 			//Drag and drop (Require to enqueue the script in the <head>.)
-			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/assets/js/jquery.gridster.min.js', array( 'jquery', 'uixpbform' ), '0.5.7', false );	
-			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'admin/assets/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
+			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.gridster.min.js', array( 'jquery', 'uixpbform' ), '0.5.7', false );	
+			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
 
 			//jQuery Accessible Tabs
-			wp_enqueue_script( 'accTabs', UixPageBuilder::plug_directory() .'admin/assets/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
-			wp_enqueue_style( 'accTabs-uix-page-builder', UixPageBuilder::plug_directory() .'admin/assets/css/jquery.accTabs.css', false, '0.1.1', 'all' );
+			wp_enqueue_script( 'accTabs', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
+			wp_enqueue_style( 'accTabs-uix-page-builder', UixPageBuilder::plug_directory() .'includes/admin/assets/css/jquery.accTabs.css', false, '0.1.1', 'all' );
 
 			//Main
-			wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin', UixPageBuilder::plug_directory() .'admin/assets/css/style.min.css', false, UixPageBuilder::ver(), 'all' );
+			wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin', UixPageBuilder::plug_directory() .'includes/admin/assets/css/style.min.css', false, UixPageBuilder::ver(), 'all' );
 
 			//Jquery UI
 			wp_enqueue_script( 'jquery-ui' );
@@ -653,7 +649,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 					 <p>
 					 <?php _e( 'Your current template:', 'uix-page-builder' ); ?><input size="20" type="text" onClick="select();" value="<?php echo esc_url( $theme_template_filepath ); ?>" >
 					</p>
-					<a class="button button-primary button-small export" target="_blank" href="<?php echo esc_url( UixPageBuilder::plug_directory().'admin/export-templates.php' ); ?>"><?php _e( 'Export', 'uix-page-builder' ); ?></a>
+					<a class="button button-primary button-small export" target="_blank" href="<?php echo esc_url( UixPageBuilder::plug_directory().'includes/admin/export-templates.php' ); ?>"><?php _e( 'Export', 'uix-page-builder' ); ?></a>
 
 				</div>
 			</span> 

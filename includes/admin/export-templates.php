@@ -4,7 +4,7 @@
  *
  * @package WordPress
  */
-require_once( dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) . '/wp-load.php' );
+require_once( dirname( dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ) ) . '/wp-load.php' );
 
 if ( !current_user_can('export') ) {
     wp_die( __( 'Sorry, you are not allowed to export the content of this site.' ) );	

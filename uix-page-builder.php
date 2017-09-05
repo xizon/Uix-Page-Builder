@@ -85,10 +85,10 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function includes() {
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/general.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/bulider/post-extensions-init.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/bulider/visual-builder-init.php';
-		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'admin/uixpbform/init.php';	
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'includes/admin/general.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'includes/admin/bulider/post-extensions-init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'includes/admin/bulider/visual-builder-init.php';
+		require_once UIX_PAGE_BUILDER_PLUGIN_DIR.'includes/uixpbform/init.php';	
 	}
 	
 	
@@ -98,11 +98,11 @@ class UixPageBuilder {
 	 */
 	 public static function load_classes_core() {
 
-		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "admin/classes/*.php") as $file ) {
+		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "includes/classes/*.php") as $file ) {
 			include $file;
 		}
 
-		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "admin/classes/section-shortcodes/*.php") as $file ) {
+		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "includes/classes/section-shortcodes/*.php") as $file ) {
 			include $file;
 		} 
 
@@ -127,20 +127,20 @@ class UixPageBuilder {
 			
 
 		// Shuffle
-		wp_register_script( 'shuffle', self::plug_directory() .'admin/assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
+		wp_register_script( 'shuffle', self::plug_directory() .'includes/admin/assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
 
 		// Shuffle.js requires Modernizr..
-		wp_register_script( 'modernizr', self::plug_directory() .'admin/assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
+		wp_register_script( 'modernizr', self::plug_directory() .'includes/admin/assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
 
 		// Easy Pie Chart
-		wp_register_script( 'easypiechart', self::plug_directory() .'admin/assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
+		wp_register_script( 'easypiechart', self::plug_directory() .'includes/admin/assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
 		
 		//flexslider
-		wp_register_script( 'flexslider', self::plug_directory() .'admin/assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true );
-		wp_register_style( 'flexslider', self::plug_directory() .'admin/assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
+		wp_register_script( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true );
+		wp_register_style( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
 		
 		// Parallax
-		wp_register_script( 'bgParallax', self::plug_directory() .'admin/assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
+		wp_register_script( 'bgParallax', self::plug_directory() .'includes/admin/assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
 
 		
 
