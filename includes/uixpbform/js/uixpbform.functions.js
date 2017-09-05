@@ -1941,7 +1941,7 @@ function uixpbform_catlist( str, classprefix ) {
 
 		Array.prototype.uniqueArr = function() {
 			
-			//Because the template is too fast to switch, it will lead to script loading error.
+			//Because the template is too fast to "switch", it will lead to script loading error.
 			//Catch a possible error:  Syntax error, unrecognized expression
 			try {
 

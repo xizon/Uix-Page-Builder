@@ -5,7 +5,14 @@
 	 Author: UIUX Lab
 	 Author URI: https://uiux.cc
 	 License: GPLv2 or later
+
 	
+	NOTE
+	---------------------------
+    1. In order to be compatible with each theme, the font-size uses fixed pixels.
+    2. The container compatible with Bootstrap 3.x
+	
+
 	
 	TABLE OF CONTENTS
 	---------------------------
@@ -34,7 +41,6 @@
     22. Sidebar
 
 */
-
 
 /* ====================================================== 
    1. Basic                               
@@ -505,6 +511,7 @@ img.uix-pb-img,
     text-align: center;
     margin-top: 1.5em;
     margin-bottom: 4.5em;
+	font-size: 14px;
 }
 
 .uix-page-builder-section blockquote {
@@ -516,13 +523,13 @@ img.uix-pb-img,
     font-style: italic;
     line-height: 2;
     quotes: "\201C""\201D""\2018""\2019";
-    font-size: 1.14285714286em;
+    font-size: 16px;
 }
 
 .uix-page-builder-section blockquote:before {
     color: #333;
     content: open-quote;
-    font-size: 6em;
+    font-size: 84px;
     line-height: 0.1em;
     margin-right: 0.25em;
     vertical-align: -0.45em;
@@ -1881,10 +1888,66 @@ img.uix-pb-img,
 .uix-pb-parallax-wrapper h4,
 .uix-pb-parallax-wrapper h5,
 .uix-pb-parallax-wrapper h6 {
-    line-height: 1.2 !important;
-    margin: 0 !important;
-    padding: 0 0 .865em !important;
-    font-weight: bold;
+    margin: 0;
+	padding: 0 0 .2em;
+}
+
+
+.uix-pb-parallax-wrapper h1 {
+    font-size: 48px;
+    line-height: 1.14285714286;
+}
+
+.uix-pb-parallax-wrapper h2 {
+    font-size: 40px;
+    line-height: 1.2;
+}
+
+.uix-pb-parallax-wrapper h3 {
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.uix-pb-parallax-wrapper h4 {
+    font-size: 20px;
+    line-height: 1.33333333333;
+}
+
+.uix-pb-parallax-wrapper h5 {
+    font-size: 16px;
+    line-height: 1.5;
+	font-weight: 600;
+	
+}
+
+.uix-pb-parallax-wrapper h6 {
+    font-size: 12px;
+    line-height: 1.7;
+	font-weight: 600;
+	
+}
+
+
+@media all and (max-width: 768px) {
+	.uix-pb-parallax-wrapper h1 {
+		font-size: 42px;
+	}
+
+	.uix-pb-parallax-wrapper h2 {
+		font-size: 34px;
+	}
+
+	.uix-pb-parallax-wrapper h3 {
+		font-size: 22px;
+	}
+
+}
+
+
+.uix-pb-parallax-wrapper p {
+    font-size: 16px;
+    line-height: 1.5;
+	margin: 0 0 .5em;
 }
 
 .uix-pb-parallax-wrapper a:not(.uix-pb-btn) {
@@ -2938,7 +3001,7 @@ a.uix-pb-flex-prev {
     color: #333;
     font-variant-ligatures: common-ligatures; /*Ligatures and contextual forms are ways of combining glyphs to produce more harmonized forms.*/
     margin-bottom: 0;
-    font-size: 1em;
+    font-size: 14px;
     line-height: 3.25;
     margin-top: 0;
     margin-bottom: 2.36363636363636em;
@@ -3106,7 +3169,7 @@ a.uix-pb-flex-prev {
 
 .uix-pb-sidebar-container .widget {
 	padding-bottom: 3em;
-	font-size: 0.92857142857em;
+	font-size: 13px;
 }
 
 

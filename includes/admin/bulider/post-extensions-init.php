@@ -624,7 +624,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>  
 					<p>
 						<label>
-							<input size="40" name="tempname" type="text" maxlength="20" value="<?php echo UixPageBuilder::get_tempname(); ?>">
+							<input size="40" name="tempname" type="text" maxlength="40" value="<?php echo UixPageBuilder::get_tempname(); ?>">
 						</label>
 					</p>
 					<a class="button button-primary button-small save" href="javascript:"><?php _e( 'Save', 'uix-page-builder' ); ?></a><span class="spinner"></span>
