@@ -29,7 +29,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		public static function new_class( $classes ) {
 
 			$id        = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
-			$tempclass = UixPageBuilder::page_builder_array_tempname( get_post_meta( $id, 'uix-page-builder-layoutdata', true ), true );
+			$tempclass = UixPageBuilder::page_builder_array_tempattrs( get_post_meta( $id, 'uix-page-builder-layoutdata', true ), true );
 			
 			if ( empty( $tempclass ) ) $tempclass = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $id );
 

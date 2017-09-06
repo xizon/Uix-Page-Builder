@@ -310,7 +310,8 @@
 
 			var $this         = $( this ),
 			    v             = $( this ).closest( '.settings-temp-wrapper' ).find( '[name="temp"]:checked' ).parent().find( 'textarea' ).html(),
-				tempname      = gridsterRenderCodesTempnameValue( v ); //Get the JSON code value of "tempname"
+				tempname      = gridsterRenderCodesTempAttrsValue( v, 0 ), //Get the JSON code value of "tempname"
+			    pagetemp      = gridsterRenderCodesTempAttrsValue( v, 1 ); //Get the JSON code value of "wp_page_template"
 
 			//Display load animation
 			$this.next( '.spinner' ).addClass( 'is-active' );
@@ -320,7 +321,7 @@
 			$( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).show();
 
 			
-			//Format the JSON code (remove value of "tempname")
+			//Format the JSON code (remove value of "tempname" and "wp_page_template" )
 			v = gridsterFormatRenderCodesRemoveTempname( v );
 			
 			
@@ -331,6 +332,7 @@
 					action               : 'uix_page_builder_metaboxes_loadtemp_settings',
 					curlayoutdata        : v,
 					tempname             : tempname,
+					pagetemp             : pagetemp,
 					postID               : uix_page_builder_layoutdata.send_string_postid,
 					security             : uix_page_builder_layoutdata.send_string_nonce
 				},
@@ -533,7 +535,7 @@
 
 /*! 
  * 
- * [Gridster] Format the JSON code (remove value of "tempname")
+ * [Gridster] Format the JSON code (remove value of "tempname" and "wp_page_template" )
  * ---------------------------------------------------
  *
  * @param  {string} str            - JSON string.
@@ -548,9 +550,17 @@ function gridsterFormatRenderCodesRemoveTempname( str ){
 
 			var newstr        = JSON.parse( str ),
 				tempnameValue = newstr[0].tempname,
+				pagetempValue = newstr[1].wp_page_template,
 				result        = '';
+			
+			if( typeof newstr[0] != typeof undefined ) {
+				str = str.replace( '{"tempname":"'+newstr[0].tempname+'"},', '' );
+			}
 
-			str = str.replace( '{"tempname":"'+tempnameValue+'"},', '' );
+			if( typeof newstr[1] != typeof undefined ) {
+				str = str.replace( '{"wp_page_template":"'+newstr[1].wp_page_template+'"},', '' );
+			}
+			
 
 			return str;
 
@@ -575,17 +585,21 @@ function gridsterFormatRenderCodesRemoveTempname( str ){
  * @param  {string} str            - JSON string.
  * @return {string}                - A new string.
  */		
-function gridsterRenderCodesTempnameValue( str ){
+function gridsterRenderCodesTempAttrsValue( str, attr ){
 	if ( typeof( str ) == 'string' && str.length > 0 ) {
 		
 		if (/^[\],:{}\s]*$/.test( str.replace(/\\["\\\/bfnrtu]/g, '@' ).
 		replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']').
 		replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
 
-			var newstr        = JSON.parse( str ),
-				tempnameValue = newstr[0].tempname;
-
-			return tempnameValue;
+			var newstr = JSON.parse( str );
+			
+			if ( attr == 0 && typeof newstr[0] != typeof undefined ) {
+				return newstr[0].tempname;
+			}
+			if ( attr == 1 && typeof newstr[1] != typeof undefined ) {
+				return newstr[1].wp_page_template;
+			}
 
 		}else{
 

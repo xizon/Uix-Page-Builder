@@ -46,10 +46,8 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 			
 			if ( isset( $_POST[ 'postID' ] ) ) {
 				
-				$postID = $_POST[ 'postID' ];
-				
-				
-				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $postID, 'uix-page-builder-layoutdata', true ) );
+				$post_ID           = $_POST[ 'postID' ];
+				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $post_ID, 'uix-page-builder-layoutdata', true ) );
 				$item              = array();
 				$cols              = array( 
 										array( '3_4', 'uix-pb-col-9' ),

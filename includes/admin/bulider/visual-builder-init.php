@@ -328,9 +328,8 @@ if ( !function_exists( 'uix_page_builder_saveLiveRender' ) ) {
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
-			$id              = $_POST[ 'postID' ];
-			$layoutdata 	 = UixPageBuilder::format_layoutdata_add_tempname( $_POST[ 'postID' ], wp_unslash( $_POST[ 'layoutdata' ] ) );
-			$pagetemp 	     = sanitize_text_field( $_POST[ 'pageTemp' ] );
+			$post_ID         = $_POST[ 'postID' ];
+			$layoutdata 	 = UixPageBuilder::format_layoutdata_add_tempname( $post_ID, wp_unslash( $_POST[ 'layoutdata' ] ) );
 			$builderstatus 	 = 'disable';
 
 			//Show page builder core assets of "Pages Add New Screen"
@@ -338,9 +337,9 @@ if ( !function_exists( 'uix_page_builder_saveLiveRender' ) ) {
 				$builderstatus 	 = 'enable';
 			}
 			
-			update_post_meta( $id, 'uix-page-builder-layoutdata', $layoutdata );
-			update_post_meta( $id, 'uix-page-builder-status', $builderstatus );
-			update_post_meta( $id, '_wp_page_template', $pagetemp );
+			update_post_meta( $post_ID, 'uix-page-builder-layoutdata', $layoutdata );
+			update_post_meta( $post_ID, 'uix-page-builder-status', $builderstatus );
+			
 			
 			echo 1;
 		}
@@ -349,6 +348,33 @@ if ( !function_exists( 'uix_page_builder_saveLiveRender' ) ) {
 		wp_die();	
 	}
 }
+
+
+
+/*
+ * Save WP page template with ajax 
+ * 
+ */
+if ( !function_exists( 'uix_page_builder_savePageTemplate' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_savePageTemplate_settings', 'uix_page_builder_savePageTemplate' );		
+	function uix_page_builder_savePageTemplate() {
+		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
+		
+		if ( isset( $_POST[ 'postID' ] ) ) {
+			
+			$post_ID         = $_POST[ 'postID' ];
+			$pagetemp 	     = sanitize_text_field( $_POST[ 'pagetemp' ] );
+
+			update_post_meta( $post_ID, '_wp_page_template', $pagetemp );
+			
+			echo 1;
+		}
+		
+		
+		wp_die();	
+	}
+}
+
 
 
 /*
@@ -362,8 +388,9 @@ if ( !function_exists( 'uix_page_builder_publishLiveRender' ) ) {
 		
 		if ( isset( $_POST[ 'postID' ] ) ) {
 			
+			$post_ID   = $_POST[ 'postID' ];
 			$post_data = array(
-				'ID'           => $_POST[ 'postID' ],
+				'ID'           => $post_ID,
 				'post_status'  => 'publish'
 			);
 			

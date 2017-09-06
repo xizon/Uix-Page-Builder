@@ -403,7 +403,7 @@
 }
 
 .uixpbform-form-container {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
  
  
@@ -415,7 +415,6 @@
     display: block;
     clear: both;
     width: calc( 780px - 80px );
-	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
 
 .uixpbform-form-container .info.info-fly {

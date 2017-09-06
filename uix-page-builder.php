@@ -742,8 +742,8 @@ class UixPageBuilder {
 	 */
 	public static function page_builder_array_newlist( $json_code_pb_encode ) {
 		
-		//Format the JSON code (remove value of "tempname")
-		$json_code_pb_encode = self::format_render_codes_remove_tempname( $json_code_pb_encode );
+		//Format the JSON code (remove value of "tempname" and "wp_page_template" )
+		$json_code_pb_encode = self::format_render_codes_remove_non_layoutattributes( $json_code_pb_encode );
 
 	
 		$data = esc_textarea( $json_code_pb_encode );
@@ -787,11 +787,12 @@ class UixPageBuilder {
 	 * Returns the template name from the template data
 	 *
 	 */
-	public static function page_builder_array_tempname( $json_code_pb_encode, $slug = false ) {
+	public static function page_builder_array_tempattrs( $json_code_pb_encode, $slug = false, $attr = 0 ) {
 		
 		
 		$data = esc_textarea( $json_code_pb_encode );
 		$data = str_replace( '&quot;tempname&quot;:&quot;', '"tempname":"',
+				str_replace( '&quot;wp_page_template&quot;:&quot;', '"wp_page_template":"',
 				str_replace( '&quot;col&quot;', '"col"', 
 		       str_replace( '&quot;row&quot;', '"row"',
 			   str_replace( '&quot;size_x&quot;', '"size_x"',
@@ -803,22 +804,38 @@ class UixPageBuilder {
 			   str_replace( '&quot;,&quot;layout&quot;:&quot;', '","layout":"',
 			   str_replace( '&quot;}', '"}',
 			   $data 
-			   ) ) ) ) ) ) ) ) ) ) );
+			   ) ) ) ) ) ) ) ) ) ) ) );
 		
 	
-		if ( self::inc_str( $data, '"tempname"' ) ) {
-			$newstr  = json_decode( $data, true );
-			$tempname = $newstr[0]['tempname'];
+		//Get template name
+		if ( $attr == 0 ) {
+			if ( self::inc_str( $data, '"tempname"' ) ) {
+				$newstr   = json_decode( $data, true );
+				$tempattr = $newstr[0]['tempname'];
 
-		} else {
-			$tempname = '';
+			} else {
+				$tempattr  = '';
+			}	
 		}
+		
+		//Get WP page template
+		if ( $attr == 1 ) {
+			if ( self::inc_str( $data, '"wp_page_template"' ) ) {
+				$newstr   = json_decode( $data, true );
+				$tempattr = $newstr[1]['wp_page_template'];
+
+			} else {
+				$tempattr = '';
+			}	
+		}
+		
+
 		
 		
 		if ( $slug ) {
-			return sanitize_title_with_dashes( $tempname );
+			return sanitize_title_with_dashes( $tempattr );
 		} else {
-			return $tempname;
+			return $tempattr;
 		}	
 	
 		
@@ -858,22 +875,35 @@ class UixPageBuilder {
 	
 	
 	/*
-	 * Format the JSON code (remove value of "tempname")
+	 * Format the JSON code (remove value of "tempname" and "wp_page_template" )
 	 *
 	 */	
-	public static function format_render_codes_remove_tempname( $json_code ) {
+	public static function format_render_codes_remove_non_layoutattributes( $json_code ) {
 		
 		// Value of "tempname" is class for the <body> of each builder content
-		if ( self::inc_str( $json_code, '"tempname"' ) ) {
+		if ( self::inc_str( $json_code, '"tempname"' ) || self::inc_str( $json_code, '"wp_page_template"' ) ) {
 			$result  = '';
 			$newstr  = json_decode( $json_code, true );
-			unset( $newstr[0] );
-			$total   = count( $newstr );
+			
+			//Remove non-layout arrays
+			if ( self::inc_str( $json_code, '"tempname"' ) && !self::inc_str( $json_code, '"wp_page_template"' ) ) {
+				unset( $newstr[0] );
+			} elseif ( self::inc_str( $json_code, '"tempname"' ) && self::inc_str( $json_code, '"wp_page_template"' ) ) {
+				unset( $newstr[0] );
+				unset( $newstr[1] );
+			}
+		
+			$total   = count( $newstr ) + 1;
 
 			$result .= '[';
 
 			for ( $i = 1; $i <= $total; $i++ ) {
-				$result .= json_encode( $newstr[ $i ] ).',';
+				
+				//Need to be compatible with old data
+				if ( isset( $newstr[ $i ] ) ) {
+					$result .= json_encode( $newstr[ $i ] ).',';
+				}
+				
 			}
 
 			$result = rtrim( $result, ',' );
@@ -888,7 +918,7 @@ class UixPageBuilder {
 
 	}	
 
-    //add value of "tempname"
+    //add value of "tempname" and "wp_page_template"
 	public static function format_layoutdata_add_tempname( $id, $str, $custom = '' ) {
 		
 		$custom_name = $custom;
@@ -896,10 +926,12 @@ class UixPageBuilder {
 		if ( empty( $custom_name ) ) $custom_name = self::get_tempname();
 		
 		
-		//Format the JSON code (remove value of "tempname")
-		$str           = self::format_render_codes_remove_tempname( $str );
-		$json_tempname = '{"tempname":"'.$custom_name.'"},';
-		$newstr        = '['.$json_tempname.ltrim( rtrim( $str, ']' ), '[' ).']';
+		//Format the JSON code (remove value of "tempname" and "wp_page_template" )
+		$str             = self::format_render_codes_remove_non_layoutattributes( $str );
+		$json_tempname   = '{"tempname":"'.$custom_name.'"},';
+		$json_pagetemp   = '{"wp_page_template":"'.get_post_meta( $id, '_wp_page_template', true ).'"},';
+		$json_layoutdata = ltrim( rtrim( $str, ']' ), '[' );
+		$newstr        = '['.$json_tempname.$json_pagetemp.$json_layoutdata.']';
 		
 		return $newstr;	
 
