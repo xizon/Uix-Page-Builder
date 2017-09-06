@@ -652,7 +652,6 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 					 n = h;
 				 }
 				 $content.parent( '.uix-pb-parallax-table' ).css( 'height', n + 'px' );
-				console.log( n );
 				
 
 				

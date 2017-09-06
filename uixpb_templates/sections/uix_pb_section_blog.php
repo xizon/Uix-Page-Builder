@@ -249,8 +249,18 @@ $args =
 		
 		),		
 		
-
-
+	    array(
+			'id'             => 'uix_pb_blog_manage_tipinfo',
+			'desc'           => wp_kses( sprintf( __( '<a href="%1$s" target="_blank">Manage Your Content of Posts</a>', 'uix-page-builder' ), esc_url( admin_url( 'edit.php' ) ) ), wp_kses_allowed_html( 'post' ) ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'default'  //error, success, warning, note, default
+				                ),
+		
+		),	
+		
+		
 	
 	)
 ;

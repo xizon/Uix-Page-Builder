@@ -139,7 +139,7 @@ $module_config =
 								)
 		
 		),		
-		
+
 		
 	
 	)
@@ -300,6 +300,17 @@ $args =
 		),		
 		
 
+		
+	    array(
+			'id'             => 'uix_pb_uix_products_manage_tipinfo',
+			'desc'           => wp_kses( sprintf( __( '<a href="%1$s" target="_blank">Manage Your Content of Uix Products</a>', 'uix-page-builder' ), esc_url( admin_url( 'edit.php?post_type=uix_products' ) ) ), wp_kses_allowed_html( 'post' ) ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'default'  //error, success, warning, note, default
+				                ),
+		
+		),	
 
 	
 	)

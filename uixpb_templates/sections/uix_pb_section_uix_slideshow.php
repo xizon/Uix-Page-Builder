@@ -59,16 +59,15 @@ $args =
 		
 	
 	    array(
-			'id'             => 'uix_pb_uix_slideshow_tipinfo',
-			'desc'           => wp_kses( sprintf( __( 'You can install a slider plugin you want. Such as <a href="%1$s" target="_blank">Uix Slideshow</a> When you\'re done, copy shortcode and paste into the editor.', 'uix-page-builder' ), esc_url( 'https://wordpress.org/plugins/uix-slideshow/' ) ), wp_kses_allowed_html( 'post' ) ),
+			'id'             => 'uix_pb_uix_slideshow_manage_tipinfo',
+			'desc'           => wp_kses( sprintf( __( '<a href="%1$s" target="_blank">Manage Your Content of Uix Slideshow</a>', 'uix-page-builder' ), esc_url( admin_url( 'edit.php?post_type=uix-slideshow' ) ) ), wp_kses_allowed_html( 'post' ) ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
-									'type'       => 'warning'  //error, success, warning, note, default
+									'type'       => 'default'  //error, success, warning, note, default
 				                ),
 		
 		),	
-
 
 		
 		
