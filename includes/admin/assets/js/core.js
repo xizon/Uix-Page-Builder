@@ -316,6 +316,10 @@
 			$this.next( '.spinner' ).addClass( 'is-active' );
 			
 			
+			//show loader
+			$( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).show();
+
+			
 			//Format the JSON code (remove value of "tempname")
 			v = gridsterFormatRenderCodesRemoveTempname( v );
 			
@@ -348,10 +352,13 @@
 					var settings = jQuery( "[name='uix-page-builder-layoutdata']" ).val();
 
 					
+					/*
 					//Render and save page data
 					var gridsterInit = new UixPBGridsterMain();
 					gridsterInit.renderAndSavePage(2); //Render the entire page
-					
+					*/
+					//render page viewport
+					$( document ).UixPBRenderPage( { enable: 0 } );
 
 					//close
 					$this.parent().hide();
