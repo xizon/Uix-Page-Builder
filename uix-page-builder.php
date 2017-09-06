@@ -348,16 +348,27 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function get_tempname( $slug = false ) {
+	public static function get_tempname( $slug = false, $auto = true, $customid = '' ) {
 
-		$curid      = get_the_ID();
-		$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
+		$random = uniqid();
+		if ( !empty( $customid ) ) $random = $customid;
 		
-		if ( empty( $post_id ) ) $post_id = uniqid();
+		if ( $auto ) {
+			$id = self::get_session_current_postid();
+			if ( !empty( $customid ) ) $id = $customid;
+
+			if ( empty( $id ) ) {
+				$tempname = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $random );
+			} else {
+				$tempname = self::get_session_default_tempname( $id );
+			}
+			
+		} else {
+			$tempname = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $random );	
+		}
+
 	
-		$tempname   = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_id );
-
-
+		
 		if ( $slug ) {
 			return sanitize_title_with_dashes( $tempname );
 		} else {
@@ -370,24 +381,66 @@ class UixPageBuilder {
 	
 
 	/*
-	 * Define session for the current post ID
+	 * Get session for current post ID (Used only in the background panel)
 	 *
 	 *
 	 */
-	public static function session_post_id() {
-
-		$curid      = get_the_ID();
-		$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
+	public static function get_session_current_postid() {
 		
 		if( ! isset( $_SESSION ) ) session_start();
-		
-		if( array_key_exists( 'uix-page-builder-postid', $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-postid' ] ) ) {
-			$post_id = $_SESSION[ 'uix-page-builder-postid' ];	
-		}  else {
-			$_SESSION[ 'uix-page-builder-postid' ] = $post_id;
+		if( array_key_exists( 'uix-page-builder-current-postid', $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-current-postid' ] ) ) {
+			return $_SESSION[ 'uix-page-builder-current-postid' ];	
+		} else {
+			return '';
 		}
+
+	}
+	
+	
+	/*
+	 * Define session for current post ID (Used only in the background panel)
+	 *
+	 *
+	 * The following only one condition will reset the new session value:
+	 *   a) Load the page builder panel for the first time when entering the page.
+	 *
+	 */
+	public static function session_current_postid( $str ) {
 		
-		return $post_id;
+		if( ! isset( $_SESSION ) ) session_start();
+		$_SESSION[ 'uix-page-builder-current-postid' ] = $str;
+
+	}
+	
+	
+	/*
+	 * Remove session for current post ID (Used only in the background panel)
+	 *
+	 *
+	 */
+	public static function unset_session_current_postid() {
+		
+		if( ! isset( $_SESSION ) ) session_start();
+		unset( $_SESSION[ 'uix-page-builder-current-postid' ] );
+
+	}
+	
+	
+	
+
+	/*
+	 * Get session for the template name
+	 *
+	 *
+	 */
+	public static function get_session_default_tempname( $id ) {
+		
+		if( ! isset( $_SESSION ) ) session_start();
+		if( array_key_exists( 'uix-page-builder-tempname' . $id, $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-tempname' . $id ] ) ) {
+			return $_SESSION[ 'uix-page-builder-tempname' . $id ];	
+		} else {
+			return '';
+		}
 
 	}
 	
@@ -395,6 +448,10 @@ class UixPageBuilder {
 	/*
 	 * Define session for the template name
 	 *
+	 *
+	 * The following two conditions will reset the new session value:
+	 *   a) Initialize template with ajax when manually select the template later.
+	 *   b) Load the page builder panel for the first time when entering the page.
 	 *
 	 */
 	public static function session_default_tempname( $str, $id ) {
@@ -833,17 +890,6 @@ class UixPageBuilder {
 
     //add value of "tempname"
 	public static function format_layoutdata_add_tempname( $id, $str, $custom = '' ) {
-		
-		//If loaded the default template, use the session name
-		if ( empty( $custom ) ) {
-			if( ! isset( $_SESSION ) ) session_start();
-			if( array_key_exists( 'uix-page-builder-tempname' . $id, $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-tempname' . $id ] ) ) {
-				$custom = $_SESSION[ 'uix-page-builder-tempname' . $id ];	
-			}	
-		} else {
-			//Define session for the template name
-			self::session_default_tempname( $custom, $id );
-		}
 		
 		$custom_name = $custom;
 

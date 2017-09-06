@@ -61,7 +61,7 @@ if ( !function_exists( 'uix_page_builder_delContentTemplate' ) ) {
 
 
 /*
- * Save template with ajax 
+ * Save template with ajax when a new template is entered
  * 
  */
 if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
@@ -84,7 +84,7 @@ if ( !function_exists( 'uix_page_builder_savetemp' ) ) {
 			$tmpl_name          = sanitize_text_field( $name );
 			$tmpl_data          = UixPageBuilder::format_layoutdata_add_tempname( $_POST[ 'postID' ], wp_unslash( $_POST[ 'curlayoutdata' ] ), $tmpl_name );
 			
-
+		
 			//If the array item is empty, it will cause the script to read incorrectly
 			if ( !empty( $tmpl_data ) && $tmpl_data != '[]' ) {
 				
@@ -194,13 +194,19 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 					
 					
 					$json_data       = UixPageBuilder::convert_img_path( $v[ 'data' ], 'load' );
-					$preview_thumb = UixPageBuilder::convert_img_path( $v['thumb'], 'load' );
-					$tempname      = UixPageBuilder::page_builder_array_tempname( $json_data );
+					$preview_thumb   = UixPageBuilder::convert_img_path( $v['thumb'], 'load' );
+					$checked         = '';
+	
+					//The template name has been applied
+					$curtempname = UixPageBuilder::get_session_default_tempname( $_POST[ 'postID' ] );
+					if ( !empty( $curtempname ) ) {
+						if ( $v[ 'name' ] == $curtempname ) $checked = 'checked';
+					}
 					
 					
 					echo '
 					<label>
-						<input type="radio" name="temp" value="1" '.( $key == 0 ? 'checked' : '' ).'>
+						<input type="radio" name="temp" value="1" '.$checked.'>
 						<span id="id-'.sanitize_title_with_dashes( $v[ 'name' ] ).'">'.$v[ 'name' ].'</span> <a data-del-id="id-'.sanitize_title_with_dashes( $v[ 'name' ] ).'" href="javascript:" class="close-tmpl">×</a>
 						<img class="preview-thumb" style="display:none" src="'.$preview_thumb.'" alt="">
 						<textarea>'.$json_data.'</textarea>
@@ -233,16 +239,21 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 		
 				for ( $xmli = 0; $xmli <= $xLength - 1; $xmli++ ) {
 
-					$checked = ( $xmli == 0 ) ? 'checked' : '';
-					
-					if ( is_array( $tempdata ) && sizeof( $tempdata ) > 0 ) {
-						$checked = '';
-					}
-					
+
 					$json_data       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'load' );			
 					$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'load' );
 					$temp_name       = $xValue['item'][$xmli]['name'];
+					$checked         = '';
 
+					
+					//The template name has been applied
+					$curtempname = UixPageBuilder::get_session_default_tempname( $_POST[ 'postID' ] );
+					if ( !empty( $curtempname ) ) {
+						if ( $temp_name == $curtempname ) $checked = 'checked';
+					}
+					
+					
+					
 					if ( $temp_name != 'null' ) {
 						echo '
 						<label>
@@ -305,7 +316,7 @@ if ( !function_exists( 'uix_page_builder_output_frontend' ) ) {
 
 
 /*
- * Initialize template with ajax 
+ * Initialize template with ajax when manually select the template later
  * 
  */
 if ( !function_exists( 'uix_page_builder_loadtemp' ) ) {
@@ -349,6 +360,7 @@ if ( !function_exists( 'uix_page_builder_save' ) ) {
 		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_POST[ 'layoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
+			
 			
 			$layoutdata = UixPageBuilder::format_layoutdata_add_tempname( $_POST[ 'postID' ], wp_unslash( $_POST[ 'layoutdata' ] ) );
 			
@@ -520,7 +532,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
 
 
 /*
- * Page Builder
+ * Load the page builder panel for the first time when entering the page.
  * 
  */ 
  
@@ -556,8 +568,18 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		$curid          = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
 		$old_layoutdata = get_post_meta( $curid, 'uix-page-builder-layoutdata', true );
 		$gridster_class = ( UixPageBuilder::vb_mode() ) ? 'visualBuilder' : '';
-
 		
+		//Define session for the current post ID
+		UixPageBuilder::session_current_postid( $curid );
+		
+	
+		//Define session for the template name
+		$curtempname = UixPageBuilder::page_builder_array_tempname( $old_layoutdata );
+		if ( !empty( $curtempname ) ) {
+			UixPageBuilder::session_default_tempname( $curtempname, $curid );
+		}
+		
+	
     ?>
      
 		<?php if ( UixPageBuilder::vb_mode() ) { ?>
@@ -624,7 +646,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a><strong><?php _e( 'Enter Template Name', 'uix-page-builder' ); ?></strong>  
 					<p>
 						<label>
-							<input size="40" name="tempname" type="text" maxlength="40" value="<?php echo UixPageBuilder::get_tempname(); ?>">
+							<input size="30" name="tempname" type="text" maxlength="40" value="<?php echo UixPageBuilder::get_tempname( false, false, $curid ); ?>">
 						</label>
 					</p>
 					<a class="button button-primary button-small save" href="javascript:"><?php _e( 'Save', 'uix-page-builder' ); ?></a><span class="spinner"></span>
@@ -1855,7 +1877,7 @@ if ( !function_exists( 'uix_page_builder_page_save_custom_meta_box' ) ) {
 		$slug = "page";
 		if( $slug != $post->post_type ) return $post_id;
 		
-	
+
 		$layoutdata 	 = UixPageBuilder::format_layoutdata_add_tempname( $post_id, wp_unslash( $_POST[ 'uix-page-builder-layoutdata' ] ) );
 		$builderstatus 	 = sanitize_text_field( $_POST[ 'uix-page-builder-status' ] );
 		
