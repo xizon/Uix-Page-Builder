@@ -491,9 +491,13 @@ class UixPageBuilder {
 
 		} elseif ( $type == 'save' ) {
 			$str = str_replace( self::get_img_path( 'placeholder' ), '{temp_placeholder_path}',
+				   str_replace( self::get_img_path( '', 1 ), '{temp_placeholder_path}',   
+				   str_replace( self::get_img_path( '', 2 ), '{temp_placeholder_path}',   
 				   str_replace( self::get_img_path( 'thumb' ), '{temp_preview_thumb_path}',
+				   str_replace( self::get_img_path( '', 1 ), '{temp_preview_thumb_path}',
+				   str_replace( self::get_img_path( '', 2 ), '{temp_preview_thumb_path}',
 				   $str 
-				   ) );	
+				   ) ) ) ) ) );	
 		}
 		   
 
@@ -508,7 +512,7 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function get_img_path( $type = 'thumb' ) {
+	public static function get_img_path( $type = 'thumb', $dircontrol = '' ) {
 		
 		// When this folder "UixPageBuilderTmpl" of your theme exists, it is preferred to use it as a premade images in the template.
 		// ( Highest priority )
@@ -529,7 +533,17 @@ class UixPageBuilder {
 		} elseif ( $type == 'placeholder' ) {
 			$str = is_dir( $temp_img_folder_dir ) ? get_template_directory_uri() . '/'.$theme_assets_folder_name.'' : self::backend_path( 'uri' );
 		}
+		
+		
+		//Force the path to prevent the system from recognizing automatically
+		if ( $dircontrol == 1 ) {
+			$str = get_template_directory_uri() . '/'.$theme_assets_folder_name.'';
+		}
+		if ( $dircontrol == 2 ) {
+			$str = self::backend_path( 'uri' );
+		}
 		   
+		
 		return $str;
 
 	}

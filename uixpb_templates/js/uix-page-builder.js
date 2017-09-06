@@ -1002,21 +1002,15 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 			}
 			,options);
 		
-			var backendPanel = $( '.uix-page-builder-gridster-addbtn', window.parent.document ).length;
+			var backendPanel = $( '.uix-page-builder-visual-builder', window.parent.document ).length;
 
 			if ( backendPanel > 0 ) {
+				
+				setInterval( function() {
+					$.uix_pb_init();
+					settings.action();
+				}, 1000 );
 
-				$( 'body', window.parent.document ).on( 'mouseover', function() {
-					$.uix_pb_init();
-					settings.action();
-				});
-				
-				$( document ).on( 'mouseover', 'body', function() {
-					$.uix_pb_init();
-					settings.action();
-				});
-				
-				
 			}
 	
 		   

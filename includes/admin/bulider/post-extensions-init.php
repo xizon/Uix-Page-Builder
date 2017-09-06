@@ -589,7 +589,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		
 		$curid            = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
 		$old_layoutdata   = get_post_meta( $curid, 'uix-page-builder-layoutdata', true );
-		$gridster_class   = ( UixPageBuilder::vb_mode() ) ? 'visualBuilder' : '';
+		$gridster_class   = ( UixPageBuilder::vb_mode() ) ? 'uix-page-builder-visual-builder visualBuilder' : '';
 		
 		//Define session for the current post ID
 		UixPageBuilder::session_current_postid( $curid );

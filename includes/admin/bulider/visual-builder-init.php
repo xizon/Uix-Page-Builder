@@ -77,10 +77,6 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 		    display: block;
 		}
 		
-		.uix-page-builder-section .editmode {
-			position: relative;
-			z-index: 999998 !important;
-		}
 
 		@-webkit-keyframes pbicon {
 			0%   { 
