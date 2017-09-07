@@ -107,6 +107,15 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 ### Updates
 
+##### = 1.3.6 (September 7, 2017) =
+
+* Fixed an error in the form window size adjustment.
+* Fixed a bug of layout data save: Maximum call stack size exceeded.
+* Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: twentyfifteen, twentyseventeen, twentysixteen and so on.
+* Added the page builder form editor for RTL.
+* Support .min files of front-end when the minimized file exists.
+* Increase the text of the page builder editor to up to 200+ colors.
+
 
 ##### = 1.3.5 (September 6, 2017) =
 

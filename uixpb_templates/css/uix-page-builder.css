@@ -1930,11 +1930,11 @@ img.uix-pb-img,
 
 @media all and (max-width: 768px) {
 	.uix-pb-parallax-wrapper h1 {
-		font-size: 42px;
+		font-size: 35px;
 	}
 
 	.uix-pb-parallax-wrapper h2 {
-		font-size: 34px;
+		font-size: 28px;
 	}
 
 	.uix-pb-parallax-wrapper h3 {
@@ -1973,6 +1973,7 @@ img.uix-pb-img,
     height: 250px;
 }
 
+
 .uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto {
 	height: auto !important;
 }
@@ -1997,15 +1998,62 @@ img.uix-pb-img,
     transform: translateY(-50%);
 }
 
-.uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+.uix-pb-col-12 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
     padding: 0 5em;
 }
+
+.uix-pb-col-11 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 4.5em;
+}
+
+.uix-pb-col-10 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 4em;
+}
+.uix-pb-col-9 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 3.5em;
+}
+.uix-pb-col-8 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 3em;
+}
+
+.uix-pb-col-7 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box,
+.uix-pb-col-6 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 2.5em;
+}
+
+.uix-pb-col-5 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box,
+.uix-pb-col-4 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 1.66666666667em;
+}
+
+.uix-pb-col-3 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 1.25em;
+}
+
+.uix-pb-col-2 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 1em;
+}
+
+.uix-pb-col-1 .uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
+    padding: 0 .5em;
+}
+
 
 
 @media (max-width: 768px) {
 	.uix-pb-parallax-wrapper .uix-pb-parallax-table {
 		height: auto !important;
+		min-height: 150px;
 	}
+
+	.uix-pb-parallax-wrapper.skew .uix-pb-parallax-table {
+		min-height: 300px;
+	}
+	
+	.uix-pb-parallax-wrapper.blankspace .uix-pb-parallax-table {
+		min-height: 0;
+	}
+	
 	
 	.uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
 		position: relative;
@@ -2014,10 +2062,19 @@ img.uix-pb-img,
 		-ms-transform: translateY(0);
 		transform: translateY(0);
 	}
-
+	
+	.uix-pb-parallax-wrapper.skew .uix-pb-parallax-table .uix-pb-parallax-content-box {
+		margin-top: 50%;
+	}	
+	
 	.uix-pb-parallax-wrapper .uix-pb-parallax-table .uix-pb-parallax-content-box {
-		padding: 1.5em .2em;
+		padding: 2em .2em !important;
 	}
+	
+	.uix-pb-parallax-wrapper.blankspace .uix-pb-parallax-table .uix-pb-parallax-content-box {
+		padding: 0 !important;
+	}
+	
 }
 
 /* ====================================================== 

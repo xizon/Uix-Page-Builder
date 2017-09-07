@@ -50,26 +50,7 @@
 		 * Visual Builder Page
 		 * ---------------------------------------------------
 		 */
-		$( document ).on( 'click', '#uix-page-builder-themepreview-btn-close', function( e ) {
-			e.preventDefault();
-			
-			var oldPo         = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'left' ) ),
-				target        = $( 'ul.uix-page-builder-res-selector, .uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-visualBuilder-loader, #uix-page-builder-gridster-wrapper.visualBuilder, #uix-page-builder-themepreview, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close' );
-			
-			
-			if ( oldPo == 0 ) {
-				target.removeClass( 'active' );
-				
-	
-			} else {
-				target.addClass( 'active' );
-			}
-			
-			//Responsive preview restores
-			$( '.uix-page-builder-res-selector li.active' ).trigger( 'click' );
-
-
-		});
+		$( document ).UixPBRenderSidebar( { method: 'auto' } ); //Sidebar controler
 		
 		$( document ).on( 'mouseenter', '.uix-page-builder-visual-mode', function() {
 			var curtitle = $( '[name="post_title"]' ).val().replace(/&/g, '{and}' ).replace(/\s/g, '{space}' ),
@@ -185,13 +166,9 @@
 
 			var modalID = '#' + $( this ).data( 'elements' );
 
-			
-			$( '.uixpbform-modal-mask' ).fadeIn( 'fast' );
-			$( modalID ).addClass( 'active' );
-			$( modalID ).find( '.content' ).animate( {scrollTop: 10 }, 100 );
-			$( 'html' ).css( 'overflow-y', 'hidden' );
-
-
+			//Reset the modal box
+			$( modalID ).UixPBFormPopWinReset( { heightChange: true } );
+		
 			//Close
 			$('.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
 				e.preventDefault();
@@ -366,6 +343,10 @@
 					$this.parent().hide();
 					$( '.uixpbform-modal-mask' ).hide();
 					$this.next( '.spinner' ).removeClass( 'is-active' );
+					
+					//Sidebar controler
+					$( document ).UixPBRenderSidebar( { method: 'open' } );
+
 
 					// stuff here
 					return false;					
@@ -1326,3 +1307,66 @@ function UixPBFormatRenderCodes( code ) {
 })(jQuery);
 
 
+
+/*!
+ *
+ * Sidebar controler
+ * ---------------------------------------------------
+ */
+(function($){
+	$.fn.UixPBRenderSidebar=function(options){
+		var settings=$.extend({
+			'method' : 'auto'
+		}
+		,options);
+		this.each(function(){
+			
+			var elements = 'ul.uix-page-builder-res-selector, .uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-visualBuilder-loader, #uix-page-builder-gridster-wrapper.visualBuilder, #uix-page-builder-themepreview, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close';
+			
+			$( document ).on( 'click', '#uix-page-builder-themepreview-btn-close', function( e ) {
+				e.preventDefault();
+				
+				var oldPo  = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'left' ) ),
+					target = $( elements );    
+		
+
+				if ( oldPo == 0 ) {
+					//Sidebar open
+					target.removeClass( 'active' );
+				} else {
+					//Sidebar close
+					target.addClass( 'active' );
+				}	
+				
+
+				//Responsive preview restores
+				$( '.uix-page-builder-res-selector li.active' ).trigger( 'click' );
+
+
+			});
+	
+			if ( settings.method == 'open' ) {
+				$( document ).ready( function() {
+
+					var target = $( elements );    
+
+					//Sidebar open
+					target.removeClass( 'active' );
+
+					//Responsive preview restores
+					$( '.uix-page-builder-res-selector li.active' ).trigger( 'click' );
+
+
+				});
+	
+			}
+			
+
+			
+			
+		})
+	}
+})(jQuery);
+	
+	
+			

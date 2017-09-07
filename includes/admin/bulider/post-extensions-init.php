@@ -807,6 +807,10 @@ var UixPBGridsterMain = function( obj ) {
 						}, function ( response ) {
 							
 						});
+						
+						//Sidebar controler
+						jQuery( document ).UixPBRenderSidebar( { method: 'open' } );
+
 
 						/*-- Render and save page data --*/
 						UixPBGridsterConstructor.prototype.renderAndSavePage.call( this, 0 ); //Initialize the page container

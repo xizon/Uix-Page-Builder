@@ -1,0 +1,27 @@
+/**
+ * RTL
+ *
+ */
+.mce-content-body ol,.mce-content-body ul {
+    margin-left: auto;
+	margin-left: right;
+}
+
+.mce-content-body ol li,.mce-content-body ul li {
+    margin-left: auto;
+	margin-right: 10px;
+}
+
+
+.mce-content-body blockquote {
+	border-left: none;
+	border-right: 4px solid #707070;
+	margin: 0 20px 35px 0;
+	padding-left: auto;
+	padding-right: 17px;
+}
+
+.mce-content-body pre {
+	border-left: none;
+	border-right: 5px solid #a2bf2f;
+}

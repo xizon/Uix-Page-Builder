@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version 2.9
+	* Version: 3.0
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -110,7 +110,7 @@
 							
 							
 							/*-- Count new modal height --*/
-							var newmHeight = 0,
+							var newHeight  = 0,
 								hEx        = 0,
 								nocols     = $obj.find( '.ajax-temp .uixpbform-form-container' ),
 								cols       = $obj.find( '.ajax-temp .uixpbform-table-cols-wrapper' ),
@@ -126,27 +126,37 @@
 									}
 									
 									colsH.push( parseFloat( curH ) + parseFloat( hEx ) );
-									
+									//console.log( parseFloat( curH ) + parseFloat( hEx ) );
 									
 								} );
 								
-								newmHeight = Math.max.apply( Math, colsH );
-	
+								//Fixed a bug of layout data save: Maximum call stack size exceeded.
+								// Don't use: newHeight = Math.max.apply( Math, colsH );
+								var max = -Infinity; 
+								for( var i = 0; i < colsH.length; i++ ) {
+									if ( colsH[i] > max ) {
+										newHeight = colsH[i];
+									}
+									
+								}
+								
+								//console.log( newHeight );
+								
 								
 							} else {
-								newmHeight = nocols.height();
+								newHeight = nocols.height();
 							}
 							
-							if ( newmHeight == null || 
-								newmHeight == 0 || 
-								parseFloat( newmHeight + 150 + $( window ).height()*0.2 ) > $( window ).height()
+							if ( newHeight == null || 
+								newHeight == 0 || 
+								parseFloat( newHeight + 150 + $( window ).height()*0.2 ) > $( window ).height()
 							   ) 
 							{
-								newmHeight = modal_H_max;
+								newHeight = modal_H_max;
 							}
 							//Initializes modal height
-							modal_H_init.css( 'height', parseFloat( newmHeight + 150 ) + 'px' );
-							$obj.find( '.ajax-temp .uixpbform-modal-buttons' ).css( 'margin-top', parseFloat( newmHeight/2 + 20 ) + 'px' );
+							modal_H_init.css( 'height', parseFloat( newHeight + 150 ) + 'px' );
+							$obj.find( '.ajax-temp .uixpbform-modal-buttons' ).css( 'margin-top', parseFloat( newHeight/2 + 20 ) + 'px' );
 						
 							
 							//Add row
@@ -214,11 +224,9 @@
 						}
 					});
 			
+					//Reset the modal box
+					$obj.UixPBFormPopWinReset( { heightChange: false } );
 					
-					$( '.uixpbform-modal-mask' ).fadeIn( 'fast' );
-					$obj.addClass( 'active' );
-					$obj.find( '.content' ).animate( {scrollTop: 10 }, 100 );
-					$( 'html' ).css( 'overflow-y', 'hidden' );
 				}
 	
 				
@@ -394,6 +402,38 @@
 			
 			$( '.uixpbform-modal-box' ).removeClass( 'active' );
 			$( 'html' ).css( 'overflow-y', 'auto' );
+			
+		})
+	}
+})(jQuery);
+
+
+
+/*!
+ *
+ * Reset modal box to maximum height by default
+ * ---------------------------------------------------
+ *
+ */	
+(function($){
+	$.fn.UixPBFormPopWinReset=function(options){
+		var settings=$.extend({
+		    'heightChange' : true
+		}
+		,options);
+		this.each(function(){
+			
+			var $this = $( this );
+			
+			$this.addClass( 'active' );
+			$( '.uixpbform-modal-mask' ).fadeIn( 'fast' );
+			
+			if ( settings.heightChange ) {
+				$this.css( 'height', parseFloat( ( $( window ).height()*0.8 - 150 ) + 150 ) + 'px' );
+			}
+		
+			$this.find( '.content' ).animate( {scrollTop: 10 }, 100 );
+			$( 'html' ).css( 'overflow-y', 'hidden' );
 			
 		})
 	}

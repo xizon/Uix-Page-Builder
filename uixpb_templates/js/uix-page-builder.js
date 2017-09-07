@@ -619,44 +619,22 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
     var documentReady = function( $ ) {
 
-        uix_pb_parallaxInit();
-        $( window ).on( 'resize', function() {
-           uix_pb_parallaxInit();
+		$( '.uix-pb-parallax' ).each(function() {
 
-        });
+			var $this     = $( this ),
+				activated = $this.data( 'activated' );//In order to avoid duplication of the running script with Uix Page Builder ( required )
 
-        function uix_pb_parallaxInit() {
-            $( '.uix-pb-parallax' ).each(function() {
-				
-				var $this     = $( this ),
-					activated = $this.data( 'activated' );//In order to avoid duplication of the running script with Uix Page Builder ( required )
-				
-			    if ( typeof activated === typeof undefined || activated === 0 ) {
-					
-				     $this.bgParallax( "50%", $this.data( 'parallax' ) );
-			
-					//Prevents front-end javascripts that are activated in the background to repeat loading.
-					$this.data( 'activated', 1 );	
-				}
-				
-					
-				 //If it is only used as a spacer
-				 var $content     = $this.find( '.uix-pb-parallax-content-box' ),
-					 windowWidth  = $( window ).width(),
-					 h            = $content.parent( '.uix-pb-parallax-table' ).height(),
-					 n            = h;
-				
-				 if ( $content.text() == '' && windowWidth <= 768 ) {
-					 n = h/2;
-				 } else {
-					 n = h;
-				 }
-				 $content.parent( '.uix-pb-parallax-table' ).css( 'height', n + 'px' );
-				
+			if ( typeof activated === typeof undefined || activated === 0 ) {
 
-				
-            });
-        };
+				 $this.bgParallax( "50%", $this.data( 'parallax' ) );
+
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}
+
+
+
+		});
 		
 	};
 

@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,15 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 
 == Changelog ==
+
+= 1.3.6 (September 7, 2017) =
+
+* Fixed an error in the form window size adjustment.
+* Fixed a bug of layout data save: Maximum call stack size exceeded.
+* Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: twentyfifteen, twentyseventeen, twentysixteen and so on.
+* Added the page builder form editor for RTL.
+* Support .min files of front-end when the minimized file exists.
+* Increase the text of the page builder editor to up to 200+ colors.
 
 
 = 1.3.5 (September 6, 2017) =

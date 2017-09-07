@@ -291,6 +291,7 @@ UixPageBuilder::form_scripts( array(
 				skewDeg2           = -( skewDeg ),
 				skew_css           = ( uix_pb_parallax_skew != 0 ) ? \'margin-top: -\'+skewToPx+\'px;margin-bottom:\'+skewToPx+\'px;-webkit-transform: skew(0deg, \'+skewDeg+\'deg); transform: skew(0deg, \'+skewDeg+\'deg);\' : \'\',
 				skew_content_style = ( uix_pb_parallax_skew != 0 ) ? \'style="-webkit-transform: skew(0deg, \'+skewDeg2+\'deg); transform: skew(0deg, \'+skewDeg2+\'deg);"\' : \'\',
+				skew_class         = ( uix_pb_parallax_skew != 0 ) ? \'skew\' : \'\',
 				btncolor           = uixpbform_colorTran( uix_pb_parallax_btn_color );
 
 
@@ -309,8 +310,15 @@ UixPageBuilder::form_scripts( array(
 			var height_auto = ( uix_pb_parallax_height == 0 ) ? \'uix-pb-parallax-table-auto\' : \'\';
 
 
+			var blankspace_class = \'\';
+			if ( title_show == \'\' && desc == \'\' ) {
+			    blankspace_class = \'blankspace\';
+				skew_class       = \'\';
+			}
+
+
 			var temp = \'\';
-				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+space_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
+				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+space_class+\' \'+skew_class+\' \'+blankspace_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
 				temp += \'<div class="uix-pb-parallax-table \'+height_auto+\'" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
 				temp += \'<div class="uix-pb-parallax-content-box" \'+skew_content_style+\'>\';
 				temp += title_show;

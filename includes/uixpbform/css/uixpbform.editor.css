@@ -1,3 +1,8 @@
+/**
+ * General
+ *
+ */
+
 .mce-container textarea {
     display: initial!important;
 }
@@ -114,6 +119,35 @@
 	min-height: 1.5em;
 	font-size:12px;
 	line-height:1.2em;
+}
+
+
+/**
+ * RTL
+ *
+ */
+.rtl .mce-content-body ol,.mce-content-body ul {
+    margin-left: auto;
+	margin-left: right;
+}
+
+.rtl .mce-content-body ol li,.mce-content-body ul li {
+    margin-left: auto;
+	margin-right: 10px;
+}
+
+
+.rtl .mce-content-body blockquote {
+	border-left: none;
+	border-right: 4px solid #707070;
+	margin: 0 20px 35px 0;
+	padding-left: auto;
+	padding-right: 17px;
+}
+
+.rtl .mce-content-body pre {
+	border-left: none;
+	border-right: 5px solid #a2bf2f;
 }
 
 
