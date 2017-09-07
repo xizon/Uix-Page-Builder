@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.3.6
+ * Version:     1.3.7
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -118,9 +118,9 @@ class UixPageBuilder {
 	public static function register_scripts() {
 		
 		// Core
-		wp_register_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/uix-page-builder.js', array( 'jquery' ), self::ver(), true );
+		wp_register_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/'.self::frontpage_core_js_name(), array( 'jquery' ), self::ver(), true );
 		wp_register_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/uix-page-builder-plugins.js', false, self::ver(), true );
-		wp_register_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/uix-page-builder.css', false, self::ver(), 'all' );
+		wp_register_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/'.self::frontpage_core_css_name(), false, self::ver(), 'all' );
 		wp_localize_script( self::PREFIX . '-page-builder',  'wp_theme_root_path', array( 
 			'templateUrl' => get_stylesheet_directory_uri()
 		 ) );
@@ -156,9 +156,22 @@ class UixPageBuilder {
 	public static function frontpage_scripts() {
 		
 		//Core
-		if ( file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.css' ) ) {
+		if ( 
+			file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.css' ) || 
+			file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.min.css' ) 
+		) {
 			wp_enqueue_style( self::PREFIX . '-page-builder' );
 		}
+		
+		if ( 
+			file_exists( self::backend_path( 'dir' ).'js/uix-page-builder.js' ) || 
+			file_exists( self::backend_path( 'dir' ).'js/uix-page-builder.min.js' ) 
+		) {
+			wp_enqueue_script( self::PREFIX . '-page-builder' );	
+		}		
+		
+		
+		//Plugins
 		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder-plugins.js' ) ) {
 			wp_enqueue_script( self::PREFIX . '-page-builder-plugins' );	
 		} else {
@@ -173,14 +186,38 @@ class UixPageBuilder {
 							  
 		}
 		
-		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder.js' ) ) {
-			wp_enqueue_script( self::PREFIX . '-page-builder' );	
-		}	
-		
-		
+
 	}
 	
 
+	/*
+	 * Returns the front-end core files's name
+	 *
+	 *
+	 */
+	public static function frontpage_core_js_name() {
+
+		$name = 'uix-page-builder.js';
+		
+		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder.min.js' ) ) {
+			$name = 'uix-page-builder.min.js';
+		}
+		
+		return $name;
+		
+	}
+	
+	public static function frontpage_core_css_name() {
+
+		$name = 'uix-page-builder.css';
+		
+		if ( file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.min.css' ) ) {
+			$name = 'uix-page-builder.min.css';
+		}
+		
+		return $name;
+		
+	}
 	
 	
 	/**
@@ -478,6 +515,8 @@ class UixPageBuilder {
 	/*
 	 * Convert the template image path
 	 *
+	 * "{temp_preview_thumb_path}" of template(.xml) variable was deprecated after version 1.3.7 (included), 
+	 * and it is compatible with older versions.
 	 *
 	 */
 	public static function convert_img_path( $str, $type ) {
@@ -490,14 +529,12 @@ class UixPageBuilder {
 				   ) );
 
 		} elseif ( $type == 'save' ) {
-			$str = str_replace( self::get_img_path( 'placeholder' ), '{temp_placeholder_path}',
-				   str_replace( self::get_img_path( '', 1 ), '{temp_placeholder_path}',   
-				   str_replace( self::get_img_path( '', 2 ), '{temp_placeholder_path}',   
-				   str_replace( self::get_img_path( 'thumb' ), '{temp_preview_thumb_path}',
-				   str_replace( self::get_img_path( '', 1 ), '{temp_preview_thumb_path}',
-				   str_replace( self::get_img_path( '', 2 ), '{temp_preview_thumb_path}',
+			$str = str_replace( self::get_img_path( '', 1 ), '{temp_placeholder_path}', //step 4
+				   str_replace( self::get_img_path( '', 2 ), '{temp_placeholder_path}', //step 3
+				   str_replace( self::get_img_path( 'thumb' ), '{temp_preview_thumb_path}', //step 2
+				   str_replace( self::get_img_path( 'placeholder' ), '{temp_placeholder_path}', //step 1
 				   $str 
-				   ) ) ) ) ) );	
+				   ) ) ) );	
 		}
 		   
 
@@ -556,7 +593,7 @@ class UixPageBuilder {
 	 */
 	public static function module_thumbnails_path() {
 
-		return '{temp_preview_thumb_path}images/UixPageBuilderThumb/tmpl/_default.jpg';
+		return '{temp_placeholder_path}images/UixPageBuilderThumb/tmpl/_default.jpg';
 
 	}
 	

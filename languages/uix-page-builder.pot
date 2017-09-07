@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-06 16:08+0000\n"
+"POT-Creation-Date: 2017-09-07 16:06+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -23,82 +23,82 @@ msgstr ""
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: uix-page-builder.php:248
+#: uix-page-builder.php:285
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: uix-page-builder.php:249 includes/admin/bulider/post-extensions-init.php:572
+#: uix-page-builder.php:286 includes/admin/bulider/post-extensions-init.php:572
 msgid "Uix Page Builder"
 msgstr ""
 
-#: uix-page-builder.php:262 uix-page-builder.php:263 uix-page-builder.php:328
+#: uix-page-builder.php:299 uix-page-builder.php:300 uix-page-builder.php:365
 #: helper/settings.php:235
 msgid "How to use?"
 msgstr ""
 
-#: uix-page-builder.php:270 uix-page-builder.php:271 helper/settings.php:245
+#: uix-page-builder.php:307 uix-page-builder.php:308 helper/settings.php:245
 msgid "Template Files"
 msgstr ""
 
-#: uix-page-builder.php:278 uix-page-builder.php:279
+#: uix-page-builder.php:315 uix-page-builder.php:316
 msgid "Custom CSS"
 msgstr ""
 
-#: uix-page-builder.php:288 uix-page-builder.php:289
+#: uix-page-builder.php:325 uix-page-builder.php:326
 msgid "For Theme Developer"
 msgstr ""
 
-#: uix-page-builder.php:298 uix-page-builder.php:299
+#: uix-page-builder.php:335 uix-page-builder.php:336
 msgid "Helper"
 msgstr ""
 
-#: uix-page-builder.php:361 uix-page-builder.php:367
+#: uix-page-builder.php:398 uix-page-builder.php:404
 #: includes/classes/class-frontend-render.php:34
 #, php-format
 msgid "Untitled-%1$s"
 msgstr ""
 
-#: uix-page-builder.php:1144
+#: uix-page-builder.php:1195
 msgid "Choose Element You Want"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "Layout"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "1/1"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "1/2"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "1/3"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "1/4"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "1/3, 2/3"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "2/3, 1/3"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "1/4, 3/4"
 msgstr ""
 
-#: uix-page-builder.php:1155
+#: uix-page-builder.php:1206
 msgid "3/4, 1/4"
 msgstr ""
 
-#: uix-page-builder.php:1567
+#: uix-page-builder.php:1618
 #, php-format
 msgid ""
 "You could <a class=\"button button-small\" href=\"%s\">create</a> Uix Page "
@@ -107,41 +107,41 @@ msgid ""
 "templates directory.  "
 msgstr ""
 
-#: uix-page-builder.php:1719
+#: uix-page-builder.php:1770
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-page-builder.php:1791 uix-page-builder.php:1864
+#: uix-page-builder.php:1842 uix-page-builder.php:1915
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!</p>"
 "</div>"
 msgstr ""
 
-#: uix-page-builder.php:1793
+#: uix-page-builder.php:1844
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: uix-page-builder.php:1798
+#: uix-page-builder.php:1849
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: uix-page-builder.php:1801
+#: uix-page-builder.php:1852
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
-#: uix-page-builder.php:1916 uix-page-builder.php:2017
-#: includes/admin/bulider/post-extensions-init.php:1044
-#: includes/admin/bulider/post-extensions-init.php:1248
-#: includes/admin/bulider/post-extensions-init.php:1248
+#: uix-page-builder.php:1967 uix-page-builder.php:2068
+#: includes/admin/bulider/post-extensions-init.php:1048
+#: includes/admin/bulider/post-extensions-init.php:1252
+#: includes/admin/bulider/post-extensions-init.php:1252
 msgid "Section"
 msgstr ""
 
@@ -405,25 +405,41 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: helper/tabs/custom-css.php:52
+#: helper/tabs/custom-css.php:43 helper/tabs/custom-css.php:44
+msgid "(Enabled)"
+msgstr ""
+
+#: helper/tabs/custom-css.php:77
+msgid ""
+"You can minimize the CSS File in order to get lower download times and save "
+"bandwidth. And change suffix <strong>\".css\"</strong> to <strong>\".min."
+"css\"</strong>, two files can exist at the same time then give priority to "
+"the use of compressed version."
+msgstr ""
+
+#: helper/tabs/custom-css.php:88
 msgid "Paste your CSS code"
 msgstr ""
 
-#: helper/tabs/custom-css.php:54
+#: helper/tabs/custom-css.php:90
 msgid ""
 "You could add new styles code to your website, without modifying original ."
 "css files."
 msgstr ""
 
-#: helper/tabs/custom-css.php:91 helper/tabs/custom-css.php:130
+#: helper/tabs/custom-css.php:120 helper/tabs/custom-css.php:159
 msgid "CSS file root directory:"
 msgstr ""
 
-#: helper/tabs/custom-css.php:96
+#: helper/tabs/custom-css.php:125 helper/tabs/custom-css.php:196
 msgid "Close"
 msgstr ""
 
-#: helper/tabs/custom-css.php:150
+#: helper/tabs/custom-css.php:191 helper/tabs/custom-css.php:230
+msgid "CSS mini-file root directory:"
+msgstr ""
+
+#: helper/tabs/custom-css.php:253
 msgid "<p>The .css file does not exist.</p>"
 msgstr ""
 
@@ -631,8 +647,8 @@ msgid "Read More"
 msgstr ""
 
 #: includes/classes/class-menu-onepage.php:140
-#: includes/admin/bulider/post-extensions-init.php:1044
-#: includes/admin/bulider/post-extensions-init.php:1248
+#: includes/admin/bulider/post-extensions-init.php:1048
+#: includes/admin/bulider/post-extensions-init.php:1252
 msgid "ID"
 msgstr ""
 
@@ -2223,8 +2239,8 @@ msgid "Mobile"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:615
-#: includes/admin/bulider/post-extensions-init.php:1355
-#: includes/admin/bulider/post-extensions-init.php:1372
+#: includes/admin/bulider/post-extensions-init.php:1359
+#: includes/admin/bulider/post-extensions-init.php:1376
 msgid "Saving..."
 msgstr ""
 
@@ -2292,32 +2308,32 @@ msgstr ""
 msgid "Add a first module here. You can also choose a template to use."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:1044
-#: includes/admin/bulider/post-extensions-init.php:1248
+#: includes/admin/bulider/post-extensions-init.php:1048
+#: includes/admin/bulider/post-extensions-init.php:1252
 msgid "Settings"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:1044
-#: includes/admin/bulider/post-extensions-init.php:1248
+#: includes/admin/bulider/post-extensions-init.php:1048
+#: includes/admin/bulider/post-extensions-init.php:1252
 msgid "Container"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:1044
-#: includes/admin/bulider/post-extensions-init.php:1248
+#: includes/admin/bulider/post-extensions-init.php:1048
+#: includes/admin/bulider/post-extensions-init.php:1252
 msgid "Boxed"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:1044
-#: includes/admin/bulider/post-extensions-init.php:1248
+#: includes/admin/bulider/post-extensions-init.php:1048
+#: includes/admin/bulider/post-extensions-init.php:1252
 msgid "Full Width"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:1044
-#: includes/admin/bulider/post-extensions-init.php:1248
+#: includes/admin/bulider/post-extensions-init.php:1048
+#: includes/admin/bulider/post-extensions-init.php:1252
 msgid "HTML Code..."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:1370
+#: includes/admin/bulider/post-extensions-init.php:1374
 msgid "Data has been saved."
 msgstr ""
 
