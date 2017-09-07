@@ -175,8 +175,10 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 								}
 
 								//Fix the image path of the editor
-								$upload_dir = wp_upload_dir();
+								$upload_dir   = wp_upload_dir();
 								$element_code = str_replace( '../wp-content/uploads/', trailingslashit( $upload_dir[ 'baseurl' ] ), $element_code );
+								
+								
 
 								//Section container
 								$return_string .=  '

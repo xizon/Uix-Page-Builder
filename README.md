@@ -111,6 +111,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 * Support .min files of front-end when the minimized file exists, get lower download times and save bandwidth.
 * "{temp_preview_thumb_path}" of template(.xml) variable was deprecated after version 1.3.7 (included), and it is compatible with older versions.
+* Fixed a possible error: The js escaped characters will can not be correctly output because the speed of bandwidth.
 
 
 ##### = 1.3.6 (September 7, 2017) =

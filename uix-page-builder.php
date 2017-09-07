@@ -1236,14 +1236,17 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function theme_value( $str ) {
-		
 		$result = str_replace( '{rowcapo:}', "'",
 			 	 str_replace( '{rowcqt:}', '"',
-
 			    $str
 			    ) );	
 				
-				
+		//Required, The js escaped characters will can not be correctly output because the speed of bandwidth.
+		$result = str_replace( '&lt;', "<",
+				str_replace( '&gt;', ">",
+				$result 
+				) ); 
+		
 		return $result;
 		
 	
