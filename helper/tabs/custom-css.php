@@ -157,7 +157,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 			echo '
 					 <p>'.__( 'CSS file root directory:', 'uix-page-builder' ).' 
-						 <a href="'.$org_csspath_uix_page_builder.'" target="_blank">'.$org_csspath_uix_page_builder.'</a>
+						 <a href="'.$org_csspath_uix_page_builder.'" target="_blank">'.$org_csspath_uix_page_builder.'</a> '.$enable1.'
 					 </p>
 
 			';	
@@ -228,7 +228,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 			echo '
 					 <p>'.__( 'CSS mini-file root directory:', 'uix-page-builder' ).' 
-						 <a href="'.$org_csspath_uix_page_builder2.'" target="_blank">'.$org_csspath_uix_page_builder2.'</a>
+						 <a href="'.$org_csspath_uix_page_builder2.'" target="_blank">'.$org_csspath_uix_page_builder2.'</a> '.$enable2.'
 					 </p>
 
 			';	
