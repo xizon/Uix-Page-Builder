@@ -107,6 +107,12 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 ### Updates
 
+
+##### = 1.3.8 (September 8, 2017) =
+
+* Fixed an error that the browser might be stuck when saving data.
+
+
 ##### = 1.3.7 (September 7, 2017) =
 
 * Support .min files of front-end when the minimized file exists, get lower download times and save bandwidth.

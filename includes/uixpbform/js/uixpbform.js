@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version: 3.0
+	* Version: 3.1
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -257,6 +257,88 @@
 			} );
 			
 			
+			
+			/*------------- Traverse and update all data ------------- */
+			/*------------- Update gridster data ( If the module is added for the first time, and there is no content. ------------- */
+            function traverseAndUpdateData( obj ) {
+				
+				$( '.uixpbform-modal-box' ).each( function()  {
+						var $form         = obj,
+							formID        = $form.find( '[name="section"]' ).val(),
+							rowID         = $form.find( '[name="row"]' ).val(),
+							colTextareaID = $form.find( '[name="colid"]' ).val(),
+							colContent    = [],
+							settings      = [];
+					
+					
+					    if( typeof colTextareaID !== typeof undefined ) {
+							
+							//Returns column ID
+							var cols = colTextareaID.split( '---' );
+							var colID = cols[0].replace( 'col-item-', '' );
+
+							//Save begin
+							var $jsonTextarea = $( "[name^='"+formID+"|["+colTextareaID+"]']" ),
+								fields        = $jsonTextarea.serializeArray();
+
+							colContent.push( [ 'col', colID ] );
+							settings.push( [ 'section', formID ] );
+							settings.push( [ 'row', rowID ] );
+							settings.push( [ 'widgetname', 'Section ' + rowID ] );
+
+
+							$.each( fields, function( i, field ) {
+								var v      = field.value,
+									n      = field.name;
+
+								//Warning: Includes JSON data from <textarea>.
+								v = uixpbform_htmlEscape( v );
+
+
+								// When you enter a string in <textarea> will be saving, convert special characters to save JSON data.
+								var $cur    = $( '[name="'+n+'"]' );
+								if ( $cur.is( 'textarea' ) ) {
+
+									var curdata = uixpbform_format_textarea( $cur, false, v );
+									if ( curdata != '' ) {
+										v = curdata;
+									}
+
+								}
+
+								colContent.push( [ n, v ] );
+
+
+							});
+
+
+
+							var new_settings = JSON.stringify( colContent );
+
+
+							//Save Item Content
+							uixpbform_insertCodes( formID, new_settings, colTextareaID, rowID );
+
+							//Save the data for each sortable item
+							var gridsterInit = new UixPBGridsterMain();
+							gridsterInit.itemSave( rowID );
+
+							//Save All content
+							settings.push( [ 'rowcontent', '{allcontent}' ] );
+							var layoutdata_form_data = JSON.stringify( settings );
+							uixpbform_insertCodes( formID, layoutdata_form_data, 'cols-all-content-replace-' + rowID, rowID );	
+							
+						}
+					
+					    
+
+					});
+	
+			
+			}
+
+			
+			
 			/*------------- Save data ------------- */
 			$( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
 				
@@ -266,86 +348,34 @@
 
 					e.preventDefault();
 
+					
+					//Update gridster data ( If the module is added for the first time, and there is no content. )
+					//Use the ID of current form with AJAX to prevent duplicate events caused by the browser stuck.
 					var $form         = $( this ).closest( 'form' ),
-						formID        = $form.find( '[name="section"]' ).val(),
-						rowID         = $form.find( '[name="row"]' ).val(),
-						colTextareaID = $form.find( '[name="colid"]' ).val(),
-						colContent    = [];
-						settings      = [];
-
-
-					//-------------Returns column ID
-					var cols = colTextareaID.split( '---' );
-					var colID = cols[0].replace( 'col-item-', '' );
-
-
-
-					//-------------Save begin
-					var $jsonTextarea = $( "[name^='"+formID+"|["+colTextareaID+"]']" ),
-						fields        = $jsonTextarea.serializeArray();
-
-					colContent.push( [ 'col', colID ] );
-					settings.push( [ 'section', formID ] );
-					settings.push( [ 'row', rowID ] );
-					settings.push( [ 'widgetname', 'Section ' + rowID ] );
-
-
-					$.each( fields, function( i, field ) {
-						var v      = field.value,
-							n      = field.name;
-
-						//Warning: Includes JSON data from <textarea>.
-						v = uixpbform_htmlEscape( v );
-
-
-						// When you enter a string in <textarea> will be saving, convert special characters to save JSON data.
-						var $cur    = $( '[name="'+n+'"]' );
-						if ( $cur.is( 'textarea' ) ) {
-
-							var curdata = uixpbform_format_textarea( $cur, false, v );
-							if ( curdata != '' ) {
-								v = curdata;
-							}
-
+						ajaxFormCurID = $( this ).closest( '.uixpbform-modal-box.active' ).attr( 'id' ),
+						curSaveBtn    = $( '#' + ajaxFormCurID ).find( '.uixpbform-modal-save-btn' );
+					
+					if ( curSaveBtn.length == 1 ) {
+						
+						traverseAndUpdateData( $form );
+						
+						//Update gridster data ( If the module is added for the first time, and there is no content. )
+						//When removing a module, the following code is valid
+						var init_settings = $( "[name='uix-page-builder-layoutdata']" ).val();
+						if ( init_settings.indexOf( '"content":""' ) >= 0 ) {
+							setTimeout( function() {
+								traverseAndUpdateData( $form );
+							}, 15 );	
 						}
 
-						colContent.push( [ n, v ] );
-
-
-					});
-
-
-
-					var new_settings = JSON.stringify( colContent );
-
-					//Save Item Content
-					uixpbform_insertCodes( formID, new_settings, colTextareaID, rowID );
-
-					//Save the data for each sortable item
-					var gridsterInit = new UixPBGridsterMain();
-					gridsterInit.itemSave( rowID );
-
-					//Save All content
-					settings.push( [ 'rowcontent', '{allcontent}' ] );
-					var layoutdata_form_data = JSON.stringify( settings );
-					uixpbform_insertCodes( formID, layoutdata_form_data, 'cols-all-content-replace-' + rowID, rowID );
-
-
-					//-------------Update gridster data ( If the module is added for the first time, and there is no content. )
-					var init_settings     = $( "[name='uix-page-builder-layoutdata']" ).val();
-					if ( init_settings.indexOf( '"content":""' ) >= 0 ) {
-						$( this ).trigger( 'click' );	
 					}
-
-
-					//-------------All elements close for Uix Page Builder Form
-					$( document ).UixPBFormPopClose();
+					
+					//All elements close for Uix Page Builder Form
+					$( document ).UixPBFormPopClose();	
+					
 					
 
 				} catch( err ) {
-					
-					//-------------All elements close for Uix Page Builder Form
-					$( document ).UixPBFormPopClose();	
 					
 					console.log( err.message );
 				}
