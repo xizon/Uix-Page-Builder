@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.3.8
+ * Version:     1.3.9
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -1066,6 +1066,24 @@ class UixPageBuilder {
 
 	}
 	
+	
+	/**
+	 * Converts the letters of random strings to numbers so that the array subscripts can be recognized.
+	 *
+	 */
+	public static function convert_random_string( $str ) {
+	
+	
+		//Case sensitive
+		$str = str_replace(
+			array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'),	array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52'),
+			$str 
+		
+		);
+		
+		return $str;
+
+	}
 	
 	
 	/*

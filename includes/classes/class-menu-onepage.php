@@ -15,7 +15,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 		public static function init() {
 			add_action( 'admin_init', array( __CLASS__, 'nav_menu_meta_box' ) );
 			add_action( 'wp_ajax_uix_page_builder_anchorlinks_save_settings', array( __CLASS__, 'save' ) );
-			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_menu_page_scripts' ) );
+			add_action( 'admin_head-nav-menus.php', array( __CLASS__, 'enqueue_menu_page_scripts' ) );
 		}
 	
 	
@@ -25,7 +25,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 		public static function enqueue_menu_page_scripts() {
 	
 			// Register the script
-			wp_register_script( 'uix_page_builder_anchorlinks_save_handle', UixPageBuilder::plug_directory() .'includes/admin/assets/js/menu.js', array( 'jquery' ), UixPageBuilder::ver(), true );
+			wp_register_script( 'uix_page_builder_anchorlinks_save_handle', UixPageBuilder::plug_directory() .'includes/admin/assets/js/admin-menu.js', array( 'jquery' ), UixPageBuilder::ver(), true );
 		
 			wp_localize_script( 'uix_page_builder_anchorlinks_save_handle', 'uix_page_builder_anchorlinks_data', array(
 				'send_string_nonce' => wp_create_nonce( 'uix_page_builder_anchorlinks_save_nonce' ),
@@ -82,6 +82,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 						$row                  = $value->row;
 						$size_x               = $value->size_x;
 						$section_id           = $value->secindex;
+					    $section_id_sub       = UixPageBuilder::convert_random_string( $section_id );
 						$custom_id            = $value->customid;
 						$section_title        = $value->title;
 						$element_code         = '';
@@ -137,12 +138,12 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 								echo '
 								<li>
 									<label class="menu-item-title">
-										<input type="checkbox" class="menu-item-checkbox" name="menu-item['.esc_attr( $section_id ).'][menu-item-object-id]" value="'.esc_attr( $section_id ).'"> '.$section_title.'<br><span class="custom-prop"><strong>'.__( 'ID', 'uix-page-builder' ).':</strong> '.$custom_id.'</span>
+										<input type="checkbox" class="menu-item-checkbox" name="menu-item['.esc_attr( $section_id_sub ).'][menu-item-object-id]" value="'.esc_attr( $section_id ).'"> '.$section_title.'<br><span class="custom-prop"><strong>'.__( 'ID', 'uix-page-builder' ).':</strong> '.$custom_id.'</span>
 									</label>
-									<input type="hidden" class="menu-item-type" name="menu-item['.esc_attr( $section_id ).'][menu-item-type]" value="custom">
-									<input type="hidden" class="menu-item-title" name="menu-item['.esc_attr( $section_id ).'][menu-item-title]" value="'.esc_attr( $section_title ).'">
-									<input type="hidden" class="menu-item-url" name="menu-item['.esc_attr( $section_id ).'][menu-item-url]" value="#'.esc_attr( $custom_id ).'">
-									<input type="hidden" class="menu-item-classes" name="menu-item['.esc_attr( $section_id ).'][menu-item-classes]" value="nav-anchor">
+									<input type="hidden" class="menu-item-type" name="menu-item['.esc_attr( $section_id_sub ).'][menu-item-type]" value="custom">
+									<input type="hidden" class="menu-item-title" name="menu-item['.esc_attr( $section_id_sub ).'][menu-item-title]" value="'.esc_attr( $section_title ).'">
+									<input type="hidden" class="menu-item-url" name="menu-item['.esc_attr( $section_id_sub ).'][menu-item-url]" value="#'.esc_attr( $custom_id ).'">
+									<input type="hidden" class="menu-item-classes" name="menu-item['.esc_attr( $section_id_sub ).'][menu-item-classes]" value="nav-anchor">
 								</li>
 								';
 

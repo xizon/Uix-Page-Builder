@@ -842,7 +842,15 @@ function gridsterFormatAllCodes( code ) {
  * @return {string}                - A new string.
  */	
 function gridsterRowUID() {
-	return Math.floor( Math.random() * 10000);
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (var i = 0; i < 5; i++) {
+		text += possible.charAt( Math.floor( Math.random() * possible.length ) );
+	}
+	
+
+	return text;
 }
 
 
@@ -960,7 +968,7 @@ function gridsterAddShortcutButtons() {
 			$ifm.find( '#wpadminbar' ).css( 'visibility', 'hidden' );
 
 			$ifm.find( '.uix-page-builder-section > .uix-pb-row > div' ).each( function( index ) {
-				var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
+				var id         = $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ),
 					curindex   = $(this).index(),
 					obj        = $('#uix-page-builder-gridster-widget-' + id );
 
@@ -971,7 +979,7 @@ function gridsterAddShortcutButtons() {
 
 			$ifm.find( '.uix-page-builder-section > .uix-pb-row > div' ).on( 'mouseenter', function(){
 
-				var id         = parseFloat( $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ) ),
+				var id         = $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ),
 					curindex   = $(this).index(),
 					obj        = $('#uix-page-builder-gridster-widget-' + id );
 
@@ -1002,7 +1010,7 @@ function gridsterAddShortcutButtons() {
 
 			$ifm.find( '.uix-page-builder-editicon' ).on( 'click', function() {
 
-				var id         = parseFloat( $( this ).data( 'id' ) ),
+				var id         = $( this ).data( 'id' ),
 					index      = parseFloat( $( this ).data( 'index' ) ),
 					obj        = $('#uix-page-builder-gridster-widget-' + id );
 

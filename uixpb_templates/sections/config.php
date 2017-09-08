@@ -58,23 +58,6 @@ if ( class_exists( 'UixSlideshow' ) ) {
 $uix_pb_config = array(
 	
 
-	array(
-		'sortname'        => esc_html__( 'Slider', 'uix-page-builder' ),
-		'buttons'         => array(
-	
-								array(
-									'title'           => esc_html__( 'Image Slider', 'uix-page-builder' ),
-									'id'              => 'uix_pb_section_imageslider.php',
-									'thumb'           => 'imageslider-1.jpg',
-								
-								),
-	
-	                            $module_uix_slideshow
-								
-				
-							)
-	
-	),
 	
 	array(
 		'sortname'        => esc_html__( 'Parallax', 'uix-page-builder' ),
@@ -87,6 +70,26 @@ $uix_pb_config = array(
 									'thumb'           => 'parallax.jpg',
 								
 								),							
+								
+				
+							)
+	
+	),
+	
+	
+
+	array(
+		'sortname'        => esc_html__( 'Slider', 'uix-page-builder' ),
+		'buttons'         => array(
+	
+								array(
+									'title'           => esc_html__( 'Image Slider', 'uix-page-builder' ),
+									'id'              => 'uix_pb_section_imageslider.php',
+									'thumb'           => 'imageslider-1.jpg',
+								
+								),
+	
+	                            $module_uix_slideshow
 								
 				
 							)

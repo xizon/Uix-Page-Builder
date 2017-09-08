@@ -34,24 +34,27 @@ if ( file_exists( $xmlfile ) ) {
 
 	for ( $xmli = 0; $xmli <= $xLength - 1; $xmli++ ) {
 
-		$json_data       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'save' );			
-		$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'save' );
-		$temp_name       = $xValue['item'][$xmli]['name'];
-		$tmpl_author     = $xValue['item'][$xmli]['author'];
-		$tmpl_email      = $xValue['item'][$xmli]['email'];
-		$tmpl_release    = $xValue['item'][$xmli]['release'];
+		if ( isset( $xValue['item'][$xmli]['data'] ) ) { //required
+			
+			$json_data       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'save' );			
+			$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'save' );
+			$temp_name       = $xValue['item'][$xmli]['name'];
+			$tmpl_author     = $xValue['item'][$xmli]['author'];
+			$tmpl_email      = $xValue['item'][$xmli]['email'];
+			$tmpl_release    = $xValue['item'][$xmli]['release'];
 
-		if ( $temp_name != 'null' ) {
-			$tempdata     .= '
-				<item>
-					<name><![CDATA['.$temp_name.']]></name>
-					<thumb><![CDATA['.$preview_thumb.']]></thumb>
-					<author><![CDATA['.$tmpl_author.']]></author>
-					<email><![CDATA['.$tmpl_email.']]></email>
-					<release><![CDATA['.$tmpl_release.']]></release>
-					<data><![CDATA['.$json_data.']]></data>
-				</item>
-			';
+			if ( $temp_name != 'null' ) {
+				$tempdata     .= '
+					<item>
+						<name><![CDATA['.$temp_name.']]></name>
+						<thumb><![CDATA['.$preview_thumb.']]></thumb>
+						<author><![CDATA['.$tmpl_author.']]></author>
+						<email><![CDATA['.$tmpl_email.']]></email>
+						<release><![CDATA['.$tmpl_release.']]></release>
+						<data><![CDATA['.$json_data.']]></data>
+					</item>
+				';
+			}	
 		}
 
 	}

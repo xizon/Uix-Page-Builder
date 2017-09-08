@@ -1091,7 +1091,19 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			
 			return UixPageBuilder::plug_directory() .'uixpb_templates/images/UixPageBuilderTmpl/default-cover.jpg';
 	
-		}		
+		}	
+		
+		
+		/*
+		 * Callback map markers
+		 *
+		 *
+		 */
+		public static function map_marker() {
+			
+			return UixPageBuilder::plug_directory() .'uixpb_templates/images/UixPageBuilderTmpl/map/map-location.png';
+	
+		}	
 		
 		
 	}

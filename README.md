@@ -108,9 +108,10 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 ### Updates
 
 
-##### = 1.3.8 (September 8, 2017) =
+##### = 1.3.9 (September 9, 2017) =
 
-* Fixed an error that the browser might be stuck when saving data.
+* Fixed an error that the browser might be stuck when saving data. (important)
+* Optimized the default templates (.xml).
 
 
 ##### = 1.3.7 (September 7, 2017) =

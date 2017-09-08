@@ -175,18 +175,6 @@ $args =
 			
 			),	
 			
-
-			array(
-				'id'             => 'uix_pb_imageslider_listitem_url',
-				'title'          => '',
-				'desc'           => '',
-				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_url' ).'', /*class of list item */
-				'placeholder'    => esc_html__( 'Destination URL and can be left blank, e.g., http://your.site.com', 'uix-page-builder' ),
-				'type'           => 'text',
-				'default'        => ''
-
-			),
 		
 			array(
 				'id'             => 'uix_pb_imageslider_listitem_title',
@@ -218,6 +206,18 @@ $args =
 			
 			),
 		
+		
+			array(
+				'id'             => 'uix_pb_imageslider_listitem_url',
+				'title'          => '',
+				'desc'           => '',
+				'value'          => '',
+				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_url' ).'', /*class of list item */
+				'placeholder'    => esc_html__( 'Destination URL and can be left blank, e.g., http://your.site.com', 'uix-page-builder' ),
+				'type'           => 'text',
+				'default'        => ''
+
+			),
 	
 			
 		
