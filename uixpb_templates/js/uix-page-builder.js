@@ -708,6 +708,49 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 
     var documentReady = function( $ ) {
+		
+		
+		//Format the category group for each list item, in order to compatible shuffle plugin
+		//Like this:  a,b,c  ->   ["a","b","c"]
+		 $( '[data-groups-name]' ).each( function(){
+
+			var $this              = $( this ),
+				activated          = $this.data( 'activated' ),//In order to avoid duplication of the running script with Uix Page Builder ( required )
+				name               = $this.data( 'groups-name' );
+
+		
+			if ( typeof activated === typeof undefined || activated === 0 ) {
+
+				
+				if ( typeof name !== typeof undefined ) {
+				
+					var nameArr = name.toString().split( ',' ),
+						res     = '';
+
+					res += '[';
+					if ( nameArr.constructor === Array ) {
+					  for( var i=0; i<nameArr.length; i++ ) {
+						  res += '"'+nameArr[i]+'",';
+					  }   
+					}
+					res = res.replace(/,\s*$/, '');
+
+					res += ']';
+					res = res.toString();
+
+					$this.attr( 'data-groups', res );	
+					
+				}
+
+				
+				//Prevents front-end javascripts that are activated in the background to repeat loading.
+				$this.data( 'activated', 1 );	
+			}
+			 
+	
+		 });	
+		
+		
 
 		 $( '.uix-pb-filterable' ).each( function(){
 

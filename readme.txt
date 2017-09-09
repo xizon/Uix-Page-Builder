@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.3.9
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,7 +140,13 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 == Changelog ==
 
 
-= 1.3.9 (September 9, 2017) =
+= 1.4.0 (September 9, 2017) =
+
+* Fixed some problems with default templates that could not be synchronized.
+* Fixed an syntax error that may occur when obtaining portfolio categorization.
+
+
+= 1.3.9 (September 8, 2017) =
 
 * Fixed an error that the browser might be stuck when saving data. (important)
 * Optimized the default templates (.xml).

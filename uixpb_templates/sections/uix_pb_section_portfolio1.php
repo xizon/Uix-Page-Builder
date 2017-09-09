@@ -383,7 +383,7 @@ UixPageBuilder::form_scripts( array(
 
 					//Do not include spaces
 
-					show_list_item += \'<div class="uix-pb-portfolio-item" data-groups=\\\'{rowcsql:}"\'+uixpbform_strToSlug( _cat )+\'"{rowcsqr:}\\\'>\';
+					show_list_item += \'<div class="uix-pb-portfolio-item" data-groups-name="\'+uixpbform_strToSlug( _cat )+\'">\';
 					show_list_item += \'<span class="uix-pb-portfolio-image" style="-webkit-border-radius: \'+_config_avatar_fillet+\'; -moz-border-radius: \'+_config_avatar_fillet+\'; border-radius: \'+_config_avatar_fillet+\';">\';
 					show_list_item += \'<a \'+_item_v_targetcode+\' href="\'+encodeURI( _item_v_fullimageURL )+\'" title="\'+uixpbform_htmlEncode( _title )+\'">\';
 					show_list_item += \'<img src="\'+_item_v_thumbnailURL+\'" alt="" style="-webkit-border-radius: \'+_config_avatar_fillet+\'; -moz-border-radius: \'+_config_avatar_fillet+\'; border-radius: \'+_config_avatar_fillet+\';">\';

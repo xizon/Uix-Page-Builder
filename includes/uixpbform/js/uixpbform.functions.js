@@ -173,7 +173,7 @@ jQuery( document ).ready( function() {
 			clone_content = eval( cur_cloneContent ),
 			widget_ID     = cur_sectionRow;
 
-		clone_content = '<span class="dynamic-row dynamic-addnow">' + clone_content + '<div class="delrow-container"><a href="javascript:" class="delrow '+cur_removeClass+'" data-spy="'+cur_targetID.replace('#','')+'__'+cur_colid+'">&times;</a></div></span>';
+		clone_content = '<span class="dynamic-row dynamic-addnow">' + clone_content + '<div class="delrow-container"><a href="javascript:" class="delrow delrow-'+cur_colid+' '+cur_removeClass+'" data-spy="'+cur_targetID.replace('#','')+'__'+cur_colid+'">&times;</a></div></span>';
 		clone_content = clone_content
 		               .replace( /toggle-row/g, 'toggle-row toggle-row-clone-list' )
 					   .replace( /data-list="0"/g, 'data-list="1"' );
@@ -2162,55 +2162,45 @@ function uixpbform_uid() {
  */	
 function uixpbform_catlist( str, classprefix ) {
 	
-    if ( typeof( str ) == 'string' && str.length > 0 ) {
-		
-		var re      = new RegExp("(.*?)\<\/div\>","gim"),
-			v       = '<div class="'+classprefix+'type">',
-			re      = new RegExp("" + v + "(.*?)\<\/div\>","gim"),
-			arr     = [],
-			output  = '';
-
-		str.replace( re, function(s, match) {
-			   arr.push(match);
-			  });	
-
-		Array.prototype.uniqueArr = function() {
+	var result = '';
+	( function( $ ) {
+	"use strict";
+		$( function() {
 			
-			//Because the template is too fast to "switch", it will lead to script loading error.
-			//Catch a possible error:  Syntax error, unrecognized expression
-			try {
+			if ( typeof( str ) == 'string' && str.length > 0 ) {
 
-				var res  = [],
-					json = {};
+				var re      = new RegExp("(.*?)\<\/div\>","gim"),
+					v       = '<div class="'+classprefix+'type">',
+					re      = new RegExp("" + v + "(.*?)\<\/div\>","gim"),
+					arr     = [];
 
-				for( var i = 0; i < this.length; i++ ) {
 
-					var s = this[i].toString();
-					if( !json[ s ] ) {
-						res.push( s );
-						json[ s ] = 1;
-					}
+				str.replace( re, function(s, match) {
+					   arr.push(match);
+					  });	
+
+
+
+				//Remove Duplicates from JavaScript Array
+				var uniqueArr = [];
+				$.each(arr, function(i, el){
+					if($.inArray(el, uniqueArr) === -1) uniqueArr.push(el);
+				});
+
+				//Output
+				var newArr = uniqueArr;
+				for( var j = 0; j < newArr.length; j++ ) {
+					result += '<li><a href="javascript:" data-group="'+uixpbform_strToSlug( newArr[j] )+'">'+newArr[j]+'</a></li>';
 				}
-				return res;
-				
-			} catch( err ) {
-				console.log( err.message );
+
 			}
-			
 
-		}
-
-
-		//output
-		var newArr = arr.uniqueArr();
-		for( var j = 0; j < newArr.length; j++ ) {
-			output += '<li><a href="javascript:" data-group="'+uixpbform_strToSlug( newArr[j] )+'">'+newArr[j]+'</a></li>';
-		}
+		} );
 		
-		return output;
-		
-		
-	}
+	} ) ( jQuery );
+	
+	return result;
+	
 
 }
 

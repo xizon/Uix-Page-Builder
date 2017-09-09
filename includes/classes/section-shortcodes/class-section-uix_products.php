@@ -200,15 +200,13 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 							}
 						}	
 
-						$cat_group .= '[';
 						foreach ( $cat_new as $key ) {
-							$cat_group .= '"'.$key.'",';
+							$cat_group .= $key.',';
 						}
 						$cat_group = rtrim( $cat_group, ',' );
-						$cat_group .= ']';
 
 					} else {
-						$cat_group = '["'.$cat_attr.'"]';
+						$cat_group = $cat_attr;
 					}
 
 					$return_string .= str_replace( '{uix_pb_uix_products_attrs_link}', esc_url( get_permalink() ),
@@ -222,7 +220,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 							   str_replace( '{uix_pb_uix_products_attrs_cat_link}', UixPB_UixProductsCategories::entry_categories(),	
 							   str_replace( '{uix_pb_uix_products_attrs_cat_text}', $cat_text,
 							   str_replace( '{uix_pb_uix_products_attrs_cat_attr}', $cat_attr,  
-							   str_replace( '{uix_pb_uix_products_attrs_cat_groupattr}', 'data-groups=\''.$cat_group.'\'',  		   
+							   str_replace( '{uix_pb_uix_products_attrs_cat_groupattr}', 'data-groups-name="'.$cat_group.'"', 	   
 							   str_replace( '{uix_pb_uix_products_attrs_excerpt}', $excerpt_html,
 							   str_replace( '{uix_pb_uix_products_attrs_thumbnail}', $post_thumbnail,
 							   str_replace( '{uix_pb_uix_products_attrs_thumbnail_url}', esc_url( $post_thumbnail_src ),

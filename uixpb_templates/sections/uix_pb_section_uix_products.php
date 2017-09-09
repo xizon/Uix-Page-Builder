@@ -338,7 +338,7 @@ $args =
 		{uix_pb_uix_products_attrs_cat_link}         --> Categories for a post (Contains hyperlinks)
 		{uix_pb_uix_products_attrs_cat_text}         --> Categories for a post
 		{uix_pb_uix_products_attrs_cat_attr}         --> Escaping for categories HTML attributes.
-		{uix_pb_uix_products_attrs_cat_groupattr}    --> Escaping for categories group HTML attributes. Like this: data-groups='["discovery","featured"]'
+		{uix_pb_uix_products_attrs_cat_groupattr}    --> Escaping for categories group HTML attributes. Like this: data-groups-name="discovery,featured"
 		{uix_pb_uix_products_attrs_excerpt}          --> Excerpt with read more button
 		{uix_pb_uix_products_attrs_thumbnail}        --> Featured image HTML code
         {uix_pb_uix_products_attrs_thumbnail_url}    --> Featured image URL

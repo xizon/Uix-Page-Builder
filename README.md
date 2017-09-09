@@ -108,7 +108,13 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 ### Updates
 
 
-##### = 1.3.9 (September 9, 2017) =
+##### = 1.4.0 (September 9, 2017) =
+
+* Fixed some problems with default templates that could not be synchronized.
+* Fixed an syntax error that may occur when obtaining portfolio categorization.
+
+
+##### = 1.3.9 (September 8, 2017) =
 
 * Fixed an error that the browser might be stuck when saving data. (important)
 * Optimized the default templates (.xml).

@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.3.9
+ * Version:     1.4.0
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -911,14 +911,15 @@ class UixPageBuilder {
 	
 	
 	/*
-	 * Format the JSON code before output the render viewport.
+	 * Format the JSON code before output the render viewport. 
+	 * It is used for HTML code of separated rendering.
 	 *
 	 */	
 	public static function format_render_codes( $str ) {
 		
 		//Returns string in order to protect the security output of JSON
-		return str_replace( '{rowcsql:}', '[', 
-				str_replace( '{rowcsqr:}', ']',	
+		return  str_replace( '{rowcsql:}', '[', 
+				str_replace( '{rowcsqr:}', ']',
 				$str 
 			   ) );			   
 		
@@ -1358,7 +1359,7 @@ class UixPageBuilder {
 		
 		
 		//Clone content
-		$data = '<span class="dynamic-row dynamic-addnow">'.$new_clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$clone_trigger_id.'-'.$col_id.'" data-spy="'.$clone_trigger_id.'__'.$col_id.'">&times;</a></div></span>';
+		$data = '<span class="dynamic-row dynamic-addnow">'.$new_clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$col_id.' delrow-'.$clone_trigger_id.'-'.$col_id.'" data-spy="'.$clone_trigger_id.'__'.$col_id.'">&times;</a></div></span>';
 	
 			 
 		//Clone code
@@ -2311,9 +2312,9 @@ class UixPageBuilder {
 							$( document ).UixPBRenderHTML({ divID: '#<?php echo self::frontend_wrapper_id( '', $sid, $colid ); ?>', value: temp });
 
 						}
-
+						
 						uix_pb_temp();
-						$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], [data-spy='<?php echo $clone_trigger_id; ?>__<?php echo $colid; ?>']", function() { 
+						$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], .addrow-<?php echo $colid; ?>, .delrow-<?php echo $colid; ?>", function() { 
 							uix_pb_temp();
 						});
 
