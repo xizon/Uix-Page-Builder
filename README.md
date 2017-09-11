@@ -107,6 +107,11 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 ### Updates
 
+##### = 1.4.1 (September 11, 2017) =
+
+* Added the color transparency mode.
+* Added color picker plugin to TinyMCE Editor.
+
 
 ##### = 1.4.0 (September 9, 2017) =
 

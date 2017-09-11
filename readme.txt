@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,13 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 
 == Changelog ==
+
+
+= 1.4.1 (September 11, 2017) =
+
+* Added the color transparency mode.
+* Added color picker plugin to TinyMCE Editor.
+
 
 
 = 1.4.0 (September 9, 2017) =

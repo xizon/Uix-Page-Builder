@@ -44,7 +44,7 @@ class UixPBFormType_ColorMap {
 				                <div class="uixpbform-color-selector-onlybutton">
 								        
 										<div class="uixpbform-color-selector-toggles">
-											<input type="text" class="wp-color-input" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">
+											<input type="text" class="wp-color-input color-picker" data-alpha="true" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.$value.'">
 										</div>
 										
 										'.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).'

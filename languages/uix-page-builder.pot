@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-08 20:11+0000\n"
+"POT-Creation-Date: 2017-09-11 11:37+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -58,47 +58,47 @@ msgstr ""
 msgid "Untitled-%1$s"
 msgstr ""
 
-#: uix-page-builder.php:1213
+#: uix-page-builder.php:1214
 msgid "Choose Element You Want"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "Layout"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "1/1"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "1/2"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "1/3"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "1/4"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "1/3, 2/3"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "2/3, 1/3"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "1/4, 3/4"
 msgstr ""
 
-#: uix-page-builder.php:1224
+#: uix-page-builder.php:1225
 msgid "3/4, 1/4"
 msgstr ""
 
-#: uix-page-builder.php:1639
+#: uix-page-builder.php:1640
 #, php-format
 msgid ""
 "You could <a class=\"button button-small\" href=\"%s\">create</a> Uix Page "
@@ -107,38 +107,38 @@ msgid ""
 "templates directory.  "
 msgstr ""
 
-#: uix-page-builder.php:1791
+#: uix-page-builder.php:1792
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-page-builder.php:1863 uix-page-builder.php:1936
+#: uix-page-builder.php:1864 uix-page-builder.php:1937
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!</p>"
 "</div>"
 msgstr ""
 
-#: uix-page-builder.php:1865
+#: uix-page-builder.php:1866
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem copying "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: uix-page-builder.php:1870
+#: uix-page-builder.php:1871
 msgid ""
 "<div class=\"notice notice-error\"><p><strong>There was a problem removing "
 "your template files:</strong> Please check your server settings. You can "
 "upload files to theme templates directory using FTP.</p></div>"
 msgstr ""
 
-#: uix-page-builder.php:1873
+#: uix-page-builder.php:1874
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
-#: uix-page-builder.php:1988 uix-page-builder.php:2089
+#: uix-page-builder.php:1989 uix-page-builder.php:2090
 #: includes/admin/bulider/post-extensions-init.php:1051
 #: includes/admin/bulider/post-extensions-init.php:1254
 msgid "Section"
@@ -398,6 +398,10 @@ msgstr ""
 
 #: helper/tabs/credits.php:21
 msgid "Shuffle.js"
+msgstr ""
+
+#: helper/tabs/credits.php:22
+msgid "wp-color-picker-alpha"
 msgstr ""
 
 #: helper/tabs/custom-css.php:26
@@ -721,11 +725,11 @@ msgstr ""
 msgid "Open link in a new tab"
 msgstr ""
 
-#: includes/uixpbform/init.php:603
+#: includes/uixpbform/init.php:605
 msgid "Cancel"
 msgstr ""
 
-#: includes/uixpbform/init.php:603
+#: includes/uixpbform/init.php:605
 #: includes/admin/bulider/post-extensions-init.php:677
 msgid "Save"
 msgstr ""
@@ -1770,7 +1774,7 @@ msgid "The description of this project."
 msgstr ""
 
 #: uixpb_templates/sections/uix_pb_section_portfolio1.php:411
-#: includes/classes/section-shortcodes/class-section-uix_products.php:337
+#: includes/classes/section-shortcodes/class-section-uix_products.php:335
 msgid "All"
 msgstr ""
 
@@ -2349,7 +2353,7 @@ msgstr ""
 msgid "Hide Sidebar"
 msgstr ""
 
-#: includes/classes/section-shortcodes/class-section-uix_products.php:361
+#: includes/classes/section-shortcodes/class-section-uix_products.php:359
 msgid "No categories"
 msgstr ""
 

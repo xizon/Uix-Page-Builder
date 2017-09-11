@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version: 3.2
+	* Version: 3.3
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -1659,8 +1659,8 @@ a.uixpbform-icon-clear {
 }
 
 .uixpbform-color-selector-toggles .wp-picker-container .wp-color-result {
-    background-image: url(../images/color-bg-3.png);
-    background-repeat: no-repeat;
+    background-image: url(../images/color-bg-3-alpha.png) !important;
+    background-repeat: no-repeat !important;
     z-index: 559901;
 }
 
