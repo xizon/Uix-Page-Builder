@@ -1760,8 +1760,9 @@ function uixpbform_editorInit( id ){
 					selector:  'textarea#' + id,
 					height : 200,
 					menubar: false,
-					plugins: 'textcolor image media hr customCode',
+					plugins: 'textcolor image media hr customCode colorpicker',		
 				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent alignleft aligncenter alignright | hr uixpb_image customCode',
+					/*
 					textcolor_rows: 12,
 					textcolor_cols: 20,
 					textcolor_map: [
@@ -1997,6 +1998,7 @@ function uixpbform_editorInit( id ){
 						
 						
 					],
+					*/
 					setup:function(ed) {
 						
 					   //Avoid formatting all contents of <textarea> 
