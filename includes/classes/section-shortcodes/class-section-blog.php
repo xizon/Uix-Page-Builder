@@ -178,7 +178,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 
 
 						//featured image
-						$thumbnail_src       =  wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'thumbnail' );
+						$thumbnail_src       =  wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'post-thumbnail' );
 						$post_thumbnail_src  =  $thumbnail_src[0];  
 						$post_thumbnail      = '<img src="'.esc_url( $post_thumbnail_src ).'" alt="'.esc_attr( get_the_title() ).'">';
 						if ( empty( $post_thumbnail_src ) ) $post_thumbnail = '';
