@@ -107,6 +107,13 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 ### Updates
 
+
+##### = 1.4.2 (September 14, 2017) =
+
+* Optimized file structure in admin panel.
+
+
+
 ##### = 1.4.1 (September 11, 2017) =
 
 * Added the color transparency mode.

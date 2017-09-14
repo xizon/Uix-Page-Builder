@@ -141,7 +141,7 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 		</style>
 		";
 		
-		echo UixPBFormCore::str_compression( $code );
+		echo UixPageBuilder::str_compression( $code );
 		
 		
 	}

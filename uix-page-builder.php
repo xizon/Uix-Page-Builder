@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.4.1
+ * Version:     1.4.2
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -45,6 +45,7 @@ class UixPageBuilder {
 		
 		add_action( 'init', array( __CLASS__, 'register_scripts' ) );
 		add_action( 'init', array( __CLASS__, 'load_classes_core' ) );
+		add_action( 'init', array( __CLASS__, 'load_components_core' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ), 99999 );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
@@ -108,6 +109,20 @@ class UixPageBuilder {
 
 	 }
 		
+	/*
+	 * Load all core components in the directory
+	 *
+	 */
+	 public static function load_components_core() {
+
+		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "includes/admin/bulider/components/*.php") as $file ) {
+			include $file;
+		}
+
+	 }	
+	
+	
+	
 	
 	
 	/*
@@ -1156,76 +1171,6 @@ class UixPageBuilder {
 		
 	}
 	
-	
-	
-	/**
-	 * List buttons of page sections 
-	 * 
-	 */
-	public static function list_page_sortable_li( $col = '' ) {
-	
-		
-		echo "<li class=\"row col-".$col."\" id=\"widget-items-elements-detail-".$col."-'+uid+'\"><a class=\"button add-elements-btn\" href=\"javascript:\" data-elements=\"widget-items-elements-".$col."-'+uid+'\"><i class=\"dashicons dashicons-plus\"></i></a><textarea id=\"col-item-".$col."---'+uid+'\">[[{rqt:}col{rqt:},{rqt:}".$col."{rqt:}],[{rqt:}uix_pb_section_undefined|[col-item-".$col."---'+uid+'][uix_pb_undefined]['+sid+']{rqt:},{rqt:}{rqt:}]]</textarea></li>";
-		
-	}
-	
-	
-	public static function list_page_sortable_li_btns( $col = '' ) {
-	
-		if ( self::tempfolder_exists() ) {
-			
-			$theme_template_modules_path = self::get_theme_template_modules_path();
-			
-			include get_stylesheet_directory(). "/".$theme_template_modules_path."config.php";
-			
-		} else {
-			include self::plug_filepath().self::CUSTOMTEMP."config.php";
-		}
-		
-		$imgpath = self::get_img_path( 'thumb' ).'images/UixPageBuilderThumb/';
-		
-		
-		$btns = '<div class="uix-page-builder-col-tabs">';
-	   
-		foreach ( $uix_pb_config as $v ) {
-			
-			$btns .= '<h3>'.$v[ 'sortname' ].'</h3><div>';
-			
-			foreach ( $v[ 'buttons' ] as $key ) {
-				
-				if ( !empty( $key[ 'id' ] ) ) {
-					$keyid  = str_replace( '.php', '', $key[ 'id' ] );
-					$imgsrc = ( !empty( $key[ 'thumb' ] ) ) ? $imgpath.$key[ 'thumb' ] : $imgpath.'_none.png';
-
-					$btns .= "<div class=\"uix-page-builder-col\"><a class=\"widget-item-btn ".$keyid."\" data-elements-target=\"widget-items-elements-detail-".$col."-'+uid+'\" data-slug=\"".$keyid."\" data-name=\"".esc_attr( $key[ 'title' ] )."\" data-id=\"'+uid+'\" data-col-textareaid=\"col-item-".$col."---'+uid+'\" href=\"javascript:\"><span class=\"t\">".$key[ 'title' ]."</span><span class=\"img\"><img src=\"".esc_url( $imgsrc )."\" alt=\"".esc_attr( $key[ 'title' ] )."\"></span></a></div>";
-					
-				}
-
-
-			}		
-			
-			$btns .= '</div>';
-							
-		}
-		
-		$btns .= '</div>';
-				
-		
-		echo 'if ( jQuery( \'#widget-items-elements-'.$col.'-\'+uid+\'\' ).length < 1 ) {jQuery( \'body\' ).prepend( \'<div class="uixpbform-modal-box uixpbform-modal-box-elementsselector" id="widget-items-elements-'.$col.'-\'+uid+\'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">&times;</a><div class="content"><h2>'.__( 'Choose Element You Want', 'uix-page-builder' ).'</h2><div class="widget-items-container">'.$btns.'</div></div></div>\' ); if ( jQuery( document.body ).width() > 768 ) { jQuery( ".uix-page-builder-col-tabs" ).accTabs(); } }';
-			
-		
-		
-	}
-	
-	
-	
-		
-	public static function list_page_itembuttons() {
-	
-	    echo "<div class=\"widget-items-col-container\"><button type=\"button\" class=\"add\"><i class=\"dashicons dashicons-text\"></i>".__( 'Layout', 'uix-page-builder' )."</button><div class=\"btnlist\"><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"1__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\"  title=\"".esc_attr__( '1/1', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-1\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"2__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/2', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-2\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"3__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-3\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"4__1\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-average-4\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"1_3\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/3, 2/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_3\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"2_3\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '2/3, 1/3', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-2_3\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"1_4\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '1/4, 3/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-1_4\"></a><a data-add=\"0\" data-uid=\"'+uid+'\" data-contentid=\"'+contentid+'\" data-col=\"3_4\" data-content=\"\"  data-list=\"\" href=\"javascript:void(0);\" title=\"".esc_attr__( '3/4, 1/4', 'uix-page-builder' )."\" class=\"widget-items-col widget-items-col-3_4\"></a></div></div><span class=\"cols-content-data-container\" id=\"cols-content-data-'+uid+'\"></span><textarea id=\"cols-all-content-tempdata-'+uid+'\" class=\"temp-data temp-data-1\"></textarea><textarea id=\"cols-all-content-replace-'+uid+'\" class=\"temp-data temp-data-2\"></textarea>";
-
-	}
-				
 
 	
 		
@@ -1298,122 +1243,7 @@ class UixPageBuilder {
 
 	}
 	
-	
-	/*
-	 * Push the clone form of saved data
-	 *
-	 *
-	 */
-	public static function push_cloneform( $uid, $items, $clone_trigger_id, $cur_id, $col_id, $clone_value, $section_row, $value, $clone_list_toggle_classes = '' ) {
-		
-		//Toggle class
-		$clone_list_toggle_class = '';
-		if ( $clone_list_toggle_classes && is_array( $clone_list_toggle_classes ) ) {
-			
-			foreach ( $clone_list_toggle_classes as $t_value ) {
-				$clone_list_toggle_class .= '#{colID}'.UixPBFormCore::fid( $col_id, $section_row, $t_value ).',';
-			}
-			$clone_list_toggle_class = rtrim( $clone_list_toggle_class, ',' );
-		}
-		
-		//Widget ID
-		$widget_ID         = $section_row;
-		
-		//Toggle target ID
-		$toggle_target_ID  = str_replace( '{colID}', $cur_id.'-', $clone_list_toggle_class );
-		
-		
-	    //Initialize clone content
-		$new_clone_value = preg_replace_callback(
-			'|chk-id-input="(.*?)"|',
-			function ( $matches ) {
-				return $matches[0].' {temp}';
-			},
-			$clone_value
-		);
-		
-		$new_clone_value = preg_replace_callback(
-			'|chk-id-textarea="(.*?)"|',
-			function ( $matches ) {
-				return $matches[0].' {temp}';
-			},
-			$new_clone_value
-		);		
-		
-		$new_clone_value = preg_replace_callback(
-			'|\{temp\} value="(.*?)"|',
-			function ( $matches ) {
-				return '';
-			},
-			$new_clone_value
-		);
 
-		$new_clone_value = preg_replace_callback(
-			'|\{temp\}>(.*?)</textarea>|',
-			function ( $matches ) {
-				return '';
-			},
-			$new_clone_value
-		);
-
-		
-		
-		//Clone content
-		$data = '<span class="dynamic-row dynamic-addnow">'.$new_clone_value.'<div class="delrow-container"><a href="javascript:" class="delrow delrow-'.$col_id.' delrow-'.$clone_trigger_id.'-'.$col_id.'" data-spy="'.$clone_trigger_id.'__'.$col_id.'">&times;</a></div></span>';
-	
-			 
-		//Clone code
-		$data = str_replace( '{index}', '['.$widget_ID.']',
-		       str_replace( 'data-id="', 'id="'.$cur_id.'-',
-			   str_replace( 'chk-id-input="', 'chk-id-input="'.$cur_id.'-',
-			   str_replace( 'chk-id-textarea="', 'chk-id-textarea="'.$cur_id.'-',
-			   str_replace( '][uix', ']'.$cur_id.'-[uix',
-			   str_replace( '{dataID}', ''.$cur_id.'-',
-			   str_replace( '{multID}', $toggle_target_ID,
-			   str_replace( '{columnid}', $col_id,
-			   str_replace( '{colID}', ''.$cur_id.'-'.str_replace( 'col-item-', 'section_'.$widget_ID.'__', $col_id ),
-			   str_replace( 'data-insert-img="{colID}', 'data-insert-img="'.$cur_id.'-',
-			   str_replace( 'data-insert-preview="{colID}', 'data-insert-preview="'.$cur_id.'-',
-			   $data 
-			   ) ) ) ) ) ) ) ) ) ) );
-		
-		
-		//Toggle elements
-		$data = str_replace( 'uixpbform_btn_trigger-toggleshow open', 'uixpbform_btn_trigger-toggleshow',
-			   $data 
-			   );		
-		
-		
-		//Default value
-		if ( $value && is_array( $value ) ) {
-			foreach ( $value as $t_value ) {
-				
-				$item_id    = $uid.UixPBFormCore::fid( $col_id, $section_row, $t_value );
-				$item_value = self::inputtextareavalue( $items[ '['.$col_id.']'.$uid.'['.$t_value.']['.$section_row.']' ] );
-			
-				
-				if ( self::inc_str( $data, 'chk-id-input="'.$item_id.'"' ) ) {
-					$data = str_replace( 'chk-id-input="'.$item_id.'"', 'value="'.esc_attr( $item_value ).'"', $data );	
-				}
-				if ( self::inc_str( $data, 'chk-id-textarea="'.$item_id.'"' ) ) {
-					$data = str_replace( 'chk-id-textarea="'.$item_id.'"', '>'.esc_textarea( $item_value ).'</textarea>', $data );	
-				}			
-				
-
-			}	
-		}
-		
-		
-		
-		//Clone list classes
-		$data = str_replace( 'data-list="0"', 'data-list="1"',
-			   str_replace( 'toggle-row', 'toggle-row toggle-row-clone-list',
-			   $data 
-			   ) );
-			   	   
-		echo "<script type='text/javascript'>jQuery(document).ready(function(){ jQuery( 'a[data-targetid=\"".$clone_trigger_id."\"]' ).uixpbform_dynamicFormInit({cloneCode:'{$data}'}); });</script>";
-	}
-	
 			
 	/*
 	 * Returns the clone toggle target id
@@ -1972,9 +1802,44 @@ class UixPageBuilder {
 	}	 	
 	
 	
+		/*
+		 * Compress the front end code
+		 *
+		 *
+		 */
+		public static function str_compression( $str ) {
+			
+			$str = str_replace( PHP_EOL, '', $str );
+			$str = str_replace( "\t", '', $str );
+			
+			$pattern = array(
+			"/> *([^ ]*) *</",
+			"/[\s]+/",
+			"/<!--[^!]*-->/",
+			"/\"  /",
+			"/ \"/",
+			"'/\*[^*]*\*/'"
+			);
+			$replace = array(
+			">\\1<",
+			" ",
+			"",
+			"\"",
+			"\"",
+			""
+			);
+			
+		  $outputcode = preg_replace( $pattern, $replace, $str );
+			
+		  return $outputcode;
+	
+		}
+	
+	
+	
 		
 	/*
-	 * Initialize sections template parameters
+	 * Initialize sections template parameters  (Receive parameters via ajax)
 	 *
 	 *
 	 */
@@ -1988,7 +1853,7 @@ class UixPageBuilder {
 		$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
 		$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : esc_html__( 'Section', 'uix-page-builder' );
 		$colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
-		$item    = self::template_parameters( $form_id, $sid, $pid, $wname, $colid );
+		$item    = self::parse_json_form_values( $form_id, $sid, $pid, $wname, $colid );
 		
 		$vars = array(
 			'sid'        => $sid,
@@ -2007,16 +1872,26 @@ class UixPageBuilder {
 	
 		
 	/*
-	 * Returns template parameters
+	 * Parse JSON's values of all the form items for each module
 	 *
+	 *
+	 * $form_id  @var string  -> The form ID.
+	 * $sid      @var string  -> The section ID.
+	 * $pid      @var string  -> Current Post ID.
+	 * $wname    @var string  -> Current widget name of section.
+	 * $colid    @var string  -> Column ID.
 	 *
 	 */
-	public static function template_parameters( $form_id, $sid, $pid, $wname, $colid, $item = '' ) {
+	public static function parse_json_form_values( $form_id, $sid, $pid, $wname, $colid ) {
+		
+		//The value of all the form items for each module
+		$item = array();
+		
 		
 		if ( $sid >= 0 ) {
 
 			$builder_content   = self::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
-			$item              = array();
+			
 			if ( $builder_content && is_array( $builder_content ) ) {
 				foreach ( $builder_content as $key => $value ) :
 		
@@ -2070,8 +1945,6 @@ class UixPageBuilder {
 		} else {
 			return '';
 		}
-		
-		
 
 	}
 	
@@ -2082,258 +1955,42 @@ class UixPageBuilder {
 	 */
 	public static function form_scripts( $arr ) {
 		
-	
-		if ( is_array( $arr ) && sizeof( $arr ) >= 8 ) {
-		
-			//basic
-			$title            = $arr[ 'title' ];
-			$wname            = ( isset( $arr[ 'widget_name' ] ) ) ? $arr[ 'widget_name' ] : __( 'Section', 'uix-page-builder' );
-			$form_id          = $arr[ 'form_id' ];
-			$colid            = $arr[ 'column_id' ];
-			$sid              = $arr[ 'section_id' ];
-			$fields_args      = $arr[ 'fields' ];
-			$form_js_template = $arr[ 'js_template' ];
-			$defalt_value     = $arr[ 'defalt_value' ];
-			$multi_columns    = false;
-			$form_html        = '';
-			$form_js_vars     = '';
-			$last_fields_args = end( $fields_args ); //Determine whether to add a template form
-
-			
-
-			
-			if ( is_array( $fields_args ) ) {
-				
-			
-				foreach( $fields_args as $v ) :
-					if ( isset( $v[ 'title' ] ) && !empty( $v[ 'title' ] ) ) {
-						$multi_columns = true;
-						break;
-						
-					}
-				endforeach;
-				
-				if ( $multi_columns ) $form_html .= UixPBFormCore::form_before( $colid, $wname, $sid, $form_id );
-				
-				foreach( $fields_args as $v ) :
-					$column_title = '';
-					if ( isset( $v[ 'title' ] ) && !empty( $v[ 'title' ] ) ) {
-						$column_title  = $v[ 'title' ];
-					}
-					
-				
-					//------- template textarea
-					if( $v == $last_fields_args ) {
-						 // 'you can do something here as this condition states it just entered last element of an array'; 
-						array_push( $v[ 'values' ], array(
-													'id'             => $form_id.'_temp',
-													'title'          => '',
-													'desc'           => '',
-													'value'          => '',
-													'placeholder'    => '',
-													'type'           => 'textarea',
-													'default'        => array(
-																			'hide' => true,
-							                                                'tmpl' => true,
-							
-																		)
-											)
-						);	
-						
-					}
-						
-				
-					$form_html .= UixPBFormCore::add_form( $v[ 'config' ], $colid, $wname, $sid, $form_id, $v[ 'type' ], $v[ 'values' ], 'html', $column_title );
-					
-					$form_js_vars .= UixPBFormCore::add_form( $v[ 'config' ], $colid, $wname, $sid, $form_id, $v[ 'type' ], $v[ 'values' ], 'js_vars' );
-	
-				endforeach;
-				
-				
-				
-				
-				if ( $multi_columns ) $form_html .= UixPBFormCore::form_after();
-				
-
-			}
-			
-			
-			
-			//clone
-			$clone                       = $arr[ 'clone' ];
-			$clone_enable                = false;
-			$clone_trigger_id            = '';
-			$clone_max                   = 1;
-			$clone_list_toggle_class     = '';
-			$clone_fields_group          = '';
-		
-
-			if ( is_array( $clone ) && sizeof( $clone ) >= 2 ) {
-				$clone_enable                = true;
-				$clone_fields_group          = $clone[ 'fields_group' ];
-				$clone_list_toggle_class     = $clone[ 'list_toggle_class' ];
-
-				if ( isset( $clone[ 'max' ] ) ) {
-					$clone_max = $clone[ 'max' ];
-				}
-	
-			}
-
-
-
-			// ---------- Returns actions of javascript
-			if ( $sid == -1 && is_admin() ) {
-				if( self::page_builder_mode() ) {
-					if ( is_admin()) {
-
-
-						//List Item - Register clone vars ( step 1)
-						if ( $clone_enable && is_array( $clone_fields_group ) ) {
-						
-							foreach( $clone_fields_group as $v ) :
-								
-								$clone_fields        = $v[ 'fields' ];
-								$clone_trigger_id    = $v[ 'trigger_id' ];
-								$clone_fields_value  = '';
-								
-								
-								foreach( $clone_fields as $name ) :
-									
-									$toggle = '';
-									if( self::inc_str( $name, '_toggle' ) && !self::inc_str( $name, '_toggle_' ) ) {
-										$toggle = 'toggle';
-									}
-									if( self::inc_str( $name, '_toggle_' ) ) {
-										$toggle = 'toggle-row';
-									}								
-									
-									$clone_fields_value .= UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, $name ).'', $form_html, $toggle );
-							
-								endforeach;
-
-								UixPBFormCore::reg_clone_vars( $clone_trigger_id, $clone_fields_value );
-								
-							endforeach;
-						
-						}
-
-
-						?>
-						<script type="text/javascript">
-						( function($) {
-						'use strict';
-							$( document ).ready( function() {  
-								<?php echo UixPBFormCore::uixpbform_callback( $form_id, $title ); ?>
-
-							} ); 
-						} ) ( jQuery );
-						</script>
-
-						<?php
-
-
-					}
-				}
-
-			}
-
-
-			// ---------- Returns form with ajax
-			if ( $sid >= 0 && is_admin() ) {
-				echo $form_html;
-
-				// Dynamic Adding Input ( Default Value ) ( step 2)
-				if ( $clone_enable && is_array( $clone_fields_group ) ) {
-
-					foreach( $clone_fields_group as $v ) :
-	
-						$required_field     = $v[ 'required' ];
-						$clone_fields       = $v[ 'fields' ];
-						$clone_trigger_id   = $v[ 'trigger_id' ];
-						
-						if ( !isset( $v[ 'required' ] ) ) {
-							$required_field = $clone_fields[0];
-						}
-
-						
-						for ( $i = 2; $i <= $clone_max; $i++ ) {
-
-							$uid                = $i.'-';
-							$clone_fields_value = '';
-
-							foreach( $clone_fields as $name ) :
-								
-								$toggle = '';
-								if( self::inc_str( $name, '_toggle' ) && !self::inc_str( $name, '_toggle_' ) ) {
-									$toggle = 'toggle';
-								}
-								if( self::inc_str( $name, '_toggle_' ) ) {
-									$toggle = 'toggle-row';
-								}		
-								
-								$clone_fields_value .= UixPBFormCore::dynamic_form_code( 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, $name ).'', $form_html, $toggle );
-							
-							endforeach;
-							
-							if ( is_array( $defalt_value ) && array_key_exists( '['.$colid.']'.$uid.'['.$required_field.']['.$sid.']', $defalt_value ) ) {
-
-								$cur_id = $i;
-
-								self::push_cloneform( $uid, $defalt_value, $clone_trigger_id, $cur_id, $colid, $clone_fields_value, $sid, $clone_fields, $clone_list_toggle_class );
-
-							} 
-						} //end for
-					
-					endforeach;
-
-
-				}
-
-
-				?>
-
-				<script type="text/javascript">
-				( function($) {
-				'use strict';
-					$( document ).ready( function() {
-
-						function uix_pb_temp() {
-
-							/* Vars */
-							<?php echo $form_js_vars; ?>
-
-							/* Template */
-							<?php echo $form_js_template; ?>
-
-							/* Save all HTML code (include shortcode) for a single module, the necessary JavaScript variable: temp */
-							$( "#<?php echo UixPBFormCore::fid( $colid, $sid, $form_id.'_temp' ); ?>" ).val( temp );
-							
-							/* Render HTML Viewport */
-							$( document ).UixPBRenderHTML({ divID: '#<?php echo self::frontend_wrapper_id( '', $sid, $colid ); ?>', value: temp });
-
-						}
-						
-						uix_pb_temp();
-						$( document ).on( "change keyup focusout click", "[name^='<?php echo $form_id; ?>|[<?php echo $colid; ?>]'], .addrow-<?php echo $colid; ?>, .delrow-<?php echo $colid; ?>", function() { 
-							uix_pb_temp();
-						});
-
-
-					} ); 
-				} ) ( jQuery );
-				</script> 
-
-				<?php	
-			}
-	
-			
-		}
-	
+		$echo = new UixPB_Components_FormScripts( $arr );
 
 	}
 
 
+	/**
+	 * List sortable row selector of modules in admin panel
+	 * 
+	 */
+	public static function list_page_sortable_li( $col = '' ) {
 	
+		$echo = new UixPB_Components_SortableRow( $col );
+
+	}
+	
+	/**
+	 * List buttons of sortable row selector in admin panel
+	 * 
+	 */	
+	public static function list_page_sortable_li_btns( $col = '' ) {
+	
+		$echo = new UixPB_Components_SortableRow_btn( $col );
+		
+	}
+	
+	
+	/**
+	 * List column buttons of sortable row selector in admin panel
+	 * 
+	 */
+	public static function list_page_itembuttons() {
+		
+		$echo = new UixPB_Components_SortableRow_ColumnBtn();
+
+	}
+				
 	
 	
 	
