@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-15 11:10+0000\n"
+"POT-Creation-Date: 2017-09-15 12:20+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -161,103 +161,107 @@ msgstr ""
 msgid "The currently available default elements:"
 msgstr ""
 
-#: helper/tabs/about.php:35 uixpb_templates/modules/config.php:63
+#: helper/tabs/about.php:35
+msgid "Custom Menu (2 layouts)"
+msgstr ""
+
+#: helper/tabs/about.php:36 uixpb_templates/modules/config.php:63
 #: uixpb_templates/modules/config.php:68
 #: uixpb_templates/modules/uix_pb_module_parallax.php:111
 #: uixpb_templates/modules/uix_pb_module_parallax.php:285
 msgid "Parallax"
 msgstr ""
 
-#: helper/tabs/about.php:36
+#: helper/tabs/about.php:37
 msgid "Google Maps"
 msgstr ""
 
-#: helper/tabs/about.php:37
+#: helper/tabs/about.php:38
 msgid "Pricing (4 layouts)"
 msgstr ""
 
-#: helper/tabs/about.php:38
+#: helper/tabs/about.php:39
 msgid "Features (2 layouts)"
 msgstr ""
 
-#: helper/tabs/about.php:39
+#: helper/tabs/about.php:40
 msgid "Testimonials carousel"
 msgstr ""
 
-#: helper/tabs/about.php:40
+#: helper/tabs/about.php:41
 msgid "Team (2 layouts)"
 msgstr ""
 
-#: helper/tabs/about.php:41 uixpb_templates/modules/config.php:202
+#: helper/tabs/about.php:42 uixpb_templates/modules/config.php:202
 #: uixpb_templates/modules/uix_pb_module_clients.php:233
 msgid "Clients"
 msgstr ""
 
-#: helper/tabs/about.php:42 uixpb_templates/modules/config.php:220
+#: helper/tabs/about.php:43 uixpb_templates/modules/config.php:220
 #: uixpb_templates/modules/uix_pb_module_accordion.php:177
 msgid "Accordion"
 msgstr ""
 
-#: helper/tabs/about.php:43 uixpb_templates/modules/config.php:228
+#: helper/tabs/about.php:44 uixpb_templates/modules/config.php:228
 #: uixpb_templates/modules/uix_pb_module_tabs.php:181
 msgid "Tabs"
 msgstr ""
 
-#: helper/tabs/about.php:44 uixpb_templates/modules/config.php:235
+#: helper/tabs/about.php:45 uixpb_templates/modules/config.php:235
 #: uixpb_templates/modules/uix_pb_module_authorcard.php:214
 msgid "Author Card"
 msgstr ""
 
-#: helper/tabs/about.php:45 uixpb_templates/modules/config.php:242
+#: helper/tabs/about.php:46 uixpb_templates/modules/config.php:242
 #: uixpb_templates/modules/uix_pb_module_bar.php:269
 msgid "Progress Bar"
 msgstr ""
 
-#: helper/tabs/about.php:46 uixpb_templates/modules/config.php:314
+#: helper/tabs/about.php:47 uixpb_templates/modules/config.php:315
 msgid "Portfolio"
 msgstr ""
 
-#: helper/tabs/about.php:47 uixpb_templates/modules/config.php:296
+#: helper/tabs/about.php:48 uixpb_templates/modules/config.php:297
 msgid "Blog"
 msgstr ""
 
-#: helper/tabs/about.php:48 uixpb_templates/modules/config.php:82
+#: helper/tabs/about.php:49 uixpb_templates/modules/config.php:82
 #: uixpb_templates/modules/uix_pb_module_hello.php:220
 msgid "Slider"
 msgstr ""
 
-#: helper/tabs/about.php:49 uixpb_templates/modules/config.php:257
+#: helper/tabs/about.php:50 uixpb_templates/modules/config.php:257
 #: uixpb_templates/modules/uix_pb_module_instagram.php:122
 msgid "Instagram Feed"
 msgstr ""
 
-#: helper/tabs/about.php:50 uixpb_templates/modules/config.php:279
+#: helper/tabs/about.php:51 uixpb_templates/modules/config.php:280
 msgid "Sidebar"
 msgstr ""
 
-#: helper/tabs/about.php:51
+#: helper/tabs/about.php:52
 msgid "Uix Products (Require the WP plugin \"Uix Products\")"
 msgstr ""
 
-#: helper/tabs/about.php:52
+#: helper/tabs/about.php:53
 msgid "Uix Slideshow (Require the WP plugin \"Uix Slideshow\")"
 msgstr ""
 
-#: helper/tabs/about.php:53
+#: helper/tabs/about.php:54
 msgid "Contact Form (Require the WP plugin \"Contact Form 7\")"
 msgstr ""
 
-#: helper/tabs/about.php:58
+#: helper/tabs/about.php:59
 msgid "Displaying on Front-end Pages"
 msgstr ""
 
-#: helper/tabs/about.php:61
+#: helper/tabs/about.php:62
 msgid ""
 "Embed a shortcode <code>[uix_pb_sections]</code> into the editor of <strong>"
 "Pages Add New Screen</strong>."
 msgstr ""
 
-#: helper/tabs/about.php:66 uixpb_templates/modules/config.php:124
+#: helper/tabs/about.php:67 uixpb_templates/modules/config.php:124
 #: uixpb_templates/modules/uix_pb_module_pricing1.php:176
 #: uixpb_templates/modules/uix_pb_module_pricing1.php:317
 #: uixpb_templates/modules/uix_pb_module_pricing1.php:459
@@ -275,36 +279,36 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: helper/tabs/about.php:74
+#: helper/tabs/about.php:75
 #, php-format
 msgid ""
 "Support Custom Post Types to create a portfolio list in WordPress. (Require "
 "the WP plugin <a href=\"%s\" target=\"_blank\">Uix Products</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:83
+#: helper/tabs/about.php:84
 #, php-format
 msgid ""
 "Support Custom Post Types to create a slideshow in WordPress. (Require the "
 "WP plugin <a href=\"%s\" target=\"_blank\">Uix Slideshow</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:88
+#: helper/tabs/about.php:89
 msgid ""
 "You can switch between <strong>\"Visual Builder\"</strong> and <strong>"
 "\"Default Editor\"</strong> modes at any time on the Pages Add New/Edit "
 "Screen."
 msgstr ""
 
-#: helper/tabs/about.php:89
+#: helper/tabs/about.php:90
 msgid "Support to choose multiple default templates you want."
 msgstr ""
 
-#: helper/tabs/about.php:90
+#: helper/tabs/about.php:91
 msgid "Support to save custom templates and export templates."
 msgstr ""
 
-#: helper/tabs/about.php:91
+#: helper/tabs/about.php:92
 msgid ""
 "Support a key to add anchor links based Uix Page Builder to your navigation. "
 "Visit the Menus page (Appearance &laquo; Menus), choose items like <strong>"
@@ -312,19 +316,23 @@ msgid ""
 "the menu.  "
 msgstr ""
 
-#: helper/tabs/about.php:92
+#: helper/tabs/about.php:93
 msgid "Simple operation window, support loop list items."
 msgstr ""
 
-#: helper/tabs/about.php:93
+#: helper/tabs/about.php:94
 msgid "Customizable core style sheets."
 msgstr ""
 
-#: helper/tabs/about.php:94
+#: helper/tabs/about.php:95
 msgid "Drag and Drop Responsive Website Builder."
 msgstr ""
 
-#: helper/tabs/about.php:99
+#: helper/tabs/about.php:96
+msgid "Uix Page Builder supports the automatic addition of Anchor Links."
+msgstr ""
+
+#: helper/tabs/about.php:101
 msgid ""
 "<strong>If you like this plug-in, you can check out my free and high-quality "
 "themes with Uix Page Builder for you to download.</strong> <h4><a "
@@ -516,11 +524,11 @@ msgstr ""
 msgid "Click This Button to Copy Uix Page Builder Files"
 msgstr ""
 
-#: helper/tabs/usage.php:11
+#: helper/tabs/usage.php:21
 msgid "(1) How to use?"
 msgstr ""
 
-#: helper/tabs/usage.php:14
+#: helper/tabs/usage.php:24
 msgid ""
 "1. After activating your theme, you can see a prompt pointed out as "
 "absolutely critical. Go to <strong>\"Appearance -> Install Plugins\"</strong>"
@@ -529,7 +537,7 @@ msgid ""
 "content/plugins/) And upload files there.)"
 msgstr ""
 
-#: helper/tabs/usage.php:18
+#: helper/tabs/usage.php:28
 msgid ""
 "2. Go to your WordPress admin panel, edit or create a new page. You will "
 "find <strong>\"Uix Page Builder Attributes\"</strong> settings in a meta box "
@@ -538,26 +546,26 @@ msgid ""
 "\"Uix Page Builder Template\". )"
 msgstr ""
 
-#: helper/tabs/usage.php:27
+#: helper/tabs/usage.php:37
 msgid "(2) FAQ"
 msgstr ""
 
-#: helper/tabs/usage.php:32
+#: helper/tabs/usage.php:42
 msgid "FAQ 1: How To Create a Full Width or Boxed Layout?"
 msgstr ""
 
-#: helper/tabs/usage.php:36
+#: helper/tabs/usage.php:46
 msgid ""
 "On visual builder page, expand the <i class=\"dashicons dashicons-admin-"
 "generic\"></i> from Drag & Drop modules of left sidebar. You can easily "
 "choose the type of container."
 msgstr ""
 
-#: helper/tabs/usage.php:39
+#: helper/tabs/usage.php:49
 msgid "FAQ 2: How To Create The One-Page Navigation?"
 msgstr ""
 
-#: helper/tabs/usage.php:42
+#: helper/tabs/usage.php:52
 msgid ""
 "1. On visual builder page, expand the <i class=\"dashicons dashicons-admin-"
 "generic\"></i> from Drag & Drop modules of left sidebar. You can enter any "
@@ -565,7 +573,7 @@ msgid ""
 "my-portfolio</code>."
 msgstr ""
 
-#: helper/tabs/usage.php:44
+#: helper/tabs/usage.php:54
 #, php-format
 msgid ""
 "2. Create a new <a href=\"%1$s\">menu</a>, and add a Custom Link for each "
@@ -575,11 +583,11 @@ msgid ""
 "URL field."
 msgstr ""
 
-#: helper/tabs/usage.php:54
+#: helper/tabs/usage.php:64
 msgid "FAQ 3: How to use a custom page builder template?"
 msgstr ""
 
-#: helper/tabs/usage.php:60
+#: helper/tabs/usage.php:70
 #, php-format
 msgid ""
 "You could <a href=\"%s\">create</a> Uix Page Builder template file (from the "
@@ -590,11 +598,11 @@ msgid ""
 "directly."
 msgstr ""
 
-#: helper/tabs/usage.php:73
+#: helper/tabs/usage.php:83
 msgid "FAQ 4: How to create Anchor Links menu with Uix Page Builder?"
 msgstr ""
 
-#: helper/tabs/usage.php:77
+#: helper/tabs/usage.php:87
 msgid ""
 "Uix Page Builder supports the automatic addition of Anchor Links. From the "
 "<strong>\"Appearance\"</strong> menu on the left-hand side of the Dashboard, "
@@ -603,13 +611,13 @@ msgid ""
 "Within this pane, select a page to view all anchor link."
 msgstr ""
 
-#: helper/tabs/usage.php:88
+#: helper/tabs/usage.php:98
 msgid ""
 "FAQ 5: How to customize the Uix Page Builder templates and modules in admin "
 "panel?"
 msgstr ""
 
-#: helper/tabs/usage.php:94
+#: helper/tabs/usage.php:104
 #, php-format
 msgid "<a href=\"%s\">Check out here</a>"
 msgstr ""
@@ -782,19 +790,33 @@ msgstr ""
 msgid "Contact Form"
 msgstr ""
 
-#: uixpb_templates/modules/config.php:284
+#: uixpb_templates/modules/config.php:285
 #: uixpb_templates/modules/uix_pb_module_sidebar.php:102
 msgid "WP Sidebar"
 msgstr ""
 
-#: uixpb_templates/modules/config.php:301
+#: uixpb_templates/modules/config.php:302
 #: uixpb_templates/modules/uix_pb_module_blog.php:342
 msgid "WP Posts List"
 msgstr ""
 
-#: uixpb_templates/modules/config.php:319
+#: uixpb_templates/modules/config.php:320
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:340
 msgid "Portfolio Grid"
+msgstr ""
+
+#: uixpb_templates/modules/config.php:334
+msgid "Custom Menu"
+msgstr ""
+
+#: uixpb_templates/modules/config.php:339
+#: uixpb_templates/modules/uix_pb_module_menu1.php:145
+msgid "Menu 1"
+msgstr ""
+
+#: uixpb_templates/modules/config.php:346
+#: uixpb_templates/modules/uix_pb_module_menu2.php:145
+msgid "Menu 2"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_accordion.php:54
@@ -1191,6 +1213,8 @@ msgid "Read More Text"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_blog.php:243
+#: uixpb_templates/modules/uix_pb_module_menu1.php:88
+#: uixpb_templates/modules/uix_pb_module_menu2.php:88
 #: uixpb_templates/modules/uix_pb_module_uix_products.php:293
 msgid "Class Name"
 msgstr ""
@@ -1630,6 +1654,19 @@ msgstr ""
 msgid ""
 "Markers can display custom images, in which case they are usually referred "
 "to as \"icons.\""
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_menu1.php:98
+#: uixpb_templates/modules/uix_pb_module_menu2.php:98
+msgid "Select a Menu"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_menu1.php:111
+#: uixpb_templates/modules/uix_pb_module_menu2.php:111
+#, php-format
+msgid ""
+"Uix Page Builder supports the automatic addition of Anchor Links. <a "
+"href=\"%1$s\" target=\"_blank\">Manage Your Menus</a>"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_parallax.php:68

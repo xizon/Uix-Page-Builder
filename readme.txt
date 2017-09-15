@@ -28,6 +28,7 @@ You could add a new page with Uix Page Builder to your WordPress site, find the 
 
 The currently available default elements:
 
+* Custom Menu (2 layouts)
 * Parallax 
 * Google Maps 
 * Pricing (4 layouts) 
@@ -152,6 +153,7 @@ Uix Page Builder supports the automatic addition of Anchor Links. From the **"Ap
 * Added a custom JavaScript template annotation to each module.
 * Upgraded core API for theme developer customization.
 * Added the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+* Added a new module: Custom Menu (new). Supports multiple styles of choice.
 
 
 

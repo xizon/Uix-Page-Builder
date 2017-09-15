@@ -7,6 +7,16 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 ?>
 
     
+
+          <p>
+            <?php 
+				$embed_code = wp_oembed_get('https://www.youtube.com/watch?v=uKhEKEWLqcA', array('width'=>560, 'height'=>315 )); 
+				echo $embed_code;										 
+			  ?>
+        
+        </p>   
+        
+       
         <h3>
             <?php _e( '(1) How to use?', 'uix-page-builder' ); ?>
         </h3>  

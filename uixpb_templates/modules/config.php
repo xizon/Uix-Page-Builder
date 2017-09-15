@@ -275,6 +275,7 @@ $uix_pb_config = array(
 	
 	
 	
+	
 	array(
 		'sortname'        => esc_html__( 'Sidebar', 'uix-page-builder' ),
 		'buttons'         => array(
@@ -329,6 +330,30 @@ $uix_pb_config = array(
 	),	
 	
 
+	array(
+		'sortname'        => esc_html__( 'Custom Menu', 'uix-page-builder' ),
+		'buttons'         => array(
+
+	
+								array(
+									'title'           => esc_html__( 'Menu 1', 'uix-page-builder' ),
+									'id'              => 'uix_pb_module_menu1.php',
+									'thumb'           => 'menu1.jpg',
+								
+								),
+	
+								array(
+									'title'           => esc_html__( 'Menu 2', 'uix-page-builder' ),
+									'id'              => 'uix_pb_module_menu2.php',
+									'thumb'           => 'menu2.jpg',
+								
+								),
+	
+	
+							)
+	
+	),	
+	
 		
 );
 

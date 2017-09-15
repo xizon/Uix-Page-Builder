@@ -32,6 +32,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
             <?php _e( 'The currently available default elements:', 'uix-page-builder' ); ?>
         </p> 
 		<ul class="uix-bg-custom-list">
+	        <li><?php _e( 'Custom Menu (2 layouts)', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Parallax', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Google Maps', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Pricing (4 layouts)', 'uix-page-builder' ); ?></li> 
@@ -92,6 +93,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 			<li> <?php _e( 'Simple operation window, support loop list items.', 'uix-page-builder' ); ?></li>
 			<li> <?php _e( 'Customizable core style sheets.', 'uix-page-builder' ); ?></li>
 			<li><?php _e( 'Drag and Drop Responsive Website Builder.', 'uix-page-builder' ); ?></li>
+			<li><?php _e( 'Uix Page Builder supports the automatic addition of Anchor Links.', 'uix-page-builder' ); ?></li>
   
 		</ul> 
           
@@ -99,14 +101,6 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
            <?php _e( '<strong>If you like this plug-in, you can check out my free and high-quality themes with Uix Page Builder for you to download.</strong> <h4><a href="https://uiux.cc/" target="_blank">Click here to check out</a></h4>', 'uix-page-builder' ); ?>
         </p>      
 
-          <p>
-            <?php 
-				$embed_code = wp_oembed_get('https://www.youtube.com/watch?v=uKhEKEWLqcA', array('width'=>560, 'height'=>315 )); 
-				echo $embed_code;										 
-			  ?>
-        
-        </p>   
-        
    
   
   
