@@ -376,7 +376,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 - WP 4.8
 
 
-###Screenshot
+### Screenshot
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/screenshots/screenshot-1.jpg)
 
@@ -405,9 +405,9 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 
 
-###Credits
+### Credits
 
-#####I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
+##### I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
 
 - [Font Awesome](http://fontawesome.io)
 - [Gridster](https://dsmorse.github.io/gridster.js/)
@@ -419,7 +419,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 
 
-###How to use?
+### How to use?
 
 1.After activating your theme, you can see a prompt pointed out as absolutely critical. Go to **"Appearance -> Install Plugins"**.
 Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/plugins/) And upload files there.)
