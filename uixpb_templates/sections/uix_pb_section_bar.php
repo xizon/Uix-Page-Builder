@@ -267,7 +267,26 @@ UixPageBuilder::form_scripts( array(
 
 						),
 		'title'        => esc_html__( 'Progress Bar', 'uix-page-builder' ),
-	    'js_template'  => '
+	
+	
+		/**
+		 * /////////////// Customizing HTML output on the frontend /////////////// 
+		 * 
+		 * 
+		 * Usage:
+		 *
+		 * 1) Written as pure JavaScript syntax.
+		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
+		 * 3) Be sure to note the escape of quotation marks and slashes.
+		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
+		 * 5) Value of controls with dynamic form need to use, For example:
+		 *    $( {index}+'<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val()
+		 *  
+		 *  ---------------------------------
+		 *     {index}      @var Number      ->  Index value, For example: 2-, 3-, 4-, 5-, ...
+		 *     {controlID}  @var String      ->  The ID of a control.
+		 */
+	    'js_template'             => '
 	
 			var  temp                                 = \'\',
 				 uix_pb_bar_result_color              = uix_pb_bar_color,

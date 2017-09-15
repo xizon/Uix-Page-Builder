@@ -188,7 +188,26 @@ UixPageBuilder::form_scripts( array(
 
 						),
 		'title'        => esc_html__( 'Google Map', 'uix-page-builder' ),
-	    'js_template'  => '
+	
+	
+		/**
+		 * /////////////// Customizing HTML output on the frontend /////////////// 
+		 * 
+		 * 
+		 * Usage:
+		 *
+		 * 1) Written as pure JavaScript syntax.
+		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
+		 * 3) Be sure to note the escape of quotation marks and slashes.
+		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
+		 * 5) Value of controls with dynamic form need to use, For example:
+		 *    $( {index}+'<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val()
+		 *  
+		 *  ---------------------------------
+		 *     {index}      @var Number      ->  Index value, For example: 2-, 3-, 4-, 5-, ...
+		 *     {controlID}  @var String      ->  The ID of a control.
+		 */
+	    'js_template'             => '
 			var temp = \'[uix_pb_map style=\\\'\'+uixpbform_htmlEncode( uix_pb_map_style )+\'\\\' width=\\\'\'+uixpbform_floatval( uix_pb_map_width )+\'\'+uixpbform_htmlEncode( uix_pb_map_width_units )+\'\\\' height=\\\'\'+uixpbform_floatval( uix_pb_map_height )+\'\'+uixpbform_htmlEncode( uix_pb_map_height_units )+\'\\\' latitude=\\\'\'+uixpbform_floatval( uix_pb_map_latitude )+\'\\\' longitude=\\\'\'+uixpbform_floatval( uix_pb_map_longitude )+\'\\\' zoom=\\\'\'+uixpbform_floatval( uix_pb_map_zoom )+\'\\\' name=\\\'\'+uixpbform_htmlEncode( uix_pb_map_name )+\'\\\' marker=\\\'\'+encodeURI( uix_pb_map_marker )+\'\\\']\';
 		'
     )
