@@ -409,7 +409,14 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 #####I would like to give special thanks to credits. The following is a guide to the list of credits for this plugin:
 
+- [Font Awesome](http://fontawesome.io)
 - [Gridster](https://dsmorse.github.io/gridster.js/)
+- [easy-pie-chart](http://robert-fleischmann.de)
+- [jQuery FlexSlider](https://woocommerce.com/flexslider/)
+- [jQuery Parallax](http://www.ianlunn.co.uk/plugins/jquery-parallax/)
+- [Shuffle.js](https://vestride.github.io/Shuffle/)
+- [wp-color-picker-alpha](https://github.com/23r9i0/wp-color-picker-alpha)
+
 
 
 ###How to use?
