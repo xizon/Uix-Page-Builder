@@ -352,10 +352,10 @@ UixPageBuilder::form_scripts( array(
 		 * 3) Be sure to note the escape of quotation marks and slashes.
 		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
 		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( {index}+'<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val()
+		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
 		 *  
 		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value, For example: 2-, 3-, 4-, 5-, ...
+		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
 		 *     {controlID}  @var String      ->  The ID of a control.
 		 */
 	    'js_template'             => '
