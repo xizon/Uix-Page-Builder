@@ -331,7 +331,9 @@ if ( !function_exists( 'uix_page_builder_loadtemp' ) ) {
 		
 		if ( isset( $_POST[ 'curlayoutdata' ] ) && isset( $_POST[ 'postID' ] ) ) {
 			
-			$post_ID = $_POST[ 'postID' ];
+			$post_ID       = $_POST[ 'postID' ];
+			$curlayoutdata = UixPageBuilder::format_page_final_data( $_POST[ 'curlayoutdata' ] );
+			
 			
 			//Match the default template(.xml) for the page builder
 			if ( isset( $_POST[ 'pagetemp' ] ) ) {
@@ -357,14 +359,14 @@ if ( !function_exists( 'uix_page_builder_loadtemp' ) ) {
 				UixPageBuilder::session_default_tempname( $_POST[ 'tempname' ], $post_ID );
 			}
 			
-			$layoutdata = UixPageBuilder::format_layoutdata_add_tempname( $post_ID, wp_unslash( $_POST[ 'curlayoutdata' ] ) );
+			$layoutdata = UixPageBuilder::format_layoutdata_add_tempname( $post_ID, wp_unslash( $curlayoutdata ) );
 			
 			update_post_meta( $post_ID, 'uix-page-builder-layoutdata', $layoutdata );
 		}
 		
 		//Load the template JSON data
 		if ( isset( $_POST[ 'curlayoutdata' ] ) ) {
-			echo $_POST[ 'curlayoutdata' ];
+			echo $curlayoutdata;
 		}
 		
 		

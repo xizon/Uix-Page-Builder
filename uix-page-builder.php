@@ -1968,19 +1968,30 @@ class UixPageBuilder {
 		
 		$data = '';
 		
-		if ( !empty( $id ) ) {
-			
-			$data = get_post_meta( $id, 'uix-page-builder-layoutdata', true );
-
-			//Compatible with 1.4.2 or before versions of .xml template files and pages that have saved data.
-			$data = str_replace( 'uix_pb_section_', 'uix_pb_module_', $data );
-			
+		if ( !empty( $id ) ) {	
+			$data = self::format_page_final_data( get_post_meta( $id, 'uix-page-builder-layoutdata', true ) );	
 		}
 
 		return $data;
 		
 	}
 	
+	
+	/*
+	 * Formats the JSON final data of each page.
+	 *
+	 *
+	 * $str  @var string  -> JSON format string.
+	 *
+	 */
+	public static function format_page_final_data( $str ) {
+		
+		//Compatible with 1.4.2 or before versions of .xml template files and pages that have saved data.
+		$data = str_replace( 'uix_pb_section_', 'uix_pb_module_', $str );
+		
+		return $data;
+		
+	}
 	
 	
 	/*
