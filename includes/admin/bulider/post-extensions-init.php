@@ -532,20 +532,10 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
     
     <div class="uix-metabox-group">
         <h3>
-			<?php _e( 'FAQ 1: How To Create a Full Width or Boxed Layout?', 'uix-page-builder' ); ?>
+			<?php _e( 'Frequently Asked Questions (FAQ):', 'uix-page-builder' ); ?>
         </h3>
-        <h3>
-			<?php _e( 'FAQ 2: How To Create The One-Page Navigation?', 'uix-page-builder' ); ?>
-        </h3>
-        <h3>
-			<?php _e( 'FAQ 2: How to use a custom page builder template?', 'uix-page-builder' ); ?>
-        </h3>
-        <h3>
-			<?php _e( 'FAQ 4: How to customize the Uix Page Builder templates and modules in admin panel?', 'uix-page-builder' ); ?>
-        </h3>    
         
-        
-		<p><?php printf( __( '<a href="%1$s" target="_blank">Check out</a>' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=usage' ) ); ?></p>
+		<p><?php printf( __( '<a href="%1$s" target="_blank">Check out here</a>' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=usage' ) ); ?></p>
     
     </div>
     

@@ -69,8 +69,23 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
        
 
 			</div>
+			
+			<h3><?php _e( 'FAQ 4: How to create Anchor Links menu with Uix Page Builder?', 'uix-page-builder' ); ?>
+			</h3>
+			<div class="uix-bg-custom-faq-con">
+				<p>
+		        <?php _e( 'Uix Page Builder supports the automatic addition of Anchor Links. From the <strong>"Appearance"</strong> menu on the left-hand side of the Dashboard, select the <strong>"Menus"</strong> option to bring up the Menu Editor. Locate the pane entitled <strong>"Uix Page Builder Anchor Links"</strong>. Within this pane, select a page to view all anchor link.', 'uix-page-builder' ); ?>
+			   
+				</p>
+       
+				<p>
+					 <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/anchor-links.jpg" alt="">
+				</p> 
+			</div>
+			
+			
 
-			<h3><?php _e( 'FAQ 4: How to customize the Uix Page Builder templates and modules in admin panel?', 'uix-page-builder' ); ?>
+			<h3><?php _e( 'FAQ 5: How to customize the Uix Page Builder templates and modules in admin panel?', 'uix-page-builder' ); ?>
 			</h3>
 			<div class="uix-bg-custom-faq-con">
 				<p>

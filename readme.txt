@@ -70,6 +70,7 @@ Embed a shortcode **"[uix_pb_sections]"** into the editor of **Pages Add New Scr
 * Simple operation window, support loop list items.
 * Customizable core style sheets.
 * Drag and Drop Responsive Website Builder.
+* Uix Page Builder supports the automatic addition of Anchor Links.
 
 
 
@@ -112,6 +113,11 @@ On visual builder page, expand the Settings Icon from Drag & Drop modules of lef
 = FAQ 3: How to use a custom page builder template? =
 
 You could create Uix Page Builder template file (from the directory "/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php" ) in your templates directory. It’s just a custom template file in the theme folder. Of course you doesn’t need to create it, you can use of the default page template or your own custom template file directly.
+
+
+= FAQ 4: How to create Anchor Links menu with Uix Page Builder? =
+
+Uix Page Builder supports the automatic addition of Anchor Links. From the **"Appearance"** menu on the left-hand side of the Dashboard, select the **"Menus"** option to bring up the Menu Editor. Locate the pane entitled **"Uix Page Builder Anchor Links"**. Within this pane, select a page to view all anchor link.
 
 
 

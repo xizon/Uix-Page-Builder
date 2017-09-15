@@ -70,6 +70,7 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Simple operation window, support loop list items.
 * Customizable core style sheets.
 * Drag and Drop Responsive Website Builder.
+* Uix Page Builder supports the automatic addition of Anchor Links.
 
 
 
@@ -102,6 +103,15 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/set-layout-1.jpg)
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/set-layout-2.jpg)
+
+
+##### = FAQ 4: How to create Anchor Links menu with Uix Page Builder?
+
+Uix Page Builder supports the automatic addition of Anchor Links. From the **"Appearance"** menu on the left-hand side of the Dashboard, select the **"Menus"** option to bring up the Menu Editor. Locate the pane entitled **"Uix Page Builder Anchor Links"**. Within this pane, select a page to view all anchor link.
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/anchor-links.jpg)
+
+
 
 
 
