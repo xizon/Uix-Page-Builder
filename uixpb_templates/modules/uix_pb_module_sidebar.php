@@ -3,25 +3,18 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
-/**
- * Require the WP plugin "Uix Slideshow"
- * ----------------------------------------------------
- */
-if ( !class_exists( 'UixSlideshow' ) ) {
-    return;
-}
-
 
 /**
- * Initialize sections template parameters
+ * Returns each variable in module data
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::init_template_parameters( basename( __FILE__, '.php' ) );
+$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
 if ( !is_array( $form_vars ) ) return;
 foreach ( $form_vars as $key => $v ) :
 	$$key = $v;
 endforeach;
 
+							 
 
 /**
  * Form Type & Parameters
@@ -37,30 +30,42 @@ $args_config = array(
 	'sid'       => $sid,
 	'form_id'   => $form_id,
 	'items'     => $item
-);						
+);	
+
+
+//Show All Sidebars
+global $wp_registered_sidebars;
+$sidebars_value = array();
+
+if ( !empty( $wp_registered_sidebars ) ) {
+	foreach ( $wp_registered_sidebars as $value ) {
+		UixPageBuilder::array_push_associative( $sidebars_value, array( esc_attr( $value['id'] ) => esc_html( $value['name'] ) ) );
+	}
+	
+}
+
 
 
 $args = 
 	array(
+	
+
+	
+		array(
+			'id'             => 'uix_pb_sidebar_id',
+			'title'          => esc_html__( 'Select Sidebar', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => '',
+			'placeholder'    => '',
+			'type'           => 'select',
+			'default'        => $sidebars_value
+
+		),
 
 		
-		array(
-			'id'             => 'uix_pb_uix_slideshow_code',
-			'title'          => esc_html__( 'Shortcode & Content', 'uix-page-builder' ),
-			'desc'           => '',
-			'value'          => '[uix_slideshow_output]',
-			'placeholder'    => '',
-			'type'           => 'textarea',
-			'default'        => array(
-									'row'     => 3
-								)
-		
-		),
-		
-	
 	    array(
-			'id'             => 'uix_pb_uix_slideshow_manage_tipinfo',
-			'desc'           => wp_kses( sprintf( __( '<a href="%1$s" target="_blank">Manage Your Content of Uix Slideshow</a>', 'uix-page-builder' ), esc_url( admin_url( 'edit.php?post_type=uix-slideshow' ) ) ), wp_kses_allowed_html( 'post' ) ),
+			'id'             => 'uix_pb_sidebar_id_tipinfo',
+			'desc'           => wp_kses( sprintf( __( 'Calls each of the active widget callbacks in order, which prints the markup for the sidebar. <a href="%1$s" target="_blank">Customize Your Sidebar</a>', 'uix-page-builder' ), esc_url( admin_url( 'widgets.php' ) ) ), wp_kses_allowed_html( 'post' ) ),
 			'type'           => 'note',
 			'default'        => array(
 		                            'fullwidth'  => false,
@@ -68,12 +73,9 @@ $args =
 				                ),
 		
 		),	
+		
 
-		
-		
 	
-
-
 	)
 ;
 
@@ -81,7 +83,7 @@ $args =
 /**
  * Returns form javascripts
  * ----------------------------------------------------
- */
+ */			
 UixPageBuilder::form_scripts( array(
 	    'clone'        => '',
 	    'defalt_value' => $item,
@@ -97,8 +99,8 @@ UixPageBuilder::form_scripts( array(
 							),
 
 						),
-		'title'        => esc_html__( 'Uix Slideshow', 'uix-page-builder' ),
-
+		'title'        => esc_html__( 'WP Sidebar', 'uix-page-builder' ),
+	
 	
 		/**
 		 * /////////////// Customizing HTML output on the frontend /////////////// 
@@ -118,7 +120,10 @@ UixPageBuilder::form_scripts( array(
 		 *     {controlID}  @var String      ->  The ID of a control.
 		 */
 	    'js_template'             => '
-			var temp = uixpbform_format_textarea_entering( uix_pb_uix_slideshow_code );
+		
+			var temp = \'[uix_pb_sidebar id=\\\'\'+uixpbform_htmlEncode( uix_pb_sidebar_id )+\'\\\']\';
+		
+		
 		'
     )
 );

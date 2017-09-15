@@ -8,13 +8,24 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.4.2
+ * Version:     1.4.3
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
  * Text Domain: uix-page-builder
  * Domain Path: /languages
  */
+
+/*--------------------------------------------------------
+ * Some of the easily confusing Variable Terms in the plugin: 
+ *
+ * 1) form ID      ->  Obtained via module ID.
+ * 2) section ID   ->  Obtained via gridster widget ID.
+ * 3) section      ->  Each page module of front-end HTML code. (It is not a page builder module in admin panel.)
+ * 4) module       ->  The page builder forms and front-end rendering.
+ * 5) template     ->  The JSON final data of each page.
+
+*/
 
 class UixPageBuilder {
 	
@@ -29,7 +40,7 @@ class UixPageBuilder {
 	 * For admin panel only, template directory name of front-end can use filter "uixpb_templates_filter"
 	 *
 	 */
-	const CUSTOMTEMP       = 'uixpb_templates/sections/';
+	const CUSTOMTEMP       = 'uixpb_templates/modules/';
 
 
 	
@@ -51,7 +62,7 @@ class UixPageBuilder {
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
-		add_action( 'admin_footer', array( __CLASS__, 'call_sections' ) );
+		add_action( 'admin_footer', array( __CLASS__, 'call_modules' ) );
 		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
 		//add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
@@ -630,13 +641,13 @@ class UixPageBuilder {
 	/**
 	 * Returns the modules path of template directory in order to your current theme.
 	 *
-	 * Output:  uixpb_templates/sections/
+	 * Output:  uixpb_templates/modules/
 	 *
 	 * 
 	 */
 	public static function get_theme_template_modules_path() {
 
-		return trailingslashit( self::get_theme_template_dir_name().'/sections' );
+		return trailingslashit( self::get_theme_template_dir_name().'/modules' );
 	}	
 	
 	
@@ -1103,11 +1114,11 @@ class UixPageBuilder {
 	
 	
 	/*
-	 * Call the specified page sections
+	 * Call the specified page modules
 	 *
 	 *
 	 */
-	public static function call_sections( $name ) {
+	public static function call_modules( $name ) {
 		
 		if( self::page_builder_mode() ) {
 			
@@ -1157,7 +1168,7 @@ class UixPageBuilder {
 	}
 	
 	
-	public static function call_sections_frontend() {
+	public static function call_modules_frontend() {
 		
 		if ( self::tempfolder_exists() ) {
 			
@@ -1536,8 +1547,8 @@ class UixPageBuilder {
 	 *
 	 * Templates file: 
 	 * 
-	 *  a) /wp-content/plugins//uixpb_templates/sections/templates.xml  
-	 *  b) /wp-content/plugins/{your-theme}/uixpb_templates/sections/templates.xml  
+	 *  a) /wp-content/plugins//uixpb_templates/modules/templates.xml  
+	 *  b) /wp-content/plugins/{your-theme}/uixpb_templates/modules/templates.xml  
 	 *  c) /wp-content/themes/{your-theme}/uixpb_templates.xml
 	 *
 	 */
@@ -1566,9 +1577,9 @@ class UixPageBuilder {
 			} else {
 
 				if ( $type == 'uri' )  {
-					return self::backend_path( 'uri' ).'sections/'.$plug_name;
+					return self::backend_path( 'uri' ).'modules/'.$plug_name;
 				} else {
-					return self::backend_path( 'dir' ).'sections/'.$plug_name;
+					return self::backend_path( 'dir' ).'modules/'.$plug_name;
 				}
 
 			}	
@@ -1578,9 +1589,9 @@ class UixPageBuilder {
 		//Only Plugin
 		if ( $locate == 'plug' ) {
 			if ( $type == 'uri' )  {
-				return self::backend_path( 'uri' ).'sections/'.$plug_name;
+				return self::backend_path( 'uri' ).'modules/'.$plug_name;
 			} else {
-				return self::backend_path( 'dir' ).'sections/'.$plug_name;
+				return self::backend_path( 'dir' ).'modules/'.$plug_name;
 			}	
 		}
 		
@@ -1839,16 +1850,13 @@ class UixPageBuilder {
 	
 		
 	/*
-	 * Initialize sections template parameters  (Receive parameters via ajax)
+	 * Returns each variable in module data  (Receive parameters via ajax)
 	 *
 	 *
 	 */
-	public static function init_template_parameters( $id ) {
+	public static function get_module_data_vars( $id ) {
 
-		//Form ID
 		$form_id = $id;
-
-		//Sections template parameters
 		$sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
 		$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
 		$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : esc_html__( 'Section', 'uix-page-builder' );
@@ -1875,8 +1883,8 @@ class UixPageBuilder {
 	 * Parse JSON's values of all the form items for each module
 	 *
 	 *
-	 * $form_id  @var string  -> The form ID.
-	 * $sid      @var string  -> The section ID.
+	 * $form_id  @var string  -> The form ID (Obtained via module ID).
+	 * $sid      @var string  -> The section ID. (Obtained via gridster widget ID.)
 	 * $pid      @var string  -> Current Post ID.
 	 * $wname    @var string  -> Current widget name of section.
 	 * $colid    @var string  -> Column ID.
@@ -1890,8 +1898,9 @@ class UixPageBuilder {
 		
 		if ( $sid >= 0 ) {
 
-			$builder_content   = self::page_builder_array_newlist( get_post_meta( $pid, 'uix-page-builder-layoutdata', true ) );
+			$builder_content   = self::page_builder_array_newlist( self::get_page_final_data( $pid ) );
 			
+
 			if ( $builder_content && is_array( $builder_content ) ) {
 				foreach ( $builder_content as $key => $value ) :
 		
@@ -1919,13 +1928,13 @@ class UixPageBuilder {
 							$colname           = $form_id.'-col';
 							$cname             = str_replace( $form_id.'|', '', $key[1][0] );
 							$id                = $key[0][1];
-							$item[ $colname ]   =  $id;  //Usage: $item[ 'uix_pb_section_xxx-col' ];
+							$item[ $colname ]   =  $id;  //Usage: $item[ 'uix_pb_module_xxx-col' ];
 
 
 							foreach ( $detail_content as $value ) :	
 								$name           = str_replace( $form_id.'|', '', $value[0] );
 								$content        = $value[1];
-								$item[ $name ]  =  $content;	  //Usage:  $item[ 'uix_pb_section_xxx|[col-item-1_1---0][uix_pb_xxx_xxx][0]' ];
+								$item[ $name ]  =  $content;	  //Usage:  $item[ 'uix_pb_module_xxx|[col-item-1_1---0][uix_pb_xxx_xxx][0]' ];
 
 							endforeach;
 
@@ -1947,6 +1956,32 @@ class UixPageBuilder {
 		}
 
 	}
+	
+	/*
+	 * Returns the JSON final data of each page.
+	 *
+	 *
+	 * $id  @var string  -> Current Post ID.
+	 *
+	 */
+	public static function get_page_final_data( $id ) {
+		
+		$data = '';
+		
+		if ( !empty( $id ) ) {
+			
+			$data = get_post_meta( $id, 'uix-page-builder-layoutdata', true );
+
+			//Compatible with 1.4.2 or before versions of .xml template files and pages that have saved data.
+			$data = str_replace( 'uix_pb_section_', 'uix_pb_module_', $data );
+			
+		}
+
+		return $data;
+		
+	}
+	
+	
 	
 	/*
 	 * Form javascripts output when in ajax or default state

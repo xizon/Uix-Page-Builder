@@ -496,7 +496,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 
 
 
-								/*-- Initialize per column section buttons status (Has been clicked) --*/
+								/*-- Initialize per column module buttons status (Has been clicked) --*/
 								gridsterItemElementsBTStatus( 1 );
 
 							});
@@ -521,7 +521,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 					/*-- Initialize gridster widgets status --*/
 					UixPBGridsterConstructor.prototype.widgetStatus.call( this );
 
-					/*-- Initialize per column section buttons status (The click action has not yet been performed.) --*/
+					/*-- Initialize per column module buttons status (The click action has not yet been performed.) --*/
 					gridsterItemElementsBTStatus( 0 );
 
 

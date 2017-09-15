@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 3.3 (September 11, 2017)
+ * @version		: 3.4 (September 15, 2017)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '3.3';	
+		const VERSION    = '3.4';	
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 		
 		/**
@@ -26,7 +26,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 * For admin panel only, template directory name of front-end can use filter "uixpb_templates_filter"
 		 *
 		 */
-		const CUSTOMTEMP = 'uixpb_templates/sections/';
+		const CUSTOMTEMP = 'uixpb_templates/modules/';
 	
 	
 		
@@ -40,8 +40,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_form_core' ) );
 			add_action( 'admin_footer', array( __CLASS__, 'icon_selector_win' ) );
-			add_action( 'wp_ajax_nopriv_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
-			add_action( 'wp_ajax_uixpbform_ajax_sections', array( __CLASS__, 'load_uixpbform_ajax_sections' ) );
+			add_action( 'wp_ajax_nopriv_uixpbform_ajax_modules', array( __CLASS__, 'load_uixpbform_ajax_modules' ) );
+			add_action( 'wp_ajax_uixpbform_ajax_modules', array( __CLASS__, 'load_uixpbform_ajax_modules' ) );
 			add_action( 'wp_ajax_nopriv_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
 			add_action( 'wp_ajax_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
 			
@@ -249,23 +249,23 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		/**
 		 * Returns the modules path of template directory in order to your current theme.
 		 *
-		 * Output:  uixpb_templates/sections/
+		 * Output:  uixpb_templates/modules/
 		 *
 		 * 
 		 */
 		public static function get_theme_template_modules_path() {
 
-			return trailingslashit( self::get_theme_template_dir_name().'/sections' );
+			return trailingslashit( self::get_theme_template_dir_name().'/modules' );
 		}	
 
 		
 		
 		/*
-		 * Call the specified page sections
+		 * Call the specified page modules
 		 *
 		 *
 		 */
-		public static function call_ajax_sections_tempfilepath( $name ) {
+		public static function call_ajax_modules_tempfilepath( $name ) {
 			
 			if ( self::tempfolder_exists() ) {
 				
@@ -300,7 +300,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 
 		
 		/*
-		 * Returns form id
+		 * Returns form id (Obtained via module ID)
 		 *
 		 *
 		 */
@@ -618,14 +618,14 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		}
 		
 		/*
-		 * Callback uixpbform sections with ajax
+		 * Callback page modules with ajax
 		 *
 		 *
 		 */
-		public static function load_uixpbform_ajax_sections() {
+		public static function load_uixpbform_ajax_modules() {
 			
 			$tempID = isset( $_POST['tempID'] ) ? $_POST[ 'tempID' ] : '';
-			self::call_ajax_sections_tempfilepath( $tempID );
+			self::call_ajax_modules_tempfilepath( $tempID );
 			die();
 		}
 	

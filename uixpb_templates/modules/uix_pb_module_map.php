@@ -5,10 +5,10 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
 
 
 /**
- * Initialize sections template parameters
+ * Returns each variable in module data
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::init_template_parameters( basename( __FILE__, '.php' ) );
+$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
 if ( !is_array( $form_vars ) ) return;
 foreach ( $form_vars as $key => $v ) :
 	$$key = $v;

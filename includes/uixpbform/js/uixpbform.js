@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version: 3.3
+	* Version: 3.4
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -82,7 +82,7 @@
 						url       : ajaxurl,
 						type      : 'POST',
 						data: {
-							action    : 'uixpbform_ajax_sections',
+							action    : 'uixpbform_ajax_modules',
 							tempID    : formID,
 							sectionID : widget_ID,
 							colID     : widget_colID,

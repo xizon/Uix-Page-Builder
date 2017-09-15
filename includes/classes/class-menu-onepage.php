@@ -47,7 +47,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 			if ( isset( $_POST[ 'postID' ] ) ) {
 				
 				$post_ID           = $_POST[ 'postID' ];
-				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $post_ID, 'uix-page-builder-layoutdata', true ) );
+				$builder_content   = UixPageBuilder::page_builder_array_newlist( UixPageBuilder::get_page_final_data( $post_ID ) );
 				$item              = array();
 				$cols              = array( 
 										array( '3_4', 'uix-pb-col-9' ),
@@ -112,7 +112,7 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 									$temp_index      = count( $value ) - 1;
 
 									$bool1 = UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' );
-									$bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' );
+									$bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_module_undefined' );
 
 									if ( $bool1 || $bool2 ) {
 

@@ -591,8 +591,9 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-page-builder' );
 		
 		$curid            = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
-		$old_layoutdata   = get_post_meta( $curid, 'uix-page-builder-layoutdata', true );
+		$old_layoutdata   = UixPageBuilder::get_page_final_data( $curid );
 		$gridster_class   = ( UixPageBuilder::vb_mode() ) ? 'uix-page-builder-visual-builder visualBuilder' : '';
+
 		
 		//Define session for the current post ID
 		UixPageBuilder::session_current_postid( $curid );

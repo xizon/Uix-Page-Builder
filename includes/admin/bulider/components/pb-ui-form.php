@@ -295,7 +295,7 @@ class UixPB_Components_FormScripts extends UixPageBuilder {
 	 * $cur_id                     @var string      -> The index value of the current clone form
 	 * $col_id		                @var string      -> The column ID of each module
 	 * $clone_value                @var HTML code   -> The form code has been cloned
-	 * $section_row                @var string      -> The section ID.
+	 * $section_row                @var string      -> The section ID. (Obtained via gridster widget ID.)
 	 * $value                      @var array       -> The value of all the "cloned form" items for each module
 	 * $clone_list_toggle_classes  @var string      -> The trigger class name of the clone form
 	 *

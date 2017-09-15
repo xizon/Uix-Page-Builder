@@ -75,7 +75,7 @@
 		
 	   /*!
 		 *
-		 * Per column section buttons
+		 * Per column module buttons
 		 * ---------------------------------------------------
 		 */
 
@@ -96,9 +96,9 @@
 				if ( $( '#' + ele_target ).find( 'textarea' ).length > 0 ) {
 
 					//Save empty data
-					if ( cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) >= 0 ) {
+					if ( cur_defaultvalue.indexOf( 'uix_pb_module_undefined' ) >= 0 ) {
 						var nv = cur_defaultvalue
-												 .replace( 'uix_pb_section_undefined', cur_slug )
+												 .replace( 'uix_pb_module_undefined', cur_slug )
 												 .replace( 'uix_pb_undefined', cur_slug + '_temp' );
 
 						$( '#' + ele_target ).find( 'textarea' ).val( nv );
@@ -116,7 +116,7 @@
 
 					//status
 					var new_cur_defaultvalue = $( '#' + ele_target ).find( 'textarea' ).val();
-					if ( new_cur_defaultvalue.indexOf( cur_slug ) >= 0 && new_cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
+					if ( new_cur_defaultvalue.indexOf( cur_slug ) >= 0 && new_cur_defaultvalue.indexOf( 'uix_pb_module_undefined' ) < 0 ) {
 						$( '#' + ele_target ).addClass( 'used' );
 					}
 
@@ -856,10 +856,10 @@ function gridsterRowUID() {
 
 /*!
  *
- * [Gridster] Per column section buttons status
+ * [Gridster] Per column module buttons status
  * ---------------------------------------------------
  *
- * @param  {number} type           - Initialize per column section buttons status. 
+ * @param  {number} type           - Initialize per column module buttons status. 
  *                                  ( 1: Has been clicked | 0: The click action has not yet been performed )
  * @return {void}                  - The constructor.
  */	
@@ -883,7 +883,7 @@ function gridsterItemElementsBTStatus( type ) {
 					if ( $sort_container.find( 'textarea' ).length > 0 ) {
 
 						// Using '|' in order to avoid duplicated buttons clone when multiple button IDs are similar
-						if ( cur_defaultvalue.indexOf( cur_slug + '|' ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_section_undefined' ) < 0 ) {
+						if ( cur_defaultvalue.indexOf( cur_slug + '|' ) >= 0 && cur_defaultvalue.indexOf( 'uix_pb_module_undefined' ) < 0 ) {
 
 							
 							//The click action has not yet been performed.

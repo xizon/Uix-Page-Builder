@@ -6,7 +6,7 @@ class UixPBFormType_ListClone {
 		if ( !is_array( $args ) ) return;
 		if ( !is_array( $args_config ) ) return;
 		
-		//Section Row
+		//Row ID (Obtained via section ID.)
 		$sid              = ( isset( $section_row ) ) ? $section_row : -1;
 			
 		//General

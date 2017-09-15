@@ -28,10 +28,10 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 */
 		public static function new_class( $classes ) {
 
-			$id        = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
-			$tempclass = UixPageBuilder::page_builder_array_tempattrs( get_post_meta( $id, 'uix-page-builder-layoutdata', true ), true );
+			$post_ID   = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
+			$tempclass = UixPageBuilder::page_builder_array_tempattrs( UixPageBuilder::get_page_final_data( $post_ID ), true );
 			
-			if ( empty( $tempclass ) ) $tempclass = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $id );
+			if ( empty( $tempclass ) ) $tempclass = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_ID );
 
 			$classes[] = 'uix-page-builder-body';
 			$classes[] = 'uix-page-builder-'.$tempclass;
@@ -73,11 +73,11 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 */
 		public static function func_frontend( $atts, $content = null ) {
 
-			    $id                = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
+			    $post_ID           = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
 			    $return_string     = '';
 		
 			
-				$builder_content   = UixPageBuilder::page_builder_array_newlist( get_post_meta( $id, 'uix-page-builder-layoutdata', true ) );
+				$builder_content   = UixPageBuilder::page_builder_array_newlist( UixPageBuilder::get_page_final_data( $post_ID ) );
 				$item              = array();
 				$cols              = array( 
 										array( '3_4', 'uix-pb-col-9' ),
@@ -137,7 +137,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 									$temp_index      = count( $value ) - 1;
 
 									$bool1 = UixPageBuilder::inc_str( $value[ $temp_index ][0], '_temp' );
-									$bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_section_undefined' );
+									$bool2 = UixPageBuilder::inc_str( $value[ $temp_index ][0], 'uix_pb_module_undefined' );
 
 									if ( $bool1 || $bool2 ) {
 
