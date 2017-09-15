@@ -4,6 +4,30 @@
     $( function() {
 		
 		
+
+		/*!
+		 *
+		 * Add a scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+		 * ---------------------------------------------------
+		 */
+		$( document ).on( 'mouseenter', '.uix-page-builder-gridster-widget', function() {
+		
+
+			var $preview        = $( '#uix-page-builder-themepreview' ),
+				id              = $( this ).find( '.cusid-box' ).val(),
+				container       = $preview.contents().find( '#' + id );
+			
+			if ( container.length > 0 ) {
+				
+				if ( $preview.contents().find( 'html' ).css( 'overflow-y' ) != 'hidden' ) {
+					$preview.contents().find( 'html,body' ).animate( { scrollTop: container.offset().top + 'px' }, 100 );
+				}
+				
+			}
+			
+		});
+		
+		
 		/*!
 		 *
 		 * Responsive Switching Preview

@@ -113,6 +113,7 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 * Optimized file structure in admin panel.
 * Added a custom JavaScript template annotation to each module.
 * Upgraded core API for theme developer customization.
+* Added the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
 
 
 
