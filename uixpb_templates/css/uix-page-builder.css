@@ -39,6 +39,7 @@
     20. Pagination   
     21. Instagram Feed
     22. Sidebar
+    23. Custom Menu
 
 */
 
@@ -429,11 +430,17 @@ img.uix-pb-img,
 .uix-pb-container.uix-pb-container-boxed {
     margin: 0 auto;
     max-width: 100% !important;
- /*Required*/
+    /*Required*/
     padding: 0 15px !important;
     position: relative;
-    overflow: hidden;
 }
+
+/* Used for modules with special effects, such as skew. */
+.uix-pb-container:not(.notlimited) {
+	overflow: hidden;
+}
+
+
 
 @media (max-width: 767px) {
     .uix-pb-container,
@@ -3245,4 +3252,297 @@ a.uix-pb-flex-prev {
 	margin-left: .5em;
 	margin-top: -.3em;
 }
+
+
+/* ====================================================== 
+   23. Custom Menu
+/* ====================================================== */
+
+/*-------------Fixed Menu -----------------*/
+ul.uix-pb-menu-fixed,
+ul.uix-pb-menu-fixed li {
+    padding: 0;
+    margin: 0;
+}
+
+ul.uix-pb-menu-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    font-size: 12px;
+    z-index: 99999;
+    border: 1px solid #c6d0da;
+	border-left: none;
+	border-right: none;
+}
+@media all and (max-width: 768px) {
+	
+	ul.uix-pb-menu-fixed {
+		height: auto;
+	}
+}
+
+
+
+
+/* Show Toolbar when viewing site */
+.admin-bar ul.uix-pb-menu-fixed {
+	top: 32px;
+}
+
+
+/* Admin bar becomes taller on smaller devices */
+@media screen and ( max-width: 782px ) {
+	.admin-bar ul.uix-pb-menu-fixed {
+		top: 46px;
+	}
+}
+
+
+ul.uix-pb-menu-fixed a {
+    display: block;
+    height: 100%;
+    color: #5f6f81;
+    text-decoration: none;
+    cursor: pointer;
+    background: #fff;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+	border: none;
+}
+
+
+ul.uix-pb-menu-fixed a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+ul.uix-pb-menu-fixed > li {
+    display: block;
+    float: left;
+    height: 100%;
+    border-right: 1px solid #c6d0da;
+    text-align: center;
+    position: relative;
+}
+
+ul.uix-pb-menu-fixed > li > a {
+    padding: 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+
+@media all and (max-width: 768px) {
+	
+	ul.uix-pb-menu-fixed > li {
+		-webkit-box-shadow: 0px 1px 0px 0px #c6d0da;
+		-moz-box-shadow: 0px 1px 0px 0px #c6d0da;
+		box-shadow: 0px 1px 0px 0px #c6d0da;
+		margin-top: 1px;
+	}
+	
+	ul.uix-pb-menu-fixed > li > a {
+		-webkit-box-shadow: 0px -1px 0px 0px #c6d0da;
+		-moz-box-shadow: 0px -1px 0px 0px #c6d0da;
+		box-shadow: 0px -1px 0px 0px #c6d0da;
+		padding: 0 8px;
+		letter-spacing: 0;
+	}	
+}
+
+
+ul.uix-pb-menu-fixed > li :after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+ul.uix-pb-menu-fixed, 
+ul.uix-pb-menu-fixed ul {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #5f6f81;
+    list-style: none;
+    text-transform: none;
+    font-weight: 300;
+    line-height: 50px;
+}
+
+ul.uix-pb-menu-fixed ul {
+    border: 1px solid #c6d0da;
+    display: none;
+    position: absolute;
+    min-width: 220px;
+    z-index: 1000;
+}
+
+ul.uix-pb-menu-fixed ul ul {
+    left: 100%;
+    margin-top: -50px;
+}
+
+ul.uix-pb-menu-fixed li:hover > ul {
+    display: block;
+}
+
+ul.uix-pb-menu-fixed ul li a {
+    border-bottom: 1px solid #E0E0E0;
+}	
+
+/*-------------Embedded Menu -----------------*/
+ul.uix-pb-menu-embedded,
+ul.uix-pb-menu-embedded li {
+    padding: 0;
+    margin: 0;
+}
+
+ul.uix-pb-menu-embedded {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: calc( 100% - 2px - 10px );
+    height: 50px;
+    font-size: 12px;
+    z-index: 99999;
+    border: 1px solid #c6d0da;
+}
+
+.uix-pb-container-fullwidth ul.uix-pb-menu-embedded {
+    width: 100%;
+}
+
+
+@media all and (max-width: 768px) {
+	
+	ul.uix-pb-menu-embedded {
+		height: auto;
+	}
+}
+
+
+
+
+/* Show Toolbar when viewing site */
+.admin-bar ul.uix-pb-menu-embedded {
+	top: 32px;
+}
+
+
+/* Admin bar becomes taller on smaller devices */
+@media screen and ( max-width: 782px ) {
+	.admin-bar ul.uix-pb-menu-embedded {
+		top: 46px;
+	}
+}
+
+
+ul.uix-pb-menu-embedded a {
+    display: block;
+    height: 100%;
+    color: #5f6f81;
+    text-decoration: none;
+    cursor: pointer;
+    background: #fff;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+	border: none;
+}
+
+
+ul.uix-pb-menu-embedded a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+ul.uix-pb-menu-embedded > li {
+    display: block;
+    float: left;
+    height: 100%;
+    border-right: 1px solid #c6d0da;
+    text-align: center;
+    position: relative;
+}
+
+ul.uix-pb-menu-embedded > li > a {
+    padding: 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+
+@media all and (max-width: 768px) {
+	
+	ul.uix-pb-menu-embedded > li {
+		-webkit-box-shadow: 0px 1px 0px 0px #c6d0da;
+		-moz-box-shadow: 0px 1px 0px 0px #c6d0da;
+		box-shadow: 0px 1px 0px 0px #c6d0da;
+		margin-top: 1px;
+	}
+	
+	ul.uix-pb-menu-embedded > li > a {
+		-webkit-box-shadow: 0px -1px 0px 0px #c6d0da;
+		-moz-box-shadow: 0px -1px 0px 0px #c6d0da;
+		box-shadow: 0px -1px 0px 0px #c6d0da;
+		padding: 0 8px;
+		letter-spacing: 0;
+	}	
+}
+
+
+ul.uix-pb-menu-embedded > li :after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+ul.uix-pb-menu-embedded, 
+ul.uix-pb-menu-embedded ul {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #5f6f81;
+    list-style: none;
+    text-transform: none;
+    font-weight: 300;
+    line-height: 50px;
+}
+
+ul.uix-pb-menu-embedded ul {
+    border: 1px solid #c6d0da;
+    display: none;
+    position: absolute;
+    min-width: 220px;
+    z-index: 1000;
+}
+
+ul.uix-pb-menu-embedded ul ul {
+    left: 100%;
+    margin-top: -50px;
+}
+
+ul.uix-pb-menu-embedded li:hover > ul {
+    display: block;
+}
+
+ul.uix-pb-menu-embedded ul li a {
+    border-bottom: 1px solid #E0E0E0;
+}	
+
+
 

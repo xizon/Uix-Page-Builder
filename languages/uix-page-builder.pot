@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-15 12:20+0000\n"
+"POT-Creation-Date: 2017-09-15 19:21+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -98,7 +98,11 @@ msgstr ""
 msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
 msgstr ""
 
-#: uix-page-builder.php:1862
+#: uix-page-builder.php:1881 uix-page-builder.php:1909
+msgid "- All -"
+msgstr ""
+
+#: uix-page-builder.php:1994
 #: includes/admin/bulider/components/pb-ui-form.php:38
 #: includes/admin/bulider/components/pb-ui-gridster.php:353
 #: includes/admin/bulider/components/pb-ui-gridster.php:556
@@ -624,10 +628,10 @@ msgstr ""
 
 #: includes/classes/class-get-excerpt.php:19
 #: includes/classes/class-get-excerpt.php:106
-#: uixpb_templates/modules/uix_pb_module_blog.php:234
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:283
-#: includes/classes/section-shortcodes/class-section-blog.php:44
-#: includes/classes/section-shortcodes/class-section-uix_products.php:51
+#: uixpb_templates/modules/uix_pb_module_blog.php:220
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:269
+#: includes/classes/module-shortcodes/class-module-blog.php:44
+#: includes/classes/module-shortcodes/class-module-uix_products.php:51
 msgid "Read More"
 msgstr ""
 
@@ -717,7 +721,7 @@ msgid "Save"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:10
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:387
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:373
 msgid "Uix Products Grid"
 msgstr ""
 
@@ -791,12 +795,12 @@ msgid "Contact Form"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:285
-#: uixpb_templates/modules/uix_pb_module_sidebar.php:102
+#: uixpb_templates/modules/uix_pb_module_sidebar.php:90
 msgid "WP Sidebar"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:302
-#: uixpb_templates/modules/uix_pb_module_blog.php:342
+#: uixpb_templates/modules/uix_pb_module_blog.php:328
 msgid "WP Posts List"
 msgstr ""
 
@@ -810,13 +814,13 @@ msgid "Custom Menu"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:339
-#: uixpb_templates/modules/uix_pb_module_menu1.php:145
-msgid "Menu 1"
+#: uixpb_templates/modules/uix_pb_module_menu1.php:101
+msgid "Fixed Menu"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:346
-#: uixpb_templates/modules/uix_pb_module_menu2.php:145
-msgid "Menu 2"
+#: uixpb_templates/modules/uix_pb_module_menu2.php:111
+msgid "Embedded Menu"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_accordion.php:54
@@ -1140,61 +1144,56 @@ msgstr ""
 msgid "This is the description text for the title."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:80
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:161
-msgid "- All -"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_blog.php:96
+#: uixpb_templates/modules/uix_pb_module_blog.php:82
 msgid "Loop Posts Layout"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:102
+#: uixpb_templates/modules/uix_pb_module_blog.php:88
 msgid "With this plugin"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:103
+#: uixpb_templates/modules/uix_pb_module_blog.php:89
 msgid "With your current theme ( The \"Column\" setting will be invalid )"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:112
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:178
+#: uixpb_templates/modules/uix_pb_module_blog.php:98
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:164
 msgid "Display Pagination"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:121
+#: uixpb_templates/modules/uix_pb_module_blog.php:107
 msgid "Show Number of Posts"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:134
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:201
+#: uixpb_templates/modules/uix_pb_module_blog.php:120
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:187
 msgid "Order By"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:149
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:216
+#: uixpb_templates/modules/uix_pb_module_blog.php:135
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:202
 msgid "Select Category"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:161
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:228
+#: uixpb_templates/modules/uix_pb_module_blog.php:147
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:214
 msgid "Meta Date Format"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:162
+#: uixpb_templates/modules/uix_pb_module_blog.php:148
+#: uixpb_templates/modules/uix_pb_module_blog.php:165
 #: uixpb_templates/modules/uix_pb_module_blog.php:179
-#: uixpb_templates/modules/uix_pb_module_blog.php:193
-#: uixpb_templates/modules/uix_pb_module_blog.php:211
+#: uixpb_templates/modules/uix_pb_module_blog.php:197
 msgid ""
 "It is not valid when using the Loop Posts Layout with your current theme."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:178
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:245
+#: uixpb_templates/modules/uix_pb_module_blog.php:164
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:231
 msgid "Excerpt Length"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:192
+#: uixpb_templates/modules/uix_pb_module_blog.php:178
 #: uixpb_templates/modules/uix_pb_module_clients.php:77
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:115
 #: uixpb_templates/modules/uix_pb_module_team2.php:129
@@ -1202,29 +1201,29 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:210
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:259
+#: uixpb_templates/modules/uix_pb_module_blog.php:196
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:245
 msgid "Read More Button"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:232
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:281
+#: uixpb_templates/modules/uix_pb_module_blog.php:218
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:267
 msgid "Read More Text"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:243
-#: uixpb_templates/modules/uix_pb_module_menu1.php:88
-#: uixpb_templates/modules/uix_pb_module_menu2.php:88
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:293
+#: uixpb_templates/modules/uix_pb_module_blog.php:229
+#: uixpb_templates/modules/uix_pb_module_menu1.php:44
+#: uixpb_templates/modules/uix_pb_module_menu2.php:43
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:279
 msgid "Class Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:254
+#: uixpb_templates/modules/uix_pb_module_blog.php:240
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Manage Your Content of Posts</a>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:332
+#: uixpb_templates/modules/uix_pb_module_blog.php:318
 #: uixpb_templates/modules/uix_pb_module_clients.php:223
 #: uixpb_templates/modules/uix_pb_module_features1.php:307
 #: uixpb_templates/modules/uix_pb_module_features2.php:205
@@ -1237,12 +1236,12 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_team1.php:380
 #: uixpb_templates/modules/uix_pb_module_team2.php:397
 #: uixpb_templates/modules/uix_pb_module_testimonials.php:219
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:377
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:363
 msgid "General Settings"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:338
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:383
+#: uixpb_templates/modules/uix_pb_module_blog.php:324
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:369
 msgid "Content Settings"
 msgstr ""
 
@@ -1598,11 +1597,13 @@ msgid "Display Your Username?"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_instagram.php:90
+#: uixpb_templates/modules/uix_pb_module_menu2.php:65
 #: uixpb_templates/modules/uix_pb_module_parallax.php:173
 msgid "Seamless Display"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_instagram.php:91
+#: uixpb_templates/modules/uix_pb_module_menu2.php:66
 msgid "Set the instagram module top & bottom margin to be 0px for your page."
 msgstr ""
 
@@ -1656,13 +1657,13 @@ msgid ""
 "to as \"icons.\""
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_menu1.php:98
-#: uixpb_templates/modules/uix_pb_module_menu2.php:98
+#: uixpb_templates/modules/uix_pb_module_menu1.php:54
+#: uixpb_templates/modules/uix_pb_module_menu2.php:53
 msgid "Select a Menu"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_menu1.php:111
-#: uixpb_templates/modules/uix_pb_module_menu2.php:111
+#: uixpb_templates/modules/uix_pb_module_menu1.php:67
+#: uixpb_templates/modules/uix_pb_module_menu2.php:77
 #, php-format
 msgid ""
 "Uix Page Builder supports the automatic addition of Anchor Links. <a "
@@ -1785,7 +1786,7 @@ msgid "The description of this project."
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:430
-#: includes/classes/section-shortcodes/class-section-uix_products.php:335
+#: includes/classes/module-shortcodes/class-module-uix_products.php:335
 msgid "All"
 msgstr ""
 
@@ -2102,11 +2103,11 @@ msgstr ""
 msgid "Pricing Table (4 column)"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_sidebar.php:56
+#: uixpb_templates/modules/uix_pb_module_sidebar.php:44
 msgid "Select Sidebar"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_sidebar.php:68
+#: uixpb_templates/modules/uix_pb_module_sidebar.php:56
 #, php-format
 msgid ""
 "Calls each of the active widget callbacks in order, which prints the markup "
@@ -2171,11 +2172,11 @@ msgstr ""
 msgid "Display Categories List"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:188
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:174
 msgid "Show Number of Products"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:306
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:292
 #, php-format
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Manage Your Content of Uix Products</a>"
@@ -2331,7 +2332,7 @@ msgstr ""
 msgid "Hide Sidebar"
 msgstr ""
 
-#: includes/classes/section-shortcodes/class-section-uix_products.php:359
+#: includes/classes/module-shortcodes/class-module-uix_products.php:359
 msgid "No categories"
 msgstr ""
 

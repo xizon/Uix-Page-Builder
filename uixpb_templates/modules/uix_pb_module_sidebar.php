@@ -33,18 +33,6 @@ $args_config = array(
 );	
 
 
-//Show All Sidebars
-global $wp_registered_sidebars;
-$sidebars_value = array();
-
-if ( !empty( $wp_registered_sidebars ) ) {
-	foreach ( $wp_registered_sidebars as $value ) {
-		UixPageBuilder::array_push_associative( $sidebars_value, array( esc_attr( $value['id'] ) => esc_html( $value['name'] ) ) );
-	}
-	
-}
-
-
 
 $args = 
 	array(
@@ -58,7 +46,7 @@ $args =
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'select',
-			'default'        => $sidebars_value
+			'default'        => UixPageBuilder::get_frontend_all_sidebars()
 
 		),
 

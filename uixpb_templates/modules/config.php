@@ -336,16 +336,16 @@ $uix_pb_config = array(
 
 	
 								array(
-									'title'           => esc_html__( 'Menu 1', 'uix-page-builder' ),
+									'title'           => esc_html__( 'Fixed Menu', 'uix-page-builder' ),
 									'id'              => 'uix_pb_module_menu1.php',
-									'thumb'           => 'menu1.jpg',
+									'thumb'           => 'menu-1.jpg',
 								
 								),
 	
 								array(
-									'title'           => esc_html__( 'Menu 2', 'uix-page-builder' ),
+									'title'           => esc_html__( 'Embedded Menu', 'uix-page-builder' ),
 									'id'              => 'uix_pb_module_menu2.php',
-									'thumb'           => 'menu2.jpg',
+									'thumb'           => 'menu-2.jpg',
 								
 								),
 	

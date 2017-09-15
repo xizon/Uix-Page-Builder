@@ -955,6 +955,9 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		$( '.uix-pb-section-nospace' ).closest( '.uix-page-builder-section' ).addClass( 'nospace' );	
 		$( '.uix-pb-section-nospace' ).closest( '.uix-pb-row > div' ).addClass( 'nospace' );
 		
+		//Custom menu
+		$( '.uix-pb-menu-container' ).closest( '.uix-pb-container' ).addClass( 'notlimited' );
+		
 
 
 	};

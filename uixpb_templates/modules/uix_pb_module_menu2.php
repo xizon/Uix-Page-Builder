@@ -33,51 +33,6 @@ $args_config = array(
 );	
 
 
-//Show All menus
-$menus_value    = array();
-$nav_menus      = wp_get_nav_menus();
-
-// Retrieve menu locations.
-if ( current_theme_supports( 'menus' ) ) {
-	$locations = get_registered_nav_menus();
-	$menu_locations = get_nav_menu_locations();
-}
-if ( !empty( $nav_menus ) ) {
-	
-	foreach ( (array) $nav_menus as $key => $_nav_menu ) {
-		
-		//Retrieve menu locations.
-		$menu_desc = '';
-		
-		if ( ! empty( $menu_locations ) && in_array( $_nav_menu->term_id, $menu_locations ) ) {
-			$locations_assigned_to_this_menu = array();
-			foreach ( array_keys( $menu_locations, $_nav_menu->term_id ) as $menu_location_key ) {
-				if ( isset( $locations[ $menu_location_key ] ) ) {
-					$locations_assigned_to_this_menu[] = $locations[ $menu_location_key ];
-				}
-			}
-			
-			// Filters the number of locations listed per menu in the drop-down select.
-			$assigned_locations = array_slice( $locations_assigned_to_this_menu, 0, absint( apply_filters( 'wp_nav_locations_listed_per_menu', 3 ) ) );
-
-			// Adds ellipses following the number of locations defined in $assigned_locations.
-			if ( ! empty( $assigned_locations ) ) {
-				$menu_desc = sprintf( ' (%1$s%2$s)',
-									implode( ', ', $assigned_locations ),
-									count( $locations_assigned_to_this_menu ) > count( $assigned_locations ) ? ' &hellip;' : ''
-								);
-			}
-		}
-		
-		UixPageBuilder::array_push_associative( $menus_value, array( esc_attr( $_nav_menu->term_id ) => esc_html( $_nav_menu->name ) . $menu_desc ) );
-		
-	}
-	
-	
-}
-
-
-
 $args = 
 	array(
 	
@@ -87,7 +42,7 @@ $args =
 			'id'             => 'uix_pb_menu2_class',
 			'title'          => esc_html__( 'Class Name', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => 'uix-pb-menu-2',
+			'value'          => 'uix-pb-menu-embedded',
 			'placeholder'    => '',
 			'type'           => 'text'
 		
@@ -100,10 +55,21 @@ $args =
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'select',
-			'default'        => $menus_value
+			'default'        => UixPageBuilder::get_frontend_all_menus()
 
 		),
 
+		
+		array(
+			'id'             => 'uix_pb_menu2_bg_space',
+			'title'          => esc_html__( 'Seamless Display', 'uix-page-builder' ),
+			'desc'           => esc_html__( 'Set the instagram module top & bottom margin to be 0px for your page.', 'uix-page-builder' ),
+			'value'          => 0, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		
+		
+		),
 		
 		
 	    array(
@@ -142,7 +108,7 @@ UixPageBuilder::form_scripts( array(
 							),
 
 						),
-		'title'        => esc_html__( 'Menu 2', 'uix-page-builder' ),
+		'title'        => esc_html__( 'Embedded Menu', 'uix-page-builder' ),
 	
 	
 		/**
@@ -164,7 +130,12 @@ UixPageBuilder::form_scripts( array(
 		 */
 	    'js_template'             => '
 		
-			var temp = \'[uix_pb_menu classname=\\\'\'+uixpbform_htmlEncode( uix_pb_menu2_class )+\'\\\' id=\\\'\'+uixpbform_htmlEncode( uix_pb_menu2_id )+\'\\\']\';
+		    var space_class  = ( uix_pb_menu2_bg_space === true ) ? \' uix-pb-section-nospace\' : \'\',
+			    custom_class = uix_pb_menu2_class + space_class;
+			
+		
+		
+			var temp = \'[uix_pb_menu classname=\\\'\'+custom_class+\'\\\' id=\\\'\'+uixpbform_htmlEncode( uix_pb_menu2_id )+\'\\\']\';
 		
 		
 		'

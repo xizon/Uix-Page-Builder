@@ -72,20 +72,6 @@ $form_type = array(
 );
 
 
-//Show All Categories as Links. In order to get all posts related to particular category name.
-$categories = get_categories( array(
-    'orderby' => 'name',
-    'order'   => 'ASC'
-) );
-$categories_value = array( 'all' => esc_html__( '- All -', 'uix-page-builder' ) );
-
-
-if ( ! empty( $categories ) ) {
-	foreach( $categories as $category ) {
-		UixPageBuilder::array_push_associative( $categories_value, array( $category->term_id => esc_html( $category->cat_name ) ) );
-	}
-}
-
 
 $args = 
 	array(
@@ -151,7 +137,7 @@ $args =
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'select',
-			'default'        => $categories_value
+			'default'        => UixPageBuilder::get_frontend_post_cats()
 
 		),
 

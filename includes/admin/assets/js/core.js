@@ -15,12 +15,15 @@
 
 			var $preview        = $( '#uix-page-builder-themepreview' ),
 				id              = $( this ).find( '.cusid-box' ).val(),
-				container       = $preview.contents().find( '#' + id );
-			
-			if ( container.length > 0 ) {
+				container       = $preview.contents().find( '#' + id ),
+				hasMenu         = container.find( '.uix-pb-menu-container' ).length;
+		
+			if ( container.length > 0 && hasMenu == 0 ) {
 				
 				if ( $preview.contents().find( 'html' ).css( 'overflow-y' ) != 'hidden' ) {
+					
 					$preview.contents().find( 'html,body' ).animate( { scrollTop: container.offset().top + 'px' }, 100 );
+					
 				}
 				
 			}

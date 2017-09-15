@@ -114,7 +114,7 @@ class UixPageBuilder {
 			include $file;
 		}
 
-		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "includes/classes/section-shortcodes/*.php") as $file ) {
+		foreach ( glob( UIX_PAGE_BUILDER_PLUGIN_DIR. "includes/classes/module-shortcodes/*.php") as $file ) {
 			include $file;
 		} 
 
@@ -1812,40 +1812,172 @@ class UixPageBuilder {
 		  } 
 	}	 	
 	
-	
-		/*
-		 * Compress the front end code
-		 *
-		 *
-		 */
-		public static function str_compression( $str ) {
-			
-			$str = str_replace( PHP_EOL, '', $str );
-			$str = str_replace( "\t", '', $str );
-			
-			$pattern = array(
-			"/> *([^ ]*) *</",
-			"/[\s]+/",
-			"/<!--[^!]*-->/",
-			"/\"  /",
-			"/ \"/",
-			"'/\*[^*]*\*/'"
-			);
-			$replace = array(
-			">\\1<",
-			" ",
-			"",
-			"\"",
-			"\"",
-			""
-			);
-			
-		  $outputcode = preg_replace( $pattern, $replace, $str );
-			
-		  return $outputcode;
-	
+	/*
+	 * Returns all menus.
+	 *
+	 *
+	 */
+	public static function get_frontend_all_menus() {
+		
+		$menus_value    = array();
+		$nav_menus      = wp_get_nav_menus();
+
+		// Retrieve menu locations.
+		if ( current_theme_supports( 'menus' ) ) {
+			$locations = get_registered_nav_menus();
+			$menu_locations = get_nav_menu_locations();
 		}
+		if ( !empty( $nav_menus ) ) {
+
+			foreach ( (array) $nav_menus as $key => $_nav_menu ) {
+
+				//Retrieve menu locations.
+				$menu_desc = '';
+
+				if ( ! empty( $menu_locations ) && in_array( $_nav_menu->term_id, $menu_locations ) ) {
+					$locations_assigned_to_this_menu = array();
+					foreach ( array_keys( $menu_locations, $_nav_menu->term_id ) as $menu_location_key ) {
+						if ( isset( $locations[ $menu_location_key ] ) ) {
+							$locations_assigned_to_this_menu[] = $locations[ $menu_location_key ];
+						}
+					}
+
+					// Filters the number of locations listed per menu in the drop-down select.
+					$assigned_locations = array_slice( $locations_assigned_to_this_menu, 0, absint( apply_filters( 'wp_nav_locations_listed_per_menu', 3 ) ) );
+
+					// Adds ellipses following the number of locations defined in $assigned_locations.
+					if ( ! empty( $assigned_locations ) ) {
+						$menu_desc = sprintf( ' (%1$s%2$s)',
+											implode( ', ', $assigned_locations ),
+											count( $locations_assigned_to_this_menu ) > count( $assigned_locations ) ? ' &hellip;' : ''
+										);
+					}
+				}
+
+				self::array_push_associative( $menus_value, array( esc_attr( $_nav_menu->term_id ) => esc_html( $_nav_menu->name ) . $menu_desc ) );
+
+			}
+
+
+		}
+		
+		return $menus_value;
+
+		
+	}
 	
+	
+	/*
+	 * Returns all post categories as links. In order to get all posts related to particular category name.
+	 *
+	 *
+	 */
+	public static function get_frontend_post_cats() {
+		
+		$categories = get_categories( array(
+			'orderby' => 'name',
+			'order'   => 'ASC'
+		) );
+		$categories_value = array( 'all' => esc_html__( '- All -', 'uix-page-builder' ) );
+
+
+		if ( ! empty( $categories ) ) {
+			foreach( $categories as $category ) {
+				self::array_push_associative( $categories_value, array( $category->term_id => esc_html( $category->cat_name ) ) );
+			}
+		}
+		
+		return $categories_value;
+
+		
+	}
+	
+	
+	
+	/*
+	 * Returns all Uix Products categories as links. In order to get all posts related to particular category name.
+	 *
+	 *
+	 */
+	public static function get_frontend_uix_products_cats() {
+		
+		$categories = get_categories( array(
+			'orderby'  => 'name',
+			'order'    => 'ASC',
+			'taxonomy' => 'uix_products_category'
+		) );
+		$categories_value = array( 'all' => esc_html__( '- All -', 'uix-page-builder' ) );
+
+
+		if ( ! empty( $categories ) ) {
+			foreach( $categories as $category ) {
+				self::array_push_associative( $categories_value, array( $category->term_id => esc_html( $category->cat_name ) ) );
+			}
+		}
+
+		
+		return $categories_value;
+
+		
+	}
+	
+	
+	/*
+	 * Returns all sidebars
+	 *
+	 *
+	 */
+	public static function get_frontend_all_sidebars() {
+		
+		global $wp_registered_sidebars;
+		$sidebars_value = array();
+
+		if ( !empty( $wp_registered_sidebars ) ) {
+			foreach ( $wp_registered_sidebars as $value ) {
+				self::array_push_associative( $sidebars_value, array( esc_attr( $value['id'] ) => esc_html( $value['name'] ) ) );
+			}
+
+		}
+
+		return $sidebars_value;
+
+		
+	}
+	
+	
+	/*
+	 * Compress the front end code
+	 *
+	 *
+	 */
+	public static function str_compression( $str ) {
+
+		$str = str_replace( PHP_EOL, '', $str );
+		$str = str_replace( "\t", '', $str );
+
+		$pattern = array(
+		"/> *([^ ]*) *</",
+		"/[\s]+/",
+		"/<!--[^!]*-->/",
+		"/\"  /",
+		"/ \"/",
+		"'/\*[^*]*\*/'"
+		);
+		$replace = array(
+		">\\1<",
+		" ",
+		"",
+		"\"",
+		"\"",
+		""
+		);
+
+	  $outputcode = preg_replace( $pattern, $replace, $str );
+
+	  return $outputcode;
+
+	}
+
 	
 	
 		
@@ -1993,6 +2125,7 @@ class UixPageBuilder {
 		
 	}
 	
+
 	
 	/*
 	 * Form javascripts output when in ajax or default state
