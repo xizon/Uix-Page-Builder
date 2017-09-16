@@ -11,25 +11,157 @@
  * files to your theme templates directory "/wp-content/themes/{your-theme}/".
  *
  */
-if ( !class_exists( 'UixPageBuilder' ) ) {
-    return;
-}
+?><!DOCTYPE html>
+<html <?php echo language_attributes();?> class="no-js">
+<head>
+	<meta charset="<?php echo bloginfo('charset');?>">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<?php wp_head(); ?>
+</head>
 
-get_header(); ?>
-     
+<body <?php body_class(); ?>>
+
+	<!-- Header Area
+	============================================= -->      
+	<header class="uix-pb-header-area">
+
+			<div class="uix-pb-container uix-pb-container-boxed">
+				<div class="uix-pb-row">
+					<div class="uix-pb-col-12 uix-pb-col-last">
+
+							<div class="uix-pb-brand">
+								<?php 
+								$custom_logo_url = '';
+								$custom_logo_id  = get_theme_mod( 'custom_logo' );
+								
+								$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+								if ( has_custom_logo() ) {
+									$custom_logo_url = $logo[0];
+								} 
+								
+								?>
+								<?php if ( !empty( $custom_logo_url ) ) { ?>
+								
+									<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+										<img src="<?php echo esc_url( $custom_logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+									</a>	
+									
+								<?php } else { ?>
+								
+									<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+										<?php bloginfo( 'name' ); ?>
+									</a>
+
+									<?php if ( get_bloginfo( 'description' ) ) { ?>
+										<p class="uix-pb-brand-description"><?php bloginfo( 'description' ); ?></p>
+									<?php } ?>
+
+								<?php } ?>           
+							</div>
+							<!-- .logo end -->
+
+					</div>
+				</div>
+			</div>	
+																	
+	  </header>
+	  
+<!-- Navigation Area
+		============================================= -->       
+		  <nav class="uix-pb-menu-container">
+			<?php
+			  
+			 $li_search = '
+			<form class="uix-pb-search" method="get" action="'.esc_url( home_url( '/' ) ).'">
+			  <div class="uix-pb-search-wrapper">
+				<input type="text" name="" placeholder="'.esc_html__( 'Search for...', 'uix-page-builder' ).'" class="uix-pb-search-field">
+				<button type="submit" class="fa fa-search uix-pb-search-icon"></button>
+			  </div>
+			</form> 
+			 ';
+			  
+			/*
+			 * Display main menu
+			 *
+			*/    
+			wp_nav_menu(
+					array(
+						'theme_location'  => 'uix-pb-primary',
+						'menu'            => '',
+						'container'       => false,
+						'container_class' => '',
+						'container_id'    => '',
+						'menu_class'      => '',
+						'menu_id'         => '',
+						'echo'            => true,
+						'fallback_cb'     => 'uix_pb_default_menus',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'items_wrap'      => '<ul class="uix-pb-menu-embedded">%3$s'.$li_search.'</ul>', 
+						'depth'           => 0
+					)
+				);	
+
+
+				function uix_pb_default_menus() {
+				?>
+				
+				<ul class="uix-pb-menu-embedded">
+					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'uix-page-builder' ); ?></a></li>
+					<li><a target="_blank" href="<?php echo esc_url( admin_url( 'nav-menus.php' ) ); ?>"><?php esc_html_e( 'Menu Settings', 'uix-page-builder' ); ?></a></li>
+					<?php echo $li_search; ?>
+				</ul>
+		
+				<?php	
+				}
+
+			
+			?>
+
+
+		  </nav>	
+
+
+	
 	<?php while ( have_posts() ) : the_post(); ?>
-            
-  
+
+
 		<?php
 		if ( class_exists( 'UixPageBuilder' ) ) {
 			echo do_shortcode( "[uix_pb_sections]" );
 		} else {
 			the_content();
 		}
-        ?>                      
-   
-    <?php endwhile; ?>  
+		?>                      
 
-<?php get_footer(); ?>
+	<?php endwhile; ?>  
+
+       
+
+	<!-- Footer
+	============================================= -->    
+	<footer class="uix-pb-footer-area">
+
+		<div class="uix-pb-container uix-pb-container-boxed">
+			<div class="uix-pb-row">
+				<div class="uix-pb-col-12 uix-pb-col-last">
+				
+				    <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'uix-page-builder' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'uix-page-builder' ), 'WordPress' ); ?></a>
+				
+
+				</div>
+			</div>
+		</div>
+
+	</footer>
+        
+    
+    <?php wp_footer(); ?>
+   
+  </body>
+</html>
 
 

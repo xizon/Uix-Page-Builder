@@ -40,12 +40,26 @@
     21. Instagram Feed
     22. Sidebar
     23. Custom Menu
+    24. Header Area  
+    25. Footer Area
 
 */
 
 /* ====================================================== 
    1. Basic                               
 /* ====================================================== */
+
+body.uix-page-builder-body {
+	background: #fff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+body.uix-page-builder-body:before {
+	display: none;
+}
+
+
 .uix-pb-clear {
     clear: both;
     width: 100%;
@@ -1818,10 +1832,9 @@ img.uix-pb-img,
 
 .uix-pb-testimonials .uix-pb-testimonials-content {
     background: none no-repeat scroll top left #ededed;
-    box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
+    box-sizing: border-box;
     display: block;
     font-style: italic;
     font-size: 14px;
@@ -3258,6 +3271,158 @@ a.uix-pb-flex-prev {
    23. Custom Menu
 /* ====================================================== */
 
+.uix-pb-menu-container:after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+/*-------------Search Icon -----------------*/
+.uix-pb-search {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.uix-pb-search * {
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.uix-pb-search-wrapper {
+    position: relative;
+}
+
+.uix-pb-search-field {
+    width: 50px !important;
+    height: 48px;
+    color: transparent;
+	background-color: transparent;
+    font-size: 1.35em;
+    padding: 0.35em 50px 0.35em 0;
+    border: 1px solid transparent;
+    border-radius: 0;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+	border: none;
+	color: rgba(46,46,46,0);
+	text-indent: -9999px;
+}
+
+.uix-pb-search-field:focus {
+    width: calc( 100vw - .7em ) !important;
+    color: rgba(46,46,46,1);
+    cursor: default;
+	-webkit-box-shadow: 0px 0px 65px 0px rgba(0,0,0,0.29);
+	-moz-box-shadow: 0px 0px 65px 0px rgba(0,0,0,0.29);
+	box-shadow: 0px 0px 65px 0px rgba(0,0,0,0.29);
+	border: none;
+	text-indent: 10px;
+	
+}
+
+.uix-pb-search-field:focus ~ .uix-pb-search-icon {
+    background-color: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.uix-pb-search-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+	color: #333;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    font-size: 1.35em;
+    text-align: center;
+    border-color: transparent;
+    border-radius: 50%;
+    pointer-events: none;
+    display: inline-block;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.uix-pb-search-field::-webkit-input-placeholder {
+    position: relative;
+    top: 0;
+    left: 0;
+    -webkit-transition-property: top, color;
+    transition-property: top, color;
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+.uix-pb-search-field:-moz-placeholder {
+    position: relative;
+    top: 0;
+    left: 0;
+    -webkit-transition-property: top, color;
+    transition-property: top, color;
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+.uix-pb-search-field::-moz-placeholder {
+    position: relative;
+    top: 0;
+    left: 0;
+    -webkit-transition-property: top, color;
+    transition-property: top, color;
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+.uix-pb-search-field:-ms-input-placeholder {
+    position: relative;
+    top: 0;
+    left: 0;
+    -webkit-transition-property: top, color;
+    transition-property: top, color;
+    -webkit-transition-duration: .1s;
+    transition-duration: .1s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
+
+
+ul.uix-pb-menu-fixed > li:last-child,
+ul.uix-pb-menu-embedded > li:last-child {
+  float: right;
+  border-right: none;
+  border-left: 1px solid #c6d0da;
+}
+
 /*-------------Fixed Menu -----------------*/
 ul.uix-pb-menu-fixed,
 ul.uix-pb-menu-fixed li {
@@ -3410,11 +3575,15 @@ ul.uix-pb-menu-embedded {
     position: relative;
     top: 0;
     left: 0;
-    width: calc( 100% - 2px - 10px );
+    width: 100%;
     height: 50px;
     font-size: 12px;
     z-index: 99999;
     border: 1px solid #c6d0da;
+}
+
+.uix-page-builder-section ul.uix-pb-menu-embedded {
+    width: calc( 100% - 2px - 10px );
 }
 
 .uix-pb-container-fullwidth ul.uix-pb-menu-embedded {
@@ -3543,6 +3712,66 @@ ul.uix-pb-menu-embedded li:hover > ul {
 ul.uix-pb-menu-embedded ul li a {
     border-bottom: 1px solid #E0E0E0;
 }	
+
+
+/* ====================================================== 
+   24. Header Area
+/* ====================================================== */
+.uix-pb-header-area {
+	
+}
+
+
+.uix-pb-header-area .uix-pb-brand {
+	text-align: center;
+	margin: .5em 0 .5em;
+	font-family: 'Cardo', 'Helvetica', 'Arial', sans-serif;
+	font-size: 4.5em;
+	font-weight:700;
+	white-space: nowrap;
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ 
+.uix-pb-header-area .uix-pb-brand a {
+	color: #000;
+}
+
+.uix-pb-header-area .uix-pb-brand img {
+	max-width: 90%;
+}
+
+.uix-pb-header-area .uix-pb-brand .uix-pb-brand-description {
+	font-size: 14px;
+	font-family: Arial, "sans-serif";
+}
+
+
+
+@media all and (max-width: 768px) {
+
+	.uix-pb-header-area .uix-pb-brand {
+		margin: 1.5em 1.5em 0;
+		font-size: 2.5em;
+		
+	}
+	
+	.uix-pb-header-area .uix-pb-brand .uix-pb-brand-description {
+		font-size: 12px;
+	}
+
+}
+
+
+/* ====================================================== 
+   25. Footer Area
+/* ====================================================== */
+.uix-pb-footer-area {
+	border-top: 1px solid #c6d0da;
+	padding: 1.5em;
+	text-align: center;
+}
 
 
 

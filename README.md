@@ -75,12 +75,6 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 
 
 
-### Advanced Customization ( For Theme Developer )
-
-Please install the plugin and check out the **"Uix Page Builder Helper"** directly in admin panel.
-
-
-
 
 ### Frequently Asked Questions
 
@@ -113,19 +107,34 @@ Uix Page Builder supports the automatic addition of Anchor Links. From the **"Ap
 ![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/anchor-links.jpg)
 
 
+#####  = FAQ 5: FAQ 5: How to set the menu for the currently used page template of Uix Page Builder?
+
+Go to **"Dashboard » Appearence » Menus"**. Click on **"create a new menu"** to create your custom menu. You should tick the appropriate checkbox of `Uix Page Builder Menu` from options as **"Display location"**.
+
+![](https://github.com/xizon/Uix-Page-Builder/blob/master/helper/img/set-temp-menu.jpg)
+
+
+#####  = FAQ 6: How to customize the Uix Page Builder templates and modules in admin panel?
+
+Please install the plugin and check out the **"Uix Page Builder Helper » For Theme Developer"** directly in admin panel.
+
 
 
 
 ### Updates
 
 
-##### = 1.4.3 (September 15, 2017) =
+##### = 1.4.3 (September 16, 2017) =
 
 * Optimized file structure in admin panel.
 * Added a custom JavaScript template annotation to each module.
 * Upgraded core API for theme developer customization.
 * Added the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+* Added a new template guide to create pages faster and easier.
 * Added a new module: Custom Menu (new). Supports multiple styles of choice.
+* Optimize the default companion page template "tmpl-uix_page_builder.php".
+* Updated a latest video demo.
+* Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: shadower, shadower pro, twentyfifteen, twentyseventeen, twentysixteen and so on.
 
 
 

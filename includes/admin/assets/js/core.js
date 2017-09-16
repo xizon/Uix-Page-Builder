@@ -4,6 +4,30 @@
     $( function() {
 		
 		
+		/*!
+		 *
+		 * Determines whether the template file is created
+		 * ---------------------------------------------------
+		 */
+		$( document ).ready( function() {
+			
+			if ( uix_page_builder_layoutdata.send_string_tempfile_exists == 0 ) {
+				$( 'body' ).prepend( '<div class="uixpbform-modal-box active" id="uix-page-builder-template-files-note"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">&times;</a><div class="content"><h2>&nbsp;</h2><p><img src="' + uix_page_builder_layoutdata.send_string_plugin_url + 'includes/admin/assets/images/bubble-welcome.png" alt="" width="150" height="150"></p><p>'+uix_page_builder_layoutdata.send_string_tempfile_note+'</p></div></div>' );
+				$( '#uix-page-builder-template-files-note' ).UixPBFormPopWinReset( { heightChange: 500 } );
+				
+				
+				/*-- Close --*/
+				$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
+					e.preventDefault();
+
+					$( document ).UixPBFormPopClose();
+
+				});		
+				
+			}
+
+		} );
+		
 
 		/*!
 		 *

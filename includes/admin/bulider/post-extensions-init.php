@@ -429,6 +429,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_plugin_url'       => UixPageBuilder::plug_directory(),
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
 				'send_string_postid'           => $post_id,
+				'send_string_tempfile_exists'  => ( UixPageBuilder::tempfile_exists() ) ? 1 : 0,
 				'send_string_loadlist'         => esc_html__( 'Loading list...', 'uix-page-builder' ),
 				'send_string_tempfiles_exists' => $tempfile_exists,
 				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
@@ -436,6 +437,11 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_render_count'     => 1,
 				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
 				'send_string_nodata'           => esc_html__( 'Hmm... no templates yet.', 'uix-page-builder' ),
+				'send_string_tempfile_note'    => sprintf( 
+						__('<p>You could <a class="button button-primary button-small" href="%s">Create</a> a Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php"</strong> ) in your templates directory. This allows the page builder content templates to look beautiful with any theme.</p><p>1) Then you need to login to your WordPress admin area to create a new page or edit an existing one.</p><p>2) On the page editing screen, scroll down to <strong>"Page Attributes"</strong> section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created. The template name is <code>"Uix Page Builder Template"</code>.</p><p>3) Go to <strong>"Dashboard » Appearence » Menus"</strong>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Uix Page Builder Menu"</code> from options as <strong>"Display location"</strong>.</p>', 'uix-page-builder' ), 
+						admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" )
+					),
+				
 			);
 			
 			

@@ -461,6 +461,12 @@
 			if ( settings.heightChange ) {
 				$this.css( 'height', parseFloat( ( $( window ).height()*0.8 - 150 ) + 150 ) + 'px' );
 			}
+			
+			var isNumeric = /^[-+]?(\d+|\d+\.\d*|\d*\.\d+)$/;
+			if ( isNumeric.test( settings.heightChange ) ) {
+				$this.css( 'height', settings.heightChange + 'px' );
+			}
+
 		
 			$this.find( '.content' ).animate( {scrollTop: 10 }, 100 );
 			$( 'html' ).css( 'overflow-y', 'hidden' );

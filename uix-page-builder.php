@@ -57,15 +57,14 @@ class UixPageBuilder {
 		add_action( 'init', array( __CLASS__, 'register_scripts' ) );
 		add_action( 'init', array( __CLASS__, 'load_classes_core' ) );
 		add_action( 'init', array( __CLASS__, 'load_components_core' ) );
+		add_action( 'init', array( __CLASS__, 'reg_menu' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ), 99999 );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_modules' ) );
-		add_action( 'admin_init', array( __CLASS__, 'nag_ignore' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
-		//add_action( 'admin_notices', array( __CLASS__, 'usage_notice_app' ) );
 	
 	}
 	
@@ -212,6 +211,20 @@ class UixPageBuilder {
 							  
 		}
 		
+
+	}
+	
+	
+	/*
+	 * This plugin uses wp_nav_menu() in one location by default.
+	 *
+	 *
+	 */	
+	public static function reg_menu() {
+
+		register_nav_menus( array(
+			'uix-pb-primary' => __( 'Uix Page Builder Menu <span class="theme-location-set">(It is valid only when using the page templates of Uix Page Builder.)</span>', 'uix-page-builder' )
+		) );
 
 	}
 	
@@ -1457,57 +1470,6 @@ class UixPageBuilder {
 	}
 	
 	
-	
-	
-	/*
-	 *  Add admin one-time notifications
-	 *
-	 *
-	 */
-	public static function usage_notice_app() {
-		
-		if( self::page_builder_general_mode() ) {
-		
-			global $current_user ;
-			$user_id = $current_user->ID;
-
-			/* Check that the user hasn't already clicked to ignore the message */
-			if ( ! get_user_meta( $user_id, self::NOTICEID ) ) {
-
-
-				if( !self::tempfile_exists() ) {
-					echo '<div class="notice notice-warning"><p>';
-					printf( 
-						__('You could <a class="button button-small" href="%s">create</a> Uix Page Builder template file (from the directory <strong>"/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php"</strong> ) in your templates directory.  ', 'uix-page-builder' ), 
-						admin_url( "admin.php?page=".self::HELPER."&tab=temp" )
-					);
-					printf( __( '<a href="%1$s">Hide Notice</a>' ), '?post_type='.self::get_slug().'&'.self::NOTICEID.'=0');
-					echo '</p></div>';
-
-				}
-			}
-			
-		}
-	
-	}
-	
-	public static function nag_ignore() {
-		    global $current_user;
-			$user_id = $current_user->ID;
-			
-			/* If user clicks to ignore the notice, add that to their user meta */
-			if ( isset( $_GET[ self::NOTICEID ]) && '0' == $_GET[ self::NOTICEID ] ) {
-				 add_user_meta( $user_id, self::NOTICEID, 'true', true);
-
-				if ( wp_get_referer() ) {
-					/* Redirects user to where they were before */
-					wp_safe_redirect( wp_get_referer() );
-				} else {
-					/* This will never happen, I can almost gurantee it, but we should still have it just in case*/
-					wp_safe_redirect( home_url() );
-				}
-		    }
-	}
 	
 	/*
 	 * Checks whether a template file exists from your current theme.

@@ -95,7 +95,26 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 			
 			
 
-			<h3><?php _e( 'FAQ 5: How to customize the Uix Page Builder templates and modules in admin panel?', 'uix-page-builder' ); ?>
+			<h3><?php _e( 'FAQ 5: How to set the menu for the currently used page template of Uix Page Builder?', 'uix-page-builder' ); ?>
+			</h3>
+			<div class="uix-bg-custom-faq-con">
+				<p>
+			   <?php 
+				printf( 
+					__('Go to <a href="%s">Dashboard » Appearence » Menus</a>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Uix Page Builder Menu"</code> from options as <strong>"Display location"</strong>.', 'uix-page-builder' ), 
+					admin_url( "nav-menus.php" )
+				);
+				?>
+				 
+				</p>
+				<p>
+					 <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/set-temp-menu.jpg" alt="">
+				</p> 
+
+			</div>
+		
+		
+			<h3><?php _e( 'FAQ 6: How to customize the Uix Page Builder templates and modules in admin panel?', 'uix-page-builder' ); ?>
 			</h3>
 			<div class="uix-bg-custom-faq-con">
 				<p>

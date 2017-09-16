@@ -75,12 +75,6 @@ Embed a shortcode **"[uix_pb_sections]"** into the editor of **Pages Add New Scr
 
 
 
-= Advanced Customization ( For Theme Developer ) =
-
-Please install the plugin and check out the **"Uix Page Builder Helper"** directly in admin panel.
-
-
-
 == Installation ==
 
 1. After activating your theme, you can see a prompt pointed out as absolutely critical. Go to "Appearance -> Install Plugins".
@@ -120,6 +114,16 @@ You could create Uix Page Builder template file (from the directory "/wp-content
 
 Uix Page Builder supports the automatic addition of Anchor Links. From the **"Appearance"** menu on the left-hand side of the Dashboard, select the **"Menus"** option to bring up the Menu Editor. Locate the pane entitled **"Uix Page Builder Anchor Links"**. Within this pane, select a page to view all anchor link.
 
+= FAQ 5: FAQ 5: How to set the menu for the currently used page template of Uix Page Builder? =
+
+Go to "Dashboard » Appearence » Menus". Click on **"create a new menu"** to create your custom menu. You should tick the appropriate checkbox of `Uix Page Builder Menu` from options as **"Display location"**.
+
+
+= FAQ 6: How to customize the Uix Page Builder templates and modules in admin panel? =
+
+Please install the plugin and check out the **"Uix Page Builder Helper » For Theme Developer"** directly in admin panel.
+
+
 
 
 
@@ -147,13 +151,17 @@ Uix Page Builder supports the automatic addition of Anchor Links. From the **"Ap
 == Changelog ==
 
 
-= 1.4.3 (September 15, 2017) =
+= 1.4.3 (September 16, 2017) =
 
 * Optimized file structure in admin panel.
 * Added a custom JavaScript template annotation to each module.
 * Upgraded core API for theme developer customization.
 * Added the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+* Added a new template guide to create pages faster and easier.
 * Added a new module: Custom Menu (new). Supports multiple styles of choice.
+* Optimize the default companion page template "tmpl-uix_page_builder.php".
+* Updated a latest video demo.
+* Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: shadower, shadower pro, twentyfifteen, twentyseventeen, twentysixteen and so on.
 
 
 
