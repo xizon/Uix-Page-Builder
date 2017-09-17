@@ -146,10 +146,12 @@ class UixPageBuilder {
 		wp_register_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/'.self::frontpage_core_js_name(), array( 'jquery' ), self::ver(), true );
 		wp_register_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/uix-page-builder-plugins.js', false, self::ver(), true );
 		wp_register_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/'.self::frontpage_core_css_name(), false, self::ver(), 'all' );
-		wp_register_style( self::PREFIX . '-page-builder-rtl', self::backend_path( 'uri' ).'css/'.str_replace( '.css', '-rtl.css', self::frontpage_core_css_name() ), false, self::ver(), 'all' );
+		wp_register_style( self::PREFIX . '-page-builder-rtl', self::backend_path( 'uri' ).'css/'.self::to_rtl_css( self::frontpage_core_css_name() ), false, self::ver(), 'all' );
 		wp_localize_script( self::PREFIX . '-page-builder',  'wp_theme_root_path', array( 
 			'templateUrl' => get_stylesheet_directory_uri()
 		 ) );
+		
+		
 			
 
 		// Shuffle
@@ -234,6 +236,17 @@ class UixPageBuilder {
 		) );
 
 	}
+	
+		
+	/*
+	 * Returns RTL stylesheet name or directory
+	 *
+	 *
+	 */
+	public static function to_rtl_css( $str ) {	
+		return str_replace( '.css', '-rtl.css', $str );
+	}
+	
 	
 
 	/*
