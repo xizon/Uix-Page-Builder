@@ -33,6 +33,11 @@ function uix_page_builder_options_page(){
     padding-right: 1.5em;
 }
 
+.rtl .uix-field-custom-style label {
+    padding-right: auto;
+    padding-left: 1.5em;
+}
+
 .uix-field-custom-style .sp-con {
     position: relative;
     width: 137px;
@@ -50,6 +55,11 @@ function uix_page_builder_options_page(){
     width: 100%;
     padding: .2em 0;
     color: #fff;
+}
+
+.rtl .uix-field-custom-style .sp-con .title {
+    left: auto;
+    right: 0;
 }
 
 .uix-bg-custom-wrapper a {
@@ -78,22 +88,20 @@ function uix_page_builder_options_page(){
 }
 
 .uix-bg-custom-desc-note {
-	filter: alpha(opacity=50);  
-	-moz-opacity: 0.5;   
-	opacity: 0.5; 
-
-}	
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
 
 .uix-bg-custom-desc a {
-	color: #D16E15;
-	border-bottom: 1px solid #D16E15;
+    color: #D16E15;
+    border-bottom: 1px solid #D16E15;
 }
-	
+
 .uix-bg-custom-desc a:hover {
-	border-color: transparent;
+    border-color: transparent;
 }
-	
-	
+
 .uix-bg-custom-blockquote {
     background: #EBEBEB;
     border: 1px solid #F8F8F8;
@@ -106,107 +114,121 @@ function uix_page_builder_options_page(){
     font-size: 1.14285714286em;
     color: #939393;
 }
+
+.rtl .uix-bg-custom-blockquote {
+    border-left-width: 1px;
+    border-right-width: 7px;
+    border-left-color: #F8F8F8;
+    border-right-color: #BEBEBE;
+}
+	
 	
 /* List */
 ul.uix-bg-custom-list {
-	list-style: disc;
-	padding-left: 2em;
-	padding-bottom: 2em;
-	display: block;
+    list-style: disc;
+    padding-left: 2em;
+    padding-bottom: 2em;
+    display: block;
 }
+
+.rtl ul.uix-bg-custom-list {
+    padding-left: auto;
+    padding-right: 2em;
+}
+
 ul.uix-bg-custom-list li {
-	
 }
 	
 	
 	
 /* FAQ area */
 .uix-bg-custom-faq-group {
-	padding: 10px;
-	background: #FFFEEE;
-	border: 1px solid #EEECCE;
-	margin-bottom: 8px;
-	margin: 1em 0;
+    padding: 10px;
+    background: #FFFEEE;
+    border: 1px solid #EEECCE;
+    margin-bottom: 8px;
+    margin: 1em 0;
 }
-	
+
 .uix-bg-custom-faq-group p {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
-	
+
 .uix-bg-custom-faq-group img {
-	margin-top: .5em;
+    margin-top: .5em;
 }
 
 .uix-bg-custom-faq-group > h3 {
-	font-size: 15px;
-	margin: 0;
-	padding: 8px 0;
-	border-bottom: 1px dashed #EEECCE;
-	display: block;
-	color: #A39954;
+    font-size: 15px;
+    margin: 0;
+    padding: 8px 0;
+    border-bottom: 1px dashed #EEECCE;
+    display: block;
+    color: #A39954;
 }
 
 .uix-bg-custom-faq-group .uix-bg-custom-faq-con {
-	padding-bottom: 1.5em;
+    padding-bottom: 1.5em;
 }
 
 	
 	
 /* Code preview container */
-.uix-page-builder-dialog {  
-    width:500px;
-	height:440px;
-	padding:20px 0 0 20px;
-    background:#e8e8e8;
+.uix-page-builder-dialog {
+    width: 500px;
+    height: 440px;
+    padding: 20px 0 0 20px;
+    background: #e8e8e8;
     border: 1px solid #dadada;
-    font-family:sans-serif;
-	-webkit-box-shadow: 0 1px 15px rgba(0,0,0,.8);
-	-moz-box-shadow: 0 1px 15px rgba(0,0,0,.8);
-	box-shadow: 0 1px 15px rgba(0,0,0,.8);
-	position:absolute;
-	top:50%;
-	margin-top:-250px;
-	left:50%;
-	margin-left:-250px;
-	display:none;
-	z-index:9999999;
-	-webkit-border-radius: 5px; 
-	-moz-border-radius: 5px; 
-	border-radius: 5px;
-}  
-
-.uix-page-builder-dialog-mask{
-	display:none;
-	z-index:9999998;
-	background:rgba(0,0,0,.8);
-	position:fixed;
-	top:0;
-	left:0;
-	height:100%;
-	width:100%;
+    font-family: sans-serif;
+    -webkit-box-shadow: 0 1px 15px rgba(0,0,0,.8);
+    -moz-box-shadow: 0 1px 15px rgba(0,0,0,.8);
+    box-shadow: 0 1px 15px rgba(0,0,0,.8);
+    position: absolute;
+    top: 50%;
+    margin-top: -250px;
+    left: 50%;
+    margin-left: -250px;
+    display: none;
+    z-index: 9999999;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
-	
 
-.uix-page-builder-dialog textarea{
-	width:100%;
-	height:90%;
+.rtl .uix-page-builder-dialog {
+    padding: 20px 20px 0 0;
 }
-.uix-page-builder-dialog .close{
-	display:inline-block;
-	margin-top:3px;
+
+.uix-page-builder-dialog-mask {
+    display: none;
+    z-index: 9999998;
+    background: rgba(0,0,0,.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.uix-page-builder-dialog textarea {
+    width: 100%;
+    height: 90%;
+}
+
+.uix-page-builder-dialog .close {
+    display: inline-block;
+    margin-top: 3px;
 }
 
 @media all and (max-width: 540px) {
 	
-	.uix-page-builder-dialog {  
-		width: 300px;
-		margin-left:-170px;
-		
-	}
-	
+    .uix-page-builder-dialog {
+        width: 300px;
+        margin-left: -170px;
+    }
 }
-
 
 	
 	
