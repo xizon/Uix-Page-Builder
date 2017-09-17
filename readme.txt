@@ -117,7 +117,7 @@ Uix Page Builder supports the automatic addition of Anchor Links. From the **"Ap
 
 = FAQ 5: FAQ 5: How to set the menu for the currently used page template of Uix Page Builder? =
 
-Go to "Dashboard » Appearence » Menus". Click on **"create a new menu"** to create your custom menu. You should tick the appropriate checkbox of `Uix Page Builder Menu` from options as **"Display location"**.
+Go to "Dashboard » Appearence » Menus". Click on **"create a new menu"** to create your custom menu. You should tick the appropriate checkbox of `Primary Menu` from options as **"Display location"**.
 
 
 = FAQ 6: How to customize the Uix Page Builder templates and modules in admin panel? =

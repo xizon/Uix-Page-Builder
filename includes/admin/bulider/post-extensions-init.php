@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; 
 }
 
+
 /*
  * Delete data of custom content template with ajax
  * 
@@ -437,10 +438,8 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 				'send_string_render_count'     => 1,
 				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
 				'send_string_nodata'           => esc_html__( 'Hmm... no templates yet.', 'uix-page-builder' ),
-				'send_string_tempfile_note'    => sprintf( 
-						__('<p style="font-weight:bold;">You could <a class="button button-primary button-small" href="%s">Create</a> a Uix Page Builder template file (from the directory <code>/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your templates directory. This allows the page builder content templates to look beautiful with any theme.</p><h3>How to use?</h3><ol><li>Then you need to login to your WordPress admin area to create a new page or edit an existing one.</li><li>On the page editing screen, scroll down to <strong>"Page Attributes"</strong> section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created. The template name is <code>"Uix Page Builder Template"</code>.</li><li>Go to <strong>"Dashboard » Appearence » Menus"</strong>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Uix Page Builder Menu"</code> from options as <strong>"Display location"</strong>.</li></ol>', 'uix-page-builder' ), 
-						admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" )
-					),
+				'send_string_tempfile_note'    => sprintf( __( '<p style="font-weight:bold;">You could <a class="button button-primary button-small" href="%1$s">Create</a> a Uix Page Builder template file (from the directory <code>/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your templates directory. This allows the page builder content templates to look beautiful with any theme.</p><h3>How to use?</h3><ol><li>Then you need to login to your WordPress admin area to create a new page or edit an existing one.</li><li>On the page editing screen, scroll down to <strong>"Page Attributes"</strong> section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created. The template name is <code>"Uix Page Builder Template"</code>. <a target="_blank" href="%2$s"><i class="dashicons dashicons-format-image"></i></a> <a target="_blank" href="%3$s"><i class="dashicons dashicons-format-image"></i></a></li><li>Go to <strong>"Dashboard » Appearence » Menus"</strong>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Primary Menu"</code> from options as <strong>"Display location"</strong>. <a target="_blank" href="%4$s"><i class="dashicons dashicons-format-image"></i></a></li></ol>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" ), UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-1.jpg', UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-2.jpg', UixPageBuilder::plug_directory().'helper/img/set-temp-menu.jpg' ),
+				
 				
 			);
 			

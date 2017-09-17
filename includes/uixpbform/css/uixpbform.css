@@ -155,6 +155,10 @@
     color: #fff;
 }
 
+.uixpbform-modal-box .content a .dashicons {
+	text-decoration: none;
+}
+
 .uixpbform-modal-box.active .content {
     overflow-y: scroll;
     margin: 10px;

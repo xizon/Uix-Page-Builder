@@ -167,12 +167,24 @@ ul.uix-bg-custom-list li {
     display: block;
     color: #A39954;
 }
-
+		
 .uix-bg-custom-faq-group .uix-bg-custom-faq-con {
     padding-bottom: 1.5em;
 }
 
-	
+/* Accordion */
+.uix-bg-custom-accordion h3 {
+	cursor: pointer;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	padding-bottom: .5em;
+}
+.uix-bg-custom-accordion h3:hover {
+	color: #0073AA;
+}
+
+.uix-bg-custom-accordion .uix-bg-custom-faq-con {
+	display: none;
+}
 	
 /* Code preview container */
 .uix-page-builder-dialog {

@@ -89,7 +89,7 @@
 			*/    
 			wp_nav_menu(
 					array(
-						'theme_location'  => 'uix-pb-primary',
+						'theme_location'  => 'primary',
 						'menu'            => '',
 						'container'       => false,
 						'container_class' => '',

@@ -227,13 +227,16 @@ class UixPageBuilder {
 	 * This plugin uses wp_nav_menu() in one location by default.
 	 *
 	 * It is valid only when using the page templates of Uix Page Builder.
+	 * So that other themes can be better compatible. Such as: shadower, shadower pro, twentyfifteen, twentyseventeen, twentysixteen and so on.
 	 *
 	 */	
 	public static function reg_menu() {
 
-		register_nav_menus( array(
-			'uix-pb-primary' => __( 'Uix Page Builder Menu', 'uix-page-builder' )
-		) );
+		if ( !has_nav_menu( 'primary' ) ) {
+			register_nav_menus( array(
+				'primary' => __( 'Primary Menu', 'uix-page-builder' )
+			) );
+		}
 
 	}
 	
@@ -2114,6 +2117,7 @@ class UixPageBuilder {
 		return $data;
 		
 	}
+	
 	
 
 	
