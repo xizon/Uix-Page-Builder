@@ -17,6 +17,7 @@
 	7. Grid
 	8. Image Slider
 	9. Layout effect
+	10. Custom Menu
 	Required: Apply the original scripts
 	
 
@@ -971,6 +972,78 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
     return uix_pb;
 
 }( uix_pb, jQuery, window, document ) );
+
+
+/*!
+ *************************************
+ * 10. Custom Menu
+ *************************************
+ */
+uix_pb = ( function ( uix_pb, $, window, document ) {
+    'use strict';
+
+
+    var documentReady = function( $ ) {
+	
+        var $window       = $( window ),
+		    windowWidth   = $window.width(),
+		    windowHeight  = $window.height(),
+			menuContainer = 'ul.uix-pb-menu-fixed, ul.uix-pb-menu-embedded'
+		
+		uix_pb_customMenuInit( windowWidth );
+		
+		$window.on('resize', function() {
+			windowWidth = $window.width();
+			uix_pb_customMenuInit( windowWidth );
+		});
+		
+		function uix_pb_customMenuInit( w ) {
+			
+			// Show Toolbar when viewing site
+			if ( w <= 768 ){
+				$window.on( 'scroll', function() {
+					var scrollTop = $window.scrollTop();
+
+					if ( scrollTop > 32 ) {
+						$( menuContainer ).addClass( 'scrolling' );
+					} else {
+						$( menuContainer ).removeClass( 'scrolling' );
+					}
+
+				});
+			} else {
+				$window.on( 'scroll', function() {
+					$( menuContainer ).removeClass( 'scrolling' );
+
+				});
+			}
+			
+		}
+		
+
+		
+		//Mobile Trigger
+		$( 'li.uix-pb-menu-mobile-icon' ).on( 'click', function( e ) {
+			e.preventDefault();
+			
+			$( this ).closest( menuContainer ).toggleClass( 'responsive' );
+
+		});
+		
+
+
+	};
+
+
+    uix_pb.custommenu = {
+        documentReady : documentReady
+    };
+
+    uix_pb.components.documentReady.push( documentReady );
+    return uix_pb;
+
+}( uix_pb, jQuery, window, document ) );
+
 
 
 /*! 

@@ -3278,11 +3278,7 @@ a.uix-pb-flex-prev {
 }
 
 /*-------------Search Icon -----------------*/
-.uix-pb-search {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
+
 
 .uix-pb-search * {
     outline: none;
@@ -3305,8 +3301,6 @@ a.uix-pb-flex-prev {
     border: 1px solid transparent;
     border-radius: 0;
     cursor: pointer;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -3319,19 +3313,32 @@ a.uix-pb-flex-prev {
     width: calc( 100vw - .7em ) !important;
     color: rgba(46,46,46,1);
     cursor: default;
-	-webkit-box-shadow: 0px 0px 65px 0px rgba(0,0,0,0.29);
-	-moz-box-shadow: 0px 0px 65px 0px rgba(0,0,0,0.29);
-	box-shadow: 0px 0px 65px 0px rgba(0,0,0,0.29);
 	border: none;
 	text-indent: 10px;
+	border-top: 1px solid #c6d0da;
 	
 }
 
-.uix-pb-search-field:focus ~ .uix-pb-search-icon {
-    background-color: transparent;
-    cursor: pointer;
-    pointer-events: auto;
+
+@media all and (max-width: 768px) {
+
+	.uix-pb-search-field {
+		width: calc( 100vw - .7em ) !important;
+		text-indent: inherit;
+	}
+
+	.uix-pb-search {
+		border-top: 1px solid #c6d0da;
+	}
+	
+
+	.uix-pb-search-field:focus {
+		border-top: none;
+
+	}
+
 }
+
 
 .uix-pb-search-icon {
     position: absolute;
@@ -3347,81 +3354,9 @@ a.uix-pb-flex-prev {
     border-radius: 50%;
     pointer-events: none;
     display: inline-block;
-    -webkit-transition: background-color 0.2s ease-in-out;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.uix-pb-search-field::-webkit-input-placeholder {
-    position: relative;
-    top: 0;
-    left: 0;
-    -webkit-transition-property: top, color;
-    transition-property: top, color;
-    -webkit-transition-duration: .1s;
-    transition-duration: .1s;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-}
-
-.uix-pb-search-field:-moz-placeholder {
-    position: relative;
-    top: 0;
-    left: 0;
-    -webkit-transition-property: top, color;
-    transition-property: top, color;
-    -webkit-transition-duration: .1s;
-    transition-duration: .1s;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-}
-
-.uix-pb-search-field::-moz-placeholder {
-    position: relative;
-    top: 0;
-    left: 0;
-    -webkit-transition-property: top, color;
-    transition-property: top, color;
-    -webkit-transition-duration: .1s;
-    transition-duration: .1s;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-}
-
-.uix-pb-search-field:-ms-input-placeholder {
-    position: relative;
-    top: 0;
-    left: 0;
-    -webkit-transition-property: top, color;
-    transition-property: top, color;
-    -webkit-transition-duration: .1s;
-    transition-duration: .1s;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
 }
 
 
-ul.uix-pb-menu-fixed > li:last-child,
-ul.uix-pb-menu-embedded > li:last-child {
-  float: right;
-  border-right: none;
-  border-left: 1px solid #c6d0da;
-}
 
 /*-------------Fixed Menu -----------------*/
 ul.uix-pb-menu-fixed,
@@ -3437,7 +3372,7 @@ ul.uix-pb-menu-fixed {
     width: 100%;
     height: 50px;
     font-size: 12px;
-    z-index: 99999;
+    z-index: 99998; /* WP admin bar is 99999 */
     border: 1px solid #c6d0da;
 	border-left: none;
 	border-right: none;
@@ -3446,6 +3381,7 @@ ul.uix-pb-menu-fixed {
 	
 	ul.uix-pb-menu-fixed {
 		height: auto;
+		border: none;
 	}
 }
 
@@ -3457,12 +3393,17 @@ ul.uix-pb-menu-fixed {
 	top: 32px;
 }
 
+.admin-bar ul.uix-pb-menu-fixed.scrolling {
+	top: 0 !important;
+}
+
 
 /* Admin bar becomes taller on smaller devices */
 @media screen and ( max-width: 782px ) {
 	.admin-bar ul.uix-pb-menu-fixed {
 		top: 46px;
 	}
+	
 }
 
 
@@ -3484,7 +3425,7 @@ ul.uix-pb-menu-fixed a {
 }
 
 
-ul.uix-pb-menu-fixed a:hover {
+ul.uix-pb-menu-fixed li:not(.uix-pb-menu-mobile-icon) a:hover {
     background-color: #333;
     color: #fff;
 }
@@ -3497,6 +3438,12 @@ ul.uix-pb-menu-fixed > li {
     text-align: center;
     position: relative;
 }
+
+ul.uix-pb-menu-fixed > li.uix-pb-menu-search {
+	float: right;
+	border-right: none;
+}
+
 
 ul.uix-pb-menu-fixed > li > a {
     padding: 0 30px;
@@ -3512,7 +3459,13 @@ ul.uix-pb-menu-fixed > li > a {
 		-webkit-box-shadow: 0px 1px 0px 0px #c6d0da;
 		-moz-box-shadow: 0px 1px 0px 0px #c6d0da;
 		box-shadow: 0px 1px 0px 0px #c6d0da;
-		margin-top: 1px;
+		width: 100%;
+		text-align: left;
+		border-right: none;
+		/* Setting a height in CSS for an unordered list */
+		display: inline-block;
+		float: none;
+		
 	}
 	
 	ul.uix-pb-menu-fixed > li > a {
@@ -3548,7 +3501,7 @@ ul.uix-pb-menu-fixed ul {
     display: none;
     position: absolute;
     min-width: 220px;
-    z-index: 1000;
+    z-index: 100;
 }
 
 ul.uix-pb-menu-fixed ul ul {
@@ -3564,6 +3517,64 @@ ul.uix-pb-menu-fixed ul li a {
     border-bottom: 1px solid #E0E0E0;
 }	
 
+
+
+@media all and (max-width: 768px) {
+	
+
+	ul.uix-pb-menu-fixed ul {
+		position: static;
+		min-width: inherit;
+		width: 100%;
+		border: none;
+		padding-left: .5em;
+		display: block;
+	}
+
+	ul.uix-pb-menu-fixed ul ul {
+		left: auto;
+		margin-top: auto;
+		
+	}
+	
+	
+	ul.uix-pb-menu-fixed ul li a {
+		padding: 0 8px;
+	}
+	
+	
+
+}
+
+/* Mobile trigger */
+ul.uix-pb-menu-fixed > li.uix-pb-menu-mobile-icon {
+	display: none;
+	text-align: center;
+}
+ul.uix-pb-menu-fixed > li.uix-pb-menu-mobile-icon a {
+	padding-right: .5em;
+}
+
+@media all and (max-width: 768px) {
+	
+	ul.uix-pb-menu-fixed > li.uix-pb-menu-mobile-icon {
+		display: block;
+	}
+	
+     ul.uix-pb-menu-fixed > li:not(.uix-pb-menu-mobile-icon) {
+        display: none;
+    }
+
+
+    ul.uix-pb-menu-fixed.responsive > li:not(.uix-pb-menu-mobile-icon) {
+		display: block;
+    }
+
+}
+  
+
+
+
 /*-------------Embedded Menu -----------------*/
 ul.uix-pb-menu-embedded,
 ul.uix-pb-menu-embedded li {
@@ -3578,7 +3589,7 @@ ul.uix-pb-menu-embedded {
     width: 100%;
     height: 50px;
     font-size: 12px;
-    z-index: 99999;
+    z-index: 99998; /* WP admin bar is 99999 */
     border: 1px solid #c6d0da;
 }
 
@@ -3595,7 +3606,9 @@ ul.uix-pb-menu-embedded {
 	
 	ul.uix-pb-menu-embedded {
 		height: auto;
+		border: none;
 	}
+	
 }
 
 
@@ -3611,6 +3624,7 @@ ul.uix-pb-menu-embedded {
 @media screen and ( max-width: 782px ) {
 	.admin-bar ul.uix-pb-menu-embedded {
 		top: 46px;
+		
 	}
 }
 
@@ -3633,10 +3647,11 @@ ul.uix-pb-menu-embedded a {
 }
 
 
-ul.uix-pb-menu-embedded a:hover {
+ul.uix-pb-menu-embedded li:not(.uix-pb-menu-mobile-icon) a:hover {
     background-color: #333;
     color: #fff;
 }
+
 
 ul.uix-pb-menu-embedded > li {
     display: block;
@@ -3645,6 +3660,13 @@ ul.uix-pb-menu-embedded > li {
     border-right: 1px solid #c6d0da;
     text-align: center;
     position: relative;
+}
+
+ul.uix-pb-menu-embedded > li.uix-pb-menu-search {
+	float: right;
+	border-right: none;
+	background: #fff;
+	
 }
 
 ul.uix-pb-menu-embedded > li > a {
@@ -3661,7 +3683,12 @@ ul.uix-pb-menu-embedded > li > a {
 		-webkit-box-shadow: 0px 1px 0px 0px #c6d0da;
 		-moz-box-shadow: 0px 1px 0px 0px #c6d0da;
 		box-shadow: 0px 1px 0px 0px #c6d0da;
-		margin-top: 1px;
+		width: 100%;
+		text-align: left;
+		border-right: none;
+		/* Setting a height in CSS for an unordered list */
+		display: inline-block;
+		float: none;
 	}
 	
 	ul.uix-pb-menu-embedded > li > a {
@@ -3697,13 +3724,16 @@ ul.uix-pb-menu-embedded ul {
     display: none;
     position: absolute;
     min-width: 220px;
-    z-index: 1000;
+    z-index: 100;
 }
 
 ul.uix-pb-menu-embedded ul ul {
     left: 100%;
     margin-top: -50px;
 }
+
+
+
 
 ul.uix-pb-menu-embedded li:hover > ul {
     display: block;
@@ -3712,6 +3742,61 @@ ul.uix-pb-menu-embedded li:hover > ul {
 ul.uix-pb-menu-embedded ul li a {
     border-bottom: 1px solid #E0E0E0;
 }	
+
+
+@media all and (max-width: 768px) {
+	
+
+	ul.uix-pb-menu-embedded ul {
+		position: static;
+		min-width: inherit;
+		width: 100%;
+		border: none;
+		padding-left: .5em;
+		display: block;
+	}
+
+	ul.uix-pb-menu-embedded ul ul {
+		left: auto;
+		margin-top: auto;
+		
+	}
+	
+	
+	ul.uix-pb-menu-embedded ul li a {
+		padding: 0 8px;
+	}
+	
+	
+
+}
+
+/* Mobile trigger */
+ul.uix-pb-menu-embedded > li.uix-pb-menu-mobile-icon {
+	display: none;
+	text-align: center;
+}
+ul.uix-pb-menu-embedded > li.uix-pb-menu-mobile-icon a {
+	padding-right: .5em;
+}
+
+@media all and (max-width: 768px) {
+	
+	ul.uix-pb-menu-embedded > li.uix-pb-menu-mobile-icon {
+		display: block;
+	}
+	
+     ul.uix-pb-menu-embedded > li:not(.uix-pb-menu-mobile-icon) {
+        display: none;
+    }
+
+
+    ul.uix-pb-menu-embedded.responsive > li:not(.uix-pb-menu-mobile-icon) {
+		display: block;
+    }
+
+}
+  
 
 
 /* ====================================================== 
@@ -3772,6 +3857,4 @@ ul.uix-pb-menu-embedded ul li a {
 	padding: 1.5em;
 	text-align: center;
 }
-
-
 

@@ -100,6 +100,12 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 
 					//UixForm (Require to enqueue the script before </body> instead of in the <head>.)
 					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.min.css', false, self::VERSION, 'all');
+					//RTL		
+					if ( is_rtl() ) {
+						wp_enqueue_style( 'uixpbform-rtl', self::plug_directory() .'css/uixpbform.min-rtl.css', false, self::VERSION, 'all');
+					}
+				 
+				 
 					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.min.js', array( 'jquery' ), self::VERSION, true );
 					
 

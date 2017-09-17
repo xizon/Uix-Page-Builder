@@ -146,6 +146,7 @@ class UixPageBuilder {
 		wp_register_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/'.self::frontpage_core_js_name(), array( 'jquery' ), self::ver(), true );
 		wp_register_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/uix-page-builder-plugins.js', false, self::ver(), true );
 		wp_register_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/'.self::frontpage_core_css_name(), false, self::ver(), 'all' );
+		wp_register_style( self::PREFIX . '-page-builder-rtl', self::backend_path( 'uri' ).'css/'.str_replace( '.css', '-rtl.css', self::frontpage_core_css_name() ), false, self::ver(), 'all' );
 		wp_localize_script( self::PREFIX . '-page-builder',  'wp_theme_root_path', array( 
 			'templateUrl' => get_stylesheet_directory_uri()
 		 ) );
@@ -186,6 +187,11 @@ class UixPageBuilder {
 			file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.min.css' ) 
 		) {
 			wp_enqueue_style( self::PREFIX . '-page-builder' );
+			//RTL		
+			if ( is_rtl() ) {
+				wp_enqueue_style( self::PREFIX . '-page-builder-rtl' );
+			}
+			
 		}
 		
 		if ( 
@@ -218,12 +224,13 @@ class UixPageBuilder {
 	/*
 	 * This plugin uses wp_nav_menu() in one location by default.
 	 *
+	 * It is valid only when using the page templates of Uix Page Builder.
 	 *
 	 */	
 	public static function reg_menu() {
 
 		register_nav_menus( array(
-			'uix-pb-primary' => __( 'Uix Page Builder Menu <span class="theme-location-set">(It is valid only when using the page templates of Uix Page Builder.)</span>', 'uix-page-builder' )
+			'uix-pb-primary' => __( 'Uix Page Builder Menu', 'uix-page-builder' )
 		) );
 
 	}

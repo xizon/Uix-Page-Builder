@@ -1387,6 +1387,10 @@ function UixPBFormatRenderCodes( code ) {
 				
 				var oldPo  = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'left' ) ),
 					target = $( elements );    
+				
+				if ( $( 'body' ).hasClass( 'rtl' ) ) {
+					oldPo = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'right' ) );
+				}
 		
 
 				if ( oldPo == 0 ) {

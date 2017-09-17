@@ -72,7 +72,7 @@ Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen*
 * Customizable core style sheets.
 * Drag and Drop Responsive Website Builder.
 * Uix Page Builder supports the automatic addition of Anchor Links.
-
+* Supports Right-To-Left (RTL) direction.
 
 
 
@@ -135,7 +135,8 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 * Optimize the default companion page template "tmpl-uix_page_builder.php".
 * Updated a latest video demo.
 * Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: shadower, shadower pro, twentyfifteen, twentyseventeen, twentysixteen and so on.
-
+* Supports Right-To-Left (RTL) direction and updated the core stylesheet file of front-end.
+* Supports Right-To-Left (RTL) direction in admin panel.
 
 
 ##### = 1.4.2 (September 14, 2017) =

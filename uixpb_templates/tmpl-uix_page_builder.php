@@ -73,12 +73,14 @@
 			<?php
 			  
 			 $li_search = '
-			<form class="uix-pb-search" method="get" action="'.esc_url( home_url( '/' ) ).'">
-			  <div class="uix-pb-search-wrapper">
-				<input type="text" name="" placeholder="'.esc_html__( 'Search for...', 'uix-page-builder' ).'" class="uix-pb-search-field">
-				<button type="submit" class="fa fa-search uix-pb-search-icon"></button>
-			  </div>
-			</form> 
+			 <li class="uix-pb-menu-search">
+				<form class="uix-pb-search" method="get" action="'.esc_url( home_url( '/' ) ).'">
+				  <div class="uix-pb-search-wrapper">
+					<input type="search" autocomplete="off" name="s" placeholder="'.esc_html__( 'Search for...', 'uix-page-builder' ).'" class="uix-pb-search-field">
+					<button type="submit" class="fa fa-search uix-pb-search-icon"></button>
+				  </div>
+				</form>
+			</li>
 			 ';
 			  
 			/*
@@ -100,13 +102,14 @@
 						'after'           => '',
 						'link_before'     => '',
 						'link_after'      => '',
-						'items_wrap'      => '<ul class="uix-pb-menu-embedded">%3$s'.$li_search.'</ul>', 
+						'items_wrap'      => '<ul class="uix-pb-menu-embedded"><li class="uix-pb-menu-mobile-icon"><a href="javascript:void(0);">&#9776;</a></li>%3$s'.$li_search.'</ul>', 
 						'depth'           => 0
 					)
 				);	
 
 
 				function uix_pb_default_menus() {
+					global $li_search;
 				?>
 				
 				<ul class="uix-pb-menu-embedded">

@@ -59,7 +59,7 @@ if ( !class_exists( 'UixPB_Menu' ) ) {
 							'after'           => '',
 							'link_before'     => '',
 							'link_after'      => '',
-							'items_wrap'      => '<ul class="'.esc_attr( $classname ).'" id="uix-pb-menu-%1$s">%3$s</ul>', 
+							'items_wrap'      => '<ul class="'.esc_attr( $classname ).'" id="uix-pb-menu-%1$s"><li class="uix-pb-menu-mobile-icon"><a href="javascript:void(0);">&#9776;</a></li>%3$s</ul>', 
 							'depth'           => 0,
 						)
 					);	

@@ -94,6 +94,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 			<li> <?php _e( 'Customizable core style sheets.', 'uix-page-builder' ); ?></li>
 			<li><?php _e( 'Drag and Drop Responsive Website Builder.', 'uix-page-builder' ); ?></li>
 			<li><?php _e( 'Uix Page Builder supports the automatic addition of Anchor Links.', 'uix-page-builder' ); ?></li>
+			<li><?php _e( 'Supports Right-To-Left (RTL) direction.', 'uix-page-builder' ); ?></li>
   
 		</ul> 
           
