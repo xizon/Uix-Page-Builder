@@ -8,13 +8,6 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 	
 ?>
 
-
-
-
-
-
-
-
         <p class="uix-bg-custom-desc">
             <?php _e( 'Uix Page Builder is a design system that it is simple content creation interface. Drag & Drop, User-friendly and online Visual Editing.', 'uix-page-builder' ); ?>
         </p> 
