@@ -106,6 +106,8 @@
 
 /* Popup Window
 -------------------------------------------------------------- */
+
+/* Note */
 .uixpbform-form-container .info.info-fly {
 	left: auto;
 	right: 0;
@@ -114,6 +116,19 @@
 .uixpbform-form-container .info.info-fly:before{
     left: auto;
 	right: 10px;
+}
+
+.uixpbform-form-container .info.info-error {
+    background-position: calc( 100% - 10px ) 50%;
+}
+.uixpbform-form-container .info.info-success {
+    background-position: calc( 100% - 10px ) 50%;
+}
+.uixpbform-form-container .info.info-warning {
+    background-position: calc( 100% - 10px ) 50%;
+}
+.uixpbform-form-container .info.info-note {
+    background-position: calc( 100% - 10px ) 50%;
 }
 
 
