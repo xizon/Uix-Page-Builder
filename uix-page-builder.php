@@ -608,7 +608,7 @@ class UixPageBuilder {
 	 *
 	 *
 	 */
-	public static function get_img_path( $type = 'thumb', $dircontrol = '' ) {
+	public static function get_img_path( $type = 'thumb', $dircontrol = '', $pathtype = 'uri' ) {
 		
 		// When this folder "UixPageBuilderTmpl" of your theme exists, it is preferred to use it as a premade images in the template.
 		// ( Highest priority )
@@ -624,19 +624,27 @@ class UixPageBuilder {
 		$temp_preview_thumb_folder_dir   = get_stylesheet_directory() . '/'.$theme_assets_folder_name.'images/UixPageBuilderThumb';
 
 		
-		if ( $type == 'thumb' ) {
-			$str = is_dir( $temp_preview_thumb_folder_dir ) ? get_template_directory_uri() . '/'.$theme_assets_folder_name.'' : self::backend_path( 'uri' );
-		} elseif ( $type == 'placeholder' ) {
-			$str = is_dir( $temp_img_folder_dir ) ? get_template_directory_uri() . '/'.$theme_assets_folder_name.'' : self::backend_path( 'uri' );
+		if ( $pathtype == 'uri' ) {
+			$_path_theme = get_template_directory_uri() . '/' . $theme_assets_folder_name;
+			$_path_plug  = self::backend_path( 'uri' );
+		} else {
+			$_path_theme = get_template_directory() .'/' . $theme_assets_folder_name;
+			$_path_plug  = self::plug_filepath() . $theme_assets_folder_name;
 		}
 		
 		
+		if ( $type == 'thumb' ) {
+			$str = is_dir( $temp_preview_thumb_folder_dir ) ? $_path_theme : $_path_plug;
+		} elseif ( $type == 'placeholder' ) {
+			$str = is_dir( $temp_img_folder_dir ) ? $_path_theme : $_path_plug;
+		}
+
 		//Force the path to prevent the system from recognizing automatically
 		if ( $dircontrol == 1 ) {
-			$str = get_template_directory_uri() . '/'.$theme_assets_folder_name.'';
+			$str = $_path_theme;
 		}
 		if ( $dircontrol == 2 ) {
-			$str = self::backend_path( 'uri' );
+			$str = $_path_plug;
 		}
 		   
 		
