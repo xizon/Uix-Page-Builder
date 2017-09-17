@@ -114,6 +114,11 @@
    4. Accordion                              
 /* ====================================================== */
 
+.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-title:before {
+    padding: 1px 0 0 10px;
+}
+
+
 .uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-content {
     padding-left: auto;
     padding-right: 1.4em;
@@ -126,14 +131,16 @@
 
 .uix-pb-tabs .uix-pb-tabs-title li {
     margin-left: auto;
-	margin-right: -1px;
+    margin-right: -1px;
     float: right;
 }
 
 .uix-pb-tabs .uix-pb-tabs-title li:first-child {
     margin-right: 0;
 }
-
+		
+	
+/* Vertical tabs */
 .uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title {
     float: right;
 }
@@ -142,15 +149,16 @@
     float: right;
 }
 
-
-.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li:last-child {
-    border-bottom: 1px solid #DFDFDF;
+.uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li {
+    border-left: 1px solid #DFDFDF;
+    border-right: none;
 }
 
 .uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li.active {
-    border-left-color: #333;
+    border-right-color: #DFDFDF;
+	border-left-color: #333;
 }
-
+		
 	
 
 /* ----------  */
@@ -158,12 +166,10 @@
 
 @media (max-width: 768px) {
  
- 
     .uix-pb-tabs.uix-pb-tabs-vertical .uix-pb-tabs-title li {
         border-left: none;
     }
 }	
-
 
 
   
