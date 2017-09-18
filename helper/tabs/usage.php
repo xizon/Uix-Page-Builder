@@ -8,7 +8,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 
           <p>
             <?php 
-				$embed_code = wp_oembed_get('https://www.youtube.com/watch?v=uKhEKEWLqcA', array('width'=>560, 'height'=>315 )); 
+				$embed_code = wp_oembed_get('https://www.youtube.com/watch?v=KXlpzjUsvdA', array('width'=>560, 'height'=>315 )); 
 				echo $embed_code;										 
 			  ?>
         

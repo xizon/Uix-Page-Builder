@@ -23,6 +23,8 @@ Here are **6+** One-Page Templates for you to swipe and make your own. Here, you
 You could add a new page with Uix Page Builder to your WordPress site, find the **Pages** menu in the WordPress Dashboard Navigation menu. Click **Add new**. The **"Uix Page Builder Attributes"** section applies page builder templates to your new page. 
 
 
+https://www.youtube.com/watch?v=KXlpzjUsvdA
+
 
 **Included Modules**
 
@@ -48,10 +50,6 @@ The currently available default elements:
 * Uix Products (Require the WP plugin "Uix Products") 
 * Uix Slideshow (Require the WP plugin "Uix Slideshow") 
 * Contact Form (Require the WP plugin "Contact Form 7")
-
-
-
-https://www.youtube.com/watch?v=uKhEKEWLqcA
 
 
 
