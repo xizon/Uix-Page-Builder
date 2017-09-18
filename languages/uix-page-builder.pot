@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-17 17:56+0000\n"
+"POT-Creation-Date: 2017-09-18 04:05+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -36,11 +36,11 @@ msgid "Uix Page Builder"
 msgstr ""
 
 #: uix-page-builder.php:361 uix-page-builder.php:362 uix-page-builder.php:427
-#: helper/settings.php:269
+#: helper/settings.php:61
 msgid "How to use?"
 msgstr ""
 
-#: uix-page-builder.php:369 uix-page-builder.php:370 helper/settings.php:279
+#: uix-page-builder.php:369 uix-page-builder.php:370 helper/settings.php:71
 msgid "Template Files"
 msgstr ""
 
@@ -104,27 +104,27 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: helper/settings.php:7
+#: helper/settings.php:34
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: helper/settings.php:251
+#: helper/settings.php:43
 msgid "Uix Page Builder Helper"
 msgstr ""
 
-#: helper/settings.php:265
+#: helper/settings.php:57
 msgid "About"
 msgstr ""
 
-#: helper/settings.php:274
+#: helper/settings.php:66
 msgid "Credits"
 msgstr ""
 
-#: helper/settings.php:284
+#: helper/settings.php:76
 msgid "<i class=\"dashicons dashicons-welcome-view-site\"></i> Custom CSS"
 msgstr ""
 
-#: helper/settings.php:289
+#: helper/settings.php:81
 msgid "<i class=\"dashicons dashicons-networking\"></i> For Theme Developer"
 msgstr ""
 
@@ -423,19 +423,29 @@ msgid ""
 "css files."
 msgstr ""
 
-#: helper/tabs/custom-css.php:120 helper/tabs/custom-css.php:159
+#: helper/tabs/custom-css.php:91
+msgid "Add <code>.rtl .your-classname { .. }</code> to build RTL stylesheets."
+msgstr ""
+
+#: helper/tabs/custom-css.php:120 helper/tabs/custom-css.php:134
 msgid "CSS file root directory:"
 msgstr ""
 
-#: helper/tabs/custom-css.php:125 helper/tabs/custom-css.php:196
+#: helper/tabs/custom-css.php:125 helper/tabs/custom-css.php:174
+#: helper/tabs/custom-css.php:222 helper/tabs/custom-css.php:270
 msgid "Close"
 msgstr ""
 
-#: helper/tabs/custom-css.php:191 helper/tabs/custom-css.php:230
+#: helper/tabs/custom-css.php:169 helper/tabs/custom-css.php:183
+#: helper/tabs/custom-css.php:265 helper/tabs/custom-css.php:279
+msgid "RTL CSS file root directory:"
+msgstr ""
+
+#: helper/tabs/custom-css.php:217 helper/tabs/custom-css.php:231
 msgid "CSS mini-file root directory:"
 msgstr ""
 
-#: helper/tabs/custom-css.php:253
+#: helper/tabs/custom-css.php:303
 msgid "<p>The .css file does not exist.</p>"
 msgstr ""
 
@@ -548,11 +558,11 @@ msgstr ""
 msgid "Click This Button to Copy Uix Page Builder Files"
 msgstr ""
 
-#: helper/tabs/usage.php:21
+#: helper/tabs/usage.php:19
 msgid "(1) How to use?"
 msgstr ""
 
-#: helper/tabs/usage.php:24
+#: helper/tabs/usage.php:22
 msgid ""
 "1. After activating your theme, you can see a prompt pointed out as "
 "absolutely critical. Go to <strong>\"Appearance -> Install Plugins\"</strong>"
@@ -561,7 +571,7 @@ msgid ""
 "content/plugins/) And upload files there.)"
 msgstr ""
 
-#: helper/tabs/usage.php:28
+#: helper/tabs/usage.php:26
 msgid ""
 "2. Go to your WordPress admin panel, edit or create a new page. You will "
 "find <strong>\"Uix Page Builder Attributes\"</strong> settings in a meta box "
@@ -570,26 +580,26 @@ msgid ""
 "\"Uix Page Builder Template\". )"
 msgstr ""
 
-#: helper/tabs/usage.php:37
+#: helper/tabs/usage.php:35
 msgid "(2) FAQ"
 msgstr ""
 
-#: helper/tabs/usage.php:47
+#: helper/tabs/usage.php:45
 msgid "FAQ 1: How To Create a Full Width or Boxed Layout?"
 msgstr ""
 
-#: helper/tabs/usage.php:50
+#: helper/tabs/usage.php:48
 msgid ""
 "On visual builder page, expand the <i class=\"dashicons dashicons-admin-"
 "generic\"></i> from Drag & Drop modules of left sidebar. You can easily "
 "choose the type of container."
 msgstr ""
 
-#: helper/tabs/usage.php:56
+#: helper/tabs/usage.php:54
 msgid "FAQ 2: How To Create The One-Page Navigation?"
 msgstr ""
 
-#: helper/tabs/usage.php:59
+#: helper/tabs/usage.php:57
 msgid ""
 "1. On visual builder page, expand the <i class=\"dashicons dashicons-admin-"
 "generic\"></i> from Drag & Drop modules of left sidebar. You can enter any "
@@ -597,7 +607,7 @@ msgid ""
 "my-portfolio</code>."
 msgstr ""
 
-#: helper/tabs/usage.php:61
+#: helper/tabs/usage.php:59
 #, php-format
 msgid ""
 "2. Create a new <a href=\"%1$s\">menu</a>, and add a Custom Link for each "
@@ -607,11 +617,11 @@ msgid ""
 "URL field."
 msgstr ""
 
-#: helper/tabs/usage.php:71
+#: helper/tabs/usage.php:69
 msgid "FAQ 3: How to use a custom page builder template?"
 msgstr ""
 
-#: helper/tabs/usage.php:76
+#: helper/tabs/usage.php:74
 #, php-format
 msgid ""
 "You could <a href=\"%s\">create</a> Uix Page Builder template file (from the "
@@ -622,11 +632,11 @@ msgid ""
 "directly."
 msgstr ""
 
-#: helper/tabs/usage.php:92
+#: helper/tabs/usage.php:90
 msgid "FAQ 4: How to create Anchor Links menu with Uix Page Builder?"
 msgstr ""
 
-#: helper/tabs/usage.php:95
+#: helper/tabs/usage.php:93
 msgid ""
 "Uix Page Builder supports the automatic addition of Anchor Links. From the "
 "<strong>\"Appearance\"</strong> menu on the left-hand side of the Dashboard, "
@@ -635,13 +645,13 @@ msgid ""
 "Within this pane, select a page to view all anchor link."
 msgstr ""
 
-#: helper/tabs/usage.php:105
+#: helper/tabs/usage.php:103
 msgid ""
 "FAQ 5: How to set the menu for the currently used page template of Uix Page "
 "Builder?"
 msgstr ""
 
-#: helper/tabs/usage.php:110
+#: helper/tabs/usage.php:108
 #, php-format
 msgid ""
 "Go to <a href=\"%s\">Dashboard » Appearence » Menus</a>. Click on <strong>"
@@ -650,13 +660,13 @@ msgid ""
 "<strong>\"Display location\"</strong>."
 msgstr ""
 
-#: helper/tabs/usage.php:123
+#: helper/tabs/usage.php:121
 msgid ""
 "FAQ 6: How to customize the Uix Page Builder templates and modules in admin "
 "panel?"
 msgstr ""
 
-#: helper/tabs/usage.php:128
+#: helper/tabs/usage.php:126
 #, php-format
 msgid "<a href=\"%s\">Check out here</a>"
 msgstr ""

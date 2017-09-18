@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'usage' ) {
 ?>
 
-    
-
           <p>
             <?php 
 				$embed_code = wp_oembed_get('https://www.youtube.com/watch?v=uKhEKEWLqcA', array('width'=>560, 'height'=>315 )); 
@@ -140,28 +138,6 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
 				</ul>
 			</div>
 		</div>
-      
-<script type="text/javascript">
-( function( $ ) {
-"use strict";
-    $( function() {
-		
-		$( '.uix-bg-custom-accordion h3' ).on( 'click', function() {
-		    $( this ).parent().parent().find( '.uix-bg-custom-faq-con' ).slideUp();
-			if( !$( this ).next().is( ':visible' ) ) {
-				$( this ).next().slideDown();
-			}	
-		});
-		
 
-	} );
-    
-    
-} ) ( jQuery );
-
-	
-</script>
-                      
-   
        
 <?php } ?>

@@ -1,4 +1,60 @@
-/* Visual Builder Page 
+/*
+	* Visual Builder Stylesheets (RTL)
+	* Author: UIUX Lab
+	* Twitter: @uiux_lab
+	* Author URL: https://uiux.cc
+	
+	* Dual licensed under the MIT and GPL licenses:
+	* http://www.opensource.org/licenses/mit-license.php
+	* http://www.gnu.org/licenses/gpl.html
+
+
+	TABLE OF CONTENTS
+	---------------------------
+	
+	1. jQuery Accessible Tabs
+	2. Visual Builder Page 
+	3. Responsive Switching Preview
+	4. Elements Navigation
+	5. Gridster Core
+	6. Primary Module Buttons
+	7. Sub Module
+	8. Save Templates
+
+
+*/
+
+/* 1. jQuery Accessible Tabs
+-------------------------------------------------------------- */
+@media only screen and (min-width: 768px) {
+	
+	
+	.js-tabs {
+		margin: 0 0;
+	}
+	
+	/* Tabs control text */
+	.js-tabs_control-text {
+		direction: rtl;
+		left: auto;
+		right: -999em;
+	}
+	
+	/* Tabs control */
+	.js-tabs .js-tabs_control {
+		float: right;
+	}
+	
+	.js-tabs .js-tabs_control li {
+		float: right;
+		margin: 0 0 0 6px;
+	}
+
+
+}
+
+
+/* 2. Visual Builder Page 
 -------------------------------------------------------------- */
 #uix-page-builder-themepreview {
 	left: auto;
@@ -56,7 +112,7 @@
 
 
 
-/* Responsive Switching Preview
+/* 3. Responsive Switching Preview
 -------------------------------------------------------------- */
 ul.uix-page-builder-res-selector {
 	left: auto;
@@ -70,7 +126,7 @@ ul.uix-page-builder-res-selector li {
 
 
 
-/* Elements Navigation
+/* 4. Elements Navigation
 -------------------------------------------------------------- */
 
 .uix-page-builder-col {
@@ -91,7 +147,7 @@ ul.uix-page-builder-res-selector li {
 }
 
 
-/* Gridster Core
+/* 5. Gridster Core
 -------------------------------------------------------------- */
 
 #uix-page-builder-gridster-wrapper.visualBuilder {
@@ -287,7 +343,7 @@ ul.uix-page-builder-res-selector li {
 
 
 
-/* Primary Module Buttons
+/* 6. Primary Module Buttons
 -------------------------------------------------------------- */
 
 .sortable-list .row .widget-items-container {
@@ -307,7 +363,7 @@ ul.uix-page-builder-res-selector li {
 }
 
 
-/* Sub Module
+/* 7. Sub Module
 -------------------------------------------------------------- */
 /* Column Item */
 
@@ -365,7 +421,7 @@ ul.uix-page-builder-res-selector li {
 }
 
 
-/* Save Templates
+/* 8. Save Templates
 -------------------------------------------------------------- */
 
 .settings-temp-wrapper {

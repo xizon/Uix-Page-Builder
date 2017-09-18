@@ -1,4 +1,164 @@
-/* Visual Builder Page 
+/*
+	* Visual Builder Stylesheets
+	* Author: UIUX Lab
+	* Twitter: @uiux_lab
+	* Author URL: https://uiux.cc
+	
+	* Dual licensed under the MIT and GPL licenses:
+	* http://www.opensource.org/licenses/mit-license.php
+	* http://www.gnu.org/licenses/gpl.html
+
+
+	TABLE OF CONTENTS
+	---------------------------
+	
+	1. jQuery Accessible Tabs
+	2. Visual Builder Page 
+	3. Responsive Switching Preview
+	4. Elements Navigation
+	5. Metaboxes Style
+	6. Gridster Core
+	7. Primary Module Buttons
+	8. Sub Module
+	9. Save Templates
+
+
+*/
+
+/* 1. jQuery Accessible Tabs
+-------------------------------------------------------------- */
+@media only screen and (min-width: 768px) {
+	
+	
+	.js-tabs {
+		margin: 0 0;
+	}
+	
+	/* Tabs control text */
+	.js-tabs_control-text {
+		direction: ltr;
+		left: -999em;
+		position: absolute;
+	}
+	
+	/* Tabs control */
+	.js-tabs .js-tabs_control {
+		float: left;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		z-index: 1000;
+	}
+	
+	.js-tabs .js-tabs_control li {
+		background: #FFFFFF;
+		border-width: 1px 1px 0;
+		float: left;
+		margin: 0 6px 0 0;
+		padding: 0;
+		position: relative;
+	}
+	
+	.js-tabs .js-tabs_control button {
+		background: transparent;
+		cursor: pointer;
+		padding: 4px .5em 5px;
+		position: relative;
+		outline: 0;
+		font-size:12px;
+		font-weight:normal;
+		color: #646464;
+		border:none;
+		border-left: 1px solid #E5E5E5;
+		border-right: 1px solid #E5E5E5;
+		border-top: 1px solid #E5E5E5;
+		font-weight: 400;
+		-webkit-box-shadow: 0px 1px 1px 0px #E5E5E5;
+		-moz-box-shadow: 0px 1px 1px 0px #E5E5E5;
+		box-shadow: 0px 1px 1px 0px #E5E5E5;
+	
+	}
+	
+	.js-tabs .js-tabs_control button:hover,
+	.js-tabs .js-tabs_control button:focus,
+	.js-tabs .js-tabs_control button:active {
+		color:#333;
+	}
+	
+	
+	/* Selected tabs control */
+	.js-tabs .js-tabs_control .js-tabs_control-item--active,
+	.js-tabs .js-tabs_control .js-tabs_control-item--active:focus,
+	.js-tabs .js-tabs_control .js-tabs_control-item--active:active {
+		background: #0085BA;
+		border: 1px solid #0085BA;
+		border-bottom: none;
+		color:#fff;
+		top: 1px;
+		z-index: 1000;
+	}
+	.js-tabs .js-tabs_control .js-tabs_control-item--active button{
+		color:#fff;
+		font-weight:bold;
+		border:none;
+	}
+	
+	
+	
+	/* Tabs panel */
+	.js-tabs .js-tabs_panel {
+		background-color: #FFFFFF;
+		border-top: 1px solid #CCCCCC;
+		color: #333;
+		clear: left;
+		display: block;
+		position: relative;
+		padding: .3em 0 .3em;
+		visibility: visible;
+		z-index: 5;
+	}
+	
+	.js-tabs .js-tabs_panel:before {
+		content: '';
+		display: table;
+		clear: both;
+		height: 12px;
+	}
+
+	.js-tabs .js-tabs_panel p {
+		display: block;
+		margin: 1em 0;
+	
+	}
+	
+	.js-tabs .js-tabs_panel:focus {
+		outline: 1px dotted #CCCCCC;
+	}
+
+
+}
+
+
+
+@media(max-width:767px) {
+	
+	.uix-d-tabs h3{
+		font-weight:bold;
+		padding:.6em 0;
+	}
+	
+	.uix-table-all,
+	.uix-d-tabs .arg{
+		display:none;
+	}
+
+	
+}
+
+
+
+/* 2. Visual Builder Page 
 -------------------------------------------------------------- */
 #uix-page-builder-themepreview {
 	position: fixed;
@@ -205,7 +365,7 @@
 }
 
 
-/* Responsive Switching Preview
+/* 3. Responsive Switching Preview
 -------------------------------------------------------------- */
 ul.uix-page-builder-res-selector {
 	position: fixed;
@@ -282,7 +442,7 @@ ul.uix-page-builder-res-selector li.active {
 
 
 
-/* Elements Navigation
+/* 4. Elements Navigation
 -------------------------------------------------------------- */
 
 .uix-page-builder-col {
@@ -382,7 +542,7 @@ ul.uix-page-builder-res-selector li.active {
 
 
 
-/* Metaboxes Style
+/* 5. Metaboxes Style
 -------------------------------------------------------------- */
 
 .uix-metabox-group {
@@ -407,7 +567,7 @@ ul.uix-page-builder-res-selector li.active {
 
 
 
-/* Gridster Core
+/* 6. Gridster Core
 -------------------------------------------------------------- */
 #uix-page-builder-gridster-wrapper {
 	-moz-transition: .2s linear; 
@@ -1077,7 +1237,7 @@ ul.uix-page-builder-res-selector li.active {
 
 
 
-/* Primary Module Buttons
+/* 7. Primary Module Buttons
 -------------------------------------------------------------- */
 
 .sortable-list .row .widget-items-container {
@@ -1134,7 +1294,7 @@ ul.uix-page-builder-res-selector li.active {
 
 
 
-/* Sub Module
+/* 8. Sub Module
 -------------------------------------------------------------- */
 /* Column Item */
 .sortable-list-container {
@@ -1437,7 +1597,7 @@ ul.uix-page-builder-res-selector li.active {
 
 
 
-/* Save Templates
+/* 9. Save Templates
 -------------------------------------------------------------- */
 
 .settings-temp-wrapper {

@@ -456,7 +456,7 @@ if ( !function_exists( 'uix_page_builder_save_script' ) ) {
 
 			//jQuery Accessible Tabs
 			wp_enqueue_script( 'accTabs', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
-			wp_enqueue_style( 'accTabs-uix-page-builder', UixPageBuilder::plug_directory() .'includes/admin/assets/css/jquery.accTabs.css', false, '0.1.1', 'all' );
+		
 
 			//Main
 			wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin', UixPageBuilder::plug_directory() .'includes/admin/assets/css/style.min.css', false, UixPageBuilder::ver(), 'all' );
