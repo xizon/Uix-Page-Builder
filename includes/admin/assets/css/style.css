@@ -21,6 +21,7 @@
 	7. Primary Module Buttons
 	8. Sub Module
 	9. Save Templates
+    10. Create Template Files
 
 
 */
@@ -1730,4 +1731,71 @@ ul.uix-page-builder-res-selector li.active {
 	top: 5px;
 }
 
+
+/* 10. Create Template Files
+-------------------------------------------------------------- */
+.button.processing {
+	text-indent: -9999px;
+	background: transparent !important;
+}
+
+.button.processing,
+.button.processing:after {
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+}
+
+.button.processing {
+    -webkit-transition-property: width height padding box-shadow border-width background opacity;
+    transition-property: width height padding box-shadow border-width background opacity;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    background: transparent !important;
+    box-shadow: 0 0 0 #006799 !important;
+    border-top: 4px solid #0073aa !important;
+    border-right: 4px solid #BFE7F3 !important;
+    border-bottom: 4px solid #BFE7F3 !important;
+    border-left: 4px solid #BFE7F3 !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1s infinite linear;
+    animation: load8 1s infinite linear;
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+}
+
+.button.processing span {
+    display: none;
+}
+
+.button.processing:hover {
+    background: transparent;
+}
+
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
 

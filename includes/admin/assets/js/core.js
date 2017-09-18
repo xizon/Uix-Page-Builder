@@ -12,6 +12,8 @@
 		$( document ).on( 'click', '#uix-page-builder-createTempFiles-btn', function( e ) {
 			e.preventDefault();
 			
+			$( this ).addClass( 'processing' );
+			
 			$.ajax({
 				url       : ajaxurl,
 				type      : 'POST',
@@ -23,6 +25,7 @@
 				success   : function( result ){
 					
 					var $wrapper = $( '#uix-page-builder-createTempFiles-info-wrapper' );
+					
 					
 					if ( result != 0 ) {
 						location.reload();
