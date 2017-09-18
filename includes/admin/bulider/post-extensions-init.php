@@ -45,6 +45,7 @@ if ( !function_exists( 'uix_page_builder_vb_script' ) ) {
 				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
 				'send_string_preview_url'      => $previewURL,
 				'send_string_render_count'     => 1,
+				'send_string_del_temp_btn'     => esc_attr__( 'Are you sure?', 'uix-page-builder' ),
 				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
 				'send_string_nodata'           => esc_html__( 'Hmm... no templates yet.', 'uix-page-builder' ),
 				'send_string_tempfile_failed'  => sprintf( __( '<p>Cannot create due to insufficient permissions. To perform the requested action, WordPress needs to access your web server. <br><a class="button button-primary button-small" href="%1$s">Click Here</a> to enter your FTP credentials to proceed.</p>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp&tempfiles=ok" ) ),
@@ -331,7 +332,7 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 					echo '
 					<label>
 						<input type="radio" name="temp" value="1" '.$checked.'>
-						<span id="id-'.sanitize_title_with_dashes( $v[ 'name' ] ).'">'.$v[ 'name' ].'</span> <a data-del-id="id-'.sanitize_title_with_dashes( $v[ 'name' ] ).'" href="javascript:" class="close-tmpl">×</a>
+						<span id="id-'.UixPageBuilder::to_id_slug( $v[ 'name' ] ).'">'.$v[ 'name' ].'</span> <a data-del-id="id-'.UixPageBuilder::to_id_slug( $v[ 'name' ] ).'" href="javascript:" class="close-tmpl">&times;</a>
 						<img class="preview-thumb" style="display:none" src="'.$preview_thumb.'" alt="">
 						<textarea>'.$json_data.'</textarea>
 					</label>

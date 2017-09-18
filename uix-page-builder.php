@@ -442,6 +442,20 @@ class UixPageBuilder {
 	
 	}
 	
+	
+	
+	/*
+	 * Sanitizes ID string.
+	 *
+	 */
+	public static function to_id_slug( $str ) {
+		
+		return str_replace( '%', '', sanitize_title_with_dashes( $str ) );
+		
+	}
+	
+	
+	
 	/*
 	 * Generates the template name created by the current builder
 	 *
@@ -469,7 +483,7 @@ class UixPageBuilder {
 	
 		
 		if ( $slug ) {
-			return sanitize_title_with_dashes( $tempname );
+			return self::to_id_slug( $tempname );
 		} else {
 			return $tempname;
 		}
@@ -954,7 +968,7 @@ class UixPageBuilder {
 		
 		
 		if ( $slug ) {
-			return sanitize_title_with_dashes( $tempattr );
+			return self::to_id_slug( $tempattr );
 		} else {
 			return $tempattr;
 		}	

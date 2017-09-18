@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-18 12:18+0000\n"
+"POT-Creation-Date: 2017-09-18 15:38+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -2274,6 +2274,10 @@ msgid ""
 "checkbox of <code>\"Primary Menu\"</code> from options as <strong>\"Display "
 "location\"</strong>. <a target=\"_blank\" href=\"%4$s\"><i class=\"dashicons "
 "dashicons-format-image\"></i></a></li></ol></div>"
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:334
+msgid "Are you sure?"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:386

@@ -495,27 +495,29 @@
 		$( document ).on( 'click', '#uix-page-builder-templatelist .close-tmpl', function( e ) {
 			e.preventDefault();
 			
-			var tid  = $( this ).data( 'del-id' ),
-				name = $( '#' + tid ).html();
+			if ( confirm( uix_page_builder_layoutdata.send_string_del_temp_btn ) ) {
+				var tid  = $( this ).data( 'del-id' ),
+					name = $( '#' + tid ).html();
 
-			$.ajax({
-				url       : ajaxurl,
-				type      : 'POST',
-				data: {
-					action     : 'uix_page_builder_delContentTemplate_settings',
-					tempName   : name,
-					security   : uix_page_builder_layoutdata.send_string_nonce
-				},
-				success   : function( result ){
-					$( '#' + tid ).closest( 'label' ).remove();
-					
-					// stuff here
-					return false;	
-					
 
-				}
-			});
+				$.ajax({
+					url       : ajaxurl,
+					type      : 'POST',
+					data: {
+						action     : 'uix_page_builder_delContentTemplate_settings',
+						tempName   : name,
+						security   : uix_page_builder_layoutdata.send_string_nonce
+					},
+					success   : function( result ){
+						$( '#' + tid ).closest( 'label' ).remove();
 
+						// stuff here
+						return false;	
+
+
+					}
+				});	
+			} 
 
 		});
 	
