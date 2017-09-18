@@ -1640,25 +1640,49 @@ class UixPageBuilder {
 	 *
 	 */
 	
-	public static function templates( $nonceaction, $nonce, $remove = false, $pureecho = false ){
+	public static function templates( $nonceaction, $nonce, $remove = false, $ajax = false ){
 	
 		  global $wp_filesystem;
 			
 		  $filenames = array();
-		  $filepath = UIX_PAGE_BUILDER_PLUGIN_DIR. 'uixpb_templates/';
+		  $filepath  = UIX_PAGE_BUILDER_PLUGIN_DIR. 'uixpb_templates/';
 		  $themepath = get_stylesheet_directory() . '/';
 
 	      foreach ( glob( dirname(__FILE__). "/uixpb_templates/*.php") as $file ) {
 			$filenames[] = str_replace( dirname(__FILE__). "/uixpb_templates/", '', $file );
 		  }	
 		  
+		 
+			/*
+			* To perform the requested action, WordPress needs to access your web server. 
+			* Please enter your FTP credentials to proceed. If you do not remember your credentials, 
+			* you should contact your web host.
+			*
+			*/
+		   if ( $ajax ) {
+				ob_start();
 
+					self::wpfilesystem_read_file( $nonceaction, $nonce, self::get_theme_template_dir_name().'/', 'tmpl-uix_page_builder.php', 'plugin' );
+					$out = ob_get_contents();
+				ob_end_clean();
+
+				if ( !empty( $out ) ) {
+					return 0;
+					exit();
+				}  
+			   
+		   }
+
+			/*
+			* File batch operation
+			*
+			*/
 		  $url = wp_nonce_url( $nonce, $nonceaction );
 		
 		  $contentdir = $filepath; 
 		  
 		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
-	
+			
 				foreach ( $filenames as $filename ) {
 					
 				    // Copy
@@ -1692,45 +1716,69 @@ class UixPageBuilder {
 	
 					}
 				}
-			  
-			    $div_notice_success_before = '<div class="notice notice-success">';
-			    $div_notice_success_after  = '</div>';
-			    $div_notice_error_before   = '<div class="notice notice-error">';
-			    $div_notice_error_after    = '</div>';		
-			    $notice                    = '';    
-			    $echo_ok_status            = '<span data-ok="1"></span>';
-			  
-			    if ( $pureecho ) {
-					$div_notice_success_before = '';   
-					$div_notice_success_after  = '';   
-					$div_notice_error_before   = '';
-					$div_notice_error_after    = '';
-				}
-				
-				if ( !$remove ) {
-					if ( self::tempfile_exists() ) {
-						$info   = $echo_ok_status.__( '<p>Operation successfully completed!</p>', 'uix-page-builder' );
-						$notice = $div_notice_success_before.$info.$div_notice_success_after;
-					} else {
-						$info   = __( '<p><strong>There was a problem copying your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p>', 'uix-page-builder' );
-						$notice = $div_notice_error_before.$info.$div_notice_error_after;
-					}
-	
-				} else {
-					if ( self::tempfile_exists() ) {
-						$info   = __( '<p><strong>There was a problem removing your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p>', 'uix-page-builder' );
-						$notice = $div_notice_error_before.$info.$div_notice_error_after;
-					} else {
-						$info   = $echo_ok_status.__( '<p>Remove successful!</p>', 'uix-page-builder' );
-						$notice = $div_notice_success_before.$info.$div_notice_success_after;
-					}	
-					
-				}
-			  
-			    return $notice;
-				
-				
+			
 		  } 
+		
+		
+		
+			/*
+			* Returns the system information.
+			*
+			*/
+			$div_notice_info_before    = '<p class="uix-bg-custom-info-msg"><strong><i class="dashicons dashicons-warning"></i> ';
+			$div_notice_success_before = '<p class="uix-bg-custom-success-msg"><strong><i class="dashicons dashicons-yes"></i> ';
+			$div_notice_error_before   = '<p class="uix-bg-custom-error-msg"><strong><i class="dashicons dashicons-no"></i> ';
+		    $div_notice_after  = '</strong></p>';
+			$notice                    = '';    
+			$echo_ok_status            = '<span data-ok="1"></span>';
+
+			if ( $ajax ) {
+				$div_notice_info_before      = '';   
+				$div_notice_success_before   = '';   
+				$div_notice_error_before     = '';
+				$div_notice_after            = '';
+			}
+
+			if ( !$remove ) {
+				if ( self::tempfile_exists() ) {
+					$info   = $echo_ok_status.__( 'Operation successfully completed!', 'uix-page-builder' );
+					$notice = $div_notice_success_before.$info.$div_notice_after;
+					echo '<script type="text/javascript">
+							   setTimeout( function(){
+								   window.location = "'.admin_url( 'admin.php?page='.self::HELPER.'&tab=temp' ).'";
+							   }, 1000 );
+
+						  </script>';
+					
+				} else {
+					$info   = __( 'There was a problem copying your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.', 'uix-page-builder' );
+					$notice = $div_notice_error_before.$info.$div_notice_after;
+				}
+				
+				
+
+			} else {
+				if ( self::tempfile_exists() ) {
+					$info   = __( 'There was a problem removing your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.', 'uix-page-builder' );
+					$notice = $div_notice_error_before.$info.$div_notice_after;
+				} else {
+					$info   = $echo_ok_status.__( 'Remove successful!', 'uix-page-builder' );
+					$notice = $div_notice_success_before.$info.$div_notice_after;
+					echo '<script type="text/javascript">
+							   setTimeout( function(){
+								   window.location = "'.admin_url( 'admin.php?page='.self::HELPER.'&tab=temp' ).'";
+							   }, 1000 );
+
+						  </script>';
+				}	
+
+			}
+		
+		
+			return $notice;
+		    
+		    
+			
 	}	 
 
 
@@ -1745,7 +1793,7 @@ class UixPageBuilder {
             if ( !empty( $_POST ) && check_admin_referer( 'custom_action_nonce') ) {
 				
 				
-                  $output = UixPageBuilder::wpfilesystem_write_file( 'custom_action_nonce', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=???', 'helper/', 'debug.txt', 'This is test.' );
+                  $output = UixPageBuilder::wpfilesystem_write_file( 'custom_action_nonce', 'admin.php?page='.UixPageBuilder::HELPER.'&tab=???', UIX_PAGE_BUILDER_PLUGIN_DIR.'helper/', 'debug.txt', 'This is test.', 'plugin' );
 				  echo $output;
 			
             } else {
@@ -1758,36 +1806,44 @@ class UixPageBuilder {
 	 */
 	public static function wpfilesystem_connect_fs( $url, $method, $context, $fields = null) {
 		  global $wp_filesystem;
+
 		  if ( false === ( $credentials = request_filesystem_credentials( $url, $method, false, $context, $fields) ) ) {
-			return false;
+			  return false;
 		  }
 		
 		  //check if credentials are correct or not.
 		  if( !WP_Filesystem( $credentials ) ) {
-			request_filesystem_credentials( $url, $method, true, $context);
-			return false;
+			  request_filesystem_credentials( $url, $method, true, $context);
+			  return false;
 		  }
 		
 		  return true;
 	}
 	
-	public static function wpfilesystem_write_file( $nonceaction, $nonce, $path, $pathname, $text ){
+	public static function wpfilesystem_write_file( $nonceaction, $nonce, $path, $pathname, $text, $type = 'plugin' ){
 		  global $wp_filesystem;
 		  
 		
 		  $url = wp_nonce_url( $nonce, $nonceaction );
 		
-		  $contentdir = UIX_PAGE_BUILDER_PLUGIN_DIR.$path; 
+		  if ( $type == 'plugin' ) {
+			  $contentdir = UIX_PAGE_BUILDER_PLUGIN_DIR.$path; 
+		  } 
+		  if ( $type == 'theme' ) {
+			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+		  } 
 		  
-		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir, '' ) ) {
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir ) ) {
 			  
 				$dir = $wp_filesystem->find_folder( $contentdir );
 				$file = trailingslashit( $dir ) . $pathname;
 				$wp_filesystem->put_contents( $file, $text, FS_CHMOD_FILE );
 			
-				return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-page-builder' );
+				return true;
 				
-		  } 
+		  } else {
+			  return false;
+		  }
 	}	
 	
 	 
@@ -1815,12 +1871,45 @@ class UixPageBuilder {
 				    return $wp_filesystem->get_contents( $file );
 	
 				} else {
-					return '';
+					return false;
 				}
 		
 		
 		  } 
 	}	 	
+	
+	
+	public static function wpfilesystem_del_file( $nonceaction, $nonce, $path, $pathname, $type = 'plugin' ){
+		  global $wp_filesystem;
+		
+		  $url = wp_nonce_url( $nonce, $nonceaction );
+	
+		  if ( $type == 'plugin' ) {
+			  $contentdir = UIX_PAGE_BUILDER_PLUGIN_DIR.$path; 
+		  } 
+		  if ( $type == 'theme' ) {
+			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+		  } 	  
+		
+		  
+		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir ) ) {
+			  
+				$dir = $wp_filesystem->find_folder( $contentdir );
+				$file = trailingslashit( $dir ) . $pathname;
+				
+				
+				if( $wp_filesystem->exists( $file ) ) {
+					
+					$wp_filesystem->delete( $file, false, FS_CHMOD_FILE );
+					return true;
+	
+				} else {
+					return false;
+				}
+		
+		
+		  } 
+	}	 
 	
 	/*
 	 * Returns all menus.

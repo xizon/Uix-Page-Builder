@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-18 05:55+0000\n"
+"POT-Creation-Date: 2017-09-18 12:18+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -69,39 +69,31 @@ msgid ""
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-page-builder.php:1712
-msgid "<p>Operation successfully completed!</p>"
+#: uix-page-builder.php:1744
+msgid "Operation successfully completed!"
 msgstr ""
 
-#: uix-page-builder.php:1715
+#: uix-page-builder.php:1754
 msgid ""
-"<p><strong>There was a problem copying your template files:</strong> Please "
-"check your server settings. You can upload files to theme templates "
-"directory using FTP.</p>"
+"There was a problem copying your template files:</strong> Please check your "
+"server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1721
+#: uix-page-builder.php:1762
 msgid ""
-"<p><strong>There was a problem removing your template files:</strong> Please "
-"check your server settings. You can upload files to theme templates "
-"directory using FTP.</p>"
+"There was a problem removing your template files:</strong> Please check your "
+"server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1724
-msgid "<p>Remove successful!</p>"
+#: uix-page-builder.php:1765
+msgid "Remove successful!"
 msgstr ""
 
-#: uix-page-builder.php:1788
-msgid ""
-"<div class=\"notice notice-success\"><p>Operation successfully completed!</p>"
-"</div>"
-msgstr ""
-
-#: uix-page-builder.php:1891 uix-page-builder.php:1919
+#: uix-page-builder.php:1980 uix-page-builder.php:2008
 msgid "- All -"
 msgstr ""
 
-#: uix-page-builder.php:2004
+#: uix-page-builder.php:2093
 #: includes/admin/bulider/components/pb-ui-form.php:38
 #: includes/admin/bulider/components/pb-ui-gridster.php:353
 #: includes/admin/bulider/components/pb-ui-gridster.php:556
@@ -513,37 +505,37 @@ msgstr ""
 msgid "<a href=\"%1$s\" target=\"_blank\">Online API Documentation</a>"
 msgstr ""
 
-#: helper/tabs/temp.php:44
-msgid ""
-"Are you sure?\\nIt is possible based on your theme of the plugin templates. "
-"When you create them again, the default plugin template will be used."
-msgstr ""
-
-#: helper/tabs/temp.php:50
+#: helper/tabs/temp.php:43
 msgid ""
 "Uix Page Builder template files already exists. Remove Uix Page Builder "
 "template files in your templates directory:"
 msgstr ""
 
-#: helper/tabs/temp.php:52
+#: helper/tabs/temp.php:45
 msgid ""
 "As a workaround you can use FTP, access path <code>/wp-content/themes/{your-"
 "theme}/</code> and remove Uix Page Builder template files."
 msgstr ""
 
-#: helper/tabs/temp.php:58 helper/tabs/temp.php:85
+#: helper/tabs/temp.php:49 helper/tabs/temp.php:71
 msgid "Template files list:"
 msgstr ""
 
-#: helper/tabs/temp.php:62
+#: helper/tabs/temp.php:53
+msgid ""
+"Are you sure?\\nIt is possible based on your theme of the plugin templates. "
+"When you create them again, the default plugin template will be used."
+msgstr ""
+
+#: helper/tabs/temp.php:53
 msgid "Remove Uix Page Builder Template Files"
 msgstr ""
 
-#: helper/tabs/temp.php:73
+#: helper/tabs/temp.php:59
 msgid "Copy Uix Page Builder template files in your templates directory:"
 msgstr ""
 
-#: helper/tabs/temp.php:75
+#: helper/tabs/temp.php:61
 msgid ""
 "As a workaround you can use FTP, access the Uix Page Builder template files "
 "path <code>/wp-content/plugins/uix-page-builder/uixpb_templates/</code> and "
@@ -551,14 +543,14 @@ msgid ""
 "content/themes/{your-theme}/</code>. "
 msgstr ""
 
-#: helper/tabs/temp.php:80
+#: helper/tabs/temp.php:66
 msgid ""
 "Hi, there! It’s just a custom template file in the theme folder. Of course "
 "you doesn’t need to create it, you can use of the default page template or "
 "your own custom template file directly."
 msgstr ""
 
-#: helper/tabs/temp.php:89
+#: helper/tabs/temp.php:77
 msgid "Click This Button to Copy Uix Page Builder Files"
 msgstr ""
 
@@ -2251,10 +2243,12 @@ msgid "Hmm... no templates yet."
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:50
+#, php-format
 msgid ""
-"<p>The operation failed because lack of authority, please <a class=\"button "
-"button-primary button-small\" href=\"$s\">click here</a> to assign "
-"permissions to re-create page template files.</p>"
+"<p>Cannot create due to insufficient permissions. To perform the requested "
+"action, WordPress needs to access your web server. <br><a class=\"button "
+"button-primary button-small\" href=\"%1$s\">Click Here</a> to enter your FTP "
+"credentials to proceed.</p>"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:51

@@ -1,3 +1,38 @@
+/* Error, Success, Warning and Info Messages */
+.uix-bg-custom-info-msg,
+.uix-bg-custom-success-msg,
+.uix-bg-custom-warning-msg,
+.uix-bg-custom-error-msg {
+    margin: 10px 0;
+    padding: 10px;
+	-webkit-border-radius: 2px; 
+	-moz-border-radius: 2px; 
+	border-radius: 2px;
+	display: block;
+}
+
+.uix-bg-custom-info-msg {
+    color: #059;
+    background-color: #BEF;
+}
+
+.uix-bg-custom-success-msg {
+    color: #270;
+    background-color: #DFF2BF;
+}
+
+.uix-bg-custom-warning-msg {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+.uix-bg-custom-error-msg {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+
+
 /* General */
 .uix-bg-custom-wrapper img {
     background-color: #fff;
