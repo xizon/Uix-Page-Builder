@@ -6,6 +6,44 @@
 		
 		/*!
 		 *
+		 * Create page template files to the theme directory
+		 * ---------------------------------------------------
+		 */
+		$( document ).on( 'click', '#uix-page-builder-createTempFiles-btn', function( e ) {
+			e.preventDefault();
+			
+			$.ajax({
+				url       : ajaxurl,
+				type      : 'POST',
+				data: {
+					action     : 'uix_page_builder_createTempFilesToTheme_settings',
+					postID     : uix_page_builder_layoutdata.send_string_postid,
+					security   : uix_page_builder_layoutdata.send_string_nonce
+				},
+				success   : function( result ){
+					
+					var $wrapper = $( '#uix-page-builder-createTempFiles-info-wrapper' );
+					
+					if ( result != 0 ) {
+						location.reload();
+					} else {
+						$wrapper.html( uix_page_builder_layoutdata.send_string_tempfile_failed );
+					}
+					
+					// stuff here
+					return false;	
+					
+
+				}
+			});
+
+
+		});
+	
+		
+		
+		/*!
+		 *
 		 * Determines whether the template file is created
 		 * ---------------------------------------------------
 		 */

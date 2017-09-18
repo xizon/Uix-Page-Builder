@@ -82,9 +82,19 @@
 }
 
 
+.uix-page-builder-themepreview-btn .dashicons {
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+
 .uix-page-builder-themepreview-btn.active .dashicons {
 	margin-left: auto;
 	margin-right: 16px;
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	transform: rotate(0deg);
 }
 
 

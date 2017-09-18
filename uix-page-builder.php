@@ -1640,7 +1640,7 @@ class UixPageBuilder {
 	 *
 	 */
 	
-	public static function templates( $nonceaction, $nonce, $remove = false ){
+	public static function templates( $nonceaction, $nonce, $remove = false, $pureecho = false ){
 	
 		  global $wp_filesystem;
 			
@@ -1692,25 +1692,42 @@ class UixPageBuilder {
 	
 					}
 				}
+			  
+			    $div_notice_success_before = '<div class="notice notice-success">';
+			    $div_notice_success_after  = '</div>';
+			    $div_notice_error_before   = '<div class="notice notice-error">';
+			    $div_notice_error_after    = '</div>';		
+			    $notice                    = '';    
+			    $echo_ok_status            = '<span data-ok="1"></span>';
+			  
+			    if ( $pureecho ) {
+					$div_notice_success_before = '';   
+					$div_notice_success_after  = '';   
+					$div_notice_error_before   = '';
+					$div_notice_error_after    = '';
+				}
 				
 				if ( !$remove ) {
 					if ( self::tempfile_exists() ) {
-						return __( '<div class="notice notice-success"><p>Operation successfully completed!</p></div>', 'uix-page-builder' );
+						$info   = $echo_ok_status.__( '<p>Operation successfully completed!</p>', 'uix-page-builder' );
+						$notice = $div_notice_success_before.$info.$div_notice_success_after;
 					} else {
-						return __( '<div class="notice notice-error"><p><strong>There was a problem copying your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-page-builder' );
+						$info   = __( '<p><strong>There was a problem copying your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p>', 'uix-page-builder' );
+						$notice = $div_notice_error_before.$info.$div_notice_error_after;
 					}
 	
 				} else {
 					if ( self::tempfile_exists() ) {
-						return __( '<div class="notice notice-error"><p><strong>There was a problem removing your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p></div>', 'uix-page-builder' );
-						
+						$info   = __( '<p><strong>There was a problem removing your template files:</strong> Please check your server settings. You can upload files to theme templates directory using FTP.</p>', 'uix-page-builder' );
+						$notice = $div_notice_error_before.$info.$div_notice_error_after;
 					} else {
-						return __( '<div class="notice notice-success"><p>Remove successful!</p></div>', 'uix-page-builder' );
+						$info   = $echo_ok_status.__( '<p>Remove successful!</p>', 'uix-page-builder' );
+						$notice = $div_notice_success_before.$info.$div_notice_success_after;
 					}	
 					
 				}
-				
-		
+			  
+			    return $notice;
 				
 				
 		  } 

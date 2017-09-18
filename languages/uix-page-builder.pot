@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-18 04:05+0000\n"
+"POT-Creation-Date: 2017-09-18 05:55+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: uix-page-builder.php:348 includes/admin/bulider/post-extensions-init.php:577
+#: uix-page-builder.php:348 includes/admin/bulider/post-extensions-init.php:622
 msgid "Uix Page Builder"
 msgstr ""
 
@@ -69,35 +69,39 @@ msgid ""
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-page-builder.php:1698 uix-page-builder.php:1771
+#: uix-page-builder.php:1712
+msgid "<p>Operation successfully completed!</p>"
+msgstr ""
+
+#: uix-page-builder.php:1715
+msgid ""
+"<p><strong>There was a problem copying your template files:</strong> Please "
+"check your server settings. You can upload files to theme templates "
+"directory using FTP.</p>"
+msgstr ""
+
+#: uix-page-builder.php:1721
+msgid ""
+"<p><strong>There was a problem removing your template files:</strong> Please "
+"check your server settings. You can upload files to theme templates "
+"directory using FTP.</p>"
+msgstr ""
+
+#: uix-page-builder.php:1724
+msgid "<p>Remove successful!</p>"
+msgstr ""
+
+#: uix-page-builder.php:1788
 msgid ""
 "<div class=\"notice notice-success\"><p>Operation successfully completed!</p>"
 "</div>"
 msgstr ""
 
-#: uix-page-builder.php:1700
-msgid ""
-"<div class=\"notice notice-error\"><p><strong>There was a problem copying "
-"your template files:</strong> Please check your server settings. You can "
-"upload files to theme templates directory using FTP.</p></div>"
-msgstr ""
-
-#: uix-page-builder.php:1705
-msgid ""
-"<div class=\"notice notice-error\"><p><strong>There was a problem removing "
-"your template files:</strong> Please check your server settings. You can "
-"upload files to theme templates directory using FTP.</p></div>"
-msgstr ""
-
-#: uix-page-builder.php:1708
-msgid "<div class=\"notice notice-success\"><p>Remove successful!</p></div>"
-msgstr ""
-
-#: uix-page-builder.php:1874 uix-page-builder.php:1902
+#: uix-page-builder.php:1891 uix-page-builder.php:1919
 msgid "- All -"
 msgstr ""
 
-#: uix-page-builder.php:1987
+#: uix-page-builder.php:2004
 #: includes/admin/bulider/components/pb-ui-form.php:38
 #: includes/admin/bulider/components/pb-ui-gridster.php:353
 #: includes/admin/bulider/components/pb-ui-gridster.php:556
@@ -761,7 +765,7 @@ msgid "Cancel"
 msgstr ""
 
 #: includes/uixpbform/init.php:611
-#: includes/admin/bulider/post-extensions-init.php:680
+#: includes/admin/bulider/post-extensions-init.php:725
 msgid "Save"
 msgstr ""
 
@@ -2233,40 +2237,38 @@ msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Manage Your Content of Uix Slideshow</a>"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:225
-#: includes/admin/bulider/post-extensions-init.php:440
-msgid "Hmm... no templates yet."
-msgstr ""
-
-#: includes/admin/bulider/post-extensions-init.php:264
-msgid "Default"
-msgstr ""
-
-#: includes/admin/bulider/post-extensions-init.php:309
-msgid ""
-"Add a first module from the side panel. You can also choose a template to "
-"use."
-msgstr ""
-
-#: includes/admin/bulider/post-extensions-init.php:434
+#: includes/admin/bulider/post-extensions-init.php:43
 msgid "Loading list..."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:439
+#: includes/admin/bulider/post-extensions-init.php:48
 msgid "Can not be submitted in the live preview page."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:441
+#: includes/admin/bulider/post-extensions-init.php:49
+#: includes/admin/bulider/post-extensions-init.php:347
+msgid "Hmm... no templates yet."
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:50
+msgid ""
+"<p>The operation failed because lack of authority, please <a class=\"button "
+"button-primary button-small\" href=\"$s\">click here</a> to assign "
+"permissions to re-create page template files.</p>"
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:51
 #, php-format
 msgid ""
-"<p style=\"font-weight:bold;\">You could <a class=\"button button-primary "
-"button-small\" href=\"%1$s\">Create</a> a Uix Page Builder template file "
-"(from the directory <code>/wp-content/plugins/uix-page-"
-"builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your templates "
-"directory. This allows the page builder content templates to look beautiful "
-"with any theme.</p><h3>How to use?</h3><ol><li>Then you need to login to "
-"your WordPress admin area to create a new page or edit an existing one.</li>"
-"<li>On the page editing screen, scroll down to <strong>\"Page "
+"<div id=\"uix-page-builder-createTempFiles-info-wrapper\"><p style=\"font-"
+"weight:bold;\">You could <a class=\"button button-primary button-small\" "
+"href=\"%1$s\" id=\"uix-page-builder-createTempFiles-btn\">Create</a> a Uix "
+"Page Builder template file (from the directory <code>/wp-content/plugins/uix-"
+"page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your "
+"templates directory. This allows the page builder content templates to look "
+"beautiful with any theme.</p><h3>How to use?</h3><ol><li>Then you need to "
+"login to your WordPress admin area to create a new page or edit an existing "
+"one.</li><li>On the page editing screen, scroll down to <strong>\"Page "
 "Attributes\"</strong> section, and you will find a template drop down menu. "
 "Clicking on it will allow you to select the template you just created. The "
 "template name is <code>\"Uix Page Builder Template\"</code>. <a "
@@ -2277,118 +2279,128 @@ msgid ""
 "menu\"</strong> to create your custom menu. You should tick the appropriate "
 "checkbox of <code>\"Primary Menu\"</code> from options as <strong>\"Display "
 "location\"</strong>. <a target=\"_blank\" href=\"%4$s\"><i class=\"dashicons "
-"dashicons-format-image\"></i></a></li></ol>"
+"dashicons-format-image\"></i></a></li></ol></div>"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:491
+#: includes/admin/bulider/post-extensions-init.php:386
+msgid "Default"
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:431
+msgid ""
+"Add a first module from the side panel. You can also choose a template to "
+"use."
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:536
 msgid ""
 "<i class=\"dashicons dashicons-editor-kitchensink\"></i>&nbsp;&nbsp;Uix Page "
 "Builder Attributes"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:518
+#: includes/admin/bulider/post-extensions-init.php:563
 msgid "Use Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:526
+#: includes/admin/bulider/post-extensions-init.php:571
 msgid "Page Builder Editor"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:531
+#: includes/admin/bulider/post-extensions-init.php:576
 msgid "Enable"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:535
+#: includes/admin/bulider/post-extensions-init.php:580
 msgid "Disable"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:545
+#: includes/admin/bulider/post-extensions-init.php:590
 msgid "Frequently Asked Questions (FAQ):"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:616
+#: includes/admin/bulider/post-extensions-init.php:661
 msgid "Desktop"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:617
+#: includes/admin/bulider/post-extensions-init.php:662
 msgid "Tablet"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:618
+#: includes/admin/bulider/post-extensions-init.php:663
 msgid "Tablet (Portrait)"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:619
+#: includes/admin/bulider/post-extensions-init.php:664
 msgid "Mobile"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:621
+#: includes/admin/bulider/post-extensions-init.php:666
 #: includes/admin/bulider/components/pb-ui-gridster.php:661
 #: includes/admin/bulider/components/pb-ui-gridster.php:678
 msgid "Saving..."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:640
-#: includes/admin/bulider/post-extensions-init.php:640
+#: includes/admin/bulider/post-extensions-init.php:685
+#: includes/admin/bulider/post-extensions-init.php:685
 msgid "Add Section"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:645
-#: includes/admin/bulider/post-extensions-init.php:645
+#: includes/admin/bulider/post-extensions-init.php:690
+#: includes/admin/bulider/post-extensions-init.php:690
 msgid "Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:649
-#: includes/admin/bulider/post-extensions-init.php:649
+#: includes/admin/bulider/post-extensions-init.php:694
+#: includes/admin/bulider/post-extensions-init.php:694
 msgid "Select a Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:654
+#: includes/admin/bulider/post-extensions-init.php:699
 msgid "Page Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:656
+#: includes/admin/bulider/post-extensions-init.php:701
 msgid "Default Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:665
+#: includes/admin/bulider/post-extensions-init.php:710
 msgid "Content Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:667
+#: includes/admin/bulider/post-extensions-init.php:712
 msgid "Confirm"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:673
-#: includes/admin/bulider/post-extensions-init.php:673
+#: includes/admin/bulider/post-extensions-init.php:718
+#: includes/admin/bulider/post-extensions-init.php:718
 msgid "Save as Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:674
+#: includes/admin/bulider/post-extensions-init.php:719
 msgid "Enter Template Name"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:686
-#: includes/admin/bulider/post-extensions-init.php:686
-#: includes/admin/bulider/post-extensions-init.php:702
+#: includes/admin/bulider/post-extensions-init.php:731
+#: includes/admin/bulider/post-extensions-init.php:731
+#: includes/admin/bulider/post-extensions-init.php:747
 msgid "Export"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:700
+#: includes/admin/bulider/post-extensions-init.php:745
 msgid "Your current template:"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:711
-#: includes/admin/bulider/post-extensions-init.php:711
+#: includes/admin/bulider/post-extensions-init.php:756
+#: includes/admin/bulider/post-extensions-init.php:756
 msgid "Publish"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:715
-#: includes/admin/bulider/post-extensions-init.php:715
+#: includes/admin/bulider/post-extensions-init.php:760
+#: includes/admin/bulider/post-extensions-init.php:760
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:732
+#: includes/admin/bulider/post-extensions-init.php:777
 msgid "Add a first module here. You can also choose a template to use."
 msgstr ""
 

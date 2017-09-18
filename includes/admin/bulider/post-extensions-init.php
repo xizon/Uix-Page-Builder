@@ -5,6 +5,128 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /*
+ * Enqueue scripts and styles of Visual Builder
+ * 
+ */
+if ( !function_exists( 'uix_page_builder_vb_script' ) ) {
+	add_action( 'admin_enqueue_scripts', 'uix_page_builder_vb_script' );
+	function uix_page_builder_vb_script() {
+        if ( UixPageBuilder::page_builder_general_mode() ) {
+			
+			// Register the script (Require to enqueue the script in the <head>.)
+			wp_register_script( 'uix_page_builder_metaboxes_save_handle', UixPageBuilder::plug_directory() .'includes/admin/assets/js/core.min.js', array( 'jquery', UixPageBuilder::PREFIX . '-gridster' ), UixPageBuilder::ver(), false );
+
+			// Localize the script with new data
+			if ( UixPageBuilder::tempfile_exists() ) {
+				$tempfile_exists = 1;
+			} else {
+				$tempfile_exists = 0;
+			}
+			
+			$curid      = get_the_ID();
+			$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
+			$post_url   = esc_url( get_permalink( $post_id ) );
+			$previewURL = '';
+			
+			if( UixPageBuilder::inc_str( $post_url, '?' ) ) {
+				$previewURL = $post_url.'&preview=true&pb_preview=1';
+			} else {
+				$previewURL = $post_url.'?preview=true&pb_preview=1';
+			}
+			
+			
+			$translation_array = array(
+				'send_string_plugin_url'       => UixPageBuilder::plug_directory(),
+				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
+				'send_string_postid'           => $post_id,
+				'send_string_tempfile_exists'  => ( UixPageBuilder::tempfile_exists() ) ? 1 : 0,
+				'send_string_loadlist'         => esc_html__( 'Loading list...', 'uix-page-builder' ),
+				'send_string_tempfiles_exists' => $tempfile_exists,
+				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
+				'send_string_preview_url'      => $previewURL,
+				'send_string_render_count'     => 1,
+				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
+				'send_string_nodata'           => esc_html__( 'Hmm... no templates yet.', 'uix-page-builder' ),
+				'send_string_tempfile_failed'  => sprintf( __( '<p>The operation failed because lack of authority, please <a class="button button-primary button-small" href="$s">click here</a> to assign permissions to re-create page template files.</p>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" ) ),
+				'send_string_tempfile_note'    => sprintf( __( '<div id="uix-page-builder-createTempFiles-info-wrapper"><p style="font-weight:bold;">You could <a class="button button-primary button-small" href="%1$s" id="uix-page-builder-createTempFiles-btn">Create</a> a Uix Page Builder template file (from the directory <code>/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your templates directory. This allows the page builder content templates to look beautiful with any theme.</p><h3>How to use?</h3><ol><li>Then you need to login to your WordPress admin area to create a new page or edit an existing one.</li><li>On the page editing screen, scroll down to <strong>"Page Attributes"</strong> section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created. The template name is <code>"Uix Page Builder Template"</code>. <a target="_blank" href="%2$s"><i class="dashicons dashicons-format-image"></i></a> <a target="_blank" href="%3$s"><i class="dashicons dashicons-format-image"></i></a></li><li>Go to <strong>"Dashboard » Appearence » Menus"</strong>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Primary Menu"</code> from options as <strong>"Display location"</strong>. <a target="_blank" href="%4$s"><i class="dashicons dashicons-format-image"></i></a></li></ol></div>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" ), UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-1.jpg', UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-2.jpg', UixPageBuilder::plug_directory().'helper/img/set-temp-menu.jpg' ),
+				
+				
+			);
+			
+			
+			wp_localize_script( 'uix_page_builder_metaboxes_save_handle', 'uix_page_builder_layoutdata', $translation_array );
+			
+			// Enqueued script with localized data.
+			wp_enqueue_script( 'uix_page_builder_metaboxes_save_handle' );
+			
+
+			//Drag and drop (Require to enqueue the script in the <head>.)
+			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.gridster.min.js', array( 'jquery', 'uixpbform' ), '0.5.7', false );	
+			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
+
+			//jQuery Accessible Tabs
+			wp_enqueue_script( 'accTabs', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
+		
+
+			//Main
+			wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin', UixPageBuilder::plug_directory() .'includes/admin/assets/css/style.min.css', false, UixPageBuilder::ver(), 'all' );
+			//RTL		
+			if ( is_rtl() ) {
+				wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin-rtl', UixPageBuilder::plug_directory() .'includes/admin/assets/css/style.min-rtl.css', false, UixPageBuilder::ver(), 'all' );
+			}
+			
+			
+			//Jquery UI
+			wp_enqueue_script( 'jquery-ui' );
+			
+		
+	
+		}
+			
+	}
+}
+
+
+
+/*
+ * Create page template files to the theme directory
+ * 
+ */
+if ( !function_exists( 'uix_page_builder_createTempFilesToTheme' ) ) {
+	add_action( 'wp_ajax_uix_page_builder_createTempFilesToTheme_settings', 'uix_page_builder_createTempFilesToTheme' );		
+	function uix_page_builder_createTempFilesToTheme() {
+		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
+		
+		if ( isset( $_POST[ 'postID' ] ) ) {
+			
+            $post_ID        = $_POST[ 'postID' ];
+			$echo_ok_status = '<span data-ok="1"></span>';
+			
+			$status_echo = UixPageBuilder::templates( 'uix_page_builder_metaboxes_save_nonce', uix_page_builder_get_visualBuilder_pageURL( $post_ID ), false, true );
+
+			if( UixPageBuilder::inc_str( $status_echo, $echo_ok_status ) ) {
+				echo 1;
+			} else {
+				echo 0;
+			}
+
+
+			//Using default template
+			if ( UixPageBuilder::tempfile_exists() ) {
+				update_post_meta( $post_ID, '_wp_page_template', 'tmpl-uix_page_builder.php' );
+			}
+	
+			
+		}
+		
+
+		wp_die();	
+	}
+}
+
+
+
+/*
  * Delete data of custom content template with ajax
  * 
  */
@@ -396,83 +518,6 @@ if ( !function_exists( 'uix_page_builder_save' ) ) {
 		}
 		
 		wp_die();	
-	}
-}
-
-if ( !function_exists( 'uix_page_builder_save_script' ) ) {
-	add_action( 'admin_enqueue_scripts', 'uix_page_builder_save_script' );
-	function uix_page_builder_save_script() {
-        if ( UixPageBuilder::page_builder_general_mode() ) {
-			
-			// Register the script (Require to enqueue the script in the <head>.)
-			wp_register_script( 'uix_page_builder_metaboxes_save_handle', UixPageBuilder::plug_directory() .'includes/admin/assets/js/core.min.js', array( 'jquery', UixPageBuilder::PREFIX . '-gridster' ), UixPageBuilder::ver(), false );
-
-			// Localize the script with new data
-			if ( UixPageBuilder::tempfile_exists() ) {
-				$tempfile_exists = 1;
-			} else {
-				$tempfile_exists = 0;
-			}
-			
-			$curid      = get_the_ID();
-			$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
-			$post_url   = esc_url( get_permalink( $post_id ) );
-			$previewURL = '';
-			
-			if( UixPageBuilder::inc_str( $post_url, '?' ) ) {
-				$previewURL = $post_url.'&preview=true&pb_preview=1';
-			} else {
-				$previewURL = $post_url.'?preview=true&pb_preview=1';
-			}
-			
-			
-			$translation_array = array(
-				'send_string_plugin_url'       => UixPageBuilder::plug_directory(),
-				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
-				'send_string_postid'           => $post_id,
-				'send_string_tempfile_exists'  => ( UixPageBuilder::tempfile_exists() ) ? 1 : 0,
-				'send_string_loadlist'         => esc_html__( 'Loading list...', 'uix-page-builder' ),
-				'send_string_tempfiles_exists' => $tempfile_exists,
-				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
-				'send_string_preview_url'      => $previewURL,
-				'send_string_render_count'     => 1,
-				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
-				'send_string_nodata'           => esc_html__( 'Hmm... no templates yet.', 'uix-page-builder' ),
-				'send_string_tempfile_note'    => sprintf( __( '<p style="font-weight:bold;">You could <a class="button button-primary button-small" href="%1$s">Create</a> a Uix Page Builder template file (from the directory <code>/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your templates directory. This allows the page builder content templates to look beautiful with any theme.</p><h3>How to use?</h3><ol><li>Then you need to login to your WordPress admin area to create a new page or edit an existing one.</li><li>On the page editing screen, scroll down to <strong>"Page Attributes"</strong> section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created. The template name is <code>"Uix Page Builder Template"</code>. <a target="_blank" href="%2$s"><i class="dashicons dashicons-format-image"></i></a> <a target="_blank" href="%3$s"><i class="dashicons dashicons-format-image"></i></a></li><li>Go to <strong>"Dashboard » Appearence » Menus"</strong>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Primary Menu"</code> from options as <strong>"Display location"</strong>. <a target="_blank" href="%4$s"><i class="dashicons dashicons-format-image"></i></a></li></ol>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" ), UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-1.jpg', UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-2.jpg', UixPageBuilder::plug_directory().'helper/img/set-temp-menu.jpg' ),
-				
-				
-			);
-			
-			
-			wp_localize_script( 'uix_page_builder_metaboxes_save_handle', 'uix_page_builder_layoutdata', $translation_array );
-			
-			// Enqueued script with localized data.
-			wp_enqueue_script( 'uix_page_builder_metaboxes_save_handle' );
-			
-
-			//Drag and drop (Require to enqueue the script in the <head>.)
-			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.gridster.min.js', array( 'jquery', 'uixpbform' ), '0.5.7', false );	
-			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
-
-			//jQuery Accessible Tabs
-			wp_enqueue_script( 'accTabs', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
-		
-
-			//Main
-			wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin', UixPageBuilder::plug_directory() .'includes/admin/assets/css/style.min.css', false, UixPageBuilder::ver(), 'all' );
-			//RTL		
-			if ( is_rtl() ) {
-				wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin-rtl', UixPageBuilder::plug_directory() .'includes/admin/assets/css/style.min-rtl.css', false, UixPageBuilder::ver(), 'all' );
-			}
-			
-			
-			//Jquery UI
-			wp_enqueue_script( 'jquery-ui' );
-			
-		
-	
-		}
-			
 	}
 }
 
