@@ -116,11 +116,11 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 			echo '
 
-					 <div class="uix-page-builder-dialog-wrapper">
+					 <div class="uix-popwin-dialog-wrapper">
 					     '.esc_html__( 'CSS file root directory:', 'uix-page-builder' ).' 
-						 <a href="javascript:" class="uix-page-builder-viewcss-btn">'.$csspath.'</a> '.$enable1.'
-						 <div class="uix-page-builder-dialog-mask"></div>
-						 <div class="uix-page-builder-dialog">  
+						 <a href="javascript:" class="uix-popwin-viewcss-btn">'.$csspath.'</a> '.$enable1.'
+						 <div class="uix-popwin-dialog-mask"></div>
+						 <div class="uix-popwin-dialog">  
 							<textarea rows="15" style=" width:95%;" class="regular-text">'.$sourcecode.'</textarea>
 							<a href="javascript:" class="close button button-primary">'.esc_html__( 'Close', 'uix-page-builder' ).'</a>
 						</div>
@@ -165,11 +165,11 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 			echo '
 
-					 <div class="uix-page-builder-dialog-wrapper">
+					 <div class="uix-popwin-dialog-wrapper">
 					     '.esc_html__( 'RTL CSS file root directory:', 'uix-page-builder' ).' 
-						 <a href="javascript:" class="uix-page-builder-viewcss-btn">'.$csspath.'</a> '.$enable1.'
-						 <div class="uix-page-builder-dialog-mask"></div>
-						 <div class="uix-page-builder-dialog">  
+						 <a href="javascript:" class="uix-popwin-viewcss-btn">'.$csspath.'</a> '.$enable1.'
+						 <div class="uix-popwin-dialog-mask"></div>
+						 <div class="uix-popwin-dialog">  
 							<textarea rows="15" style=" width:95%;" class="regular-text">'.$sourcecode.'</textarea>
 							<a href="javascript:" class="close button button-primary">'.esc_html__( 'Close', 'uix-page-builder' ).'</a>
 						</div>
@@ -213,11 +213,11 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 			echo '
 
-					 <div class="uix-page-builder-dialog-wrapper">
+					 <div class="uix-popwin-dialog-wrapper">
 					     '.esc_html__( 'CSS mini-file root directory:', 'uix-page-builder' ).' 
-						 <a href="javascript:" class="uix-page-builder-viewcss-btn">'.$csspath.'</a> '.$enable2.'
-						 <div class="uix-page-builder-dialog-mask"></div>
-						 <div class="uix-page-builder-dialog">  
+						 <a href="javascript:" class="uix-popwin-viewcss-btn">'.$csspath.'</a> '.$enable2.'
+						 <div class="uix-popwin-dialog-mask"></div>
+						 <div class="uix-popwin-dialog">  
 							<textarea rows="15" style=" width:95%;" class="regular-text">'.$sourcecode.'</textarea>
 							<a href="javascript:" class="close button button-primary">'.esc_html__( 'Close', 'uix-page-builder' ).'</a> 
 						</div>
@@ -261,11 +261,11 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'custom-css' ) {
 
 			echo '
 
-					 <div class="uix-page-builder-dialog-wrapper">
+					 <div class="uix-popwin-dialog-wrapper">
 					     '.esc_html__( 'RTL CSS file root directory:', 'uix-page-builder' ).' 
-						 <a href="javascript:" class="uix-page-builder-viewcss-btn">'.$csspath.'</a> '.$enable2.'
-						 <div class="uix-page-builder-dialog-mask"></div>
-						 <div class="uix-page-builder-dialog">  
+						 <a href="javascript:" class="uix-popwin-viewcss-btn">'.$csspath.'</a> '.$enable2.'
+						 <div class="uix-popwin-dialog-mask"></div>
+						 <div class="uix-popwin-dialog">  
 							<textarea rows="15" style=" width:95%;" class="regular-text">'.$sourcecode.'</textarea>
 							<a href="javascript:" class="close button button-primary">'.esc_html__( 'Close', 'uix-page-builder' ).'</a>
 						</div>

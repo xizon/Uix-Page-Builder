@@ -208,7 +208,7 @@ ul.uix-bg-custom-list li {
 }
 	
 /* Code preview container */
-.uix-page-builder-dialog {
+.uix-popwin-dialog {
     width: 500px;
     height: 440px;
     padding: 20px 0 0 20px;
@@ -230,11 +230,11 @@ ul.uix-bg-custom-list li {
     border-radius: 5px;
 }
 
-.rtl .uix-page-builder-dialog {
+.rtl .uix-popwin-dialog {
     padding: 20px 20px 0 0;
 }
 
-.uix-page-builder-dialog-mask {
+.uix-popwin-dialog-mask {
     display: none;
     z-index: 9999998;
     background: rgba(0,0,0,.8);
@@ -245,19 +245,19 @@ ul.uix-bg-custom-list li {
     width: 100%;
 }
 
-.uix-page-builder-dialog textarea {
+.uix-popwin-dialog textarea {
     width: 100%;
     height: 90%;
 }
 
-.uix-page-builder-dialog .close {
+.uix-popwin-dialog .close {
     display: inline-block;
     margin-top: 3px;
 }
 
 @media all and (max-width: 540px) {
 	
-    .uix-page-builder-dialog {
+    .uix-popwin-dialog {
         width: 300px;
         margin-left: -170px;
     }
