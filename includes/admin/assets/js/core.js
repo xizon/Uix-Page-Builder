@@ -70,31 +70,7 @@
 		} );
 		
 
-		/*!
-		 *
-		 * Add a scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
-		 * ---------------------------------------------------
-		 */
-		$( document ).on( 'mouseenter', '.uix-page-builder-gridster-widget', function() {
-		
-
-			var $preview        = $( '#uix-page-builder-themepreview' ),
-				id              = $( this ).find( '.cusid-box' ).val(),
-				container       = $preview.contents().find( '#' + id ),
-				hasMenu         = container.find( '.uix-pb-menu-container' ).length;
-		
-			if ( container.length > 0 && hasMenu == 0 ) {
-				
-				if ( $preview.contents().find( 'html' ).css( 'overflow-y' ) != 'hidden' ) {
-					
-					$preview.contents().find( 'html,body' ).animate( { scrollTop: container.offset().top + 'px' }, 100 );
-					
-				}
-				
-			}
-			
-		});
-		
+	
 		
 		/*!
 		 *
@@ -1355,7 +1331,7 @@ function UixPBFormatRenderCodes( code ) {
 				$ifm        = $( '#uix-page-builder-themepreview' ).contents();
 			
 			
-			$ifm.find( '.uix-page-builder-themepreview-wp-shortcode' ).load( ajaxurl + '?action=uix_page_builder_output_frontend_settings&post_id='+$postID+'&pb_render_entire_page=1', function( response, status, xhr ) {
+			$ifm.find( '.uix-page-builder-themepreview-wp-shortcode' ).load( ajaxurl + '?action=uix_page_builder_output_frontend_settings&post_id='+$postID+'&pb_render_entire_page=1&security='+uix_page_builder_layoutdata.send_string_nonce, function( response, status, xhr ) {
 				
 				var $frontend = $( this );
 				

@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+
+= 1.4.4 (September 20, 2017) =
+
+* Removed the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+* Improve the Uix Shortcods assistant(helper) experience in admin panel.
+
 
 
 = 1.4.3 (September 16, 2017) =

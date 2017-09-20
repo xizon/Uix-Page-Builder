@@ -123,6 +123,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.4.4 (September 20, 2017) =
+
+* Removed the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+* Improve the Uix Shortcods assistant(helper) experience in admin panel.
+
+
 
 ##### = 1.4.3 (September 16, 2017) =
 

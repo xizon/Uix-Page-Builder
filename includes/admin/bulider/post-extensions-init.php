@@ -413,17 +413,17 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 
 /*
  * Output the front-end code
+ *
+ * Preview directly through the URL
+ *
+ * E.g. http://yoursite.com/wp-admin/admin-ajax.php?action=uix_page_builder_output_frontend_settings&post_id=1234&pb_render_entire_page=1&security={string_nonce}
+ *
  * 
  */
 if ( !function_exists( 'uix_page_builder_output_frontend' ) ) {
 	add_action( 'wp_ajax_uix_page_builder_output_frontend_settings', 'uix_page_builder_output_frontend' );		
 	function uix_page_builder_output_frontend() {
-		/*
-		 * Preview directly through the URL
-		 *
-		 * E.g. http://yoursite.com/wp-admin/admin-ajax.php?action=uix_page_builder_output_frontend_settings&post_id=1234&pb_render_entire_page=1
-		 *
-		*/
+		check_ajax_referer( 'uix_page_builder_metaboxes_save_nonce', 'security' );
 		
 		if ( isset( $_GET[ 'post_id' ] ) && ( isset( $_GET['pb_render_entire_page'] ) && $_GET['pb_render_entire_page'] == 1 ) ) {
 			
@@ -440,6 +440,8 @@ if ( !function_exists( 'uix_page_builder_output_frontend' ) ) {
 		wp_die();	
 	}
 }
+
+
 
 
 
