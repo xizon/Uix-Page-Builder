@@ -22,18 +22,18 @@
 	3. Section Styles    
 	4. Author Card  
 	5. Accordion 
-	6. Tabs 
+	6. Tabs (Based on Accordion)     
 	7. Progress Bar
-	8. Blog Posts List
-	9. Features   
-	10. Pricing      
+	8. Blog Posts List  (Can include section title and description) 
+	9. Features (Can include section title and description) 
+	10. Pricing (Can include section title and description) 
     11. Buttons
-    12. Testimonials Carousel 
+    12. Testimonials Carousel  (Can include section title and description) 
     13. Parallax
-    14. Client 
-    15. Gallery list (Team) 
-    16. Card list  (Team)
-    17. Portfolio
+    14. Client (Can include section title and description) 
+    15. Gallery list (Team) (Can include section title and description) 
+    16. Card list  (Team) (Can include section title and description) 
+    17. Portfolio (Can include section title and description) 
     18. Image Slider
     19. Contact Form 7
     20. Pagination   
@@ -42,6 +42,7 @@
     23. Custom Menu
     24. Header Area  
     25. Footer Area
+    26. Map
 
 */
 
@@ -49,6 +50,7 @@
    1. Basic                               
 /* ====================================================== */
 
+/* -----------Body  -------------- */
 body.uix-page-builder-body {
 	background: #fff;
     -webkit-box-shadow: none;
@@ -60,11 +62,8 @@ body.uix-page-builder-body:before {
 }
 
 
-.uix-pb-clear {
-    clear: both;
-    width: 100%;
-    height: 0;
-}
+
+/* -----------Grid System  -------------- */
 
 .uix-pb-row {
     -ms-word-wrap: break-word;
@@ -82,157 +81,134 @@ body.uix-page-builder-body:before {
     clear: both;
 }
 
-   
-	/* 
-	 * Common uix-pb-col-umns definitions
-	 */
-.uix-pb-col-1, .uix-pb-col-2, .uix-pb-col-3, .uix-pb-col-4, .uix-pb-col-5, .uix-pb-col-6, .uix-pb-col-7, .uix-pb-col-8, .uix-pb-col-9, .uix-pb-col-10, .uix-pb-col-11, .uix-pb-col-12 {
+
+.uix-pb-row .uix-pb-col-1, 
+.uix-pb-row .uix-pb-col-2, 
+.uix-pb-row .uix-pb-col-3, 
+.uix-pb-row .uix-pb-col-4, 
+.uix-pb-row .uix-pb-col-5, 
+.uix-pb-row .uix-pb-col-6, 
+.uix-pb-row .uix-pb-col-7, 
+.uix-pb-row .uix-pb-col-8, 
+.uix-pb-row .uix-pb-col-9, 
+.uix-pb-row .uix-pb-col-10, 
+.uix-pb-row .uix-pb-col-11, 
+.uix-pb-row .uix-pb-col-12 {
     float: left;
-    margin: 0 3% 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 1px;
 }
 
-.uix-pb-col-1.uix-pb-col-last, .uix-pb-col-2.uix-pb-col-last, .uix-pb-col-3.uix-pb-col-last, .uix-pb-col-4.uix-pb-col-last, .uix-pb-col-5.uix-pb-col-last, .uix-pb-col-6.uix-pb-col-last, .uix-pb-col-7.uix-pb-col-last, .uix-pb-col-8.uix-pb-col-last, .uix-pb-col-9.uix-pb-col-last, .uix-pb-col-10.uix-pb-col-last, .uix-pb-col-11.uix-pb-col-last, .uix-pb-col-12 {
-    margin: 0;
+
+.uix-pb-row .uix-pb-col-last {
+    
 }
 
-.uix-pb-col-1 {
-    width: 5.5%;
-}
 
-.uix-pb-col-2 {
-    width: 14%;
-}
-
-.uix-pb-col-3 {
-    width: 22.5%;
-}
-
-.uix-pb-col-4 {
-    width: 31%;
-}
-
-.uix-pb-col-5 {
-    width: 39.5%;
-}
-
-.uix-pb-col-6 {
-    width: 48%;
-}
-
-.uix-pb-col-7 {
-    width: 56.5%;
-}
-
-.uix-pb-col-8 {
-    width: 65%;
-}
-
-.uix-pb-col-9 {
-    width: 73.5%;
-}
-
-.uix-pb-col-10 {
-    width: 82%;
-}
-
-.uix-pb-col-11 {
-    width: 90.5%;
-}
-
-.uix-pb-col-12 {
-    width: 99%;
-    margin: 0;
-}
-
-.uix-pb-col-1 img, .uix-pb-col-2 img, .uix-pb-col-3 img, .uix-pb-col-4 img, .uix-pb-col-5 img, .uix-pb-col-6 img, .uix-pb-col-7 img, .uix-pb-col-8 img, .uix-pb-col-9 img, .uix-pb-col-10 img, .uix-pb-col-11 img, .uix-pb-col-12 img {
+.uix-pb-row .uix-pb-col-1 img, 
+.uix-pb-row .uix-pb-col-2 img, 
+.uix-pb-row .uix-pb-col-3 img, 
+.uix-pb-row .uix-pb-col-4 img, 
+.uix-pb-row .uix-pb-col-5 img, 
+.uix-pb-row .uix-pb-col-6 img, 
+.uix-pb-row .uix-pb-col-7 img, 
+.uix-pb-row .uix-pb-col-8 img, 
+.uix-pb-row .uix-pb-col-9 img, 
+.uix-pb-row .uix-pb-col-10 img, 
+.uix-pb-row .uix-pb-col-11 img, 
+.uix-pb-row .uix-pb-col-12 img {
     max-width: 100%;
     height: auto;
 }
 
-.uix-pb-container-fullwidth .uix-pb-col-12 {
-    margin: 0;
-    width: 100%;
+
+.uix-pb-row .uix-pb-col-1 {
+    width: 8.3333333333%;
 }
 
-	/* Seamless display when the background color is not empty */
-.uix-pb-row > div.nospace {
-    margin: 0 !important;
+.uix-pb-row .uix-pb-col-2 {
+    width: 16.6666666667%;
 }
 
-.uix-pb-col-1.nospace {
-    width: 8.33333%;
+.uix-pb-row .uix-pb-col-3 {
+    width: 25%;
 }
 
-.uix-pb-col-2.nospace {
-    width: 16.60667%;
+.uix-pb-row .uix-pb-col-4 {
+    width: 33.3333333333%;
 }
 
-.uix-pb-col-3.nospace {
-    width: 24.95%;
+.uix-pb-row .uix-pb-col-5 {
+    width: 41.6666666667%;
 }
 
-.uix-pb-col-4.nospace {
-    width: 33.27333%;
+.uix-pb-row .uix-pb-col-6 {
+    width: 50%;
 }
 
-.uix-pb-col-5.nospace {
-    width: 41.66667%;
+.uix-pb-row .uix-pb-col-7 {
+    width: 58.3333333333%;
 }
 
-.uix-pb-col-6.nospace {
-    width: 49.95%;
+.uix-pb-row .uix-pb-col-8 {
+    width: 66.6666666667%;
 }
 
-.uix-pb-col-7.nospace {
-    width: 58.33333%;
-}
-
-.uix-pb-col-8.nospace {
-    width: 66.66667%;
-}
-
-.uix-pb-col-9.nospace {
+.uix-pb-row .uix-pb-col-9 {
     width: 75%;
 }
 
-.uix-pb-col-10.nospace {
-    width: 83.33333%;
+.uix-pb-row .uix-pb-col-10 {
+    width: 83.3333333333%;
 }
 
-.uix-pb-col-11.nospace {
-    width: 91.66667%;
+.uix-pb-row .uix-pb-col-11 {
+    width: 91.6666666667%;
 }
 
-.uix-pb-col-12.nospace {
+.uix-pb-row .uix-pb-col-12 {
     width: 100%;
 }
-
-
-
-
 
 /* 
  * Small devices
  */
 @media all and (max-width: 768px) {
 	
-    .uix-pb-col-1, .uix-pb-col-2, .uix-pb-col-3, .uix-pb-col-4, .uix-pb-col-5, .uix-pb-col-6, .uix-pb-col-7, .uix-pb-col-8, .uix-pb-col-9, .uix-pb-col-10, .uix-pb-col-11 {
-        float: none;
-        width: 99%;
+.uix-pb-row .uix-pb-col-1, 
+.uix-pb-row .uix-pb-col-2, 
+.uix-pb-row .uix-pb-col-3, 
+.uix-pb-row .uix-pb-col-4, 
+.uix-pb-row .uix-pb-col-5, 
+.uix-pb-row .uix-pb-col-6, 
+.uix-pb-row .uix-pb-col-7, 
+.uix-pb-row .uix-pb-col-8, 
+.uix-pb-row .uix-pb-col-9, 
+.uix-pb-row .uix-pb-col-10, 
+.uix-pb-row .uix-pb-col-11, 
+.uix-pb-row .uix-pb-col-12 {
+        float: none !important;
+        width: 100% !important;
     }
 	
-	/* Seamless display when the background color is not empty */
-    .uix-pb-col-1.nospace, .uix-pb-col-2.nospace, .uix-pb-col-3.nospace, .uix-pb-col-4.nospace, .uix-pb-col-5.nospace, .uix-pb-col-6.nospace, .uix-pb-col-7.nospace, .uix-pb-col-8.nospace, .uix-pb-col-9.nospace, .uix-pb-col-10.nospace, .uix-pb-col-11.nospace {
-        float: none;
-        width: 100%;
-    }
+
 }
+
+/* -----------Image & General  -------------- */
+
+.uix-pb-clear {
+    clear: both;
+    width: 100%;
+    height: 0;
+}
+
 
 .uix-pb-gray img {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     filter: gray;
- /* IE7-9 */
     -moz-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
     -webkit-transition: .2s ease-in-out;
@@ -243,7 +219,6 @@ body.uix-page-builder-body:before {
     -webkit-filter: grayscale(0);
     filter: grayscale(0);
     filter: none;
- /* IE7-9 */;
 }
 
 img.uix-pb-img,
@@ -288,7 +263,6 @@ img.uix-pb-img,
     display: table;
     content: "";
     line-height: 0;
-    padding-top: 1.5em;
 }
 
 .uix-pb-portfolio-tiles:after,
@@ -303,9 +277,9 @@ img.uix-pb-img,
     clear: both;
 }
 
-/* 
- * Custom flexslider style
- */
+
+/* -----------Custom Flexslider  -------------- */
+
 .uix-pb-flex-direction-nav a:before {
     display: none;
 }
@@ -439,7 +413,6 @@ img.uix-pb-img,
 /* ====================================================== 
    2. Container ( Compatible with Bootstrap 3.x )                           
 /* ====================================================== */
-
 .uix-pb-container,
 .uix-pb-container.uix-pb-container-boxed {
     margin: 0 auto;
@@ -448,12 +421,6 @@ img.uix-pb-img,
     padding: 0 15px !important;
     position: relative;
 }
-
-/* Used for modules with special effects, such as skew. */
-.uix-pb-container:not(.notlimited) {
-	overflow: hidden;
-}
-
 
 
 @media (max-width: 767px) {
@@ -508,30 +475,27 @@ img.uix-pb-img,
 /* ====================================================== */
 
 .uix-page-builder-section {
-    margin: 0 0 3em;
-}
-
-.nospace .uix-page-builder-section {
-    margin: 0;
+    
 }
 
 
-.uix-pb-section-heading {
-    margin: .37em 0 .1em !important;
+.uix-page-builder-section .uix-pb-section-heading {
+    margin: 3em 0 .1em;
     text-align: center;
+    font-size: 40px;
+    line-height: 1.2;
 }
 
-.uix-pb-section-hr {
+.uix-page-builder-section .uix-pb-section-hr {
     margin: .5em auto;
     border-bottom: 5px solid #DDD;
     width: 50px;
 }
 
-.uix-pb-section-desc {
+.uix-page-builder-section .uix-pb-section-desc {
     color: #808080;
     text-align: center;
     margin-top: 1.5em;
-    margin-bottom: 4.5em;
 	font-size: 14px;
 }
 
@@ -561,10 +525,17 @@ img.uix-pb-img,
 /* ====================================================== 
    4. Author Card                                
 /* ====================================================== */
+.uix-pb-authorcard-wrapper {
+	/* The distance between per section & module */
+	padding: 85px 15px;
+}
 
 
-.uix-pb-container-fullwidth .uix-pb-authorcard-wrapper {
-    padding: 2em;
+@media all and (max-width: 768px) {
+	.uix-pb-authorcard-wrapper {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
 }
 
 .uix-pb-authorcard {
@@ -668,12 +639,21 @@ img.uix-pb-img,
 		  
 		  
 /* ====================================================== 
-   5. Accordion                              
+   5. Accordion                    
 /* ====================================================== */
-
-.uix-pb-container-fullwidth .uix-pb-accordion-box {
-    padding: 2em;
+.uix-pb-accordion-box {
+	/* The distance between per section & module */
+	padding: 85px 15px;
 }
+
+@media all and (max-width: 768px) {
+	.uix-pb-accordion-box {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
+}
+
 
 .uix-pb-accordion .uix-pb-spoiler {
     border-bottom: 1px dotted rgba(0,0,0,.1);
@@ -735,7 +715,7 @@ img.uix-pb-img,
 		  
 		  
 /* ====================================================== 
-   6. Tabs                              
+   6. Tabs (Based on Accordion)       
 /* ====================================================== */
 
 .uix-pb-tabs:before,
@@ -903,11 +883,22 @@ img.uix-pb-img,
    7. Progress Bar                     
 /* ====================================================== */
 .uix-pb-bar-box {
+	/* The distance between per section & module */
+	padding: 85px 15px;
+}
+
+@media all and (max-width: 768px) {
+	.uix-pb-bar-box {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+}
+
+.uix-pb-bar-box {
     position: relative;
     display: inline-block;
     text-align: center;
     vertical-align: top;
-    margin: 2em 0;
 }
 
 @media (max-width: 768px) {
@@ -957,7 +948,23 @@ img.uix-pb-img,
 }
 		
 	
-/* square */
+/* ---- Square ---- */
+.uix-pb-bar-box.uix-pb-bar-box-square {
+	/* The distance between per section & module (!Special module) */
+	padding: 0 15px 85px;
+}
+
+@media all and (max-width: 768px) {
+	.uix-pb-bar-box.uix-pb-bar-box-square {
+		/* The distance between per section & module  (!Special module) */
+		padding-bottom: 35px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+
+
 .uix-pb-bar-box.uix-pb-bar-box-square {
     position: relative;
     text-align: center;
@@ -988,14 +995,27 @@ img.uix-pb-img,
     top: -2em;
 }
 		
+
 		
 
 /* ====================================================== 
-   8. Blog Posts List         
+   8. Blog Posts List  (Can include section title and description)        
 /* ====================================================== */
-.uix-pb-blog-posts {
-    margin-bottom: 1.625em;
+.uix-pb-blog-posts-grid {
+	/* The distance between per section & module */
+	padding: 85px 15px;
 }
+
+
+
+@media all and (max-width: 768px) {
+	.uix-pb-blog-posts-grid {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
+}
+
 
 .uix-pb-blog-posts-grid ul,
 	.uix-pb-blog-posts-grid li {
@@ -1102,15 +1122,21 @@ img.uix-pb-img,
 
 
 /* ====================================================== 
-   9. Features                              
+   9. Features  (Can include section title and description)                         
 /* ====================================================== */
 
-.uix-pb-container-fullwidth .uix-pb-feature {
-    padding: 2em;
+.uix-pb-feature {
+	/* The distance between per section & module */
+	padding: 85px 15px;
 }
 
-.uix-pb-feature {
-    margin-bottom: 3em;
+
+@media all and (max-width: 768px) {
+	.uix-pb-feature {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
 }
 
 .uix-pb-feature-icon {
@@ -1131,8 +1157,15 @@ img.uix-pb-img,
     margin-right: .4em;
 }
 
+.uix-pb-feature-li {
+	padding-right: 15px;
+	
+}
+
 .uix-pb-feature-li-c3 {
     text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .uix-pb-feature-title {
@@ -1156,23 +1189,24 @@ img.uix-pb-img,
 
 
 /* ====================================================== 
-   10. Pricing                              
+   10. Pricing (Can include section title and description)            
 /* ====================================================== */
 .uix-pb-price {
-    text-align: center;
+	text-align: center;
+	/* The distance between per section & module */
+	padding: 85px 15px;
+    
 }
 
-.uix-pb-container-fullwidth .uix-pb-price {
-    padding: 2em;
+
+@media all and (max-width: 768px) {
+	.uix-pb-price {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
 }
 
-.uix-pb-price:before {
-    padding-top: 3em;
-}
-
-.uix-pb-price:after {
-    padding-bottom: 0;
-}
 
 .uix-pb-price ul,
 	.uix-pb-price ol {
@@ -1200,9 +1234,20 @@ img.uix-pb-img,
 .uix-pb-price-border {
     padding-top: 1em;
     border: 1px solid #090909;
+	margin-left: 15px;
+	margin-right: 15px;
 }
 	
-	/* Remove border hover effect when top is "0" */
+@media (max-width: 768px) {
+	
+	.uix-pb-price-border {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+
+/* Remove border hover effect when top is "0" */
 .uix-pb-price-border-hover {
 		/*top: 0;*/;
 }
@@ -1313,6 +1358,24 @@ img.uix-pb-img,
 
 
 /* -----------Style 2  -------------- */
+
+.uix-pb-price2 {
+	text-align: center;
+	/* The distance between per section & module */
+	padding: 85px 15px;
+    
+}
+
+
+@media all and (max-width: 768px) {
+	.uix-pb-price2 {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
+}
+
+
 .uix-pb-price2 {
     text-align: center;
     position: relative;
@@ -1396,12 +1459,24 @@ img.uix-pb-img,
     -o-transition: .1s ease-in-out;
     -webkit-transition: .1s ease-in-out;
     transition: .1s ease-in-out;
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
 .uix-pb-price2-border:hover {
     -webkit-box-shadow: 0 31px 32px 0 #cbdfee;
     -moz-box-shadow: 0 31px 32px 0 #cbdfee;
     box-shadow: 0 31px 32px 0 #cbdfee;
+}
+
+
+	
+@media (max-width: 768px) {
+	
+	.uix-pb-price2-border {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
 
 
@@ -1533,12 +1608,9 @@ img.uix-pb-img,
 	
 
 
-
-/**
- *  11. Buttons
- * ----------------------------------------------------------------------------
- */
- 
+/* ====================================================== 
+   11. Buttons                  
+/* ====================================================== */
 .uix-pb-btn {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -1807,11 +1879,20 @@ img.uix-pb-img,
 
 	 
 /* ====================================================== 
-   12. Testimonials Carousel                           
+   12. Testimonials Carousel  (Can include section title and description)                          
 /* ====================================================== */
+.uix-pb-testimonials-wrapper {
+	/* The distance between per section & module */
+	padding: 85px 15px;
+}
 
-.uix-pb-container-fullwidth .uix-pb-testimonials-wrapper {
-    padding: 2em;
+
+@media all and (max-width: 768px) {
+	.uix-pb-testimonials-wrapper {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
 }
 
 .uix-pb-testimonials {
@@ -1900,6 +1981,14 @@ img.uix-pb-img,
     -webkit-background-size: cover !important;
     -moz-background-size: cover !important;
     background-size: cover !important;
+}
+
+/* A module with a tilting effect. This module is displayed when the script runs. */
+.uix-pb-parallax-wrapper.skew {
+	visibility: hidden;
+}
+.scripts-load-ok .uix-pb-parallax-wrapper.skew {
+	visibility: visible;
 }
 
 .uix-pb-parallax-wrapper h1,
@@ -1991,12 +2080,31 @@ img.uix-pb-img,
 
 .uix-pb-parallax-wrapper .uix-pb-parallax-table {
     height: 250px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 
 .uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto {
 	height: auto !important;
 }
+
+.uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto {
+	/* The distance between per section & module (!Special module) */
+	padding: 85px 15px;
+    
+}
+
+
+@media all and (max-width: 768px) {
+	.uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto {
+		/* The distance between per section & module (!Special module) */
+		padding-top: 35px; 
+		padding-bottom: 35px;
+	}
+}
+
+
 .uix-pb-parallax-wrapper .uix-pb-parallax-table.uix-pb-parallax-table-auto .uix-pb-parallax-content-box {
 	position: relative;
 	top: 0;
@@ -2095,18 +2203,32 @@ img.uix-pb-img,
 		padding: 0 !important;
 	}
 	
+	
 }
 
 /* ====================================================== 
-   14. Client                           
+   14. Client (Can include section title and description)                      
 /* ====================================================== */
-.uix-pb-container-fullwidth .uix-pb-client {
-    padding: 2em;
+
+.uix-pb-client {
+	/* The distance between per section & module */
+	padding: 85px 15px;
 }
 
+
+@media all and (max-width: 768px) {
+	.uix-pb-client {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
+}
+
+
+
 .uix-pb-client-li {
-    padding: 10px;
-    width: calc( 33.3% - 20px );
+    padding: 15px;
+    width: calc( 33.3% - 30px );
     float: left;
     margin-bottom: 15px;
     position: relative;
@@ -2119,23 +2241,23 @@ img.uix-pb-img,
 }
 
 .uix-pb-client-li-2 {
-    width: calc( 49.9% - 20px );
+    width: calc( 49.9% - 30px );
 }
 
 .uix-pb-client-li-3 {
-    width: calc( 33.3% - 20px );
+    width: calc( 33.3% - 30px );
 }
 
 .uix-pb-client-li-4 {
-    width: calc( 24.9% - 20px );
+    width: calc( 24.9% - 30px );
 }
 
 .uix-pb-client-li-5 {
-    width: calc( 19.9% - 20px );
+    width: calc( 19.9% - 30px );
 }
 
 .uix-pb-client-li-6 {
-    width: calc( 16.6% - 20px );
+    width: calc( 16.6% - 30px );
 }
 
 @media screen and (min-width: 768px) {
@@ -2172,11 +2294,22 @@ img.uix-pb-img,
 
 
 /* ====================================================== 
-   15. Gallery list (Team)                              
+   15. Gallery list (Team) (Can include section title and description)                         
 /* ====================================================== */
-.uix-pb-container-fullwidth .uix-pb-gallery-wrapper {
-    padding: 2em;
+.uix-pb-gallery {
+	/* The distance between per section & module */
+	padding: 85px 15px;
 }
+
+
+@media all and (max-width: 768px) {
+	.uix-pb-gallery {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
+}
+
 
 .uix-pb-gallery {
 	/* Let all the flexible items be the same length, regardles of its content */
@@ -2264,7 +2397,7 @@ img.uix-pb-img,
     opacity: 0.8;
 }
 
-.uix-pb-gallery-list .uix-pb-gallery-list-desc .uix-pb-gallery-list-desc-p {
+.uix-pb-gallery-list .uix-pb-gallery-list-desc {
     display: block;
     line-height: 1.5;
     font-size: 12px;
@@ -2390,8 +2523,19 @@ img.uix-pb-img,
 /* ====================================================== 
    16. Card list  (Team)                         
 /* ====================================================== */
-.uix-pb-container-fullwidth .uix-pb-card {
-    padding: 2em;
+
+.uix-pb-card {
+	/* The distance between per section & module */
+	padding: 85px 15px;
+}
+
+
+@media all and (max-width: 768px) {
+	.uix-pb-card {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
 }
 
 .uix-pb-card-item {
@@ -2524,11 +2668,21 @@ img.uix-pb-img,
 
 
 /* ====================================================== 
-   17. Portfolio                               
+   17. Portfolio   (Can include section title and description)                             
 /* ====================================================== */
-.uix-pb-container-fullwidth .uix-pb-portfolio-wrapper {
-    padding: 2em;
+.uix-pb-portfolio-wrapper {
+	/* The distance between per section & module */
+	padding: 85px 15px;
 }
+
+@media all and (max-width: 768px) {
+	.uix-pb-portfolio-wrapper {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
+}
+
 
 .uix-pb-portfolio-tiles {
 	/* Let all the flexible items be the same length, regardles of its content */
@@ -2791,10 +2945,9 @@ img.uix-pb-img,
 /*-- Categories --*/ 
 .uix-pb-portfolio-cat-list {
     clear: both;
-    margin-top: -3.5em;
     font-size: 13px;
     text-align: center;
-    padding: .5em 0 .5em;
+	padding-top: 1.5em;
 }
 
 .uix-pb-portfolio-cat-list:before,
@@ -2841,6 +2994,7 @@ img.uix-pb-img,
    18. Image Slider                
 /* ====================================================== */
 .uix-pb-imageslider {
+	
 }
 
 .uix-pb-imageslider .uix-pb-flex-control-paging {
@@ -2982,6 +3136,20 @@ a.uix-pb-flex-prev {
 /* ====================================================== 
    19. Contact Form 7         
 /* ====================================================== */
+.uix-page-builder-section .wpcf7 {
+	/* The distance between per section & module */
+	padding: 85px 15px;
+}
+
+
+@media all and (max-width: 768px) {
+	.uix-page-builder-section .wpcf7 {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+}
+
+
 .uix-page-builder-section .wpcf7-form label {
 	width: 100%;
 	display: block;
@@ -3102,10 +3270,31 @@ a.uix-pb-flex-prev {
 
 
 
-
 /* ====================================================== 
    21. Instagram Feed
 /* ====================================================== */
+
+.uix-pb-instagram-container.uix-pb-section-nospace {
+	padding:  0 !important;
+}
+
+
+.uix-pb-instagram-container {
+	/* The distance between per section & module */
+	padding: 85px 15px;
+}
+
+
+@media all and (max-width: 768px) {
+	.uix-pb-instagram-container {
+		/* The distance between per section & module */
+		padding: 35px 0;
+	}
+
+}
+
+
+
 .uix-pb-instagram-container {
 	position: relative;
 	display: table;
@@ -3271,10 +3460,8 @@ a.uix-pb-flex-prev {
    23. Custom Menu
 /* ====================================================== */
 
-.uix-pb-menu-container:after {
-    display: table;
-    clear: both;
-    content: '';
+.uix-pb-menu-container {
+
 }
 
 /*-------------Search Icon -----------------*/
@@ -3368,21 +3555,62 @@ ul.uix-pb-menu-fixed li {
 ul.uix-pb-menu-fixed {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
     height: 50px;
     font-size: 12px;
     z-index: 99998; /* WP admin bar is 99999 */
     border: 1px solid #c6d0da;
+	/* Vertical Center */
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.uix-pb-container-fullwidth ul.uix-pb-menu-fixed {
+    width: 100%;
 	border-left: none;
 	border-right: none;
 }
+
+
+@media (max-width: 767px) {
+    ul.uix-pb-menu-fixed {
+        width: calc( 100% - 30px );
+
+    }
+}
+
+@media (min-width:768px) {
+    ul.uix-pb-menu-fixed {
+        width: calc( 750px - 30px );
+    }
+}
+
+@media (min-width:992px) {
+    ul.uix-pb-menu-fixed {
+        width: calc( 970px - 30px );
+    }
+}
+
+@media (min-width:1200px) {
+    ul.uix-pb-menu-fixed {
+        width: calc( 1170px - 30px );
+    }
+}
+
+
 @media all and (max-width: 768px) {
-	
+
 	ul.uix-pb-menu-fixed {
 		height: auto;
+		border-top: none;
+		border-bottom: none;
+	}
+	
+	.uix-pb-container-fullwidth ul.uix-pb-menu-fixed {
 		border: none;
 	}
+	
 }
 
 
@@ -3593,39 +3821,20 @@ ul.uix-pb-menu-embedded {
     border: 1px solid #c6d0da;
 }
 
-.uix-page-builder-section ul.uix-pb-menu-embedded {
-    width: calc( 100% - 2px - 10px );
-}
-
-.uix-pb-container-fullwidth ul.uix-pb-menu-embedded {
-    width: 100%;
-}
 
 
 @media all and (max-width: 768px) {
 	
 	ul.uix-pb-menu-embedded {
 		height: auto;
+		border-top: none;
+		border-bottom: none;
+	}
+	
+	.uix-pb-container-fullwidth ul.uix-pb-menu-embedded {
 		border: none;
 	}
 	
-}
-
-
-
-
-/* Show Toolbar when viewing site */
-.admin-bar ul.uix-pb-menu-embedded {
-	top: 32px;
-}
-
-
-/* Admin bar becomes taller on smaller devices */
-@media screen and ( max-width: 782px ) {
-	.admin-bar ul.uix-pb-menu-embedded {
-		top: 46px;
-		
-	}
 }
 
 
@@ -3858,3 +4067,11 @@ ul.uix-pb-menu-embedded > li.uix-pb-menu-mobile-icon a {
 	text-align: center;
 }
 
+
+/* ====================================================== 
+   26. Map
+/* ====================================================== */
+.uix-page-builder-map {
+	margin: 0;
+	padding: 0;
+}

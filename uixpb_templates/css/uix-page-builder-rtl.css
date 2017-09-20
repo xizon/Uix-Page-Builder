@@ -38,9 +38,19 @@
    1. Basic                               
 /* ====================================================== */
 
-.uix-pb-col-1, .uix-pb-col-2, .uix-pb-col-3, .uix-pb-col-4, .uix-pb-col-5, .uix-pb-col-6, .uix-pb-col-7, .uix-pb-col-8, .uix-pb-col-9, .uix-pb-col-10, .uix-pb-col-11, .uix-pb-col-12 {
+.uix-pb-row .uix-pb-col-1, 
+.uix-pb-row .uix-pb-col-2, 
+.uix-pb-row .uix-pb-col-3, 
+.uix-pb-row .uix-pb-col-4, 
+.uix-pb-row .uix-pb-col-5, 
+.uix-pb-row .uix-pb-col-6, 
+.uix-pb-row .uix-pb-col-7, 
+.uix-pb-row .uix-pb-col-8, 
+.uix-pb-row .uix-pb-col-9, 
+.uix-pb-row .uix-pb-col-10, 
+.uix-pb-row .uix-pb-col-11, 
+.uix-pb-row .uix-pb-col-12 {
     float: right;
-    margin: 0 0 0 3%;
 }
 
 .uix-pb-tl {

@@ -37,6 +37,7 @@ if ( !function_exists( 'uix_page_builder_vb_script' ) ) {
 			
 			$translation_array = array(
 				'send_string_plugin_url'       => UixPageBuilder::plug_directory(),
+				'send_string_vb_mode'          => ( UixPageBuilder::vb_mode() ) ? 1 : 0,
 				'send_string_nonce'            => wp_create_nonce( 'uix_page_builder_metaboxes_save_nonce' ),
 				'send_string_postid'           => $post_id,
 				'send_string_tempfile_exists'  => ( UixPageBuilder::tempfile_exists() ) ? 1 : 0,

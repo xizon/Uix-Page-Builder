@@ -28,6 +28,44 @@
 
 /* 1. jQuery Accessible Tabs
 -------------------------------------------------------------- */
+
+.js-tabs .js-tabs_control button {
+	position: relative;
+}
+
+
+.js-tabs .js-tabs_control button > span {
+   background: #333;
+    background: rgba(0,0,0,.8);
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
+    top: 30px;
+    color: #fff;
+    left: 0;
+    padding: 7px 7px;
+    position: absolute;
+    min-width: 185px;
+	line-height: 1.2;
+	font-weight: normal;
+	font-style: normal;
+	display: none;
+}
+.js-tabs .js-tabs_control button > span:before {
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 0 6px 6px 6px;
+    top: -5px;
+    content: "";
+    left: 10px;
+    position: absolute;
+    z-index: 99;
+}
+
+.js-tabs .js-tabs_control button:hover > span {
+	display: block;
+}
+
 @media only screen and (min-width: 768px) {
 	
 	
@@ -446,6 +484,9 @@ ul.uix-page-builder-res-selector li.active {
 /* 4. Elements Navigation
 -------------------------------------------------------------- */
 
+.uix-page-builder-col-tabs .js-tabs_panel > .uix-page-builder-col { }
+
+
 .uix-page-builder-col {
     width: 300px;
 	float: left;
@@ -464,8 +505,9 @@ ul.uix-page-builder-res-selector li.active {
 	-webkit-box-shadow: 0px 3px 3px 0px rgba(230,230,230,1);
 	-moz-box-shadow: 0px 3px 3px 0px rgba(230,230,230,1);
 	box-shadow: 0px 3px 3px 0px rgba(230,230,230,1);	
-	
 }
+
+
 
 @media screen and (min-width: 769px) {
 	.uix-page-builder-col:nth-child(3n+1) {
@@ -501,6 +543,7 @@ ul.uix-page-builder-res-selector li.active {
 	box-shadow: 0px 0px 26px 0px rgba(0,0,0,0.23);
 	border-color: #D6D6D6;
 }
+
 
 
 .uix-page-builder-col a.widget-item-btn {

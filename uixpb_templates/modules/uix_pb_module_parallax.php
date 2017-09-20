@@ -167,18 +167,6 @@ $args =
 		
 		),
 		
-		
-		array(
-			'id'             => 'uix_pb_parallax_bg_space',
-			'title'          => esc_html__( 'Seamless Display', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Set the parallax module top & bottom margin to be 0px for your page.', 'uix-page-builder' ),
-			'value'          => 0, // 0:false  1:true
-			'placeholder'    => '',
-			'type'           => 'checkbox'
-		
-		
-		),
-
 	
 		array(
 			'id'             => 'uix_pb_parallax_button_checkbox_toggle',
@@ -321,7 +309,6 @@ UixPageBuilder::form_scripts( array(
 				bgimage_css   = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != \'\' ) ? \'style="\'+skew_css+\'background: \'+bgcolor+\' url(\'+encodeURI( uix_pb_parallax_bg )+\') \'+bg_pos_1+\' \'+bg_pos_2+\' no-repeat \'+speed+\';"\' : \'style="\'+skew_css+\'background-color:\'+bgcolor+\';"\',
 				title         =  ( uix_pb_parallax_titlecolor != undefined && uix_pb_parallax_titlecolor != \'\' ) ? \'<span style="color:\'+uixpbform_htmlEncode( uix_pb_parallax_titlecolor )+\';">\' + uix_pb_parallax_title + \'</span>\' : uix_pb_parallax_title,
 				desc          =  uix_pb_parallax_desc,
-				space_class   =  ( uix_pb_parallax_bg_space === true ) ? \'uix-pb-section-nospace\' : \'\',
 				button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != \'\' ) ? \'<p><a class="uix-pb-btn uix-pb-btn-\'+btncolor+\'" href="\'+encodeURI( uix_pb_parallax_url )+\'">\'+uix_pb_parallax_url_text+\'</a></p>\' : \'\';
 				
 				
@@ -337,7 +324,7 @@ UixPageBuilder::form_scripts( array(
 
 
 			var temp = \'\';
-				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+space_class+\' \'+skew_class+\' \'+blankspace_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
+				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+skew_class+\' \'+blankspace_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
 				temp += \'<div class="uix-pb-parallax-table \'+height_auto+\'" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
 				temp += \'<div class="uix-pb-parallax-content-box" \'+skew_content_style+\'>\';
 				temp += title_show;

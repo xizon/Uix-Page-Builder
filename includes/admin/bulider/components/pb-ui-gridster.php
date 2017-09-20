@@ -573,7 +573,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 
 					/*-- Navigate to the current row --*/
 					if ( vbmode ) {
-						jQuery( '#uix-page-builder-gridster-wrapper' ).delay( 100 ).animate( { scrollTop: jQuery( '#uix-page-builder-gridster-widget-'+uid ).offset().top + 50 }, 100 );
+						jQuery( '#uix-page-builder-gridster-wrapper' ).delay( 100 ).animate( { scrollTop: jQuery( '#uix-page-builder-gridster-wrapper' ).scrollTop() + jQuery( '#uix-page-builder-gridster-widget-'+uid ).offset().top + 50 }, 100 );
 					}
 
 				});

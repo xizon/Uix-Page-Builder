@@ -403,8 +403,8 @@ UixPageBuilder::form_scripts( array(
 		
 		    var uix_pb_uix_products_result_readmore_checkbox_toggle    = 1,
 			    uix_pb_uix_products_result_dateformat                  = \'\',
-                before_html                                            = \'<div class="uix-pb-portfolio-tiles uix-pb-portfolio-col\'+uix_pb_uix_products_config_grid+\'" id="uix-pb-portfolio-filter-stage-\'+_config_id+\'">\',
-                after_html                                             = \'</div>\',
+                before_html                                            = \'<div class="uix-pb-portfolio-wrapper"><div class="uix-pb-portfolio-tiles uix-pb-portfolio-col\'+uix_pb_uix_products_config_grid+\'" id="uix-pb-portfolio-filter-stage-\'+_config_id+\'">\',
+                after_html                                             = \'</div></div>\',
 				show_list_item                                         = \''.UixPBFormCore::str_compression( $loop_template_code ).'\';
 			
 			switch ( uix_pb_uix_products_dateformat ) {

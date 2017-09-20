@@ -88,8 +88,8 @@ $args =
 		array(
 			'id'             => 'uix_pb_instagram_bg_space',
 			'title'          => esc_html__( 'Seamless Display', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Set the instagram module top & bottom margin to be 0px for your page.', 'uix-page-builder' ),
-			'value'          => 0, // 0:false  1:true
+			'desc'           => esc_html__( 'Set the instagram module top & bottom padding to be 0px for your page.', 'uix-page-builder' ),
+			'value'          => 1, // 0:false  1:true
 			'placeholder'    => '',
 			'type'           => 'checkbox'
 		

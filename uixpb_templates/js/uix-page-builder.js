@@ -16,8 +16,7 @@
 	6. Filterable
 	7. Grid
 	8. Image Slider
-	9. Layout effect
-	10. Custom Menu
+	9. Custom Menu
 	Required: Apply the original scripts
 	
 
@@ -274,7 +273,6 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 			if ( typeof activated === typeof undefined || activated === 0 ) {
 
 
-				if ( boxheight > 0 ) $( this ).css( { 'height': linewidth + boxheight + 'px' } );
 				$( '.uix-pb-bar', this).css( { 'height': linewidth + 'px', 'width': '100%', 'background': trackcolor } );
 				$( '.uix-pb-bar .uix-pb-bar-percent', this).css( { 'height': linewidth + 'px', 'width': 0, 'background': barcolor } );
 				$( '.uix-pb-bar .uix-pb-bar-text', this).html( '' );
@@ -628,6 +626,15 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 			if ( typeof activated === typeof undefined || activated === 0 ) {
 
 				 $this.bgParallax( "50%", $this.data( 'parallax' ) );
+				
+				 //Used for modules with special effects, such as "skew".
+				 //The overflow is clipped, and the rest of the content will be invisible.
+				 //This module of tilting effect is displayed when the script runs.
+				 if ( $this.hasClass( 'skew' ) ) {
+					 $this.closest( '.uix-page-builder-section' ).css( 'overflow', 'hidden' ).addClass( 'scripts-load-ok' ); 
+				 }
+				 
+				
 
 				//Prevents front-end javascripts that are activated in the background to repeat loading.
 				$this.data( 'activated', 1 );	
@@ -942,41 +949,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 /*!
  *************************************
- * 9. Layout effect
- *************************************
- */
-uix_pb = ( function ( uix_pb, $, window, document ) {
-    'use strict';
-
-
-    var documentReady = function( $ ) {
-
-		// Seamless display when the background color is not empty
-		$( '.uix-pb-section-nospace' ).closest( '.uix-pb-container' ).addClass( 'nospace' );
-		$( '.uix-pb-section-nospace' ).closest( '.uix-page-builder-section' ).addClass( 'nospace' );	
-		$( '.uix-pb-section-nospace' ).closest( '.uix-pb-row > div' ).addClass( 'nospace' );
-		
-		//Custom menu
-		$( '.uix-pb-menu-container' ).closest( '.uix-pb-container' ).addClass( 'notlimited' );
-		
-
-
-	};
-
-
-    uix_pb.nospace = {
-        documentReady : documentReady
-    };
-
-    uix_pb.components.documentReady.push( documentReady );
-    return uix_pb;
-
-}( uix_pb, jQuery, window, document ) );
-
-
-/*!
- *************************************
- * 10. Custom Menu
+ * 9. Custom Menu
  *************************************
  */
 uix_pb = ( function ( uix_pb, $, window, document ) {

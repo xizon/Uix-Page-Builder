@@ -4,6 +4,19 @@
     $( function() {
 		
 		
+		
+		/*!
+		 *
+		 * The interaction when selecting a module
+		 * ---------------------------------------------------
+		 */
+		$( document ).on( 'mouseover', '.uix-page-builder-col', function(){
+			$( '.uix-page-builder-col' ).not( this ).stop().animate( { opacity: 0.2 }, 1 );
+		}).on( 'mouseout' , function(){
+			$( '.uix-page-builder-col' ).stop().animate( { opacity: 1 }, 1 );
+		});
+		
+		
 		/*!
 		 *
 		 * Create page template files to the theme directory
@@ -1089,7 +1102,23 @@ function gridsterAddShortcutButtons() {
 				return false;
 			});	
 			
+
+			//Synchronize a scroll effect of Drag & Drop modules of left sidebar when you manage front-end page.
+			$ifm.find( '.uix-page-builder-section' ).on( 'mouseenter', function() {
+
+				var id           = $( this ).data( 'pb-section-id' ),
+					obj          = $('#uix-page-builder-gridster-widget-' + id ),
+					$side        = $( '#uix-page-builder-gridster-wrapper' ),
+					widgetTitleH = 37,
+					manageBtnsH  = 52;
+				
 			
+				if ( uix_page_builder_layoutdata.send_string_vb_mode == 1 ) {
+					$side.animate( { scrollTop: parseFloat( $side.scrollTop() + obj.offset().top - widgetTitleH - manageBtnsH ) }, 100 );
+				}
+
+
+			});
 			
 			
 			//Prevent form submission

@@ -120,7 +120,7 @@ UixPageBuilder::form_scripts( array(
 		 */
 	    'js_template'             => '
 		
-		    var custom_class = uix_pb_menu1_class + \' uix-pb-section-nospace\';
+		    var custom_class = uix_pb_menu1_class;
 		
 			var temp = \'[uix_pb_menu classname=\\\'\'+custom_class+\'\\\' id=\\\'\'+uixpbform_htmlEncode( uix_pb_menu1_id )+\'\\\']\';
 		

@@ -123,11 +123,21 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
-##### = 1.4.4 (September 20, 2017) =
+##### = 1.4.5 (September 20, 2017) =
+
+* Rebuild front-end stylesheets and default templates.
+* Optimized the default front-end stylesheets and scripts.
+* Optimized the experience of module selection.
+* Synchronize a scroll effect of Drag & Drop modules of left sidebar when you manage front-end page.
+* Fixed an error in the builder sidebar scrolling.
+* Re-optimized the front page of the grid system and all the module spacing.
+* Simplifies the front page of the module styles and scripts.
+
+
+##### = 1.4.4 (September 19, 2017) =
 
 * Removed the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
 * Improve the Uix Shortcods assistant(helper) experience in admin panel.
-
 
 
 ##### = 1.4.3 (September 16, 2017) =

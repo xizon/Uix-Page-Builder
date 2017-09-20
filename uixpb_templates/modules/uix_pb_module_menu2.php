@@ -59,18 +59,7 @@ $args =
 
 		),
 
-		
-		array(
-			'id'             => 'uix_pb_menu2_bg_space',
-			'title'          => esc_html__( 'Seamless Display', 'uix-page-builder' ),
-			'desc'           => esc_html__( 'Set the instagram module top & bottom margin to be 0px for your page.', 'uix-page-builder' ),
-			'value'          => 0, // 0:false  1:true
-			'placeholder'    => '',
-			'type'           => 'checkbox'
-		
-		
-		),
-		
+	
 		
 	    array(
 			'id'             => 'uix_pb_menu2_id_tipinfo',
@@ -130,10 +119,8 @@ UixPageBuilder::form_scripts( array(
 		 */
 	    'js_template'             => '
 		
-		    var space_class  = ( uix_pb_menu2_bg_space === true ) ? \' uix-pb-section-nospace\' : \'\',
-			    custom_class = uix_pb_menu2_class + space_class;
+		    var custom_class = uix_pb_menu2_class;
 			
-		
 		
 			var temp = \'[uix_pb_menu classname=\\\'\'+custom_class+\'\\\' id=\\\'\'+uixpbform_htmlEncode( uix_pb_menu2_id )+\'\\\']\';
 		

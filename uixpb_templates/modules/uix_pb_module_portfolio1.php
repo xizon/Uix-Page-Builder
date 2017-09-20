@@ -439,9 +439,9 @@ UixPageBuilder::form_scripts( array(
 				temp += _config_t;
 				temp += _config_desc;
 				temp += catlist;
-				temp += \'<div class="uix-pb-portfolio-tiles uix-pb-portfolio-col\'+uix_pb_portfolio1_config_grid+\'" id="uix-pb-portfolio-filter-stage-\'+_config_id+\'">\';
+				temp += \'<div class="uix-pb-portfolio-wrapper"><div class="uix-pb-portfolio-tiles uix-pb-portfolio-col\'+uix_pb_portfolio1_config_grid+\'" id="uix-pb-portfolio-filter-stage-\'+_config_id+\'">\';
 				temp += show_list_item;
-				temp += \'</div>\';
+				temp += \'</div></div>\';
 		
 		'
     )
