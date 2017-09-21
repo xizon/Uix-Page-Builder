@@ -1756,12 +1756,13 @@ function uixpbform_editorInit( id ){
 					relative_urls : false,
 					content_css : '',
 					convert_urls : false,
+					media_live_embeds: true,
 					//---
 					selector:  'textarea#' + id,
 					height : 200,
 					menubar: false,
 					plugins: 'textcolor image media hr customCode colorpicker',		
-				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent alignleft aligncenter alignright | hr uixpb_image customCode',
+				    toolbar: 'undo redo removeformat  | forecolor backcolor styleselect | uixpb_link uixpb_unlink bold italic | bullist numlist outdent indent alignleft aligncenter alignright | hr uixpb_image media customCode',
 					/*
 					textcolor_rows: 12,
 					textcolor_cols: 20,

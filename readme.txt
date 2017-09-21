@@ -150,7 +150,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 == Changelog ==
 
 
-= 1.4.5 (September 20, 2017) =
+= 1.4.5 (September 21, 2017) =
 
 * Rebuild front-end stylesheets and default templates.
 * Optimized the default front-end stylesheets and scripts.
@@ -159,6 +159,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 * Fixed an error in the builder sidebar scrolling.
 * Re-optimized the front page of the grid system and all the module spacing.
 * Simplifies the front page of the module styles and scripts.
+* The Editor supports Media. You can insert media files into the HTML Editor using the Parallax module. 
 
 
 = 1.4.4 (September 19, 2017) =

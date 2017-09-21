@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version: 3.4
+	* Version: 3.5
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -2296,7 +2296,39 @@ a.uixpbform-icon-clear {
 -------------------------------------------------------------- */ 
 .uixpbform-mce-editor {
 	border: 1px solid #ccc;
+	width: 605px;
 }
+
+
+
+@media all and (min-width: 1200px) {
+	 
+	.uixpbform-mce-editor {
+        width: 765px;
+    }	
+	
+ 
+}
+
+@media all and (max-width: 768px) {
+	 
+		 
+	.uixpbform-mce-editor {
+        width: 265px;
+    }
+
+}
+
+@media all and (max-width: 480px) {
+	
+	
+	.uixpbform-mce-editor {
+        width: calc( 100% - 80px );
+    }
+	
+}
+
+
 
 .uixpbform-mce-editor .mce-branding-powered-by {
 	visibility: hidden;
