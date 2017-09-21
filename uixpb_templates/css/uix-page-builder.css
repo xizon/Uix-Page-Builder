@@ -2172,6 +2172,9 @@ img.uix-pb-img,
 	.uix-pb-parallax-wrapper .uix-pb-parallax-table {
 		height: auto !important;
 		min-height: 150px;
+		/* The distance between per section & module (!Special module) */
+		padding-top: 35px; 
+		padding-bottom: 35px;
 	}
 
 	.uix-pb-parallax-wrapper.skew .uix-pb-parallax-table {
@@ -2994,6 +2997,7 @@ img.uix-pb-img,
    18. Image Slider                
 /* ====================================================== */
 .uix-pb-imageslider {
+	overflow: hidden;
 	
 }
 
