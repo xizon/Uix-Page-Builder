@@ -3412,6 +3412,8 @@ a.uix-pb-flex-prev {
 /* ====================================================== 
    22. Sidebar
 /* ====================================================== */
+
+
 .uix-pb-sidebar-container {
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
@@ -3420,11 +3422,11 @@ a.uix-pb-flex-prev {
 }
 
 .uix-pb-row > div:nth-child(2) .uix-pb-sidebar-container {
-	padding-left: 2.5em;
+	padding-left: calc( 2.5em + 30px );
 }
 
 .uix-pb-row > div:nth-child(1) .uix-pb-sidebar-container {
-	padding-right: 2.5em;
+	padding-right: calc( 2.5em + 30px );
 }
 
 
