@@ -36,36 +36,14 @@ $args_config = array(
 $args = 
 	array(
 	
-		array(
-			'id'             => 'uix_pb_parallax_title',
-			'title'          => esc_html__( 'Title', 'uix-page-builder' ),
-			'desc'           => '',
-			'value'          => esc_html__( 'Text Here', 'uix-page-builder' ),
-			'placeholder'    => '',
-			'type'           => 'text'
-
-		),
-
-		array(
-			'id'             => 'uix_pb_parallax_titlecolor',
-			'title'          => '',
-			'desc'           => '',
-			'value'          => '#999999',
-			'placeholder'    => '',
-			'type'           => 'colormap',
-			'default'        => array(
-									'swatches' => 1
-								)
-
-
-		),	
 
 
 		array(
 			'id'             => 'uix_pb_parallax_desc',
 			'title'          => esc_html__( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => esc_html__( '<span style="color:#999999;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hoc etsi multimodis reprehendi potest, tamen accipio, quod dant. Teneo, inquit, finem illi videri nihil dolere. Esse enim, nisi eris, non potes.</span>', 'uix-page-builder' ),
+			'value'          => esc_html__( '<h2><span style="color: #e8e8e8;">Text Here</span></h2>
+<p><span style="color: #999999;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hoc etsi multimodis reprehendi potest, tamen accipio, quod dant. Teneo, inquit, finem illi videri nihil dolere. Esse enim, nisi eris, non potes.</span></p>', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'editor',
 			'default'        => array(
@@ -307,17 +285,15 @@ UixPageBuilder::form_scripts( array(
 				bgcolor       =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != \'\' ) ? uixpbform_htmlEncode( uix_pb_parallax_bg_color ) : \'transparent\',
 				speed         = ( uix_pb_parallax_speed > 0 ) ? \'fixed\' : uixpbform_htmlEncode( uix_pb_parallax_bg_attachment ),
 				bgimage_css   = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != \'\' ) ? \'style="\'+skew_css+\'background: \'+bgcolor+\' url(\'+encodeURI( uix_pb_parallax_bg )+\') \'+bg_pos_1+\' \'+bg_pos_2+\' no-repeat \'+speed+\';"\' : \'style="\'+skew_css+\'background-color:\'+bgcolor+\';"\',
-				title         =  ( uix_pb_parallax_titlecolor != undefined && uix_pb_parallax_titlecolor != \'\' ) ? \'<span style="color:\'+uixpbform_htmlEncode( uix_pb_parallax_titlecolor )+\';">\' + uix_pb_parallax_title + \'</span>\' : uix_pb_parallax_title,
 				desc          =  uix_pb_parallax_desc,
 				button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != \'\' ) ? \'<p><a class="uix-pb-btn uix-pb-btn-\'+btncolor+\'" href="\'+encodeURI( uix_pb_parallax_url )+\'">\'+uix_pb_parallax_url_text+\'</a></p>\' : \'\';
 				
 				
-			var title_show = ( uix_pb_parallax_title != undefined && uix_pb_parallax_title != \'\' ) ? \'<h2>\'+title+\'</h2>\' : \'\';
 			var height_auto = ( uix_pb_parallax_height == 0 ) ? \'uix-pb-parallax-table-auto\' : \'\';
 
 
 			var blankspace_class = \'\';
-			if ( title_show == \'\' && desc == \'\' ) {
+			if ( desc == \'\' ) {
 			    blankspace_class = \'blankspace\';
 				skew_class       = \'\';
 			}
@@ -327,7 +303,6 @@ UixPageBuilder::form_scripts( array(
 				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+skew_class+\' \'+blankspace_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
 				temp += \'<div class="uix-pb-parallax-table \'+height_auto+\'" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
 				temp += \'<div class="uix-pb-parallax-content-box" \'+skew_content_style+\'>\';
-				temp += title_show;
 				temp += desc;
 				temp += button;
 				temp += \'</div>\';
