@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.4.5
+ * Version:     1.4.6
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -2201,6 +2201,36 @@ class UixPageBuilder {
 		}
 
 	}
+	
+	/*
+	 * Returns the default page title.
+	 *
+	 *
+	 *
+	 */
+	public static function get_page_title_default() {
+		
+		return esc_html__( '(no title)', 'uix-page-builder' );
+		
+	}
+	
+	/*
+	 * Returns the current page title.
+	 *
+	 *
+	 * $id  @var string  -> Current Post ID.
+	 *
+	 */
+	public static function get_page_title( $id ) {
+		
+		$content_post = get_post( $id );
+		$data         = empty( $content_post->post_title ) ? self::get_page_title_default() : $content_post->post_title;
+
+		return $data;
+		
+	}
+	
+
 	
 	/*
 	 * Returns the JSON final data of each page.

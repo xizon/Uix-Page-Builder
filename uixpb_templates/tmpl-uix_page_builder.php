@@ -132,13 +132,7 @@
 	<?php while ( have_posts() ) : the_post(); ?>
 
 
-		<?php
-		if ( class_exists( 'UixPageBuilder' ) ) {
-			echo do_shortcode( "[uix_pb_sections]" );
-		} else {
-			the_content();
-		}
-		?>                      
+		<?php the_content(); ?>                      
 
 	<?php endwhile; ?>  
 

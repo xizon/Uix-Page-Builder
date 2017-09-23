@@ -50,7 +50,7 @@ if ( !function_exists( 'uix_page_builder_vb_script' ) ) {
 				'send_string_formsubmit_info'  => esc_html__( 'Can not be submitted in the live preview page.', 'uix-page-builder' ),
 				'send_string_nodata'           => esc_html__( 'Hmm... no templates yet.', 'uix-page-builder' ),
 				'send_string_tempfile_failed'  => sprintf( __( '<p>Cannot create due to insufficient permissions. To perform the requested action, WordPress needs to access your web server. <br><a class="button button-primary button-small" href="%1$s">Click Here</a> to enter your FTP credentials to proceed.</p>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp&tempfiles=ok" ) ),
-				'send_string_tempfile_note'    => sprintf( __( '<div id="uix-page-builder-createTempFiles-info-wrapper"><p style="font-weight:bold;">You could <a class="button button-primary button-small" href="%1$s" id="uix-page-builder-createTempFiles-btn">Create</a> a Uix Page Builder template file (from the directory <code>/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your templates directory. This allows the page builder content templates to look beautiful with any theme.</p><h3>How to use?</h3><ol><li>Then you need to login to your WordPress admin area to create a new page or edit an existing one.</li><li>On the page editing screen, scroll down to <strong>"Page Attributes"</strong> section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created. The template name is <code>"Uix Page Builder Template"</code>. <a target="_blank" href="%2$s"><i class="dashicons dashicons-format-image"></i></a> <a target="_blank" href="%3$s"><i class="dashicons dashicons-format-image"></i></a></li><li>Go to <strong>"Dashboard » Appearence » Menus"</strong>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Primary Menu"</code> from options as <strong>"Display location"</strong>. <a target="_blank" href="%4$s"><i class="dashicons dashicons-format-image"></i></a></li></ol></div>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" ), UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-1.jpg', UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-2.jpg', UixPageBuilder::plug_directory().'helper/img/set-temp-menu.jpg' ),
+				'send_string_tempfile_note'    => sprintf( __( '<div id="uix-page-builder-createTempFiles-info-wrapper"><p style="font-weight:bold;">You could <a class="button button-primary button-small" href="%1$s" id="uix-page-builder-createTempFiles-btn">Create</a> a Uix Page Builder template file (from the directory <code>/wp-content/plugins/uix-page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your templates directory. This allows the page builder content templates to look beautiful with any theme.</p><p>Of course, It’s just a page template file and you doesn’t need to use it. You can use of the default page template or your own custom template file directly.</p><h3>How to use?</h3><ol><li>On the page editing screen, scroll down to <strong>"Page Attributes"</strong> section, and you will find a template drop down menu. Clicking on it will allow you to select the template you just created. The template name is <code>"Uix Page Builder Template"</code>. <a target="_blank" href="%2$s"><i class="dashicons dashicons-format-image"></i></a> <a target="_blank" href="%3$s"><i class="dashicons dashicons-format-image"></i></a></li><li>Go to <strong>"Dashboard » Appearence » Menus"</strong>. Click on <strong>"create a new menu"</strong> to create your custom menu. You should tick the appropriate checkbox of <code>"Primary Menu"</code> from options as <strong>"Display location"</strong>. <a target="_blank" href="%4$s"><i class="dashicons dashicons-format-image"></i></a></li></ol></div>', 'uix-page-builder' ), admin_url( "admin.php?page=".UixPageBuilder::HELPER."&tab=temp" ), UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-1.jpg', UixPageBuilder::plug_directory().'helper/img/page-temp-tutorial-2.jpg', UixPageBuilder::plug_directory().'helper/img/set-temp-menu.jpg' ),
 				
 				
 			);
@@ -428,7 +428,7 @@ if ( !function_exists( 'uix_page_builder_output_frontend' ) ) {
 		
 		if ( isset( $_GET[ 'post_id' ] ) && ( isset( $_GET['pb_render_entire_page'] ) && $_GET['pb_render_entire_page'] == 1 ) ) {
 			
-			$content = UixPageBuilder::format_render_codes( do_shortcode( '[uix_pb_sections]' ) );
+			$content = UixPageBuilder::format_render_codes( do_shortcode( '[uix_pb_sections id="'.esc_attr( $_GET[ 'post_id' ] ).'"]' ) );
 			
 			if ( empty( $content ) ) $content = '<div style="text-align:center;padding: 1.5em 0;"><i class="fa fa-plus-circle"></i> '.esc_html__( 'Add a first module from the side panel. You can also choose a template to use.', 'uix-page-builder' ).'</div>';
 			
@@ -758,6 +758,16 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 			
 			<span class="li">
 				<a class="button publish-visual-builder" title="<?php echo esc_attr__( 'Publish', 'uix-page-builder' ); ?>" href="<?php echo esc_url( uix_page_builder_get_normalEditor_pageURL( $curid ) ); ?>"><i class="dashicons dashicons-edit"></i><?php _e( 'Publish', 'uix-page-builder' ); ?><span class="wait"></span></a>
+				<div class="settings-temp-wrapper"><a href="javascript:" class="close">&times;</a>
+					 <p>
+					 <?php _e( 'Enter the title of the page:', 'uix-page-builder' ); ?>
+						<label>
+							<input size="30" name="uix-page-builder-new-pagetitle" type="text" maxlength="40" value="<?php echo esc_attr( UixPageBuilder::get_page_title( $curid ) ); ?>">
+						</label>
+					</p>
+					<a class="button button-primary button-small publish" href="javascript:"><?php _e( 'Publish', 'uix-page-builder' ); ?></a><span class="spinner"></span>
+					
+				</div>
 			</span>
 			
 			<span class="li">

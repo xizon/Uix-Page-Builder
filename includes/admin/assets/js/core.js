@@ -309,7 +309,7 @@
 		 * Template Settings
 		 * ---------------------------------------------------
 		 */
-		$( document ).on( 'click', '.uix-page-builder-gridster-addbtn .export-temp, .uix-page-builder-gridster-addbtn .select-temp, .uix-page-builder-gridster-addbtn .save-temp', function( e ) {
+		$( document ).on( 'click', '.uix-page-builder-gridster-addbtn .export-temp, .uix-page-builder-gridster-addbtn .select-temp, .uix-page-builder-gridster-addbtn .save-temp, .uix-page-builder-gridster-addbtn .publish-visual-builder', function( e ) {
 			e.preventDefault();
 
 			var $set = $( this ).next( '.settings-temp-wrapper' );
@@ -324,6 +324,47 @@
 
 
 		});
+		
+	
+		 //--------publish
+		$( document ).on( 'click', '.settings-temp-wrapper .publish', function( e ) {
+			e.preventDefault();
+			
+			var $this         = $( this );
+			
+			//Display load animation
+			$this.next( '.spinner' ).addClass( 'is-active' );
+	
+			$.ajax({
+				url       : ajaxurl,
+				type      : 'POST',
+				data: {
+					action               : 'uix_page_builder_publishLiveRender_settings',
+					postID               : uix_page_builder_layoutdata.send_string_postid,
+					postTitle            : $( "[name='uix-page-builder-new-pagetitle']" ).val(),
+					security             : uix_page_builder_layoutdata.send_string_nonce
+				},
+				success   : function( result ){
+				
+					if ( result == 1 ) {
+
+						//close
+						$this.parent().hide();
+						$( '.uixpbform-modal-mask' ).hide();
+						$this.next( '.spinner' ).removeClass( 'is-active' );
+
+					}
+
+				}
+			});
+
+			
+			// stuff here
+			return false;	
+			
+
+		});	
+		
 
 		 //--------load
 		$( document ).on( 'click', '.uix-page-builder-gridster-addbtn .select-temp', function( e ) {
@@ -548,7 +589,7 @@
 				
 				//Add shortcode to editor
 				if ( gridsterGetTinymceContent().indexOf( '[uix_pb_sections' ) < 0  ) {
-					wp.media.editor.insert( '[uix_pb_sections]' );
+					wp.media.editor.insert( '[uix_pb_sections id="'+uix_page_builder_layoutdata.send_string_postid+'"]' );
 				}
 				
 
@@ -1224,7 +1265,7 @@ function UixPBFormatRenderCodes( code ) {
 			
 			//Get and modify content of an iframe
 		   $( '#uix-page-builder-themepreview' ).load( function() {
-			   if ( $( this ).contents().text().search( '[uix_pb_sections]' ) > 0 ) {
+			   if ( $( this ).contents().text().search( '[uix_pb_sections]' ) > 0 ) { //Regular expression, not WP shortcode
 				   //Render WP Shortcode
 				   $( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );  
 			   }

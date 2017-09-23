@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-21 02:34+0000\n"
+"POT-Creation-Date: 2017-09-23 06:51+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -57,7 +57,7 @@ msgid "Helper"
 msgstr ""
 
 #: uix-page-builder.php:474 uix-page-builder.php:480
-#: includes/classes/class-frontend-render.php:34
+#: includes/classes/class-frontend-render.php:35
 #, php-format
 msgid "Untitled-%1$s"
 msgstr ""
@@ -95,9 +95,13 @@ msgstr ""
 
 #: uix-page-builder.php:2107
 #: includes/admin/bulider/components/pb-ui-form.php:38
-#: includes/admin/bulider/components/pb-ui-gridster.php:353
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "Section"
+msgstr ""
+
+#: uix-page-builder.php:2213
+msgid "(no title)"
 msgstr ""
 
 #: helper/settings.php:34
@@ -136,11 +140,11 @@ msgstr ""
 msgid "Menu Settings"
 msgstr ""
 
-#: uixpb_templates/tmpl-uix_page_builder.php:155
+#: uixpb_templates/tmpl-uix_page_builder.php:149
 msgid "https://wordpress.org/"
 msgstr ""
 
-#: uixpb_templates/tmpl-uix_page_builder.php:155
+#: uixpb_templates/tmpl-uix_page_builder.php:149
 #, php-format
 msgid "Proudly powered by %s"
 msgstr ""
@@ -268,16 +272,6 @@ msgid "Contact Form (Require the WP plugin \"Contact Form 7\")"
 msgstr ""
 
 #: helper/tabs/about.php:52
-msgid "Displaying on Front-end Pages"
-msgstr ""
-
-#: helper/tabs/about.php:55
-msgid ""
-"Embed a shortcode <code>[uix_pb_sections]</code> into the editor of <strong>"
-"Pages Add New Screen</strong>."
-msgstr ""
-
-#: helper/tabs/about.php:60
 #: uixpb_templates/modules/uix_pb_module_pricing1.php:176
 #: uixpb_templates/modules/uix_pb_module_pricing1.php:317
 #: uixpb_templates/modules/uix_pb_module_pricing1.php:459
@@ -295,36 +289,36 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: helper/tabs/about.php:68
+#: helper/tabs/about.php:60
 #, php-format
 msgid ""
 "Support Custom Post Types to create a portfolio list in WordPress. (Require "
 "the WP plugin <a href=\"%s\" target=\"_blank\">Uix Products</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:77
+#: helper/tabs/about.php:69
 #, php-format
 msgid ""
 "Support Custom Post Types to create a slideshow in WordPress. (Require the "
 "WP plugin <a href=\"%s\" target=\"_blank\">Uix Slideshow</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:82
+#: helper/tabs/about.php:74
 msgid ""
 "You can switch between <strong>\"Visual Builder\"</strong> and <strong>"
 "\"Default Editor\"</strong> modes at any time on the Pages Add New/Edit "
 "Screen."
 msgstr ""
 
-#: helper/tabs/about.php:83
+#: helper/tabs/about.php:75
 msgid "Support to choose multiple default templates you want."
 msgstr ""
 
-#: helper/tabs/about.php:84
+#: helper/tabs/about.php:76
 msgid "Support to save custom templates and export templates."
 msgstr ""
 
-#: helper/tabs/about.php:85
+#: helper/tabs/about.php:77
 msgid ""
 "Support a key to add anchor links based Uix Page Builder to your navigation. "
 "Visit the Menus page (Appearance &laquo; Menus), choose items like <strong>"
@@ -332,27 +326,27 @@ msgid ""
 "the menu.  "
 msgstr ""
 
-#: helper/tabs/about.php:86
+#: helper/tabs/about.php:78
 msgid "Simple operation window, support loop list items."
 msgstr ""
 
-#: helper/tabs/about.php:87
+#: helper/tabs/about.php:79
 msgid "Customizable core style sheets."
 msgstr ""
 
-#: helper/tabs/about.php:88
+#: helper/tabs/about.php:80
 msgid "Drag and Drop Responsive Website Builder."
 msgstr ""
 
-#: helper/tabs/about.php:89
+#: helper/tabs/about.php:81
 msgid "Uix Page Builder supports the automatic addition of Anchor Links."
 msgstr ""
 
-#: helper/tabs/about.php:90
+#: helper/tabs/about.php:82
 msgid "Supports Right-To-Left (RTL) direction."
 msgstr ""
 
-#: helper/tabs/about.php:95
+#: helper/tabs/about.php:87
 msgid ""
 "<strong>If you like this plug-in, you can check out my free and high-quality "
 "themes with Uix Page Builder for you to download.</strong> <h4><a "
@@ -677,8 +671,8 @@ msgid "Read More"
 msgstr ""
 
 #: includes/classes/class-menu-onepage.php:141
-#: includes/admin/bulider/components/pb-ui-gridster.php:353
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "ID"
 msgstr ""
 
@@ -2249,20 +2243,21 @@ msgid ""
 "Page Builder template file (from the directory <code>/wp-content/plugins/uix-"
 "page-builder/uixpb_templates/tmpl-uix_page_builder.php</code> ) in your "
 "templates directory. This allows the page builder content templates to look "
-"beautiful with any theme.</p><h3>How to use?</h3><ol><li>Then you need to "
-"login to your WordPress admin area to create a new page or edit an existing "
-"one.</li><li>On the page editing screen, scroll down to <strong>\"Page "
-"Attributes\"</strong> section, and you will find a template drop down menu. "
-"Clicking on it will allow you to select the template you just created. The "
-"template name is <code>\"Uix Page Builder Template\"</code>. <a "
-"target=\"_blank\" href=\"%2$s\"><i class=\"dashicons dashicons-format-"
-"image\"></i></a> <a target=\"_blank\" href=\"%3$s\"><i class=\"dashicons "
-"dashicons-format-image\"></i></a></li><li>Go to <strong>\"Dashboard » "
-"Appearence » Menus\"</strong>. Click on <strong>\"create a new "
-"menu\"</strong> to create your custom menu. You should tick the appropriate "
-"checkbox of <code>\"Primary Menu\"</code> from options as <strong>\"Display "
-"location\"</strong>. <a target=\"_blank\" href=\"%4$s\"><i class=\"dashicons "
-"dashicons-format-image\"></i></a></li></ol></div>"
+"beautiful with any theme.</p><p>Of course, It’s just a page template file "
+"and you doesn’t need to use it. You can use of the default page template or "
+"your own custom template file directly.</p><h3>How to use?</h3><ol><li>On "
+"the page editing screen, scroll down to <strong>\"Page Attributes\"</strong> "
+"section, and you will find a template drop down menu. Clicking on it will "
+"allow you to select the template you just created. The template name is "
+"<code>\"Uix Page Builder Template\"</code>. <a target=\"_blank\" "
+"href=\"%2$s\"><i class=\"dashicons dashicons-format-image\"></i></a> <a "
+"target=\"_blank\" href=\"%3$s\"><i class=\"dashicons dashicons-format-"
+"image\"></i></a></li><li>Go to <strong>\"Dashboard » Appearence » "
+"Menus\"</strong>. Click on <strong>\"create a new menu\"</strong> to create "
+"your custom menu. You should tick the appropriate checkbox of <code>"
+"\"Primary Menu\"</code> from options as <strong>\"Display location\"</strong>"
+". <a target=\"_blank\" href=\"%4$s\"><i class=\"dashicons dashicons-format-"
+"image\"></i></a></li></ol></div>"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:388
@@ -2318,8 +2313,8 @@ msgid "Mobile"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:670
-#: includes/admin/bulider/components/pb-ui-gridster.php:661
-#: includes/admin/bulider/components/pb-ui-gridster.php:678
+#: includes/admin/bulider/components/pb-ui-gridster.php:662
+#: includes/admin/bulider/components/pb-ui-gridster.php:679
 msgid "Saving..."
 msgstr ""
 
@@ -2375,21 +2370,21 @@ msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:760
 #: includes/admin/bulider/post-extensions-init.php:760
+#: includes/admin/bulider/post-extensions-init.php:768
 msgid "Publish"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:764
-#: includes/admin/bulider/post-extensions-init.php:764
+#: includes/admin/bulider/post-extensions-init.php:763
+msgid "Enter the title of the page:"
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:774
+#: includes/admin/bulider/post-extensions-init.php:774
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:781
+#: includes/admin/bulider/post-extensions-init.php:791
 msgid "Add a first module here. You can also choose a template to use."
-msgstr ""
-
-#: includes/admin/bulider/visual-builder-init.php:183
-#: includes/admin/bulider/visual-builder-init.php:199
-msgid "(no title)"
 msgstr ""
 
 #: includes/admin/bulider/visual-builder-init.php:223
@@ -2489,36 +2484,36 @@ msgstr ""
 msgid "-"
 msgstr ""
 
-#: includes/admin/bulider/components/pb-ui-gridster.php:353
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "Settings"
 msgstr ""
 
-#: includes/admin/bulider/components/pb-ui-gridster.php:353
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "Container"
 msgstr ""
 
-#: includes/admin/bulider/components/pb-ui-gridster.php:353
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "Boxed"
 msgstr ""
 
-#: includes/admin/bulider/components/pb-ui-gridster.php:353
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "Full Width"
 msgstr ""
 
-#: includes/admin/bulider/components/pb-ui-gridster.php:353
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "HTML Code..."
 msgstr ""
 
-#: includes/admin/bulider/components/pb-ui-gridster.php:556
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
 msgid "Untitled"
 msgstr ""
 
-#: includes/admin/bulider/components/pb-ui-gridster.php:676
+#: includes/admin/bulider/components/pb-ui-gridster.php:677
 msgid "Data has been saved."
 msgstr ""
 

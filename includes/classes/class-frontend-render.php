@@ -16,6 +16,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 			add_action( 'wp_head', array( __CLASS__, 'do_my_shortcodes' ) );
 			add_action( 'admin_init', array( __CLASS__, 'do_my_shortcodes' ) ); //When switching the page template
 			add_filter( 'body_class', array( __CLASS__, 'new_class' ) );
+
 		}
 		
 		/*
@@ -72,11 +73,18 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 *
 		 */
 		public static function func_frontend( $atts, $content = null ) {
-
-			    $post_ID           = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
-			    $return_string     = '';
+				extract( shortcode_atts( array( 
+					'id'            => '',
+				 ), $atts ) );
 		
 			
+			    $post_ID = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
+			    if ( isset( $id ) && !empty( $id ) ) {
+					$post_ID = $id;
+				}
+
+			    
+			    $return_string     = '';
 				$builder_content   = UixPageBuilder::page_builder_array_newlist( UixPageBuilder::get_page_final_data( $post_ID ) );
 				$item              = array();
 				$cols              = array( 
@@ -148,9 +156,9 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 										
 
 										//Determine the grid system
-										foreach ( $cols as $id ) :
-											if ( $colid == $id[0] ) {
-												$element_grid_before = '<div class="'.$id[1].' {last}">';
+										foreach ( $cols as $vid ) :
+											if ( $colid == $vid[0] ) {
+												$element_grid_before = '<div class="'.$vid[1].' {last}">';
 											}
 										endforeach;
 

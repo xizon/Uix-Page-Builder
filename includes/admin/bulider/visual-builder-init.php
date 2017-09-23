@@ -180,8 +180,8 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 				$post_data = array(
 					'ID'           => $post_ID,
 					'post_status'  => 'draft',
-					'post_title'   => empty( $post_title ) ? esc_html__( '(no title)', 'uix-page-builder' ) : $post_title,
-					'post_content' => '[uix_pb_sections]'
+					'post_title'   => empty( $post_title ) ? UixPageBuilder::get_page_title_default() : $post_title,
+					'post_content' => '[uix_pb_sections id="'.esc_attr( $post_ID ).'"]'
 				);
 				
 				//Using default template
@@ -196,8 +196,8 @@ if ( !function_exists( 'uix_page_builder_visualBuilder_init' ) ) {
 				
 				$post_data = array(
 					'ID'           => $post_ID,
-					'post_title'   => empty( $content_post->post_title ) ? esc_html__( '(no title)', 'uix-page-builder' ) : $content_post->post_title,
-					'post_content' => empty( $content_post->post_content ) ? '[uix_pb_sections]' : $content_post->post_content
+					'post_title'   => empty( $content_post->post_title ) ? UixPageBuilder::get_page_title_default() : $content_post->post_title,
+					'post_content' => empty( $content_post->post_content ) ? '[uix_pb_sections id="'.esc_attr( $post_ID ).'"]' : $content_post->post_content
 				);
 			}
 			
@@ -384,9 +384,17 @@ if ( !function_exists( 'uix_page_builder_publishLiveRender' ) ) {
 		
 		if ( isset( $_POST[ 'postID' ] ) ) {
 			
-			$post_ID   = $_POST[ 'postID' ];
+			$post_ID      = $_POST[ 'postID' ];
+			$post_title   = $_POST[ 'postTitle' ];
+			
+			if ( empty( $post_title ) ) {
+				$post_title = sanitize_title( UixPageBuilder::get_page_title_default() );
+			}
+			
 			$post_data = array(
 				'ID'           => $post_ID,
+				'post_title'   => $post_title,
+				'post_name'    => $post_title,
 				'post_status'  => 'publish'
 			);
 			

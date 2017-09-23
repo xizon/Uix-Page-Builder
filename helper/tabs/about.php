@@ -49,14 +49,6 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
                    
 
         <h3>
-            <?php _e( 'Displaying on Front-end Pages', 'uix-page-builder' ); ?>
-        </h3>  
-        <p>
- 			<?php _e( 'Embed a shortcode <code>[uix_pb_sections]</code> into the editor of <strong>Pages Add New Screen</strong>.', 'uix-page-builder' ); ?>
-        
-        </p>  
-        
-        <h3>
             <?php _e( 'Features', 'uix-page-builder' ); ?>
         </h3> 
         

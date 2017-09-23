@@ -52,12 +52,6 @@ The currently available default elements:
 * Uix Products (Require the WP plugin "Uix Products") 
 * Uix Slideshow (Require the WP plugin "Uix Slideshow") 
 * Contact Form (Require the WP plugin "Contact Form 7")
-
-
-
-= Displaying on Front-end Pages =
-
-Embed a shortcode `[uix_pb_sections]` into the editor of **Pages Add New Screen**.
   
   
 = Features =
@@ -122,6 +116,15 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 ### Updates
+
+
+##### = 1.4.6 (September 23, 2017) =
+
+* Highlighting the page builder shortcode.
+* Support for quick editing of page titles and slug when publishing content.
+
+
+
 
 ##### = 1.4.5 (September 21, 2017) =
 

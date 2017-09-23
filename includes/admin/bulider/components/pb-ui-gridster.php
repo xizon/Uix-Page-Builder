@@ -165,6 +165,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 					});
 
 
+					/*
 					jQuery( document ).on( 'click', '.publish-visual-builder', function( e ) {
 						e.preventDefault();
 
@@ -176,8 +177,8 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 						//Prevent hyperlink response	
 						return false;
 					});
-
-
+					*/
+					
 
 					/*-- Add a new widget --*/
 					jQuery( document ).on( 'click', '.uix-page-builder-gridster-addbtn .add', function( e ) {
@@ -945,6 +946,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 						jQuery.post( ajaxurl, {
 							action               : 'uix_page_builder_publishLiveRender_settings',
 							postID               : uix_page_builder_layoutdata.send_string_postid,
+							postTitle            : jQuery( "[name='uix-page-builder-new-pagetitle']" ).val(),
 							security             : uix_page_builder_layoutdata.send_string_nonce
 						}, function ( response ) {
 							if ( response == 1 ) {

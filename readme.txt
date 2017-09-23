@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
 Requires at least: 4.2
 Tested up to: 4.8
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,11 +52,6 @@ The currently available default elements:
 * Contact Form (Require the WP plugin "Contact Form 7")
 
 
-
-= Displaying on Front-end Pages =
-
-Embed a shortcode **"[uix_pb_sections]"** into the editor of **Pages Add New Screen**.
-  
   
 = Features =
 
@@ -148,6 +143,15 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+
+
+= 1.4.6 (September 23, 2017) =
+
+* Highlighting the page builder shortcode.
+* Support for quick editing of page titles and slug when publishing content.
+
+
 
 
 = 1.4.5 (September 21, 2017) =
