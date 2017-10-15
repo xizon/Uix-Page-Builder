@@ -617,32 +617,56 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 
     var documentReady = function( $ ) {
-
-		$( '.uix-pb-parallax' ).each(function() {
-
-			var $this     = $( this ),
-				activated = $this.data( 'activated' );//In order to avoid duplication of the running script with Uix Page Builder ( required )
-
-			if ( typeof activated === typeof undefined || activated === 0 ) {
-
-				 $this.bgParallax( "50%", $this.data( 'parallax' ) );
-				
-				 //Used for modules with special effects, such as "skew".
-				 //The overflow is clipped, and the rest of the content will be invisible.
-				 //This module of tilting effect is displayed when the script runs.
-				 if ( $this.hasClass( 'skew' ) ) {
-					 $this.closest( '.uix-page-builder-section' ).css( 'overflow', 'hidden' ).addClass( 'scripts-load-ok' ); 
-				 }
-				 
-				
-
-				//Prevents front-end javascripts that are activated in the background to repeat loading.
-				$this.data( 'activated', 1 );	
-			}
-
-
-
+		
+		
+        var $window       = $( window ),
+		    windowWidth   = $window.width();
+		
+		uix_pb_parallaxInit( windowWidth );
+		
+		$window.on('resize', function() {
+			windowWidth = $window.width();
+			$( '.uix-pb-parallax' ).removeData( 'activated' );
+			uix_pb_parallaxInit( windowWidth );
 		});
+		
+		function uix_pb_parallaxInit( w ) {
+			
+			$( '.uix-pb-parallax' ).each(function() {
+
+				var $this     = $( this ),
+					activated = $this.data( 'activated' );//In order to avoid duplication of the running script with Uix Page Builder ( required )
+
+				if ( typeof activated === typeof undefined || activated === 0 ) {
+
+					if ( w <= 768 ){
+						 $this.bgParallax( "0%", 0 );
+					} else {
+						$this.bgParallax( "50%", $this.data( 'parallax' ) );	
+					}			
+					
+					 //Used for modules with special effects, such as "skew".
+					 //The overflow is clipped, and the rest of the content will be invisible.
+					 //This module of tilting effect is displayed when the script runs.
+					 if ( $this.hasClass( 'skew' ) ) {
+						 $this.closest( '.uix-page-builder-section' ).css( 'overflow', 'hidden' ).addClass( 'scripts-load-ok' ); 
+					 }
+
+
+
+					//Prevents front-end javascripts that are activated in the background to repeat loading.
+					$this.data( 'activated', 1 );	
+				}
+
+
+
+			});
+			
+
+			
+		}
+		
+		
 		
 	};
 
@@ -1007,7 +1031,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
         var $window       = $( window ),
 		    windowWidth   = $window.width(),
 		    windowHeight  = $window.height(),
-			menuContainer = 'ul.uix-pb-menu-fixed, ul.uix-pb-menu-embedded'
+			menuContainer = 'ul.uix-pb-menu-fixed, ul.uix-pb-menu-embedded';
 		
 		uix_pb_customMenuInit( windowWidth );
 		
