@@ -13,31 +13,34 @@ if ( !class_exists( 'UixSlideshow' ) ) {
 
 
 /**
- * Returns each variable in module data
- * ----------------------------------------------------
- */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
 
 
 /**
- * Form Type & Parameters
+ * Returns current module(form group) ID
+ * ----------------------------------------------------
+ */
+$form_id = basename( __FILE__, '.php' );
+
+
+/**
+ * Form Type & Controls
  * ----------------------------------------------------
  */
 $form_type = array(
-	'list' => false
+    'list' => false
 );
-
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
 
 
 $args = 
@@ -51,6 +54,7 @@ $args =
 			'value'          => '[uix_slideshow_output]',
 			'placeholder'    => '',
 			'type'           => 'textarea',
+	        'callback'       => 'html', 
 			'default'        => array(
 									'row'     => 3
 								)
@@ -82,44 +86,42 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'        => '',
-	    'defalt_value' => $item,
-	    'widget_name'  => $wname,
+UixPBFormCore::form_scripts( array(
+	    'clone'        => false,
 		'form_id'      => $form_id,
-		'section_id'   => $sid,
-	    'column_id'    => $colid,
 		'fields'       => array(
 							array(
-								 'config'  => $args_config,
-								 'type'    => $form_type,
-								 'values'  => $args
+								 'type'     => $form_type,
+								 'values'   => $args
 							),
 
 						),
 		'title'        => esc_html__( 'Uix Slideshow', 'uix-page-builder' ),
 
-	
 		/**
 		 * /////////////// Customizing HTML output on the frontend /////////////// 
 		 * 
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
-			var temp = uixpbform_format_textarea_entering( uix_pb_uix_slideshow_code );
-		'
+	    'template'              => '${uix_pb_uix_slideshow_code}'
     )
 );
 

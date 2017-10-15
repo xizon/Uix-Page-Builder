@@ -3,35 +3,38 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+/**
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
+
 
 /**
- * Returns each variable in module data
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
-
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
 $form_type = array(
 	'list' => false
 );
-
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
 					
+
 
 $args = 
 	array(
@@ -44,16 +47,16 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'radio-image',
 			'default'        => array(
-									'normal'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-1.png',
-									'gray'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-2.png',
-									'black'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-3.png',
-									'real'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-4.png',
-									'terrain'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-5.png',
-									'white'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-6.png',
-									'dark-blue'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-7.png',
-									'dark-blue-2'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-8.png',
-									'blue'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-9.png',
-									'flat'   => UixPageBuilder::plug_directory() .'includes/uixpbform/images/map/map-style-10.png',
+									'normal'   => UixPBFormCore::plug_directory() .'images/map/map-style-1.png',
+									'gray'   => UixPBFormCore::plug_directory() .'images/map/map-style-2.png',
+									'black'   => UixPBFormCore::plug_directory() .'images/map/map-style-3.png',
+									'real'   => UixPBFormCore::plug_directory() .'images/map/map-style-4.png',
+									'terrain'   => UixPBFormCore::plug_directory() .'images/map/map-style-5.png',
+									'white'   => UixPBFormCore::plug_directory() .'images/map/map-style-6.png',
+									'dark-blue'   => UixPBFormCore::plug_directory() .'images/map/map-style-7.png',
+									'dark-blue-2'   => UixPBFormCore::plug_directory() .'images/map/map-style-8.png',
+									'blue'   => UixPBFormCore::plug_directory() .'images/map/map-style-9.png',
+									'flat'   => UixPBFormCore::plug_directory() .'images/map/map-style-10.png',
 				                )
 		
 		),
@@ -72,30 +75,44 @@ $args =
 		
 		
 	    array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_map_width}
+				${uix_pb_map_width_units}
+			 *
+			*/
 			'id'             => 'uix_pb_map_width',
 			'title'          => esc_html__( 'Map Width', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 100,
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
+		    'callback'       => 'number',
 			'default'        => array(
 									'units'       => array( '%', 'px' ),
-									'units_id'    => 'uix_pb_map_width_units',
 									'units_value' => '%',
 				                )
 		
 		),
 		
 	    array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_map_height}
+				${uix_pb_map_height_units}
+			 *
+			*/
 			'id'             => 'uix_pb_map_height',
 			'title'          => esc_html__( 'Map Height', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 285,
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
+		    'callback'       => 'number',
 			'default'        => array(
 									'units'      => array( 'px', 'vh' ),
-									'units_id'    => 'uix_pb_map_height_units',
 									'units_value' => 'px'
 								)
 		
@@ -104,12 +121,20 @@ $args =
 		
 		
 		array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_map_name}
+				${uix_pb_map_name_attr}
+			 *
+			*/
 			'id'             => 'uix_pb_map_name',
 			'title'          => esc_html__( 'Place Name', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => esc_html__( 'SEO San Francisco, CA, Gough Street, San Francisco, CA', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+		    'callback'       => 'attr',
 		
 		),
 		
@@ -119,7 +144,8 @@ $args =
 			'desc'           => '',
 			'value'          => 37.7770776,
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+		    'callback'       => 'number',
 		
 		),
 	
@@ -129,7 +155,8 @@ $args =
 			'desc'           => '',
 			'value'          => -122.4414289,
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+		    'callback'       => 'number',
 		
 		),	
 		
@@ -155,11 +182,7 @@ $args =
 			'desc'           => esc_html__( 'Markers can display custom images, in which case they are usually referred to as "icons."', 'uix-page-builder' ),
 			'value'          => esc_url( UixPBFormCore::map_marker() ),
 			'placeholder'    => esc_html__( 'Image URL', 'uix-page-builder' ),
-			'type'           => 'image',
-			'default'        => array(
-									'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-									'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' ),
-				                )
+			'type'           => 'image'
 		
 		),		
 
@@ -172,18 +195,13 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'        => '',
-	    'defalt_value' => $item,
-	    'widget_name'  => $wname,
+UixPBFormCore::form_scripts( array(
+	    'clone'        => false,
 		'form_id'      => $form_id,
-		'section_id'   => $sid,
-	    'column_id'    => $colid,
 		'fields'       => array(
 							array(
-								 'config'  => $args_config,
-								 'type'    => $form_type,
-								 'values'  => $args
+								 'type'     => $form_type,
+								 'values'   => $args
 							),
 
 						),
@@ -196,20 +214,29 @@ UixPageBuilder::form_scripts( array(
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
-			var temp = \'[uix_pb_map style=\\\'\'+uixpbform_htmlEncode( uix_pb_map_style )+\'\\\' width=\\\'\'+uixpbform_floatval( uix_pb_map_width )+\'\'+uixpbform_htmlEncode( uix_pb_map_width_units )+\'\\\' height=\\\'\'+uixpbform_floatval( uix_pb_map_height )+\'\'+uixpbform_htmlEncode( uix_pb_map_height_units )+\'\\\' latitude=\\\'\'+uixpbform_floatval( uix_pb_map_latitude )+\'\\\' longitude=\\\'\'+uixpbform_floatval( uix_pb_map_longitude )+\'\\\' zoom=\\\'\'+uixpbform_floatval( uix_pb_map_zoom )+\'\\\' name=\\\'\'+uixpbform_htmlEncode( uix_pb_map_name )+\'\\\' marker=\\\'\'+encodeURI( uix_pb_map_marker )+\'\\\']\';
+	    'template'              => '
+		  
+		 [uix_pb_map style=\'${uix_pb_map_style}\' width=\'${uix_pb_map_width}${uix_pb_map_width_units}\' height=\'${uix_pb_map_height}${uix_pb_map_height_units}\' latitude=\'${uix_pb_map_latitude}\' longitude=\'${uix_pb_map_longitude}\' zoom=\'${uix_pb_map_zoom}\' name=\'${uix_pb_map_name_attr}\' marker=\'${uix_pb_map_marker}\']
+	
 		'
+	
     )
 );
 

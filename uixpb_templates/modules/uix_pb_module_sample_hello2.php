@@ -8,8 +8,7 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
  * ****************************************************
  * ****************************************************
  * ****************************************************
- * ***  This file is an example of all form types, ****
- * ***  please refer to this example for developers. **
+ * ***  This file is an example of all form controls **
  * ****************************************************
  * ****************************************************
  * ****************************************************
@@ -21,33 +20,37 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
 
 
 /**
- * Returns each variable in module data
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
+
+/**
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+$form_id = basename( __FILE__, '.php' );
+
 
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
 
 $form_type_config = array(
     'list' => 1
 );
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
-
 
 
 $module_config = 
@@ -136,11 +139,7 @@ $args_col2_1 =
 				'desc'           => '',
 				'value'          => '',
 				'placeholder'    => esc_html__( 'Image URL', 'uix-page-builder' ),
-				'type'           => 'image',
-				'default'        => array(
-										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-										'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' )
-									)
+				'type'           => 'image'
 			
 		),	
 			
@@ -153,7 +152,6 @@ $args_col2_1 =
 			'placeholder'    => '',
 			'type'           => 'slider',
 			'default'        => array(
-			                        'units_id'        => 'uix_pb_col_demo_col2_1_slider_units',
 									'units'           => '',
 									'min'             => 0,
 									'max'             => 10,
@@ -211,11 +209,7 @@ $args_col2_2 =
 				'desc'           => '',
 				'value'          => '',
 				'placeholder'    => esc_html__( 'Image URL', 'uix-page-builder' ),
-				'type'           => 'image',
-				'default'        => array(
-										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-										'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' )
-									)
+				'type'           => 'image'
 			
 		),	
 			
@@ -227,7 +221,6 @@ $args_col2_2 =
 			'placeholder'    => '',
 			'type'           => 'slider',
 			'default'        => array(
-			                        'units_id'        => 'uix_pb_col_demo_col2_2_slider_units',
 									'units'           => '',
 									'min'             => 0,
 									'max'             => 10,
@@ -372,73 +365,59 @@ $args_col4_4 =
 
 
 /**
- * Returns form javascripts
+ * Returns form
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'                   => '',
-	    'defalt_value'            => $item,
-	    'widget_name'             => $wname,
+UixPBFormCore::form_scripts( array(
+	    'clone'                   => false,
 		'form_id'                 => $form_id,
-		'section_id'              => $sid,
-	    'column_id'               => $colid,
 		'fields'                  => array(
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_config,
 											 'values'  => $module_config,
 											 'title'   => esc_html__( 'General Settings', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col2,
 											 'values'  => $args_col2_1,
 											 'title'   => esc_html__( 'Item 2_1', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col2,
 											 'values'  => $args_col2_2,
 											 'title'   => esc_html__( 'Item 2_2', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col3,
 											 'values'  => $args_col3_1,
 											 'title'   => esc_html__( 'Item 3_1', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col3,
 											 'values'  => $args_col3_2,
 											 'title'   => esc_html__( 'Item 3_2', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col3,
 											 'values'  => $args_col3_3,
 											 'title'   => esc_html__( 'Item 3_3', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col4,
 											 'values'  => $args_col4_1,
 											 'title'   => esc_html__( 'Item 4_1', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col4,
 											 'values'  => $args_col4_2,
 											 'title'   => esc_html__( 'Item 4_2', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col4,
 											 'values'  => $args_col4_3,
 											 'title'   => esc_html__( 'Item 4_3', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_col4,
 											 'values'  => $args_col4_4,
 											 'title'   => esc_html__( 'Item 4_4', 'uix-page-builder' )
@@ -457,23 +436,24 @@ UixPageBuilder::form_scripts( array(
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
-
-			var temp = \'\';
-		
-		
-		'
+	    'template'              => ''
     )
 );
 

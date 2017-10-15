@@ -53,6 +53,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
         </h3> 
         
 		<ul class="uix-bg-custom-list">
+		    <li><?php _e( 'A particularly simple custom form and template API.', 'uix-page-builder' ); ?></li>   
 			<li>
 
 			 <?php 

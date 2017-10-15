@@ -20,6 +20,9 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'credits' ) {
             <li><a href="http://www.ianlunn.co.uk/plugins/jquery-parallax/" target="_blank" rel="nofollow"><?php _e( 'jQuery Parallax', 'uix-page-builder' ); ?></a></li>
             <li><a href="https://vestride.github.io/Shuffle/" target="_blank" rel="nofollow"><?php _e( 'Shuffle.js', 'uix-page-builder' ); ?></a></li>
             <li><a href="https://github.com/23r9i0/wp-color-picker-alpha" target="_blank" rel="nofollow"><?php _e( 'wp-color-picker-alpha', 'uix-page-builder' ); ?></a></li>
+            <li><a href="http://github.com/jquery/jquery-tmpl" target="_blank" rel="nofollow"><?php _e( 'jQuery Templates plugin', 'uix-page-builder' ); ?></a></li>
+         
+         
          
          
          

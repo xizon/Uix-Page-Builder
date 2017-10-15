@@ -3,46 +3,43 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+/**
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
 
 /**
- * Returns each variable in module data
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
  * Clone parameters
  * ----------------------------------------------------
  */
-//clone list
-$clone_trigger_id        = 'uix_pb_portfolio1_list';    // ID of clone trigger 
-$clone_max               = 30;                         // Maximum of clone form 
-
-//clone list of toggle class value @var array
-$clone_list_toggle_class = array( 'uix_pb_portfolio1_listitem_toggle_url' );       
-
+$clone_trigger_id        = 'uix_pb_portfolio1_triggerclonelist';  // String of clone trigger ID, must contain at least "_triggerclonelist"
+$clone_max               = 30;                               // Maximum of clone form 
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
-
 $form_type_config = array(
     'list' => 1
 );
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
 
 
 $module_config = 
@@ -54,7 +51,8 @@ $module_config =
 			'desc'           => '',
 			'value'          => esc_html__( 'Text Here', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 	
@@ -66,6 +64,7 @@ $module_config =
 			'value'          => esc_html__( 'This is the description text for the title.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 3
 								)
@@ -103,6 +102,7 @@ $module_config =
 			'value'          => 0,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+			'callback'       => 'number',
 			'default'        => array(
 									'units'  => '%'
 								)
@@ -139,56 +139,18 @@ $form_type = array(
 $args = 
 	array(
 		
-		//------list begin
+		//------ Clone controls list (begin)
 
 		
 		array(
 			'id'             => $clone_trigger_id,
-			'colid'          => $colid, /*clone required */
 			'title'          => esc_html__( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => esc_html__( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => array( 
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_thumbnail' ).'',
-											'type'      => 'image'
-										), 
-		
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_fullimage' ).'',
-											'type'      => 'image'
-										), 					
-		
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_title' ).'',
-											'type'      => 'text'
-										), 										
-										
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_cat' ).'',
-											'type'      => 'text'
-										), 
-									
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_intro' ).'',
-											'type'      => 'textarea'
-										), 
-										
-										array(
-											'id'             => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle' ).'',
-											'type'            => 'toggle',
-											'toggle_class'  => array(
-												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ).'',
-											 )
-										), 			
-		
-
-									 ),
-									'max'                       => $clone_max
+									'max' => $clone_max
 				                )
 									
 		),
@@ -199,13 +161,8 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_thumbnail' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Thumbnail', 'uix-page-builder' ),
-				'type'           => 'image',
-				'default'        => array(
-										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-										'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' ),
-									)
+				'type'           => 'image'
 			
 			),	
 		
@@ -214,35 +171,44 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_fullimage' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Full Preview (Optional)', 'uix-page-builder' ),
-				'type'           => 'image',
-				'default'        => array(
-										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-										'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' ),
-									)
+				'type'           => 'image'
 			
 			),			
 		
 			array(
+				/*
+				 * @template vars: 
+				 *
+					${uix_pb_portfolio1_listitem_title}
+					${uix_pb_portfolio1_listitem_title_attr}
+				 *
+				*/
 				'id'             => 'uix_pb_portfolio1_listitem_title',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Project Title', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_title' ).'', /*class of list item */
 				'placeholder'    => '',
-				'type'           => 'text'
+				'type'           => 'text',
+			    'callback'       => 'attr',
 			
 			),			
 			
 			array(
+				/*
+				 * @template vars: 
+				 *
+					${uix_pb_portfolio1_listitem_cat}
+					${uix_pb_portfolio1_listitem_cat_slug}
+				 *
+				*/
 				'id'             => 'uix_pb_portfolio1_listitem_cat',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Category', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_cat' ).'', /*class of list item */
 				'placeholder'    => '',
-				'type'           => 'text'
+				'type'           => 'text',
+			    'callback'       => 'slug',
 			
 			),			
 			array(
@@ -250,9 +216,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'The description of this project.', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_intro' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'textarea',
+			    'callback'       => 'html',
 				'default'        => array(
 										'row'     => 5
 									)
@@ -260,20 +226,17 @@ $args =
 			),
 		
 		
-			//------toggle begin
+			//--- Toggle of unidirectional display (begin)
 			array(
 				'id'             => 'uix_pb_portfolio1_listitem_toggle',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => 0, // 0:close  1:open
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'toggle',
-				'default'        => array(
+				'toggle'         => array(
 										'btn_text'      => esc_html__( 'set up links with toggle', 'uix-page-builder' ),
-										'toggle_class'  => array(
-											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ).'',
-	                                     )
+										'target_ids'    => array( 'uix_pb_portfolio1_listitem_toggle_url' )
 									)
 			
 			),	
@@ -283,17 +246,20 @@ $args =
 					'title'          => '',
 					'desc'           => '',
 					'value'          => '',
-					'class'          => 'toggle-row dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ).'', /*class of toggle item */
 					'placeholder'    => esc_html__( 'Destination URL', 'uix-page-builder' ),
 					'type'           => 'text',
-					'default'        => ''
+			        'callback'       => 'url',
 				
 				),
 				
 		
+		    //--- Toggle of unidirectional display (end)
+		
+		
+		
 			
 		
-		//------list end
+		//------ Clone controls list (end)
 		
 
 		
@@ -305,32 +271,35 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'                   => array(
-										'max'                => $clone_max,
-										'list_toggle_class'  => $clone_list_toggle_class,
-										'fields_group'       => array(
-																	array(
-																		'trigger_id'     => $clone_trigger_id,
-																		'required'       => 'uix_pb_portfolio1_listitem_title',
-																		'fields'         => array( 'uix_pb_portfolio1_listitem_thumbnail', 'uix_pb_portfolio1_listitem_fullimage', 'uix_pb_portfolio1_listitem_title', 'uix_pb_portfolio1_listitem_cat', 'uix_pb_portfolio1_listitem_intro', 'uix_pb_portfolio1_listitem_toggle', 'uix_pb_portfolio1_listitem_toggle_url' )
-																	),
-										)
-									),
-	    'defalt_value'            => $item,
-	    'widget_name'             => $wname,
+
+/**
+ * 
+ * Returns the unique ID used in the frontend template
+ */
+$frontend_id = uniqid();
+
+
+UixPBFormCore::form_scripts( array(
+		'clone'                    => array(
+												'trigger_id'     => $clone_trigger_id,
+												'fields'         => array( 
+																		'uix_pb_portfolio1_listitem_thumbnail', 
+																		'uix_pb_portfolio1_listitem_fullimage',
+																		'uix_pb_portfolio1_listitem_title',
+																		'uix_pb_portfolio1_listitem_cat',
+																		'uix_pb_portfolio1_listitem_intro',
+																		'uix_pb_portfolio1_listitem_toggle',
+																		'uix_pb_portfolio1_listitem_toggle_url',
+																	)
+											),
 		'form_id'                 => $form_id,
-		'section_id'              => $sid,
-	    'column_id'               => $colid,
 		'fields'                  => array(
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_config,
 											 'values'  => $module_config,
 											 'title'   => esc_html__( 'General Settings', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type,
 											 'values'  => $args,
 											 'title'   => esc_html__( 'Content', 'uix-page-builder' )
@@ -339,111 +308,83 @@ UixPageBuilder::form_scripts( array(
 									),
 		'title'                   => esc_html__( 'Portfolio Grid', 'uix-page-builder' ),
 	
-	
-		/**
+			/**
 		 * /////////////// Customizing HTML output on the frontend /////////////// 
 		 * 
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
-			var _config_id            = uixpbform_uid(),
-				_config_t             = ( uix_pb_portfolio1_config_title != undefined && uix_pb_portfolio1_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_portfolio1_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_portfolio1_config_intro != undefined && uix_pb_portfolio1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_portfolio1_config_intro )+\'</div>\' : \'<div class="uix-pb-section-desc"></div>\',
-				_config_avatar_fillet = uixpbform_floatval( uix_pb_portfolio1_config_thumbnail_fillet ) + \'%\';
+	    'template'              => '
+		
+		
+			{{if uix_pb_portfolio1_config_title != ""}}
+				<h2 class="uix-pb-section-heading">${uix_pb_portfolio1_config_title}</h2><div class="uix-pb-section-hr"></div>		
+			{{/if}}			
+
+
+			{{if uix_pb_portfolio1_config_intro != ""}}
+				<div class="uix-pb-section-desc">${uix_pb_portfolio1_config_intro}</div>		
+			{{/if}}	
 			
+			{{if uix_pb_portfolio1_config_filterable == 1}}
+				<div class="uix-pb-portfolio-cat-list uix-pb-filterable" data-classprefix="uix-pb-portfolio-"  data-filter-id="'.$frontend_id.'" id="uix-pb-portfolio-cat-list-'.$frontend_id.'">
+					<ul>
+					    <li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>
+						<span id="uix-pb-portfolio-cat-list-'.$frontend_id.'-container"></span>
+					</ul>
+				</div>
+			{{/if}}	
+						
+			
+			<div class="uix-pb-portfolio-wrapper">
+				<div class="uix-pb-portfolio-tiles uix-pb-portfolio-col${uix_pb_portfolio1_config_grid}" id="uix-pb-portfolio-filter-stage-'.$frontend_id.'">
+			      <!-- loop start -->
 
-			/* List Item */
-			var list_num               = '.floatval( $clone_max ).',
-				show_list_item = \'\';
+						{{each '.$clone_trigger_id.'}}
+							<div class="uix-pb-portfolio-item" data-groups-name="${uix_pb_portfolio1_listitem_cat_slug}">
+								<span class="uix-pb-portfolio-image" style="-webkit-border-radius: ${uix_pb_portfolio1_config_thumbnail_fillet}%; -moz-border-radius: ${uix_pb_portfolio1_config_thumbnail_fillet}%; border-radius: ${uix_pb_portfolio1_config_thumbnail_fillet}%;">
+								<a {{if uix_pb_portfolio1_listitem_toggle_url != ""}}{{if uix_pb_portfolio1_config_urlwindow == 1}}target="_blank"{{/if}}{{else}}{{if uix_pb_portfolio1_config_urlwindow == 1}}target="_blank" rel="alternate"{{else}}rel="alternate"{{/if}}{{/if}} href="{{if uix_pb_portfolio1_listitem_toggle_url != ""}}${uix_pb_portfolio1_listitem_toggle_url}{{else}}{{if uix_pb_portfolio1_listitem_fullimage != ""}}${uix_pb_portfolio1_listitem_fullimage}{{else}}{{if uix_pb_portfolio1_listitem_thumbnail != ""}}${uix_pb_portfolio1_listitem_thumbnail}{{else}}'.esc_url(  UixPBFormCore::photo_placeholder() ).'{{/if}}{{/if}}{{/if}}" title="${uix_pb_portfolio1_listitem_title_attr}">
+								<img src="{{if uix_pb_portfolio1_listitem_thumbnail != ""}}${uix_pb_portfolio1_listitem_thumbnail}{{else}}'.esc_url(  UixPBFormCore::photo_placeholder() ).'{{/if}}" alt="" style="-webkit-border-radius: ${uix_pb_portfolio1_config_thumbnail_fillet}%; -moz-border-radius: ${uix_pb_portfolio1_config_thumbnail_fillet}%; border-radius: ${uix_pb_portfolio1_config_thumbnail_fillet}%;">
+								</a>
+								</span>
+								<h3>
+									<a {{if uix_pb_portfolio1_listitem_toggle_url != ""}}{{if uix_pb_portfolio1_config_urlwindow == 1}}target="_blank"{{/if}}{{else}}{{if uix_pb_portfolio1_config_urlwindow == 1}}target="_blank" rel="alternate"{{else}}rel="alternate"{{/if}}{{/if}} href="{{if uix_pb_portfolio1_listitem_toggle_url != ""}}${uix_pb_portfolio1_listitem_toggle_url}{{else}}{{if uix_pb_portfolio1_listitem_fullimage != ""}}${uix_pb_portfolio1_listitem_fullimage}{{else}}{{if uix_pb_portfolio1_listitem_thumbnail != ""}}${uix_pb_portfolio1_listitem_thumbnail}{{else}}'.esc_url(  UixPBFormCore::photo_placeholder() ).'{{/if}}{{/if}}{{/if}}" title="${uix_pb_portfolio1_listitem_title_attr}">${uix_pb_portfolio1_listitem_title}</a>
+								</h3>
 
+								{{if uix_pb_portfolio1_listitem_cat != ""}}<div class="uix-pb-portfolio-type">${uix_pb_portfolio1_listitem_cat}</div>{{/if}}
 
-			for ( var i = 1; i <= list_num; i++ ){
+								<div class="uix-pb-portfolio-content">
+									${uix_pb_portfolio1_listitem_intro}
+									<a class="uix-pb-portfolio-link" {{if uix_pb_portfolio1_listitem_toggle_url != ""}}{{if uix_pb_portfolio1_config_urlwindow == 1}}target="_blank"{{/if}}{{else}}{{if uix_pb_portfolio1_config_urlwindow == 1}}target="_blank" rel="alternate"{{else}}rel="alternate"{{/if}}{{/if}} href="{{if uix_pb_portfolio1_listitem_toggle_url != ""}}${uix_pb_portfolio1_listitem_toggle_url}{{else}}{{if uix_pb_portfolio1_listitem_fullimage != ""}}${uix_pb_portfolio1_listitem_fullimage}{{else}}{{if uix_pb_portfolio1_listitem_thumbnail != ""}}${uix_pb_portfolio1_listitem_thumbnail}{{else}}'.esc_url(  UixPBFormCore::photo_placeholder() ).'{{/if}}{{/if}}{{/if}}" title="${uix_pb_portfolio1_listitem_title_attr}"></a>
+								</div>
+							</div>
+						{{/each}}	
 
+					<!-- loop end -->
 
-				var _uid         = ( i >= 2 ) ? \'#\'+i+\'-\' : \'#\',
-					_thumbnail   = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_thumbnail' ).'\' ).val(),
-					_fullimage   = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_fullimage' ).'\' ).val(),
-					_title       = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_title' ).'\' ).val(),
-					_cat         = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_cat' ).'\' ).val(),
-					_intro       = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_intro' ).'\' ).val(),
-					_url         = encodeURI( $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_portfolio1_listitem_toggle_url' ).'\' ).val() );
+				</div>
+			</div>
 
-
-					var _item_v_thumbnailURL  = ( _thumbnail != undefined && _thumbnail != \'\' ) ? _thumbnail : \''.esc_url(  UixPBFormCore::photo_placeholder() ).'\',
-					_item_v_fullimageURL      = ( _fullimage != undefined && _fullimage != \'\' ) ? _fullimage : _item_v_thumbnailURL,
-					_item_v_catshow           = ( _cat != undefined && _cat != \'\' ) ? \'<div class="uix-pb-portfolio-type">\'+_cat+\'</div>\' : \'\',
-					_item_v_targetcode        = \'\';
-
-					if ( _url != undefined && _url != \'\' ) {
-						_item_v_targetcode   = ( uix_pb_portfolio1_config_urlwindow === true ) ? \' target="_blank"\' : \'\';
-						_item_v_fullimageURL = _url;
-					} else {
-						_item_v_targetcode = ( uix_pb_portfolio1_config_urlwindow === true ) ? \' target="_blank" rel="alternate"\' : \'rel="alternate"\';
-					}
-
-
-
-
-				if ( _intro != undefined && _intro != \'\' ) {
-
-
-
-					//Do not include spaces
-
-					show_list_item += \'<div class="uix-pb-portfolio-item" data-groups-name="\'+uixpbform_strToSlug( _cat )+\'">\';
-					show_list_item += \'<span class="uix-pb-portfolio-image" style="-webkit-border-radius: \'+_config_avatar_fillet+\'; -moz-border-radius: \'+_config_avatar_fillet+\'; border-radius: \'+_config_avatar_fillet+\';">\';
-					show_list_item += \'<a \'+_item_v_targetcode+\' href="\'+encodeURI( _item_v_fullimageURL )+\'" title="\'+uixpbform_htmlEncode( _title )+\'">\';
-					show_list_item += \'<img src="\'+_item_v_thumbnailURL+\'" alt="" style="-webkit-border-radius: \'+_config_avatar_fillet+\'; -moz-border-radius: \'+_config_avatar_fillet+\'; border-radius: \'+_config_avatar_fillet+\';">\';
-					show_list_item += \'</a>\';
-					show_list_item += \'</span>\';
-					show_list_item += \'<h3><a \'+_item_v_targetcode+\' href="\'+encodeURI( _item_v_fullimageURL )+\'" title="\'+uixpbform_htmlEncode( _title )+\'">\'+_title+\'</a></h3>\';
-					show_list_item += _item_v_catshow;
-					show_list_item += \'<div class="uix-pb-portfolio-content">\';
-					show_list_item += uixpbform_format_textarea_entering( _intro );
-					show_list_item += \'<a class="uix-pb-portfolio-link" \'+_item_v_targetcode+\' href="\'+encodeURI( _item_v_fullimageURL )+\'" title="\'+uixpbform_htmlEncode( _title )+\'"></a>\';
-					show_list_item += \'</div>\';
-					show_list_item += \'</div>\';
-
-				}
-
-
-			}
-
-
-			//Display categories on page
-			var catlist = \'\';
-			if (  uix_pb_portfolio1_config_filterable === true ) {
-				catlist += \'<div class="uix-pb-portfolio-cat-list uix-pb-filterable" data-classprefix="uix-pb-portfolio-"  data-filter-id="\'+_config_id+\'" id="uix-pb-portfolio-cat-list-\'+_config_id+\'">\';
-				catlist += \'<ul>\';
-				catlist += \'<li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>\';
-				catlist += uixpbform_catlist( show_list_item, \'uix-pb-portfolio-\' );
-				catlist += \'</ul>\';
-				catlist += \'</div>\';
-
-			}
-
-
-			var temp = \'\';
-				temp += _config_t;
-				temp += _config_desc;
-				temp += catlist;
-				temp += \'<div class="uix-pb-portfolio-wrapper"><div class="uix-pb-portfolio-tiles uix-pb-portfolio-col\'+uix_pb_portfolio1_config_grid+\'" id="uix-pb-portfolio-filter-stage-\'+_config_id+\'">\';
-				temp += show_list_item;
-				temp += \'</div></div>\';
 		
 		'
+
     )
 );
 

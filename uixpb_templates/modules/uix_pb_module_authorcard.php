@@ -3,35 +3,37 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+/**
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
+
 
 /**
- * Returns each variable in module data
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
-
-
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
 $form_type = array(
 	'list' => false
 );
-
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
+					
 
 
 $args = 
@@ -55,11 +57,7 @@ $args =
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => esc_html__( 'Avatar URL', 'uix-page-builder' ),
-			'type'           => 'image',
-			'default'        => array(
-									'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-									'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' ),
-								)
+			'type'           => 'image'
 		
 		),	
 		
@@ -71,7 +69,8 @@ $args =
 			'desc'           => '',
 			'value'          => esc_html__( 'Your Name', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+		    'callback'       => 'html', 
 		
 		),
 	
@@ -83,6 +82,7 @@ $args =
 			'value'          => esc_html__( 'Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Tu vero, inquam, ducas licet, si sequetur; Ab his oratores, ab his imperatores ac rerum publicarum principes extiterunt. Igitur neque stultorum quisquam beatus neque sapientium non beatus.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+		    'callback'       => 'html', 
 			'default'        => array(
 									'row'     => 5
 								)
@@ -96,7 +96,8 @@ $args =
 			'desc'           => '',
 			'value'          => esc_html__( '&rarr;', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+		    'callback'       => 'html', 
 		
 		),		
 		array(
@@ -105,7 +106,8 @@ $args =
 			'desc'           => '',
 			'value'          => esc_url( '#' ),
 			'placeholder'    => 'URL',
-			'type'           => 'text'
+			'type'           => 'text',
+		    'callback'       => 'url', 
 		
 		),		
 
@@ -118,7 +120,7 @@ $args =
 			'value'          => '',
 			'placeholder'    => esc_html__( 'Your Social Network Page URL 1', 'uix-page-builder' ),
 			'type'           => 'text',
-			'default'        => ''
+		    'callback'       => 'url', 
 		
 		),
 		
@@ -143,7 +145,7 @@ $args =
 			'value'          => '',
 			'placeholder'    => esc_html__( 'Your Social Network Page URL 2', 'uix-page-builder' ),
 			'type'           => 'text',
-			'default'        => ''
+		    'callback'       => 'url', 
 		
 		),
 		
@@ -168,7 +170,7 @@ $args =
 			'value'          => '',
 			'placeholder'    => esc_html__( 'Your Social Network Page URL 3', 'uix-page-builder' ),
 			'type'           => 'text',
-			'default'        => ''
+		    'callback'       => 'url', 
 		
 		),
 		
@@ -193,21 +195,16 @@ $args =
 
 
 /**
- * Returns form javascripts
+ * Returns form
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'        => '',
-	    'defalt_value' => $item,
-	    'widget_name'  => $wname,
+UixPBFormCore::form_scripts( array(
+	    'clone'        => false,
 		'form_id'      => $form_id,
-		'section_id'   => $sid,
-	    'column_id'    => $colid,
 		'fields'       => array(
 							array(
-								 'config'  => $args_config,
-								 'type'    => $form_type,
-								 'values'  => $args
+								 'type'     => $form_type,
+								 'values'   => $args
 							),
 
 						),
@@ -220,44 +217,56 @@ UixPageBuilder::form_scripts( array(
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
-			var avatarURL    = ( uix_pb_authorcard_avatar != undefined && uix_pb_authorcard_avatar != \'\' ) ? encodeURI( uix_pb_authorcard_avatar ) : \''.esc_url(  UixPBFormCore::photo_placeholder() ).'\',
-				uix_pb_authorcard_1_icon_cur     = ( uix_pb_authorcard_1_icon == undefined || uix_pb_authorcard_1_icon == \'\' ) ? \'link\' : uix_pb_authorcard_1_icon,
-				uix_pb_authorcard_2_icon_cur     = ( uix_pb_authorcard_2_icon == undefined || uix_pb_authorcard_2_icon == \'\' ) ? \'link\' : uix_pb_authorcard_2_icon,
-				uix_pb_authorcard_3_icon_cur     = ( uix_pb_authorcard_3_icon == undefined || uix_pb_authorcard_3_icon == \'\' ) ? \'link\' : uix_pb_authorcard_3_icon,	
-				social_out_1 = ( uix_pb_authorcard_1_url != undefined && uix_pb_authorcard_1_url != \'\' ) ? \'<a href="\'+encodeURI( uix_pb_authorcard_1_url )+\'" target="_blank"><i class="fa fa-\'+uix_pb_authorcard_1_icon_cur+\'"></i></a>\' : \'\',
-				social_out_2 = ( uix_pb_authorcard_2_url != undefined && uix_pb_authorcard_2_url != \'\' ) ? \'<a href="\'+encodeURI( uix_pb_authorcard_2_url )+\'" target="_blank"><i class="fa fa-\'+uix_pb_authorcard_2_icon_cur+\'"></i></a>\' : \'\',
-				social_out_3 = ( uix_pb_authorcard_3_url != undefined && uix_pb_authorcard_3_url != \'\' ) ? \'<a href="\'+encodeURI( uix_pb_authorcard_3_url )+\'" target="_blank"><i class="fa fa-\'+uix_pb_authorcard_3_icon_cur+\'"></i></a>\' : \'\';
+	    'template'              => '
 
+							
 
-			var temp = \'\';
-				temp += \'<div class="uix-pb-authorcard-wrapper">\';
-				temp += \'<div class="uix-pb-authorcard" style="border-top-color: \'+uixpbform_htmlEncode(uix_pb_authorcard_primary_color)+\';">\';
-				temp += \'<div class="uix-pb-authorcard-top">\';
-				temp += \'<div class="uix-pb-authorcard-text">\';
-				temp += \'<h3 class="uix-pb-authorcard-title">\'+uix_pb_authorcard_name+\'\';
-				temp += social_out_1;
-				temp += social_out_2;
-				temp += social_out_3;
-				temp += \'</h3>\';	 
-				temp += \'</div>\';
-				temp += \'<div class="uix-pb-authorcard-pic"><img src="\'+avatarURL+\'" alt="\'+uixpbform_htmlEncode(uix_pb_authorcard_name)+\'"></div>\';
-				temp += \'</div>\';
-				temp += \'<div class="uix-pb-authorcard-middle">\'+uixpbform_format_textarea_entering( uix_pb_authorcard_intro )+\'</div>\';
-				temp += \'<a class="uix-pb-authorcard-final" href="\'+encodeURI(uix_pb_authorcard_link_link)+\'" rel="author">\'+uix_pb_authorcard_link_label+\'</a>\';
-				temp += \'</div>\';
-				temp += \'</div>\';		
+			<div class="uix-pb-authorcard-wrapper">
+				<div class="uix-pb-authorcard" style="border-top-color: ${uix_pb_authorcard_primary_color}">
+					<div class="uix-pb-authorcard-top">
+						<div class="uix-pb-authorcard-text">
+							<h3 class="uix-pb-authorcard-title">${uix_pb_authorcard_name}
+
+							{{if uix_pb_authorcard_1_url != "" && uix_pb_authorcard_1_url != "http://%C2%A0"}}
+								<a href="${uix_pb_authorcard_1_url}" target="_blank"><i class="fa fa-{{if uix_pb_authorcard_1_icon != ""}}${uix_pb_authorcard_1_icon}{{else}}link{{/if}}	"></i></a>
+							{{/if}}		
+							{{if uix_pb_authorcard_2_url != "" && uix_pb_authorcard_2_url != "http://%C2%A0"}}
+								<a href="${uix_pb_authorcard_2_url}" target="_blank"><i class="fa fa-{{if uix_pb_authorcard_2_icon != ""}}${uix_pb_authorcard_2_icon}{{else}}link{{/if}}	"></i></a>
+							{{/if}}	
+							{{if uix_pb_authorcard_3_url != "" && uix_pb_authorcard_3_url != "http://%C2%A0"}}
+								<a href="${uix_pb_authorcard_3_url}" target="_blank"><i class="fa fa-{{if uix_pb_authorcard_3_icon != ""}}${uix_pb_authorcard_3_icon}{{else}}link{{/if}}	"></i></a>
+							{{/if}}	
+							</h3>	 
+						</div>
+						<div class="uix-pb-authorcard-pic">
+							{{if uix_pb_authorcard_avatar != ""}}
+								<img src="${uix_pb_authorcard_avatar}" alt="">
+							{{else}}
+								<img src="'.esc_url(  UixPBFormCore::photo_placeholder() ).'" alt="">
+							{{/if}}	
+						</div>
+					</div>
+					<div class="uix-pb-authorcard-middle">${uix_pb_authorcard_intro}</div>
+					<a class="uix-pb-authorcard-final" href="${uix_pb_authorcard_link_link}" rel="author">${uix_pb_authorcard_link_label}</a>
+				</div>
+			</div>		
 		'
     )
 );

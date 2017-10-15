@@ -4,45 +4,41 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
 }
 
 /**
- * Returns each variable in module data
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
+/**
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
  * Clone parameters
  * ----------------------------------------------------
  */
-//clone list
-$clone_trigger_id        = 'uix_pb_testimonials_list';    // ID of clone trigger 
-$clone_max               = 30;                         // Maximum of clone form 
-
-//clone list of toggle class value @var array
-$clone_list_toggle_class = '';
-
+$clone_trigger_id        = 'uix_pb_testimonials_triggerclonelist';  // String of clone trigger ID, must contain at least "_triggerclonelist"
+$clone_max               = 30;                               // Maximum of clone form 
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
-
 $form_type_config = array(
     'list' => 1
 );
-
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
 
 
 $module_config = 
@@ -54,7 +50,8 @@ $module_config =
 			'desc'           => '',
 			'value'          => esc_html__( 'Text Here', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 	
@@ -66,6 +63,7 @@ $module_config =
 			'value'          => esc_html__( 'This is the description text for the title.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 3
 								)
@@ -86,44 +84,18 @@ $form_type = array(
 $args = 
 	array(
 		
-		//------list begin
+		//------ Clone controls list (begin)
 
 		
 		array(
 			'id'             => $clone_trigger_id,
-			'colid'          => $colid, /*clone required */
 			'title'          => esc_html__( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => esc_html__( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => array(
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_avatar' ).'',
-											'type'      => 'image'
-										), 
-										
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_name' ).'',
-											'type'      => 'text'
-										), 										
-										
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_position' ).'',
-											'type'      => 'text'
-										), 
-									
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ).'',
-											'type'      => 'textarea'
-										), 
-										
-	
-
-									 ),
-									'max'                       => $clone_max
+									'max' => $clone_max
 				                )
 									
 		),
@@ -134,13 +106,8 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_avatar' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Avatar URL', 'uix-page-builder' ),
-				'type'           => 'image',
-				'default'        => array(
-										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-										'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' ),
-									)
+				'type'           => 'image'
 			
 			),	
 			array(
@@ -148,9 +115,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Name', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_name' ).'', /*class of list item */
 				'placeholder'    => '',
-				'type'           => 'text'
+				'type'           => 'text',
+			    'callback'       => 'html',
 			
 			),			
 			
@@ -159,9 +126,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Position', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_position' ).'', /*class of list item */
 				'placeholder'    => '',
-				'type'           => 'text'
+				'type'           => 'text',
+			    'callback'       => 'html',
 			
 			),			
 			array(
@@ -169,9 +136,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Enter some details for the customer giving this testimonial., E.g., Thank you from the bottom of our hearts.', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'textarea',
+			    'callback'       => 'html',
 				'default'        => array(
 										'row'     => 5
 									)
@@ -181,7 +148,7 @@ $args =
 		
 			
 		
-		//------list end
+		//------ Clone controls list (end)
 		
 		
 
@@ -194,32 +161,24 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'                   => array(
-										'max'                => $clone_max,
-										'list_toggle_class'  => $clone_list_toggle_class,
-										'fields_group'       => array(
-																	array(
-																		'trigger_id'     => $clone_trigger_id,
-																		'required'       => 'uix_pb_testimonials_listitem_intro',
-																		'fields'         => array( 'uix_pb_testimonials_listitem_avatar', 'uix_pb_testimonials_listitem_name', 'uix_pb_testimonials_listitem_position', 'uix_pb_testimonials_listitem_intro' )
-																	),
-										)
+UixPBFormCore::form_scripts( array(
+		'clone'                    => array(
+										'trigger_id'     => $clone_trigger_id,
+										'fields'         => array( 
+																'uix_pb_testimonials_listitem_avatar', 
+																'uix_pb_testimonials_listitem_name',
+																'uix_pb_testimonials_listitem_position',
+																'uix_pb_testimonials_listitem_intro',
+															)
 									),
-	    'defalt_value'            => $item,
-	    'widget_name'             => $wname,
 		'form_id'                 => $form_id,
-		'section_id'              => $sid,
-	    'column_id'               => $colid,
 		'fields'                  => array(
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_config,
 											 'values'  => $module_config,
 											 'title'   => esc_html__( 'General Settings', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type,
 											 'values'  => $args,
 											 'title'   => esc_html__( 'Content', 'uix-page-builder' )
@@ -235,75 +194,71 @@ UixPageBuilder::form_scripts( array(
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
+	    'template'              => '
 		
-			var _config_t      = ( uix_pb_testimonials_config_title != undefined && uix_pb_testimonials_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_testimonials_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc   = ( uix_pb_testimonials_config_intro != undefined && uix_pb_testimonials_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_testimonials_config_intro )+\'</div>\' : \'\';
-
-					
-
-				
-			/* List Item */
-			var list_num               = '.floatval( $clone_max ).',
-				show_list_item = \'\';
-
-
-			for ( var i = 1; i <= list_num; i++ ){
-
-
-				var _uid      = ( i >= 2 ) ? \'#\'+i+\'-\' : \'#\',
-					_avatar   = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_avatar' ).'\' ).val(),
-					_name     = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_name' ).'\' ).val(),
-					_pos      = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_position' ).'\' ).val(),
-					_intro    = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_testimonials_listitem_intro' ).'\' ).val();
-
-				var _item_v_avatar     = ( _avatar != undefined && _avatar != \'\' ) ? \'<img class="uix-pb-testimonials-avatar" src="\'+encodeURI( _avatar )+\'" alt="\'+uixpbform_htmlEncode( _name )+\'" />\': \'<span class="uix-pb-testimonials-no-avatar"></span>\',
-					_item_v_posclass   = ( _avatar != undefined && _avatar != \'\' ) ? \'\': \'class="uix-pb-testimonials-pure-text"\';
-
-
-				if ( _intro != undefined && _intro != \'\' ) {
-
-					//Do not include spaces
-					show_list_item += \'<li>\';
-					show_list_item += \'<div class="uix-pb-testimonials-content">\'+uixpbform_format_textarea_entering( _intro )+\'</div>\';
-					show_list_item += \'<div class="uix-pb-testimonials-signature">\'+_item_v_avatar+\'\';
-					show_list_item += \'<strong \'+_item_v_posclass+\'>\'+_name+\'</strong> - \'+_pos+\'\';
-					show_list_item += \'</div>\';										                                                    
-					show_list_item += \'</li>\';
-
-				}
-
-
-			}
-
-
-			var temp = \'\';
-				temp += _config_t;
-				temp += _config_desc;
-				temp += \'<div class="uix-pb-testimonials-wrapper">\';
-				temp += \'<div class="uix-pb-testimonials">\';
-				temp += \'<div class="uix-pb-testimonials-container">\';
-				temp += \'<div class="flexslider">\';
-				temp += \'<ul class="slides">\';
-				temp += show_list_item;
-				temp += \'</ul><!-- .uix-pb-testimonials-slides -->\';
-				temp += \'</div><!-- .flexslider -->\';
-				temp += \'</div><!-- .uix-pb-testimonials-container -->\';
-				temp += \'</div><!-- /.uix-pb-testimonials -->\';
-				temp += \'</div>\';	
 		
+			{{if uix_pb_testimonials_config_title != ""}}
+				<h2 class="uix-pb-section-heading">${uix_pb_testimonials_config_title}</h2><div class="uix-pb-section-hr"></div>		
+			{{/if}}			
+
+
+			{{if uix_pb_testimonials_config_intro != ""}}
+				<div class="uix-pb-section-desc">${uix_pb_testimonials_config_intro}</div>		
+			{{/if}}	
+		
+			<div class="uix-pb-testimonials-wrapper">
+				<div class="uix-pb-testimonials">
+					<div class="uix-pb-testimonials-container">
+						<div class="flexslider">
+							<ul class="slides">
+
+							<!-- loop start -->
+
+								{{each '.$clone_trigger_id.'}}
+									{{if uix_pb_testimonials_listitem_intro != ""}}
+										<li>
+											<div class="uix-pb-testimonials-content">${uix_pb_testimonials_listitem_intro}</div>
+											<div class="uix-pb-testimonials-signature">
+												{{if uix_pb_testimonials_listitem_avatar != ""}}
+													<img class="uix-pb-testimonials-avatar" src="${uix_pb_testimonials_listitem_avatar}" alt="" />
+												{{else}}
+													<span class="uix-pb-testimonials-no-avatar"></span>
+												{{/if}}
+
+												<strong {{if uix_pb_testimonials_listitem_avatar == ""}}class="uix-pb-testimonials-pure-text"{{/if}}>${uix_pb_testimonials_listitem_name}</strong>
+												{{if uix_pb_testimonials_listitem_position != ""}} - ${uix_pb_testimonials_listitem_position}{{/if}}
+											</div>										                                                    
+										</li>	
+									{{/if}}	
+								{{/each}}	
+
+							<!-- loop end -->
+
+							</ul><!-- .uix-pb-testimonials-slides -->
+						</div><!-- .flexslider -->
+					</div><!-- .uix-pb-testimonials-container -->
+				</div><!-- /.uix-pb-testimonials -->
+			</div>	
+
 		'
+	
     )
 );
 

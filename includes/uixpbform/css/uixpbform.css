@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version: 3.5
+	* Version: 4.0
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -69,6 +69,7 @@
     overflow-y: auto;
 	padding: 15px 20px 0 20px;
 	margin: 10px 0 20px;
+	z-index: 559902;
 }
 
 
@@ -425,11 +426,10 @@
 	-webkit-border-radius: 5px; 
 	-moz-border-radius: 5px; 
 	border-radius: 5px;
-	background-color: rgba(238, 147, 49,.92);
+	background-color: rgba(0,0,0,.8);
 	position: absolute;
-	color: #fff;
-	z-index: 100;
-	padding: 7px;
+	color: #fff !important; /* Force the cloning control */
+	padding: 7px !important; /* Force the cloning control */
 	display: none;
 	top: 0;
 	left: 0;
@@ -437,17 +437,18 @@
 	margin-top: -45px;
 	max-width: 320px;
 	height: 25px;
+	 z-index: 559902;
 }
 
 .uixpbform-form-container .info.info-fly:before{
     border: solid;
-    border-color: rgba(238, 147, 49,.92) transparent;
+    border-color: rgba(0,0,0,.8) transparent;
     border-width: 6px 6px 0 6px;
     top: 38px;
     content: "";
     left: 10px;
     position: absolute;
-    z-index: 100;
+     z-index: 559902;
 }
 
 
@@ -463,10 +464,18 @@
 .uixpbform-form-container .info.info-warning,
 .uixpbform-form-container .info.info-note {
     color: #555 !important;
-    border-radius: 3px;
-    padding: 6px 35px;
-	display: block;
+    border-radius: 3px !important;
+    padding: 6px 35px !important;
+	display: block !important;
 }
+
+.uixpbform-form-container .dynamic-row .info.info-error,
+.uixpbform-form-container .dynamic-row .info.info-success,
+.uixpbform-form-container .dynamic-row .info.info-warning,
+.uixpbform-form-container .dynamic-row .info.info-note {
+	margin-bottom: 10px;
+}
+
 
 .uixpbform-form-container .info.info-error a,
 .uixpbform-form-container .info.info-success a,
@@ -525,6 +534,15 @@
     color: #B1B1B1;
 }
 
+.uixpbform-form-container .dynamic-row .units {
+    position: absolute;
+    margin-left: 5px;
+    top: 3px;
+    right: 10px;
+    color: #B1B1B1;
+}
+
+
 .uixpbform-form-container .units-short {
     left: 120px;
     right: auto;
@@ -560,7 +578,9 @@
     display: inline-block;
     max-width: 780px;
     margin-left: -4px;
+	margin-bottom: 5px;
 }
+
 
 .uixpbform-form-container .radio img[src*="map-"] {
 	width: 90px;
@@ -770,6 +790,12 @@
 
 
 /* Input & Textarea */
+.uixpbform-form-container .uixpbform-tmpl-textarea {
+	background: #333 !important;
+	color: #fff !important;
+}
+
+
 .uixpbform-form-container .uixpbform-input-text:before,
 .uixpbform-form-container .uixpbform-input-text:after {
     display: block;
@@ -863,7 +889,7 @@
     border-top-left-radius: 3px;
     -webkit-border-bottom-left-radius: 3px;
     -moz-border-bottom-left-radius: 3px;
-    border-bottom-right-left: 3px;
+    border-bottom-left-radius: 3px;
     top: 7px;
     left: 3px;
 }
@@ -876,7 +902,13 @@
 
 .uixpbform-form-container select {
     background: #F8F8F8;
+	margin-bottom: 5px;
 }
+
+.uixpbform-form-container .dynamic-row select {
+	margin-bottom: 10px;
+}
+
 
 .uixpbform-form-container .uixpbform-input-text:focus {
     background: #fff;
@@ -901,22 +933,20 @@
 
 /* Delete block */
 .uixpbform-form-container .delrow-container {
-    padding: 1px 3px;
+    padding: 1px 0;
     margin-bottom: 10px;
-    border-bottom: 2px dashed #E9B5B1;
     clear: both;
-    background: #F9EBF2;
-	text-align: right;
 }
 
 .uixpbform-form-container a.delrow {
-    color: red;
+    background: #CC171E;
+	color: #fff;
 	font-weight: 600;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     display: inline-block;
-    width: 12px;
+    width: 100%;
     height: 12px;
     font-size: 18px;
     text-align: center;
@@ -928,53 +958,8 @@
 }
 
 .uixpbform-form-container a.delrow:hover {
-    background: #C00;
-	color: #fff;
+    background: #f00;
 }
-
-.uixpbform-form-container .dynamic-addnow .delrow-container {
-    background: #fff;
-    -webkit-transition: background-color 1000ms linear;
-    -moz-transition: background-color 1000ms linear;
-    -o-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
-    animation: bghide_del 1.5s 1;
-    -moz-animation: bghide_del 1.5s 1;
-    -webkit-animation: bghide_del 1.5s 1;
-    -o-animation: bghide_del 1.5s 1;
-}
-
-
-@-webkit-keyframes bghide_del {
-    0% {
-        background: #F9EBF2;
-    }
-
-    50% {
-        background: #F4AEB0;
-    }
-
-    100% {
-        background: #fff;
-    }
-}
-
-@keyframes bghide_del {
-    0% {
-        background: #F9EBF2;
-    }
-
-    50% {
-        background: #F4AEB0;
-    }
-
-    100% {
-        background: #fff;
-    }
-}
-
-
 
 
 
@@ -1411,17 +1396,9 @@
     padding-bottom: 12px;
 }
 
-.uixpbform-form-container .toggle-row:not(.toggle-row-clone-list):not(.toggle-row-show) {
-    display: none;
-}
 
-.uixpbform-form-container .toggle-row:not(.toggle-row-show) label,
-.uixpbform-form-container .toggle-row:not(.toggle-row-show) .uixpbform-box:not(.uixpbform-mce-editor) {
-    display: none;
-}
 
-.uixpbform-form-container .uixpbform-input-text.active,
-.uixpbform-form-container .toggle-row.active .uixpbform-input-text {
+.uixpbform-form-container .uixpbform-input-text.active {
     background: #F8F8F8;
     -webkit-transition: background-color 1000ms linear;
     -moz-transition: background-color 1000ms linear;
@@ -1434,31 +1411,12 @@
     -o-animation: bghide 1.5s 1;
 }
 
-.uixpbform-form-container .toggle-row .info {
-    color: #AF7342;
-    display: block;
-    margin-top: -8px;
-}
-
-/* if IE*/
-.uixpbform-form-container .toggle-row.isMSIE,
-.uixpbform-form-container .toggle-row.toggle-row-clone-list.isMSIE,
-.uixpbform-form-container .toggle-row.isMSIE label,
-.uixpbform-form-container .toggle-row.isMSIE .uixpbform-box:not(.uixpbform-mce-editor) {
-    display: block;
-}
-
-.uixpbform-form-container .toggle-btn.isMSIE {
-    display: none;
-}
-
 
 /* Icons Selector
 -------------------------------------------------------------- */
 
 .uixpbform-icon-selector-preview-wrapper {
 	position: relative;
-	z-index: 559902;	
 }
 
 .uixpbform-icon-selector-btn,
@@ -1502,12 +1460,11 @@
 
 
 .uixpbform-icon-selector-label {
-    line-height: 25px;
+    line-height: 30px;
     display: inline-block;
     font-weight: bold;
     font-style: italic;
 	position: absolute;
-	z-index: 559902;
 	left: 40px;
 	top:  0;
 }
@@ -2131,11 +2088,6 @@ a.uixpbform-icon-clear {
         height: 20px;
     }
 
-	
-	/* trigger */
-    .uixpbform-form-container .toggle-row {
-        width: 265px;
-    }
 		
 	/* range */
 	.uixpbform-form-container .uixpbform-range {

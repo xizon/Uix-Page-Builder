@@ -1,30 +1,30 @@
 <?php
-class UixPBFormType_MultiSelector {
+class UixPBFormType_MultiSelector extends UixPBFormCore {
 	
-	public static function add( $args, $args_config, $_output ) {
+	public static function add( $args, $_output ) {
 		
 		if ( !is_array( $args ) ) return;
-		if ( !is_array( $args_config ) ) return;
 			
+		$id               = ( isset( $args[ 'id' ] ) ) ? $args[ 'id' ] : '';
+		$name             = ( isset( $args[ 'name' ] ) ) ? $args[ 'name' ] : '';
 		$title            = ( isset( $args[ 'title' ] ) ) ? $args[ 'title' ] : '';
 		$desc             = ( isset( $args[ 'desc' ] ) ) ? $args[ 'desc' ] : '';
 		$default          = ( isset( $args[ 'default' ] ) && !empty( $args[ 'default' ] ) ) ? $args[ 'default' ] : '';
-		$value            = ( isset( $args[ 'value' ] ) ) ? UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], $args[ 'value' ] ) : UixPBFormCore::fvalue( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args_config[ 'items' ], $args[ 'id' ], '' );
+		$value            = ( isset( $args[ 'value' ] ) ) ? $args[ 'value' ] : '';
 		$placeholder      = ( isset( $args[ 'placeholder' ] ) ) ? $args[ 'placeholder' ] : '';
-		$id               = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fid( $args_config[ 'col_id' ], $args_config[ 'sid' ], $args[ 'id' ] ) : '';
-		$name             = ( isset( $args[ 'id' ] ) ) ? UixPBFormCore::fname( $args_config[ 'col_id' ], $args_config[ 'form_id' ], $args[ 'id' ] ) : '';
 		$type             = ( isset( $args[ 'type' ] ) ) ? $args[ 'type' ] : '';
-		$class            = ( isset( $args[ 'class' ] ) && !empty( $args[ 'class' ] ) ) ? ' class="'.UixPBFormCore::row_class( $args[ 'class' ] ).'"' : '';
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
+		$cls              = ( isset( $args[ 'class' ] ) ) ? $args[ 'class' ] : '';
+		$class            = self::call_row_class( $id, $cls );
+		$callback         = ( isset( $args[ 'callback' ] ) ) ? self::uixpbform_control_callback_type( $args[ 'callback' ] ) : '';
 		
-		$field = '';
-		$jscode = '';
-		$jscode_vars = '';
+		$field       = '';
 		
 
         if ( $type == 'multiselect' ) {
             
             $optionlist = '';
+			$value_str  = $value;
 			
 			if ( !is_array( $value ) ) {
 				$value = explode( ',', $value );
@@ -58,10 +58,6 @@ class UixPBFormType_MultiSelector {
                     $optionloop ++;
                 }	
             }
-			
-			if ( !is_array( $value ) ) {
-				$optionlist = __( 'Must use the array for "value".', 'uix-page-builder' );
-			} 
 	
 	
             $field = '
@@ -71,11 +67,11 @@ class UixPBFormType_MultiSelector {
 						
 						    <div class="uixpbform-box">
                                
-								  <div class="radio uixpbform_btn_trigger-multradio" data-targetid="'.$id.'">	
+								  <div class="radio uixpbform_btn_trigger-multradio" data-targetid="${'.$id.'__fieldID}">	
 								   '.$optionlist.' 
 								   </div>
 							   
-								   '.( !empty( $args[ 'id' ] ) ? '<input type="hidden" id="'.$id.'" name="'.$name.'" chk-id-input="'.$id.'" value="'.rtrim( $radiofirst, ',' ).'">' : '' ).' 
+								   <input data-enter-value="true" type="hidden" id="${'.$id.'__fieldID}" name="${'.$id.'__fieldID}" value="{{if '.$id.'__fieldVal}}${'.$id.'__fieldVal}{{else}}'.$value_str.'{{/if}}" >
 						   
 								   '.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 
 								  
@@ -85,13 +81,6 @@ class UixPBFormType_MultiSelector {
                     </tr> 
                 '.PHP_EOL;	
                 
-				
-            $jscode_vars = '
-				'.( !empty( $args[ 'id' ] ) ? 'var '.$args[ 'id' ].' = $( "#'.$id.'" ).val();'.PHP_EOL : '' ).'
-            ';		
-			
-            $jscode = '';
-		  
             
 
         }
@@ -102,8 +91,6 @@ class UixPBFormType_MultiSelector {
 			
 		//output code
 		if ( $_output == 'html' ) return $field;
-		if ( $_output == 'js' ) return $jscode;
-		if ( $_output == 'js_vars' ) return $jscode_vars;
 
 		
 		

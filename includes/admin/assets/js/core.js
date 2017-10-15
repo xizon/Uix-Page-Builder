@@ -105,24 +105,46 @@
 		
 			$( '.uix-page-builder-res-selector li' ).removeClass( 'active' );
             $( this ).addClass( 'active' );
-			
-			if ( w == 0 ) {
-				$preview.css({
-					'width': ( windowWidth - sidebarWidth ) + 'px',
-					'height': windowHeight + 'px',
-					'margin-top': 0,
-					'margin-left': 0
-				}).removeClass( 'res' );
+
+			if ( $( 'body' ).hasClass( 'rtl' ) ) {
+				if ( w == 0 ) {
+					$preview.css({
+						'width': ( windowWidth - sidebarWidth ) + 'px',
+						'height': windowHeight + 'px',
+						'margin-top': 0,
+						'margin-right': 0
+					}).removeClass( 'res' );
+				} else {
+					$preview.css({
+						'width': w + 'px',
+						'height': h + 'px',
+						'margin-top': t + 'px',
+						'margin-right': l + 'px'
+					}).addClass( 'res' );	
+				}
 			} else {
-				$preview.css({
-					'width': w + 'px',
-					'height': h + 'px',
-					'margin-top': t + 'px',
-					'margin-left': l + 'px'
-				}).addClass( 'res' );	
+				if ( w == 0 ) {
+					$preview.css({
+						'width': ( windowWidth - sidebarWidth ) + 'px',
+						'height': windowHeight + 'px',
+						'margin-top': 0,
+						'margin-left': 0
+					}).removeClass( 'res' );
+					
+				} else {
+					$preview.css({
+						'width': w + 'px',
+						'height': h + 'px',
+						'margin-top': t + 'px',
+						'margin-left': l + 'px'
+					}).addClass( 'res' );	
+					
+				}	
+				
+				
 			}
 
-			
+
 		});
 
 		
@@ -572,10 +594,10 @@
 
 			});
 
-			for (var i = 0, len = hidedivs.length; i < len; i++ ) {
+			for (var i = 0; i < hidedivs.length; i++ ) {
 				hideID += hidedivs[ i ] + ',';
 			}
-			hideID = hideID.substring( 0, hideID.length-1 );
+			hideID = hideID.replace(/,\s*$/, '' );
 
 
 			if ( selectedElt == 'uix-page-builder-status2' ) {
@@ -966,14 +988,16 @@ function gridsterFormatAllCodes( code ) {
  * @return {string}                - A new string.
  */	
 function gridsterRowUID() {
-	var text = "";
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	var text     = "",
+		possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+		uid      = ( new Date().getTime() ).toString( 36 ).substr( 5, 7 );
 
 	for (var i = 0; i < 5; i++) {
 		text += possible.charAt( Math.floor( Math.random() * possible.length ) );
 	}
 	
-
+	text = text.substr( 0, 2 ) + uid;
+	
 	return text;
 }
 
@@ -1090,7 +1114,7 @@ function gridsterAddShortcutButtons() {
 
 
 			$ifm.find( '#wpadminbar' ).css( 'visibility', 'hidden' );
-
+			
 			$ifm.find( '.uix-page-builder-section > .uix-pb-row > div' ).each( function( index ) {
 				var id         = $( this ).closest( '.uix-page-builder-section' ).data( 'pb-section-id' ),
 					curindex   = $(this).index(),
@@ -1155,7 +1179,12 @@ function gridsterAddShortcutButtons() {
 				
 			
 				if ( uix_page_builder_layoutdata.send_string_vb_mode == 1 ) {
-					$side.animate( { scrollTop: parseFloat( $side.scrollTop() + obj.offset().top - widgetTitleH - manageBtnsH ) }, 100 );
+					
+					if ( obj.length > 0 ) {
+						$side.animate( { scrollTop: parseFloat( $side.scrollTop() + obj.offset().top - widgetTitleH - manageBtnsH ) }, 100 );
+					}
+					
+					
 				}
 
 
@@ -1266,8 +1295,21 @@ function UixPBFormatRenderCodes( code ) {
 			//Get and modify content of an iframe
 		   $( '#uix-page-builder-themepreview' ).load( function() {
 			   if ( $( this ).contents().text().search( '[uix_pb_sections]' ) > 0 ) { //Regular expression, not WP shortcode
-				   //Render WP Shortcode
-				   $( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );  
+				    //Render WP Shortcode
+				    $( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );  
+				   
+					//Trigger the front end of the JavaScript function "uix_pb_render_trigger()"
+					var frontendEvent = window.setInterval( function() {
+						$( document ).UixPBRenderFrontendPageTrigger();
+						
+						if ( $( '#uix-page-builder-themepreview' ).contents().find( '.uix-page-builder-section' ).length > 0 ) {
+							window.clearInterval( frontendEvent );
+						}
+						
+					}, 1000 );
+				 
+				   
+					  
 			   }
 			});
 			
@@ -1276,9 +1318,6 @@ function UixPBFormatRenderCodes( code ) {
     });
   };
 })(jQuery);	
-
-
-
 
 
 
@@ -1309,6 +1348,7 @@ function UixPBFormatRenderCodes( code ) {
 				$previewURL = settings.previewURL,
 				append      = '&cache=' + new Date().getTime() + 'a' + Math.random();
 			
+			
 
 			//-------- Initialize the page container
 			if ( $enable == 0 ) {
@@ -1329,11 +1369,24 @@ function UixPBFormatRenderCodes( code ) {
 			//-------- Render the entire page
 			if ( $enable == 2 ) {
 				$( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );
+				
+				//Trigger the front end of the JavaScript function "uix_pb_render_trigger()"
+				var frontendEvent = window.setInterval( function() {
+					$( document ).UixPBRenderFrontendPageTrigger();
+
+					if ( $( '#uix-page-builder-themepreview' ).contents().find( '.uix-page-builder-section' ).length > 0 ) {
+						window.clearInterval( frontendEvent );
+					}
+
+				}, 1000 );	
+				
 			}
 			
 			
 			//-------- Remove loader
-			$( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).hide();
+			setTimeout( function() {
+				$( '#uix-page-builder-visualBuilder-loader, #uix-page-builder-visualBuilder-loader .loader' ).hide();
+			}, 1000 );
 
 				
 			
@@ -1344,7 +1397,7 @@ function UixPBFormatRenderCodes( code ) {
 
 /*!
  *
- * Render HTML Viewport
+ * Render HTML Viewport (Relative to the front of the page)
  * ---------------------------------------------------
  * Separate rendering "div" module on front-end pages
  */
@@ -1469,46 +1522,55 @@ function UixPBFormatRenderCodes( code ) {
 		,options);
 		this.each(function(){
 			
-			var elements = 'ul.uix-page-builder-res-selector, .uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-visualBuilder-loader, #uix-page-builder-gridster-wrapper.visualBuilder, #uix-page-builder-themepreview, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close';
+			var elements     = 'ul.uix-page-builder-res-selector, .uix-page-builder-gridster-addbtn.visualBuilder, #uix-page-builder-visualBuilder-loader, #uix-page-builder-gridster-wrapper.visualBuilder, .uix-page-builder-themepreview-btn, .uix-page-builder-themepreview-btn#uix-page-builder-themepreview-btn-close';
+				
 			
 			$( document ).on( 'click', '#uix-page-builder-themepreview-btn-close', function( e ) {
 				e.preventDefault();
 				
-				var oldPo  = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'left' ) ),
-					target = $( elements );    
+				var $preview = $( '#uix-page-builder-themepreview' ),
+					oldPo    = parseFloat( $preview.css( 'left' ) ),
+					target   = $( elements );    
 				
 				if ( $( 'body' ).hasClass( 'rtl' ) ) {
-					oldPo = parseFloat( $( '#uix-page-builder-themepreview' ).css( 'right' ) );
+					oldPo = parseFloat( $preview.css( 'right' ) );
 				}
 		
 
 				if ( oldPo == 0 ) {
 					//Sidebar open
 					target.removeClass( 'active' );
+					$preview.removeClass( 'active' );
+					
 				} else {
 					//Sidebar close
 					target.addClass( 'active' );
+					$preview.addClass( 'active' );
 				}	
 				
 
 				//Responsive preview restores
 				$( '.uix-page-builder-res-selector li.active' ).trigger( 'click' );
 
+				
 
 			});
 	
 			if ( settings.method == 'open' ) {
 				$( document ).ready( function() {
 
-					var target = $( elements );    
+					var $preview = $( '#uix-page-builder-themepreview' ),
+						target   = $( elements );    
 
 					//Sidebar open
 					target.removeClass( 'active' );
+					$preview.removeClass( 'active' );
 
 					//Responsive preview restores
 					$( '.uix-page-builder-res-selector li.active' ).trigger( 'click' );
 
 
+					
 				});
 	
 			}
@@ -1521,4 +1583,25 @@ function UixPBFormatRenderCodes( code ) {
 })(jQuery);
 	
 	
+/*!
+ *
+ * Reload the front-end javascripts to make the live preview take effect.
+ * Trigger the front end of the JavaScript function "uix_pb_render_trigger()"
+ * ---------------------------------------------------
+ */
+(function($){
+	$.fn.UixPBRenderFrontendPageTrigger=function(options){
+		var settings=$.extend( {}, options );
+		this.each(function(){
+			
+			if ( typeof ( $( '#uix-page-builder-themepreview' ).get(0).contentWindow.uix_pb_render_trigger ) == 'function' ) {
+				$( '#uix-page-builder-themepreview' ).get(0).contentWindow.uix_pb_render_trigger();
+			}
+
+		})
+	}
+})(jQuery);
+
+
+					
 			

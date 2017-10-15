@@ -304,8 +304,12 @@
     width: calc( 100% - 315px );
     height: 100%;
 	z-index: 23;
-	background: rgba(255,255,255,.85);
+	background: rgba(255,255,255,1);
 	text-align: center;
+	-moz-transition: .2s linear; 
+	-o-transition: .2s linear;
+	-webkit-transition: .2s linear; 
+	transition: .2s linear;	
 }
 
 #uix-page-builder-visualBuilder-loader.active {
@@ -410,7 +414,7 @@ ul.uix-page-builder-res-selector {
 	position: fixed;
 	left: 0;
 	bottom: 0;
-	z-index: 3;
+	z-index: 25;
 	width: 315px;
 	height: 32px;
 	margin: 0;
@@ -626,7 +630,7 @@ ul.uix-page-builder-res-selector li.active {
 	width: 315px;
 	top: 0;
 	left: 0;
-	z-index: 2;
+	z-index: 24;
 	overflow: hidden;
 	overflow-y: scroll;
 	padding: 120px 0 0;
@@ -1257,14 +1261,15 @@ ul.uix-page-builder-res-selector li.active {
 }
 
 .uix-page-builder-gridster .temp-data {
-	width: 80px;
-	position: absolute;
-	right: -80px;
-	height: 30px;
+	width: 280px;
+	position: fixed;
+	left: 325px;
+	height: 130px;
 	color: #fff;
 	font-size: 10px;
 	line-height: 10px;
 	overflow: hidden;
+	z-index: 999999;
 }
 
 /* per column data */
@@ -1276,7 +1281,7 @@ ul.uix-page-builder-res-selector li.active {
 /* per row replace data */
 .uix-page-builder-gridster .temp-data-2 {
 	background: #D58586;
-	top: 75px;
+	top: 155px;
 	display: none;
 }
 

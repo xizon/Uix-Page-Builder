@@ -42,7 +42,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 		 */
 		public static function func( $atts, $content = null ) {
 			extract( shortcode_atts( array( 
-				'pagination'            => 'false',
+				'pagination'            => 0,
 				'show'                  => 9, 
 				'cat'                   => 'all', 
 				'order'                 => 'desc',
@@ -52,8 +52,8 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 				'readmore_class'        => '', 
 				'before'                => '', 
 				'after'                 => '',
-				'catslist_enable'       => 'true',
-				'catslist_filterable'   => 'false',
+				'catslist_enable'       => 1,
+				'catslist_filterable'   => 0,
 				'catslist_classprefix'  => 'uix-pb-portfolio-',
                 'catslist_id'           => uniqid(),
 				
@@ -66,7 +66,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 			update_option( 'uix-page-builder-portfolio-excerptlength', $excerpt_length );	
 
 			//Display all if filtering is enabled
-			 $show           = ( ( isset( $catslist_filterable ) &&  $catslist_filterable == 'true' ) ? -1 : intval( $show ) );
+			 $show           = ( ( isset( $catslist_filterable ) &&  $catslist_filterable == 1 ) ? -1 : intval( $show ) );
 			 $before         = wp_specialchars_decode( $before ).PHP_EOL;
 			 $after          = wp_specialchars_decode( $after ).PHP_EOL;	
 			 $readmore_class = str_replace( '&nbsp;', ' ' , str_replace( '&#160;', ' ' , $readmore_class ));
@@ -247,7 +247,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 				 *
 				 */
 			   $pagecode = '';
-			   if ( $pagination == 'true' ) {
+			   if ( $pagination == 1 ) {
 				   
 					$GLOBALS[ 'paged_temp' ]  = 1;
 					$pagehtml                = '';
@@ -326,12 +326,12 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 			 *
 			 */
 			$catlist = '';
-			if ( isset( $catslist_enable ) &&  $catslist_enable == 'true' ) {
+			if ( isset( $catslist_enable ) &&  $catslist_enable == 1 ) {
 				
-				$catlist .= '<div class="uix-pb-portfolio-cat-list '.( ( isset( $catslist_filterable ) &&  $catslist_filterable == 'true' ) ? 'uix-pb-filterable' : '' ).'" data-classprefix="'.esc_attr( $catslist_classprefix ).'"  data-filter-id="'.esc_attr( $catslist_id ).'" id="uix-pb-portfolio-cat-list-'.esc_attr( $catslist_id ).'">';
+				$catlist .= '<div class="uix-pb-portfolio-cat-list '.( ( isset( $catslist_filterable ) &&  $catslist_filterable == 1 ) ? 'uix-pb-filterable' : '' ).'" data-classprefix="'.esc_attr( $catslist_classprefix ).'"  data-filter-id="'.esc_attr( $catslist_id ).'" id="uix-pb-portfolio-cat-list-'.esc_attr( $catslist_id ).'">';
 				$catlist .= '    <ul>';
 				
-				if ( isset( $catslist_filterable ) &&  $catslist_filterable == 'true' ) {
+				if ( isset( $catslist_filterable ) &&  $catslist_filterable == 1 ) {
 					$catlist .= '        <li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>';
 				}
 				

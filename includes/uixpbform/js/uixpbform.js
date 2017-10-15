@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version: 3.5
+	* Version: 4.0
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -42,7 +42,7 @@
 			}
 			
 			if ( $( '#' + form[ 'thisModalID' ] ).length < 1 ) {
-				$( 'body' ).prepend( '<div class="uixpbform-modal-box" id="'+form[ 'thisModalID' ]+'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">&times;</a><div class="content"><h2>'+form[ 'title' ]+'</h2><span class="iconslist-box"></span><span class="ajax-temp"></span></div></div>' );
+				$( 'body' ).prepend( '<div class="uixpbform-modal-box" id="'+form[ 'thisModalID' ]+'"><a href="javascript:void(0)" class="close-btn close-uixpbform-modal">&times;</a><div class="content"><h2>'+form[ 'title' ]+'</h2><span class="iconslist-box"></span><span class="echo-module-temp"></span><span class="echo-module-temp-clone" style="display:none"></span><span class="echo-frontend-temp" style="display:none"></span></div></div>' );
 				
 			}
 				
@@ -59,173 +59,159 @@
 				
 				var widget_ID        = $( this ).data( 'id' ),
 				    widget_name      = $( this ).data( 'name' ),
-					widget_colID     = $( this ).data( 'col-textareaid' ),
-				    widgets          = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID, 'colID': widget_colID },
+					widget_col_ID    = $( this ).data( 'col-textareaid' ),
+				    widgets          = { 'formID': formID, 'ID': widget_ID, 'contentID': 'content-data-' + widget_ID, 'title': $title, 'name': widget_name, 'thisModalID': dataID, 'sectionID': widget_ID, 'colID': widget_col_ID },
 				    code             = '',
 					$obj             = $( '.uixpbform-modal-box#'+dataID ),
-					modal_H_init     = $( '.uixpbform-modal-box' ),
-					modal_H_btn_init = $( '.uixpbform-modal-buttons' ),
 					modal_H_max      = $( window ).height()*0.8 - 150,
+					echo_tmpl_ID     = '.uixpbform-modal-box#'+dataID+' .echo-module-temp',
+					echo_frontend_ID = '.uixpbform-modal-box#'+dataID+' .echo-frontend-temp',
 					action_first_add = false;
 				
+
 				
 				/*------------- Check whether the element is added for the first time ------------- */
 				if ( $( this ).parent( '.uix-page-builder-col' ).length > 0 ) {
 					action_first_add = true;
 				}
 				
-				
+	
 				/*------------- Open Window ------------- */
 				if ( $obj.length > 0 ) {
+				
+					var tempID              = formID,  
+						sectionID           = widget_ID,                                                         //Like this: ABCDE
+						colID               = widget_col_ID,                                                     //Like this: col-item-1__1---ABCDE
+						colIDToVar          = colID.replace( '---', '----' ),                                    //Like this: col-item-1__1----ABCDE
+						colNumber           = colID.replace( 'col-item-', '' ).replace( '---' + sectionID, '' ), //Like this: 1__1
+						widgetName          = widget_name,
+						postID              = $postID,
+						renderTemp          = uixpbform_module_form_ids( tempID, sectionID, colID, false );
+
+				
+					/*-- Reset the modal box --*/
+					$obj.UixPBFormPopWinReset( { heightChange: 220 } );
+					$obj.attr({
+						'data-tempID'           : tempID,
+						'data-colID'            : colID,
+						'data-colIDToVar'       : colIDToVar,
+						'data-sectionID'        : sectionID,
+						'data-echoFrontendID'   : echo_frontend_ID,
+						'data-colNumber'        : colNumber	
+					});	
 					
-					$.ajax({
-						url       : ajaxurl,
-						type      : 'POST',
-						data: {
-							action    : 'uixpbform_ajax_modules',
-							tempID    : formID,
-							sectionID : widget_ID,
-							colID     : widget_colID,
-							widgetName: widget_name,
-							postID    : $postID
-						},
-						success   : function( result ){
-							
-							result = result.replace( /{index}/g, '\['+widget_ID+'\]' );
-							
-							$obj.find( '.ajax-temp' ).html( result );
-							
-							if ( $obj.find( '.iconslist-box' ).html().length == 0 ) {
-								$obj.find( '.iconslist-box' ).html( $( '.uixpbform-icon-selector-btn-target' ).html() );
-							}
-							
-							
-							/*-- Init tinymce --*/
-							$obj.find( '.uixpbform-mce-editor' ).each( function()  {
-								uixpbform_editorInit( $( this ).find( 'textarea.mce' ).attr( 'id' ) );
-							});
-							
-							
-							
-							
-							
-							/*-- Count new modal height --*/
-							var newHeight  = 0,
-								hEx        = 0,
-								nocols     = $obj.find( '.ajax-temp .uixpbform-form-container' ),
-								cols       = $obj.find( '.ajax-temp .uixpbform-table-cols-wrapper' ),
-								colsH      = Array(),
-								colsH_Max  = 0;
-							if ( cols.length > 0 ) {
-								
-								cols.each( function( index ) {
-									var curH  = $( this ).height();
-									
-									if ( $( this ).hasClass( 'uixpbform-table-col-1' ) ) {
-										hEx = curH;
-									}
-									
-									colsH.push( parseFloat( curH ) + parseFloat( hEx ) );
-									//console.log( parseFloat( curH ) + parseFloat( hEx ) );
-									
-								} );
-								
-								//Fixed a bug of layout data save: Maximum call stack size exceeded.
-								// Don't use: newHeight = Math.max.apply( Math, colsH );
-								var max = -Infinity; 
-								for( var i = 0; i < colsH.length; i++ ) {
-									if ( colsH[i] > max ) {
-										newHeight = colsH[i];
-									}
-									
-								}
-								
-								//console.log( newHeight );
-								
-								
-							} else {
-								newHeight = nocols.height();
-							}
-							
-							if ( newHeight == null || 
-								newHeight == 0 || 
-								parseFloat( newHeight + 150 + $( window ).height()*0.2 ) > $( window ).height()
-							   ) 
-							{
-								newHeight = modal_H_max;
-							}
-							//Initializes modal height
-							modal_H_init.css( 'height', parseFloat( newHeight + 150 ) + 'px' );
-							$obj.find( '.ajax-temp .uixpbform-modal-buttons' ).css( 'margin-top', parseFloat( newHeight/2 + 20 ) + 'px' );
-						
-							
-							//Add row
-							$( '.uixpbform_btn_trigger-clone' ).on( 'click', function( e ) {
-								e.preventDefault();
-								
-								modal_H_init.css( 'height', parseFloat( modal_H_max + 150 ) + 'px' );
-								$obj.find( '.ajax-temp .uixpbform-modal-buttons' ).css( 'margin-top', parseFloat( modal_H_max/2 + 20 ) + 'px' );
-							});	
-							
-							
-							
-							/*-- Initializes the form state --*/
-							//Icon list
-							$( '.uixpbform-icon-selector' ).uixpbform_iconSelector(); 
-							
-							//color picker
-							$( '.wp-color-input' ).wpColorPicker();
-							
-							//toggle default
-							$( '.uixpbform_btn_trigger-toggleshow' ).each( function()  {
-								if ( $( this ).closest( '.uixpbform-box' ).find( 'input' ).val() == 1 ) {
-									$( this ).uixpbform_toggleshow();
-								}	
-							});	
-							$( '.uixpbform_btn_trigger-toggleswitch_checkbox' ).uixpbform_toggleSwitchCheckboxStatus();
-							$( '.uixpbform_btn_trigger-toggleswitch_radio' ).uixpbform_toggleSwitchRadioStatus();
-							
-							//insert media
-							$( '.uixpbform_btn_trigger-upload' ).uixpbform_mediaStatus();						
-										
-							
-							/*-- Close --*/
-							$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
-								e.preventDefault();
-								
-								//All elements close for Uix Page Builder Form
-								$( document ).UixPBFormPopClose();
-								
-								
-								//remove sub window (icons)
-								$( '.uixpbform-modal-box .iconslist-box' ).removeAttr( 'id' ).removeClass( 'active' );
-								//show main modal content
-								$( '.uixpbform-modal-box .ajax-temp' ).css( 'visibility', 'visible' );
+					
+					/*-- Call the specified page modules --*/
+					
+					//Empty container contents
+					$( echo_tmpl_ID ).html( '' );
 
-							});	
-							
-							// stuff here
-							return false;		
+					
+					if ( uixpbform_isJSON( renderTemp ) ) {
+						//Use the saved data values
+						$( '#module_tmpl__' + tempID ).tmpl( JSON.parse( renderTemp ) ).appendTo( echo_tmpl_ID );		
+					} 
+				
+					
+					/*-- Initializes the index data of the currently open form --*/
+					$obj.find( 'form [name="section"]' ).val( tempID );
+					$obj.find( 'form [name="colid"]' ).val( colID );
+					$obj.find( 'form [name="row"]' ).val( sectionID );
 
-						
+					
+					/*-- Initializes the controls state --*/
+					$( document ).uixpbform_init_controls( { form: $obj } );
 
-						},
-						error: function(){
-						    $obj.find( '.ajax-temp' ).html( $errorInfo );
-						},
-						beforeSend: function() {
-							$obj.find( '.ajax-temp' ).html( '<span class="uixpbform-loading"></span>' );
-							//console.log( 'loading...' );
-							
-							//Initializes modal height
-							modal_H_init.css( 'height', '220px' );
-							modal_H_btn_init.css( 'margin-top', '50px' );
+					
+
+					/*-- Dynamic Adding Input ( Default Value ) --*/
+					if ( uixpbform_clonedata_exists( renderTemp ) ) {
+						$obj.find( '.uixpbform_btn_trigger-clone' ).uixpbform_dynamicFormInit( { type: 'load' } );
+					}
+			
+				
+											
+					/*-- Load icons --*/
+					if ( $obj.find( '.iconslist-box' ).html().length == 0 ) {
+						$obj.find( '.iconslist-box' ).html( $( '.uixpbform-icon-selector-btn-target' ).html() );
+					}
+
+
+					/*-- Count new modal height --*/
+					var newHeight  = 0,
+						hEx        = 0,
+						nocols     = $( echo_tmpl_ID ).find( '.uixpbform-form-container' ),
+						cols       = $( echo_tmpl_ID ).find( '.uixpbform-table-cols-wrapper' ),
+						colsH      = Array(),
+						colsH_Max  = 0;
+					if ( cols.length > 0 ) {
+
+						cols.each( function( index ) {
+							var curH  = $( this ).height();
+
+							if ( $( this ).hasClass( 'uixpbform-table-col-1' ) ) {
+								hEx = curH;
+							}
+
+							colsH.push( parseFloat( curH ) + parseFloat( hEx ) );
+							//console.log( parseFloat( curH ) + parseFloat( hEx ) );
+
+						} );
+
+						//Fixed a bug of layout data save: Maximum call stack size exceeded.
+						// Don't use: newHeight = Math.max.apply( Math, colsH );
+						var max = -Infinity; 
+						for( var i = 0; i < colsH.length; i++ ) {
+							if ( colsH[i] > max ) {
+								newHeight = colsH[i];
+							}
 
 						}
-					});
-			
-					//Reset the modal box
-					$obj.UixPBFormPopWinReset( { heightChange: false } );
+
+						
+					} else {
+						newHeight = nocols.height();
+					}
+
+					if ( newHeight == null || 
+						newHeight == 0 || 
+						parseFloat( newHeight + 150 + $( window ).height()*0.2 ) > $( window ).height()
+					   ) 
+					{
+						newHeight = modal_H_max;
+					}
+					
+					//Initializes modal height
+					$obj.css( 'height', parseFloat( newHeight + 150 ) + 'px' );
+					$obj.find( '.uixpbform-modal-buttons' ).css( 'margin-top', parseFloat( newHeight/2 + 20 ) + 'px' );
+
+					//Add row
+					$( '.uixpbform_btn_trigger-clone' ).on( 'click', function( e ) {
+						e.preventDefault();
+						
+						var _mh    = ( $( window ).height()*0.8 - 150 ) + 150;
+
+						$obj.css( 'height', _mh + 'px' );
+						$obj.find( '.uixpbform-modal-buttons' ).css( 'margin-top', _mh*0.8/2 + 'px' );
+						
+						
+					});	
+
+					
+					/*-- Close --*/
+					$( '.uixpbform-modal-box .close-uixpbform-modal' ).on( 'click', function( e ) {
+						e.preventDefault();
+
+						//All elements close for Uix Page Builder Form
+						$( document ).UixPBFormPopClose();
+
+
+						//remove sub window (icons)
+						$( '.uixpbform-modal-box .iconslist-box' ).removeAttr( 'id' ).removeClass( 'active' );
+
+					});	
+				
+					
 					
 				}
 	
@@ -247,8 +233,6 @@
 					
 					//remove sub window (icons)
 					$( '.uixpbform-modal-box .iconslist-box' ).removeAttr( 'id' ).removeClass( 'active' );
-					//show main modal content
-					$( '.uixpbform-modal-box .ajax-temp' ).css( 'visibility', 'visible' );
 
 
 					
@@ -263,61 +247,82 @@
             function traverseAndUpdateData( obj ) {
 				
 				$( '.uixpbform-modal-box' ).each( function()  {
-						var $form         = obj,
-							formID        = $form.find( '[name="section"]' ).val(),
-							rowID         = $form.find( '[name="row"]' ).val(),
-							colTextareaID = $form.find( '[name="colid"]' ).val(),
-							colContent    = [],
-							settings      = [];
+						var $form               = obj,
+							formID              = $form.find( '[name="section"]' ).val(),   //Like this: uix_pb_module_???
+							rowID               = $form.find( '[name="row"]' ).val(),       //Like this: ABCDE  (Per row ID is equal to the section ID)
+							colID               = $form.find( '[name="colid"]' ).val(),     //Like this: col-item-1__1---ABCDE
+							colIDToVar          = colID.replace( '---', '----' ),           //Like this: col-item-1__1----ABCDE
+							colNumber           = uixpbform_to_col_numberID( colID ),       //Like this: 1__1
+							colContent          = [],
+							settings            = [];
 					
 					
-					    if( typeof colTextareaID !== typeof undefined ) {
+					    if( typeof colID !== typeof undefined ) {
 							
-							//Returns column ID
-							var cols = colTextareaID.split( '---' );
-							var colID = cols[0].replace( 'col-item-', '' );
 
 							//Save begin
-							var $jsonTextarea = $( "[name^='"+formID+"|["+colTextareaID+"]']" ),
+							var $jsonTextarea = $( "[name^='"+formID+"-"+colIDToVar+"']" ),
 								fields        = $jsonTextarea.serializeArray();
-
-							colContent.push( [ 'col', colID ] );
+							
+							
+						
+							
+							colContent.push( [ 'col', colNumber ] );
 							settings.push( [ 'section', formID ] );
 							settings.push( [ 'row', rowID ] );
 							settings.push( [ 'widgetname', 'Section ' + rowID ] );
 
 
-							$.each( fields, function( i, field ) {
-								var v      = field.value,
-									n      = field.name;
-
-								//Warning: Includes JSON data from <textarea>.
-								v = uixpbform_htmlEscape( v );
-
-
-								// When you enter a string in <textarea> will be saving, convert special characters to save JSON data.
-								var $cur    = $( '[name="'+n+'"]' );
-								if ( $cur.is( 'textarea' ) ) {
-
-									var curdata = uixpbform_format_textarea( $cur, false, v );
-									if ( curdata != '' ) {
-										v = curdata;
+							for( var i = 0; i < fields.length; i++ ) {
+								var _id      = fields[i].name,
+									_value   = fields[i].value,
+									
+									//Convert the JSON data (saved) ID to be saved
+									_s_id    = uixpbform_to_controlID_ToSave( _id, formID, rowID, colID );
+								
+								
+								//Exclude the original form ID of the clone
+								if ( _id.indexOf( '__index__' ) < 0 ) {
+									
+									
+									//Format the value of a form control for the specified type
+									if ( _id.indexOf( '_temp' ) < 0 ) {
+										var callbackType = $( '#' + _id ).data( 'callback' );
+										if ( typeof callbackType !== typeof undefined ) {
+											_value = uixpbform_value_callback( _value, callbackType );
+										} else {
+											_value = uixpbform_format_text_entering( _value );
+										}	
 									}
 
+					
+								
+									
+									//Warning: Includes JSON data from <textarea>.
+									_value = uixpbform_textarea_to_JSONSaveData( _value );
+									
+									
+									//Avoid real-time nulling of template values
+									if ( typeof $( '#' + _id ).attr( 'data-enter-value' ) !== typeof undefined ) {
+										if ( _value == '' ) _value = '&nbsp;';
+									}
+
+									//Push values
+									colContent.push( [ _s_id, _value ] );	
 								}
 
-								colContent.push( [ n, v ] );
+								
 
-
-							});
+							}//end for(array: fields)
 
 
 
 							var new_settings = JSON.stringify( colContent );
+							
 
-
+							
 							//Save Item Content
-							uixpbform_insertCodes( formID, new_settings, colTextareaID, rowID );
+							uixpbform_insertCodes( formID, new_settings, colID, rowID );
 
 							//Save the data for each sortable item
 							var gridsterInit = new UixPBGridsterMain();
@@ -342,44 +347,54 @@
 			/*------------- Save data ------------- */
 			$( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
 				
-				//Because the template data is too fast to "save", it will lead to script loading error.
-				//Catch a possible error:  Syntax error, unrecognized expression
-				try {
+				e.preventDefault();
 
-					e.preventDefault();
 
+				//Update gridster data ( If the module is added for the first time, and there is no content. )
+				//Use the ID of current form with AJAX to prevent duplicate events caused by the browser stuck.
+				var $form         = $( this ).closest( 'form' ),
+					$obj          = $( this ).closest( '.uixpbform-modal-box.active' ),
+					curSaveBtn    = $obj.find( '.uixpbform-modal-save-btn' );
+
+				if ( curSaveBtn.length == 1 ) {
+
+					//Save & render HTML code (include shortcode) for current module in real time
+					//Must be placed on the data that will eventually be saved
+					$obj.UixPBFormPopSaveAndRenderHtml({
+						tempID           : $obj.attr( 'data-tempID' ),
+						colID            : $obj.attr( 'data-colID' ),
+						colIDToVar       : $obj.attr( 'data-colIDToVar' ),
+						sectionID        : $obj.attr( 'data-sectionID' ),
+						echoFrontendID   : $obj.attr( 'data-echoFrontendID' ),
+						colNumber        : $obj.attr( 'data-colNumber' )	
+					});
+					
 					
 					//Update gridster data ( If the module is added for the first time, and there is no content. )
-					//Use the ID of current form with AJAX to prevent duplicate events caused by the browser stuck.
-					var $form         = $( this ).closest( 'form' ),
-						ajaxFormCurID = $( this ).closest( '.uixpbform-modal-box.active' ).attr( 'id' ),
-						curSaveBtn    = $( '#' + ajaxFormCurID ).find( '.uixpbform-modal-save-btn' );
-					
-					if ( curSaveBtn.length == 1 ) {
-						
-						traverseAndUpdateData( $form );
-						
-						//Update gridster data ( If the module is added for the first time, and there is no content. )
-						//When removing a module, the following code is valid
-						var init_settings = $( "[name='uix-page-builder-layoutdata']" ).val();
-						if ( init_settings.indexOf( '"content":""' ) >= 0 ) {
-							setTimeout( function() {
-								traverseAndUpdateData( $form );
-							}, 15 );	
-						}
+					//When removing a module, the following code is valid
 
+					traverseAndUpdateData( $form );
+					
+					var init_settings = $( "[name='uix-page-builder-layoutdata']" ).val();
+					if ( init_settings.indexOf( '"content":""' ) >= 0 ) {
+						setTimeout( function() {
+							traverseAndUpdateData( $form );
+						}, 15 );	
 					}
 					
-					//All elements close for Uix Page Builder Form
-					$( document ).UixPBFormPopClose();	
+					//Trigger the front end of the JavaScript function "uix_pb_render_trigger()"
+					$( document ).UixPBRenderFrontendPageTrigger();
 					
-					
-
-				} catch( err ) {
-					
-					console.log( err.message );
+			
 				}
-		
+
+				//All elements close for Uix Page Builder Form
+				$( document ).UixPBFormPopClose();
+				
+				
+				// stuff here
+				return false;
+				
 			});
 			
 			
@@ -404,11 +419,14 @@
 		,options);
 		this.each(function(){
 			
-			$( '.uixpbform-modal-box' ).removeClass( 'active' );
-			$( 'html' ).css( 'overflow-y', 'auto' );
-			
-			//mask div
+			//Remove a light box to the mask layer
 			$( '.uixpbform-modal-mask' ).fadeOut( 'fast' );
+			
+			//Deactivate the current object
+			$( '.uixpbform-modal-box' ).removeClass( 'active' ).css( 'height', '200px' );
+	
+			//The scroll bar of the page
+			$( 'html' ).css( 'overflow-y', 'auto' );
 	
 		})
 	}
@@ -430,7 +448,10 @@
 		,options);
 		this.each(function(){
 			
+			//Deactivate the current object
 			$( '.uixpbform-modal-box' ).removeClass( 'active' );
+			
+			//The scroll bar of the page
 			$( 'html' ).css( 'overflow-y', 'auto' );
 			
 		})
@@ -455,21 +476,437 @@
 			
 			var $this = $( this );
 			
-			$this.addClass( 'active' );
+			//Add a light box to the mask layer
 			$( '.uixpbform-modal-mask' ).fadeIn( 'fast' );
 			
+			
+			//Activate the current object
+			$this.addClass( 'active' );
+			$this.find( '.uixpbform-modal-buttons' ).css( 'margin-top', '50px' );
+			
+			
+			//Automatically calculate height
 			if ( settings.heightChange ) {
 				$this.css( 'height', parseFloat( ( $( window ).height()*0.8 - 150 ) + 150 ) + 'px' );
 			}
 			
+			//Use the specified height
 			var isNumeric = /^[-+]?(\d+|\d+\.\d*|\d*\.\d+)$/;
 			if ( isNumeric.test( settings.heightChange ) ) {
 				$this.css( 'height', settings.heightChange + 'px' );
 			}
 
 		
+			//The position of the content is corrected
 			$this.find( '.content' ).animate( {scrollTop: 10 }, 100 );
+			
+			//The scroll bar of the page
 			$( 'html' ).css( 'overflow-y', 'hidden' );
+			
+		})
+	}
+})(jQuery);
+
+
+
+/*!
+ *
+ * Save & render HTML code (include shortcode) for current module in real time
+ * ---------------------------------------------------
+ *
+ */	
+(function($){
+	$.fn.UixPBFormPopSaveAndRenderHtml=function(options){
+		var settings=$.extend({
+		    'tempID'            : '',
+			'colID'             : '',
+			'colIDToVar'        : '',
+			'sectionID'         : '',
+			'echoFrontendID'    : '',
+			'colNumber'         : ''
+		}
+		,options);
+		this.each(function(){
+			
+			var $this                            = $( this ),
+				tempID                           = settings.tempID,
+				colID                            = settings.colID,
+				colIDToVar                       = settings.colIDToVar,
+				sectionID                        = settings.sectionID,
+				echoFrontendID                   = settings.echoFrontendID,
+				colNumber                        = settings.colNumber,
+			
+			    //Returns the form ID of the front-end HTML code after rendering the template.
+			    renderTempID                     = uixpbform_module_form_ids( tempID, sectionID, colID, true ),
+				renderTempElements               = [],
+				
+				//All form control IDs
+				all_field_ids                    = $( '#uixpbform-form-all-field-ids-' + tempID ).attr( 'data-field-ids' ),
+				all_real_field_ids_arr           = [],
+
+			
+			    //Push clone controls to result
+			    keys                             = uixpbform_module_form_keys( $( '#module_tmpl__' + tempID ).html() ), 
+				cloneTempListKey                 = [],
+				cloneBeforeTempListElements      = [],
+				cloneTempListElements            = [],
+				cloneTempListElements_frontend   = [],
+				cloneTempListMax                 = $( $( '#module_tmpl__' + tempID ).html() ).find( '[data-clone-max]' ).attr( 'data-clone-max' );
+			
+			
+			/*! 
+			 * ************************************
+			 * Returns all real IDs
+			 *
+			 *************************************
+			 */
+			
+			if ( typeof all_field_ids !== typeof undefined ) {
+
+				var field_ids_arr = all_field_ids.split( ',' );
+				for ( var i = 0; i < field_ids_arr.length; i++ ) {
+					
+					var rid = uixpbform_to_controlName_ToVar( field_ids_arr[i], tempID, sectionID, colID );
+					if ( rid != '' ) {
+						
+						
+						var _old_field_name = uixpbform_to_controlVarID_ToName( rid ),
+							_new_field_name = uixpbform_filter_control_id( _old_field_name );
+
+						rid = rid.replace( _old_field_name, _new_field_name );
+						
+						
+						all_real_field_ids_arr.push( rid );
+					}
+					
+				}//end for
+			}
+			
+			
+			
+			//The form IDs of the front-end code after rendering module template
+			$( "[name^='"+tempID+"-"+colIDToVar+"']" ).each( function()  {
+				
+				var _id = $( this ).attr( 'id' )
+											 .replace( tempID + '-'+colIDToVar+'-', '' )
+											 .replace( '-' + sectionID + '-', '' );
+					
+				
+					if ( _id.indexOf( '__index__' ) < 0 &&  _id.indexOf( '_temp' ) >= 0 ) {
+						all_real_field_ids_arr.push( $( this ).attr( 'id' ) );
+					}
+				
+			});
+			
+			
+			
+			//The form IDs of the clone controls
+			if ( typeof cloneTempListMax !== typeof undefined && cloneTempListMax > 0 ) {
+				
+				var cloneIDs = [];
+				for ( var k = 1; k < cloneTempListMax; k++ ) {
+					for ( var i = 0; i < all_real_field_ids_arr.length; i++ ) {
+						
+						if ( all_real_field_ids_arr[i].indexOf( '_listitem' ) >= 0 ) {
+							
+							if ( $( '#' + all_real_field_ids_arr[i] + k ).length > 0 ) {
+								cloneIDs.push( all_real_field_ids_arr[i] + k );
+							}
+							
+						}
+						
+					}//end for
+
+				}//end for
+				
+				all_real_field_ids_arr = all_real_field_ids_arr.concat( cloneIDs );
+				
+			}
+			
+			
+			
+			
+			/*! 
+			 * ************************************
+			 * Traverse the controls value
+			 *
+			 *************************************
+			 */
+			for ( var i = 0; i < all_real_field_ids_arr.length; i++ ) {
+
+				var $field = $( '#' + all_real_field_ids_arr[i] );
+				
+				//Format all contents of <textarea>
+				var curdata = uixpbform_format_textarea( $field );
+				if ( curdata != '' ) {
+					$field.val( curdata );
+				}
+
+				
+				//Push the ID and values into the array for use with the template.
+				var _id    = all_real_field_ids_arr[i]
+													 .replace( tempID + '-'+colIDToVar+'-', '' )
+													 .replace( '-' + sectionID + '-', '' ),
+
+					_value = uixpbform_to_controlSaveData_ToHTML( uixpbform_filter_control_val( $field.val() ) );
+
+				
+
+				//Exclude the original form ID of the clone
+				if ( _id.indexOf( '__index__' ) < 0 ) {
+					
+					if ( _id.indexOf( '_triggerclonelist' ) >= 0 && _id.indexOf( '_temp' ) < 0 ) {
+						_id = _id + '__fieldID';
+					} else if ( _id.indexOf( '_listitem' ) >= 0 && _id.indexOf( '_temp' ) < 0 ) {
+						_id = _id + '__fieldVal';
+					}
+
+					
+					//Format the value of a form control for the specified type
+					if ( _id.indexOf( '_temp' ) < 0 ) {
+						var callbackType = $field.data( 'callback' );
+						if ( typeof callbackType !== typeof undefined ) {
+							_value = uixpbform_value_callback( _value, callbackType );
+						} else {
+							_value = uixpbform_format_text_entering( _value );
+						}	
+					}
+
+					renderTempElements.push( { [_id]: _value }  );
+				}
+					
+				
+			}//end for
+			
+			
+			
+		
+			/*! 
+			 * ************************************
+			 * Push clone controls to result
+			 *
+			 * @param  {array}  keys                             - Returns the keys of the module template.
+			 * @param  {array} cloneTempListKey                  -  The key of clone controls array
+			 * @param  {array}  cloneBeforeTempListElements      - The object of clone loops before
+			 * @param  {array}  cloneTempListElements            - The object of clone loops
+			 * @param  {array}  cloneTempListElements_frontend   - The object of clone loops for front-end template
+			 * @param  {number} cloneTempListMax                 - The maximum value of the clone
+			 *
+			 *************************************
+			 */
+
+	
+			if ( 
+				typeof cloneTempListMax !== typeof undefined && 
+				cloneTempListMax > 0 &&
+				Object.prototype.toString.call( renderTempElements ) === '[object Array]'
+			) {
+
+				
+				//<Loop each control>
+				for( var i = 0; i < renderTempElements.length; i++ ) {
+
+				
+					var _field_value = renderTempElements[i],
+						_field_str   = JSON.stringify( _field_value );
+					
+					
+					
+					// Make the cloned form into JSON format
+					if ( _field_str.indexOf( '_listitem' ) >= 0 && _field_str.indexOf( '_temp' ) < 0 ) {
+						
+						var _loop_key_id_arr  = _field_str.replace(/^\{?|\}?$/g, '' ).split( ':' ),
+							_loop_old_key_id  = _loop_key_id_arr[0].replace(/"/g, '' ),
+							_loop_new_key_id  = uixpbform_filter_control_id( uixpbform_to_cloneControlKey_ToSave( _loop_old_key_id ) );	
+
+						_field_str = _field_str.replace( _loop_old_key_id, _loop_new_key_id );
+						
+						cloneTempListElements.push( uixpbform_to_cloneControlKey_ToSave( _field_str ) );
+						
+						
+						if ( uixpbform_to_cloneControlKey_notLoopIndex( _loop_old_key_id ) ) {
+							
+							cloneBeforeTempListElements.push( uixpbform_to_cloneControlKey_ToSave( _field_str ) );
+
+						}
+						
+					}
+					
+					
+				}//</Loop each control>
+				
+				
+				for( var i = 0; i < cloneTempListElements.length; i++ ) {
+					cloneTempListElements_frontend.push( JSON.parse( cloneTempListElements[i] ) );
+				}
+			
+				
+				// Make a key of clone object
+				if( Object.prototype.toString.call( keys ) === '[object Array]' ) {
+
+					for( var i = 0; i < keys.length; i++ ) {
+						if ( keys[i].indexOf( '_triggerclonelist' ) >= 0 ) {
+							cloneTempListKey.push( keys[i] );
+						}
+					}
+
+				}
+
+
+				//The total number of each clone group
+				var cloneBeforeTempListTotal    = 0, //Include only values (excluding IDs)
+					cloneTempListTotal          = 0, //Include only values (excluding IDs)
+					cloneTempListJsonArr        = [],
+					cloneTempListJson           = '';
+
+
+				
+				 // If multiple columns are used to clone event and there are multiple clone triggers, 
+				 // the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+				var cloneBeforeTempListTotal_one_col    = 0,
+					cloneBeforeTempListTotal_two_col    = 0,
+					cloneBeforeTempListTotal_three_col  = 0,
+					cloneBeforeTempListTotal_four_col   = 0,
+					cloneTempListTotal_one_col          = 0,
+					cloneTempListTotal_two_col          = 0,
+					cloneTempListTotal_three_col        = 0,
+					cloneTempListTotal_four_col         = 0,
+					cloneTempListJson_one               = '',
+					cloneTempListJson_two               = '',
+					cloneTempListJson_three             = '',
+					cloneTempListJson_four              = '',
+					cloneTempListJsonArr_one            = [],
+					cloneTempListJsonArr_two            = [],
+					cloneTempListJsonArr_three          = [],
+					cloneTempListJsonArr_four           = [];
+				
+				
+				
+	
+				for( var k = 0; k < cloneBeforeTempListElements.length; k++ ) {
+					
+					var _v = cloneBeforeTempListElements[k];
+					
+					if ( _v.indexOf( '_one_' ) >=0 ) cloneBeforeTempListTotal_one_col++;
+					if ( _v.indexOf( '_two_' ) >=0 ) cloneBeforeTempListTotal_two_col++;
+					if ( _v.indexOf( '_three_' ) >=0 ) cloneBeforeTempListTotal_three_col++;
+					if ( _v.indexOf( '_four_' ) >=0 ) cloneBeforeTempListTotal_four_col++;
+					
+					if (
+						_v.indexOf( '_one_' ) < 0 &&
+						_v.indexOf( '_two_' ) < 0 &&
+						_v.indexOf( '_three_' ) < 0 &&
+						_v.indexOf( '_four_' ) < 0 
+					) {
+						cloneBeforeTempListTotal++;
+					}	
+					
+					
+				}	
+				
+				for( var k = 0; k < cloneTempListElements_frontend.length; k++ ) {
+					
+					var _el = cloneTempListElements_frontend[k],
+						_v  = JSON.stringify( _el );
+					
+					if ( _v.indexOf( '_one_' ) >=0 ) cloneTempListTotal_one_col++, cloneTempListJsonArr_one.push( _el );
+					if ( _v.indexOf( '_two_' ) >=0 ) cloneTempListTotal_two_col++, cloneTempListJsonArr_two.push( _el );
+					if ( _v.indexOf( '_three_' ) >=0 ) cloneTempListTotal_three_col++, cloneTempListJsonArr_three.push( _el );
+					if ( _v.indexOf( '_four_' ) >=0 ) cloneTempListTotal_four_col++, cloneTempListJsonArr_four.push( _el );
+					
+					if (
+						_v.indexOf( '_one_' ) < 0 &&
+						_v.indexOf( '_two_' ) < 0 &&
+						_v.indexOf( '_three_' ) < 0 &&
+						_v.indexOf( '_four_' ) < 0 
+					) {
+						cloneTempListTotal++;
+						cloneTempListJsonArr.push( _el );
+
+					}
+					
+	
+				}
+				
+				
+				
+				// Returns the group string of the front-end rendering template that has been cloned
+				cloneTempListJson = uixpbform_cloned_groupStr_frontend( cloneTempListJsonArr, cloneTempListTotal, cloneBeforeTempListTotal );
+				
+				cloneTempListJson_one = uixpbform_cloned_groupStr_frontend( cloneTempListJsonArr_one, cloneTempListTotal_one_col, cloneBeforeTempListTotal_one_col );
+				
+				cloneTempListJson_two = uixpbform_cloned_groupStr_frontend( cloneTempListJsonArr_two, cloneTempListTotal_two_col, cloneBeforeTempListTotal_two_col );
+				
+				cloneTempListJson_three = uixpbform_cloned_groupStr_frontend( cloneTempListJsonArr_three, cloneTempListTotal_three_col, cloneBeforeTempListTotal_three_col );
+				
+				cloneTempListJson_four = uixpbform_cloned_groupStr_frontend( cloneTempListJsonArr_four, cloneTempListTotal_four_col, cloneBeforeTempListTotal_four_col );
+
+
+			
+				//Add the looped data to the trigger
+				if ( cloneTempListKey.length > 0 ) {
+
+					for ( var p = 0; p < cloneTempListKey.length; p++ ) {
+
+						var _key  = cloneTempListKey[p];
+					
+						if ( _key.indexOf( '_one_' ) >= 0 && cloneTempListJson_one.length > 0 ) renderTempElements.push( { [_key]: cloneTempListJson_one } );
+						if ( _key.indexOf( '_two_' ) >= 0 && cloneTempListJson_two.length > 0 ) renderTempElements.push( { [_key]: cloneTempListJson_two } );
+						if ( _key.indexOf( '_three_' ) >= 0 && cloneTempListJson_three.length > 0 ) renderTempElements.push( { [_key]: cloneTempListJson_three } );
+						if ( _key.indexOf( '_four_' ) >= 0 && cloneTempListJson_four.length > 0 ) renderTempElements.push( { [_key]: cloneTempListJson_four } );
+
+						if (
+							_key.indexOf( '_one_' ) < 0 &&
+							_key.indexOf( '_two_' ) < 0 &&
+							_key.indexOf( '_three_' ) < 0 &&
+							_key.indexOf( '_four_' ) < 0 &&
+							cloneTempListJson.length > 0
+						) {
+							renderTempElements.push( { [_key]: cloneTempListJson } );
+						}
+
+					}//end for
+
+				}//end if
+
+
+			}
+			
+			
+			
+			/*! 
+			 * ************************************
+			 * Format the JSON data format for the template
+			 *	
+			 *************************************
+			 */
+			renderTempElements = uixpbform_arr_to_tempjson( renderTempElements, false, true );
+			
+			 
+			/*! 
+			 * ************************************
+			 * Returns the JSON result value of the module template for front-end rendering
+			 * Convert the english letter to the original form identifier.
+			 *	
+			 *************************************
+			 */	
+			renderTempElements = uixpbform_module_form_JsonResult_frontend( renderTempElements );
+
+			
+		    //Empty container contents
+			$( echoFrontendID ).html( '' );
+
+			
+			//Use the template to render to the front page
+			$( '#frontend_module_tmpl__' + tempID ).tmpl( JSON.parse( renderTempElements ) ).appendTo( echoFrontendID );
+
+			
+			//Update the form in real time
+			var htmlcode = $( echoFrontendID ).html();
+			$( '#' + renderTempID ).val( htmlcode );
+
+			//Render HTML Viewport (Relative to the front of the page)
+			$( document ).UixPBRenderHTML({ divID: '#section_' + sectionID + '__' + colNumber, value: uixpbform_format_text_decode( htmlcode ) });
 			
 		})
 	}

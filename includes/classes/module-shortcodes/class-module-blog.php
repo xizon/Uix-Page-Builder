@@ -34,7 +34,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 		 */
 		public static function func( $atts, $content = null ) {
 			extract( shortcode_atts( array( 
-				'pagination'      => 'false',
+				'pagination'      => 0,
 				'loop_layout'     => 1,
 				'show'            => 10, 
 				'cat'             => 'all', 
@@ -259,7 +259,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 				 *
 				 */
 			   $pagecode = '';
-			   if ( $pagination == 'true' ) {
+			   if ( $pagination == 1 ) {
 				   
 					$GLOBALS[ 'paged_temp' ]  = 1;
 					$pagehtml                = '';

@@ -17,7 +17,7 @@
 	7. Grid
 	8. Image Slider
 	9. Custom Menu
-	Required: Apply the original scripts
+	Required: Invoking JavaScript code in an iframe from the parent page
 	
 
 ************************************* */
@@ -768,10 +768,56 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				fid                = $this.data( 'filter-id' ),
 				filterBox          = $( '#'+classprefix+'filter-stage-'+fid+'' ),
 				filterNav          = $( '#'+classprefix+'cat-list-'+fid+'' ),
+				filterNavLiDisplay = $( '#'+classprefix+'cat-list-'+fid+''+'-container' ),
 				filterItemSelector = '.'+classprefix+'item';
 
 			if ( typeof activated === typeof undefined || activated === 0 ) {
+				
+				
+				//------ Display categories on page
+				var catlistStr   = '',
+				    itemsStr     = filterBox.html().replace(/&nbsp;/g, ' ' ),
+					re           = new RegExp("(.*?)\<\/div\>","gim"),
+					v            = '<div class="'+classprefix+'type">',
+					re           = new RegExp("" + v + "(.*?)\<\/div\>","gim"),
+					arr          = [];
 
+
+				itemsStr.replace( re, function(s, match) {
+					   arr.push(match);
+					  });	
+
+
+				//Remove Duplicates from JavaScript Array
+				var uniqueArr = [];
+				uniqueArr = arr.filter(function(item, pos, self) {
+					return self.indexOf(item) == pos;
+				});
+
+
+				//Output
+				var newArr = uniqueArr;
+				for( var j = 0; j < newArr.length; j++ ) {
+					
+					var _pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]"),
+						_slug = ""; 
+					
+					for (var i = 0; i < newArr[j].length; i++) { 
+						_slug = _slug + newArr[j].substr( i, 1 ).replace( _pattern, '' ); 
+					} 
+
+					_slug = _slug.replace(/\s/g, '-').toLowerCase();
+					
+					
+					catlistStr += '<li><a href="javascript:" data-group="'+_slug+'">'+newArr[j]+'</a></li>';
+				}
+				
+				filterNavLiDisplay.html( catlistStr );
+				
+				
+				
+								  
+			    //------ Filterable effect
 				 filterBox.shuffle({
 					itemSelector: filterItemSelector,
 					speed: 550, // Transition/animation speed (milliseconds).
@@ -779,7 +825,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 					sizer: null // Sizer element. Use an element to determine the size of columns and gutters.
 				  });
 
-				//init
+			
 				imagesLoaded( '#'+classprefix+'filter-stage-'+fid+'' ).on( 'always', function() {
 					 $( '#'+classprefix+'cat-list-'+fid+' li:first a' ).trigger( 'click' );
 				 });
@@ -1021,19 +1067,31 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 /*! 
  * ************************************
- * Apply the original scripts
- *
- * !!!! Required Method !!!!
+ * Invoking JavaScript code in an iframe from the parent page
+ * --------------------------------
  * This is a method that joint back-end panel and front-end javascripts preview in real time.
- * 
+ * This file is only used for front-end pages, and you can modify other names of JavaScript functions. 
  *
+ * !!! Do not delete and modify this function "uix_pb_render_trigger()". !!!!
  *************************************
  */	
+function uix_pb_render_trigger() {
+	( function( $ ) {
+	"use strict";
+		$( document ).ready( function() {
+			$.uix_pb_render();		
+		} );
+
+	} ) ( jQuery );
+	
+};
+
+
 ( function($) {
     'use strict';
 
 	/* 
-	 * Default scripts of this plugin
+	 * Apply the original scripts of this plugin
 	 * --------------------------------
 	*/
 	$.extend( { 
@@ -1043,10 +1101,10 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				scipts_documentReady = uix_pb.components.documentReady;
 			
 			
-			for ( var i = 0, len = scipts_pageLoaded.length; i < len; i++ ) {
+			for ( var i = 0; i < scipts_pageLoaded.length; i++ ) {
 			     scipts_pageLoaded[i]();
 			}
-			for ( var i = 0, len = scipts_documentReady.length; i < len; i++ ) {
+			for ( var i = 0; i < scipts_documentReady.length; i++ ) {
 			     scipts_documentReady[i]( $ );
 			}	
 	
@@ -1075,12 +1133,27 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 			var backendPanel = $( '.uix-page-builder-visual-builder', window.parent.document ).length;
 
 			if ( backendPanel > 0 ) {
+				$.uix_pb_init();
+				settings.action();
 				
-				setInterval( function() {
-					$.uix_pb_init();
-					settings.action();
-				}, 1000 );
-
+				//Compatible plugin: Uix Slideshow
+				if ( $.isFunction( $.uixslideshow_default ) ) { 
+					$.uixslideshow_default(); 
+				}	
+				if ( $.isFunction( $.uixslideshow_custom ) ) { 
+					$.uixslideshow_custom(); 
+				}	
+				
+				//Compatible plugin: Uix Products
+				if ( $.isFunction( $.uixproducts_default ) ) { 
+					$.uixproducts_default(); 
+				}	
+				if ( $.isFunction( $.uixproducts_custom ) ) { 
+					$.uixproducts_custom(); 
+				}				
+				
+				
+				
 			}
 	
 		   
@@ -1088,9 +1161,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 		} 
 	}); 
 	
-    $( document ).ready( function() {
-		$.uix_pb_render();		
-    } );
-	
 	
 } ) ( jQuery );
+
+

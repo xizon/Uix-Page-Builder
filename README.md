@@ -56,6 +56,7 @@ The currently available default elements:
   
 = Features =
 
+* A particularly simple custom form and template API.
 * Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin [Uix Products](https://wordpress.org/plugins/uix-products/))
 * Support Custom Post Types to create a slideshow in WordPress. (Require the WP plugin [Uix Slideshow](https://wordpress.org/plugins/uix-slideshow/))
 * You can switch between **"Visual Builder"** and **"Default Editor"** modes at any time on the Pages Add New/Edit Screen.
@@ -118,289 +119,308 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
-##### = 1.4.6 (September 23, 2017) =
 
-* Highlighting the page builder shortcode.
-* Support for quick editing of page titles and slug when publishing content.
+##### =1.4.7 (October 14, 2017) =
 
+* New: New API rebuilds. (Important!)
+* New: Upgraded core API for theme developer customization.
+* New: Support a particularly simple custom form and template API.
+* Tweak: Removed ajax method of all modules pop-window in admin panel, reduce High CPU Usage of Wordpress.
+* Tweak: Each module manages the response speed by more than 10 times.
+* Tweak: Simplifies all module APIs.
+* Tweak: Reference jQuery Templates plugin to create pure HTML templates of front-end page.
+* Tweak: Optimized array loop efficiency.
 
 
 
-##### = 1.4.5 (September 21, 2017) =
 
-* Rebuild front-end stylesheets and default templates.
-* Optimized the default front-end stylesheets and scripts.
-* Optimized the experience of module selection.
-* Synchronize a scroll effect of Drag & Drop modules of left sidebar when you manage front-end page.
-* Fixed an error in the builder sidebar scrolling.
-* Re-optimized the front page of the grid system and all the module spacing.
-* Simplifies the front page of the module styles and scripts.
-* The Editor supports Media. You can insert media files into the HTML Editor using the Parallax module.
+##### =1.4.6 (September 23, 2017) =
 
+* Tweak: Highlighting the page builder shortcode.
+* New: Support for quick editing of page titles and slug when publishing content.
 
-##### = 1.4.4 (September 19, 2017) =
 
-* Removed the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
-* Improve the Uix Shortcods assistant(helper) experience in admin panel.
 
 
-##### = 1.4.3 (September 16, 2017) =
+##### =1.4.5 (September 21, 2017) =
 
-* Optimized file structure in admin panel.
-* Added a custom JavaScript template annotation to each module.
-* Upgraded core API for theme developer customization.
-* Added the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
-* Added a new template guide to create pages faster and easier.
-* Added a new module: Custom Menu (new). Supports multiple styles of choice.
-* Optimize the default companion page template "tmpl-uix_page_builder.php".
-* Updated a latest video demo.
-* Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: shadower, shadower pro, twentyfifteen, twentyseventeen, twentysixteen and so on.
-* Supports Right-To-Left (RTL) direction and updated the core stylesheet file of front-end.
-* Supports Right-To-Left (RTL) direction in admin panel.
+* Tweak: Rebuild front-end stylesheets and default templates.
+* Tweak: Optimized the default front-end stylesheets and scripts.
+* Tweak: Optimized the experience of module selection.
+* Tweak: Synchronize a scroll effect of Drag & Drop modules of left sidebar when you manage front-end page.
+* FIX: Fixed an error in the builder sidebar scrolling.
+* Tweak: Re-optimized the front page of the grid system and all the module spacing.
+* Tweak: Simplifies the front page of the module styles and scripts.
+* Tweak: The Editor supports Media. You can insert media files into the HTML Editor using the Parallax module. 
 
 
-##### = 1.4.2 (September 14, 2017) =
+##### =1.4.4 (September 19, 2017) =
 
-* Optimized file structure in admin panel.
+* Tweak: Removed the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+* Tweak: Improve the Uix Shortcods assistant(helper) experience in admin panel.
 
 
 
-##### = 1.4.1 (September 11, 2017) =
+##### =1.4.3 (September 16, 2017) =
 
-* Added the color transparency mode.
-* Added color picker plugin to TinyMCE Editor.
+* Tweak: Optimized file structure in admin panel.
+* New: Added a custom JavaScript template annotation to each module.
+* Tweak: Upgraded core API for theme developer customization.
+* New: Added the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
+* New: Added a new template guide to create pages faster and easier.
+* New: Added a new module: Custom Menu (new). Supports multiple styles of choice.
+* Tweak: Optimize the default companion page template "tmpl-uix_page_builder.php".
+* Tweak: Updated a latest video demo.
+* Tweak: Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: shadower, shadower pro, twentyfifteen, twentyseventeen, twentysixteen and so on.
+* New: Supports Right-To-Left (RTL) direction and updated the core stylesheet file of front-end.
+* New: Supports Right-To-Left (RTL) direction in admin panel.
 
 
-##### = 1.4.0 (September 9, 2017) =
+##### =1.4.2 (September 14, 2017) =
 
-* Fixed some problems with default templates that could not be synchronized.
-* Fixed an syntax error that may occur when obtaining portfolio categorization.
+* Tweak: Optimized file structure in admin panel.
 
 
-##### = 1.3.9 (September 8, 2017) =
 
-* Fixed an error that the browser might be stuck when saving data. (important)
-* Optimized the default templates (.xml).
+##### =1.4.1 (September 11, 2017) =
 
+* New: Added the color transparency mode.
+* New: Added color picker plugin to TinyMCE Editor.
 
-##### = 1.3.7 (September 7, 2017) =
 
-* Support .min files of front-end when the minimized file exists, get lower download times and save bandwidth.
-* "{temp_preview_thumb_path}" of template(.xml) variable was deprecated after version 1.3.7 (included), and it is compatible with older versions.
-* Fixed a possible error: The js escaped characters will can not be correctly output because the speed of bandwidth.
 
+##### =1.4.0 (September 9, 2017) =
 
-##### = 1.3.6 (September 7, 2017) =
+* FIX: Fixed some problems with default templates that could not be synchronized.
+* FIX: Fixed an syntax error that may occur when obtaining portfolio categorization.
 
-* Fixed an error in the form window size adjustment.
-* Fixed a bug of layout data save: Maximum call stack size exceeded.
-* Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: twentyfifteen, twentyseventeen, twentysixteen and so on.
-* Added the page builder form editor for RTL.
-* Increase the text of the page builder editor to up to 200+ colors.
 
+##### =1.3.9 (September 8, 2017) =
 
-##### = 1.3.5 (September 6, 2017) =
+* FIX: Fixed an error that the browser might be stuck when saving data. (important)
+* Tweak: Optimized the default templates (.xml).
 
-* Added a new module type: Uix Slideshow (new). Require the WP plugin "Uix Slideshow".
-* Added a WP filter "uixpb_templates_filter". Theme template directory name of front-end can use filter "uixpb_templates_filter" to change it.
-* Added a new module: Sidebar (new). Subordinate to WP Widgets.
-* Added a new module: Instagram Feed (new).
-* Added a new option of Blog module.
-* Optimized the "Parallax" module.
-* Optimized all default templates and all certified by W3C.
-* Optimized some functions of character escape and removed unnecessary escapes.
-* Optimize the core architecture.
-* Optimized page builder form control properties.
-* Optimized the form experience.
-* Optimized core stylesheets and scripts for front-end. In order to be compatible with each theme, the font-size uses fixed pixels.
-* Upgraded the premade templates API.
-* Fixed a bug of the grid system.
-* Fixed a bug of textarea tag white space display.
-* Fixed some scripts error that could have occurred during template switching.
-* Fixed some minor bugs of stylesheets.
-* Supports multiple structures of custom template.
-* Added the latest video demo.
-* Modify the front-end style sheets & scripts priority to the last.
-* Beautify the simple theme developer documentation.
-* Enhanced all textarea field so that they all support HTML code and single line break.
-* Changed the live rendering mode when selecting a premade template.
 
 
+##### =1.3.7 (September 7, 2017) =
 
-##### = 1.3.1 (August 31, 2017) =
+* New: Support .min files of front-end when the minimized file exists, get lower download times and save bandwidth.
+* Tweak: "{temp_preview_thumb_path}" of template(.xml) variable was deprecated after version 1.3.7 (included), and it is compatible with older versions.
+* FIX: Fixed a possible error: The js escaped characters will can not be correctly output because the speed of bandwidth.
 
-* Upgraded core API for theme developer customization.
-* Added a new module type: Slider (new).
-* Added "Classic" template (new).
-* Improved using instructions.
-* Optimized template file(.xml) structure.
-* Fixed a small bug when the template was exported.
-* Fixed an issue for the layout of the html editor & textarea in page builder.
 
 
+##### =1.3.6 (September 7, 2017) =
 
-##### = 1.3.0 (August 30, 2017) =
+* FIX: Fixed an error in the form window size adjustment.
+* FIX: Fixed a bug of layout data save: Maximum call stack size exceeded.
+* Tweak: Optimized the default front-end stylesheets, so that other themes can be better compatible. Such as: twentyfifteen, twentyseventeen, twentysixteen and so on.
+* New: Added the page builder form editor for RTL.
+* New: Increase the text of the page builder editor to up to 200+ colors.
 
-* Fixed possible compatibility errors.
-* Added a new module type: Uix Products (new). Require the WP plugin "Uix Products".
-* Simplifies the templates directory for theme developer customization.
-* Optimized the responsiveness of the visual editor.
-* Optimize class of the excerpt.
-* Optimized portfolio styles of front-end.
-* Added new feature: Support to delete data of custom Content Template.
-* Support Custom Post Types to create a portfolio list in WordPress.
-* Removed some functions that is useless.
 
+##### =1.3.5 (September 6, 2017) =
 
+* New: Added a new module type: Uix Slideshow (new). Require the WP plugin "Uix Slideshow".
+* New: Added a WP filter "uixpb_templates_filter". Theme template directory name of front-end can use filter "uixpb_templates_filter" to change it.
+* New: Added a new module: Sidebar (new). Subordinate to WP Widgets.
+* New: Added a new module: Instagram Feed (new).
+* New: Added a new option of Blog module.
+* Tweak: Optimized the "Parallax" module.
+* Tweak: Optimized all default templates and all certified by W3C.
+* Tweak: Optimized some functions of character escape and removed unnecessary escapes.
+* Tweak: Optimize the core architecture.
+* Tweak: Optimized page builder form control properties.
+* Tweak: Optimized the form experience.
+* Tweak: Optimized core stylesheets and scripts for front-end. In order to be compatible with each theme, the font-size uses fixed pixels.
+* Tweak: Upgraded the premade templates API.
+* FIX: Fixed a bug of the grid system.
+* FIX: Fixed a bug of textarea tag white space display.
+* FIX: Fixed some scripts error that could have occurred during template switching.
+* FIX: Fixed some minor bugs of stylesheets.
+* New: Supports multiple structures of custom template.
+* New: Added the latest video demo.
+* Tweak: Modify the front-end style sheets & scripts priority to the last.
+* Tweak: Beautify the simple theme developer documentation.
+* Tweak: Enhanced all textarea field so that they all support HTML code and single line break.
+* Tweak: Changed the live rendering mode when selecting a premade template.
 
-##### = 1.2.8 (August 7, 2017) =
 
-* Fixed a display bug for the editor form type.
-* Added a new module type: Contact Form (new). Compatible with WP plugin Contact Form 7.
-* Added the editor's source code mode.
 
+##### =1.3.1 (August 31, 2017) =
 
-##### = 1.2.7 (June 27, 2017) =
+* Tweak: Upgraded core API for theme developer customization.
+* New: Added a new module type: Slider (new).
+* New: Added "Classic" template (new).
+* Tweak: Improved using instructions.
+* Tweak: Optimized template file(.xml) structure.
+* FIX: Fixed a small bug when the template was exported.
+* FIX: Fixed an issue for the layout of the html editor & textarea in page builder.
 
-* Optimize the embedding method of Google Maps.
 
 
-##### = 1.2.6 (June 27, 2017) =
+##### =1.3.0 (August 30, 2017) =
 
-* Rebuild the core scripts for back-end.
-* Fixed a little bug of TinyMCE Editor.
-* Added default template preview images before you selected.
+* FIX: Fixed possible compatibility errors.
+* New: Added a new module type: Uix Products (new). Require the WP plugin "Uix Products".
+* Tweak: Simplifies the templates directory for theme developer customization.
+* Tweak: Optimized the responsiveness of the visual editor.
+* Tweak: Optimize class of the excerpt.
+* Tweak: Optimized portfolio styles of front-end.
+* New: Added new feature: Support to delete data of custom Content Template.
+* New: Support Custom Post Types to create a portfolio list in WordPress.
+* Tweak: Removed some functions that is useless.
 
 
 
-##### = 1.2.5 (June 26, 2017) =
 
-* Simplified core API. ( For developers, custom modules are much simpler! )
-* Rebuilt WYSIWYG Editor For Inline Web Content.
-* Optimized response speed for back-end.
-* Fix the display of posts that do not match the error.  ( For blog module )
-* Optimized core stylesheets and scripts for front-end.
-* Removed "Contact Form" module based on WP comment form.
-* Fixed some minor bugs.
+##### =1.2.8 (August 7, 2017) =
 
+* FIX: Fixed a display bug for the editor form type.
+* New: Added a new module type: Contact Form (new). Compatible with WP plugin Contact Form 7.
+* New: Added the editor's source code mode.
 
 
-##### = 1.2.1 (June 17, 2017) =
+##### =1.2.7 (June 27, 2017) =
 
-* Upgraded core API. ( For developers, custom modules are much simpler! )
-* Upgraded "Uix Page Builder Anchor Links" form the Menus editor page.
+* Tweak: Optimize the embedding method of Google Maps.
 
 
 
-##### = 1.2.0 (June 13, 2017) =
+##### =1.2.6 (June 27, 2017) =
 
-* Added two Pricing styles (new).
-* Added a new module type: Blog (new).
-* Optimized pricing styles of front-end.
-* Fixed a bug of duplicated buttons clone when multiple button IDs are similar in the visual builder screen.
-* Fixed a bug of the on/off switch button can not be effective in real time.
+* Tweak: Rebuild the core scripts for back-end.
+* FIX: Fixed a little bug of TinyMCE Editor.
+* New: Added default template preview images before you selected.
 
 
 
+##### =1.2.5 (June 26, 2017) =
 
-##### = 1.1.9 (April 8, 2017) =
+* Tweak: Simplified core API. ( For developers, custom modules are much simpler! )
+* Tweak: Rebuilt WYSIWYG Editor For Inline Web Content.
+* Tweak: Optimized response speed for back-end.
+* FIX: Fix the display of posts that do not match the error.  ( For blog module )
+* Tweak: Optimized core stylesheets and scripts for front-end.
+* Tweak: Removed "Contact Form" module based on WP comment form.
+* FIX: Fixed some minor bugs.
 
-* Optimized admin panel of Custom CSS.
 
 
-##### = 1.1.8 (April 5, 2017)  =
+##### =1.2.1 (June 17, 2017) =
 
-* Optimized front-end controller for your theme in admin panel.
-* Upgraded core API. ( For developers, custom modules are much simpler! )
-* Optimized core custom functions.
-* Added function of template parameters.
-* Added function of form javascripts output when in ajax or default state.
-* Improve the stability of the plug-in.
-* Optimized core stylesheets for front-end.
+* Tweak: Upgraded core API. ( For developers, custom modules are much simpler! )
+* Tweak: Upgraded "Uix Page Builder Anchor Links" form the Menus editor page.
 
 
-##### = 1.1.6 (April 2, 2017)  =
 
-* Compatible with low version PHP (5.3+)
-* Fixed some minor errors in the low version of PHP.
 
+##### =1.2.0 (June 13, 2017) =
 
-##### = 1.1.5 (April 1, 2017) =
+* New: Added two Pricing styles (new).
+* New: Added a new module type: Blog (new).
+* Tweak: Optimized pricing styles of front-end.
+* FIX: Fixed a bug of duplicated buttons clone when multiple button IDs are similar in the visual builder screen.
+* FIX: Fixed a bug of the on/off switch button can not be effective in real time.
 
-* Upgraded core API. ( For developers, custom modules are much simpler! )
-* Optimize the page builder form structure.
-* Fixed some bugs of TinyMCE editor.
-* Fixed some bugs of form elements.
 
+##### =1.1.9 (April 8, 2017) =
 
-##### = 1.1.4 (March 28, 2017) =
+* Tweak: Optimized admin panel of Custom CSS.
 
-* Resolved compatibility errors that may occur with the editor.
-* Optimized pop windows UI of editor for online preview.
 
+##### =1.1.8 (April 5, 2017)  =
 
-##### = 1.1.3 (March 25, 2017) =
+* Tweak: Optimized front-end controller for your theme in admin panel.
+* Tweak: Upgraded core API. ( For developers, custom modules are much simpler! )
+* Tweak: Optimized core custom functions.
+* New: Added function of template parameters.
+* New: Added function of form javascripts output when in ajax or default state.
+* Tweak: Improve the stability of the plug-in.
+* Tweak: Optimized core stylesheets for front-end.
 
-* Added Draft and Publish buttons in the visual builder screen.
-* some minor bugs for enqueue scripts.
-* Spy pop windows of editor for online preview.
-* Supported select the page template on visual builder screen.
 
+##### =1.1.6 (April 2, 2017)  =
 
-##### = 1.1.1 (March 1, 2017) =
+* Tweak: Compatible with low version PHP (5.3+)
+* FIX: Fixed some minor errors in the low version of PHP.
 
-* Added function of responsive switching preview (new).
 
+##### =1.1.5 (April 1, 2017) =
 
-##### = 1.1.0 (February 25, 2017) =
+* Tweak: Upgraded core API. ( For developers, custom modules are much simpler! )
+* Tweak: Optimize the page builder form structure.
+* FIX: Fixed some bugs of TinyMCE editor.
+* FIX: Fixed some bugs of form elements.
 
-* Upgraded visual builder core UI.
 
+##### =1.1.4 (March 28, 2017) =
 
+* Tweak: Resolved compatibility errors that may occur with the editor.
+* Tweak: Optimized pop windows UI of editor for online preview.
 
-##### = 1.0.7 (February 22, 2017) =
 
-* Optimized drag and drop controls.
-* Upgraded visual builder panel.
-* Fixed some bugs that loaded row misalignment.
-* Optimized backend scripts.
+##### =1.1.3 (March 25, 2017) =
 
+* New: Added Draft and Publish buttons in the visual builder screen.
+* FIX: Some minor bugs for enqueue scripts.
+* Tweak: Spy pop windows of editor for online preview.
+* Tweak: Supported select the page template on visual builder screen.
 
-##### = 1.0.6 (February 2, 2017) =
 
-* Optimized visual builder panel.
-* Fixed a bug that added row misalignment.
+##### =1.1.1 (March 1, 2017) =
 
+* New: Added function of responsive switching preview (new).
 
-##### = 1.0.5 (January 28, 2017) =
 
-* Added visual builder mode (new).
-* You can switch between "Visual Builder" and "Default Editor" modes at any time.
-* Optimization of the admin panel structure.
+##### =1.1.0 (February 25, 2017) =
 
+* Tweak: Upgraded visual builder core UI.
 
-##### = 1.0.2 (January 25, 2017) =
 
-* Optimized core stylesheets for front-end.
-* Added "Glory" template (new).
-* Added "Comfortableness" template (new).
-* Enhanced "Parallax" module.
-* Optimized for the editor.
-* Optimized for the color selector.
-* Fixed error in default template image path.
 
+##### =1.0.7 (February 22, 2017) =
 
-##### = 1.0.1 (January 22, 2017) =
+* Tweak: Optimized drag and drop controls.
+* Tweak: Upgraded visual builder panel.
+* FIX: Fixed some bugs that loaded row misalignment.
+* Tweak: Optimized backend scripts.
 
-* Optimized enqueue scripts for front-end.
-* Enhanced theme compatibility.
 
+##### =1.0.6 (February 2, 2017) =
 
+* Tweak: Optimized visual builder panel.
+* FIX: Fixed a bug that added row misalignment.
 
-##### = 1.0.0 (January 17, 2017) =
+
+##### =1.0.5 (January 28, 2017) =
+
+* New: Added visual builder mode (new).
+* Tweak: You can switch between "Visual Builder" and "Default Editor" modes at any time.
+* Tweak: Optimization of the admin panel structure.
+
+
+##### =1.0.2 (January 25, 2017) =
+
+* Tweak: Optimized core stylesheets for front-end.
+* New: Added "Glory" template (new).
+* New: Added "Comfortableness" template (new).
+* Tweak: Enhanced "Parallax" module.
+* Tweak: Optimized for the editor.
+* Tweak: Optimized for the color selector.
+* FIX: Fixed error in default template image path.
+
+
+##### =1.0.1 (January 22, 2017) =
+
+* Tweak: Optimized enqueue scripts for front-end.
+* Tweak: Enhanced theme compatibility.
+
+
+
+##### =1.0.0 (January 17, 2017) =
 
 * First release.
-
 
 
 
@@ -459,6 +479,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - [jQuery Parallax](http://www.ianlunn.co.uk/plugins/jquery-parallax/)
 - [Shuffle.js](https://vestride.github.io/Shuffle/)
 - [wp-color-picker-alpha](https://github.com/23r9i0/wp-color-picker-alpha)
+- [jQuery Templates plugin](http://github.com/jquery/jquery-tmpl)
 
 
 

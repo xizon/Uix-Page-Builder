@@ -319,7 +319,7 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 				foreach ( $tempdata as $key => $v ) {
 					
 					
-					$json_data       = UixPageBuilder::convert_img_path( $v[ 'data' ], 'load' );
+					$json_data       = UixPageBuilder::format_page_final_data( UixPageBuilder::convert_img_path( $v[ 'data' ], 'load' ) );
 					$preview_thumb   = UixPageBuilder::convert_img_path( $v['thumb'], 'load' );
 					$checked         = '';
 	
@@ -367,7 +367,7 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 
 					if ( isset( $xValue['item'][$xmli]['data'] ) ) { //required
 						
-						$json_data       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'load' );			
+						$json_data       = UixPageBuilder::format_page_final_data( UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'load' ) );			
 						$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'load' );
 						$temp_name       = $xValue['item'][$xmli]['name'];
 						$checked         = '';

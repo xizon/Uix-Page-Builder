@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-09-23 06:51+0000\n"
+"POT-Creation-Date: 2017-10-14 12:49+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -23,84 +23,77 @@ msgstr ""
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: uix-page-builder.php:237
+#: uix-page-builder.php:253
 msgid "Primary Menu"
 msgstr ""
 
-#: uix-page-builder.php:347
+#: uix-page-builder.php:363
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: uix-page-builder.php:348 includes/admin/bulider/post-extensions-init.php:626
+#: uix-page-builder.php:364 includes/admin/bulider/post-extensions-init.php:626
 msgid "Uix Page Builder"
 msgstr ""
 
-#: uix-page-builder.php:361 uix-page-builder.php:362 uix-page-builder.php:427
+#: uix-page-builder.php:377 uix-page-builder.php:378 uix-page-builder.php:443
 #: helper/settings.php:61
 msgid "How to use?"
 msgstr ""
 
-#: uix-page-builder.php:369 uix-page-builder.php:370 helper/settings.php:71
+#: uix-page-builder.php:385 uix-page-builder.php:386 helper/settings.php:71
 msgid "Template Files"
 msgstr ""
 
-#: uix-page-builder.php:377 uix-page-builder.php:378
+#: uix-page-builder.php:393 uix-page-builder.php:394
 msgid "Custom CSS"
 msgstr ""
 
-#: uix-page-builder.php:387 uix-page-builder.php:388
+#: uix-page-builder.php:403 uix-page-builder.php:404
 msgid "For Theme Developer"
 msgstr ""
 
-#: uix-page-builder.php:397 uix-page-builder.php:398
+#: uix-page-builder.php:413 uix-page-builder.php:414
 msgid "Helper"
 msgstr ""
 
-#: uix-page-builder.php:474 uix-page-builder.php:480
+#: uix-page-builder.php:490 uix-page-builder.php:496
 #: includes/classes/class-frontend-render.php:35
 #, php-format
 msgid "Untitled-%1$s"
 msgstr ""
 
-#: uix-page-builder.php:1640
+#: uix-page-builder.php:1519
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-page-builder.php:1758
+#: uix-page-builder.php:1637
 msgid "Operation successfully completed!"
 msgstr ""
 
-#: uix-page-builder.php:1768
+#: uix-page-builder.php:1647
 msgid ""
 "There was a problem copying your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1776
+#: uix-page-builder.php:1655
 msgid ""
 "There was a problem removing your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1779
+#: uix-page-builder.php:1658
 msgid "Remove successful!"
 msgstr ""
 
-#: uix-page-builder.php:1994 uix-page-builder.php:2022
+#: uix-page-builder.php:1892 uix-page-builder.php:1920
 msgid "- All -"
 msgstr ""
 
-#: uix-page-builder.php:2107
-#: includes/admin/bulider/components/pb-ui-form.php:38
-#: includes/admin/bulider/components/pb-ui-gridster.php:354
-#: includes/admin/bulider/components/pb-ui-gridster.php:557
-msgid "Section"
-msgstr ""
-
-#: uix-page-builder.php:2213
+#: uix-page-builder.php:2005
 msgid "(no title)"
 msgstr ""
 
@@ -187,8 +180,8 @@ msgstr ""
 
 #: helper/tabs/about.php:29 uixpb_templates/modules/config.php:63
 #: uixpb_templates/modules/config.php:68
-#: uixpb_templates/modules/uix_pb_module_parallax.php:89
-#: uixpb_templates/modules/uix_pb_module_parallax.php:251
+#: uixpb_templates/modules/uix_pb_module_parallax.php:104
+#: uixpb_templates/modules/uix_pb_module_parallax.php:250
 msgid "Parallax"
 msgstr ""
 
@@ -213,27 +206,27 @@ msgid "Team (2 layouts)"
 msgstr ""
 
 #: helper/tabs/about.php:35 uixpb_templates/modules/config.php:187
-#: uixpb_templates/modules/uix_pb_module_clients.php:233
+#: uixpb_templates/modules/uix_pb_module_clients.php:196
 msgid "Clients"
 msgstr ""
 
 #: helper/tabs/about.php:36 uixpb_templates/modules/config.php:215
-#: uixpb_templates/modules/uix_pb_module_accordion.php:177
+#: uixpb_templates/modules/uix_pb_module_accordion.php:156
 msgid "Accordion"
 msgstr ""
 
 #: helper/tabs/about.php:37 uixpb_templates/modules/config.php:223
-#: uixpb_templates/modules/uix_pb_module_tabs.php:181
+#: uixpb_templates/modules/uix_pb_module_tabs.php:157
 msgid "Tabs"
 msgstr ""
 
 #: helper/tabs/about.php:38 uixpb_templates/modules/config.php:230
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:214
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:211
 msgid "Author Card"
 msgstr ""
 
 #: helper/tabs/about.php:39 uixpb_templates/modules/config.php:237
-#: uixpb_templates/modules/uix_pb_module_bar.php:269
+#: uixpb_templates/modules/uix_pb_module_bar.php:278
 msgid "Progress Bar"
 msgstr ""
 
@@ -246,12 +239,12 @@ msgid "Blog"
 msgstr ""
 
 #: helper/tabs/about.php:42 uixpb_templates/modules/config.php:82
-#: uixpb_templates/modules/uix_pb_module_hello.php:220
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:238
 msgid "Slider"
 msgstr ""
 
 #: helper/tabs/about.php:43 uixpb_templates/modules/config.php:252
-#: uixpb_templates/modules/uix_pb_module_instagram.php:122
+#: uixpb_templates/modules/uix_pb_module_instagram.php:119
 msgid "Instagram Feed"
 msgstr ""
 
@@ -272,53 +265,57 @@ msgid "Contact Form (Require the WP plugin \"Contact Form 7\")"
 msgstr ""
 
 #: helper/tabs/about.php:52
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:176
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:317
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:459
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:176
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:317
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:459
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:177
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:319
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:460
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:602
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:177
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:318
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:459
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:600
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:194
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:352
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:509
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:194
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:352
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:509
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:194
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:352
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:509
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:667
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:194
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:352
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:509
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:667
 msgid "Features"
 msgstr ""
 
-#: helper/tabs/about.php:60
+#: helper/tabs/about.php:56
+msgid "A particularly simple custom form and template API."
+msgstr ""
+
+#: helper/tabs/about.php:61
 #, php-format
 msgid ""
 "Support Custom Post Types to create a portfolio list in WordPress. (Require "
 "the WP plugin <a href=\"%s\" target=\"_blank\">Uix Products</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:69
+#: helper/tabs/about.php:70
 #, php-format
 msgid ""
 "Support Custom Post Types to create a slideshow in WordPress. (Require the "
 "WP plugin <a href=\"%s\" target=\"_blank\">Uix Slideshow</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:74
+#: helper/tabs/about.php:75
 msgid ""
 "You can switch between <strong>\"Visual Builder\"</strong> and <strong>"
 "\"Default Editor\"</strong> modes at any time on the Pages Add New/Edit "
 "Screen."
 msgstr ""
 
-#: helper/tabs/about.php:75
+#: helper/tabs/about.php:76
 msgid "Support to choose multiple default templates you want."
 msgstr ""
 
-#: helper/tabs/about.php:76
+#: helper/tabs/about.php:77
 msgid "Support to save custom templates and export templates."
 msgstr ""
 
-#: helper/tabs/about.php:77
+#: helper/tabs/about.php:78
 msgid ""
 "Support a key to add anchor links based Uix Page Builder to your navigation. "
 "Visit the Menus page (Appearance &laquo; Menus), choose items like <strong>"
@@ -326,27 +323,27 @@ msgid ""
 "the menu.  "
 msgstr ""
 
-#: helper/tabs/about.php:78
+#: helper/tabs/about.php:79
 msgid "Simple operation window, support loop list items."
 msgstr ""
 
-#: helper/tabs/about.php:79
+#: helper/tabs/about.php:80
 msgid "Customizable core style sheets."
 msgstr ""
 
-#: helper/tabs/about.php:80
+#: helper/tabs/about.php:81
 msgid "Drag and Drop Responsive Website Builder."
 msgstr ""
 
-#: helper/tabs/about.php:81
+#: helper/tabs/about.php:82
 msgid "Uix Page Builder supports the automatic addition of Anchor Links."
 msgstr ""
 
-#: helper/tabs/about.php:82
+#: helper/tabs/about.php:83
 msgid "Supports Right-To-Left (RTL) direction."
 msgstr ""
 
-#: helper/tabs/about.php:87
+#: helper/tabs/about.php:88
 msgid ""
 "<strong>If you like this plug-in, you can check out my free and high-quality "
 "themes with Uix Page Builder for you to download.</strong> <h4><a "
@@ -385,6 +382,10 @@ msgstr ""
 
 #: helper/tabs/credits.php:22
 msgid "wp-color-picker-alpha"
+msgstr ""
+
+#: helper/tabs/credits.php:23
+msgid "jQuery Templates plugin"
 msgstr ""
 
 #: helper/tabs/custom-css.php:26
@@ -661,10 +662,24 @@ msgstr ""
 msgid "<a href=\"%s\">Check out here</a>"
 msgstr ""
 
+#: includes/classes/class-get-category.php:18
+msgid ",&nbsp;"
+msgstr ""
+
+#: includes/classes/class-get-category.php:26
+#: includes/classes/class-get-category.php:63
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: includes/classes/class-get-category.php:54
+msgid ", "
+msgstr ""
+
 #: includes/classes/class-get-excerpt.php:19
 #: includes/classes/class-get-excerpt.php:106
-#: uixpb_templates/modules/uix_pb_module_blog.php:220
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:269
+#: uixpb_templates/modules/uix_pb_module_blog.php:226
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:263
 #: includes/classes/module-shortcodes/class-module-blog.php:44
 #: includes/classes/module-shortcodes/class-module-uix_products.php:51
 msgid "Read More"
@@ -712,71 +727,62 @@ msgstr ""
 msgid "Add to Menu"
 msgstr ""
 
-#: includes/uixpbform/init.php:86
+#: includes/uixpbform/init.php:84
 msgid "Select Files"
 msgstr ""
 
-#: includes/uixpbform/init.php:87
+#: includes/uixpbform/init.php:85
 msgid "Insert"
 msgstr ""
 
-#: includes/uixpbform/init.php:88
+#: includes/uixpbform/init.php:86
 msgid "Insert Image"
 msgstr ""
 
-#: includes/uixpbform/init.php:89
+#: includes/uixpbform/init.php:87
 msgid "Remove link"
 msgstr ""
 
-#: includes/uixpbform/init.php:90
+#: includes/uixpbform/init.php:88
 msgid "Insert/Edit link"
 msgstr ""
 
-#: includes/uixpbform/init.php:91
+#: includes/uixpbform/init.php:89
 msgid "URL"
 msgstr ""
 
-#: includes/uixpbform/init.php:92
+#: includes/uixpbform/init.php:90
 #: uixpb_templates/modules/uix_pb_module_authorcard.php:95
-#: uixpb_templates/modules/uix_pb_module_parallax.php:205
+#: uixpb_templates/modules/uix_pb_module_parallax.php:209
 msgid "Link Text"
 msgstr ""
 
-#: includes/uixpbform/init.php:93
+#: includes/uixpbform/init.php:91
 msgid "Open link in a new tab"
 msgstr ""
 
-#: includes/uixpbform/init.php:611
-msgid "Cancel"
-msgstr ""
-
-#: includes/uixpbform/init.php:611
-#: includes/admin/bulider/post-extensions-init.php:729
-msgid "Save"
-msgstr ""
-
 #: uixpb_templates/modules/config.php:10
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:373
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:374
 msgid "Uix Products Grid"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:34
-#: uixpb_templates/modules/uix_pb_module_uix_slideshow.php:100
+#: uixpb_templates/modules/uix_pb_module_uix_slideshow.php:99
 msgid "Uix Slideshow"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:86
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:265
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:230
 msgid "Image Slider"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:100
-#: uixpb_templates/modules/uix_pb_module_clients.php:229
-#: uixpb_templates/modules/uix_pb_module_features2.php:211
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:336
-#: uixpb_templates/modules/uix_pb_module_team1.php:386
-#: uixpb_templates/modules/uix_pb_module_team2.php:403
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:225
+#: uixpb_templates/modules/uix_pb_module_clients.php:192
+#: uixpb_templates/modules/uix_pb_module_features2.php:177
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:305
+#: uixpb_templates/modules/uix_pb_module_team1.php:336
+#: uixpb_templates/modules/uix_pb_module_team2.php:352
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:184
 msgid "Content"
 msgstr ""
 
@@ -785,22 +791,22 @@ msgid "Include title and description"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:104
-#: uixpb_templates/modules/uix_pb_module_blog.php:328
+#: uixpb_templates/modules/uix_pb_module_blog.php:338
 msgid "WP Posts List"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:111
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:340
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:309
 msgid "Portfolio Grid"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:121
-#: uixpb_templates/modules/uix_pb_module_team1.php:390
+#: uixpb_templates/modules/uix_pb_module_team1.php:340
 msgid "Team Normal"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:128
-#: uixpb_templates/modules/uix_pb_module_team2.php:407
+#: uixpb_templates/modules/uix_pb_module_team2.php:356
 msgid "Team Grid"
 msgstr ""
 
@@ -823,7 +829,7 @@ msgid "Pricing 4 column"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:179
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:229
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:188
 msgid "Testimonials Carousel"
 msgstr ""
 
@@ -832,17 +838,17 @@ msgid "Web Elements"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:245
-#: uixpb_templates/modules/uix_pb_module_map.php:190
+#: uixpb_templates/modules/uix_pb_module_map.php:208
 msgid "Google Map"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:259
-#: uixpb_templates/modules/uix_pb_module_contactform.php:92
+#: uixpb_templates/modules/uix_pb_module_contactform.php:103
 msgid "Contact Form"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:280
-#: uixpb_templates/modules/uix_pb_module_sidebar.php:90
+#: uixpb_templates/modules/uix_pb_module_sidebar.php:84
 msgid "WP Sidebar"
 msgstr ""
 
@@ -851,125 +857,75 @@ msgid "Custom Menu"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:299
-#: uixpb_templates/modules/uix_pb_module_menu1.php:101
+#: uixpb_templates/modules/uix_pb_module_menu1.php:96
 msgid "Fixed Menu"
 msgstr ""
 
 #: uixpb_templates/modules/config.php:306
-#: uixpb_templates/modules/uix_pb_module_menu2.php:100
+#: uixpb_templates/modules/uix_pb_module_menu2.php:96
 msgid "Embedded Menu"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_accordion.php:54
-#: uixpb_templates/modules/uix_pb_module_tabs.php:67
+#: uixpb_templates/modules/uix_pb_module_accordion.php:53
+#: uixpb_templates/modules/uix_pb_module_tabs.php:66
 msgid "Transition Effect"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_accordion.php:69
+#: uixpb_templates/modules/uix_pb_module_accordion.php:68
 msgid "Open The First One Automatically"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_accordion.php:84
-#: uixpb_templates/modules/uix_pb_module_clients.php:113
-#: uixpb_templates/modules/uix_pb_module_features1.php:96
-#: uixpb_templates/modules/uix_pb_module_features1.php:191
-#: uixpb_templates/modules/uix_pb_module_features2.php:94
-#: uixpb_templates/modules/uix_pb_module_hello.php:516
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:131
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:148
-#: uixpb_templates/modules/uix_pb_module_tabs.php:86
-#: uixpb_templates/modules/uix_pb_module_team1.php:148
-#: uixpb_templates/modules/uix_pb_module_team2.php:163
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:95
+#: uixpb_templates/modules/uix_pb_module_accordion.php:81
+#: uixpb_templates/modules/uix_pb_module_clients.php:111
+#: uixpb_templates/modules/uix_pb_module_features1.php:94
+#: uixpb_templates/modules/uix_pb_module_features1.php:166
+#: uixpb_templates/modules/uix_pb_module_features2.php:91
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:130
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:147
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:544
+#: uixpb_templates/modules/uix_pb_module_tabs.php:84
+#: uixpb_templates/modules/uix_pb_module_team1.php:145
+#: uixpb_templates/modules/uix_pb_module_team2.php:161
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:92
 msgid "List Item"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_accordion.php:90
-#: uixpb_templates/modules/uix_pb_module_clients.php:119
-#: uixpb_templates/modules/uix_pb_module_features1.php:102
-#: uixpb_templates/modules/uix_pb_module_features1.php:197
-#: uixpb_templates/modules/uix_pb_module_features2.php:100
-#: uixpb_templates/modules/uix_pb_module_hello.php:522
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:137
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:154
-#: uixpb_templates/modules/uix_pb_module_tabs.php:92
-#: uixpb_templates/modules/uix_pb_module_team1.php:154
-#: uixpb_templates/modules/uix_pb_module_team2.php:169
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:101
-msgid "click here to add an item"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_accordion.php:112
+#: uixpb_templates/modules/uix_pb_module_accordion.php:97
 msgid "Accordion Title"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_accordion.php:123
-msgid "Accordion content here."
+#: uixpb_templates/modules/uix_pb_module_accordion.php:111
+msgid "This is content of the accordion."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:43
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:45
 msgid "Primary Color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:54
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:56
 msgid "Author Picture"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:57
-#: uixpb_templates/modules/uix_pb_module_team1.php:203
-#: uixpb_templates/modules/uix_pb_module_team2.php:218
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:138
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:59
+#: uixpb_templates/modules/uix_pb_module_team1.php:162
+#: uixpb_templates/modules/uix_pb_module_team2.php:178
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:109
 msgid "Avatar URL"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:60
-#: uixpb_templates/modules/uix_pb_module_clients.php:154
-#: uixpb_templates/modules/uix_pb_module_hello.php:141
-#: uixpb_templates/modules/uix_pb_module_hello.php:296
-#: uixpb_templates/modules/uix_pb_module_hello.php:556
-#: uixpb_templates/modules/uix_pb_module_hello2.php:141
-#: uixpb_templates/modules/uix_pb_module_hello2.php:216
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:172
-#: uixpb_templates/modules/uix_pb_module_map.php:160
-#: uixpb_templates/modules/uix_pb_module_parallax.php:128
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:206
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:221
-#: uixpb_templates/modules/uix_pb_module_team1.php:206
-#: uixpb_templates/modules/uix_pb_module_team2.php:221
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:141
-msgid "Remove image"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:61
-#: uixpb_templates/modules/uix_pb_module_clients.php:155
-#: uixpb_templates/modules/uix_pb_module_hello.php:142
-#: uixpb_templates/modules/uix_pb_module_hello.php:297
-#: uixpb_templates/modules/uix_pb_module_hello.php:557
-#: uixpb_templates/modules/uix_pb_module_hello2.php:142
-#: uixpb_templates/modules/uix_pb_module_hello2.php:217
-#: uixpb_templates/modules/uix_pb_module_map.php:161
-#: uixpb_templates/modules/uix_pb_module_parallax.php:129
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:207
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:222
-#: uixpb_templates/modules/uix_pb_module_team1.php:207
-#: uixpb_templates/modules/uix_pb_module_team2.php:222
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:142
-msgid "Upload"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:70
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:68
 msgid "Author Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:72
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:70
 msgid "Your Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:81
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:80
 msgid "Biographical Info"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:83
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:82
 msgid ""
 "Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; "
 "Tu vero, inquam, ducas licet, si sequetur; Ab his oratores, ab his "
@@ -981,323 +937,328 @@ msgstr ""
 msgid "&rarr;"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:104
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:105
 msgid "Link URL"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:116
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:118
 msgid "Social Network 1"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:119
-#: uixpb_templates/modules/uix_pb_module_team1.php:276
-#: uixpb_templates/modules/uix_pb_module_team2.php:291
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:121
+#: uixpb_templates/modules/uix_pb_module_team1.php:229
+#: uixpb_templates/modules/uix_pb_module_team2.php:245
 msgid "Your Social Network Page URL 1"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:130
-#: uixpb_templates/modules/uix_pb_module_team1.php:287
-#: uixpb_templates/modules/uix_pb_module_team2.php:302
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:132
+#: uixpb_templates/modules/uix_pb_module_team1.php:239
+#: uixpb_templates/modules/uix_pb_module_team2.php:255
 msgid "Choose Social Icon 1"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:141
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:143
 msgid "Social Network 2"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:144
-#: uixpb_templates/modules/uix_pb_module_team1.php:301
-#: uixpb_templates/modules/uix_pb_module_team2.php:316
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:146
+#: uixpb_templates/modules/uix_pb_module_team1.php:252
+#: uixpb_templates/modules/uix_pb_module_team2.php:268
 msgid "Your Social Network Page URL 2"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:155
-#: uixpb_templates/modules/uix_pb_module_team1.php:312
-#: uixpb_templates/modules/uix_pb_module_team2.php:327
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:157
+#: uixpb_templates/modules/uix_pb_module_team1.php:262
+#: uixpb_templates/modules/uix_pb_module_team2.php:278
 msgid "Choose Social Icon 2"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:166
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:168
 msgid "Social Network 3"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:169
-#: uixpb_templates/modules/uix_pb_module_team1.php:326
-#: uixpb_templates/modules/uix_pb_module_team2.php:341
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:171
+#: uixpb_templates/modules/uix_pb_module_team1.php:275
+#: uixpb_templates/modules/uix_pb_module_team2.php:291
 msgid "Your Social Network Page URL 3"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_authorcard.php:180
-#: uixpb_templates/modules/uix_pb_module_team1.php:337
-#: uixpb_templates/modules/uix_pb_module_team2.php:352
+#: uixpb_templates/modules/uix_pb_module_authorcard.php:182
+#: uixpb_templates/modules/uix_pb_module_team1.php:285
+#: uixpb_templates/modules/uix_pb_module_team2.php:301
 msgid "Choose Social Icon 3"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:40
-#: uixpb_templates/modules/uix_pb_module_tabs.php:52
+#: uixpb_templates/modules/uix_pb_module_bar.php:44
+#: uixpb_templates/modules/uix_pb_module_tabs.php:51
 msgid "Choose Style"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:71
-#: uixpb_templates/modules/uix_pb_module_bar.php:85
+#: uixpb_templates/modules/uix_pb_module_bar.php:73
+#: uixpb_templates/modules/uix_pb_module_bar.php:94
 msgid "Bar Size"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:103
+#: uixpb_templates/modules/uix_pb_module_bar.php:110
 msgid "Percent"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:117
+#: uixpb_templates/modules/uix_pb_module_bar.php:125
 msgid "Percentage & Icon Size"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:130
+#: uixpb_templates/modules/uix_pb_module_bar.php:139
 msgid "Line Width"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:143
-#: uixpb_templates/modules/uix_pb_module_hello2.php:122
-#: uixpb_templates/modules/uix_pb_module_hello2.php:197
+#: uixpb_templates/modules/uix_pb_module_bar.php:155
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:125
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:195
 msgid "Icon"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:144
+#: uixpb_templates/modules/uix_pb_module_bar.php:156
 msgid "Using Icon instead of percentage."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:173
+#: uixpb_templates/modules/uix_pb_module_bar.php:184
 msgid "Bar Color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:186
+#: uixpb_templates/modules/uix_pb_module_bar.php:197
 msgid "Track color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:197
+#: uixpb_templates/modules/uix_pb_module_bar.php:208
 msgid "Percentage & Icon Color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:209
-#: uixpb_templates/modules/uix_pb_module_bar.php:211
-#: uixpb_templates/modules/uix_pb_module_blog.php:41
-#: uixpb_templates/modules/uix_pb_module_clients.php:52
-#: uixpb_templates/modules/uix_pb_module_features1.php:55
-#: uixpb_templates/modules/uix_pb_module_features2.php:52
-#: uixpb_templates/modules/uix_pb_module_hello2.php:58
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:53
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:41
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:78
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:219
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:361
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:41
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:78
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:219
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:361
+#: uixpb_templates/modules/uix_pb_module_bar.php:220
+#: uixpb_templates/modules/uix_pb_module_bar.php:222
+#: uixpb_templates/modules/uix_pb_module_blog.php:42
+#: uixpb_templates/modules/uix_pb_module_clients.php:49
+#: uixpb_templates/modules/uix_pb_module_features1.php:52
+#: uixpb_templates/modules/uix_pb_module_features2.php:48
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:50
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:42
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:81
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:239
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:396
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:42
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:81
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:239
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:396
 #: uixpb_templates/modules/uix_pb_module_pricing2.php:42
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:79
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:221
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:362
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:504
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:81
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:239
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:396
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:554
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:42
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:79
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:220
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:361
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:502
-#: uixpb_templates/modules/uix_pb_module_team1.php:54
-#: uixpb_templates/modules/uix_pb_module_team2.php:53
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:53
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:49
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:81
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:239
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:396
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:554
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:61
+#: uixpb_templates/modules/uix_pb_module_team1.php:48
+#: uixpb_templates/modules/uix_pb_module_team2.php:48
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:49
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:40
 msgid "Title"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:219
-#: uixpb_templates/modules/uix_pb_module_blog.php:52
-#: uixpb_templates/modules/uix_pb_module_clients.php:63
-#: uixpb_templates/modules/uix_pb_module_features1.php:66
-#: uixpb_templates/modules/uix_pb_module_features2.php:63
-#: uixpb_templates/modules/uix_pb_module_hello2.php:69
+#: uixpb_templates/modules/uix_pb_module_bar.php:231
+#: uixpb_templates/modules/uix_pb_module_blog.php:54
+#: uixpb_templates/modules/uix_pb_module_clients.php:61
+#: uixpb_templates/modules/uix_pb_module_features1.php:64
+#: uixpb_templates/modules/uix_pb_module_features2.php:60
 #: uixpb_templates/modules/uix_pb_module_parallax.php:43
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:64
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:52
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:126
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:267
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:409
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:52
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:126
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:267
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:409
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:53
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:127
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:269
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:410
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:552
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:53
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:127
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:268
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:409
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:550
-#: uixpb_templates/modules/uix_pb_module_team1.php:65
-#: uixpb_templates/modules/uix_pb_module_team2.php:64
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:64
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:60
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:62
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:54
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:133
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:291
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:448
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:54
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:133
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:291
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:448
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:54
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:133
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:291
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:448
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:606
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:54
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:133
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:291
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:448
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:606
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:72
+#: uixpb_templates/modules/uix_pb_module_team1.php:60
+#: uixpb_templates/modules/uix_pb_module_team2.php:60
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:61
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:52
 msgid "Description"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_bar.php:232
+#: uixpb_templates/modules/uix_pb_module_bar.php:245
 msgid "Displayed Units"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:43
-#: uixpb_templates/modules/uix_pb_module_clients.php:54
-#: uixpb_templates/modules/uix_pb_module_features1.php:57
-#: uixpb_templates/modules/uix_pb_module_features2.php:54
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:55
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:43
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:43
+#: uixpb_templates/modules/uix_pb_module_blog.php:44
+#: uixpb_templates/modules/uix_pb_module_clients.php:51
+#: uixpb_templates/modules/uix_pb_module_features1.php:54
+#: uixpb_templates/modules/uix_pb_module_features2.php:50
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:52
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:44
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:44
 #: uixpb_templates/modules/uix_pb_module_pricing2.php:44
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:44
-#: uixpb_templates/modules/uix_pb_module_team1.php:56
-#: uixpb_templates/modules/uix_pb_module_team2.php:55
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:55
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:51
+#: uixpb_templates/modules/uix_pb_module_team1.php:50
+#: uixpb_templates/modules/uix_pb_module_team2.php:50
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:51
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:42
 msgid "Text Here"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:54
-#: uixpb_templates/modules/uix_pb_module_clients.php:65
-#: uixpb_templates/modules/uix_pb_module_features1.php:68
-#: uixpb_templates/modules/uix_pb_module_features2.php:65
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:66
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:54
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:54
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:55
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:55
-#: uixpb_templates/modules/uix_pb_module_team1.php:67
-#: uixpb_templates/modules/uix_pb_module_team2.php:66
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:66
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:62
+#: uixpb_templates/modules/uix_pb_module_blog.php:56
+#: uixpb_templates/modules/uix_pb_module_clients.php:63
+#: uixpb_templates/modules/uix_pb_module_features1.php:66
+#: uixpb_templates/modules/uix_pb_module_features2.php:62
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:64
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:56
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:56
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:56
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:56
+#: uixpb_templates/modules/uix_pb_module_team1.php:62
+#: uixpb_templates/modules/uix_pb_module_team2.php:62
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:63
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:54
 msgid "This is the description text for the title."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:82
+#: uixpb_templates/modules/uix_pb_module_blog.php:85
 msgid "Loop Posts Layout"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:88
+#: uixpb_templates/modules/uix_pb_module_blog.php:91
 msgid "With this plugin"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:89
+#: uixpb_templates/modules/uix_pb_module_blog.php:92
 msgid "With your current theme ( The \"Column\" setting will be invalid )"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:98
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:164
+#: uixpb_templates/modules/uix_pb_module_blog.php:101
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:157
 msgid "Display Pagination"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:107
+#: uixpb_templates/modules/uix_pb_module_blog.php:110
 msgid "Show Number of Posts"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:120
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:187
+#: uixpb_templates/modules/uix_pb_module_blog.php:124
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:181
 msgid "Order By"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:135
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:202
+#: uixpb_templates/modules/uix_pb_module_blog.php:139
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:196
 msgid "Select Category"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:147
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:214
+#: uixpb_templates/modules/uix_pb_module_blog.php:151
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:208
 msgid "Meta Date Format"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:148
-#: uixpb_templates/modules/uix_pb_module_blog.php:165
-#: uixpb_templates/modules/uix_pb_module_blog.php:179
-#: uixpb_templates/modules/uix_pb_module_blog.php:197
+#: uixpb_templates/modules/uix_pb_module_blog.php:152
+#: uixpb_templates/modules/uix_pb_module_blog.php:169
+#: uixpb_templates/modules/uix_pb_module_blog.php:184
+#: uixpb_templates/modules/uix_pb_module_blog.php:202
 msgid ""
 "It is not valid when using the Loop Posts Layout with your current theme."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:164
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:231
+#: uixpb_templates/modules/uix_pb_module_blog.php:168
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:225
 msgid "Excerpt Length"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:178
-#: uixpb_templates/modules/uix_pb_module_clients.php:77
+#: uixpb_templates/modules/uix_pb_module_blog.php:183
+#: uixpb_templates/modules/uix_pb_module_clients.php:76
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:115
 #: uixpb_templates/modules/uix_pb_module_team2.php:129
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:130
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:123
 msgid "Column"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:196
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:245
+#: uixpb_templates/modules/uix_pb_module_blog.php:201
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:240
 msgid "Read More Button"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:218
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:267
+#: uixpb_templates/modules/uix_pb_module_blog.php:224
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:261
 msgid "Read More Text"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:229
-#: uixpb_templates/modules/uix_pb_module_menu1.php:44
+#: uixpb_templates/modules/uix_pb_module_blog.php:235
+#: uixpb_templates/modules/uix_pb_module_menu1.php:43
 #: uixpb_templates/modules/uix_pb_module_menu2.php:43
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:279
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:273
 msgid "Class Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:240
+#: uixpb_templates/modules/uix_pb_module_blog.php:249
 #, php-format
 msgid "<a href=\"%1$s\" target=\"_blank\">Manage Your Content of Posts</a>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:318
-#: uixpb_templates/modules/uix_pb_module_clients.php:223
-#: uixpb_templates/modules/uix_pb_module_features1.php:307
-#: uixpb_templates/modules/uix_pb_module_features2.php:205
-#: uixpb_templates/modules/uix_pb_module_hello2.php:390
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:330
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:515
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:516
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:658
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:656
-#: uixpb_templates/modules/uix_pb_module_team1.php:380
-#: uixpb_templates/modules/uix_pb_module_team2.php:397
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:219
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:363
+#: uixpb_templates/modules/uix_pb_module_blog.php:329
+#: uixpb_templates/modules/uix_pb_module_clients.php:187
+#: uixpb_templates/modules/uix_pb_module_features1.php:254
+#: uixpb_templates/modules/uix_pb_module_features2.php:172
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:300
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:563
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:563
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:719
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:719
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:378
+#: uixpb_templates/modules/uix_pb_module_team1.php:331
+#: uixpb_templates/modules/uix_pb_module_team2.php:347
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:179
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:365
 msgid "General Settings"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_blog.php:324
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:369
+#: uixpb_templates/modules/uix_pb_module_blog.php:334
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:370
 msgid "Content Settings"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_clients.php:151
+#: uixpb_templates/modules/uix_pb_module_clients.php:128
 msgid "LOGO URL"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_clients.php:166
+#: uixpb_templates/modules/uix_pb_module_clients.php:138
 msgid "Destination URL, e.g., http://your.clientsite.com"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_clients.php:176
+#: uixpb_templates/modules/uix_pb_module_clients.php:148
 msgid "The Introduction of this client."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_contactform.php:40
-#: uixpb_templates/modules/uix_pb_module_uix_slideshow.php:49
+#: uixpb_templates/modules/uix_pb_module_contactform.php:44
+#: uixpb_templates/modules/uix_pb_module_uix_slideshow.php:52
 msgid "Shortcode & Content"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_contactform.php:54
+#: uixpb_templates/modules/uix_pb_module_contactform.php:58
+#, php-format
+msgid "<a href=\"%1$s\" target=\"_blank\">Manage Your Contact Forms</a>"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_contactform.php:70
 #, php-format
 msgid ""
 "You can install a contact form plugin you want. Such as <a href=\"%1$s\" "
@@ -1306,303 +1267,83 @@ msgid ""
 "7] .</strong>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_features1.php:134
-#: uixpb_templates/modules/uix_pb_module_features1.php:229
-#: uixpb_templates/modules/uix_pb_module_features2.php:132
+#: uixpb_templates/modules/uix_pb_module_features1.php:111
+#: uixpb_templates/modules/uix_pb_module_features1.php:183
+#: uixpb_templates/modules/uix_pb_module_features2.php:108
 msgid "Feature Title"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_features1.php:147
-#: uixpb_templates/modules/uix_pb_module_features1.php:242
-#: uixpb_templates/modules/uix_pb_module_features2.php:145
+#: uixpb_templates/modules/uix_pb_module_features1.php:124
+#: uixpb_templates/modules/uix_pb_module_features1.php:196
+#: uixpb_templates/modules/uix_pb_module_features2.php:121
 msgid ""
 "Some description text here. You can add a lot of it or can choose to leave "
 "it blank."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_features1.php:313
+#: uixpb_templates/modules/uix_pb_module_features1.php:259
 msgid "Left Block"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_features1.php:319
+#: uixpb_templates/modules/uix_pb_module_features1.php:264
 msgid "Right Block"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_features1.php:323
+#: uixpb_templates/modules/uix_pb_module_features1.php:268
+#: uixpb_templates/modules/uix_pb_module_features2.php:181
 msgid "Features (2 Column)"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_features2.php:215
-msgid "Features (3 Column)"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:71
-#, php-format
-msgid ""
-"You can custom the boxed width of the container for Uix Page Builder "
-"stylesheets. <a target=\"_blank\" href=\"%1$s\">click here to custom</a>"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:83
-msgid "Image Radio"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:102
-msgid "Radio Switch"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:138
-msgid "Image for Text Fill"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:150
-#: uixpb_templates/modules/uix_pb_module_hello.php:569
-msgid "Text"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:177
-msgid "Radio"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:245
-msgid "Padding (px)"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:246
-msgid ""
-"Use the input fields below to customize the padding of your column shortcode."
-" Measurement units is pixels (px)."
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:263
-msgid "Editor"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:277
-msgid "Textarea(by default value)"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:279
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:178
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:178
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:179
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:179
-msgid ""
-"Feature Description<br>Another Feature Description<br><s>Invalid Feature "
-"Description</s>"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:290
-#: uixpb_templates/modules/uix_pb_module_hello2.php:135
-#: uixpb_templates/modules/uix_pb_module_hello2.php:210
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:173
-msgid "Upload Image"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:293
-#: uixpb_templates/modules/uix_pb_module_hello.php:553
-#: uixpb_templates/modules/uix_pb_module_hello2.php:138
-#: uixpb_templates/modules/uix_pb_module_hello2.php:213
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:169
-#: uixpb_templates/modules/uix_pb_module_map.php:157
-msgid "Image URL"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:321
-msgid "Short Text"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:333
-msgid "Short Units Text"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:356
-#: uixpb_templates/modules/uix_pb_module_hello.php:584
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:273
-#: uixpb_templates/modules/uix_pb_module_team1.php:257
-#: uixpb_templates/modules/uix_pb_module_team2.php:272
-msgid "set up links with toggle"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:368
-#: uixpb_templates/modules/uix_pb_module_hello.php:596
-msgid "Toggle URL"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:382
-msgid "Color"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:393
-msgid "Select"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:394
-msgid "This is infomation."
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:410
-msgid "Multiple Selector"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:428
-msgid "This is Icon Selector "
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:442
-msgid "Color Map"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:456
-msgid "Checkbox"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:467
-msgid "Switch"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:508
-#, php-format
-msgid ""
-"<strong>Note:</strong>  %1$s items per row. Per section insert for a maximum "
-"of <strong>%1$s</strong>."
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:567
-msgid "Image Title"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello.php:659
-msgid "Form Demo 1"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:98
-msgid "Text2 - 1"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:125
-#: uixpb_templates/modules/uix_pb_module_hello2.php:200
-msgid "Choose Demo Icon"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:150
-#: uixpb_templates/modules/uix_pb_module_hello2.php:224
-msgid "SLider"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:174
-msgid "Text2 - 2"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:254
-msgid "Text3 - 1"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:270
-msgid "Text3 - 2"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:287
-msgid "Text3 - 3"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:312
-msgid "Text4 - 1"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:328
-msgid "Text4 - 2"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:343
-msgid "Text4 - 3"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:358
-msgid "Text4 - 4"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:396
-msgid "Item 2_1"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:402
-msgid "Item 2_2"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:408
-msgid "Item 3_1"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:414
-msgid "Item 3_2"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:420
-msgid "Item 3_3"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:426
-msgid "Item 4_1"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:432
-msgid "Item 4_2"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:438
-msgid "Item 4_3"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:444
-msgid "Item 4_4"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_hello2.php:451
-msgid "Form Demo 2"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:51
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:49
 msgid "Effect"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:57
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:55
 msgid "Slide"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:58
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:56
 msgid "Fade"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:65
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:63
 msgid "Automatically Transition"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:76
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:74
 msgid "Show Paging Navigation"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:88
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:86
 msgid "Show Arrow Navigation"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:100
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:98
 msgid "Speed of Images Appereance"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:113
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:112
 msgid "Delay Between Images"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:185
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:147
+#: uixpb_templates/modules/uix_pb_module_map.php:184
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:311
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:560
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:141
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:211
+msgid "Image URL"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:158
 msgid "Slider title"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:201
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:173
 msgid "Slider introduction"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:216
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:188
 msgid "Destination URL and can be left blank, e.g., http://your.site.com"
 msgstr ""
 
@@ -1610,31 +1351,31 @@ msgstr ""
 msgid "User Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_instagram.php:53
+#: uixpb_templates/modules/uix_pb_module_instagram.php:54
 msgid "Number of items to show"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_instagram.php:63
+#: uixpb_templates/modules/uix_pb_module_instagram.php:65
 msgid "Thumbnail Size"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_instagram.php:80
+#: uixpb_templates/modules/uix_pb_module_instagram.php:82
 msgid "Display Your Username?"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_instagram.php:90
+#: uixpb_templates/modules/uix_pb_module_instagram.php:92
 msgid "Seamless Display"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_instagram.php:91
+#: uixpb_templates/modules/uix_pb_module_instagram.php:93
 msgid "Set the instagram module top & bottom padding to be 0px for your page."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:41
+#: uixpb_templates/modules/uix_pb_module_map.php:44
 msgid "Map Style"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:64
+#: uixpb_templates/modules/uix_pb_module_map.php:67
 #, php-format
 msgid ""
 "Click on the exact location you'd like coordinates for. Right-click on the "
@@ -1642,51 +1383,51 @@ msgid ""
 "rel=\"nofollow\">Get Latitude Longitude</a>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:76
+#: uixpb_templates/modules/uix_pb_module_map.php:86
 msgid "Map Width"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:91
+#: uixpb_templates/modules/uix_pb_module_map.php:108
 msgid "Map Height"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:108
+#: uixpb_templates/modules/uix_pb_module_map.php:132
 msgid "Place Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:110
+#: uixpb_templates/modules/uix_pb_module_map.php:134
 msgid "SEO San Francisco, CA, Gough Street, San Francisco, CA"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:118
+#: uixpb_templates/modules/uix_pb_module_map.php:143
 msgid "Latitude"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:128
+#: uixpb_templates/modules/uix_pb_module_map.php:154
 msgid "Longitude"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:139
+#: uixpb_templates/modules/uix_pb_module_map.php:166
 msgid "Zoom"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:154
+#: uixpb_templates/modules/uix_pb_module_map.php:181
 msgid "Marker"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:155
+#: uixpb_templates/modules/uix_pb_module_map.php:182
 msgid ""
 "Markers can display custom images, in which case they are usually referred "
 "to as \"icons.\""
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_menu1.php:54
-#: uixpb_templates/modules/uix_pb_module_menu2.php:53
+#: uixpb_templates/modules/uix_pb_module_menu2.php:54
 msgid "Select a Menu"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_menu1.php:67
-#: uixpb_templates/modules/uix_pb_module_menu2.php:66
+#: uixpb_templates/modules/uix_pb_module_menu2.php:67
 #, php-format
 msgid ""
 "Uix Page Builder supports the automatic addition of Anchor Links. <a "
@@ -1702,432 +1443,658 @@ msgid ""
 "non potes.</span></p>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:57
+#: uixpb_templates/modules/uix_pb_module_parallax.php:64
 msgid "Skew"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:58
+#: uixpb_templates/modules/uix_pb_module_parallax.php:65
 msgid "Suggest values: <strong>-10</strong> &nbsp;to&nbsp;<strong>10</strong>."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:73
+#: uixpb_templates/modules/uix_pb_module_parallax.php:88
 msgid "Height"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:74
+#: uixpb_templates/modules/uix_pb_module_parallax.php:89
 msgid "If the value is \"0\", the height is automatically calculated."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:106
+#: uixpb_templates/modules/uix_pb_module_parallax.php:120
 msgid "Background Color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:122
+#: uixpb_templates/modules/uix_pb_module_parallax.php:133
 msgid "Background Image"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:151
+#: uixpb_templates/modules/uix_pb_module_parallax.php:159
 msgid "Link Button"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:180
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:156
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:297
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:439
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:156
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:297
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:439
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:157
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:299
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:440
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:582
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:157
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:298
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:439
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:580
+#: uixpb_templates/modules/uix_pb_module_parallax.php:185
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:173
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:331
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:488
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:173
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:331
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:488
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:173
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:331
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:488
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:646
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:173
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:331
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:488
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:646
 msgid "Button Color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:193
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:287
+#: uixpb_templates/modules/uix_pb_module_parallax.php:198
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:249
 msgid "Destination URL"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:197
+#: uixpb_templates/modules/uix_pb_module_parallax.php:201
 msgid "http://"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:208
+#: uixpb_templates/modules/uix_pb_module_parallax.php:211
 msgid "Check Out"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:217
+#: uixpb_templates/modules/uix_pb_module_parallax.php:220
 msgid ""
 "Valid when the value of <strong>\"Destination URL\"</strong> is not empty"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:78
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:92
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:77
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:82
 msgid "Filterable by Category"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:89
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:104
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:88
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:96
 msgid "Open link in new tab"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:90
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:89
 msgid "This option is valid when you use destination URL."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:101
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:116
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:100
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:108
 msgid "Radius of Fillet Image"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:203
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:164
 msgid "Thumbnail"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:218
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:174
 msgid "Full Preview (Optional)"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:231
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:190
 msgid "Project Title"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:242
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:208
 msgid "Category"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:252
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:218
 msgid "The description of this project."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_portfolio1.php:430
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:238
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:384
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:586
+#: uixpb_templates/modules/uix_pb_module_team1.php:211
+#: uixpb_templates/modules/uix_pb_module_team2.php:227
+msgid "set up links with toggle"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_portfolio1.php:349
 #: includes/classes/module-shortcodes/class-module-uix_products.php:335
 msgid "All"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:80
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:80
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:81
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:81
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:83
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:83
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:83
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:83
 msgid "free"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:87
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:228
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:370
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:87
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:228
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:370
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:88
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:230
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:371
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:513
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:88
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:229
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:370
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:511
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:91
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:249
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:406
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:91
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:249
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:406
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:91
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:249
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:406
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:564
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:91
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:249
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:406
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:564
 msgid "Price"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:96
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:237
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:379
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:96
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:237
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:379
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:97
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:239
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:380
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:522
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:97
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:238
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:379
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:520
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:101
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:259
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:416
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:101
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:259
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:416
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:101
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:259
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:416
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:574
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:101
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:259
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:416
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:574
 msgid "Price Color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:108
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:249
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:391
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:108
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:249
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:391
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:109
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:251
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:392
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:534
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:109
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:250
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:391
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:532
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:113
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:271
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:428
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:113
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:271
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:428
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:113
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:271
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:428
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:586
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:113
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:271
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:428
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:586
 msgid "Currency"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:110
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:251
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:393
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:110
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:251
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:393
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:111
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:253
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:394
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:536
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:111
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:252
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:393
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:534
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:115
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:273
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:430
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:115
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:273
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:430
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:115
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:273
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:430
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:588
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:115
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:273
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:430
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:588
 msgid "$"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:117
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:258
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:400
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:117
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:258
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:400
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:118
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:260
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:401
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:543
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:118
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:259
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:400
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:541
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:123
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:281
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:438
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:123
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:281
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:438
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:123
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:281
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:438
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:596
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:123
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:281
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:438
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:596
 msgid "Period"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:119
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:260
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:402
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:119
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:260
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:402
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:120
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:262
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:403
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:545
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:120
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:261
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:402
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:543
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:125
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:283
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:440
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:125
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:283
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:440
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:125
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:283
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:440
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:598
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:125
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:283
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:440
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:598
 msgid "per month"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:128
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:269
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:411
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:128
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:269
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:411
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:129
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:271
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:412
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:554
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:129
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:270
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:411
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:552
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:135
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:293
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:450
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:135
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:293
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:450
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:135
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:293
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:450
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:608
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:135
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:293
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:450
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:608
 msgid "Some description text here."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:138
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:279
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:421
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:138
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:279
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:421
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:139
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:281
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:422
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:564
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:139
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:280
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:421
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:562
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:146
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:304
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:461
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:146
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:304
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:461
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:146
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:304
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:461
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:619
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:146
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:304
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:461
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:619
 msgid "Button Label"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:140
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:140
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:141
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:141
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:148
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:148
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:148
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:148
 msgid "TRY FOR FREE"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:147
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:288
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:430
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:147
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:288
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:430
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:148
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:290
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:431
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:573
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:148
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:289
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:430
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:571
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:156
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:314
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:471
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:156
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:314
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:471
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:156
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:314
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:471
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:629
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:156
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:314
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:471
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:629
 msgid "Button Link"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:167
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:308
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:450
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:167
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:308
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:450
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:168
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:310
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:451
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:593
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:168
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:309
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:450
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:591
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:185
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:343
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:500
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:185
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:343
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:500
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:185
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:343
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:500
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:658
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:185
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:343
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:500
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:658
 msgid "Open in new tab"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:190
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:331
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:473
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:190
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:332
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:473
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:191
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:333
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:475
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:616
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:191
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:332
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:473
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:614
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:196
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:196
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:196
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:196
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:296
+msgid ""
+"Feature Description<br>Another Feature Description<br><s>Invalid Feature "
+"Description</s>"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:209
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:367
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:525
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:209
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:367
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:525
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:209
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:367
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:525
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:682
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:209
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:367
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:525
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:682
 msgid "Type one word or sentence per line when press \"ENTER\"."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:201
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:343
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:485
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:201
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:343
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:486
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:203
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:344
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:486
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:628
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:202
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:343
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:484
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:625
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:221
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:378
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:536
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:221
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:378
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:536
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:221
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:378
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:536
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:694
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:221
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:378
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:536
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:694
 msgid "Active"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:221
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:221
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:223
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:222
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:241
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:241
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:241
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:241
 msgid "premium"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:281
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:423
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:281
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:423
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:283
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:424
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:566
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:282
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:423
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:564
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:306
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:463
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:306
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:463
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:306
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:463
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:621
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:306
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:463
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:621
 msgid "BUY"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:319
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:319
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:321
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:320
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:354
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:354
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:354
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:354
 msgid ""
 "Feature Description<br>Another Feature Description<br>Another Feature "
 "Description<br><s>Invalid Feature Description</s>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:363
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:363
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:364
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:363
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:398
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:398
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:398
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:398
 msgid "professional"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:461
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:461
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:462
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:461
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:511
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:511
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:511
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:511
 msgid ""
 "Feature Description<br>Another Feature Description<br>Another Feature "
 "Description<br><s>Invalid Feature Description</s><br>Another Feature "
 "Description"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:521
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:522
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:664
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:662
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:568
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:568
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:724
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:724
 msgid "Table 1"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:528
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:529
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:671
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:669
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:574
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:574
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:730
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:730
 msgid "Table 2"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:534
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:535
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:677
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:675
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:579
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:579
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:735
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:735
 msgid "Table 3"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing1.php:539
-#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:540
+#: uixpb_templates/modules/uix_pb_module_pricing1.php:584
+#: uixpb_templates/modules/uix_pb_module_pricing1_2.php:584
 msgid "Pricing Table (3 column)"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:506
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:504
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:556
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:556
 msgid "expand"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:604
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:602
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:669
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:669
 msgid ""
 "Feature Description<br>Another Feature Description<br>Another Feature "
 "Description<br><s>Invalid Feature Description</s><br>Another Feature "
 "Description<br>Another Feature Description"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:683
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:681
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:740
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:740
 msgid "Table 4"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_pricing2.php:688
-#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:686
+#: uixpb_templates/modules/uix_pb_module_pricing2.php:745
+#: uixpb_templates/modules/uix_pb_module_pricing2_2.php:745
 msgid "Pricing Table (4 column)"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_sidebar.php:44
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:67
+#, php-format
+msgid ""
+"You can custom the boxed width of the container for Uix Page Builder "
+"stylesheets. <a target=\"_blank\" href=\"%1$s\">click here to custom</a>"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:79
+msgid "Image Radio"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:98
+msgid "Radio Switch"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:131
+msgid "Image for Text Fill"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:139
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:571
+msgid "Text"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:140
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:441
+msgid "This is infomation."
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:157
+msgid "Text Attr"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:175
+msgid "Text Slug"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:223
+msgid "Radio"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:264
+msgid "Padding (px)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:265
+msgid ""
+"Use the input fields below to customize the padding of your column shortcode."
+" Measurement units is pixels (px)."
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:280
+msgid "Editor"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:294
+msgid "Textarea(by default value)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:308
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:138
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:208
+msgid "Upload Image"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:341
+msgid "Short Text"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:361
+msgid "Short Units Text"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:395
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:597
+msgid "Toggle URL"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:409
+msgid "Color"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:427
+msgid "Button Color(name)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:440
+msgid "Select"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:457
+msgid "Multiple Selector"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:475
+msgid "This is Icon Selector "
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:489
+msgid "Color Picker"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:500
+msgid "Checkbox"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:511
+msgid "Switch"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:570
+msgid "Image Title"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:639
+msgid "Switch Demo"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:685
+msgid "Form Demo 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:101
+msgid "Text2 - 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:128
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:198
+msgid "Choose Demo Icon"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:149
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:218
+msgid "SLider"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:172
+msgid "Text2 - 2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:247
+msgid "Text3 - 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:263
+msgid "Text3 - 2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:280
+msgid "Text3 - 3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:305
+msgid "Text4 - 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:321
+msgid "Text4 - 2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:336
+msgid "Text4 - 3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:351
+msgid "Text4 - 4"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:383
+msgid "Item 2_1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:388
+msgid "Item 2_2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:393
+msgid "Item 3_1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:398
+msgid "Item 3_2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:403
+msgid "Item 3_3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:408
+msgid "Item 4_1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:413
+msgid "Item 4_2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:418
+msgid "Item 4_3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:423
+msgid "Item 4_4"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:430
+msgid "Form Demo 2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sidebar.php:43
 msgid "Select Sidebar"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_sidebar.php:56
+#: uixpb_templates/modules/uix_pb_module_sidebar.php:55
 #, php-format
 msgid ""
 "Calls each of the active widget callbacks in order, which prints the markup "
@@ -2135,74 +2102,74 @@ msgid ""
 "Sidebar</a>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_tabs.php:114
+#: uixpb_templates/modules/uix_pb_module_tabs.php:100
 msgid "Tab Title"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_tabs.php:125
+#: uixpb_templates/modules/uix_pb_module_tabs.php:114
 msgid "This is content of the tab."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_team1.php:79
-#: uixpb_templates/modules/uix_pb_module_team2.php:78
+#: uixpb_templates/modules/uix_pb_module_team1.php:75
+#: uixpb_templates/modules/uix_pb_module_team2.php:75
 msgid "Gray Avatar"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_team1.php:90
-#: uixpb_templates/modules/uix_pb_module_team2.php:89
+#: uixpb_templates/modules/uix_pb_module_team1.php:86
+#: uixpb_templates/modules/uix_pb_module_team2.php:86
 msgid "Radius of Fillet Avatar"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_team1.php:104
-#: uixpb_templates/modules/uix_pb_module_team2.php:103
+#: uixpb_templates/modules/uix_pb_module_team1.php:101
+#: uixpb_templates/modules/uix_pb_module_team2.php:101
 msgid "Height of Grid"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_team1.php:118
-#: uixpb_templates/modules/uix_pb_module_team2.php:117
+#: uixpb_templates/modules/uix_pb_module_team1.php:116
+#: uixpb_templates/modules/uix_pb_module_team2.php:116
 msgid ""
 "Set height of grid so that it will fit its avatar photo. Browsers use a "
 "default stylesheet to render if the value is <strong>\"0\"</strong>."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_team1.php:215
-#: uixpb_templates/modules/uix_pb_module_team2.php:230
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:150
+#: uixpb_templates/modules/uix_pb_module_team1.php:170
+#: uixpb_templates/modules/uix_pb_module_team2.php:186
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:117
 msgid "Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_team1.php:226
-#: uixpb_templates/modules/uix_pb_module_team2.php:241
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:161
+#: uixpb_templates/modules/uix_pb_module_team1.php:181
+#: uixpb_templates/modules/uix_pb_module_team2.php:197
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:128
 msgid "Position"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_team1.php:236
-#: uixpb_templates/modules/uix_pb_module_team2.php:251
+#: uixpb_templates/modules/uix_pb_module_team1.php:191
+#: uixpb_templates/modules/uix_pb_module_team2.php:207
 msgid "The Introduction of this member."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:171
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:138
 msgid ""
 "Enter some details for the customer giving this testimonial., E.g., Thank "
 "you from the bottom of our hearts."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:73
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:68
 msgid "Display Categories List"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:174
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:167
 msgid "Show Number of Products"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_uix_products.php:292
+#: uixpb_templates/modules/uix_pb_module_uix_products.php:287
 #, php-format
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Manage Your Content of Uix Products</a>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_uix_slideshow.php:63
+#: uixpb_templates/modules/uix_pb_module_uix_slideshow.php:67
 #, php-format
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Manage Your Content of Uix Slideshow</a>"
@@ -2358,10 +2325,19 @@ msgstr ""
 msgid "Enter Template Name"
 msgstr ""
 
+#: includes/admin/bulider/post-extensions-init.php:729
+#: includes/uixpbform/components/ui-wrapper.php:45
+msgid "Save"
+msgstr ""
+
 #: includes/admin/bulider/post-extensions-init.php:735
 #: includes/admin/bulider/post-extensions-init.php:735
 #: includes/admin/bulider/post-extensions-init.php:751
 msgid "Export"
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:744
+msgid ".xml\"</em></b>. <span style=\"color:red\">(Highest priority)</span>"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:749
@@ -2395,85 +2371,103 @@ msgstr ""
 msgid "No categories"
 msgstr ""
 
-#: includes/uixpbform/fontawesome/font-awesome-custom.php:474
-msgid "Social:"
+#: includes/uixpbform/components/ui-form.php:56
+#: includes/admin/bulider/components/pb-ui-gridster.php:354
+#: includes/admin/bulider/components/pb-ui-gridster.php:557
+msgid "Section"
 msgstr ""
 
-#: includes/uixpbform/form-inc/icon.php:24
-#: includes/uixpbform/form-inc/icon.php:56
+#: includes/uixpbform/components/ui-wrapper.php:45
+msgid "Cancel"
+msgstr ""
+
+#: includes/uixpbform/controls/icon.php:23
+#: includes/uixpbform/controls/icon.php:55
 msgid "Choose Icon"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:105
+#: includes/uixpbform/controls/image.php:28
+msgid "Remove image"
+msgstr ""
+
+#: includes/uixpbform/controls/image.php:29
+msgid "Upload"
+msgstr ""
+
+#: includes/uixpbform/controls/image.php:98
 msgid "Background Repeat"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:111
+#: includes/uixpbform/controls/image.php:105
 msgid "No Repeat"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:112
+#: includes/uixpbform/controls/image.php:106
 msgid "Tile"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:113
+#: includes/uixpbform/controls/image.php:107
 msgid "Tile Horizontally"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:114
+#: includes/uixpbform/controls/image.php:108
 msgid "Tile Vertically"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:126
+#: includes/uixpbform/controls/image.php:124
 msgid "Background Position"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:132
+#: includes/uixpbform/controls/image.php:132
 msgid "Left"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:133
+#: includes/uixpbform/controls/image.php:133
 msgid "Center"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:134
+#: includes/uixpbform/controls/image.php:134
 msgid "Right"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:146
+#: includes/uixpbform/controls/image.php:151
 msgid "Background Attachment"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:152
+#: includes/uixpbform/controls/image.php:159
 msgid "Scroll"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:153
+#: includes/uixpbform/controls/image.php:160
 msgid "Fixed"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:165
+#: includes/uixpbform/controls/image.php:176
 msgid "Background Size"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:171
+#: includes/uixpbform/controls/image.php:184
 msgid "Cover"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:172
+#: includes/uixpbform/controls/image.php:185
 msgid "Auto"
 msgstr ""
 
-#: includes/uixpbform/form-inc/image.php:173
+#: includes/uixpbform/controls/image.php:186
 msgid "Contain"
 msgstr ""
 
-#: includes/uixpbform/form-inc/multiselect.php:63
-msgid "Must use the array for \"value\"."
+#: includes/uixpbform/controls/list-clone.php:38
+msgid "click here to add an item"
 msgstr ""
 
-#: includes/uixpbform/form-inc/toggle.php:69
+#: includes/uixpbform/controls/toggle.php:52
 msgid "More Options"
+msgstr ""
+
+#: includes/uixpbform/fontawesome/font-awesome-custom.php:474
+msgid "Social:"
 msgstr ""
 
 #: includes/uixpbform/functions/google-map.php:87

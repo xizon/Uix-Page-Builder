@@ -3,33 +3,37 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+/**
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
+
 
 /**
- * Returns each variable in module data
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+$form_id = basename( __FILE__, '.php' );
 
-							 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
 $form_type = array(
 	'list' => false
 );
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
+					
 
 
 $args = 
@@ -46,23 +50,21 @@ $args =
 									'circular'  => 'circular',
 									'square'  => 'square'
 								),
-			/* If the toggle of switch with radio is enabled, the target id require class like "toggle-row" */
+		
+			/* Add the "toggle" field to enable the radio switch */
 			'toggle'        => array(
 			                        array(
-										'trigger_id'           => 'circular', /* {option id} */
-										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' ),
-										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' )
+										'trigger_id'        => 'circular', /* The value of radio */
+										'target_ids'        => array( 'uix_pb_bar_circular_size' ) /* Associated control ID */
 
 									),
 			                        array(
-										'trigger_id'           => 'square', /* {option id} */
-										'toggle_class'         => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class' ),
-										'toggle_remove_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class' )
+										'trigger_id'        => 'square', /* The value of radio */
+										'target_ids'        => array( 'uix_pb_bar_square_size' ) /* Associated control ID */
 
 									),
-						
 									
-				                )		
+				                )	
 								
 		),
 		
@@ -71,9 +73,9 @@ $args =
 				'title'          => esc_html__( 'Bar Size', 'uix-page-builder' ),
 				'desc'           => '',
 				'value'          => 120,
-				'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_circular_size' ).'_toggle_class', /*class of toggle item */
 				'placeholder'    => '',
 				'type'           => 'short-text',
+		        'callback'       => 'number',
 				'default'        => array(
 										'units'  => 'px'
 									)
@@ -81,16 +83,21 @@ $args =
 			),
 			
 			array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_bar_square_size}
+				${uix_pb_bar_square_size_units}
+			 *
+			*/
 				'id'             => 'uix_pb_bar_square_size',
 				'title'          => esc_html__( 'Bar Size', 'uix-page-builder' ),
 				'desc'           => '',
 				'value'          => 100,
-				'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_square_size' ).'_toggle_class', /*class of toggle item */
-				'placeholder'    => '',
 				'type'           => 'short-units-text',
+		        'callback'       => 'number',
 				'default'        => array(
 										'units'      => array( '%', 'px' ),
-										'units_id'    => 'uix_pb_bar_square_size_units',
 										'units_value' => '%'
 									)
 			
@@ -105,6 +112,7 @@ $args =
 			'value'          => 75,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+		    'callback'       => 'number',
 			'default'        => array(
 									'units'  => '%'
 								)
@@ -119,6 +127,7 @@ $args =
 			'value'          => 12,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+		    'callback'       => 'number',
 			'default'        => array(
 									'units'  => 'px'
 								)
@@ -132,24 +141,25 @@ $args =
 			'value'          => 3,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+		    'callback'       => 'number',
 			'default'        => array(
 									'units'  => 'px'
 								)
 		
 		),
 		
+		
+		//------ Toggle of switch with checkbox (begin)
 		array(
 			'id'             => 'uix_pb_bar_icon_toggle',
 			'title'          => esc_html__( 'Icon', 'uix-page-builder' ),
 			'desc'           => esc_html__( 'Using Icon instead of percentage.', 'uix-page-builder' ),
-			'value'          => 0, // 0:false  1:true
+			'value'          => 0, // 0:close  1:open
 			'placeholder'    => '',
 			'type'           => 'checkbox',
-			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
-			'toggle'        => array(
-									'trigger_id'    => '', /* {option id} */
-									'toggle_class'  => array( ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class' )
-				                )	
+			'toggle'         => array(
+				                    'target_ids'  => array( 'uix_pb_bar_icon' )
+				                )
 		
 		
 		),	
@@ -159,7 +169,6 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_bar_icon' ).'_toggle_class', /*class of toggle item */
 				'placeholder'    => '',
 				'type'           => 'icon',
 				'default'        => array(
@@ -167,6 +176,8 @@ $args =
 									)
 			
 			),	
+		//------ Toggle of switch with checkbox (end)
+		
 			
 		array(
 			'id'             => 'uix_pb_bar_color',
@@ -210,7 +221,8 @@ $args =
 			'desc'           => '',
 			'value'          => esc_html__( 'Title', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		),	
 		
 		
@@ -221,6 +233,7 @@ $args =
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 2
 								)
@@ -233,7 +246,8 @@ $args =
 			'desc'           => '',
 			'value'          => '%',
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 
@@ -251,23 +265,17 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'        => '',
-	    'defalt_value' => $item,
-	    'widget_name'  => $wname,
+UixPBFormCore::form_scripts( array(
+	    'clone'        => false,
 		'form_id'      => $form_id,
-		'section_id'   => $sid,
-	    'column_id'    => $colid,
 		'fields'       => array(
 							array(
-								 'config'  => $args_config,
-								 'type'    => $form_type,
-								 'values'  => $args
+								 'type'     => $form_type,
+								 'values'   => $args
 							),
 
 						),
 		'title'        => esc_html__( 'Progress Bar', 'uix-page-builder' ),
-	
 	
 		/**
 		 * /////////////// Customizing HTML output on the frontend /////////////// 
@@ -275,57 +283,62 @@ UixPageBuilder::form_scripts( array(
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
-	
-			var  temp                                 = \'\',
-				 uix_pb_bar_result_color              = uix_pb_bar_color,
-				 uix_pb_bar_result_trackcolor         = uix_pb_bar_trackcolor,
-				 uix_pb_bar_result_percent_icon_color = uix_pb_bar_percent_icon_color,
-				 uix_pb_bar_result_size               = ( uix_pb_bar_shape == \'circular\' ) ? uixpbform_floatval( uix_pb_bar_circular_size )+"px" : uixpbform_floatval( uix_pb_bar_square_size )+uix_pb_bar_square_size_units,
-				 uix_pb_bar_result_icon               = ( uix_pb_bar_icon != \'\' ) ? \'<i class="fa fa-\'+uixpbform_htmlEncode( uix_pb_bar_icon )+\'"></i>\' : uix_pb_bar_percent+uix_pb_bar_show_units;
+	    'template'              => '
+		
+			{{if uix_pb_bar_shape == "square"}}
 
-			if ( uix_pb_bar_shape == \'square\' ) {
-
-
-				temp += \'<div class="uix-pb-bar-box uix-pb-bar-box-square">\';
-				temp += \'<div style="width:\'+uix_pb_bar_result_size+\';">\';
-				temp += \'<div class="uix-pb-bar-info">\';
-				temp += \'<h3 class="uix-pb-bar-title">\'+uix_pb_bar_title+\'</h3>\';
-				temp += \'<div class="uix-pb-bar-desc">\'+uixpbform_format_textarea_entering( uix_pb_bar_desc )+\'</div>\';
-				temp += \'</div>\';
-				temp += \'<div class="uix-pb-bar" data-percent="\'+uixpbform_floatval( uix_pb_bar_percent )+\'" data-linewidth="\'+uixpbform_floatval( uix_pb_bar_linewidth )+\'" data-trackcolor="\'+uix_pb_bar_result_trackcolor+\'" data-barcolor="\'+uix_pb_bar_result_color+\'" data-units="\'+uixpbform_htmlEncode( uix_pb_bar_show_units )+\'" data-size="\'+uix_pb_bar_result_size+\'" data-icon="\'+uixpbform_htmlEncode( uix_pb_bar_icon )+\'">\';
-				temp += \'<span class="uix-pb-bar-percent"></span>\';
-				temp += \'<span class="uix-pb-bar-placeholder">0</span>\';
-				temp += \'<span class="uix-pb-bar-text"  style="color:\'+uix_pb_bar_result_percent_icon_color+\';font-size:\'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+\'px;">\'+uix_pb_bar_result_icon+\'</span>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
+				<div class="uix-pb-bar-box uix-pb-bar-box-square">
+					<div style="width:${uix_pb_bar_square_size}${uix_pb_bar_square_size_units}">
+						<div class="uix-pb-bar-info">
+							<h3 class="uix-pb-bar-title">${uix_pb_bar_title}</h3>
+							<div class="uix-pb-bar-desc">${uix_pb_bar_desc}</div>
+						</div>
+						<div class="uix-pb-bar" data-percent="${uix_pb_bar_percent}" data-linewidth="${uix_pb_bar_linewidth}" data-trackcolor="${uix_pb_bar_trackcolor}" data-barcolor="${uix_pb_bar_color}" data-units="${uix_pb_bar_show_units}" data-size="${uix_pb_bar_square_size}${uix_pb_bar_square_size_units}" data-icon="${uix_pb_bar_icon}">
+							<span class="uix-pb-bar-percent"></span>
+							<span class="uix-pb-bar-placeholder">0</span>
+							<span class="uix-pb-bar-text"  style="color:${uix_pb_bar_percent_icon_color};font-size:${uix_pb_bar_perc_icons_size}px;">
+								{{if uix_pb_bar_icon != ""}}
+									<i class="fa fa-${uix_pb_bar_icon}"></i>
+								{{else}}
+									${uix_pb_bar_percent}${uix_pb_bar_show_units}
+								{{/if}}
+							</span>
+						</div>
+					</div>
+				</div>
 
 
-
-			} else {
-
-				temp += \'<div class="uix-pb-bar-box uix-pb-bar-box-circular">\';
-				temp += \'<div class="uix-pb-bar" data-percent="\'+uixpbform_floatval( uix_pb_bar_percent )+\'" style="width:\'+uix_pb_bar_result_size+\';">\';
-				temp += \'<span class="uix-pb-bar-percent" data-linewidth="\'+uixpbform_floatval( uix_pb_bar_linewidth )+\'" data-trackcolor="\'+uix_pb_bar_result_trackcolor+\'" data-barcolor="\'+uix_pb_bar_result_color+\'" data-units="\'+uixpbform_htmlEncode( uix_pb_bar_show_units )+\'" data-size="\'+uix_pb_bar_result_size+\'"  data-icon="\'+uixpbform_htmlEncode( uix_pb_bar_icon )+\'" style="color:\'+uix_pb_bar_result_percent_icon_color+\';font-size:\'+uixpbform_floatval( uix_pb_bar_perc_icons_size )+\'px;"></span>\';
-				temp += \'</div>\';
-				temp += \'<h3 class="uix-pb-bar-title">\'+uix_pb_bar_title+\'</h3>\';
-				temp += \'<div class="uix-pb-bar-desc">\'+uixpbform_format_textarea_entering( uix_pb_bar_desc )+\'</div>\';
-				temp += \'</div>\';
+			{{else}}
 
 
-			}
+				<div class="uix-pb-bar-box uix-pb-bar-box-circular">
+					<div class="uix-pb-bar" data-percent="${uix_pb_bar_percent}" style="width:${uix_pb_bar_circular_size}px">
+						<span class="uix-pb-bar-percent" data-linewidth="${uix_pb_bar_linewidth}" data-trackcolor="${uix_pb_bar_trackcolor}" data-barcolor="${uix_pb_bar_color}" data-units="${uix_pb_bar_show_units}" data-size="${uix_pb_bar_circular_size}px"  data-icon="${uix_pb_bar_icon}" style="color:${uix_pb_bar_percent_icon_color};font-size:${uix_pb_bar_perc_icons_size}px;"></span>
+					</div>
+					<h3 class="uix-pb-bar-title">${uix_pb_bar_title}</h3>
+					<div class="uix-pb-bar-desc">${uix_pb_bar_desc}</div>
+				</div>
+
+
+			{{/if}}
+
 		'
     )
 );

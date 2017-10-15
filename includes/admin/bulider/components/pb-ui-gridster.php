@@ -642,7 +642,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 			 * [Gridster] Render and save page data
 			 * ---------------------------------------------------
 			 *
-			 * @param  {type} numbber          - 0: Initialize the page container | 1: No render action | 2: Render the entire page
+			 * @param  {number} type          - 0: Initialize the page container | 1: No render action | 2: Render the entire page
 			 * @return {void}                  - The constructor.
 			 */
 			renderAndSavePage: function( type ) {
@@ -738,7 +738,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 				jQuery( document ).ready( function() {  
 					jQuery( '.gridster > ul > li' ).each( function() {
 						var $this = jQuery( this );
-						$this.find( '.content-box, .title-box, .cusid-box, [name^="layout"]' ).on( 'change keyup', function() {
+						$this.find( '.content-box, .title-box, .cusid-box, [name^="layout"]' ).on( 'change', function() {
 
 							/*-- Initialize default value & form --*/
 							UixPBGridsterConstructor.prototype.formDataSave.call( this );

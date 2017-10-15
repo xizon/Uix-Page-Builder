@@ -3,47 +3,45 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+/**
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
 
 /**
- * Returns each variable in module data
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
  * Clone parameters
  * ----------------------------------------------------
  */
-//clone list
-$clone_trigger_id        = 'uix_pb_imageslider_list';    // ID of clone trigger 
-$clone_max               = 15;                         // Maximum of clone form 
-
-//clone list of toggle class value @var array
-$clone_list_toggle_class = '';
+$clone_trigger_id        = 'uix_pb_imageslider_triggerclonelist';  // String of clone trigger ID, must contain at least "_triggerclonelist"
+$clone_max               = 15;                                     // Maximum of clone form 
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
 $form_type = array(
-	'list' => false
+    'list' => false
 );
 
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
 
-
-$args = 
+$args =
 	array(
 	
 		array(
@@ -102,6 +100,7 @@ $args =
 			'value'          => 1000,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+			'callback'       => 'number',
 			'default'        => array(
 									'units'  => 'ms'
 								)
@@ -115,6 +114,7 @@ $args =
 			'value'          => 7000,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+			'callback'       => 'number',
 			'default'        => array(
 									'units'  => 'ms'
 								)
@@ -122,39 +122,18 @@ $args =
 		),	
 		
 	 
-		//------list begin
+		//------ Clone controls list (begin)
 
 		
 		array(
 			'id'             => $clone_trigger_id,
-			'colid'          => $colid, /*clone required */
 			'title'          => esc_html__( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => esc_html__( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => array( 
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_photo' ).'',
-											'type'      => 'image'
-										), 
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_url' ).'',
-											'type'      => 'text'
-										), 
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_title' ).'',
-											'type'      => 'text'
-										), 
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_intro' ).'',
-											'type'      => 'textarea'
-										),
-
-									 ),
-									'max'                       => $clone_max
+									'max' => $clone_max
 				                )
 									
 		),
@@ -165,13 +144,8 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_photo' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Image URL', 'uix-page-builder' ),
-				'type'           => 'image',
-				'default'        => array(
-										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-										'upload_btn_text'  => esc_html__( 'Upload Image', 'uix-page-builder' ),
-									)
+				'type'           => 'image'
 			
 			),	
 			
@@ -181,10 +155,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_title' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Slider title', 'uix-page-builder' ),
 				'type'           => 'text',
-				'default'        => ''
+			    'callback'       => 'html',
 
 			),
 			
@@ -197,9 +170,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_intro' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Slider introduction', 'uix-page-builder' ),
 				'type'           => 'textarea',
+			    'callback'       => 'html',
 				'default'        => array(
 										'row'     => 5
 									)
@@ -212,16 +185,15 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_url' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Destination URL and can be left blank, e.g., http://your.site.com', 'uix-page-builder' ),
 				'type'           => 'text',
-				'default'        => ''
+			    'callback'       => 'url',
 
 			),
 	
 			
 		
-		//------list end
+		//------ Clone controls list (end)
 		
 		
 
@@ -237,32 +209,25 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'                   => array(
-										'max'               => $clone_max,
-										'list_toggle_class' => $clone_list_toggle_class,
-										'fields_group'  => array(
-																array(
-																	'trigger_id'     => $clone_trigger_id,
-	             										            'required'       => 'uix_pb_imageslider_listitem_photo',
-																	'fields'         => array( 'uix_pb_imageslider_listitem_photo', 'uix_pb_imageslider_listitem_title', 'uix_pb_imageslider_listitem_intro', 'uix_pb_imageslider_listitem_url' )
-																),
-															)
-									),
-	    'defalt_value'            => $item,
-	    'widget_name'             => $wname,
-		'form_id'                 => $form_id,
-		'section_id'              => $sid,
-	    'column_id'               => $colid,
-		'fields'                  => array(
-										array(
-											 'config'  => $args_config,
-											 'type'    => $form_type,
-											 'values'  => $args
-										),
+UixPBFormCore::form_scripts( array(
+	    'clone'        => array(
+							'trigger_id'     => $clone_trigger_id,
+							'fields'         => array( 
+													'uix_pb_imageslider_listitem_photo', 
+													'uix_pb_imageslider_listitem_title',
+													'uix_pb_imageslider_listitem_intro',
+													'uix_pb_imageslider_listitem_url',
+												)
+						),
+		'form_id'      => $form_id,
+		'fields'       => array(
+							array(
+								 'type'     => $form_type,
+								 'values'   => $args
+							),
 
-									),
-		'title'                   => esc_html__( 'Image Slider', 'uix-page-builder' ),
+						),
+		'title'        => esc_html__( 'Image Slider', 'uix-page-builder' ),
 	
 	
 		/**
@@ -271,106 +236,57 @@ UixPageBuilder::form_scripts( array(
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
+	    'template'              => '
 		
-		
-			/* List Item */
-			var list_num               = '.floatval( $clone_max ).',
-				show_list_item = \'\';
-			
-			
-			for ( var i = 1; i <= list_num; i++ ){
+			<div class="uix-pb-imageslider-wrapper">
+				<div class="uix-pb-imageslider">
+					<div class="uix-pb-imageslider-container">
+						<div class="flexslider" data-loop="${uix_pb_imageslider_list_loop}" data-speed="${uix_pb_imageslider_list_speed}" data-timing="${uix_pb_imageslider_list_timing}" data-paging="${uix_pb_imageslider_list_paging}" data-arrows="${uix_pb_imageslider_list_arrows}" data-animation="${uix_pb_imageslider_list_effect}">
+							<ul class="slides">
+							<!-- loop start -->
 
+								{{each '.$clone_trigger_id.'}}
+									{{if uix_pb_imageslider_listitem_photo != ""}}
 
-				var _uid     = ( i >= 2 ) ? \'#\'+i+\'-\' : \'#\',
-					_photo   = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_photo' ).'\' ).val(),
-					_url     = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_url' ).'\' ).val(),
-					_title   = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_title' ).'\' ).val(),
-					_desc    = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_imageslider_listitem_intro' ).'\' ).val();
+										<li>
+											<img src="${uix_pb_imageslider_listitem_photo}" alt="">
 
+											{{if uix_pb_imageslider_listitem_url != ""}}<a href="${uix_pb_imageslider_listitem_url}" target="_blank">{{/if}}
+												<div class="slide-text">
+														{{if uix_pb_imageslider_listitem_title != ""}}<div class="slide-title">${uix_pb_imageslider_listitem_title}</div>{{/if}}
+														{{if uix_pb_imageslider_listitem_intro != ""}}<div class="slide-byline">${uix_pb_imageslider_listitem_intro}</div>{{/if}}
+												</div>
+											{{if uix_pb_imageslider_listitem_url != ""}}</a>{{/if}}			
+										</li>
 
+									{{/if}}
+								{{/each}}	
 
-				var _item_v_photo = ( _photo != undefined ) ? encodeURI( _photo ) : \'\',
-					_item_v_url   = ( _url != undefined && _url != \'\' ) ? encodeURI( _url ) : \'\',
-					_item_v_title = ( _title != undefined && _title != \'\' ) ? _title : \'\',
-					_item_v_desc  = ( _desc != undefined && _desc != \'\' ) ? uixpbform_format_textarea_entering( _desc ) : \'\',
-					_item_v_intro = \'\';
-
-
-				if ( _photo != undefined && _photo != \'\' ) {
-				
-				
-					//Do not include spaces
-					
-					var __t = \'\',
-					    __d = \'\';
-						
-					if ( _item_v_title != \'\' || _item_v_desc != \'\' ) {
-					
-
-							
-						if ( _item_v_title != \'\' ) __t = \'<div class="slide-title">\'+_item_v_title+\'</div>\';
-						if ( _item_v_desc != \'\' ) __d = \'<div class="slide-byline">\'+_item_v_desc+\'</div>\';
-					
-					    _item_v_intro += \'<div class="slide-text">\';
-						_item_v_intro += __t;
-						_item_v_intro += __d;
-						_item_v_intro += \'</div>\';
-						
-					}
-					
-
-					show_list_item += \'<li>\';
-					show_list_item += \'<img src="\'+_item_v_photo+\'" alt="">\';
-					
-					if ( _item_v_url != \'\' ) {
-					   show_list_item += \'<a href="\'+_item_v_url+\'">\';
-					}
-					
-					show_list_item += _item_v_intro;
-					
-					if ( _item_v_url != \'\' ) {
-					   show_list_item += \'</a>\';
-					}
-				
-					
-					show_list_item += \'</li>\';
-				
-
-				}
-
-
-			}
-			
-
-					
-			var temp = \'\';
-				temp += \'<div class="uix-pb-imageslider-wrapper">\';
-				temp += \'<div class="uix-pb-imageslider">\';
-				temp += \'<div class="uix-pb-imageslider-container">\';
-				temp += \'<div class="flexslider" data-loop="\'+uix_pb_imageslider_list_loop+\'" data-speed="\'+uix_pb_imageslider_list_speed+\'" data-timing="\'+uix_pb_imageslider_list_timing+\'" data-paging="\'+uix_pb_imageslider_list_paging+\'" data-arrows="\'+uix_pb_imageslider_list_arrows+\'" data-animation="\'+uix_pb_imageslider_list_effect+\'">\';
-				temp += \'<ul class="slides">\';
-				temp += show_list_item;
-				temp += \'</ul>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-
-
-
+							<!-- loop end -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 
 		'
+	
     )
 );

@@ -137,7 +137,7 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 			}
 		}
 
-		
+
 		</style>
 		";
 		

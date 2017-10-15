@@ -3,34 +3,35 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+/**
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
 
 /**
- * Returns each variable in module data
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
-
 $form_type_config = array(
     'list' => 1
 );
-
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
 
 
 $module_config = 
@@ -42,7 +43,8 @@ $module_config =
 			'desc'           => '',
 			'value'          => esc_html__( 'Text Here', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 	
@@ -54,6 +56,7 @@ $module_config =
 			'value'          => esc_html__( 'This is the description text for the title.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 3
 								)
@@ -79,7 +82,8 @@ $args_1 =
 			'desc'           => '',
 			'value'          => esc_html__( 'free', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 		array(
@@ -88,7 +92,8 @@ $args_1 =
 			'desc'           => '',
 			'value'          => 49,
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'number',
 		
 		),
 		array(
@@ -109,7 +114,8 @@ $args_1 =
 			'desc'           => '',
 			'value'          => esc_html__( '$', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 		array(
@@ -118,7 +124,8 @@ $args_1 =
 			'desc'           => '',
 			'value'          => esc_html__( 'per month', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),	
 		array(
@@ -128,6 +135,7 @@ $args_1 =
 			'value'          => esc_html__( 'Some description text here.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 2
 				                )
@@ -139,7 +147,8 @@ $args_1 =
 			'desc'           => '',
 			'value'          => esc_html__( 'TRY FOR FREE', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),		
 		array(
@@ -148,16 +157,25 @@ $args_1 =
 			'desc'           => '',
 			'value'          => esc_url( '#' ),
 			'placeholder'    => 'URL',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'url',
 		
 		),	
 		array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_pricing2_col3_one_btn_color}
+				${uix_pb_pricing2_col3_one_btn_color_name}
+			 *
+			*/
 			'id'             => 'uix_pb_pricing2_col3_one_btn_color',
 			'title'          => esc_html__( 'Button Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
+	     	'callback'       => 'color-name',
 			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
@@ -175,11 +193,12 @@ $args_1 =
 			'id'             => 'uix_pb_pricing2_col3_one_features',
 			'title'          => esc_html__( 'Features', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => UixPageBuilder::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
+			'value'          => UixPBFormCore::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+		    'callback'       => 'list',
 			'default'        => array(
-									'row' => 5
+									'row'  => 5
 									
 				                )
 		
@@ -195,6 +214,7 @@ $args_1 =
 				                ),
 		
 		),	
+		
 		
 		array(
 			'id'             => 'uix_pb_pricing2_col3_one_active',
@@ -220,7 +240,8 @@ $args_2 =
 			'desc'           => '',
 			'value'          => esc_html__( 'premium', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 		array(
@@ -229,7 +250,8 @@ $args_2 =
 			'desc'           => '',
 			'value'          => 69,
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'number',
 		
 		),
 		array(
@@ -250,7 +272,8 @@ $args_2 =
 			'desc'           => '',
 			'value'          => esc_html__( '$', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 		array(
@@ -259,7 +282,8 @@ $args_2 =
 			'desc'           => '',
 			'value'          => esc_html__( 'per month', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),	
 		array(
@@ -269,6 +293,7 @@ $args_2 =
 			'value'          => esc_html__( 'Some description text here.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 2
 				                )
@@ -280,7 +305,8 @@ $args_2 =
 			'desc'           => '',
 			'value'          => esc_html__( 'BUY', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),		
 		array(
@@ -289,16 +315,25 @@ $args_2 =
 			'desc'           => '',
 			'value'          => esc_url( '#' ),
 			'placeholder'    => 'URL',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'url',
 		
 		),	
 		array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_pricing2_col3_two_btn_color}
+				${uix_pb_pricing2_col3_two_btn_color_name}
+			 *
+			*/
 			'id'             => 'uix_pb_pricing2_col3_two_btn_color',
 			'title'          => esc_html__( 'Button Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
+	     	'callback'       => 'color-name',
 			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
@@ -316,16 +351,16 @@ $args_2 =
 			'id'             => 'uix_pb_pricing2_col3_two_features',
 			'title'          => esc_html__( 'Features', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => UixPageBuilder::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
+			'value'          => UixPBFormCore::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s>', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'list',
 			'default'        => array(
 									'row' => 5
 									
 				                )
 		
 		),	
-		
 		
 	    array(
 			'id'             => 'uix_pb_pricing2_col3_two_features_tipinfo',
@@ -362,7 +397,8 @@ $args_3 =
 			'desc'           => '',
 			'value'          => esc_html__( 'professional', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 		array(
@@ -371,7 +407,8 @@ $args_3 =
 			'desc'           => '',
 			'value'          => 109,
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'number',
 		
 		),
 		array(
@@ -392,7 +429,8 @@ $args_3 =
 			'desc'           => '',
 			'value'          => esc_html__( '$', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 		array(
@@ -401,7 +439,8 @@ $args_3 =
 			'desc'           => '',
 			'value'          => esc_html__( 'per month', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),	
 		array(
@@ -411,6 +450,7 @@ $args_3 =
 			'value'          => esc_html__( 'Some description text here.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 2
 				                )
@@ -422,7 +462,8 @@ $args_3 =
 			'desc'           => '',
 			'value'          => esc_html__( 'BUY', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),		
 		array(
@@ -431,16 +472,25 @@ $args_3 =
 			'desc'           => '',
 			'value'          => esc_url( '#' ),
 			'placeholder'    => 'URL',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'url',
 		
 		),	
 		array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_pricing2_col3_three_btn_color}
+				${uix_pb_pricing2_col3_three_btn_color_name}
+			 *
+			*/
 			'id'             => 'uix_pb_pricing2_col3_three_btn_color',
 			'title'          => esc_html__( 'Button Color', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '#a2bf2f',
 			'placeholder'    => '',
 			'type'           => 'color',
+	     	'callback'       => 'color-name',
 			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe' )
 		
 		),
@@ -458,15 +508,17 @@ $args_3 =
 			'id'             => 'uix_pb_pricing2_col3_three_features',
 			'title'          => esc_html__( 'Features', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => UixPageBuilder::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s><br>Another Feature Description', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
+			'value'          => UixPBFormCore::html_listTran( wp_kses( __( 'Feature Description<br>Another Feature Description<br>Another Feature Description<br><s>Invalid Feature Description</s><br>Another Feature Description', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ) ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'list',
 			'default'        => array(
 									'row'  => 5
 									
 				                )
 		
 		),	
+		
 		
 	    array(
 			'id'             => 'uix_pb_pricing2_col3_three_features_tipinfo',
@@ -478,8 +530,6 @@ $args_3 =
 				                ),
 		
 		),	
-		
-		
 		
 		array(
 			'id'             => 'uix_pb_pricing2_col3_three_active',
@@ -497,39 +547,33 @@ $args_3 =
 ;
 
 
+
+
 /**
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'                   => '',
-	    'defalt_value'            => $item,
-	    'widget_name'             => $wname,
+UixPBFormCore::form_scripts( array(
+	    'clone'                   => false,
 		'form_id'                 => $form_id,
-		'section_id'              => $sid,
-	    'column_id'               => $colid,
 		'fields'                  => array(
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_config,
 											 'values'  => $module_config,
 											 'title'   => esc_html__( 'General Settings', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type,
 											 'values'  => $args_1,
 											 'title'   => esc_html__( 'Table 1', 'uix-page-builder' )
 										),
 	
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type,
 											 'values'  => $args_2,
 											 'title'   => esc_html__( 'Table 2', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type,
 											 'values'  => $args_3,
 											 'title'   => esc_html__( 'Table 3', 'uix-page-builder' )
@@ -539,113 +583,121 @@ UixPageBuilder::form_scripts( array(
 									),
 		'title'                   => esc_html__( 'Pricing Table (3 column)', 'uix-page-builder' ),
 	
-	
 		/**
 		 * /////////////// Customizing HTML output on the frontend /////////////// 
 		 * 
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
+	    'template'              => '
 		
-			var win_one        = ( uix_pb_pricing2_col3_one_btn_win === true ) ? \'target="_blank"\' : \'\',
-				win_two        = ( uix_pb_pricing2_col3_two_btn_win === true ) ? \'target="_blank"\' : \'\',
-				win_three      = ( uix_pb_pricing2_col3_three_btn_win === true ) ? \'target="_blank"\' : \'\',
-
-				imclass_one    = ( uix_pb_pricing2_col3_one_active === true ) ? \'uix-pb-price2-important\' : \'\',
-				imclass_two    = ( uix_pb_pricing2_col3_two_active === true ) ? \'uix-pb-price2-important\' : \'\',
-				imclass_three  = ( uix_pb_pricing2_col3_three_active === true ) ? \'uix-pb-price2-important\' : \'\',
-
-				btncolor_one   = uixpbform_colorTran( uix_pb_pricing2_col3_one_btn_color ),
-				btncolor_two   = uixpbform_colorTran( uix_pb_pricing2_col3_two_btn_color ),
-				btncolor_three = uixpbform_colorTran( uix_pb_pricing2_col3_three_btn_color );
+			{{if uix_pb_pricing2_col3_config_title != ""}}
+				<h2 class="uix-pb-section-heading">${uix_pb_pricing2_col3_config_title}</h2><div class="uix-pb-section-hr"></div>		
+			{{/if}}			
 
 
-			var _config_t      = ( uix_pb_pricing2_col3_config_title != undefined && uix_pb_pricing2_col3_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_pricing2_col3_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc   = ( uix_pb_pricing2_col3_config_intro != undefined && uix_pb_pricing2_col3_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_config_intro )+\'</div>\' : \'\';
+			{{if uix_pb_pricing2_col3_config_intro != ""}}
+				<div class="uix-pb-section-desc">${uix_pb_pricing2_col3_config_intro}</div>		
+			{{/if}}	
 
-			
+			<div class="uix-pb-price2">
+				<div class="uix-pb-row">
 
-			var temp = \'\';
-				temp += _config_t;
-				temp += _config_desc;
-				temp += \'<div class="uix-pb-price2">\';
-				temp += \'<div class="uix-pb-row">\';
-			    
-			    //--- one
-				temp += \'<div class="uix-pb-col-4 uix-pb-price2-border-hover" data-bcolor="\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_one_btn_color )+\'" data-tcolor="\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_one_emphasis_color )+\'">\';
-				temp += \'<div class="uix-pb-price2-bg-hover uix-pb-price2-init-height">\';
-				temp += \'<div class="uix-pb-price2-border \'+uixpbform_htmlEncode( imclass_one )+\'">\';
-				temp += \'<h5 class="uix-pb-price2-level">\'+uix_pb_pricing2_col3_one_title+\'</h5>\';
-				temp += \'<h2 class="uix-pb-price2-num" style="color:\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_one_emphasis_color )+\'"><span class="uix-pb-price2-currency">\'+uix_pb_pricing2_col3_one_currency+\'</span><span class="uix-pb-price2-num-text">\'+uixpbform_floatval( uix_pb_pricing2_col3_one_price )+\'</span><span class="uix-pb-price2-period">\'+uix_pb_pricing2_col3_one_period+\'</span></h2>\';
-				temp += \'<div class="uix-pb-price2-excerpt">\';
-				temp += \'<p>\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_one_desc )+\'</p>\';
-				temp += \'</div> <a href="\'+encodeURI( uix_pb_pricing2_col3_one_btn_link )+\'" \'+win_one+\' class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-\'+btncolor_one+\'">\'+uix_pb_pricing2_col3_one_btn_label+\'</a>\';
-				temp += \'<div class="uix-pb-price2-hr"></div>\';
-				temp += \'<div class="uix-pb-price2-detail">\';
-				temp += \'<ul>\';
-				temp += uixpbform_html_listTran( uix_pb_pricing2_col3_one_features, \'li\' );
-				temp += \'</ul>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
+					<!-- ////// one  ////// -->
+					<div class="uix-pb-col-4 uix-pb-price2-border-hover" data-bcolor="${uix_pb_pricing2_col3_one_btn_color}" data-tcolor="${uix_pb_pricing2_col3_one_emphasis_color}">
+						<div class="uix-pb-price2-bg-hover uix-pb-price2-init-height">
+							<div class="uix-pb-price2-border {{if uix_pb_pricing2_col3_one_active == 1}}uix-pb-price2-important{{/if}}">
+								<h5 class="uix-pb-price2-level">${uix_pb_pricing2_col3_one_title}</h5>
+								<h2 class="uix-pb-price2-num" style="color:${uix_pb_pricing2_col3_one_emphasis_color}">
+									<span class="uix-pb-price2-currency">${uix_pb_pricing2_col3_one_currency}</span>
+									<span class="uix-pb-price2-num-text">${uix_pb_pricing2_col3_one_price}</span>
+									<span class="uix-pb-price2-period">${uix_pb_pricing2_col3_one_period}</span>
+								</h2>
+								<div class="uix-pb-price2-excerpt">
+									<p>${uix_pb_pricing2_col3_one_desc}</p>
+								</div> 
+								<a href="${uix_pb_pricing2_col3_one_btn_link}" {{if uix_pb_pricing2_col3_one_btn_win == 1}}target="_blank"{{/if}} class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-${uix_pb_pricing2_col3_one_btn_color_name}">${uix_pb_pricing2_col3_one_btn_label}</a>
+								<div class="uix-pb-price2-hr"></div>
+								<div class="uix-pb-price2-detail">
+									<ul>
+										${uix_pb_pricing2_col3_one_features}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 
-			    //--- two
-				temp += \'<div class="uix-pb-col-4 uix-pb-price2-border-hover" data-bcolor="\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_two_btn_color )+\'" data-tcolor="\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_two_emphasis_color )+\'">\';
-				temp += \'<div class="uix-pb-price2-bg-hover uix-pb-price2-init-height">\';
-				temp += \'<div class="uix-pb-price2-border \'+uixpbform_htmlEncode( imclass_two )+\'">\';
-				temp += \'<h5 class="uix-pb-price2-level">\'+uix_pb_pricing2_col3_two_title+\'</h5>\';
-				temp += \'<h2 class="uix-pb-price2-num" style="color:\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_two_emphasis_color )+\'"><span class="uix-pb-price2-currency">\'+uix_pb_pricing2_col3_two_currency+\'</span><span class="uix-pb-price2-num-text">\'+uixpbform_floatval( uix_pb_pricing2_col3_two_price )+\'</span><span class="uix-pb-price2-period">\'+uix_pb_pricing2_col3_two_period+\'</span></h2>\';
-				temp += \'<div class="uix-pb-price2-excerpt">\';
-				temp += \'<p>\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_two_desc )+\'</p>\';
-				temp += \'</div> <a href="\'+encodeURI( uix_pb_pricing2_col3_two_btn_link )+\'" \'+win_two+\' class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-\'+btncolor_two+\'">\'+uix_pb_pricing2_col3_two_btn_label+\'</a>\';
-				temp += \'<div class="uix-pb-price2-hr"></div>\';
-				temp += \'<div class="uix-pb-price2-detail">\';
-				temp += \'<ul>\';
-				temp += uixpbform_html_listTran( uix_pb_pricing2_col3_two_features, \'li\' );
-				temp += \'</ul>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-			
-			
-			    //--- three
-				temp += \'<div class="uix-pb-col-4 uix-pb-col-last uix-pb-price2-border-hover" data-bcolor="\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_three_btn_color )+\'" data-tcolor="\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_three_emphasis_color )+\'">\';
-				temp += \'<div class="uix-pb-price2-bg-hover uix-pb-price2-init-height">\';
-				temp += \'<div class="uix-pb-price2-border \'+uixpbform_htmlEncode( imclass_three )+\'">\';
-				temp += \'<h5 class="uix-pb-price2-level">\'+uix_pb_pricing2_col3_three_title+\'</h5>\';
-				temp += \'<h2 class="uix-pb-price2-num" style="color:\'+uixpbform_htmlEncode( uix_pb_pricing2_col3_three_emphasis_color )+\'"><span class="uix-pb-price2-currency">\'+uix_pb_pricing2_col3_three_currency+\'</span><span class="uix-pb-price2-num-text">\'+uixpbform_floatval( uix_pb_pricing2_col3_three_price )+\'</span><span class="uix-pb-price2-period">\'+uix_pb_pricing2_col3_three_period+\'</span></h2>\';
-				temp += \'<div class="uix-pb-price2-excerpt">\';
-				temp += \'<p>\'+uixpbform_format_textarea_entering( uix_pb_pricing2_col3_three_desc )+\'</p>\';
-				temp += \'</div> <a href="\'+encodeURI( uix_pb_pricing2_col3_three_btn_link )+\'" \'+win_three+\' class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-\'+btncolor_three+\'">\'+uix_pb_pricing2_col3_three_btn_label+\'</a>\';
-				temp += \'<div class="uix-pb-price2-hr"></div>\';
-				temp += \'<div class="uix-pb-price2-detail">\';
-				temp += \'<ul>\';
-				temp += uixpbform_html_listTran( uix_pb_pricing2_col3_three_features, \'li\' );
-				temp += \'</ul>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
-			
-                //---
-				temp += \'</div>\';
-				temp += \'<!-- /.uix-pb-row -->\';
-				temp += \'</div>\';
-				temp += \'<!-- /.uix-pb-price2 -->\';
+					<!-- ////// two  ////// -->
+					<div class="uix-pb-col-4 uix-pb-price2-border-hover" data-bcolor="${uix_pb_pricing2_col3_two_btn_color}" data-tcolor="${uix_pb_pricing2_col3_two_emphasis_color}">
+						<div class="uix-pb-price2-bg-hover uix-pb-price2-init-height">
+							<div class="uix-pb-price2-border {{if uix_pb_pricing2_col3_two_active == 1}}uix-pb-price2-important{{/if}}">
+								<h5 class="uix-pb-price2-level">${uix_pb_pricing2_col3_two_title}</h5>
+								<h2 class="uix-pb-price2-num" style="color:${uix_pb_pricing2_col3_two_emphasis_color}">
+									<span class="uix-pb-price2-currency">${uix_pb_pricing2_col3_two_currency}</span>
+									<span class="uix-pb-price2-num-text">${uix_pb_pricing2_col3_two_price}</span>
+									<span class="uix-pb-price2-period">${uix_pb_pricing2_col3_two_period}</span>
+								</h2>
+								<div class="uix-pb-price2-excerpt">
+									<p>${uix_pb_pricing2_col3_two_desc}</p>
+								</div> 
+								<a href="${uix_pb_pricing2_col3_two_btn_link}" {{if uix_pb_pricing2_col3_two_btn_win == 1}}target="_blank"{{/if}} class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-${uix_pb_pricing2_col3_two_btn_color_name}">${uix_pb_pricing2_col3_two_btn_label}</a>
+								<div class="uix-pb-price2-hr"></div>
+								<div class="uix-pb-price2-detail">
+									<ul>
+										${uix_pb_pricing2_col3_two_features}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- ////// three  ////// -->
+					<div class="uix-pb-col-4 uix-pb-col-last uix-pb-price2-border-hover" data-bcolor="${uix_pb_pricing2_col3_three_btn_color}" data-tcolor="${uix_pb_pricing2_col3_three_emphasis_color}">
+						<div class="uix-pb-price2-bg-hover uix-pb-price2-init-height">
+							<div class="uix-pb-price2-border {{if uix_pb_pricing2_col3_three_active == 1}}uix-pb-price2-important{{/if}}">
+								<h5 class="uix-pb-price2-level">${uix_pb_pricing2_col3_three_title}</h5>
+								<h2 class="uix-pb-price2-num" style="color:${uix_pb_pricing2_col3_three_emphasis_color}">
+									<span class="uix-pb-price2-currency">${uix_pb_pricing2_col3_three_currency}</span>
+									<span class="uix-pb-price2-num-text">${uix_pb_pricing2_col3_three_price}</span>
+									<span class="uix-pb-price2-period">${uix_pb_pricing2_col3_three_period}</span>
+								</h2>
+								<div class="uix-pb-price2-excerpt">
+									<p>${uix_pb_pricing2_col3_three_desc}</p>
+								</div> 
+								<a href="${uix_pb_pricing2_col3_three_btn_link}" {{if uix_pb_pricing2_col3_three_btn_win == 1}}target="_blank"{{/if}} class="uix-pb-btn uix-pb-btn-small uix-pb-btn-bg-${uix_pb_pricing2_col3_three_btn_color_name}">${uix_pb_pricing2_col3_three_btn_label}</a>
+								<div class="uix-pb-price2-hr"></div>
+								<div class="uix-pb-price2-detail">
+									<ul>
+										${uix_pb_pricing2_col3_three_features}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.uix-pb-row -->
+			</div>
+			<!-- /.uix-pb-price2-->
+
 		
 		'
     )

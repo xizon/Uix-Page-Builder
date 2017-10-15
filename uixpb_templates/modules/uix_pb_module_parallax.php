@@ -3,35 +3,35 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
     return;
 }
 
+/**
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
 
 /**
- * Returns each variable in module data
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
-
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
 $form_type = array(
-	'list' => false
+    'list' => false
 );
 
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
-
-						
 
 $args = 
 	array(
@@ -53,12 +53,20 @@ $args =
 		),
 
 		array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_parallax_skew}
+				${uix_pb_parallax_skew_deg_px}
+			 *
+			*/
 			'id'             => 'uix_pb_parallax_skew',
 			'title'          => esc_html__( 'Skew', 'uix-page-builder' ),
 			'desc'           => wp_kses( __( 'Suggest values: <strong>-10</strong> &nbsp;to&nbsp;<strong>10</strong>.', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ),
 			'value'          => 0,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+		    'callback'       => 'number-deg_px', 
 			'default'        => array(
 									'units'  => 'deg'
 								)
@@ -69,15 +77,22 @@ $args =
 
 		
 	    array(
+		    /*
+		     * @template vars: 
+			 *
+				${uix_pb_parallax_height}
+				${uix_pb_parallax_height_units}
+			 *
+			*/
 			'id'             => 'uix_pb_parallax_height',
 			'title'          => esc_html__( 'Height', 'uix-page-builder' ),
 			'desc'           => esc_html__( 'If the value is "0", the height is automatically calculated.', 'uix-page-builder' ),
 			'value'          => 300,
 			'placeholder'    => '',
 			'type'           => 'short-units-text',
+		    'callback'       => 'number', 
 			'default'        => array(
 									'units'      => array( 'px', 'vh' ),
-									'units_id'    => 'uix_pb_parallax_height_units',
 									'units_value' => 'px'
 								)
 		
@@ -92,7 +107,6 @@ $args =
 			'placeholder'    => '',
 			'type'           => 'slider',
 			'default'        => array(
-			                        'units_id'    => 'uix_pb_parallax_speed_units',
 									'units'       => '',
 									'min'         => -10,
 									'max'         => 10,
@@ -107,10 +121,7 @@ $args =
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
-			'type'           => 'colormap',
-			'default'        => array(
-									'swatches' => 1
-								)
+			'type'           => 'color-picker'
 
 
 		),	
@@ -123,11 +134,7 @@ $args =
 			'desc'           => '',
 			'value'          => esc_url( UixPBFormCore::cover_placeholder() ),
 			'placeholder'    => '',
-			'type'           => 'image',
-			'default'        => array(
-									'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-									'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' ),
-								)
+			'type'           => 'image'
 		
 		),	
 			
@@ -146,83 +153,80 @@ $args =
 		),
 		
 	
+		//------ Toggle of switch with checkbox (begin)
 		array(
-			'id'             => 'uix_pb_parallax_button_checkbox_toggle',
+			'id'             => 'uix_pb_parallax_button_toggle',
 			'title'          => esc_html__( 'Link Button', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 0, // 0:close  1:open
 			'placeholder'    => '',
 			'type'           => 'checkbox',
-		
-			/* If the toggle of switch with checkbox is enabled, the target id require class like "toggle-row" */
-			'toggle'        => array(
-									'trigger_id'  => '', /* {option id} */
-									'toggle_class'  => array(
-		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_btn_color' ).'_class', 
-		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url' ).'_class', 
-		                                ''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text' ).'_class' ,
-										''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text_tipinfo' ).'_class' ,
-	                                 ),
-									
-									/* if this toggle contains another toggle, please specifies "toggle_not_class" in order that default hiding form is still valid . */
-									/*
-									'toggle_not_class'  => array()
-									*/
-									
-				                )	
-		
-		
-		),	
-		
-		
-		array(
-			'id'             => 'uix_pb_parallax_btn_color',
-			'title'          => esc_html__( 'Button Color', 'uix-page-builder' ),
-			'desc'           => '',
-			'value'          => '#ffffff',
-		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_btn_color' ).'_class', /*class of toggle item */
-			'placeholder'    => '',
-			'type'           => 'color',
-			'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe',  '#ffffff' )
-		
+			'toggle'         => array(
+									'target_ids'  => array( 
+														'uix_pb_parallax_btn_color', 
+														'uix_pb_parallax_url', 
+														'uix_pb_parallax_url_text', 
+														'uix_pb_parallax_url_text_tipinfo' 
+													)
+								)
+
 		),
 		
-
-		array(
-			'id'             => 'uix_pb_parallax_url',
-			'title'          => esc_html__( 'Destination URL', 'uix-page-builder' ),
-			'desc'           => '',
-			'value'          => '',
-		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url' ).'_class', /*class of toggle item */
-			'placeholder'    => esc_html__( 'http://', 'uix-page-builder' ),
-			'type'           => 'text',
-			'default'        => ''
-
-		),	
-
-		array(
-			'id'             => 'uix_pb_parallax_url_text',
-			'title'          => esc_html__( 'Link Text', 'uix-page-builder' ),
-			'desc'           => '',
-		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text' ).'_class', /*class of toggle item */
-			'value'          => esc_html__( 'Check Out', 'uix-page-builder' ),
-			'placeholder'    => '',
-			'type'           => 'text',
-			'default'        => ''
-
-		),		
 		
-	    array(
-			'id'             => 'uix_pb_parallax_url_text_tipinfo',
-			'desc'           => wp_kses( __( 'Valid when the value of <strong>"Destination URL"</strong> is not empty', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ),
-		    'class'          => 'toggle-row '.UixPBFormCore::fid( $colid, $sid, 'uix_pb_parallax_url_text_tipinfo' ).'_class', /*class of toggle item */
-			'type'           => 'note',
-			'default'        => array(
-		                            'fullwidth'  => false,
-									'type'       => 'default'  //error, success, warning, note, default
-				                ),
+			array(
+				/*
+				 * @template vars: 
+				 *
+					${uix_pb_parallax_btn_color}
+					${uix_pb_parallax_btn_color_name}
+				 *
+				*/
+				'id'             => 'uix_pb_parallax_btn_color',
+				'title'          => esc_html__( 'Button Color', 'uix-page-builder' ),
+				'desc'           => '',
+				'value'          => '#ffffff',
+				'placeholder'    => '',
+				'type'           => 'color',
+				'callback'       => 'color-name',
+				'default'        => array( '#a2bf2f', '#d59a3e', '#DD514C', '#FA9ADF', '#4BB1CF',  '#0E90D2', '#5F9EA0', '#473f3f',  '#bebebe',  '#ffffff' )
+
+			),
+
+
+			array(
+				'id'             => 'uix_pb_parallax_url',
+				'title'          => esc_html__( 'Destination URL', 'uix-page-builder' ),
+				'desc'           => '',
+				'value'          => '',
+				'placeholder'    => esc_html__( 'http://', 'uix-page-builder' ),
+				'type'           => 'text',
+				'callback'       => 'url', 
+
+			),	
+
+			array(
+				'id'             => 'uix_pb_parallax_url_text',
+				'title'          => esc_html__( 'Link Text', 'uix-page-builder' ),
+				'desc'           => '',
+				'value'          => esc_html__( 'Check Out', 'uix-page-builder' ),
+				'placeholder'    => '',
+				'type'           => 'text',
+				'callback'       => 'html', 
+
+			),		
+
+			array(
+				'id'             => 'uix_pb_parallax_url_text_tipinfo',
+				'desc'           => wp_kses( __( 'Valid when the value of <strong>"Destination URL"</strong> is not empty', 'uix-page-builder' ), wp_kses_allowed_html( 'post' ) ),
+				'type'           => 'note',
+				'default'        => array(
+										'fullwidth'  => false,
+										'type'       => 'default'  //error, success, warning, note, default
+									),
+
+			),	
 		
-		),	
+		//------ Toggle of switch with checkbox (end)
 		
 
 	
@@ -233,23 +237,19 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'        => '',
-	    'defalt_value' => $item,
-	    'widget_name'  => $wname,
+UixPBFormCore::form_scripts( array(
+	    'clone'        => false,
 		'form_id'      => $form_id,
-		'section_id'   => $sid,
-	    'column_id'    => $colid,
 		'fields'       => array(
 							array(
-								 'config'  => $args_config,
-								 'type'    => $form_type,
-								 'values'  => $args
+								 'type'     => $form_type,
+								 'values'   => $args
 							),
 
 						),
 		'title'        => esc_html__( 'Parallax', 'uix-page-builder' ),
 
+	
 	
 		/**
 		 * /////////////// Customizing HTML output on the frontend /////////////// 
@@ -257,58 +257,38 @@ UixPageBuilder::form_scripts( array(
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
+	    'template'              => '
+		
+			<div class="uix-pb-parallax-wrapper uix-pb-parallax {{if uix_pb_parallax_skew != 0 && uix_pb_parallax_desc != ""}}skew{{/if}} {{if uix_pb_parallax_desc == ""}}blankspace{{/if}}" {{if uix_pb_parallax_bg != ""}}style="{{if uix_pb_parallax_skew != 0}}margin-top: -${uix_pb_parallax_skew_deg_px}px;margin-bottom:${uix_pb_parallax_skew_deg_px}px;-webkit-transform: skew(0deg, ${uix_pb_parallax_skew}deg); transform: skew(0deg, ${uix_pb_parallax_skew}deg);{{/if}}background: {{if uix_pb_parallax_bg_color != ""}}${uix_pb_parallax_bg_color}{{else}}transparent{{/if}} url(${uix_pb_parallax_bg}) {{if uix_pb_parallax_speed > 0}}50%{{else}}top{{/if}} {{if uix_pb_parallax_speed > 0}}0{{else}}left{{/if}} no-repeat {{if uix_pb_parallax_speed > 0}}fixed{{else}}${uix_pb_parallax_bg_attachment}{{/if}};"{{else}}style="{{if uix_pb_parallax_skew != 0}}margin-top: -${uix_pb_parallax_skew_deg_px}px;margin-bottom:${uix_pb_parallax_skew_deg_px}px;-webkit-transform: skew(0deg, ${uix_pb_parallax_skew}deg); transform: skew(0deg, ${uix_pb_parallax_skew}deg);{{/if}}background-color:{{if uix_pb_parallax_bg_color != ""}}${uix_pb_parallax_bg_color}{{else}}transparent{{/if}};"{{/if}} data-parallax="${uix_pb_parallax_speed}">
+				<div class="uix-pb-parallax-table {{if uix_pb_parallax_height == 0}}uix-pb-parallax-table-auto{{/if}}" style="height:${uix_pb_parallax_height}${uix_pb_parallax_height_units}">
+					<div class="uix-pb-parallax-content-box" {{if uix_pb_parallax_skew != 0}}style="-webkit-transform: skew(0deg, -${uix_pb_parallax_skew}deg); transform: skew(0deg, -${uix_pb_parallax_skew}deg);"{{/if}}>
+						${uix_pb_parallax_desc}
 
-			//Converts from radians to degrees.
-			var skewToPx           = Math.abs( ( uixpbform_floatval( uix_pb_parallax_skew ) * 180 / Math.PI )/2 ),
-				skewDeg            = uixpbform_floatval( uix_pb_parallax_skew ),
-				skewDeg2           = -( skewDeg ),
-				skew_css           = ( uix_pb_parallax_skew != 0 ) ? \'margin-top: -\'+skewToPx+\'px;margin-bottom:\'+skewToPx+\'px;-webkit-transform: skew(0deg, \'+skewDeg+\'deg); transform: skew(0deg, \'+skewDeg+\'deg);\' : \'\',
-				skew_content_style = ( uix_pb_parallax_skew != 0 ) ? \'style="-webkit-transform: skew(0deg, \'+skewDeg2+\'deg); transform: skew(0deg, \'+skewDeg2+\'deg);"\' : \'\',
-				skew_class         = ( uix_pb_parallax_skew != 0 ) ? \'skew\' : \'\',
-				btncolor           = uixpbform_colorTran( uix_pb_parallax_btn_color );
-
-
-			var bg_pos_1      = ( uix_pb_parallax_speed > 0 ) ? \'50%\' : \'top\',
-				bg_pos_2      = ( uix_pb_parallax_speed > 0 ) ? 0 : \'left\',
-				bgcolor       =  ( uix_pb_parallax_bg_color != undefined && uix_pb_parallax_bg_color != \'\' ) ? uixpbform_htmlEncode( uix_pb_parallax_bg_color ) : \'transparent\',
-				speed         = ( uix_pb_parallax_speed > 0 ) ? \'fixed\' : uixpbform_htmlEncode( uix_pb_parallax_bg_attachment ),
-				bgimage_css   = ( uix_pb_parallax_bg != undefined && uix_pb_parallax_bg != \'\' ) ? \'style="\'+skew_css+\'background: \'+bgcolor+\' url(\'+encodeURI( uix_pb_parallax_bg )+\') \'+bg_pos_1+\' \'+bg_pos_2+\' no-repeat \'+speed+\';"\' : \'style="\'+skew_css+\'background-color:\'+bgcolor+\';"\',
-				desc          =  uix_pb_parallax_desc,
-				button =  ( uix_pb_parallax_url != undefined && uix_pb_parallax_url != \'\' ) ? \'<p><a class="uix-pb-btn uix-pb-btn-\'+btncolor+\'" href="\'+encodeURI( uix_pb_parallax_url )+\'">\'+uix_pb_parallax_url_text+\'</a></p>\' : \'\';
-				
-				
-			var height_auto = ( uix_pb_parallax_height == 0 ) ? \'uix-pb-parallax-table-auto\' : \'\';
-
-
-			var blankspace_class = \'\';
-			if ( desc == \'\' ) {
-			    blankspace_class = \'blankspace\';
-				skew_class       = \'\';
-			}
-
-
-			var temp = \'\';
-				temp += \'<div class="uix-pb-parallax-wrapper uix-pb-parallax \'+skew_class+\' \'+blankspace_class+\'" \'+bgimage_css+\' data-parallax="\'+uix_pb_parallax_speed+\'">\';
-				temp += \'<div class="uix-pb-parallax-table \'+height_auto+\'" style="height:\'+uixpbform_floatval( uix_pb_parallax_height )+\'\'+uixpbform_htmlEncode( uix_pb_parallax_height_units )+\'">\';
-				temp += \'<div class="uix-pb-parallax-content-box" \'+skew_content_style+\'>\';
-				temp += desc;
-				temp += button;
-				temp += \'</div>\';
-				temp += \'</div>\';
-				temp += \'</div>\';
+						{{if uix_pb_parallax_button_toggle == 1}}
+							<p><a class="uix-pb-btn uix-pb-btn-${uix_pb_parallax_btn_color_name}" href="${uix_pb_parallax_url}">${uix_pb_parallax_url_text}</a></p>
+						{{/if}}
+					</div>
+				</div>
+			</div>
 
 		'
+	
     )
 );

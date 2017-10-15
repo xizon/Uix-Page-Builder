@@ -38,7 +38,7 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 				'custom_classes'  => '',
 				'show'            => 10,
 				'thumbsize'       => 'small',
-				'displayname'     => 'false',
+				'displayname'     => 0,
 				
 			 ), $atts ) );
 			
@@ -66,7 +66,7 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 					$latest_array  = $results_array['entry_data']['ProfilePage'][0]['user']['media']['nodes'];
 
 					$return_string .= '<div class="uix-pb-instagram-container '.$custom_classes.'">';
-					if ( $displayname == 'true' ) {
+					if ( $displayname == 1 ) {
 						$return_string .= '<div class="uix-pb-instagram-feed-username"><a href="https://www.instagram.com/'.esc_attr( $username ).'/" target="_blank">@'.esc_html( $username ).'</a></div>';
 					}
 

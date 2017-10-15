@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 3.5 (September 21, 2017)
+ * @version		: 4.0 (October 14, 2017)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '3.5';	
+		const VERSION    = '4.0';	
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 		
 		/**
@@ -36,14 +36,12 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 */
 		public static function init() {
 			
+			
 			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'backstage_scripts' ) );
 			add_action( 'admin_init', array( __CLASS__, 'load_form_core' ) );
+			add_action( 'admin_init', array( __CLASS__, 'load_components_core' ) );
 			add_action( 'admin_footer', array( __CLASS__, 'icon_selector_win' ) );
-			add_action( 'wp_ajax_nopriv_uixpbform_ajax_modules', array( __CLASS__, 'load_uixpbform_ajax_modules' ) );
-			add_action( 'wp_ajax_uixpbform_ajax_modules', array( __CLASS__, 'load_uixpbform_ajax_modules' ) );
-			add_action( 'wp_ajax_nopriv_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
-			add_action( 'wp_ajax_uixpbform_ajax_iconlist', array( __CLASS__, 'load_uixpbform_ajax_iconlist' ) );
 			
 			
 		}
@@ -106,9 +104,14 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					}
 				 
 				 
-					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.min.js', array( 'jquery' ), self::VERSION, true );
+				    wp_enqueue_script( 'jquery-tmpl', self::plug_directory() .'js/jquery.tmpl.min.js', array( 'jquery' ), '1.0', true );
+				    wp_enqueue_script( 'jquery-tmplPlus', self::plug_directory() .'js/jquery.tmplPlus.min.js', array( 'jquery', 'jquery-tmpl' ), '1.0', true );
+				 
+					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.min.js', array( 'jquery', 'jquery-tmpl' ), self::VERSION, true );
 					
 
+				 
+				 
 					//Colorpicker
 					wp_enqueue_style( 'wp-color-picker' );
 					wp_enqueue_script( 'wp-color-picker' );	
@@ -265,6 +268,18 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		}	
 
 		
+		/*
+		 * Load all core components in the directory
+		 *
+		 */
+		 public static function load_components_core() {
+
+			foreach ( glob( dirname(__FILE__). "/components/*.php") as $file ) {
+				include $file;
+			}
+
+		 }	
+		
 		
 		/*
 		 * Call the specified page modules
@@ -287,72 +302,23 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		
 	
 		/*
-		 * Load all the form fields in the directory
+		 * Load all the form controls in the directory
 		 *
 		 */
 		 public static function load_form_core() {
 	
-			foreach ( glob( dirname(__FILE__). "/form-inc/*.php") as $file ) {
+			foreach ( glob( dirname(__FILE__). "/controls/*.php") as $file ) {
 				include $file;
 			}	 
 		 }
-		
-		
+
 	
+		
 		/*
 		 * ========================================================================================================================================
 		 * ========================================================================================================================================
 		 */		
 
-		
-		/*
-		 * Returns form id (Obtained via module ID)
-		 *
-		 *
-		 */
-		public static function fid( $col_id, $section_row, $field ) {
-			$colid = str_replace( 'col-item-', 'section_'.$section_row.'__', $col_id );
-			return $colid.'_'.$field;
-		}	
-
-
-
-		/*
-		 * Returns form name
-		 *
-		 *
-		 */
-		public static function fname( $col_id, $form_id, $field ) {
-			return $form_id.'|['.$col_id.']['.$field.']{index}';
-		}
-
-
-		/*
-		 * Returns form value
-		 *
-		 *
-		 */
-		public static function fvalue( $col_id, $section_row, $arr, $field, $default = '' ) {
-
-			$result = '';
-			if ( is_array( $arr ) && array_key_exists( '['.$col_id.']['.$field.']['.$section_row.']', $arr ) ) {
-				$result = $arr[ '['.$col_id.']['.$field.']['.$section_row.']' ];
-			} else {
-				$result = $default;
-			}
-
-			$result = str_replace( '{rowcapo:}', '&#039;',
-					 str_replace( '{rowcqt:}', '&quot;',
-
-
-					$result
-					) );	
-
-
-			return $result;
-
-
-		}
 
 		
 		/*
@@ -390,18 +356,6 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			 
 		 }	
 		
-		
-		/*
-		 * Register clone vars
-		 *
-		 *
-		 */	
-		public static function reg_clone_vars( $clone_id, $str ) {
-			wp_localize_script( 'uixpbform-functions', $clone_id.'_clone_vars', array(
-				'value' => $str
-			) );
-			wp_enqueue_script( 'uixpbform-functions' );
-		}
 		
 		
 		/*
@@ -465,23 +419,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		}
 		
 		
-		
-			
-		/*
-		 * Check if the user needs a browser update
-		 *
-		 *
-		 */
-		public static function is_IE() {
-			 
-			 if( self::inc_str( $_SERVER[ 'HTTP_USER_AGENT' ], 'MSIE' ) ) { 
-				 return true;
-			 } else {
-				 return false;
-			 }
-			
-		
-		}
+
 		
 		/*
 		 * Check if the Dynamic Adding Input
@@ -505,20 +443,27 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 *
 		 *
 		 */
-		public static function row_class( $class ) {
+
+		public static function call_row_class( $id, $cls, $echoclass = true ) {
 			 
-			if( self::is_IE() && self::is_dynamic_input( $class ) ) {
-				$new_class = str_replace( 'toggle-row', 'toggle-row isMSIE', $class );
+			//class of clone field
+			if ( self::inc_str( $id, '_listitem' ) ) {
+				$class = ( $echoclass ) ? ' class="dynamic-row-'.$id.'"' : 'dynamic-row-'.$id;
 			} else {
-				$new_class = $class;
+				
+				if ( $echoclass ) {
+					$class = ( isset( $cls ) && !empty( $cls ) ) ? ' class="'.$cls.'"' : '';
+				} else {
+					$class = ( isset( $cls ) && !empty( $cls ) ) ? $cls : '';
+				}
+				
 			}
 			
-			return $new_class;
-			
+			return $class;
 		
 		}
 		
-		
+	
 		
 		/*
 		 * Returns readable Colour
@@ -589,7 +534,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	
 			$str = str_replace( '{apo:}', "'",
 				   str_replace( '\'', '&apos;',
-				   self::str_compression( $str )
+				   self::str_compression( $str )   
 				   ) );
 		
 		
@@ -602,469 +547,194 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 
 	
 		/*
-		 * Callback before tag of form
+		 * Returns the value of a form control for the specified type
 		 *
 		 *
 		 */
-		public static function form_before( $widget_col_id, $widget_name, $section_row, $form_id ) {
+		public static function uixpbform_control_callback_type( $type ) {
 			
-			return '<div class="uixpbform-form-container"><div class="uixpbform-table-wrapper"><form method="post"><div class="uixpbform-modal-buttons"><input type="button" class="close-uixpbform-modal uixpbform-modal-button uixpbform-modal-button-secondary uixpbform-modal-cancel-btn" value="'.__( 'Cancel', 'uix-page-builder' ).'" /><input type="submit" class="uixpbform-modal-button uixpbform-modal-button-primary uixpbform-modal-save-btn" value="'.__( 'Save', 'uix-page-builder' ).'" /></div><input type="hidden" name="section" value="'.$form_id.'"><input type="hidden" name="row" value="'.$section_row.'"><input type="hidden" name="widgetname" value="'.$widget_name.'"><input type="hidden" name="colid" value="'.$widget_col_id.'">';
-	
-		}
-		
-		/*
-		 * Callback after tag of form
-		 *
-		 *
-		 */
-		public static function form_after() {
+			$callback_attr = 'data-callback="html"';
 			
-			return '</form></div></div>';
-	
-		}
-		
-		/*
-		 * Callback page modules with ajax
-		 *
-		 *
-		 */
-		public static function load_uixpbform_ajax_modules() {
+			switch( $type ) {
+				case 'url':
+					$callback_attr = 'data-callback="url"'; //Synchronous JavaScript function: uixpbform_format_urlEncode()
+
+				  break;
+				case 'attr':
+					$callback_attr = 'data-callback="attr"'; //Synchronous JavaScript function: uixpbform_format_htmlAttr()
+
+				  break;
+				case 'slug':
+					$callback_attr = 'data-callback="slug"'; //Synchronous JavaScript function: uixpbform_format_slug()
+
+				  break;
+				case 'html':
+					$callback_attr = 'data-callback="html"'; //Synchronous JavaScript function: uixpbform_format_text_entering()
+
+				  break;
+
+				case 'number':
+					$callback_attr = 'data-callback="number"'; //Synchronous JavaScript function: uixpbform_format_floatval()
+
+				  break;
+				case 'number-deg_px':
+					$callback_attr = 'data-callback="number-deg_px"'; //Synchronous JavaScript function: uixpbform_format_degToPx()
+
+				  break;
+				case 'shortcode-attr':
+					$callback_attr = 'data-callback="shortcode-attr"'; //Synchronous JavaScript function: uixpbform_format_shortcodeUsableHtmlToAttr()
+
+				  break;
+
+				case 'color-name':
+					$callback_attr = 'data-callback="color-name"'; //Synchronous JavaScript function: uixpbform_format_colorTran()
+
+				  break;	  
+
+
+				case 'list':
+					$callback_attr = 'data-callback="list"'; //Synchronous JavaScript function: uixpbform_format_html_listTran()
+
+				  break;  
+
+				default:
+					$callback_attr = 'data-callback="html"';
+
+			}
 			
-			$tempID = isset( $_POST['tempID'] ) ? $_POST[ 'tempID' ] : '';
-			self::call_ajax_modules_tempfilepath( $tempID );
-			die();
-		}
-	
-		/*
-		 * Callback uixpbform icons list with ajax
-		 *
-		 *
-		 */
-		public static function load_uixpbform_ajax_iconlist() {
-			
-			$iconURL  = isset( $_POST['iconURL'] ) ? $_POST[ 'iconURL' ] : '';
-			include $iconURL;
-			
-			die();
-		}
-	
-	
-		/*
-		 * Callback before javascript of uixpbform
-		 *
-		 *
-		 */
-		public static function uixpbform_callback( $form_id, $title ) {
-			
-			$id         = get_the_ID();
-			$old_formid = $form_id;
-			$formid     = '.'.$old_formid.'';
-			$postid     = empty( $id ) ? $_GET['post_id'] : $id;
-			$title      = esc_attr( $title );
-			
-			
-	
-			return "if( $.isFunction( $.fn.UixPBFormPop ) ){ $(document).UixPBFormPop({postID:'{$postid}',trigger:'{$formid}',title:'{$title}'}); }; ";
+			return $callback_attr;
 	
 		}
 		
 		
-		 /*
-		 * Returns dynamic form
+		/*
+		 * Convert degrees to px 
 		 *
 		 *
 		 */
-		public static function dynamic_form_code( $class, $str, $toggle = null ) {
+		public static function deg_to_px( $str ) {
 			
+			return abs( ( floatval( $str ) * 180 / M_PI )/2 );
 			
-			 $searcharray[ 'list_str' ] = array(
-				   'data-insert-preview="', //image
-				   'data-insert-img="', //image
-				   'id=',//input,textarea
-				   '|[]',//name
-				   '<td>',
-				   '</td>'
-				   
-			
-			  );
-			  $replacearray[ 'list_str' ] = array(
-				   'data-insert-preview="{colID}', 
-				   'data-insert-img="{colID}',
-				   'data-id=',
-				   '|[{columnid}]',
-				   '',
-				   ''
-			  );  
-	
-			 if ( $str ) {
-				 
-				 $v = $str;
-				 
-				 $matchCount = preg_match_all( '/<tr.*?'.$class.'">(.*?)<\/tr>/is', $v, $match );
-				 
-				 if ( $matchCount > 0 ) {
-					 $v = str_replace( $searcharray[ 'list_str' ], $replacearray[ 'list_str' ], $match[1][0] );
-				 }
-				 
-				 $v = preg_replace( '/<th.*?<\/th>/', '', $v );
-				
-				//inscure browser
-				if( self::is_IE() ) {
-					 if ( $toggle == 'toggle-row' ) {
-						 $v = '<div class="toggle-row isMSIE">'.$v.'</div>';
-					 }
-					 if ( $toggle == 'toggle' ) {
-						 $v = '<div class="toggle-btn isMSIE">'.$v.'</div>';
-					 }	 
-	
+		}	
+
+		
+		
+		/*
+		 * Color transform
+		 *
+		 *
+		 */
+		public static function color_tran( $str ) {
+
+			switch( $str ) {
+				case '#a2bf2f':
+					return 'green';
+
+				  break;
+				case '#d59a3e':
+					return 'yellow';
+
+				  break;
+
+				case '#DD514C':
+					return 'red';	 
+				  break;
+
+				case '#FA9ADF':
+					return 'pink';	
+
+				  break;
+
+				case '#4BB1CF':
+					return 'blue'; 
+				  break;
+
+				case '#0E90D2':
+					return 'darkblue'; 
+				  break;	  
+
+
+				case '#5F9EA0':
+					return 'cadetblue';
+				  break;
+
+				case '#473f3f':
+					return 'black';
+				  break;
+
+
+				case '#bebebe':
+					return 'gray';
+				  break;       
+
+				case '#ffffff':
+					return 'white';
+				  break;      
+
+				default:
+
+			}
+		}	
+
+		/*
+		 * HTML tags like "<li>","<ul>","<ol>" transform
+		 *
+		 *
+		 * @param  {string} $str          - Current Post ID.
+		 * @param  {string} $type         - Available value: li
+		 * @return {string}               - HTML cdoe.
+		 *
+		 */
+		public static function html_listTran( $str, $type = 'li' ) {
+
+			$newstr = '';
+
+			if ( !empty( $str ) ) {
+				if ( self::inc_str( $str, '<br>' ) ) {
+					$strarr = explode( '<br>', $str );
+
+					foreach ( $strarr as $value ) {
+
+						if ( self::inc_str( $value, '<'.$type.'>' ) ) {
+							$newstr .= $value;
+						} else {
+							$newstr .= '<'.$type.'>'.$value.'</'.$type.'>';
+						}
+
+
+					}	
 				} else {
-					 if ( $toggle == 'toggle-row' ) {
-						 $v = '<div class="toggle-row">'.$v.'</div>';
-					 }
-					 if ( $toggle == 'toggle' ) {
-						 $v = '<div class="toggle-btn">'.$v.'</div>';
-					 }	 
-		
+
+					if ( self::inc_str( $str, '<'.$type.'>' ) ) {
+						$newstr = $str;
+					} else {
+						$newstr = '<'.$type.'>'.$str.'</'.$type.'>';
+					}
+
+
 				}
-			
-				 return self::str_compression( $v );
-			 } else {
-				return '';
-			 }
+			}
+
+			$newstr = str_replace( '<'.$type.'></'.$type.'>', '', $newstr );
+
+
+			return $newstr;
+
+		}	
 		
-	
-		}
 		
 		/*
-		 * Callback form
+		 * Form scripts and templates output
 		 *
-		 * 
+		 *
 		 */
-		 
-		public static function add_form( $config_values, $widget_col_id, $widget_name, $section_row = -1, $config_id, $arr1 = null, $arr2 = null, $code = 'html', $wrapper_name = '' ) {
-			
-			$section_args = array();
-			$field_total = array();
-			$field_args = array();
-			$before = '';
-			$after = '';
-			$field = '';
-			$output = '';
-			$jscode = '';
-			$jscode_vars = '';
-			
-			
-			
-			
-			/**
-			 * Get the configuration options
-			 */
-			
-			if ( is_array( $arr2 ) ) {
-	
-				foreach ( $arr2 as $field_key => $field_value ) {
-					$field_total[] = $field_value;
-				}	
-		
-			}
-		
-		
-			if ( !empty( $config_id ) ) {
-				
-				
-				/**
-				 * Add the form container
-				 */
-				 if ( is_array( $arr1 ) ) { 
-				 
-						if ( $arr1[ 'list' ] == false ) {
-			
-								$before = '
-								 '.self::form_before( $widget_col_id, $widget_name, $section_row, $config_id ).'
-									<table class="uixpbform-table">
-								'.PHP_EOL;
-								
-								
-								$after = '
-									</table>
-								 '.self::form_after().'
-								'.PHP_EOL;
-			
-				
-						}
-					 
-					 
-						//Column 1
-						if ( $arr1[ 'list' ] == 1 ) {
-						
-								$before = '
-								 
-									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-1">
-										<table class="uixpbform-table-list">
-											
-											<tr class="item">
-												<th colspan="2" scope="col">
-												'.$wrapper_name.'
-												</th>
-											</tr> 
-											
-								'.PHP_EOL;
-								
-								
-								$after = '
-										</table>
-									</div><!-- /.uixpbform-table-cols-wrapper-->
-								 
-								'.PHP_EOL;
-							
-							
-						} 
-						
-						//Column 2
-						if ( $arr1[ 'list' ] == 2 ) {
-						
-								$before = '
-								 
-									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-2">
-										<table class="uixpbform-table-list">
-											
-											<tr class="item">
-												<th colspan="2" scope="col">
-												'.$wrapper_name.'
-												</th>
-											</tr> 
-											
-								'.PHP_EOL;
-								
-								
-								$after = '
-										</table>
-									</div><!-- /.uixpbform-table-cols-wrapper-->
-								 
-								'.PHP_EOL;
-							
-							
-						}
-						
-						//Column 3
-						if ( $arr1[ 'list' ] == 3 ) {
-							$before = '
-								 
-									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-3">
-										<table class="uixpbform-table-list">
-										
-											<tr class="item">
-												<th colspan="2" scope="col">
-												'.$wrapper_name.'
-												</th>
-											</tr> 
-											
-								'.PHP_EOL;
-								
-								
-								$after = '
-										</table>
-									</div><!-- /.uixpbform-table-cols-wrapper-->
-								 
-								'.PHP_EOL;
-							
-						}
-						
-						//Column 4
-						if ( $arr1[ 'list' ] == 4 ) {
-							$before = '
-								 
-									 <div class="uixpbform-table-cols-wrapper uixpbform-table-col-4">
-										<table class="uixpbform-table-list">
-										
-											<tr class="item">
-												<th colspan="2" scope="col">
-												'.$wrapper_name.'
-												</th>
-											</tr> 
-											
-								'.PHP_EOL;
-								
-								
-								$after = '
-										</table>
-									</div><!-- /.uixpbform-table-cols-wrapper-->
-								 
-								'.PHP_EOL;
-								
-						}
-				
-				 }
-				
-				
-				
-	
-				/**
-				 * Add the field to the properly indexed
-				 */
-		
-				foreach ( $field_total as $key) {
-			
-					$_title   = ( isset( $key['title'] ) ) ? $key['title'] : '';
-					$_desc    = ( isset( $key['desc'] ) ) ? $key['desc'] : '';
-					$_default = ( isset( $key['default'] ) ) ? $key['default'] : '';
-					$_value   = ( isset( $key['value'] ) ) ? $key['value'] : '';
-					$_ph      = ( isset( $key['placeholder'] ) ) ? $key['placeholder'] : '';
-					$_id      = ( isset( $key['id'] ) ) ? $key['id'] : '';
-					$_name    = ( isset( $key['name'] ) ) ? $key['name'] : '';
-					$_type    = ( isset( $key['type'] ) ) ? $key['type'] : 'text';
-					$_class   = ( isset( $key['class'] ) ) ? $key['class'] : '';
-					$_toggle  = ( isset( $key['toggle'] ) ) ? $key['toggle'] : '';
-					$_colid   = ( isset( $key['colid'] ) ) ? $key['colid'] : '';
-				
-					
-					$args = array(
-						'title'             => $_title,
-						'desc'              => $_desc,
-						'default'           => $_default,
-						'value'             => $_value,
-						'placeholder'       => $_ph,
-						'id'                => $_id,
-						'name'              => $_name,
-						'type'              => $_type,
-						'class'             => $_class,
-						'toggle'            => $_toggle,
-						'colid'             => $_colid
-	
-					);
-				
-					
-					//icon
-					$field .= UixPBFormType_Icon::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Icon::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Icon::add( $args, $config_values, 'js_vars' );
-		
-					
-					//text
-					$field .= UixPBFormType_Text::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Text::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Text::add( $args, $config_values, 'js_vars' );
-		
-		
-					//textarea
-					$field .= UixPBFormType_Textarea::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Textarea::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Textarea::add( $args, $config_values, 'js_vars' );
-		
-		
-					//color
-					$field .= UixPBFormType_Color::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Color::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Color::add( $args, $config_values, 'js_vars' );
-					
-					//image
-					$field .= UixPBFormType_Image::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Image::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Image::add( $args, $config_values, 'js_vars' );
-					
-					
-					//radio
-					$field .= UixPBFormType_Radio::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Radio::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Radio::add( $args, $config_values, 'js_vars' );
-					
-					//radio image
-					$field .= UixPBFormType_RadioImage::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_RadioImage::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_RadioImage::add( $args, $config_values, 'js_vars' );			
-					
-					//multiple selector
-					$field .= UixPBFormType_MultiSelector::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_MultiSelector::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_MultiSelector::add( $args, $config_values, 'js_vars' );			
-		
-					//slider
-					$field .= UixPBFormType_Slider::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Slider::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Slider::add( $args, $config_values, 'js_vars' );
-					
-					//margin
-					$field .= UixPBFormType_Margin::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Margin::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Margin::add( $args, $config_values, 'js_vars' );
-					
-		
-					//short text
-					$field .= UixPBFormType_ShortText::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_ShortText::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_ShortText::add( $args, $config_values, 'js_vars' );
-					
-					//short units text
-					$field .= UixPBFormType_ShortUnitsText::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_ShortUnitsText::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_ShortUnitsText::add( $args, $config_values, 'js_vars' );	
-		
-					//checkbox
-					$field .= UixPBFormType_Checkbox::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Checkbox::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Checkbox::add( $args, $config_values, 'js_vars' );
+		public static function form_scripts( $arr ) {
 
-					
-					//colormap
-					$field .= UixPBFormType_ColorMap::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_ColorMap::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_ColorMap::add( $args, $config_values, 'js_vars' );
-						
-					
-		
-					//select
-					$field .= UixPBFormType_Select::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Select::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Select::add( $args, $config_values, 'js_vars' );
-		
+			$echo = new UixPBFormCore_Components_FormScripts( $arr );
 
-		
-					//toggle 1
-					$field .= UixPBFormType_Toggle::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Toggle::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Toggle::add( $args, $config_values, 'js_vars' );
-		
-					//Clone list
-					$field .= UixPBFormType_ListClone::add( $args, $config_values, 'html', $section_row );
-					$jscode .= UixPBFormType_ListClone::add( $args, $config_values, 'js', $section_row );
-					$jscode_vars .= UixPBFormType_ListClone::add( $args, $config_values, 'js_vars', $section_row );
-		
-					//Note
-					$field .= UixPBFormType_Note::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Note::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Note::add( $args, $config_values, 'js_vars' );
-					
-					//Editor
-					$field .= UixPBFormType_Editor::add( $args, $config_values, 'html' );
-					$jscode .= UixPBFormType_Editor::add( $args, $config_values, 'js' );
-					$jscode_vars .= UixPBFormType_Editor::add( $args, $config_values, 'js_vars' );
-									
-					
-					
-	
-	
-				} // end foreach
-				
-	
-				//HTML output
-				if ( $code == 'html' ) $output = self::format_formcode ( $before.$field.$after );
-				
-				//Javascript output
-				if ( $code == 'js' || $code == 'javascript' ) $output = $jscode;
-				
-				//Javascript vars output
-				if ( $code == 'js_vars' ) $output = $jscode_vars;	
-	
-				
-			}
-			
-			
-			
-			
-			return $output;
-		
 		}
-			
+
 		
 		
 		/*

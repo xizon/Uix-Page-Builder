@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.4.6
+ * Version:     1.4.7
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -19,13 +19,29 @@
 /*--------------------------------------------------------
  * Some of the easily confusing Variable Terms in the plugin: 
  *
- * 1) form ID      ->  Obtained via module ID.
- * 2) section ID   ->  Obtained via gridster widget ID.
- * 3) section      ->  Each page module of front-end HTML code. (It is not a page builder module in admin panel.)
- * 4) module       ->  The page builder forms and front-end rendering.
- * 5) template     ->  The JSON final data of each page.
-
+ * 1) formID / tempID  ->  Obtained via module ID.
+ * 2) sectionID        ->  Obtained via gridster widget ID.
+ * 3) colID            ->  The column ID of each module by gridster event.
+ * 4) section          ->  Each page module of front-end HTML code. (It is not a page builder module in admin panel.)
+ * 5) module           ->  The page builder forms and front-end rendering.
+ * 6) template         ->  The JSON final data of each page.
+ *
+ *
+ * Some of the easily confusing Placeholders in JSON data: 
+ *
+ * 1) {apo:}              ->  Apostrophe(').    (It is used to escape the structure and data type with "key" of Level 2 JSON.)
+ * 2) {rqt:}              ->  Double quotes("). (It is used to escape the structure and data type with "key" of Level 2 JSON.)
+ * 3) {rowcapo:}          ->  Apostrophe(').    (It is used to escape the data type with "value" of Level 3 JSON.)
+ * 4) {rowcqt:}           ->  Double quotes("). (It is used to escape the data type with "value" of Level 3 JSON.)
+ * 5) {rowcsql:}          ->  Left square brackets([).   (It is used to escape the data type with "value" of Level 3 JSON.)
+ * 6) {rowcsqr:}          ->  Right square brackets(]). (It is used to escape the data type with "value" of Level 3 JSON.)
+ * 7) {attrrowcapo:}      ->  Apostrophe(').    (Only for front-end output in an HTML attribute of the HTML template data.)
+ * 8) {attrrowcqt:}       ->  Double quotes("). (Only for front-end output in an HTML attribute of the HTML template data.)
+ * 9) {lsquarebracket:}   ->  Left square brackets([).  (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
+ * 10) {rsquarebracket:}  ->  Right square brackets(]). (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
+ *
 */
+
 
 class UixPageBuilder {
 	
@@ -55,13 +71,13 @@ class UixPageBuilder {
 		
 		
 		add_action( 'init', array( __CLASS__, 'register_scripts' ) );
-		add_action( 'init', array( __CLASS__, 'load_classes_core' ) );
-		add_action( 'init', array( __CLASS__, 'load_components_core' ) );
+		add_action( 'init', array( __CLASS__, 'load_classes_core' ) );	
 		add_action( 'init', array( __CLASS__, 'reg_menu' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'actions_links' ), -10 );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'frontpage_scripts' ), 99999 );
 		add_action( 'admin_init', array( __CLASS__, 'tc_i18n' ) );
 		add_action( 'admin_init', array( __CLASS__, 'load_helper' ) );
+		add_action( 'admin_init', array( __CLASS__, 'load_components_core' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'options_admin_menu' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'call_modules' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'print_custom_stylesheet' ) );
@@ -1240,28 +1256,6 @@ class UixPageBuilder {
 		
 	}
 	
-
-	
-		
-	/*
-	 * Returns textarea & input value
-	 *
-	 *
-	 */
-	public static function inputtextareavalue( $str ) {
-		
-		$result = str_replace( '{rowcapo:}', "'",
-			 	 str_replace( '{rowcqt:}', '"',
-
-			    $str
-			    ) );	
-				
-				
-		return $result;
-		
-	
-	}	
-	
 	
 	/*
 	 * Returns theme template value
@@ -1269,10 +1263,17 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function theme_value( $str ) {
-		$result = str_replace( '{rowcapo:}', "'",
+		$result = 
+			     str_replace( '{rowcapo:}', "'",
 			 	 str_replace( '{rowcqt:}', '"',
+				 //HTML attribute.
+				 str_replace( '{attrrowcapo:}', "&#39;",
+			 	 str_replace( '{attrrowcqt:}', '&#34;',		
+				 //HTML attribute and WP shortcodes.
+				 str_replace( '{lsquarebracket:}', "&#91;",
+			 	 str_replace( '{rsquarebracket:}', '&#93;',				 
 			    $str
-			    ) );	
+			    ) ) ) ) ) );	
 				
 		//Required, The js escaped characters will can not be correctly output because the speed of bandwidth.
 		$result = str_replace( '&lt;', "<",
@@ -1312,87 +1313,7 @@ class UixPageBuilder {
 
 	}
 	
-
-			
-	/*
-	 * Returns the clone toggle target id
-	 *
-	 *
-	 */
-	public static function get_clone_toggle_target_id( $toggle_class ) {
-		
-		if ( $toggle_class && is_array( $toggle_class ) ) {
-			$toggle_target_id = '';
-			foreach ( $toggle_class as $tid_value ) {
-				$tid_value = str_replace( 'dynamic-row-', '', $tid_value );
-				$toggle_target_id .= '#{dataID}'.$tid_value.','; 	
-				
-			}	
-			
-			$toggle_target_id = rtrim( $toggle_target_id, ',' );
-				   
-			return $toggle_target_id;
 	
-		}
-		
-	}
-	
-	/*
-	 * Color transform
-	 *
-	 *
-	 */
-	public static function color_tran( $str ) {
-		
-		switch( $str ) {
-			case '#a2bf2f':
-				return 'green';
-
-			  break;
-			case '#d59a3e':
-				return 'yellow';
-
-			  break;
-
-			case '#DD514C':
-				return 'red';	 
-			  break;
-
-			case '#FA9ADF':
-				return 'pink';	
-
-			  break;
-
-			case '#4BB1CF':
-				return 'blue'; 
-			  break;
-
-			case '#0E90D2':
-				return 'darkblue'; 
-			  break;	  
-
-
-			case '#5F9EA0':
-				return 'cadetblue';
-			  break;
-
-			case '#473f3f':
-				return 'black';
-			  break;
-
-
-			case '#bebebe':
-				return 'gray';
-			  break;       
-
-			case '#ffffff':
-				return 'white';
-			  break;      
-				
-			default:
-
-		}
-	}
 	
 	
 	/*
@@ -1459,49 +1380,7 @@ class UixPageBuilder {
 	}
 	
 	
-	
-	
-	/*
-	 * HTML tags like "<li>","<ul>","<ol>" transform
-	 *
-	 *
-	 */
-	public static function html_listTran( $str, $type = 'li' ) {
-		
-		$newstr = '';
-		
-		if ( !empty( $str ) ) {
-			if ( self::inc_str( $str, '<br>' ) ) {
-				$strarr = explode( '<br>', $str );
 
-				foreach ( $strarr as $value ) {
-
-					if ( self::inc_str( $value, '<'.$type.'>' ) ) {
-						$newstr .= $value;
-					} else {
-						$newstr .= '<'.$type.'>'.$value.'</'.$type.'>';
-					}
-
-
-				}	
-			} else {
-
-				if ( self::inc_str( $str, '<'.$type.'>' ) ) {
-					$newstr = $str;
-				} else {
-					$newstr = '<'.$type.'>'.$str.'</'.$type.'>';
-				}
-
-
-			}
-		}
-		
-		$newstr = str_replace( '<'.$type.'></'.$type.'>', '', $newstr );
-		
-		
-		return $newstr;
-		
-	}
 	
 	/*
 	 * Transform string to slug for filterable categories
@@ -1978,6 +1857,25 @@ class UixPageBuilder {
 
 		
 	}
+
+	/*
+	 * Create a random string
+	 *
+	 * @param  {string} $length          - The length of the string to create
+	 * @return {string}                  - A new string for letters.
+	 *
+	 */
+	public static function random_letter( $length = 5 ) {
+		$str = "";
+		$characters = array_merge( range( 'A', 'Z' ), range( 'a', 'z' ), range( '0', '9' ) );
+		$max = count( $characters ) - 1;
+		for ( $i = 0; $i < $length; $i++ ) {
+			$rand = mt_rand( 0, $max );
+			$str .= $characters[$rand];
+		}
+		return $str;
+	}	
+
 	
 	
 	/*
@@ -2062,6 +1960,9 @@ class UixPageBuilder {
 	 * Compress the front end code
 	 *
 	 *
+	 * @param  {string} $str          - A string.
+	 * @return {string}               - Minimized HTML code.
+	 *
 	 */
 	public static function str_compression( $str ) {
 
@@ -2093,115 +1994,6 @@ class UixPageBuilder {
 
 	
 	
-		
-	/*
-	 * Returns each variable in module data  (Receive parameters via ajax)
-	 *
-	 *
-	 */
-	public static function get_module_data_vars( $id ) {
-
-		$form_id = $id;
-		$sid     = ( isset( $_POST[ 'sectionID' ] ) ) ? $_POST[ 'sectionID' ] : -1;
-		$pid     = ( isset( $_POST[ 'postID' ] ) ) ? $_POST[ 'postID' ] : 0;
-		$wname   = ( isset( $_POST[ 'widgetName' ] ) ) ? $_POST[ 'widgetName' ] : esc_html__( 'Section', 'uix-page-builder' );
-		$colid   = ( isset( $_POST[ 'colID' ] ) ) ? $_POST[ 'colID' ] : '';
-		$item    = self::parse_json_form_values( $form_id, $sid, $pid, $wname, $colid );
-		
-		$vars = array(
-			'sid'        => $sid,
-			'pid'        => $pid,
-			'wname'      => $wname,
-			'colid'      => $colid,
-			'item'       => $item,
-			'form_id'    => $form_id
-		);
-		
-		return $vars;
-
-	}
-			
-	
-	
-		
-	/*
-	 * Parse JSON's values of all the form items for each module
-	 *
-	 *
-	 * $form_id  @var string  -> The form ID (Obtained via module ID).
-	 * $sid      @var string  -> The section ID. (Obtained via gridster widget ID.)
-	 * $pid      @var string  -> Current Post ID.
-	 * $wname    @var string  -> Current widget name of section.
-	 * $colid    @var string  -> Column ID.
-	 *
-	 */
-	public static function parse_json_form_values( $form_id, $sid, $pid, $wname, $colid ) {
-		
-		//The value of all the form items for each module
-		$item = array();
-		
-		
-		if ( $sid >= 0 ) {
-
-			$builder_content   = self::page_builder_array_newlist( self::get_page_final_data( $pid ) );
-			
-
-			if ( $builder_content && is_array( $builder_content ) ) {
-				foreach ( $builder_content as $key => $value ) :
-		
-					$con = self::page_builder_output( $value->content );
-
-
-					if ( $con && is_array( $con ) ) {
-						foreach ( $con as $key ) :
-
-							$$key[ 0 ] = $key[ 1 ];
-							$item[ self::page_builder_item_name( $key[ 0 ] ) ]  =  $$key[ 0 ];
-						endforeach;
-					}
-
-					//loop content
-					$col_content = self::page_builder_analysis_rowcontent( self::prerow_value( $item ), 'content' );
-
-
-					if ( $col_content && is_array( $col_content ) ) {
-						foreach ( $col_content as $key ) :
-
-							$detail_content = $key;
-
-							//column id
-							$colname           = $form_id.'-col';
-							$cname             = str_replace( $form_id.'|', '', $key[1][0] );
-							$id                = $key[0][1];
-							$item[ $colname ]   =  $id;  //Usage: $item[ 'uix_pb_module_xxx-col' ];
-
-
-							foreach ( $detail_content as $value ) :	
-								$name           = str_replace( $form_id.'|', '', $value[0] );
-								$content        = $value[1];
-								$item[ $name ]  =  $content;	  //Usage:  $item[ 'uix_pb_module_xxx|[col-item-1_1---0][uix_pb_xxx_xxx][0]' ];
-
-							endforeach;
-
-
-						endforeach;
-					}	
-
-				
-				endforeach;
-
-
-			}
-			
-			return $item;
-
-
-		} else {
-			return '';
-		}
-
-	}
-	
 	/*
 	 * Returns the default page title.
 	 *
@@ -2218,7 +2010,8 @@ class UixPageBuilder {
 	 * Returns the current page title.
 	 *
 	 *
-	 * $id  @var string  -> Current Post ID.
+	 * @param  {string} $id          - Current Post ID.
+	 * @return {string}              - A new string.
 	 *
 	 */
 	public static function get_page_title( $id ) {
@@ -2236,7 +2029,8 @@ class UixPageBuilder {
 	 * Returns the JSON final data of each page.
 	 *
 	 *
-	 * $id  @var string  -> Current Post ID.
+	 * @param  {string} $id          - Current Post ID.
+	 * @return {string}              - A new string for JSON.
 	 *
 	 */
 	public static function get_page_final_data( $id ) {
@@ -2256,7 +2050,8 @@ class UixPageBuilder {
 	 * Formats the JSON final data of each page.
 	 *
 	 *
-	 * $str  @var string  -> JSON format string.
+	 * @param  {string} $str          - JSON format string.
+	 * @return {string}               - A new string.
 	 *
 	 */
 	public static function format_page_final_data( $str ) {
@@ -2264,23 +2059,31 @@ class UixPageBuilder {
 		//Compatible with 1.4.2 or before versions of .xml template files and pages that have saved data.
 		$data = str_replace( 'uix_pb_section_', 'uix_pb_module_', $str );
 		
+		//Compatible with 1.4.6 or before versions of .xml template files and pages that have saved data.
+		if ( preg_match_all('/---([A-Za-z0-9]){5}\](.*?)\]\[([A-Za-z0-9]){5}\]/s', $data, $matches ) ) {
+			foreach( $matches[0] as $item ) {
+			
+				 if ( preg_match( '/---([A-Za-z0-9]){5}\](.*?)-\[/s', $item, $match_index ) ) {
+					 
+					 $num      = $match_index[2];
+					 $new_num  = ( $num > 1 ) ? $num - 1 : $num;
+					 $index    = str_replace( ']'.$num.'-[', '][', $match_index[0] );
+					 $new_item = str_replace( $match_index[0], $index, $item ) . $new_num;
+					 
+					 $data = str_replace( $item, $new_item, $data );
+
+				 }	
+					 
+				
+			}	
+		}
+		
+		
 		return $data;
 		
 	}
 	
 	
-
-	
-	/*
-	 * Form javascripts output when in ajax or default state
-	 *
-	 *
-	 */
-	public static function form_scripts( $arr ) {
-		
-		$echo = new UixPB_Components_FormScripts( $arr );
-
-	}
 
 
 	/**

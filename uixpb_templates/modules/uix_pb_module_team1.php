@@ -4,47 +4,41 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
 }
 
 /**
- * Returns each variable in module data
+ * Note: 
+ *
+ * Please refer to sample:  uix_pb_module_sample_hello.php
+ * 						    uix_pb_module_sample_hello2.php
+ *
+ * 1) For all ID attribute, special characters are only allowed underscores "_"
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
+ * 4) String of clone ID attribute must contain at least "_listitem"
+ * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
+      the triggers ID and clone controls ID must contain the string "_one_", "_two", "_three_" or "_four_" for per column
+*/
+
+/**
+ * Returns current module(form group) ID
  * ----------------------------------------------------
  */
-$form_vars = UixPageBuilder::get_module_data_vars( basename( __FILE__, '.php' ) );
-if ( !is_array( $form_vars ) ) return;
-foreach ( $form_vars as $key => $v ) :
-	$$key = $v;
-endforeach;
+$form_id = basename( __FILE__, '.php' );
 
 
 /**
  * Clone parameters
  * ----------------------------------------------------
  */
-
-//clone list
-$clone_trigger_id        = 'uix_pb_team1_list';    // ID of clone trigger 
-$clone_max               = 30;                         // Maximum of clone form 
-
-//clone list of toggle class value @var array
-$clone_list_toggle_class = array( 'uix_pb_team1_listitem_toggle_url1', 'uix_pb_team1_listitem_toggle_icon1', 'uix_pb_team1_listitem_toggle_url2', 'uix_pb_team1_listitem_toggle_icon2', 'uix_pb_team1_listitem_toggle_url3', 'uix_pb_team1_listitem_toggle_icon3' );       
-
+$clone_trigger_id        = 'uix_pb_team1_triggerclonelist';  // String of clone trigger ID, must contain at least "_triggerclonelist"
+$clone_max               = 30;                               // Maximum of clone form 
 
 
 /**
- * Form Type & Parameters
+ * Form Type & Controls
  * ----------------------------------------------------
  */
-
 $form_type_config = array(
     'list' => 1
 );
-
-
-$args_config = array(
-	'col_id'    => $colid,
-	'sid'       => $sid,
-	'form_id'   => $form_id,
-	'items'     => $item
-);						
-
 
 $module_config = 
 	array(
@@ -55,7 +49,8 @@ $module_config =
 			'desc'           => '',
 			'value'          => esc_html__( 'Text Here', 'uix-page-builder' ),
 			'placeholder'    => '',
-			'type'           => 'text'
+			'type'           => 'text',
+			'callback'       => 'html',
 		
 		),
 	
@@ -67,6 +62,7 @@ $module_config =
 			'value'          => esc_html__( 'This is the description text for the title.', 'uix-page-builder' ),
 			'placeholder'    => '',
 			'type'           => 'textarea',
+			'callback'       => 'html',
 			'default'        => array(
 									'row'     => 3
 								)
@@ -92,6 +88,7 @@ $module_config =
 			'value'          => 0,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+			'callback'       => 'number',
 			'default'        => array(
 									'units'  => '%'
 								)
@@ -106,6 +103,7 @@ $module_config =
 			'value'          => 0,
 			'placeholder'    => '',
 			'type'           => 'short-text',
+			'callback'       => 'number',
 			'default'        => array(
 									'units'  => 'px'
 								)
@@ -139,56 +137,18 @@ $form_type = array(
 $args = 
 	array(
 		
-		//------list begin
+		//------ Clone controls list (begin)
 
 		
 		array(
 			'id'             => $clone_trigger_id,
-			'colid'          => $colid, /*clone required */
 			'title'          => esc_html__( 'List Item', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
 			'type'           => 'list',
 			'default'        => array(
-									'btn_text'                  => esc_html__( 'click here to add an item', 'uix-page-builder' ),
-									'clone_class'               => array(
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_avatar' ).'',
-											'type'      => 'image'
-										), 
-										
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_name' ).'',
-											'type'      => 'text'
-										), 										
-										
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_position' ).'',
-											'type'      => 'text'
-										), 
-									
-										array(
-											'id'        => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_intro' ).'',
-											'type'      => 'textarea'
-										), 
-										
-										array(
-											'id'              => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle' ).'',
-											'type'            => 'toggle',
-											'toggle_class'  => array(
-												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url1' ).'', 
-												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon1' ).'',
-												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url2' ).'', 
-												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon2' ).'',
-												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url3' ).'', 
-												'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon3' ).'',
-											 )
-										), 			
-		
-
-									 ),
-									'max'                       => $clone_max
+									'max' => $clone_max
 				                )
 									
 		),
@@ -199,13 +159,8 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_avatar' ).'', /*class of list item */
 				'placeholder'    => esc_html__( 'Avatar URL', 'uix-page-builder' ),
-				'type'           => 'image',
-				'default'        => array(
-										'remove_btn_text'  => esc_html__( 'Remove image', 'uix-page-builder' ),
-										'upload_btn_text'  => esc_html__( 'Upload', 'uix-page-builder' ),
-									)
+				'type'           => 'image'
 			
 			),	
 			array(
@@ -213,9 +168,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Name', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_name' ).'', /*class of list item */
 				'placeholder'    => '',
-				'type'           => 'text'
+				'type'           => 'text',
+			    'callback'       => 'html',
 			
 			),			
 			
@@ -224,9 +179,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Position', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_position' ).'', /*class of list item */
 				'placeholder'    => '',
-				'type'           => 'text'
+				'type'           => 'text',
+			    'callback'       => 'html',
 			
 			),			
 			array(
@@ -234,9 +189,9 @@ $args =
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'The Introduction of this member.', 'uix-page-builder' ),
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_intro' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'textarea',
+			    'callback'       => 'html',
 				'default'        => array(
 										'row'     => 5
 									)
@@ -244,25 +199,24 @@ $args =
 			),
 		
 		
-			//------toggle begin
+			//--- Toggle of unidirectional display (begin)
 			array(
 				'id'             => 'uix_pb_team1_listitem_toggle',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => 0, // 0:close  1:open
-				'class'          => 'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle' ).'', /*class of list item */
 				'placeholder'    => '',
 				'type'           => 'toggle',
-				'default'        => array(
+				'toggle'         => array(
 										'btn_text'      => esc_html__( 'set up links with toggle', 'uix-page-builder' ),
-										'toggle_class'  => array(
-											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url1' ).'', 
-											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon1' ).'',
-											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url2' ).'', 
-											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon2' ).'',
-											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url3' ).'', 
-											'dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon3' ).'',
-	                                     )
+		 								'target_ids'    => array( 
+																'uix_pb_team1_listitem_toggle_url1', 
+																'uix_pb_team1_listitem_toggle_icon1', 
+																'uix_pb_team1_listitem_toggle_url2', 
+																'uix_pb_team1_listitem_toggle_icon2', 
+																'uix_pb_team1_listitem_toggle_url3', 
+																'uix_pb_team1_listitem_toggle_icon3' 
+															)
 									)
 			
 			),	
@@ -272,10 +226,9 @@ $args =
 					'title'          => '',
 					'desc'           => '',
 					'value'          => '',
-					'class'          => 'toggle-row dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url1' ).'', /*class of toggle item */
 					'placeholder'    => esc_html__( 'Your Social Network Page URL 1', 'uix-page-builder' ),
 					'type'           => 'text',
-					'default'        => ''
+			        'callback'       => 'url',
 				
 				),
 				array(
@@ -283,7 +236,6 @@ $args =
 					'title'          => '',
 					'desc'           => '',
 					'value'          => '',
-					'class'          => 'toggle-row dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon1' ).'',/*class of toggle item */
 					'placeholder'    => esc_html__( 'Choose Social Icon 1', 'uix-page-builder' ),
 					'type'           => 'icon',
 					'default'        => array(
@@ -297,10 +249,9 @@ $args =
 					'title'          => '',
 					'desc'           => '',
 					'value'          => '',
-					'class'          => 'toggle-row dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url2' ).'', /*class of toggle item */
 					'placeholder'    => esc_html__( 'Your Social Network Page URL 2', 'uix-page-builder' ),
 					'type'           => 'text',
-					'default'        => ''
+			        'callback'       => 'url',
 				
 				),
 				array(
@@ -308,7 +259,6 @@ $args =
 					'title'          => '',
 					'desc'           => '',
 					'value'          => '',
-					'class'          => 'toggle-row dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon2' ).'',/*class of toggle item */
 					'placeholder'    => esc_html__( 'Choose Social Icon 2', 'uix-page-builder' ),
 					'type'           => 'icon',
 					'default'        => array(
@@ -322,10 +272,9 @@ $args =
 					'title'          => '',
 					'desc'           => '',
 					'value'          => '',
-					'class'          => 'toggle-row dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url3' ).'', /*class of toggle item */
 					'placeholder'    => esc_html__( 'Your Social Network Page URL 3', 'uix-page-builder' ),
 					'type'           => 'text',
-					'default'        => ''
+			        'callback'       => 'url',
 				
 				),
 				array(
@@ -333,7 +282,6 @@ $args =
 					'title'          => '',
 					'desc'           => '',
 					'value'          => '',
-					'class'          => 'toggle-row dynamic-row-'.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon3' ).'',/*class of toggle item */
 					'placeholder'    => esc_html__( 'Choose Social Icon 3', 'uix-page-builder' ),
 					'type'           => 'icon',
 					'default'        => array(
@@ -342,9 +290,12 @@ $args =
 				
 				),
 		
+		
+		    //--- Toggle of unidirectional display (end)
+		
 			
 		
-		//------list end
+		//------ Clone controls list (end)
 
 		
 	
@@ -355,32 +306,31 @@ $args =
  * Returns form javascripts
  * ----------------------------------------------------
  */
-UixPageBuilder::form_scripts( array(
-	    'clone'                   => array(
-										'max'                => $clone_max,
-										'list_toggle_class'  => $clone_list_toggle_class,
-										'fields_group'       => array(
-																	array(
-																		'trigger_id'     => $clone_trigger_id,
-																		'required'       => 'uix_pb_team1_listitem_name',
-																		'fields'         => array( 'uix_pb_team1_listitem_avatar', 'uix_pb_team1_listitem_name', 'uix_pb_team1_listitem_position', 'uix_pb_team1_listitem_intro', 'uix_pb_team1_listitem_toggle', 'uix_pb_team1_listitem_toggle_url1', 'uix_pb_team1_listitem_toggle_icon1', 'uix_pb_team1_listitem_toggle_url2', 'uix_pb_team1_listitem_toggle_icon2', 'uix_pb_team1_listitem_toggle_url3', 'uix_pb_team1_listitem_toggle_icon3' )
-																	),
-										)
+UixPBFormCore::form_scripts( array(
+		'clone'                    => array(
+										'trigger_id'     => $clone_trigger_id,
+										'fields'         => array( 
+																'uix_pb_team1_listitem_avatar', 
+																'uix_pb_team1_listitem_name',
+																'uix_pb_team1_listitem_position',
+																'uix_pb_team1_listitem_intro', 
+																'uix_pb_team1_listitem_toggle',
+																'uix_pb_team1_listitem_toggle_url1',
+																'uix_pb_team1_listitem_toggle_icon1', 
+																'uix_pb_team1_listitem_toggle_url2',
+																'uix_pb_team1_listitem_toggle_icon2',
+																'uix_pb_team1_listitem_toggle_url3',
+																'uix_pb_team1_listitem_toggle_icon3',
+															)
 									),
-	    'defalt_value'            => $item,
-	    'widget_name'             => $wname,
 		'form_id'                 => $form_id,
-		'section_id'              => $sid,
-	    'column_id'               => $colid,
 		'fields'                  => array(
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type_config,
 											 'values'  => $module_config,
 											 'title'   => esc_html__( 'General Settings', 'uix-page-builder' )
 										),
 										array(
-											 'config'  => $args_config,
 											 'type'    => $form_type,
 											 'values'  => $args,
 											 'title'   => esc_html__( 'Content', 'uix-page-builder' )
@@ -389,106 +339,91 @@ UixPageBuilder::form_scripts( array(
 									),
 		'title'                   => esc_html__( 'Team Normal', 'uix-page-builder' ),
 	
-	
 		/**
 		 * /////////////// Customizing HTML output on the frontend /////////////// 
 		 * 
 		 * 
 		 * Usage:
 		 *
-		 * 1) Written as pure JavaScript syntax.
-		 * 2) Please push the value of final output to the JavaScript variable "temp", For example: var temp = '...';
-		 * 3) Be sure to note the escape of quotation marks and slashes.
-		 * 4) Directly use the controls ID as a JavaScript variable as the value for each control.
-		 * 5) Value of controls with dynamic form need to use, For example:
-		 *    $( '{index}<?php echo UixPBFormCore::fid( $colid, $sid, '{controlID}' ); ?>' ).val();
-		 *  
-		 *  ---------------------------------
-		 *     {index}      @var Number      ->  Index value and starting with 2, For example: 2-, 3-, 4-, 5-, ...
-		 *     {controlID}  @var String      ->  The ID of a control.
+		 * 1) Written as pure HTML syntax.
+		 * 2) Directly use the controls ID as a variable: ${???}
+		 * 3) Using {{if}} and {{else}} to render conditional sections. 
+		       -----E.g.
+		       {{if your_field_id}} ... {{else}} ... {{/if}}
+			   
+		 * 4) Using {{each}} to render repeating sections.
+		       -----E.g.
+				{{each your_clone_trigger_id}}
+					{{if your_listitem_field_id != ""}}
+					    {{if $index == 0}}<li class="active">{{else}}<li>{{/if}}
+						    ${your_listitem_field_id}
+						</li>
+					{{/if}}	
+				{{/each}}
+		 
 		 */
-	    'js_template'             => '
+	    'template'              => '
 		
-			var _config_t             = ( uix_pb_team1_config_title != undefined && uix_pb_team1_config_title != \'\' ) ? \'<h2 class="uix-pb-section-heading">\'+uix_pb_team1_config_title+\'</h2><div class="uix-pb-section-hr"></div>\' : \'\',
-				_config_desc          = ( uix_pb_team1_config_intro != undefined && uix_pb_team1_config_intro != \'\' ) ? \'<div class="uix-pb-section-desc">\'+uixpbform_format_textarea_entering( uix_pb_team1_config_intro )+\'</div>\' : \'\',
-				_config_gray          = ( uix_pb_team1_config_avatar_gray === true ) ? \' uix-pb-gray\' : \'\',
-				_config_height        = ( uix_pb_team1_config_list_height > 0 ) ? \'style="height:\'+uixpbform_floatval( uix_pb_team1_config_list_height )+\'px;"\' : \'\',
-				_config_avatar_fillet = uixpbform_floatval( uix_pb_team1_config_avatar_fillet ) + \'%\';
+		
+			{{if uix_pb_team1_config_title != ""}}
+				<h2 class="uix-pb-section-heading">${uix_pb_team1_config_title}</h2><div class="uix-pb-section-hr"></div>		
+			{{/if}}			
 
 
-				
-			/* List Item */
-			var list_num               = '.floatval( $clone_max ).',
-				show_list_item         = \'\';
-
-
-			for ( var i = 1; i <= list_num; i++ ){
-
-
-				var _uid         = ( i >= 2 ) ? \'#\'+i+\'-\' : \'#\',
-					_avatar      = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_avatar' ).'\' ).val(),
-					_name        = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_name' ).'\' ).val(),
-					_pos         = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_position' ).'\' ).val(),
-					_intro       = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_intro' ).'\' ).val(),
-					_toggleurl1  = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url1' ).'\' ).val(),
-					_toggleicon1 = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon1' ).'\' ).val(),
-					_toggleurl2  = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url2' ).'\' ).val(),
-					_toggleicon2 = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon2' ).'\' ).val(),		
-					_toggleurl3  = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_url3' ).'\' ).val(),
-					_toggleicon3 = $( _uid+\''.UixPBFormCore::fid( $colid, $sid, 'uix_pb_team1_listitem_toggle_icon3' ).'\' ).val();
-
-
-				var _item_v_avatarURL       = ( _avatar != undefined && _avatar != \'\' ) ? _avatar : \''.esc_url(  UixPBFormCore::photo_placeholder() ).'\',
-					_item_v_social_icon_1   = ( _toggleicon1 != undefined && _toggleicon1 != \'\' ) ? _toggleicon1 : \'link\',
-					_item_v_social_icon_2   = ( _toggleicon2 != undefined && _toggleicon2 != \'\' ) ? _toggleicon2 : \'link\',
-					_item_v_social_icon_3   = ( _toggleicon3 != undefined && _toggleicon3 != \'\' ) ? _toggleicon3 : \'link\', 
-					_item_v_social_out_1    = ( _toggleurl1 != undefined && _toggleurl1 != \'\' ) ? \'<a href="\'+encodeURI( _toggleurl1 )+\'" target="_blank"><i class="fa fa-\'+uixpbform_htmlEncode( _item_v_social_icon_1 )+\'"></i></a>\' : \'\',
-					_item_v_social_out_2    = ( _toggleurl2 != undefined && _toggleurl2 != \'\' ) ? \'<a href="\'+encodeURI( _toggleurl2 )+\'" target="_blank"><i class="fa fa-\'+uixpbform_htmlEncode( _item_v_social_icon_2 )+\'"></i></a>\' : \'\',
-					_item_v_social_out_3    = ( _toggleurl3 != undefined && _toggleurl3 != \'\' ) ? \'<a href="\'+encodeURI( _toggleurl3 )+\'" target="_blank"><i class="fa fa-\'+uixpbform_htmlEncode( _item_v_social_icon_3 )+\'"></i></a>\' : \'\',
-					_item_v_pos             = ( _pos != undefined && _pos != \'\' ) ? \'<em>\'+_pos+\'</em>\' : \'\';
-
-
-
-
-
-
-				if ( _name != undefined && _name != \'\' ) {
-
-					//Do not include spaces
-
-					show_list_item += \'<div class="uix-pb-card-item">\';
-					show_list_item += \'<div class="uix-pb-card-item-left \'+_config_gray+\'">\';
-					show_list_item += \'<div class="uix-pb-card-item-left-imgbox" \'+_config_height+\'> <img src="\'+encodeURI( _item_v_avatarURL )+\'" alt="\'+uixpbform_htmlEncode( _name )+\'" style="-webkit-border-radius: \'+_config_avatar_fillet+\'; -moz-border-radius: \'+_config_avatar_fillet+\'; border-radius: \'+_config_avatar_fillet+\';"> </div>\';
-					show_list_item += \'</div>\';
-					show_list_item += \'<div class="uix-pb-card-item-body">\';
-					show_list_item += \'<h3 class="uix-pb-card-item-heading">\'+_name+\'</h3>\';
-					show_list_item += \'<div class="uix-pb-card-item-social">\';
-					show_list_item += _item_v_pos;
-					show_list_item += _item_v_social_out_1;
-					show_list_item += _item_v_social_out_2;
-					show_list_item += _item_v_social_out_3;
-					show_list_item += \'<div class="uix-pb-card-item-desc">\';
-					show_list_item += \'<p>\'+uixpbform_format_textarea_entering( _intro )+\'</p>\';
-					show_list_item += \'</div>\';
-					show_list_item += \'</div>\';
-					show_list_item += \'</div>\';
-					show_list_item += \'</div>\';
-
-				}
-
-
-			}
-
-
-
-			var temp = \'\';
-				temp += _config_t;
-				temp += _config_desc;
-				temp += \'<div class="uix-pb-card">\';
-				temp += show_list_item;
-				temp += \'</div>\';	
+			{{if uix_pb_team1_config_intro != ""}}
+				<div class="uix-pb-section-desc">${uix_pb_team1_config_intro}</div>		
+			{{/if}}	
 			
+			
+			<div class="uix-pb-card">
+
+				<!-- loop start -->
+
+					{{each '.$clone_trigger_id.'}}
+						{{if uix_pb_team1_listitem_name != ""}}
+
+							<div class="uix-pb-card-item">
+								<div class="uix-pb-card-item-left {{if uix_pb_team1_config_avatar_gray == 1}}uix-pb-gray{{/if}}">
+									<div class="uix-pb-card-item-left-imgbox" {{if uix_pb_team1_config_list_height > 0}}style="height:${uix_pb_team1_config_list_height}px;"{{/if}}>
+										<img src="{{if uix_pb_team1_listitem_avatar != ""}}${uix_pb_team1_listitem_avatar}{{else}}'.esc_url( UixPBFormCore::photo_placeholder() ).'{{/if}}" alt="" style="-webkit-border-radius:${uix_pb_team1_config_avatar_fillet}%;-moz-border-radius: ${uix_pb_team1_config_avatar_fillet}%;border-radius:${uix_pb_team1_config_avatar_fillet}%;">
+									</div>
+								</div>
+								<div class="uix-pb-card-item-body">
+									<h3 class="uix-pb-card-item-heading">${uix_pb_team1_listitem_name}</h3>
+									<div class="uix-pb-card-item-social">
+										{{if uix_pb_team1_listitem_position != ""}}<em>${uix_pb_team1_listitem_position}</em>{{/if}}
+										{{if uix_pb_team1_listitem_toggle_url1 != ""}}
+											<a href="${uix_pb_team1_listitem_toggle_url1}" target="_blank">
+												{{if uix_pb_team1_listitem_toggle_icon1 != ""}}<i class="fa fa-${uix_pb_team1_listitem_toggle_icon1}"></i>{{else}}<i class="fa fa-link"></i>{{/if}}
+											</a>
+										{{/if}}
+
+										{{if uix_pb_team1_listitem_toggle_url2 != ""}}
+											<a href="${uix_pb_team1_listitem_toggle_url2}" target="_blank">
+												{{if uix_pb_team1_listitem_toggle_icon2 != ""}}<i class="fa fa-${uix_pb_team1_listitem_toggle_icon2}"></i>{{else}}<i class="fa fa-link"></i>{{/if}}
+											</a>
+										{{/if}}
+
+										{{if uix_pb_team1_listitem_toggle_url3 != ""}}
+											<a href="${uix_pb_team1_listitem_toggle_url3}" target="_blank">
+												{{if uix_pb_team1_listitem_toggle_icon3 != ""}}<i class="fa fa-${uix_pb_team1_listitem_toggle_icon3}"></i>{{else}}<i class="fa fa-link"></i>{{/if}}
+											</a>
+										{{/if}}	
+										<div class="uix-pb-card-item-desc">
+											<p>${uix_pb_team1_listitem_intro}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						{{/if}}
+					{{/each}}	
+
+				<!-- loop end -->
+
+			</div>
 		
 		'
+	
     )
 );
