@@ -2078,6 +2078,37 @@ class UixPageBuilder {
 			}	
 		}
 		
+		if ( preg_match_all('/([A-Za-z0-9]){5}\]\[(.*?)\]\[([A-Za-z0-9]){5}/s', $data, $matches2 ) ) {
+			foreach( $matches2[0] as $item ) {
+				 if( UixPageBuilder::inc_str( $item, '_listitem' ) ) {
+					 
+					 if ( preg_match( '/\]\[(.*?)\]\[/s', $item, $match_name ) ) {
+
+						 $old_clone_fieldname = $match_name[0];
+						 $new_clone_fieldname = str_replace( '0', 'Ⅰ', 
+												str_replace( '1', 'Ⅱ',
+												str_replace( '2', 'Ⅲ',	
+												str_replace( '3', 'Ⅳ',
+												str_replace( '4', 'Ⅴ',
+												str_replace( '5', 'Ⅵ',
+												str_replace( '6', 'Ⅶ',
+												str_replace( '7', 'Ⅷ',
+												str_replace( '8', 'Ⅸ',
+												str_replace( '9', 'Ⅹ',		
+												$old_clone_fieldname
+												))))))))));
+
+						 $data = str_replace( $old_clone_fieldname, $new_clone_fieldname, $data );
+
+					 }	 
+					 
+
+				 }
+			}
+		}
+		
+		
+		
 		
 		return $data;
 		

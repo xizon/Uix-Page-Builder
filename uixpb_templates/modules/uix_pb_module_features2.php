@@ -28,7 +28,7 @@ $form_id = basename( __FILE__, '.php' );
  * Clone parameters
  * ----------------------------------------------------
  */
-$clone_trigger_id        = 'uix_pb_features_col2_triggerclonelist';  // String of clone trigger ID, must contain at least "_triggerclonelist"
+$clone_trigger_id        = 'uix_pb_features_col3_triggerclonelist';  // String of clone trigger ID, must contain at least "_triggerclonelist"
 $clone_max               = 30;                               // Maximum of clone form 
 
 
@@ -44,7 +44,7 @@ $module_config =
 	array(
 	
 		array(
-			'id'             => 'uix_pb_features_col2_config_title',
+			'id'             => 'uix_pb_features_col3_config_title',
 			'title'          => esc_html__( 'Title', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => esc_html__( 'Text Here', 'uix-page-builder' ),
@@ -56,7 +56,7 @@ $module_config =
 	
 		
 		array(
-			'id'             => 'uix_pb_features_col2_config_intro',
+			'id'             => 'uix_pb_features_col3_config_intro',
 			'title'          => esc_html__( 'Description', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => esc_html__( 'This is the description text for the title.', 'uix-page-builder' ),
@@ -102,7 +102,7 @@ $args =
 
 		
 			array(
-				'id'             => 'uix_pb_features_col2_listitem_title',
+				'id'             => 'uix_pb_features_col3_listitem_title',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Feature Title', 'uix-page-builder' ),
@@ -115,7 +115,7 @@ $args =
 
 			
 			array(
-				'id'             => 'uix_pb_features_col2_listitem_desc',
+				'id'             => 'uix_pb_features_col3_listitem_desc',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => esc_html__( 'Some description text here. You can add a lot of it or can choose to leave it blank.', 'uix-page-builder' ),
@@ -130,7 +130,7 @@ $args =
 			
 		
 			array(
-				'id'             => 'uix_pb_features_col2_listitem_icon',
+				'id'             => 'uix_pb_features_col3_listitem_icon',
 				'title'          => '',
 				'desc'           => '',
 				'value'          => '',
@@ -159,9 +159,9 @@ UixPBFormCore::form_scripts( array(
 		'clone'                    => array(
 										'trigger_id'     => $clone_trigger_id,
 										'fields'         => array( 
-																'uix_pb_features_col2_listitem_title', 
-																'uix_pb_features_col2_listitem_desc',
-																'uix_pb_features_col2_listitem_icon',
+																'uix_pb_features_col3_listitem_title', 
+																'uix_pb_features_col3_listitem_desc',
+																'uix_pb_features_col3_listitem_icon',
 															)
 									),
 		'form_id'                 => $form_id,
@@ -178,7 +178,7 @@ UixPBFormCore::form_scripts( array(
 										),
 
 									),
-		'title'                   => esc_html__( 'Features (2 Column)', 'uix-page-builder' ),
+		'title'                   => esc_html__( 'Features (3 Column)', 'uix-page-builder' ),
 	
 	
 		/**
@@ -207,13 +207,13 @@ UixPBFormCore::form_scripts( array(
 	    'template'              => '
 		
 		
-			{{if uix_pb_features_col2_config_title != ""}}
-				<h2 class="uix-pb-section-heading">${uix_pb_features_col2_config_title}</h2><div class="uix-pb-section-hr"></div>		
+			{{if uix_pb_features_col3_config_title != ""}}
+				<h2 class="uix-pb-section-heading">${uix_pb_features_col3_config_title}</h2><div class="uix-pb-section-hr"></div>		
 			{{/if}}			
 
 
-			{{if uix_pb_features_col2_config_intro != ""}}
-				<div class="uix-pb-section-desc">${uix_pb_features_col2_config_intro}</div>		
+			{{if uix_pb_features_col3_config_intro != ""}}
+				<div class="uix-pb-section-desc">${uix_pb_features_col3_config_intro}</div>		
 			{{/if}}	
 		
 			<div class="uix-pb-feature">
@@ -225,11 +225,11 @@ UixPBFormCore::form_scripts( array(
 							<div class="uix-pb-col-4 {{if ($index+1) >=3 && ($index+1) % 3 == 0}}uix-pb-col-last{{/if}}">
 								<div class="uix-pb-feature-li uix-pb-feature-li-c3">
 									<h3 class="uix-pb-feature-title">
-										<p class="uix-pb-feature-icon">{{if uix_pb_features_col2_listitem_icon != ""}}<i class="fa fa-${uix_pb_features_col2_listitem_icon}"></i>{{else}}<i class="fa fa-check"></i>{{/if}}</p>
-										${uix_pb_features_col2_listitem_title}
+										<p class="uix-pb-feature-icon">{{if uix_pb_features_col3_listitem_icon != ""}}<i class="fa fa-${uix_pb_features_col3_listitem_icon}"></i>{{else}}<i class="fa fa-check"></i>{{/if}}</p>
+										${uix_pb_features_col3_listitem_title}
 									</h3>
 									<div class="uix-pb-feature-desc uix-pb-feature-desc-singlerow">
-										<p>${uix_pb_features_col2_listitem_desc}</p>
+										<p>${uix_pb_features_col3_listitem_desc}</p>
 									</div>             
 								</div>
 							</div>

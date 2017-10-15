@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-10-14 12:49+0000\n"
+"POT-Creation-Date: 2017-10-15 08:16+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -1290,8 +1290,11 @@ msgid "Right Block"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_features1.php:268
-#: uixpb_templates/modules/uix_pb_module_features2.php:181
 msgid "Features (2 Column)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_features2.php:181
+msgid "Features (3 Column)"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_imageslider.php:49
