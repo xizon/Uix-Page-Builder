@@ -75,7 +75,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			 
 				 
 					////Register core functions (Require to enqueue the script before </body> instead of in the <head>.)
-				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery' ), self::VERSION, true );
+				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery', 'jquery-tmpl' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_page_builder_wp_plugin', array( 
 						'url'                       => self::plug_directory(),
 						'site_url'                  => site_url(),
