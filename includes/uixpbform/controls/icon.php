@@ -16,7 +16,7 @@ class UixPBFormType_Icon extends UixPBFormCore {
 		$toggle           = ( isset( $args[ 'toggle' ] ) && !empty( $args[ 'toggle' ] ) ) ? $args[ 'toggle' ] : '';
 		$cls              = ( isset( $args[ 'class' ] ) ) ? $args[ 'class' ] : '';
 		$class            = self::call_row_class( $id, $cls );
-		$callback         = ( isset( $args[ 'callback' ] ) ) ? self::uixpbform_control_callback_type( $args[ 'callback' ] ) : '';
+		$callback         = ( isset( $args[ 'callback' ] ) ) ? self::control_callback_type( $args[ 'callback' ] ) : '';
 		
 		$field       = '';
 		

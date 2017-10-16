@@ -551,7 +551,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		 *
 		 *
 		 */
-		public static function uixpbform_control_callback_type( $type ) {
+		public static function control_callback_type( $type ) {
 			
 			$callback_attr = 'data-callback="html"';
 			
