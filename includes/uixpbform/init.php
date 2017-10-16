@@ -107,7 +107,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 				    wp_enqueue_script( 'jquery-tmpl', self::plug_directory() .'js/jquery.tmpl.min.js', array( 'jquery' ), '1.0', true );
 				    wp_enqueue_script( 'jquery-tmplPlus', self::plug_directory() .'js/jquery.tmplPlus.min.js', array( 'jquery', 'jquery-tmpl' ), '1.0', true );
 				 
-					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.min.js', array( 'jquery', 'jquery-tmpl' ), self::VERSION, true );
+					wp_enqueue_script( 'uixpbform', self::plug_directory() .'js/uixpbform.min.js', array( 'uixpbform-functions' ), self::VERSION, true );
 					
 
 				 
