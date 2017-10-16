@@ -1590,7 +1590,9 @@ function uixpbform_format_html_listTran( str, type ) {
 
 	}
 
-    newStr = newStr.replace(/\<li\>\<\/li\>/g, '' );
+	var re = new RegExp( "\<" + type + "\>\<\/" + type + "\>" , 'g' );
+	newstr = newstr.replace( re, '' );
+
 
 	return newStr;
 
