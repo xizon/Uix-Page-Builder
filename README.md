@@ -119,6 +119,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+##### = 1.4.8 (October 17, 2017) =
+
+* Tweak: Enhanced API control compatibility.
+* Tweak: Fixed some inaccurate help files.
+
+
 
 ##### =1.4.7 (October 14, 2017) =
 
