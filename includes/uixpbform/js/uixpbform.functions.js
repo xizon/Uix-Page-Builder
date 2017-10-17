@@ -1677,7 +1677,7 @@ function uixpbform_format_colorTran( value ) {
 function uixpbform_format_html_listTran( str, type ) {
 
 
-	var newStr = '';
+	var newstr = '';
 
 	if ( str != '' ) {
 
@@ -1702,9 +1702,9 @@ function uixpbform_format_html_listTran( str, type ) {
 			for (var i = 0; i < strarr.length; i++ ) {
 
 				if ( strarr[i].indexOf( '<'+type+'>' ) >= 0 ) {
-					newStr += strarr[i];
+					newstr += strarr[i];
 				} else {
-					newStr += '<'+type+'>'+strarr[i]+'</'+type+'>';
+					newstr += '<'+type+'>'+strarr[i]+'</'+type+'>';
 				}
 
 
@@ -1713,9 +1713,9 @@ function uixpbform_format_html_listTran( str, type ) {
 		} else {
 
 			if ( str.indexOf( '<'+type+'>' ) >= 0 ) {
-				newStr = str;
+				newstr = str;
 			} else {
-				newStr = '<'+type+'>'+str+'</'+type+'>';
+				newstr = '<'+type+'>'+str+'</'+type+'>';
 			}
 
 		}
@@ -1727,7 +1727,7 @@ function uixpbform_format_html_listTran( str, type ) {
 	newstr = newstr.replace( re, '' );
 
 
-	return newStr;
+	return newstr;
 
 };
 
