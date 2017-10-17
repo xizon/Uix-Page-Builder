@@ -80,7 +80,7 @@ $args =
 
 
 /**
- * Returns form javascripts
+ * Returns form
  * ----------------------------------------------------
  */			
 UixPBFormCore::form_scripts( array(

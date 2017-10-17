@@ -550,7 +550,7 @@ $args_3 =
 
 
 /**
- * Returns form javascripts
+ * Returns form
  * ----------------------------------------------------
  */
 UixPBFormCore::form_scripts( array(

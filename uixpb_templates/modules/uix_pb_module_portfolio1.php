@@ -268,7 +268,7 @@ $args =
 ;
 
 /**
- * Returns form javascripts
+ * Returns form
  * ----------------------------------------------------
  */
 

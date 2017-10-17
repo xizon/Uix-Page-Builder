@@ -706,7 +706,7 @@ $args_4 =
 
 
 /**
- * Returns form javascripts
+ * Returns form
  * ----------------------------------------------------
  */
 UixPBFormCore::form_scripts( array(
