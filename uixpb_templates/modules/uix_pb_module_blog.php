@@ -10,7 +10,7 @@ if ( !class_exists( 'UixPageBuilder' ) ) {
  * 						    uix_pb_module_sample_hello2.php
  *
  * 1) For all ID attribute, special characters are only allowed underscores "_"
- * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-hex, list
+ * 2) Optional params of field "callback":  html, attr, slug, url, number, number-deg_px, shortcode-attr, color-name, list
  * 3) String of clone trigger ID, must contain at least "_triggerclonelist"
  * 4) String of clone ID attribute must contain at least "_listitem"
  * 5) If multiple columns are used to clone event and there are multiple clone triggers, 
