@@ -1358,33 +1358,7 @@ class UixPageBuilder {
 		 return $array;
 	}
 	
-	
-	/*
-	 * Decode template for shortcode attributes
-	 *
-	 *
-	 */
-	public static function decode( $str ) {
 
-
-         if ( $str ) {
-			 $restr = str_replace( '&#8217;', '\'',
-					   str_replace( '&#8221;', '"',
-					   str_replace( '&apos;', '\'',
-					   str_replace( '&quot;', '"',
-					   wp_specialchars_decode( $str )
-					   ))));
-					   
-	 
-		 } else {
-		    $restr = $str;
-		 }
-		 
-		 return $restr;
-
-	}
-	
-	
 
 	
 	/*

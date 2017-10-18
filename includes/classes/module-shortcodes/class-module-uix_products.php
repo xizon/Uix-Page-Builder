@@ -224,7 +224,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 							   str_replace( '{uix_pb_uix_products_attrs_excerpt}', $excerpt_html,
 							   str_replace( '{uix_pb_uix_products_attrs_thumbnail}', $post_thumbnail,
 							   str_replace( '{uix_pb_uix_products_attrs_thumbnail_url}', esc_url( $post_thumbnail_src ),
-							   UixPageBuilder::decode( $content )
+							   $content
 							   )))))))))))))))
 							   .PHP_EOL;	
 

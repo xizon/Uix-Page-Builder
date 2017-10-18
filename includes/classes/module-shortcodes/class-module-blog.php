@@ -239,7 +239,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 								   str_replace( '{uix_pb_blog_attrs_thumbnail}', $post_thumbnail,
 								   str_replace( '{uix_pb_blog_attrs_thumbnail_url}', esc_url( $post_thumbnail_src ), 
 								   str_replace( '{uix_pb_blog_attrs_format}', get_post_format(),   
-								   UixPageBuilder::decode( $content )
+								   $content
 								   ))))))))))))))))
 								   .PHP_EOL;	
 
