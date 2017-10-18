@@ -33,7 +33,7 @@ class UixPBFormType_Text extends UixPBFormCore {
 							   <input '.( !empty( $callback ) && !self::inc_str( $callback, 'slug' ) && !self::inc_str( $callback, 'attr' ) ? $callback : '' ).' type="text" id="${'.$id.'__fieldID}" name="${'.$id.'__fieldID}" class="uixpbform-normal uixpbform-input-text '.( !empty( $callback ) && ( self::inc_str( $callback, 'slug' ) || self::inc_str( $callback, 'attr' ) ) ? 'uixpbform-input-text-spy-attrslug' : '' ).'" data-enter-value="true" value="{{if '.$id.'__fieldVal}}${'.$id.'__fieldVal}{{else}}'.$value.'{{/if}}" placeholder="'.$placeholder.'">
 							   
 							   
-							   '.( !empty( $callback ) && self::inc_str( $callback, 'attr' ) ? '<input type="hidden" class="uixpbform-input-text-attr" id="${'.$id.'_attr__fieldID}" name="${'.$id.'_attr__fieldID}" value="{{if '.$id.'_attr__fieldVal}}${'.$id.'_attr__fieldVal}{{else}}'.esc_attr( $value ).'{{/if}}">' : '' ).'
+							   '.( !empty( $callback ) && self::inc_str( $callback, 'attr' ) ? '<input type="hidden" class="uixpbform-input-text-attr" id="${'.$id.'_attr__fieldID}" name="${'.$id.'_attr__fieldID}" value="{{if '.$id.'_attr__fieldVal}}${'.$id.'_attr__fieldVal}{{else}}'.self::to_attr( $value ).'{{/if}}">' : '' ).'
 
 
 							   '.( !empty( $callback ) && self::inc_str( $callback, 'slug' ) ? '<input type="hidden" class="uixpbform-input-text-slug" id="${'.$id.'_slug__fieldID}" name="${'.$id.'_slug__fieldID}" value="{{if '.$id.'_slug__fieldVal}}${'.$id.'_slug__fieldVal}{{else}}'.sanitize_title_with_dashes( $value ).'{{/if}}">' : '' ).'

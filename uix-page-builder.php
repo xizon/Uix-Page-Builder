@@ -39,6 +39,8 @@
  * 8) {attrrowcqt:}       ->  Double quotes("). (Only for front-end output in an HTML attribute of the HTML template data.)
  * 9) {lsquarebracket:}   ->  Left square brackets([).  (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
  * 10) {rsquarebracket:}  ->  Right square brackets(]). (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
+ * 11) {lt:}              ->  HTML tag(<).  (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
+ * 12) {gt:}              ->  HTML tag(>). (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
  *
 */
 
@@ -1271,9 +1273,12 @@ class UixPageBuilder {
 			 	 str_replace( '{attrrowcqt:}', '&#34;',		
 				 //HTML attribute and WP shortcodes.
 				 str_replace( '{lsquarebracket:}', "&#91;",
-			 	 str_replace( '{rsquarebracket:}', '&#93;',				 
+			 	 str_replace( '{rsquarebracket:}', '&#93;',	
+				 //HTML tag.
+				 str_replace( '{lt:}', "&#60;",
+			 	 str_replace( '{gt:}', '&#62;',				 
 			    $str
-			    ) ) ) ) ) );	
+			    ) ) ) ) ) ) ) );	
 				
 		//Required, The js escaped characters will can not be correctly output because the speed of bandwidth.
 		$result = str_replace( '&lt;', "<",
@@ -2106,8 +2111,6 @@ class UixPageBuilder {
 				 }
 			}
 		}
-		
-		
 		
 		
 		return $data;

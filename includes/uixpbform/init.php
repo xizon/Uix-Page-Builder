@@ -580,10 +580,6 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					$callback_attr = 'data-callback="number-deg_px"'; //Synchronous JavaScript function: uixpbform_format_degToPx()
 
 				  break;
-				case 'shortcode-attr':
-					$callback_attr = 'data-callback="shortcode-attr"'; //Synchronous JavaScript function: uixpbform_format_shortcodeUsableHtmlToAttr()
-
-				  break;
 
 				case 'color-name':
 					$callback_attr = 'data-callback="color-name"'; //Synchronous JavaScript function: uixpbform_format_colorTran()
@@ -604,6 +600,30 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 			return $callback_attr;
 	
 		}
+		
+		/*
+		 * Convert attribute
+		 *
+		 *
+		 */
+		public static function to_attr( $str ) {
+
+			return 	str_replace( "'", '{rowcapo:}',
+					 str_replace( '"', '{rowcqt:}',
+					 //HTML attribute.
+					 str_replace( "'", "{attrrowcapo:}",
+					 str_replace( '"', '{attrrowcqt:}',		
+					 //HTML attribute and WP shortcodes.
+					 str_replace( '[', "{lsquarebracket:}",
+					 str_replace( ']', '{rsquarebracket:}',	
+					 //HTML tag.
+					 str_replace( '<', "{lt:}",
+					 str_replace( '>', '{gt:}',				 
+					$str
+					) ) ) ) ) ) ) );
+			
+			
+		}	
 		
 		
 		/*

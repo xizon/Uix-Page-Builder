@@ -121,6 +121,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ##### = 1.4.8 (October 17, 2017) =
 
+* FIX: Fixed a form escaping error.
 * Tweak: Enhanced API control compatibility.
 * Tweak: Fixed some inaccurate help files.
 

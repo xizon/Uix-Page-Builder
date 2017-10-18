@@ -1540,7 +1540,10 @@ function uixpbform_format_htmlAttr( str ) {
 					.replace(/\&\#39;/g, "{attrrowcapo:}" )
 		            //Filters a string cleaned and escaped for output in an HTML attribute and WP shortcodes.
 					.replace(/\&\#91;/g, "{lsquarebracket:}" )
-					.replace(/\&\#93;/g, "{rsquarebracket:}" );
+					.replace(/\&\#93;/g, "{rsquarebracket:}" )
+					//Filters a string cleaned and escaped for output in an HTML tags.
+					.replace(/\&\#60;/g, '{lt:}' )
+					.replace(/\&\#62;/g, '{gt:}' );
 		 
 		
 	} else {
@@ -1585,28 +1588,6 @@ function uixpbform_format_urlEncode( str ) {
 	
 };
 
-
-
-/*! 
- * ************************************
- * Transform to usable HTML tags and add to attributes of shortcode tags
- *************************************
- */	
-function uixpbform_format_shortcodeUsableHtmlToAttr( str ) {
-	
-	if ( typeof( str ) == 'string' && str.length > 0 ) {
-	    return str.replace(/'/g,'"').replace(/“/g,'"').replace(/<|>/g,
-				function($0){
-					var c = $0.charCodeAt(0), r = ["&#"];
-					c = (c == 0x20) ? 0xA0 : c;
-					r.push(c); r.push(";");
-					return r.join("");
-				});
-	} else {
-		return str;
-	}
-
-}
 
 
 /*!
@@ -1770,11 +1751,6 @@ function uixpbform_value_callback( str, type ) {
 			case 'number-deg_px':
 				newstr  = uixpbform_format_degToPx( str );
 
-			  break;	
-				
-			case 'shortcode-attr':
-				newstr  = uixpbform_format_shortcodeUsableHtmlToAttr( str );
-
 			  break;
 
 			case 'color-name':
@@ -1861,9 +1837,10 @@ function uixpbform_textarea_to_JSONSaveData( str ){
 	if( typeof str !== typeof undefined ) {
 	
 		str = str.toString()
-			.replace(/"/g, '{cqt:}' )
-			.replace(/'/g, '{apo:}' )
-			.replace(/(\r)*\n/g, "<br>");
+						.replace(/\$/g, '&#36;' )
+						.replace(/"/g, '{cqt:}' )
+						.replace(/'/g, '{apo:}' )
+						.replace(/(\r)*\n/g, "<br>");
 	
 	}
 
@@ -3032,8 +3009,11 @@ function uixpbform_filter_control_val( str ) {
 		newstr = newstr
 					.replace(/\$/g, '&#36;' )
 					.replace(/\[/g, '&#91;')
-					.replace(/\]/g, '&#93;');
-			
+					.replace(/\]/g, '&#93;')
+					.replace(/{rowcqt:}/g, '&#34;' )
+					.replace(/{rowcapo:}/g, '&#39;' );
+		
+		
 	
 	}
 	return newstr;
@@ -3399,6 +3379,8 @@ function uixpbform_module_form_ids( tempID, sectionID, colID, returnTempID ) {
 					all_field_ids              = $( '#uixpbform-form-all-field-ids-' + tempID ).attr( 'data-field-ids' ),
 					all_clonefield_ids         = '';
 					
+				
+				
 				if ( typeof all_field_ids !== typeof undefined ) {
 
 					var new_all_field_ids_arr = all_field_ids.split( ',' );
