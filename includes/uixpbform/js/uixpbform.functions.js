@@ -1704,8 +1704,8 @@ function uixpbform_format_html_listTran( str, type ) {
 
 	}
 
-	var re = new RegExp( "\<" + type + "\>\<\/" + type + "\>" , 'g' );
-	newstr = newstr.replace( re, '' );
+	var re2  = new RegExp( "\\<"+type+"\\>\\<\\/"+type+"\\>" , 'g' );
+	newstr = newstr.replace( re2, '' );
 
 
 	return newstr;
