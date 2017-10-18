@@ -297,7 +297,7 @@
 	position: absolute !important;
 	display: inline-block !important;
 	color: #fff !important;
-    padding: 6px 10px 7px 10px !important;
+    padding: 6px 10px 4px 10px !important;
     margin: 26px 5px 0 -57px !important;
     -webkit-border-top-left-radius: 0 !important;
     -moz-border-top-left-radius: 0 !important;
@@ -646,85 +646,9 @@
 
 .uixpbform-form-container .radio span.img.active img {
     border-color: #C33;
-    animation: imgscale .3s 1;
-    -moz-animation: imgscale .3s 1;
-    -webkit-animation: imgscale .3s 1;
-    -o-animation: imgscale .3s 1;
     -webkit-box-shadow: 0 1px 15px rgba(0,0,0,.2);
     -moz-box-shadow: 0 1px 15px rgba(0,0,0,.2);
     box-shadow: 0 1px 15px rgba(0,0,0,.2);
-}
-
-@keyframes imgscale {
-    from {
-        -webkit-transform: scale(1.25);
-        -moz-transform: scale(1.25);
-        -o-transform: scale(1.25);
-        -ms-transform: scale(1.25);
-        transform: scale(1.25);
-    }
-
-    to {
-        -webkit-transform: scale(1);
-        -moz-transform: scale(1);
-        -o-transform: scale(1);
-        -ms-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-@-moz-keyframes imgscale {
-    from {
-        -webkit-transform: scale(1.25);
-        -moz-transform: scale(1.25);
-        -o-transform: scale(1.25);
-        -ms-transform: scale(1.25);
-        transform: scale(1.25);
-    }
-
-    to {
-        -webkit-transform: scale(1);
-        -moz-transform: scale(1);
-        -o-transform: scale(1);
-        -ms-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-@-webkit-keyframes imgscale {
-    from {
-        -webkit-transform: scale(1.25);
-        -moz-transform: scale(1.25);
-        -o-transform: scale(1.25);
-        -ms-transform: scale(1.25);
-        transform: scale(1.25);
-    }
-
-    to {
-        -webkit-transform: scale(1);
-        -moz-transform: scale(1);
-        -o-transform: scale(1);
-        -ms-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-@-o-keyframes imgscale {
-    from {
-        -webkit-transform: scale(1.25);
-        -moz-transform: scale(1.25);
-        -o-transform: scale(1.25);
-        -ms-transform: scale(1.25);
-        transform: scale(1.25);
-    }
-
-    to {
-        -webkit-transform: scale(1);
-        -moz-transform: scale(1);
-        -o-transform: scale(1);
-        -ms-transform: scale(1);
-        transform: scale(1);
-    }
 }
 
 .uixpbform-form-container .radio span .fa {
@@ -1150,44 +1074,6 @@
 .uixpbform-form-container .dynamic-addnow .uixpbform-input-text {
     display: block;
     background: #F8F8F8;
-    -webkit-transition: background-color 1000ms linear;
-    -moz-transition: background-color 1000ms linear;
-    -o-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
-    animation: bghide 1.5s 1;
-    -moz-animation: bghide 1.5s 1;
-    -webkit-animation: bghide 1.5s 1;
-    -o-animation: bghide 1.5s 1;
-}
-
-@-webkit-keyframes bghide {
-  
-    0% {
-        background: #F8F8F8;
-    }
-
-    50% {
-        background: #FCE9DA;
-    }
-
-    100% {
-        background: #F8F8F8;
-    }
-}
-
-@keyframes bghide {
-    0% {
-        background: #F8F8F8;
-    }
-
-    50% {
-        background: #FCE9DA;
-    }
-
-    100% {
-        background: #F8F8F8;
-    }
 }
 
 
@@ -1400,15 +1286,6 @@
 
 .uixpbform-form-container .uixpbform-input-text.active {
     background: #F8F8F8;
-    -webkit-transition: background-color 1000ms linear;
-    -moz-transition: background-color 1000ms linear;
-    -o-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
-    animation: bghide 1.5s 1;
-    -moz-animation: bghide 1.5s 1;
-    -webkit-animation: bghide 1.5s 1;
-    -o-animation: bghide 1.5s 1;
 }
 
 
@@ -1806,15 +1683,6 @@ a.uixpbform-icon-clear {
 .uixpbform-table-list.even .dynamic-addnow .uixpbform-input-text {
     display: block;
     background: transparent;
-    -webkit-transition: background-color 1000ms linear;
-    -moz-transition: background-color 1000ms linear;
-    -o-transition: background-color 1000ms linear;
-    -ms-transition: background-color 1000ms linear;
-    transition: background-color 1000ms linear;
-    animation: bghide_white 1.5s 1;
-    -moz-animation: bghide_white 1.5s 1;
-    -webkit-animation: bghide_white 1.5s 1;
-    -o-animation: bghide_white 1.5s 1;
 }
 
 .uixpbform-table-list.even .uixpbform-input-text-margin-container {
@@ -1825,61 +1693,7 @@ a.uixpbform-icon-clear {
     background: #F8F8F8;
 }
 
-@keyframes bghide_white {
-    0% {
-        background: transparent;
-    }
 
-    50% {
-        background: #FCE9DA;
-    }
-
-    100% {
-        background: transparent;
-    }
-}
-
-@-moz-keyframes bghide_white {
-    0% {
-        background: transparent;
-    }
-
-    50% {
-        background: #FCE9DA;
-    }
-
-    100% {
-        background: transparent;
-    }
-}
-
-@-webkit-keyframes bghide_white {
-    0% {
-        background: transparent;
-    }
-
-    50% {
-        background: #FCE9DA;
-    }
-
-    100% {
-        background: transparent;
-    }
-}
-
-@-o-keyframes bghide_white {
-    0% {
-        background: transparent;
-    }
-
-    50% {
-        background: #FCE9DA;
-    }
-
-    100% {
-        background: transparent;
-    }
-}
 
 @media all and (min-width: 1200px) {
 	 
@@ -2396,3 +2210,84 @@ a.uixpbform-icon-clear {
 
 
 
+
+/* Focus animation interaction 
+-------------------------------------------------------------- */
+.uixpbform-form-container .radio span.img.active img {
+     animation: uixFAnim1 .3s 1;
+    -moz-animation: uixFAnim1 .3s 1;
+    -webkit-animation: uixFAnim1 .3s 1;
+    -o-animation: uixFAnim1 .3s 1;
+}
+
+
+@-webkit-keyframes uixFAnim1 {
+    from {
+        -webkit-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes uixFAnim1 {
+    from {
+        -webkit-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -o-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    to {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+
+.uixpbform-form-container .dynamic-row.active,
+.uixpbform-box.active,
+.uixpbform-table tr.active,
+.uixpbform-table-list tr.active {
+     animation: uixFAnim2 .6s 1;
+    -moz-animation: uixFAnim2 .6s 1;
+    -webkit-animation: uixFAnim2 .6s 1;
+    -o-animation: uixFAnim2 .6s 1;
+}
+
+@-webkit-keyframes uixFAnim2 {
+    from {
+		-moz-opacity: 0;   
+		opacity: 0; 
+    }
+
+    to {
+		-moz-opacity: 1;   
+		opacity: 1; 
+    }
+}
+
+@keyframes uixFAnim2 {
+    from {
+		-moz-opacity: 0;   
+		opacity: 0; 
+    }
+
+    to {
+		-moz-opacity: 1;   
+		opacity: 1; 
+    }
+}

@@ -337,10 +337,10 @@
 
 				//Show image properties
 				if ( cur_prop ) {
-					$( "." + propIDPrefix + '_repeat' ).show();
-					$( "." + propIDPrefix + '_position' ).show();
-					$( "." + propIDPrefix + '_attachment' ).show();
-					$( "." + propIDPrefix + '_size' ).show();
+					$( "." + propIDPrefix + '_repeat' ).show().addClass( 'active' );
+					$( "." + propIDPrefix + '_position' ).show().addClass( 'active' );
+					$( "." + propIDPrefix + '_attachment' ).show().addClass( 'active' );
+					$( "." + propIDPrefix + '_size' ).show().addClass( 'active' );
 
 
 				}
@@ -373,10 +373,10 @@
 
 					//Hide image properties
 					if ( cur_prop ) {
-						$( "." + propIDPrefix + '_repeat' ).hide();
-						$( "." + propIDPrefix + '_position' ).hide();
-						$( "." + propIDPrefix + '_attachment' ).hide();
-						$( "." + propIDPrefix + '_size' ).hide();
+						$( "." + propIDPrefix + '_repeat' ).hide().removeClass( 'active' );
+						$( "." + propIDPrefix + '_position' ).hide().removeClass( 'active' );
+						$( "." + propIDPrefix + '_attachment' ).hide().removeClass( 'active' );
+						$( "." + propIDPrefix + '_size' ).hide().removeClass( 'active' );
 					}
 
 
@@ -615,17 +615,17 @@
 
 						if ( clone_list == 1 ) {
 
-							$( option_targetIDs ).closest( '.uixpbform-box' ).show();
+							$( option_targetIDs ).closest( '.uixpbform-box' ).show().addClass( 'active' );
 							$( option_targetIDs ).addClass( 'active' );	
 
 							//First clone object (not allowed to delete)
 							if ( typeof clone_tr_class !== typeof undefined && clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
-								$( option_targetIDs ).closest( 'tr' ).show();
+								$( option_targetIDs ).closest( 'tr' ).show().addClass( 'active' );
 							}	
 
 						} else {
 
-							$( option_targetIDs ).closest( 'tr' ).show();
+							$( option_targetIDs ).closest( 'tr' ).show().addClass( 'active' );
 							$( option_targetIDs ).addClass( 'active' );	
 						}
 
@@ -634,18 +634,18 @@
 
 						if ( clone_list == 1 ) {
 
-							$( option_targetIDs ).closest( '.uixpbform-box' ).hide();
-							$( option_targetIDs ).addClass( 'active' );
+							$( option_targetIDs ).closest( '.uixpbform-box' ).hide().removeClass( 'active' );
+							$( option_targetIDs ).removeClass( 'active' );
 
 							//First clone object (not allowed to delete)
 							if ( typeof clone_tr_class !== typeof undefined && clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
-								$( option_targetIDs ).closest( 'tr' ).hide();
+								$( option_targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 							}
 
 
 						} else {
 
-							$( option_targetIDs ).closest( 'tr' ).hide();
+							$( option_targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 							$( option_targetIDs ).removeClass( 'active' );		
 
 						}	
@@ -724,12 +724,12 @@
 					
 					
 					if ( targetIDs != '' ) {
-						$( targetIDs ).closest( '.uixpbform-box' ).show();
+						$( targetIDs ).closest( '.uixpbform-box' ).show().addClass( 'active' );
 						$( targetIDs ).addClass( 'active' );	
 						
 						//First clone object (not allowed to delete)
 						if ( typeof clone_tr_class !== typeof undefined && clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
-							$( targetIDs ).closest( 'tr' ).show();
+							$( targetIDs ).closest( 'tr' ).show().addClass( 'active' );
 						}	
 						
 					}
@@ -742,7 +742,7 @@
 					}
 					
 					if ( targetIDs != '' ) {
-						$( targetIDs ).closest( 'tr' ).show();
+						$( targetIDs ).closest( 'tr' ).show().addClass( 'active' );
 						$( targetIDs ).addClass( 'active' );	
 					}
 
@@ -764,12 +764,12 @@
 					}
 					
 					if ( targetIDs != '' ) {
-						$( targetIDs ).closest( '.uixpbform-box' ).hide();
-						$( targetIDs ).addClass( 'active' );
+						$( targetIDs ).closest( '.uixpbform-box' ).hide().removeClass( 'active' );
+						$( targetIDs ).removeClass( 'active' );
 
 						//First clone object (not allowed to delete)
 						if ( typeof clone_tr_class !== typeof undefined && clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
-							$( targetIDs ).closest( 'tr' ).hide();
+							$( targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 						}
 					}
 					
@@ -782,7 +782,7 @@
 					}
 					
 					if ( targetIDs != '' ) {
-						$( targetIDs ).closest( 'tr' ).hide();
+						$( targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 						$( targetIDs ).removeClass( 'active' );		
 					}
 					
@@ -839,11 +839,11 @@
 										_$this.closest( '.uixpbform-box' ).hide();
 
 										if ( _targetIDs != '' ) {
-											$( _targetIDs ).closest( '.uixpbform-box' ).show();
+											$( _targetIDs ).closest( '.uixpbform-box' ).show().addClass( 'active' );
 											$( _targetIDs ).addClass( 'active' );
 
 											if ( typeof _clone_tr_class !== typeof undefined && _clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
-												$( _targetIDs ).closest( 'tr' ).show();
+												$( _targetIDs ).closest( 'tr' ).show().addClass( 'active' );
 											}
 										}
 
@@ -852,7 +852,7 @@
 										_$this.closest( 'tr' ).hide();
 
 										if ( _targetIDs != '' ) {
-											$( _targetIDs ).closest( 'tr' ).show();
+											$( _targetIDs ).closest( 'tr' ).show().addClass( 'active' );
 											$( _targetIDs ).addClass( 'active' );	
 										}	
 
@@ -867,11 +867,11 @@
 										_$this.closest( '.uixpbform-box' ).show();
 
 										if ( _targetIDs != '' ) {
-											$( _targetIDs ).closest( '.uixpbform-box' ).hide();
-											$( _targetIDs ).addClass( 'active' );
+											$( _targetIDs ).closest( '.uixpbform-box' ).hide().removeClass( 'active' );
+											$( _targetIDs ).removeClass( 'active' );
 
 											if ( typeof _clone_tr_class !== typeof undefined && _clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
-												$( _targetIDs ).closest( 'tr' ).hide();
+												$( _targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 											}
 										}
 
@@ -880,7 +880,7 @@
 										_$this.closest( 'tr' ).show();
 
 										if ( _targetIDs != '' ) {
-											$( _targetIDs ).closest( 'tr' ).hide();
+											$( _targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 											$( _targetIDs ).removeClass( 'active' );		
 										}
 
@@ -897,11 +897,11 @@
 									_$this.closest( '.uixpbform-box' ).hide();
 
 									if ( _targetIDs != '' ) {
-										$( _targetIDs ).closest( '.uixpbform-box' ).hide();
-										$( _targetIDs ).addClass( 'active' );
+										$( _targetIDs ).closest( '.uixpbform-box' ).hide().removeClass( 'active' );
+										$( _targetIDs ).removeClass( 'active' );
 
 										if ( typeof _clone_tr_class !== typeof undefined && _clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
-											$( _targetIDs ).closest( 'tr' ).hide();
+											$( _targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 										}
 									}
 
@@ -910,7 +910,7 @@
 									_$this.closest( 'tr' ).hide();
 
 									if ( _targetIDs != '' ) {
-										$( _targetIDs ).closest( 'tr' ).hide();
+										$( _targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
 										$( _targetIDs ).removeClass( 'active' );		
 									}
 
@@ -1089,6 +1089,9 @@
 				srowsingle_c    = $( cur_appendID ).closest( '.uixpbform-table-wrapper' ),
 				sroworg         = null, 
 				sroworg_trigger = null;
+			
+			srow.addClass( 'active' );
+			
 
 			if ( srowcols_c.length > 0 ) {
 				sroworg         = srowcols_c.find( 'tr[class^="dynamic-row-"]' ),
