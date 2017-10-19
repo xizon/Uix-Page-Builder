@@ -303,6 +303,28 @@ $args =
 		
 		),
 		
+		
+		array(
+			/*
+			 * @template vars: 
+			 *
+				${uix_pb_hello_textarea2}
+				${uix_pb_hello_textarea2_attr}
+			 *
+			*/
+			'id'             => 'uix_pb_hello_textarea2',
+			'title'          => esc_html__( 'Textarea(by default value)', 'uix-shortcodes' ),
+			'desc'           => '',
+			'value'          => '',
+			'placeholder'    => '',
+			'type'           => 'textarea',
+			'callback'       => 'attr',
+			'default'        => array(
+									'row' => 3
+				                )
+		
+		),
+		
 		array(
 			'id'             => 'uix_pb_hello_image',
 			'title'          => esc_html__( 'Upload Image', 'uix-page-builder' ),

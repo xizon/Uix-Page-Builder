@@ -906,7 +906,7 @@
 			$( '#' + renderTempID ).val( htmlcode );
 
 			//Render HTML Viewport (Relative to the front of the page)
-			$( document ).UixPBRenderHTML({ divID: '#section_' + sectionID + '__' + colNumber, value: uixpbform_format_text_decode( htmlcode ) });
+			$( document ).UixPBRenderHTML({ divID: '#section_' + sectionID + '__' + colNumber, value: uixpbform_format_text_decode( htmlcode, true ) });
 			
 		})
 	}

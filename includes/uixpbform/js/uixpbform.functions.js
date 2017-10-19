@@ -1531,6 +1531,14 @@ function uixpbform_format_degToPx( str ) {
 function uixpbform_format_htmlAttr( str ) {
 
 	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		
+		
+		//Filters the break key
+		str = str
+			.toString()
+		    .replace(/(\r)*\n/g, "{br:}" );
+		
+
 	    return str.replace(/\[|\]|"|&|'|<|>|[\x00-\x20]|[\x7F-\xFF]|[\u0100-\u2700]/g,
                     function($0){
                         var c = $0.charCodeAt(0), r = ["&#"];
@@ -1858,9 +1866,14 @@ function uixpbform_textarea_to_JSONSaveData( str ){
  *
  * Used when using jQuery to read textarea
  *
+ *
+ * @param  {string}   str           - A string.
+ * @param  {boolean} renderFrontend - If true, use the front-end template processing method
+ * @return {string}                 - A new string.
+ *	 
  *************************************
  */	
-function uixpbform_format_text_decode( str ){
+function uixpbform_format_text_decode( str, renderFrontend ){
 	
 	var newstr = '';
 	if ( typeof( str ) == 'string' && str.length > 0 ) {
@@ -1871,6 +1884,25 @@ function uixpbform_format_text_decode( str ){
 					.replace(/&lt;/g, '<')
 					.replace(/&gt;/g, '>');
 		
+		//Use the front-end template processing method
+		if ( typeof renderFrontend !== typeof undefined && renderFrontend ) {
+			newstr = newstr
+						 //HTML attribute.
+						 .replace( /\{attrrowcapo\:\}/g, "&#39;" )
+						 .replace( /\{attrrowcqt\:\}/g, '&#34;' )	
+						 //HTML attribute and WP shortcodes.
+						 .replace( /\{lsquarebracket\:\}/g, "&#91;" )
+						 .replace( /\{rsquarebracket\:\}/g, '&#93;' )
+						 //HTML tag.
+						 .replace( /\{lt\:\}/g, "&#60;" )
+						 .replace( /\{gt\:\}/g, '&#62;' )
+			             //Break key
+			             .replace( /\{br\:\}/g, '<br>' );		
+			
+			
+			
+		}	
+		
 
 	}
 	
@@ -1878,6 +1910,7 @@ function uixpbform_format_text_decode( str ){
 	
 
 }
+
 
 
 /*!

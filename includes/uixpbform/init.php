@@ -618,9 +618,11 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					 str_replace( ']', '{rsquarebracket:}',	
 					 //HTML tag.
 					 str_replace( '<', "{lt:}",
-					 str_replace( '>', '{gt:}',				 
+					 str_replace( '>', '{gt:}',	
+					 //Break key
+					 str_replace( '<br>', '{br:}',	
 					$str
-					) ) ) ) ) ) ) );
+					) ) ) ) ) ) ) ) );
 			
 			
 		}	

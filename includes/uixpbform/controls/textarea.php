@@ -39,7 +39,11 @@ class UixPBFormType_Textarea extends UixPBFormCore {
 						<td>	
 						    <div class="uixpbform-box">
 						  
-								<textarea '.$callback.' {{if '.$id.'__fieldVal}}data-tmpl-value="1"{{else}}data-tmpl-value="0"{{/if}} '.( $tmpl ? 'data-tmpl-enable="1"' : '' ).' rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text '.( $tmpl ? 'uixpbform-tmpl-textarea' : '' ).'" id="${'.$id.'__fieldID}" name="${'.$id.'__fieldID}" placeholder="'.$placeholder.'" data-enter-value="true">{{if '.$id.'__fieldVal}}${'.$id.'__fieldVal}{{else}}'.$value.'{{/if}}</textarea>
+								<textarea '.( !empty( $callback ) && !self::inc_str( $callback, 'attr' ) ? $callback : '' ).' {{if '.$id.'__fieldVal}}data-tmpl-value="1"{{else}}data-tmpl-value="0"{{/if}} '.( $tmpl ? 'data-tmpl-enable="1"' : '' ).' rows="'.$row.'"  class="uixpbform-normal uixpbform-input-text '.( $tmpl ? 'uixpbform-tmpl-textarea' : '' ).' '.( !empty( $callback ) && self::inc_str( $callback, 'attr' ) ? 'uixpbform-input-text-spy-attrslug' : '' ).'" id="${'.$id.'__fieldID}" name="${'.$id.'__fieldID}" placeholder="'.$placeholder.'" data-enter-value="true">{{if '.$id.'__fieldVal}}${'.$id.'__fieldVal}{{else}}'.$value.'{{/if}}</textarea>
+								
+								
+								'.( !empty( $callback ) && self::inc_str( $callback, 'attr' ) ? '<input type="hidden" class="uixpbform-input-text-attr" id="${'.$id.'_attr__fieldID}" name="${'.$id.'_attr__fieldID}" value="{{if '.$id.'_attr__fieldVal}}${'.$id.'_attr__fieldVal}{{else}}'.self::to_attr( $value ).'{{/if}}">' : '' ).'
+								
 
 								
 							   '.( !empty( $desc ) ? '<p class="info info-fly">'.$desc.'</p>' : '' ).' 

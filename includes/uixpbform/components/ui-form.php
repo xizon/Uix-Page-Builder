@@ -139,6 +139,15 @@ class UixPBFormCore_Components_FormScripts extends UixPBFormCore {
 								
 								}	
 							
+								if ( $field[ 'type' ] == 'textarea' ) {
+									
+									if ( isset( $field[ 'callback' ] ) && $field[ 'callback' ] == 'attr' ) {
+										$field_ids .= $field[ 'id' ].'_attr,';
+									}
+								
+								}	
+								
+								
 								
 								if ( $field[ 'type' ] == 'short-text' ) {
 									

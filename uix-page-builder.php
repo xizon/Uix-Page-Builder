@@ -41,6 +41,7 @@
  * 10) {rsquarebracket:}  ->  Right square brackets(]). (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
  * 11) {lt:}              ->  HTML tag(<).  (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
  * 12) {gt:}              ->  HTML tag(>). (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
+ * 13) {br:}              ->  Break key. (It is used to escape a string for output in an HTML attribute and WP shortcodes.)
  *
 */
 
@@ -1276,9 +1277,12 @@ class UixPageBuilder {
 			 	 str_replace( '{rsquarebracket:}', '&#93;',	
 				 //HTML tag.
 				 str_replace( '{lt:}', "&#60;",
-			 	 str_replace( '{gt:}', '&#62;',				 
+			 	 str_replace( '{gt:}', '&#62;',	
+				//Break key
+				str_replace( '{br:}', '<br>',	
+							 
 			    $str
-			    ) ) ) ) ) ) ) );	
+			    ) ) ) ) ) ) ) ) );	
 				
 		//Required, The js escaped characters will can not be correctly output because the speed of bandwidth.
 		$result = str_replace( '&lt;', "<",
