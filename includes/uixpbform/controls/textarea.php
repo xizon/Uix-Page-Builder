@@ -23,7 +23,9 @@ class UixPBFormType_Textarea extends UixPBFormCore {
 		if ( $type == 'textarea' ) {
 			
 			$row     = 5;
-			
+			$hide    = false;
+			$tmpl    = false;
+
 			if ( is_array( $default ) && !empty( $default ) ) {
 				$row    = ( isset( $default[ 'row' ] ) ) ? $default[ 'row' ] : 5;
 				$hide   = ( isset( $default[ 'hide' ] ) ) ? $default[ 'hide' ] : false;
