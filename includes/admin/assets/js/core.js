@@ -779,6 +779,8 @@ function gridsterHtmlEscape( str ){
 	}
 }
 
+
+
 /*! 
  * 
  * [Gridster] Convert a string to slug.
@@ -789,15 +791,18 @@ function gridsterHtmlEscape( str ){
  */			
 function gridsterStrToSlug( str ){
 	if ( typeof( str ) == 'string' && str.length > 0 ) {
-		var pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]");
-		var rs = ""; 
-		for (var i = 0; i < str.length; i++) { 
-			rs = rs+str.substr( i, 1 ).replace( pattern, '' ); 
-		} 
+		return str
+			    .toString()
+				.replace(/[^\w\s\-！￥【】\u4e00-\u9eff]/gi, '')
+				.replace(/\s/g, '-')
+				.replace(/(\-){2,}/g, '-')
+				.replace(/\-\s*$/, '' )
+				.toLowerCase();
+		
+		
 
-		rs = rs.replace(/\s/g, '-').toLowerCase();
-		return rs;
-
+	} else {
+		return '';
 	}
 }
 

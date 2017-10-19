@@ -1984,15 +1984,16 @@ function uixpbform_curModalID() {
  */	
 function uixpbform_format_slug( str ) {
 	if ( typeof( str ) == 'string' && str.length > 0 ) {
-		
-		var pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]");
-		var rs = ""; 
-		for (var i = 0; i < str.length; i++) { 
-			rs = rs+str.substr( i, 1 ).replace( pattern, '' ); 
-		} 
+		return str
+			    .toString()
+				.replace(/[^\w\s\-！￥【】\u4e00-\u9eff]/gi, '')
+				.replace(/\s/g, '-')
+				.replace(/(\-){2,}/g, '-')
+				.replace(/\-\s*$/, '' )
+				.toLowerCase();
 
-		rs = rs.replace(/\s/g, '-').toLowerCase();
-		return rs;
+	} else {
+		return '';
 	}
 }
 
@@ -2337,6 +2338,12 @@ function uixpbform_catlist( str, classprefix ) {
 
 
 		str.replace( re, function(s, match) {
+			
+			   match = match
+				   .replace(/\&lt;/g, '')
+				   .replace(/\&gt;/g, '')
+				   .replace(/\&amp;/g, '');
+			
 			   arr.push(match);
 			  });	
 

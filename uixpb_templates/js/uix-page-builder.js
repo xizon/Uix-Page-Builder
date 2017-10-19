@@ -808,7 +808,15 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 
 				itemsStr.replace( re, function(s, match) {
-					   arr.push(match);
+					
+					   match = match
+						   .replace(/\&lt;/g, '')
+					       .replace(/\&gt;/g, '')
+						   .replace(/\&amp;/g, '');
+					
+					   
+					   
+					   arr.push( match );
 					  });	
 
 
@@ -823,14 +831,13 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 				var newArr = uniqueArr;
 				for( var j = 0; j < newArr.length; j++ ) {
 					
-					var _pattern = new RegExp("[`~!+%@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;|{}【】\"；：”“'。，、？]"),
-						_slug = ""; 
-					
-					for (var i = 0; i < newArr[j].length; i++) { 
-						_slug = _slug + newArr[j].substr( i, 1 ).replace( _pattern, '' ); 
-					} 
-
-					_slug = _slug.replace(/\s/g, '-').toLowerCase();
+					var _slug = newArr[j]
+								.toString()
+								.replace(/[^\w\s\-！￥【】\u4e00-\u9eff]/gi, '')
+								.replace(/\s/g, '-')
+								.replace(/(\-){2,}/g, '-')
+								.replace(/\-\s*$/, '' )
+								.toLowerCase();
 					
 					
 					catlistStr += '<li><a href="javascript:" data-group="'+_slug+'">'+newArr[j]+'</a></li>';

@@ -305,6 +305,8 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 							}
 						},
 						serialize_params: function( $w, wgd ){ 
+							
+							
 							var obj = {
 								col          : wgd.col, 
 								row          : wgd.row, 
@@ -314,9 +316,11 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 								secindex     : jQuery( $w[0] ).find( '.sid-box' ).val(),
 								layout       : jQuery( $w[0] ).find( '.layout-box:checked' ).val(),
 								customid     : gridsterStrToSlug( jQuery( $w[0] ).find( '.cusid-box' ).val() ),
-								title        : jQuery( $w[0] ).find( '.title-box' ).val()
+								title        : gridsterStrToSlug( jQuery( $w[0] ).find( '.title-box' ).val() )
 
 							} ;
+							
+							
 							return obj;
 						}
 					});

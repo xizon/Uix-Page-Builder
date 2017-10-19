@@ -660,7 +660,7 @@ ul.uix-page-builder-res-selector li.active {
 	position: fixed;
 	left: 0;
 	top: 52px;
-	z-index: 3;
+	z-index: 25;
 	width: 300px;
 	text-indent: 10px;
 	font-size: 10px !important;
