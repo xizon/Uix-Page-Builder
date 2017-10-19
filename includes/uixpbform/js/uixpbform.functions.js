@@ -655,6 +655,139 @@
 				}
 
 				
+				/*-- Exclude unidirectional display --*/
+				if ( typeof( option_targetIDs ) == 'string' && option_targetIDs.length > 0 ) {
+
+					option_targetIDs = option_targetIDs + ',';
+
+					var ids = option_targetIDs.split( ',' );
+
+					for ( var i = 0; i < ids.length; i++ ) {
+
+						if ( ids[i] == '' ) break;
+
+						var $unidirectionalDisplayTrigger = $( ids[i] ).closest( '.uixpbform-box' ).find( '.uixpbform_btn_trigger-toggleshow' );
+						if ( $unidirectionalDisplayTrigger.length > 0 ) {
+
+							var _$this              = $unidirectionalDisplayTrigger,
+								_$target            = _$this.closest( '.uixpbform-box' ),
+								_targetID           = _$this.attr( 'data-targetid' ),
+								_curID              = _$target.find( 'input[type="hidden"]' ).attr( 'id' ),
+								_curV               = _$target.find( 'input[type="hidden"]' ).val(),
+								_option_targetIDs   = uixpbform_get_real_ids( _targetID, _curID, _$this );
+
+
+
+								//Identifies this object as a clone object
+								if ( _curID.indexOf( '_listitem' ) >= 0 ) {
+									_$this.attr( "data-trigger-clone", 1 );
+								}
+
+								//Control Status
+								var _clone_list     = _$this.attr( "data-trigger-clone" ),
+									_clone_tr_class = _$this.closest( 'tr' ).attr( 'class' );
+
+
+								//Forcibly initialize unidirectional display
+								if ( $( this ).attr( 'data-value' ) == $( cur_targetID ).val() ) {
+
+									if ( _curV == 1 ) {
+
+
+										if ( _clone_list == 1 ) {
+
+											_$this.closest( '.uixpbform-box' ).hide();
+
+											if ( _option_targetIDs != '' ) {
+												$( _option_targetIDs ).closest( '.uixpbform-box' ).show().addClass( 'active' );
+												$( _option_targetIDs ).addClass( 'active' );
+
+												if ( typeof _clone_tr_class !== typeof undefined && _clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
+													$( _option_targetIDs ).closest( 'tr' ).show().addClass( 'active' );
+												}
+											}
+
+
+										} else {
+											_$this.closest( 'tr' ).hide();
+
+											if ( _option_targetIDs != '' ) {
+												$( _option_targetIDs ).closest( 'tr' ).show().addClass( 'active' );
+												$( _option_targetIDs ).addClass( 'active' );	
+											}	
+
+
+										}	
+
+
+									} else {
+
+										if ( _clone_list == 1 ) {
+
+											_$this.closest( '.uixpbform-box' ).show();
+
+											if ( _option_targetIDs != '' ) {
+												$( _option_targetIDs ).closest( '.uixpbform-box' ).hide().removeClass( 'active' );
+												$( _option_targetIDs ).removeClass( 'active' );
+
+												if ( typeof _clone_tr_class !== typeof undefined && _clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
+													$( _option_targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
+												}
+											}
+
+										} else {
+
+											_$this.closest( 'tr' ).show();
+
+											if ( _option_targetIDs != '' ) {
+												$( _option_targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
+												$( _option_targetIDs ).removeClass( 'active' );		
+											}
+
+
+										}
+
+									}//end if(_curV)							
+
+								} else {
+
+
+									if ( _clone_list == 1 ) {
+
+										_$this.closest( '.uixpbform-box' ).hide();
+
+										if ( _option_targetIDs != '' ) {
+											$( _option_targetIDs ).closest( '.uixpbform-box' ).hide().removeClass( 'active' );
+											$( _option_targetIDs ).removeClass( 'active' );
+
+											if ( typeof _clone_tr_class !== typeof undefined && _clone_tr_class.indexOf( 'dynamic-row-' ) >= 0 ) {
+												$( _option_targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
+											}
+										}
+
+
+									} else {
+										_$this.closest( 'tr' ).hide();
+
+										if ( _option_targetIDs != '' ) {
+											$( _option_targetIDs ).closest( 'tr' ).hide().removeClass( 'active' );
+											$( _option_targetIDs ).removeClass( 'active' );		
+										}
+
+
+									}		
+
+
+								}
+
+
+						}
+
+
+					}//end for
+
+				}//end if	
+				
 				
 			});
 			
@@ -792,11 +925,8 @@
 
 
 			}
-
-			//Dynamic form group‘s <tr> mandatory display
-			$( '.dynamic-append-wrapper' ).parent( 'td' ).parent( 'tr' ).show();
-
-
+			
+			
 			/*-- Exclude unidirectional display --*/
 			if ( typeof( targetIDs ) == 'string' && targetIDs.length > 0 ) {
 
@@ -928,7 +1058,12 @@
 
 			}//end if	
 			
-			
+
+			//Dynamic form group‘s <tr> mandatory display
+			$( '.dynamic-append-wrapper' ).parent( 'td' ).parent( 'tr' ).show();
+
+
+
 			
 		} );
 
