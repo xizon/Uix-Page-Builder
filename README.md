@@ -119,6 +119,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+##### = 1.4.9 (October 21, 2017) =
+
+* FIX: Fixed an error in form data.
+* Tweak: Optimize the form when the drager has no data.
+* Tweak: Optimize the interface user experience.
+
+
 ##### = 1.4.8 (October 17, 2017) =
 
 * FIX: Fixed a form escaping error.

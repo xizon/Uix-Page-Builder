@@ -806,6 +806,26 @@ function gridsterStrToSlug( str ){
 	}
 }
 
+
+/*! 
+ * 
+ * [Gridster] Convert a string to title.
+ * ---------------------------------------------------
+ *
+ * @param  {string} str            - Any string.
+ * @return {string}                - A new string.
+ */			
+function gridsterStrToTitle( str ){
+	if ( typeof( str ) == 'string' && str.length > 0 ) {
+		return str
+			    .toString()
+				.replace(/[^\w\s\-！￥【】\u4e00-\u9eff]/gi, '');
+		
+	} else {
+		return '';
+	}
+}
+
 /*! 
  * 
  * [Gridster] Get a widget content with JSON

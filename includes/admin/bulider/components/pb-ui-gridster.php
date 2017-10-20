@@ -316,7 +316,7 @@ class UixPB_Components_DD_Core extends UixPageBuilder {
 								secindex     : jQuery( $w[0] ).find( '.sid-box' ).val(),
 								layout       : jQuery( $w[0] ).find( '.layout-box:checked' ).val(),
 								customid     : gridsterStrToSlug( jQuery( $w[0] ).find( '.cusid-box' ).val() ),
-								title        : gridsterStrToSlug( jQuery( $w[0] ).find( '.title-box' ).val() )
+								title        : gridsterStrToTitle( jQuery( $w[0] ).find( '.title-box' ).val() )
 
 							} ;
 							

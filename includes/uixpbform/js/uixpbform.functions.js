@@ -3600,18 +3600,98 @@ function uixpbform_module_form_ids( tempID, sectionID, colID, returnTempID ) {
 									oldFormid    = conJSON[0][1].replace(/{rowqt:}/g, '"'),
 									oldSid       = conJSON[1][1].replace(/{rowqt:}/g, '"');
 
+								
+								/*! 
+								 * ************************************
+								 * Use the default value of the form controls (Completely new widget)
+								 *	
+								 *************************************
+								 */
+								for( var i = 0; i < formcon.length; i++ ) {
 
+									var perColControls = formcon[i];
+									
+									
+									//When the array length is less than 3, the widget has not been added yet
+									if ( perColControls.length < 3 ) {
+
+
+										if( Object.prototype.toString.call( keys ) === '[object Array]' ) {
+
+
+
+											for( var i = 0; i < keys.length; i++ ) {
+
+												var _key_id_vid    = keys[i],
+													_field_name    = '',
+													_field_full_id = '',
+													_field_value   = '';
+
+
+
+												//Exclude the original form ID of the clone
+												if ( _key_id_vid.indexOf( '__index__' ) < 0 && _key_id_vid.indexOf( '_triggerclonelist' ) < 0 ) {
+
+													if ( 
+														_key_id_vid.indexOf( '__fieldID' ) >= 0 && 
+														_key_id_vid.indexOf( '_temp' ) < 0
+													   ) {
+														_field_full_id = uixpbform_to_controlID_ToVar( _key_id_vid, tempID, sectionID, colID );
+														result.push( { [_key_id_vid]: _field_full_id }  );
+													}
+
+													if ( 
+														_key_id_vid.indexOf( '__fieldVal' ) >= 0 && 
+														_key_id_vid.indexOf( '_temp' ) < 0
+													) {
+														result.push( { [_key_id_vid]: "" }  );
+													}	
+
+
+													if ( 
+														_key_id_vid.indexOf( '__fieldID' ) >= 0 && 
+														_key_id_vid.indexOf( '_temp' ) >= 0
+													) {
+														_field_full_id      = uixpbform_to_controlID_ToVar( _key_id_vid, tempID, sectionID, colID );
+														renderTempElement1  = { [_key_id_vid]: _field_full_id };
+														renderTempID        = _field_full_id;
+													}
+
+													if ( 
+														_key_id_vid.indexOf( '__fieldVal' ) >= 0 && 
+														_key_id_vid.indexOf( '_temp' ) >= 0
+													) {
+														renderTempElement2   = { [_key_id_vid]: "" };
+													}	
+
+
+												}//end if
+
+
+
+											}	
+
+										}		
+										
+										
+									}
+												
+								}
+								
 
 								//Retrieve the form ID for each module
-								if ( oldFormid == tempID && oldSid == sectionID ) {
+								if ( oldSid == sectionID ) {
 
-
+									
+									
 									//<Loop each column>
 									for( var i = 0; i < formcon.length; i++ ) {
 
 										var perColControls = formcon[i],
 											oldColid     = 'col-item-' + formcon[i][0][1] + '---' + sid;
-
+										
+										
+										
 										if ( oldColid == colID ) {
 
 											//When the array length is less than 3, the widget has not been added yet
@@ -3770,11 +3850,6 @@ function uixpbform_module_form_ids( tempID, sectionID, colID, returnTempID ) {
 													
 												}//</Loop each control>
 											
-											} else { //<else perColControls.length>
-
-												//--------Use the default value of the form controls
-												useKeys = true;
-
 											}//<end perColControls.length>
 
 
@@ -3795,8 +3870,7 @@ function uixpbform_module_form_ids( tempID, sectionID, colID, returnTempID ) {
 							}//<end uixpbform_isJSON( con ) >
 							
 						}
-						
-						
+				
 						
 						/*! 
 						 * ************************************
@@ -3859,7 +3933,6 @@ function uixpbform_module_form_ids( tempID, sectionID, colID, returnTempID ) {
 							}	
 
 						}
-						
 						
 						/*! 
 						 * ************************************
