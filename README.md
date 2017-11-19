@@ -450,7 +450,8 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 4.5.3
 - WP 4.6.*
 - WP 4.7.*
-- WP 4.8
+- WP 4.8.*
+- WP 4.9
 
 
 ### Screenshot
