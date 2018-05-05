@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.4.9
+ * Version:     1.5.0
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -183,8 +183,8 @@ class UixPageBuilder {
 		wp_register_script( 'easypiechart', self::plug_directory() .'includes/admin/assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
 		
 		//flexslider
-		wp_register_script( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.5.0', true );
-		wp_register_style( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/flexslider.css', false, '2.5.0', 'all' );
+		wp_register_script( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.7.0', true );
+		wp_register_style( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/flexslider.min.css', false, '2.7.0', 'all' );
 		
 		// Parallax
 		wp_register_script( 'bgParallax', self::plug_directory() .'includes/admin/assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
@@ -519,7 +519,7 @@ class UixPageBuilder {
 	 */
 	public static function get_session_current_postid() {
 		
-		if( ! isset( $_SESSION ) ) session_start();
+		//if( ! isset( $_SESSION ) ) session_start();
 		if( array_key_exists( 'uix-page-builder-current-postid', $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-current-postid' ] ) ) {
 			return $_SESSION[ 'uix-page-builder-current-postid' ];	
 		} else {
@@ -539,7 +539,7 @@ class UixPageBuilder {
 	 */
 	public static function session_current_postid( $str ) {
 		
-		if( ! isset( $_SESSION ) ) session_start();
+		//if( ! isset( $_SESSION ) ) session_start();
 		$_SESSION[ 'uix-page-builder-current-postid' ] = $str;
 
 	}
@@ -552,7 +552,7 @@ class UixPageBuilder {
 	 */
 	public static function unset_session_current_postid() {
 		
-		if( ! isset( $_SESSION ) ) session_start();
+		//if( ! isset( $_SESSION ) ) session_start();
 		unset( $_SESSION[ 'uix-page-builder-current-postid' ] );
 
 	}
@@ -567,7 +567,7 @@ class UixPageBuilder {
 	 */
 	public static function get_session_default_tempname( $id ) {
 		
-		if( ! isset( $_SESSION ) ) session_start();
+		//if( ! isset( $_SESSION ) ) session_start();
 		if( array_key_exists( 'uix-page-builder-tempname' . $id, $_SESSION ) && !empty( $_SESSION[ 'uix-page-builder-tempname' . $id ] ) ) {
 			return $_SESSION[ 'uix-page-builder-tempname' . $id ];	
 		} else {
@@ -588,7 +588,7 @@ class UixPageBuilder {
 	 */
 	public static function session_default_tempname( $str, $id ) {
 		
-		if( ! isset( $_SESSION ) ) session_start();
+		//if( ! isset( $_SESSION ) ) session_start();
 		$_SESSION[ 'uix-page-builder-tempname' . $id ] = $str;
 
 	}
@@ -601,7 +601,7 @@ class UixPageBuilder {
 	 */
 	public static function unset_session_default_tempname( $id ) {
 		
-		if( ! isset( $_SESSION ) ) session_start();
+		//if( ! isset( $_SESSION ) ) session_start();
 		unset( $_SESSION[ 'uix-page-builder-tempname' . $id ] );
 
 	}
@@ -661,10 +661,10 @@ class UixPageBuilder {
 
 		
 		if ( $pathtype == 'uri' ) {
-			$_path_theme = get_template_directory_uri() . '/' . $theme_assets_folder_name;
+			$_path_theme = get_stylesheet_directory_uri() . '/' . $theme_assets_folder_name;
 			$_path_plug  = self::backend_path( 'uri' );
 		} else {
-			$_path_theme = get_template_directory() .'/' . $theme_assets_folder_name;
+			$_path_theme = get_stylesheet_directory() .'/' . $theme_assets_folder_name;
 			$_path_plug  = self::plug_filepath() . $theme_assets_folder_name;
 		}
 		
@@ -741,19 +741,19 @@ class UixPageBuilder {
 		if ( self::tempfolder_exists() ) {
 			
 			
-			if ( file_exists( get_template_directory() .'/'.$theme_template_dir_name.'/css/uix-page-builder.css' ) ) {
+			if ( file_exists( get_stylesheet_directory() .'/'.$theme_template_dir_name.'/css/uix-page-builder.css' ) ) {
 				if ( $type == 'uri' )  {
-					return get_template_directory_uri() .'/'.$theme_template_dir_name.'/';
+					return get_stylesheet_directory_uri() .'/'.$theme_template_dir_name.'/';
 				} else {
-					return get_template_directory() .'/'.$theme_template_dir_name.'/';
+					return get_stylesheet_directory() .'/'.$theme_template_dir_name.'/';
 				}
 			}
 
-			if ( file_exists( get_template_directory() .'/assets/css/uix-page-builder.css' ) ) {
+			if ( file_exists( get_stylesheet_directory() .'/assets/css/uix-page-builder.css' ) ) {
 				if ( $type == 'uri' )  {
-					return get_template_directory_uri() .'/assets/';
+					return get_stylesheet_directory_uri() .'/assets/';
 				} else {
-					return get_template_directory() .'/assets/';
+					return get_stylesheet_directory() .'/assets/';
 				}
 			}
 			
@@ -1416,8 +1416,8 @@ class UixPageBuilder {
 	 *
 	 * Templates file: 
 	 * 
-	 *  a) /wp-content/plugins//uixpb_templates/modules/templates.xml  
-	 *  b) /wp-content/plugins/{your-theme}/uixpb_templates/modules/templates.xml  
+	 *  a) /wp-content/plugins/uixpb_templates/modules/templates.xml  
+	 *  b) /wp-content/themes/{your-theme}/uixpb_templates/modules/templates.xml  
 	 *  c) /wp-content/themes/{your-theme}/uixpb_templates.xml
 	 *
 	 */
@@ -1438,9 +1438,9 @@ class UixPageBuilder {
 			if ( self::tempfile_modules_exists() ) {
 
 				if ( $type == 'uri' )  {
-					return get_template_directory_uri() .'/'.$theme_name;
+					return get_stylesheet_directory_uri() .'/'.$theme_name;
 				} else {
-					return get_template_directory() .'/'.$theme_name;
+					return get_stylesheet_directory() .'/'.$theme_name;
 				}
 
 			} else {
@@ -1467,9 +1467,9 @@ class UixPageBuilder {
 		//Only Theme
 		if ( $locate == 'theme' ) {
 			if ( $type == 'uri' )  {
-				return get_template_directory_uri() .'/'.$theme_name;
+				return get_stylesheet_directory_uri() .'/'.$theme_name;
 			} else {
-				return get_template_directory() .'/'.$theme_name;
+				return get_stylesheet_directory() .'/'.$theme_name;
 			}
 		}
 		
@@ -1706,7 +1706,7 @@ class UixPageBuilder {
 			  $contentdir = UIX_PAGE_BUILDER_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
-			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+			  $contentdir = trailingslashit( get_stylesheet_directory() ).$path; 
 		  } 
 		  
 		  if ( self::wpfilesystem_connect_fs( $url, '', $contentdir ) ) {
@@ -1732,7 +1732,7 @@ class UixPageBuilder {
 			  $contentdir = UIX_PAGE_BUILDER_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
-			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+			  $contentdir = trailingslashit( get_stylesheet_directory() ).$path; 
 		  } 	  
 		
 		  
@@ -1764,7 +1764,7 @@ class UixPageBuilder {
 			  $contentdir = UIX_PAGE_BUILDER_PLUGIN_DIR.$path; 
 		  } 
 		  if ( $type == 'theme' ) {
-			  $contentdir = trailingslashit( get_template_directory() ).$path; 
+			  $contentdir = trailingslashit( get_stylesheet_directory() ).$path; 
 		  } 	  
 		
 		  

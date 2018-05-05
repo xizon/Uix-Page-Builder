@@ -59,11 +59,15 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 				//Do the deed
 				$results_array = $insta_array;
 				
-				if ( isset( $results_array['entry_data']['ProfilePage'][0]['user']['media']['nodes'] ) ) {
+				//List of items
+				$items = $results_array['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['edges'];
+				
+				
+				if ( isset( $items ) ) {
 					
 
 					//An example of where to go from there
-					$latest_array  = $results_array['entry_data']['ProfilePage'][0]['user']['media']['nodes'];
+					$latest_array  = $items;
 
 					$return_string .= '<div class="uix-pb-instagram-container '.$custom_classes.'">';
 					if ( $displayname == 1 ) {
@@ -75,11 +79,11 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 					if ( is_array( $latest_array ) ) {
 						$latest_array   = array_slice( $latest_array, 0, $show );
 						foreach ( $latest_array as $value ) {
-							$link         = isset( $value['code'] ) ? trailingslashit( '//instagram.com/p/' . $value['code'] ) : 'javascript:void(0);';
-							$like         = isset( $value['likes']['count'] ) ? $value['likes']['count'] : 0;
-							$comments     = isset( $value['comments']['count'] ) ? $value['comments']['count'] : 0;
-							$fullimg      = isset( $value['display_src'] ) ? $value['display_src'] : '';
-							$thumbnail    = isset( $value['thumbnail_src'] ) ? $value['thumbnail_src'] : '';
+							$link         = isset( $value['node']['shortcode'] ) ? trailingslashit( '//instagram.com/p/' . $value['node']['shortcode'] ) : 'javascript:void(0);';
+							$like         = isset( $value['node']['edge_liked_by']['count'] ) ? $value['node']['edge_liked_by']['count'] : 0;
+							$comments     = isset( $value['node']['edge_media_to_comment']['count'] ) ? $value['node']['edge_media_to_comment']['count'] : 0;
+							$fullimg      = isset( $value['node']['display_url'] ) ? $value['node']['display_url'] : '';
+							$thumbnail    = isset( $value['node']['thumbnail_src'] ) ? $value['node']['thumbnail_src'] : '';
 
 							if ( ( strpos( $thumbnail, 's640x640' ) !== false ) ) {
 								$thumbnail = str_replace( 's640x640', 's320x320', $thumbnail ); //s160x160, s320x320
@@ -99,6 +103,8 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 
 				
 			}
+			
+	
 			
 			
 			return UixPBFormCore::str_compression(  $return_string );

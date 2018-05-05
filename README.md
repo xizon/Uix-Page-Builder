@@ -119,11 +119,22 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+
+##### = 1.5.0 (May 3, 2018) =
+
+* Fix: Fixed a bug with custom styles and child themes that if site uses a child theme when you create a custom css/js file in child theme folder, the plugin tries to connect style with path located in the parent theme folder.
+* Fix: Fixed a Warning for cannot send session cache limiter.
+* Fix: Solved the problem that instagram widget call data is not displayed.
+* Tweak: Updated some third-party plugins to the latest version.
+
+
+
 ##### = 1.4.9 (October 21, 2017) =
 
 * FIX: Fixed an error in form data.
 * Tweak: Optimize the form when the drager has no data.
 * Tweak: Optimize the interface user experience.
+
 
 
 ##### = 1.4.8 (October 17, 2017) =
