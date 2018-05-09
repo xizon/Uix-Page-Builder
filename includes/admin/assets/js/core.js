@@ -3,6 +3,8 @@
 "use strict";
     $( function() {
 		
+
+		
 		
 		
 		/*!
@@ -1322,19 +1324,7 @@ function UixPBFormatRenderCodes( code ) {
 			   if ( $( this ).contents().text().search( '[uix_pb_sections]' ) > 0 ) { //Regular expression, not WP shortcode
 				    //Render WP Shortcode
 				    $( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );  
-				   
-					//Trigger the front end of the JavaScript function "uix_pb_render_trigger()"
-					var frontendEvent = window.setInterval( function() {
-						$( document ).UixPBRenderFrontendPageTrigger();
-						
-						if ( $( '#uix-page-builder-themepreview' ).contents().find( '.uix-page-builder-section' ).length > 0 ) {
-							window.clearInterval( frontendEvent );
-						}
-						
-					}, 1000 );
-				 
-				   
-					  
+		  
 			   }
 			});
 			
@@ -1394,17 +1384,7 @@ function UixPBFormatRenderCodes( code ) {
 			//-------- Render the entire page
 			if ( $enable == 2 ) {
 				$( document ).UixPBRenderWPShortcode( { postID: uix_page_builder_layoutdata.send_string_postid } );
-				
-				//Trigger the front end of the JavaScript function "uix_pb_render_trigger()"
-				var frontendEvent = window.setInterval( function() {
-					$( document ).UixPBRenderFrontendPageTrigger();
 
-					if ( $( '#uix-page-builder-themepreview' ).contents().find( '.uix-page-builder-section' ).length > 0 ) {
-						window.clearInterval( frontendEvent );
-					}
-
-				}, 1000 );	
-				
 			}
 			
 			
@@ -1486,6 +1466,10 @@ function UixPBFormatRenderCodes( code ) {
 				//Add shortcut buttons to front-end page 
 				gridsterAddShortcutButtons();
 				
+				//Trigger the front end of the JavaScript function "uix_pb_render_trigger()"
+				$( document ).UixPBRenderFrontendPageTrigger();
+
+
 				
 				//Initialize the map container
 				$frontend.find( '.uix-page-builder-map-preview-container' ).filter( function( index ) {
@@ -1621,6 +1605,7 @@ function UixPBFormatRenderCodes( code ) {
 			
 			if ( typeof ( $( '#uix-page-builder-themepreview' ).get(0).contentWindow.uix_pb_render_trigger ) == 'function' ) {
 				$( '#uix-page-builder-themepreview' ).get(0).contentWindow.uix_pb_render_trigger();
+				//console.log( 'Re-render the front-end javascript!');
 			}
 
 		})

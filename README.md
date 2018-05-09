@@ -119,6 +119,10 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+##### = 1.5.1 (May 9, 2018) =
+
+* Fix: Solved the problem that real-time rendering of front-end script will fail.
+
 
 ##### = 1.5.0 (May 3, 2018) =
 

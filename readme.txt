@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
 Requires at least: 4.2
-Tested up to: 4.9
-Stable tag: 1.5.0
+Tested up to: 4.9.5
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+
+= 1.5.1 (May 9, 2018) =
+
+* Fix: Solved the problem that real-time rendering of front-end script will fail.
 
 
 = 1.5.0 (May 3, 2018) =
