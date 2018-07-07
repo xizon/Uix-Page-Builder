@@ -56,6 +56,7 @@ The currently available default elements:
   
 = Features =
 
+* Compatible with Gutenberg. (new)
 * A particularly simple custom form and template API.
 * Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin [Uix Products](https://wordpress.org/plugins/uix-products/))
 * Support Custom Post Types to create a slideshow in WordPress. (Require the WP plugin [Uix Slideshow](https://wordpress.org/plugins/uix-slideshow/))
@@ -117,6 +118,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 ### Updates
+
+
+##### = 1.5.2 (July 7, 2018) =
+
+* Tweak: Compatible with Gutenberg, the "Uix Page Builder Attributes" settings can be found in the Extended Settings section with the Gutenberg block editor. 
+
 
 
 ##### = 1.5.1 (May 9, 2018) =
@@ -466,7 +473,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 4.6.*
 - WP 4.7.*
 - WP 4.8.*
-- WP 4.9
+- WP 4.9.*
 
 
 ### Screenshot

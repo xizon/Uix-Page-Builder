@@ -30,6 +30,16 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
            <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/menu.jpg" alt=""> 
 			<img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/active.jpg" alt="">
         </p> 
+        
+        
+        <p class="uix-bg-custom-desc">
+           <?php _e( '2-2. For Gutenberg. the <strong>"Uix Page Builder Attributes"</strong> settings can be found in the Extended Settings section with the Gutenberg block editor.". )', 'uix-page-builder' ); ?>
+        </p>  
+   
+        <p>
+           <img src="<?php echo UixPageBuilder::plug_directory(); ?>helper/img/gutenberg-go.jpg" alt=""> 
+        </p> 
+        
 
         <h3>
             <?php _e( '(2) FAQ', 'uix-page-builder' ); ?>

@@ -3,13 +3,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2017-10-19 08:50+0000\n"
+"POT-Creation-Date: 2018-07-07 04:43+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,79 +21,79 @@ msgstr ""
 "_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
 "esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
-"X-Generator: Loco - https://localise.biz/"
+"X-Generator: Loco https://localise.biz/"
 
-#: uix-page-builder.php:256
+#: uix-page-builder.php:257
 msgid "Primary Menu"
 msgstr ""
 
-#: uix-page-builder.php:366
+#: uix-page-builder.php:367
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: uix-page-builder.php:367 includes/admin/bulider/post-extensions-init.php:626
+#: uix-page-builder.php:368 includes/admin/bulider/post-extensions-init.php:626
 msgid "Uix Page Builder"
 msgstr ""
 
-#: uix-page-builder.php:380 uix-page-builder.php:381 uix-page-builder.php:446
+#: uix-page-builder.php:381 uix-page-builder.php:382 uix-page-builder.php:447
 #: helper/settings.php:61
 msgid "How to use?"
 msgstr ""
 
-#: uix-page-builder.php:388 uix-page-builder.php:389 helper/settings.php:71
+#: uix-page-builder.php:389 uix-page-builder.php:390 helper/settings.php:71
 msgid "Template Files"
 msgstr ""
 
-#: uix-page-builder.php:396 uix-page-builder.php:397
+#: uix-page-builder.php:397 uix-page-builder.php:398
 msgid "Custom CSS"
 msgstr ""
 
-#: uix-page-builder.php:406 uix-page-builder.php:407
+#: uix-page-builder.php:407 uix-page-builder.php:408
 msgid "For Theme Developer"
 msgstr ""
 
-#: uix-page-builder.php:416 uix-page-builder.php:417
+#: uix-page-builder.php:417 uix-page-builder.php:418
 msgid "Helper"
 msgstr ""
 
-#: uix-page-builder.php:493 uix-page-builder.php:499
+#: uix-page-builder.php:494 uix-page-builder.php:500
 #: includes/classes/class-frontend-render.php:35
 #, php-format
 msgid "Untitled-%1$s"
 msgstr ""
 
-#: uix-page-builder.php:1502
+#: uix-page-builder.php:1503
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-page-builder.php:1620
+#: uix-page-builder.php:1621
 msgid "Operation successfully completed!"
 msgstr ""
 
-#: uix-page-builder.php:1630
+#: uix-page-builder.php:1631
 msgid ""
 "There was a problem copying your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1638
+#: uix-page-builder.php:1639
 msgid ""
 "There was a problem removing your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1641
+#: uix-page-builder.php:1642
 msgid "Remove successful!"
 msgstr ""
 
-#: uix-page-builder.php:1875 uix-page-builder.php:1903
+#: uix-page-builder.php:1876 uix-page-builder.php:1904
 msgid "- All -"
 msgstr ""
 
-#: uix-page-builder.php:1988
+#: uix-page-builder.php:1989
 msgid "(no title)"
 msgstr ""
 
@@ -239,6 +239,7 @@ msgid "Blog"
 msgstr ""
 
 #: helper/tabs/about.php:42 uixpb_templates/modules/config.php:82
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:238
 msgid "Slider"
 msgstr ""
 
@@ -281,68 +282,71 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: helper/tabs/about.php:56
+#: helper/tabs/about.php:57
+msgid "Compatible with Gutenberg. (new)"
+msgstr ""
+
+#: helper/tabs/about.php:58
 msgid "A particularly simple custom form and template API."
 msgstr ""
 
-#: helper/tabs/about.php:61
+#: helper/tabs/about.php:63
 #, php-format
 msgid ""
 "Support Custom Post Types to create a portfolio list in WordPress. (Require "
 "the WP plugin <a href=\"%s\" target=\"_blank\">Uix Products</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:70
+#: helper/tabs/about.php:72
 #, php-format
 msgid ""
 "Support Custom Post Types to create a slideshow in WordPress. (Require the "
 "WP plugin <a href=\"%s\" target=\"_blank\">Uix Slideshow</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:75
+#: helper/tabs/about.php:77
 msgid ""
 "You can switch between <strong>\"Visual Builder\"</strong> and <strong>"
 "\"Default Editor\"</strong> modes at any time on the Pages Add New/Edit "
 "Screen."
 msgstr ""
 
-#: helper/tabs/about.php:76
+#: helper/tabs/about.php:78
 msgid "Support to choose multiple default templates you want."
 msgstr ""
 
-#: helper/tabs/about.php:77
+#: helper/tabs/about.php:79
 msgid "Support to save custom templates and export templates."
 msgstr ""
 
-#: helper/tabs/about.php:78
+#: helper/tabs/about.php:80
 msgid ""
 "Support a key to add anchor links based Uix Page Builder to your navigation. "
-"Visit the Menus page (Appearance &laquo; Menus), choose items like <strong>"
-"\"Uix Page Builder Anchor Links\"</strong>, from the left column to add to "
-"the menu.  "
-msgstr ""
-
-#: helper/tabs/about.php:79
-msgid "Simple operation window, support loop list items."
-msgstr ""
-
-#: helper/tabs/about.php:80
-msgid "Customizable core style sheets."
+"Visit the Menus page (Appearance &laquo; Menus), choose items like \"Uix "
+"Page Builder Anchor Links\", from the left column to add to the menu."
 msgstr ""
 
 #: helper/tabs/about.php:81
-msgid "Drag and Drop Responsive Website Builder."
+msgid "Simple operation window, support loop list items."
 msgstr ""
 
 #: helper/tabs/about.php:82
-msgid "Uix Page Builder supports the automatic addition of Anchor Links."
+msgid "Customizable core style sheets."
 msgstr ""
 
 #: helper/tabs/about.php:83
+msgid "Drag and Drop Responsive Website Builder."
+msgstr ""
+
+#: helper/tabs/about.php:84
+msgid "Uix Page Builder supports the automatic addition of Anchor Links."
+msgstr ""
+
+#: helper/tabs/about.php:85
 msgid "Supports Right-To-Left (RTL) direction."
 msgstr ""
 
-#: helper/tabs/about.php:88
+#: helper/tabs/about.php:92
 msgid ""
 "<strong>If you like this plug-in, you can check out my free and high-quality "
 "themes with Uix Page Builder for you to download.</strong> <h4><a "
@@ -570,26 +574,33 @@ msgid ""
 "\"Uix Page Builder Template\". )"
 msgstr ""
 
-#: helper/tabs/usage.php:35
-msgid "(2) FAQ"
+#: helper/tabs/usage.php:36
+msgid ""
+"2-2. For Gutenberg. the <strong>\"Uix Page Builder Attributes\"</strong> "
+"settings can be found in the Extended Settings section with the Gutenberg "
+"block editor.\". )"
 msgstr ""
 
 #: helper/tabs/usage.php:45
+msgid "(2) FAQ"
+msgstr ""
+
+#: helper/tabs/usage.php:55
 msgid "FAQ 1: How To Create a Full Width or Boxed Layout?"
 msgstr ""
 
-#: helper/tabs/usage.php:48
+#: helper/tabs/usage.php:58
 msgid ""
 "On visual builder page, expand the <i class=\"dashicons dashicons-admin-"
 "generic\"></i> from Drag & Drop modules of left sidebar. You can easily "
 "choose the type of container."
 msgstr ""
 
-#: helper/tabs/usage.php:54
+#: helper/tabs/usage.php:64
 msgid "FAQ 2: How To Create The One-Page Navigation?"
 msgstr ""
 
-#: helper/tabs/usage.php:57
+#: helper/tabs/usage.php:67
 msgid ""
 "1. On visual builder page, expand the <i class=\"dashicons dashicons-admin-"
 "generic\"></i> from Drag & Drop modules of left sidebar. You can enter any "
@@ -597,7 +608,7 @@ msgid ""
 "my-portfolio</code>."
 msgstr ""
 
-#: helper/tabs/usage.php:59
+#: helper/tabs/usage.php:69
 #, php-format
 msgid ""
 "2. Create a new <a href=\"%1$s\">menu</a>, and add a Custom Link for each "
@@ -607,11 +618,11 @@ msgid ""
 "URL field."
 msgstr ""
 
-#: helper/tabs/usage.php:69
+#: helper/tabs/usage.php:79
 msgid "FAQ 3: How to use a custom page builder template?"
 msgstr ""
 
-#: helper/tabs/usage.php:74
+#: helper/tabs/usage.php:84
 #, php-format
 msgid ""
 "You could <a href=\"%s\">create</a> Uix Page Builder template file (from the "
@@ -622,11 +633,11 @@ msgid ""
 "directly."
 msgstr ""
 
-#: helper/tabs/usage.php:90
+#: helper/tabs/usage.php:100
 msgid "FAQ 4: How to create Anchor Links menu with Uix Page Builder?"
 msgstr ""
 
-#: helper/tabs/usage.php:93
+#: helper/tabs/usage.php:103
 msgid ""
 "Uix Page Builder supports the automatic addition of Anchor Links. From the "
 "<strong>\"Appearance\"</strong> menu on the left-hand side of the Dashboard, "
@@ -635,13 +646,13 @@ msgid ""
 "Within this pane, select a page to view all anchor link."
 msgstr ""
 
-#: helper/tabs/usage.php:103
+#: helper/tabs/usage.php:113
 msgid ""
 "FAQ 5: How to set the menu for the currently used page template of Uix Page "
 "Builder?"
 msgstr ""
 
-#: helper/tabs/usage.php:108
+#: helper/tabs/usage.php:118
 #, php-format
 msgid ""
 "Go to <a href=\"%s\">Dashboard » Appearence » Menus</a>. Click on <strong>"
@@ -650,13 +661,13 @@ msgid ""
 "<strong>\"Display location\"</strong>."
 msgstr ""
 
-#: helper/tabs/usage.php:121
+#: helper/tabs/usage.php:131
 msgid ""
 "FAQ 6: How to customize the Uix Page Builder templates and modules in admin "
 "panel?"
 msgstr ""
 
-#: helper/tabs/usage.php:126
+#: helper/tabs/usage.php:136
 #, php-format
 msgid "<a href=\"%s\">Check out here</a>"
 msgstr ""
@@ -881,6 +892,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_features2.php:91
 #: uixpb_templates/modules/uix_pb_module_imageslider.php:130
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:147
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:566
 #: uixpb_templates/modules/uix_pb_module_tabs.php:84
 #: uixpb_templates/modules/uix_pb_module_team1.php:145
 #: uixpb_templates/modules/uix_pb_module_team2.php:161
@@ -1010,6 +1022,8 @@ msgid "Line Width"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_bar.php:155
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:125
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:195
 msgid "Icon"
 msgstr ""
 
@@ -1054,6 +1068,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:239
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:396
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:554
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:61
 #: uixpb_templates/modules/uix_pb_module_team1.php:48
 #: uixpb_templates/modules/uix_pb_module_team2.php:48
 #: uixpb_templates/modules/uix_pb_module_testimonials.php:49
@@ -1086,6 +1101,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:291
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:448
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:606
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:72
 #: uixpb_templates/modules/uix_pb_module_team1.php:60
 #: uixpb_templates/modules/uix_pb_module_team2.php:60
 #: uixpb_templates/modules/uix_pb_module_testimonials.php:61
@@ -1217,6 +1233,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:563
 #: uixpb_templates/modules/uix_pb_module_pricing2.php:719
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:719
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:378
 #: uixpb_templates/modules/uix_pb_module_team1.php:331
 #: uixpb_templates/modules/uix_pb_module_team2.php:347
 #: uixpb_templates/modules/uix_pb_module_testimonials.php:179
@@ -1324,6 +1341,10 @@ msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_imageslider.php:147
 #: uixpb_templates/modules/uix_pb_module_map.php:184
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:333
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:582
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:141
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:211
 msgid "Image URL"
 msgstr ""
 
@@ -1539,6 +1560,8 @@ msgid "The description of this project."
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:238
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:406
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:608
 #: uixpb_templates/modules/uix_pb_module_team1.php:211
 #: uixpb_templates/modules/uix_pb_module_team2.php:227
 msgid "set up links with toggle"
@@ -1737,6 +1760,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:196
 #: uixpb_templates/modules/uix_pb_module_pricing2.php:196
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:196
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:296
 msgid ""
 "Feature Description<br>Another Feature Description<br><s>Invalid Feature "
 "Description</s>"
@@ -1869,6 +1893,214 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_pricing2.php:745
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:745
 msgid "Pricing Table (4 column)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:67
+#, php-format
+msgid ""
+"You can custom the boxed width of the container for Uix Page Builder "
+"stylesheets. <a target=\"_blank\" href=\"%1$s\">click here to custom</a>"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:79
+msgid "Image Radio"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:98
+msgid "Radio Switch"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:131
+msgid "Image for Text Fill"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:139
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:593
+msgid "Text"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:140
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:463
+msgid "This is infomation."
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:157
+msgid "Text Attr"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:175
+msgid "Text Slug"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:223
+msgid "Radio"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:264
+msgid "Padding (px)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:265
+msgid ""
+"Use the input fields below to customize the padding of your column shortcode."
+" Measurement units is pixels (px)."
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:280
+msgid "Editor"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:294
+msgid "Textarea(by default value)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:330
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:138
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:208
+msgid "Upload Image"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:363
+msgid "Short Text"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:383
+msgid "Short Units Text"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:417
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:619
+msgid "Toggle URL"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:431
+msgid "Color"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:449
+msgid "Button Color(name)"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:462
+msgid "Select"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:479
+msgid "Multiple Selector"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:497
+msgid "This is Icon Selector "
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:511
+msgid "Color Picker"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:522
+msgid "Checkbox"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:533
+msgid "Switch"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:592
+msgid "Image Title"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:661
+msgid "Switch Demo"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello.php:707
+msgid "Form Demo 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:101
+msgid "Text2 - 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:128
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:198
+msgid "Choose Demo Icon"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:149
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:218
+msgid "SLider"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:172
+msgid "Text2 - 2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:247
+msgid "Text3 - 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:263
+msgid "Text3 - 2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:280
+msgid "Text3 - 3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:305
+msgid "Text4 - 1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:321
+msgid "Text4 - 2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:336
+msgid "Text4 - 3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:351
+msgid "Text4 - 4"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:383
+msgid "Item 2_1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:388
+msgid "Item 2_2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:393
+msgid "Item 3_1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:398
+msgid "Item 3_2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:403
+msgid "Item 3_3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:408
+msgid "Item 4_1"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:413
+msgid "Item 4_2"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:418
+msgid "Item 4_3"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:423
+msgid "Item 4_4"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_sample_hello2.php:430
+msgid "Form Demo 2"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_sidebar.php:43
@@ -2067,16 +2299,13 @@ msgid "Saving..."
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:689
-#: includes/admin/bulider/post-extensions-init.php:689
 msgid "Add Section"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:694
-#: includes/admin/bulider/post-extensions-init.php:694
 msgid "Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:698
 #: includes/admin/bulider/post-extensions-init.php:698
 msgid "Select a Template"
 msgstr ""
@@ -2098,7 +2327,6 @@ msgid "Confirm"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:722
-#: includes/admin/bulider/post-extensions-init.php:722
 msgid "Save as Template"
 msgstr ""
 
@@ -2111,7 +2339,6 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:735
 #: includes/admin/bulider/post-extensions-init.php:735
 #: includes/admin/bulider/post-extensions-init.php:751
 msgid "Export"
@@ -2126,7 +2353,6 @@ msgid "Your current template:"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:760
-#: includes/admin/bulider/post-extensions-init.php:760
 #: includes/admin/bulider/post-extensions-init.php:768
 msgid "Publish"
 msgstr ""
@@ -2136,7 +2362,6 @@ msgid "Enter the title of the page:"
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:774
-#: includes/admin/bulider/post-extensions-init.php:774
 msgid "Exit Visual Builder"
 msgstr ""
 
@@ -2144,7 +2369,7 @@ msgstr ""
 msgid "Add a first module here. You can also choose a template to use."
 msgstr ""
 
-#: includes/admin/bulider/visual-builder-init.php:223
+#: includes/admin/bulider/visual-builder-init.php:227
 msgid "Hide Sidebar"
 msgstr ""
 

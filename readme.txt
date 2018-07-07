@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
 Requires at least: 4.2
-Tested up to: 4.9.5
-Stable tag: 1.5.1
+Tested up to: 4.9.7
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,7 @@ The currently available default elements:
   
 = Features =
 
+* Compatible with Gutenberg. (new)
 * A particularly simple custom form and template API.
 * Support Custom Post Types to create a portfolio list in WordPress. (Require the WP plugin [Uix Products](https://wordpress.org/plugins/uix-products/))
 * Support Custom Post Types to create a slideshow in WordPress. (Require the WP plugin [Uix Slideshow](https://wordpress.org/plugins/uix-slideshow/))
@@ -144,6 +145,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+
+= 1.5.2 (July 7, 2018) =
+
+* Tweak: Compatible with Gutenberg, the "Uix Page Builder Attributes" settings can be found in the Extended Settings section with the Gutenberg block editor. 
 
 
 = 1.5.1 (May 9, 2018) =

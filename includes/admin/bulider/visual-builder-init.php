@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*
  * Add a preview to a Wordpress Control Panel
  *
- * 
+ * @since 0.2.0
  */
 if ( !function_exists( 'uix_page_builder_previewControlPanel' ) ) {
 	
@@ -20,6 +20,10 @@ if ( !function_exists( 'uix_page_builder_previewControlPanel' ) ) {
 				add_action( 'admin_menu', 'uix_page_builder_remove_redundant_menu' );
 				add_action( 'admin_head', 'uix_page_builder_remove_redundant_wapper' );
 				add_action( 'admin_head', 'uix_page_builder_page_ex_metaboxes_pagerbuilder_container_options' );
+				
+				//Fix Gutenberg register error
+				// As early as possible, but after any plugins ( ACF ) that adds meta boxes.
+				remove_action( 'admin_head', 'gutenberg_collect_meta_box_data', 99 );
 
 			}    
         } else {
