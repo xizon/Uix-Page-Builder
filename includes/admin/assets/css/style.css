@@ -29,12 +29,12 @@
 /* 1. jQuery Accessible Tabs
 -------------------------------------------------------------- */
 
-.js-tabs .js-tabs_control button {
+.uix-page-builder-col-tabs.js-tabs .js-tabs_control button {
 	position: relative;
 }
 
 
-.js-tabs .js-tabs_control button > span {
+.uix-page-builder-col-tabs.js-tabs .js-tabs_control button > span {
    background: #333;
     background: rgba(0,0,0,.8);
 	-webkit-border-radius: 5px; 
@@ -51,7 +51,7 @@
 	font-style: normal;
 	display: none;
 }
-.js-tabs .js-tabs_control button > span:before {
+.uix-page-builder-col-tabs.js-tabs .js-tabs_control button > span:before {
     border: solid;
     border-color: #333 transparent;
     border-width: 0 6px 6px 6px;
@@ -62,14 +62,14 @@
     z-index: 99;
 }
 
-.js-tabs .js-tabs_control button:hover > span {
+.uix-page-builder-col-tabs.js-tabs .js-tabs_control button:hover > span {
 	display: block;
 }
 
 @media only screen and (min-width: 768px) {
 	
 	
-	.js-tabs {
+	.uix-page-builder-col-tabs.js-tabs {
 		margin: 0 0;
 	}
 	
@@ -81,7 +81,7 @@
 	}
 	
 	/* Tabs control */
-	.js-tabs .js-tabs_control {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control {
 		float: left;
 		list-style: none;
 		margin: 0;
@@ -90,7 +90,7 @@
 		z-index: 1000;
 	}
 	
-	.js-tabs .js-tabs_control li {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control li {
 		background: #FFFFFF;
 		border-width: 1px 1px 0;
 		float: left;
@@ -99,7 +99,7 @@
 		position: relative;
 	}
 	
-	.js-tabs .js-tabs_control button {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control button {
 		background: transparent;
 		cursor: pointer;
 		padding: 4px .5em 5px;
@@ -119,17 +119,17 @@
 	
 	}
 	
-	.js-tabs .js-tabs_control button:hover,
-	.js-tabs .js-tabs_control button:focus,
-	.js-tabs .js-tabs_control button:active {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control button:hover,
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control button:focus,
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control button:active {
 		color:#333;
 	}
 	
 	
 	/* Selected tabs control */
-	.js-tabs .js-tabs_control .js-tabs_control-item--active,
-	.js-tabs .js-tabs_control .js-tabs_control-item--active:focus,
-	.js-tabs .js-tabs_control .js-tabs_control-item--active:active {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control .js-tabs_control-item--active,
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control .js-tabs_control-item--active:focus,
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control .js-tabs_control-item--active:active {
 		background: #0085BA;
 		border: 1px solid #0085BA;
 		border-bottom: none;
@@ -137,7 +137,7 @@
 		top: 1px;
 		z-index: 1000;
 	}
-	.js-tabs .js-tabs_control .js-tabs_control-item--active button{
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control .js-tabs_control-item--active button{
 		color:#fff;
 		font-weight:bold;
 		border:none;
@@ -146,7 +146,7 @@
 	
 	
 	/* Tabs panel */
-	.js-tabs .js-tabs_panel {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_panel {
 		background-color: #FFFFFF;
 		border-top: 1px solid #CCCCCC;
 		color: #333;
@@ -158,20 +158,20 @@
 		z-index: 5;
 	}
 	
-	.js-tabs .js-tabs_panel:before {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_panel:before {
 		content: '';
 		display: table;
 		clear: both;
 		height: 12px;
 	}
 
-	.js-tabs .js-tabs_panel p {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_panel p {
 		display: block;
 		margin: 1em 0;
 	
 	}
 	
-	.js-tabs .js-tabs_panel:focus {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_panel:focus {
 		outline: 1px dotted #CCCCCC;
 	}
 

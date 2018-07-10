@@ -29,7 +29,7 @@
 @media only screen and (min-width: 768px) {
 	
 	
-	.js-tabs {
+	.uix-page-builder-col-tabs.js-tabs {
 		margin: 0 0;
 	}
 	
@@ -41,11 +41,11 @@
 	}
 	
 	/* Tabs control */
-	.js-tabs .js-tabs_control {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control {
 		float: right;
 	}
 	
-	.js-tabs .js-tabs_control li {
+	.uix-page-builder-col-tabs.js-tabs .js-tabs_control li {
 		float: right;
 		margin: 0 0 0 6px;
 	}
