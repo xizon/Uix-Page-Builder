@@ -33,7 +33,7 @@ Or, upload the plugin to wordpress, Activate it. (Access the path (/wp-content/p
         
         
         <p class="uix-bg-custom-desc">
-           <?php _e( '2-2. For Gutenberg. the <strong>"Uix Page Builder Attributes"</strong> settings can be found in the Extended Settings section with the Gutenberg block editor.". )', 'uix-page-builder' ); ?>
+           <?php _e( '2-2. For Gutenberg. the <strong>"Uix Page Builder Attributes"</strong> settings can be found in the Extended Settings section with the Gutenberg block editor.', 'uix-page-builder' ); ?>
         </p>  
    
         <p>

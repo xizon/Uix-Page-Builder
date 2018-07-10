@@ -578,7 +578,7 @@ msgstr ""
 msgid ""
 "2-2. For Gutenberg. the <strong>\"Uix Page Builder Attributes\"</strong> "
 "settings can be found in the Extended Settings section with the Gutenberg "
-"block editor.\". )"
+"block editor."
 msgstr ""
 
 #: helper/tabs/usage.php:45
