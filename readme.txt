@@ -1,9 +1,9 @@
-=== Uix Page Builder ===
+=== Uix Page Builder - Compatible with Gutenberg ===
 Contributors: uiuxlab
 Donate link: https://uiux.cc
 Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
-Tags: pagebuilder, page builder, builder, website builder, front end, frontend, visual builder, visual composer
+Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
 Tested up to: 4.9.7
 Stable tag: 1.5.2
