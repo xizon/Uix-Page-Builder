@@ -122,6 +122,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ##### = 1.5.2 (July 7, 2018) =
 
+* Fix: Fixed issue where color picker does not display.
 * Tweak: Compatible with Gutenberg, the "Uix Page Builder Attributes" settings can be found in the Extended Settings section with the Gutenberg block editor. 
 
 
