@@ -114,7 +114,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					//Colorpicker
 					wp_enqueue_style( 'wp-color-picker' );
 					wp_enqueue_script( 'wp-color-picker' );	
-				    wp_enqueue_script( 'wp-color-picker-alpha', self::plug_directory() .'js/wp-color-picker-alpha.min.js', array( 'wp-color-picker', 'uixpbform-functions' ), '1.2.2', true );
+				    wp_enqueue_script( 'wp-color-picker-alpha', self::plug_directory() .'js/wp-color-picker-alpha.min.js', array( 'wp-color-picker', 'uixpbform-functions' ), '2.1.2', true );
 	
 				 
 			  }
