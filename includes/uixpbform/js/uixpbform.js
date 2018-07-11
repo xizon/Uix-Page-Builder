@@ -54,7 +54,7 @@
 				
 			
 			
-	        $( document ).on( 'click', $trigger, function( e ) {
+	        $( document ).on( 'click.UIXPB_FORMPOP_OPEN', $trigger, function( e ) {
 				e.preventDefault();
 				
 				var widget_ID        = $( this ).data( 'id' ),
@@ -345,7 +345,7 @@
 			
 			
 			/*------------- Save data ------------- */
-			$( document ).on( 'click', '.uixpbform-modal-save-btn', function( e ) {
+			$( document ).off( 'click.UIXPB_FORMPOP_SAVE' ).on( 'click.UIXPB_FORMPOP_SAVE', '.uixpbform-modal-save-btn', function( e ) {
 				
 				e.preventDefault();
 
