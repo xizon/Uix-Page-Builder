@@ -75,6 +75,7 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 					}
 
 					$return_string .= '<ul class="uix-pb-instagram-box uix-pb-instagram-thumb-'.esc_attr( $thumbsize ).'">';
+					
 
 					if ( is_array( $latest_array ) ) {
 						$latest_array   = array_slice( $latest_array, 0, $show );
@@ -85,11 +86,7 @@ if ( !class_exists( 'UixPB_Instagram' ) ) {
 							$fullimg      = isset( $value['node']['display_url'] ) ? $value['node']['display_url'] : '';
 							$thumbnail    = isset( $value['node']['thumbnail_src'] ) ? $value['node']['thumbnail_src'] : '';
 
-							if ( ( strpos( $thumbnail, 's640x640' ) !== false ) ) {
-								$thumbnail = str_replace( 's640x640', 's320x320', $thumbnail ); //s160x160, s320x320
-							}
-
-
+				
 							$return_string .= '<li><a href="'.esc_url( $link ).'" target="_blank"><img width="320" height="320" src="'.esc_url( $thumbnail ).'"></a></li>';	
 
 						}	

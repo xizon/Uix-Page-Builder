@@ -150,7 +150,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 = 1.5.3 (November 17, 2018) =
 
 * Fix: Fixed some issues under Strict Standards.
-
+* Fix: Fixed an issue where instagram images were not displayed.
 
 
 = 1.5.2 (July 7, 2018) =
