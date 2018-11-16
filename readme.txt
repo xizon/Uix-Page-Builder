@@ -5,7 +5,7 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
-Tested up to: 4.9.7
+Tested up to: 5.0.0
 Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 * Fix: Fixed some issues under Strict Standards.
 * Fix: Fixed an issue where instagram images were not displayed.
+* Tweak: Compatible with the new core gutenberg editor, ready for version 5.0.
 
 
 = 1.5.2 (July 7, 2018) =

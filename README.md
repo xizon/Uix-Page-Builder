@@ -126,6 +126,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 * Fix: Fixed some issues under Strict Standards.
 * Fix: Fixed an issue where instagram images were not displayed.
+* Tweak: Compatible with the new core gutenberg editor, ready for version 5.0.
 
 
 ##### = 1.5.2 (July 7, 2018) =
