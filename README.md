@@ -120,6 +120,14 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+
+
+##### = 1.5.3 (November 17, 2018) =
+
+* Fix: Fixed some issues under Strict Standards.
+
+
+
 ##### = 1.5.2 (July 7, 2018) =
 
 * Fix: Fixed issue where color picker does not display.
