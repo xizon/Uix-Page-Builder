@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
 Tested up to: 4.9.8
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+= 1.5.4 (November 30, 2018) =
+
+* Fix: Fixed php 7 Warning: count(): Parameter must be an array or an obj.
+* Fix: Fixed an issue where arrays were converted to strings on php 7.
 
 
 = 1.5.3 (November 17, 2018) =

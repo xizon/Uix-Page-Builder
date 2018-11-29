@@ -119,7 +119,10 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.5.4 (November 30, 2018) =
 
+* Fix: Fixed php 7 Warning: count(): Parameter must be an array or an obj.
+* Fix: Fixed an issue where arrays were converted to strings on php 7.
 
 
 ##### = 1.5.3 (November 17, 2018) =

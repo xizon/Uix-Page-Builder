@@ -95,8 +95,8 @@ if ( !class_exists( 'UixPB_Menu_Extensions_Onepage' ) ) {
 						if ( $con && is_array( $con ) ) {
 							foreach ( $con as $key ) :
 
-								$$key[0] = $key[ 1 ];
-								$item[ UixPageBuilder::page_builder_item_name( $key[0] ) ]  =  $$key[0];
+								${$key[0]} = $key[ 1 ];
+								$item[ UixPageBuilder::page_builder_item_name( $key[0] ) ]  =  $key[ 1 ];
 							endforeach;
 						}
 

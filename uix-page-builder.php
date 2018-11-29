@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.5.3
+ * Version:     1.5.4
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -1041,29 +1041,39 @@ class UixPageBuilder {
 			$result  = '';
 			$newstr  = json_decode( $json_code, true );
 			
-			//Remove non-layout arrays
-			if ( self::inc_str( $json_code, '"tempname"' ) && !self::inc_str( $json_code, '"wp_page_template"' ) ) {
-				unset( $newstr[0] );
-			} elseif ( self::inc_str( $json_code, '"tempname"' ) && self::inc_str( $json_code, '"wp_page_template"' ) ) {
-				unset( $newstr[0] );
-				unset( $newstr[1] );
-			}
-		
-			$total   = count( $newstr ) + 1;
-
-			$result .= '[';
-
-			for ( $i = 1; $i <= $total; $i++ ) {
-				
-				//Need to be compatible with old data
-				if ( isset( $newstr[ $i ] ) ) {
-					$result .= json_encode( $newstr[ $i ] ).',';
+			
+			if ( $newstr ) {
+				//Remove non-layout arrays
+				if ( self::inc_str( $json_code, '"tempname"' ) && !self::inc_str( $json_code, '"wp_page_template"' ) ) {
+					unset( $newstr[0] );
+				} elseif ( self::inc_str( $json_code, '"tempname"' ) && self::inc_str( $json_code, '"wp_page_template"' ) ) {
+					unset( $newstr[0] );
+					unset( $newstr[1] );
 				}
-				
-			}
 
-			$result = rtrim( $result, ',' );
-			$result .= ']';
+
+				$total   = count( $newstr ) + 1;
+
+				$result .= '[';
+
+				for ( $i = 1; $i <= $total; $i++ ) {
+
+					//Need to be compatible with old data
+					if ( isset( $newstr[ $i ] ) ) {
+						$result .= json_encode( $newstr[ $i ] ).',';
+					}
+
+				}
+
+				$result = rtrim( $result, ',' );
+				$result .= ']';	
+			} else {
+				
+				//If the array or object does not exist
+				$result = '[]';	
+			}
+			
+
 
 		} else {
 			$result = $json_code;
