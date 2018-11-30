@@ -2139,7 +2139,60 @@ class UixPageBuilder {
 		$echo = new UixPB_Components_SortableRow_ColumnBtn();
 
 	}
-				
+			
+	
+	/**
+	 * Checks whether we're currently loading a Gutenberg page
+	 *
+	 * @return boolean Whether Gutenberg is being loaded.
+	 *
+	 * @since 3.1.0
+	 */
+	public static function is_gutenberg_page() {
+		global $post;
+		if ( ! is_admin() ) {
+			return false;
+		}
+		/*
+		 * There have been reports of specialized loading scenarios where `get_current_screen`
+		 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
+		 */
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return false;
+		}
+		
+		//Need to add more function judgment
+		if ( isset( $_GET['post'] ) && 
+			! empty( $_GET['post'] ) && 
+			get_current_screen()->base !== 'post' 
+		 ) {
+			return false;
+		}
+		
+		if ( isset( $_GET['classic-editor'] ) ) {
+			return false;
+		}
+		
+		//Need to add more function judgment
+		if ( ! function_exists( 'gutenberg_can_edit_post' ) ) {
+			return false;
+		}
+		
+		if ( ! gutenberg_can_edit_post( $post ) ) {
+			return false;
+		}
+		
+		//Required class UixSCFormCore::init()
+		global $pagenow;
+		if ( $pagenow === "edit.php" ) {
+			return false;
+		}
+
+		
+		
+		return true;
+	}
+	
 	
 	
 }
