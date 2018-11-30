@@ -2182,7 +2182,7 @@ class UixPageBuilder {
 			return false;
 		}
 		
-		//Required class UixSCFormCore::init()
+		//Required class UixPBFormCore::init()
 		global $pagenow;
 		if ( $pagenow === "edit.php" ) {
 			return false;
