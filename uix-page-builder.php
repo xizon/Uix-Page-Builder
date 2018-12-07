@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.5.4
+ * Version:     1.5.5
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -2148,11 +2148,23 @@ class UixPageBuilder {
 	 *
 	 * @since 3.1.0
 	 */
-	public static function is_gutenberg_page() {
+	public static function is_gutenberg_plug_page() {
 		global $post;
 		if ( ! is_admin() ) {
 			return false;
 		}
+		
+		/*
+		 * Whether the classic editor plugin is used.
+		 */
+		//for WordPress 5.0.x compatibility.
+		if ( file_exists( WP_PLUGIN_DIR . '/classic-editor/classic-editor.php' ) && class_exists( 'Classic_Editor' ) ) {
+			return false;
+		}
+		
+		
+		
+		
 		/*
 		 * There have been reports of specialized loading scenarios where `get_current_screen`
 		 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
@@ -2162,9 +2174,7 @@ class UixPageBuilder {
 		}
 		
 		//Need to add more function judgment
-		if ( isset( $_GET['post'] ) && 
-			! empty( $_GET['post'] ) && 
-			get_current_screen()->base !== 'post' 
+		if ( get_current_screen()->base !== 'post' 
 		 ) {
 			return false;
 		}
@@ -2173,10 +2183,15 @@ class UixPageBuilder {
 			return false;
 		}
 		
+		
 		//Need to add more function judgment
-		if ( ! function_exists( 'gutenberg_can_edit_post' ) ) {
-			return false;
+		//for WordPress 5.0.x compatibility.
+		if ( function_exists( 'gutenberg_can_edit_post' ) ) {
+			if ( ! gutenberg_can_edit_post( $post ) ) {
+				return false;
+			}	
 		}
+		
 		
 		if ( ! gutenberg_can_edit_post( $post ) ) {
 			return false;

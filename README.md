@@ -119,6 +119,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+
+##### = 1.5.5 (December 7, 2018) =
+
+* Tweak: Compatible with the new core gutenberg editor for version 5.0.
+
+
+
 ##### = 1.5.4 (November 30, 2018) =
 
 * Fix: Fixed php 7 Warning: count(): Parameter must be an array or an obj.
