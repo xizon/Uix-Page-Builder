@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.5.5
+ * Version:     1.5.6
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -2146,63 +2146,98 @@ class UixPageBuilder {
 	 *
 	 * @return boolean Whether Gutenberg is being loaded.
 	 *
-	 * @since 3.1.0
 	 */
 	public static function is_gutenberg_plug_page() {
 		global $post;
+		global $wp_version;
+		
 		if ( ! is_admin() ) {
 			return false;
 		}
 		
-		/*
-		 * Whether the classic editor plugin is used.
-		 */
-		//for WordPress 5.0.x compatibility.
-		if ( file_exists( WP_PLUGIN_DIR . '/classic-editor/classic-editor.php' ) && class_exists( 'Classic_Editor' ) ) {
-			return false;
-		}
-		
-		
-		
-		
-		/*
-		 * There have been reports of specialized loading scenarios where `get_current_screen`
-		 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
-		 */
-		if ( ! function_exists( 'get_current_screen' ) ) {
-			return false;
-		}
-		
-		//Need to add more function judgment
-		if ( get_current_screen()->base !== 'post' 
-		 ) {
-			return false;
-		}
-		
-		if ( isset( $_GET['classic-editor'] ) ) {
-			return false;
-		}
-		
-		
-		//Need to add more function judgment
-		//for WordPress 5.0.x compatibility.
-		if ( function_exists( 'gutenberg_can_edit_post' ) ) {
-			if ( ! gutenberg_can_edit_post( $post ) ) {
+		if ( $wp_version < '5.0.0' ) {
+			
+			/*
+			 * There have been reports of specialized loading scenarios where `get_current_screen`
+			 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
+			 */
+			if ( ! function_exists( 'get_current_screen' ) ) {
+				return false;
+			}
+
+			//Need to add more function judgment
+			if ( isset( $_GET['post'] ) && 
+				! empty( $_GET['post'] ) && 
+				get_current_screen()->base !== 'post' 
+			 ) {
+				return false;
+			}
+
+			if ( isset( $_GET['classic-editor'] ) ) {
 				return false;
 			}	
+			
+		
+			//Need to add more function judgment
+			if ( ! function_exists( 'gutenberg_can_edit_post' ) ) {
+				return false;
+			}
+
+			if ( ! gutenberg_can_edit_post( $post ) ) {
+				return false;
+			}
+			
+			
+		} else {
+			
+			/*
+			 * Whether the classic editor plugin is used.
+			 */
+			//for WordPress 5.0.x compatibility.
+			if ( file_exists( WP_PLUGIN_DIR . '/classic-editor/classic-editor.php' ) && class_exists( 'Classic_Editor' ) ) {
+				return false;
+			}
+			//for Uix Plugins
+			if ( get_post_type() == 'uix_products' || get_post_type() == 'uix-slideshow' ) {
+				return false;
+			}
+
+
+			/*
+			 * There have been reports of specialized loading scenarios where `get_current_screen`
+			 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
+			 */
+			if ( ! function_exists( 'get_current_screen' ) ) {
+				return false;
+			}
+
+			//Need to add more function judgment
+			if ( get_current_screen()->base !== 'post' ) {
+				return false;
+			}
+
+			if ( isset( $_GET['classic-editor'] ) ) {
+				return false;
+			}
+	
+			//Need to add more function judgment
+			//for WordPress 5.0.x compatibility.
+			if ( function_exists( 'gutenberg_can_edit_post' ) ) {
+				if ( ! gutenberg_can_edit_post( $post ) ) {
+					return false;
+				}	
+			}
+
+			
+			
 		}
 		
-		
-		if ( ! gutenberg_can_edit_post( $post ) ) {
-			return false;
-		}
-		
-		//Required class UixPBFormCore::init()
+
+		//Required class UixSCFormCore::init()
 		global $pagenow;
 		if ( $pagenow === "edit.php" ) {
 			return false;
 		}
-
 		
 		
 		return true;

@@ -120,6 +120,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+##### = 1.5.6 (December 24, 2018) =
+
+* Fix: Fixed a bug that the plugin icon on the toolbar not showing.
+
+
 ##### = 1.5.5 (December 7, 2018) =
 
 * Tweak: Compatible with the new core gutenberg editor for version 5.0.

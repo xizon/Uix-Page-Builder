@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
-Tested up to: 5.0
-Stable tag: 1.5.5
+Tested up to: 5.0.2
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+= 1.5.6 (December 24, 2018) =
+
+* Fix: Fixed a bug that the plugin icon on the toolbar not showing.
+
+
 
 = 1.5.5 (December 7, 2018) =
 
