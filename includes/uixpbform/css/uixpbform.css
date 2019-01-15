@@ -1,6 +1,6 @@
 /*
 	* Plugin: Uix Page Builder Form
-	* Version: 4.2
+	* Version: 4.3
 	* Author: UIUX Lab
 	* Twitter: @uiux_lab
 	* Author URL: https://uiux.cc
@@ -1575,9 +1575,9 @@ a.uixpbform-icon-clear {
     height: 15px;
     border: 1px solid #DDDDDD;
     cursor: pointer;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 
 .uixpbform-color-selector span:hover,

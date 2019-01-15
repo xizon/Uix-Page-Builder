@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
-Tested up to: 5.0.2
-Stable tag: 1.5.6
+Tested up to: 5.0.3
+Stable tag: 1.5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -146,6 +146,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 == Changelog ==
 
+= 1.5.7 (January 15, 2019) =
+
+* Tweak: Improve the form experience in admin panel.
+* Tweak: Modified some styles to accommodate the new browser version.
+
+
 = 1.5.6 (December 24, 2018) =
 
 * Fix: Fixed a bug that the plugin icon on the toolbar not showing.
@@ -240,7 +246,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 = 1.4.4 (September 19, 2017) =
 
 * Tweak: Removed the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
-* Tweak: Improve the Uix Shortcods assistant(helper) experience in admin panel.
+* Tweak: Improve the assistant(helper) experience in admin panel.
 
 
 

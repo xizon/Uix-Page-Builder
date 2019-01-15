@@ -641,6 +641,21 @@ ul.uix-page-builder-res-selector li.active {
 	
 }
 
+
+#uix-page-builder-gridster-wrapper.visualBuilder::-webkit-scrollbar {
+    width: 15px;
+}
+ 
+#uix-page-builder-gridster-wrapper.visualBuilder::-webkit-scrollbar-thumb {
+	background: #666;
+	border-radius: 20px;
+}
+
+#uix-page-builder-gridster-wrapper.visualBuilder::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+	background: #ddd;
+}
+
 #uix-page-builder-gridster-wrapper.visualBuilder .uix-page-builder-gridster {
 	padding-bottom: 50px;
 }

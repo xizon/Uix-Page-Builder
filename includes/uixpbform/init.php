@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 4.2 (October 21, 2017)
+ * @version		: 4.3 (January 15, 2019)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *

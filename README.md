@@ -1,7 +1,7 @@
 # Uix Page Builder
 This is a WordPress Plugin. Uix Page Builder is a design system that it is simple content creation interface.
 
-Copyright (c) 2016 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
+Copyright (c) 2019 UIUX Lab [@uiux_lab](https://twitter.com/uiux_lab)
 
 [Plugin URI](https://uiux.cc/wp-plugins/uix-page-builder/)
 
@@ -119,6 +119,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.5.7 (January 15, 2019) =
+
+* Tweak: Improve the form experience in admin panel.
+* Tweak: Modified some styles to accommodate the new browser version.
+
 
 ##### = 1.5.6 (December 24, 2018) =
 
@@ -218,7 +223,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ##### =1.4.4 (September 19, 2017) =
 
 * Tweak: Removed the scroll effect of front-end page when you manage Drag & Drop modules of left sidebar.
-* Tweak: Improve the Uix Shortcods assistant(helper) experience in admin panel.
+* Tweak: Improve the assistant(helper) experience in admin panel.
 
 
 
