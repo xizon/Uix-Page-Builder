@@ -2139,7 +2139,7 @@ class UixPageBuilder {
 		$echo = new UixPB_Components_SortableRow_ColumnBtn();
 
 	}
-			
+		
 	
 	/**
 	 * Checks whether we're currently loading a Gutenberg page
@@ -2148,100 +2148,37 @@ class UixPageBuilder {
 	 *
 	 */
 	public static function is_gutenberg_plug_page() {
-		global $post;
-		global $wp_version;
 		
-		if ( ! is_admin() ) {
+		/*
+		 * Whether the classic editor plugin is used.
+		 */
+		//for WordPress 5.0.x compatibility.
+		if ( 
+		    ( file_exists( WP_PLUGIN_DIR . '/classic-editor/classic-editor.php' ) && class_exists( 'Classic_Editor' ) ) ||
+			isset( $_GET['classic-editor'] )
+		) {
+			return false;
+		}
+
+		//for Uix Plugins
+		if ( get_post_type() == 'uix_products' || get_post_type() == 'uix-slideshow' ) {
+			return false;
+		}
+
+		//for easy-digital-downloads
+		if ( get_post_type() == 'download' ) {
 			return false;
 		}
 		
-		if ( $wp_version < '5.0.0' ) {
-			
-			/*
-			 * There have been reports of specialized loading scenarios where `get_current_screen`
-			 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
-			 */
-			if ( ! function_exists( 'get_current_screen' ) ) {
-				return false;
-			}
-
-			//Need to add more function judgment
-			if ( isset( $_GET['post'] ) && 
-				! empty( $_GET['post'] ) && 
-				get_current_screen()->base !== 'post' 
-			 ) {
-				return false;
-			}
-
-			if ( isset( $_GET['classic-editor'] ) ) {
-				return false;
-			}	
-			
 		
-			//Need to add more function judgment
-			if ( ! function_exists( 'gutenberg_can_edit_post' ) ) {
-				return false;
-			}
-
-			if ( ! gutenberg_can_edit_post( $post ) ) {
-				return false;
-			}
-			
-			
-		} else {
-			
-			/*
-			 * Whether the classic editor plugin is used.
-			 */
-			//for WordPress 5.0.x compatibility.
-			if ( file_exists( WP_PLUGIN_DIR . '/classic-editor/classic-editor.php' ) && class_exists( 'Classic_Editor' ) ) {
-				return false;
-			}
-			//for Uix Plugins
-			if ( get_post_type() == 'uix_products' || get_post_type() == 'uix-slideshow' ) {
-				return false;
-			}
-
-
-			/*
-			 * There have been reports of specialized loading scenarios where `get_current_screen`
-			 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
-			 */
-			if ( ! function_exists( 'get_current_screen' ) ) {
-				return false;
-			}
-
-			//Need to add more function judgment
-			if ( get_current_screen()->base !== 'post' ) {
-				return false;
-			}
-
-			if ( isset( $_GET['classic-editor'] ) ) {
-				return false;
-			}
-	
-			//Need to add more function judgment
-			//for WordPress 5.0.x compatibility.
-			if ( function_exists( 'gutenberg_can_edit_post' ) ) {
-				if ( ! gutenberg_can_edit_post( $post ) ) {
-					return false;
-				}	
-			}
-
-			
-			
-		}
 		
-
-		//Required class UixSCFormCore::init()
-		global $pagenow;
-		if ( $pagenow === "edit.php" ) {
+		if ( false === defined( 'GUTENBERG_VERSION' ) && false === version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
 			return false;
 		}
-		
 		
 		return true;
-	}
+	} // is_gutenberg_plug_page
+	
 	
 	
 	
