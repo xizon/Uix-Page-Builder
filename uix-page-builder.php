@@ -2150,6 +2150,7 @@ class UixPageBuilder {
 	public static function is_gutenberg_plug_page() {
 		
 		/*
+		 * step 1.
 		 * Whether the classic editor plugin is used.
 		 */
 		//for WordPress 5.0.x compatibility.
@@ -2170,15 +2171,26 @@ class UixPageBuilder {
 			return false;
 		}
 		
+		/*
+		 * step 2.
+		 * There have been reports of specialized loading scenarios where `get_current_screen`
+		 * does not exist. In these cases, it is safe to say we are not loading Gutenberg.
+		 */
+		if ( true === function_exists( 'get_current_screen' ) && get_current_screen()->base !== 'post' ) {
+			return false;
+		}
+
 		
-		
+		/*
+		 * step 3.
+		 * GUTENBERG core judgment.
+		 */
 		if ( false === defined( 'GUTENBERG_VERSION' ) && false === version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
 			return false;
 		}
 		
 		return true;
 	} // is_gutenberg_plug_page
-	
 	
 	
 	
