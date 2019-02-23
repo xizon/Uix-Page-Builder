@@ -119,6 +119,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.5.8 (February 23, 2019) =
+
+* Tweak: Remove jQuery Parallax plugin.
+* Tweak: Upgrade modernizr to 3.5.0.
+
+
 ##### = 1.5.7 (January 15, 2019) =
 
 * Tweak: Improve the form experience in admin panel.
@@ -504,7 +510,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 4.7.*
 - WP 4.8.*
 - WP 4.9.*
-- WP 5.0.0 Beta
+- WP 5.1.*
 
 
 ### Screenshot

@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.5.7
+ * Version:     1.5.8
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -175,10 +175,16 @@ class UixPageBuilder {
 			
 
 		// Shuffle
-		wp_register_script( 'shuffle', self::plug_directory() .'includes/admin/assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery' ), '3.1.1', true );
+		wp_register_script( 'shuffle', self::plug_directory() .'includes/admin/assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery', 'modernizr' ), '3.1.1', true );
 
 		// Shuffle.js requires Modernizr..
-		wp_register_script( 'modernizr', self::plug_directory() .'includes/admin/assets/add-ons/HTML5/modernizr.min.js', false, '3.3.1', false );
+		if ( is_admin() ) {
+			//Use a fixed version of this, otherwise it will cause layout problems in the admin panle
+			wp_register_script( 'modernizr', self::plug_directory() .'includes/admin/assets/add-ons/HTML5/modernizr.min-3.1.1.js', false, '3.3.1', false );
+		} else {
+			wp_register_script( 'modernizr', self::plug_directory() .'includes/admin/assets/add-ons/HTML5/modernizr.min-3.5.0.js', false, '3.5.0', false );
+		}
+		
 
 		// Easy Pie Chart
 		wp_register_script( 'easypiechart', self::plug_directory() .'includes/admin/assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
@@ -187,10 +193,7 @@ class UixPageBuilder {
 		wp_register_script( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.7.0', true );
 		wp_register_style( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/flexslider.min.css', false, '2.7.0', 'all' );
 		
-		// Parallax
-		wp_register_script( 'bgParallax', self::plug_directory() .'includes/admin/assets/add-ons/parallax/jquery.bgParallax.js', array( 'jquery' ), '1.1.3', true );
 
-		
 
 	}
 	

@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
-Tested up to: 5.0.3
-Stable tag: 1.5.7
+Tested up to: 5.1.0
+Stable tag: 1.5.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+
+= 1.5.8 (February 23, 2019) =
+
+* Tweak: Remove jQuery Parallax plugin.
+* Tweak: Upgrade modernizr to 3.5.0.
+
 
 = 1.5.7 (January 15, 2019) =
 

@@ -612,13 +612,80 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
  * 4. Parallax
  *************************************
  */
+
+/* 
+ *************************************
+ * Parallax Effect
+ *
+ * @param  {Number} speed     - The speed of movement between elements.
+ * @param  {JSON} bg          - Specify the background display. Default value: { enable: true, xPos: '50%' }
+ * @return {Void}             - The constructor.
+ *************************************
+ */
+
+( function ( $ ) {
+    $.fn.uix_pb_parallax = function( options ) {
+ 
+        // This is the easiest way to have default options.
+        var settings = $.extend({
+			speed    : 0.25,
+			bg       : { enable: true, xPos: '50%' }
+        }, options );
+ 
+        this.each( function() {
+			
+			var bgEff      = settings.bg,
+				$this      = $( this ),
+				bgXpos     = '50%',
+				speed      = -parseFloat( settings.speed );
+			
+		
+	
+			//Prohibit transition delay
+			$this.css( {
+				'transition': 'none'
+			} );
+
+		    $( window ).on( 'scroll touchmove', function( e ){
+				scrollUpdate();
+			});
+			
+			
+			//Initialize the position of the background
+			if ( bgEff ) {
+				//background parallax
+				$this.css('background-position', bgXpos + ' ' + (-$this.offset().top*speed) + 'px' );
+			
+			} 
+			
+			
+			function scrollUpdate() {
+				var scrolled = $( window ).scrollTop(),
+					st       = $this.offset().top - scrolled;
+				
+
+				if ( bgEff ) {
+					//background parallax
+					$this.css('background-position', bgXpos + ' ' + ( 0 - ( st * speed ) ) + 'px' );
+				}
+				
+			}
+
+			
+			
+		});
+ 
+    };
+ 
+}( jQuery ));
+
+
 uix_pb = ( function ( uix_pb, $, window, document ) {
     'use strict';
 
 
     var documentReady = function( $ ) {
-		
-		
+
         var $window       = $( window ),
 		    windowWidth   = $window.width();
 		
@@ -639,11 +706,8 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 				if ( typeof activated === typeof undefined || activated === 0 ) {
 
-					if ( w <= 768 ){
-						 $this.bgParallax( "0%", 0 );
-					} else {
-						$this.bgParallax( "50%", $this.data( 'parallax' ) );	
-					}			
+					$( this ).uix_pb_parallax( { speed: $this.data( 'parallax' ) } );
+					
 					
 					 //Used for modules with special effects, such as "skew".
 					 //The overflow is clipped, and the rest of the content will be invisible.
