@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.5.8
+ * Version:     1.5.9
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -377,8 +377,7 @@ class UixPageBuilder {
 			
 		);
 		 
-		 
-		 
+		 //Add sub links
 		add_submenu_page(
 			self::HELPER,
 			__( 'How to use?', 'uix-page-builder' ),
@@ -386,6 +385,15 @@ class UixPageBuilder {
 			'manage_options',
 			'admin.php?page='.self::HELPER.'&tab=usage'
 		);	  
+		 
+		 
+		add_submenu_page(
+			self::HELPER,
+			__( 'Settings', 'uix-page-builder' ),
+			__( 'Settings', 'uix-page-builder' ),
+			'manage_options',
+			'admin.php?page='.self::HELPER.'&tab=general-settings'
+		);  
 		 
 		add_submenu_page(
 			self::HELPER,
@@ -447,6 +455,7 @@ class UixPageBuilder {
 	 * Add plugin actions links
 	 */
 	public static function actions_links( $links ) {
+		$links[] = '<a href="' . admin_url( "admin.php?page=".self::HELPER."&tab=general-settings" ) . '">' . __( 'Settings', 'uix-page-builder' ) . '</a>';
 		$links[] = '<a href="' . admin_url( "admin.php?page=".self::HELPER."&tab=usage" ) . '">' . __( 'How to use?', 'uix-page-builder' ) . '</a>';
 		return $links;
 	}

@@ -258,7 +258,13 @@ $map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_G
 
 	 </div><!-- /.uix-pb-map-output -->
 	 
-	 <script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=<?php echo UixPBFormCore::MAPAPI; ?>&ver=2.0'></script>
+	<?php
+	$api_key = UixPBFormCore::MAPAPI;
+	if ( !empty( get_option( 'uix_pb_opt_map_api', '' ) ) ) {
+		$api_key = esc_attr( get_option( 'uix_pb_opt_map_api', '' ) );
+	}
+	?>
+	 <script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&ver=2.0'></script>
 
 
 </body>

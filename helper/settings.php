@@ -71,6 +71,12 @@ function uix_page_builder_options_page(){
 		'title'   =>  __( 'Template Files', 'uix-page-builder' )
 	);
 	
+	
+	$tabs[] = array(
+	    'tab'     =>  'general-settings', 
+		'title'   =>  __( '<i class="dashicons dashicons-admin-generic"></i> General Settings', 'uix-page-builder' )
+	);
+	
 	$tabs[] = array(
 	    'tab'     =>  'custom-css', 
 		'title'   =>  __( '<i class="dashicons dashicons-welcome-view-site"></i> Custom CSS', 'uix-page-builder' )

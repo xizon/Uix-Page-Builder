@@ -313,7 +313,7 @@ $args =
 			 *
 			*/
 			'id'             => 'uix_pb_hello_textarea2',
-			'title'          => esc_html__( 'Textarea(by default value)', 'uix-shortcodes' ),
+			'title'          => esc_html__( 'Textarea(by default value)', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => '',
 			'placeholder'    => '',
