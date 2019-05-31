@@ -119,6 +119,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+
+##### = 1.6.0 (June 1, 2019) =
+
+* New: Added PHP environment test for importing and exporting xml templates
+
+
+
 ##### = 1.5.9 (May 31, 2019) =
 
 * New: Support for adding your Google Map API Key to avoid traffic overruns on maps.
