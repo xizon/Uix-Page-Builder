@@ -353,8 +353,10 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 			
 			
 			//Display the list by loading the template file (.xml)
-			if ( file_exists( $xmlfile ) ) {
+			if (  !class_exists(  'DOMDocument'  )  )  _e( '<span style="color:red">Fatal error: Class "DOMDocument" not found in your PHP environment.</span>', 'uix-page-builder' );
+			if ( file_exists( $xmlfile ) && class_exists(  'DOMDocument'  ) ) {
 				
+
 				$xml             = new UixPB_XML;  
 				$xml -> xml_path = UixPageBuilder::tempfile_modules_path( 'uri' );
 				$xLength         = $xml -> get_xmlLength();

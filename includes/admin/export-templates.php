@@ -10,6 +10,10 @@ if ( !current_user_can('export') ) {
     wp_die( __( 'Sorry, you are not allowed to export the content of this site.' ) );	
 }
 
+if ( !class_exists(  'DOMDocument'  )  ) {
+	wp_die( __( 'Fatal error: Class "DOMDocument" not found in your PHP environment.' ) );
+} 
+
 
 //Export a new templates xml file for developer	
 header( 'Content-Description: File Transfer' );
@@ -21,7 +25,7 @@ $xmlfile   = UixPageBuilder::tempfile_modules_path( 'dir' );
 $tempdata = str_replace( '</items>', '', get_option( 'uix-page-builder-templates-xml' ) );
 
 //Display the list by loading the template file (.xml)
-if ( file_exists( $xmlfile ) ) {
+if ( file_exists( $xmlfile ) && class_exists(  'DOMDocument'  ) ) {
 
 
 	$xml             = new UixPB_XML;  
