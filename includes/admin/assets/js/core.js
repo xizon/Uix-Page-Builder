@@ -1496,6 +1496,7 @@ function UixPBFormatRenderCodes( code ) {
 							width      : $frame.data( 'width' ),
 							height     : curheight,
 							style      : $frame.data( 'style' ),
+							apikey     : $frame.data( 'apikey' ),
 							latitude   : $frame.data( 'latitude' ),
 							longitude  : $frame.data( 'longitude' ),
 							zoom       : $frame.data( 'zoom' ),

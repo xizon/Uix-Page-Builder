@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2019-05-31 09:30+0000\n"
+"POT-Creation-Date: 2019-06-03 01:49+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: uix-page-builder.php:371 includes/admin/bulider/post-extensions-init.php:626
+#: uix-page-builder.php:371 includes/admin/bulider/post-extensions-init.php:628
 msgid "Uix Page Builder"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgid "List Item"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_imageslider.php:147
-#: uixpb_templates/modules/uix_pb_module_map.php:184
+#: uixpb_templates/modules/uix_pb_module_map.php:200
 #: uixpb_templates/modules/uix_pb_module_sample_hello.php:333
 #: uixpb_templates/modules/uix_pb_module_sample_hello.php:582
 #: uixpb_templates/modules/uix_pb_module_sample_hello2.php:141
@@ -1029,45 +1029,61 @@ msgid ""
 "rel=\"nofollow\">Get Latitude Longitude</a>"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:86
+#: uixpb_templates/modules/uix_pb_module_map.php:81
+msgid "Google API key"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_map.php:82
+#, php-format
+msgid ""
+"<a href=\"%1$s\" target=\"_blank\">How to \n"
+"Get an API Key?</a> If left blank, the default Key will be used, but it will "
+"have a traffic excess problem that will not display properly."
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_map.php:85
+msgid "Your own Google API key"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_map.php:102
 msgid "Map Width"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:108
+#: uixpb_templates/modules/uix_pb_module_map.php:124
 msgid "Map Height"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:132
+#: uixpb_templates/modules/uix_pb_module_map.php:148
 msgid "Place Name"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:134
+#: uixpb_templates/modules/uix_pb_module_map.php:150
 msgid "SEO San Francisco, CA, Gough Street, San Francisco, CA"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:143
+#: uixpb_templates/modules/uix_pb_module_map.php:159
 msgid "Latitude"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:154
+#: uixpb_templates/modules/uix_pb_module_map.php:170
 msgid "Longitude"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:166
+#: uixpb_templates/modules/uix_pb_module_map.php:182
 msgid "Zoom"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:181
+#: uixpb_templates/modules/uix_pb_module_map.php:197
 msgid "Marker"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:182
+#: uixpb_templates/modules/uix_pb_module_map.php:198
 msgid ""
 "Markers can display custom images, in which case they are usually referred "
 "to as \"icons.\""
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_map.php:208
+#: uixpb_templates/modules/uix_pb_module_map.php:224
 #: uixpb_templates/modules/config.php:245
 msgid "Google Map"
 msgstr ""
@@ -1753,7 +1769,8 @@ msgstr ""
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">How to \n"
 "Get an API Key?</a> If left blank, the default Key will be used, but it will "
-"have a traffic excess problem that will not display properly."
+"have a traffic excess problem that will not display properly. <br><strong>"
+"You can also specify the Key separately when using the map module.</strong>"
 msgstr ""
 
 #: helper/tabs/for-developer.php:11
@@ -2308,7 +2325,7 @@ msgid "Cancel"
 msgstr ""
 
 #: includes/uixpbform/components/ui-wrapper.php:45
-#: includes/admin/bulider/post-extensions-init.php:729
+#: includes/admin/bulider/post-extensions-init.php:731
 msgid "Save"
 msgstr ""
 
@@ -2318,11 +2335,11 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: includes/uixpbform/functions/google-map.php:87
+#: includes/uixpbform/functions/google-map.php:95
 msgid "+"
 msgstr ""
 
-#: includes/uixpbform/functions/google-map.php:88
+#: includes/uixpbform/functions/google-map.php:96
 msgid "-"
 msgstr ""
 
@@ -2382,127 +2399,133 @@ msgid ""
 "image\"></i></a></li></ol></div>"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:388
+#: includes/admin/bulider/post-extensions-init.php:356
+msgid ""
+"<span style=\"color:red\">Fatal error: Class \"DOMDocument\" not found in "
+"your PHP environment.</span>"
+msgstr ""
+
+#: includes/admin/bulider/post-extensions-init.php:390
 msgid "Default"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:433
+#: includes/admin/bulider/post-extensions-init.php:435
 msgid ""
 "Add a first module from the side panel. You can also choose a template to "
 "use."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:540
+#: includes/admin/bulider/post-extensions-init.php:542
 msgid ""
 "<i class=\"dashicons dashicons-editor-kitchensink\"></i>&nbsp;&nbsp;Uix Page "
 "Builder Attributes"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:567
+#: includes/admin/bulider/post-extensions-init.php:569
 msgid "Use Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:575
+#: includes/admin/bulider/post-extensions-init.php:577
 msgid "Page Builder Editor"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:580
+#: includes/admin/bulider/post-extensions-init.php:582
 msgid "Enable"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:584
+#: includes/admin/bulider/post-extensions-init.php:586
 msgid "Disable"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:594
+#: includes/admin/bulider/post-extensions-init.php:596
 msgid "Frequently Asked Questions (FAQ):"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:665
+#: includes/admin/bulider/post-extensions-init.php:667
 msgid "Desktop"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:666
+#: includes/admin/bulider/post-extensions-init.php:668
 msgid "Tablet"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:667
+#: includes/admin/bulider/post-extensions-init.php:669
 msgid "Tablet (Portrait)"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:668
+#: includes/admin/bulider/post-extensions-init.php:670
 msgid "Mobile"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:670
+#: includes/admin/bulider/post-extensions-init.php:672
 #: includes/admin/bulider/components/pb-ui-gridster.php:666
 #: includes/admin/bulider/components/pb-ui-gridster.php:683
 msgid "Saving..."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:689
+#: includes/admin/bulider/post-extensions-init.php:691
 msgid "Add Section"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:694
+#: includes/admin/bulider/post-extensions-init.php:696
 msgid "Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:698
+#: includes/admin/bulider/post-extensions-init.php:700
 msgid "Select a Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:703
+#: includes/admin/bulider/post-extensions-init.php:705
 msgid "Page Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:705
+#: includes/admin/bulider/post-extensions-init.php:707
 msgid "Default Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:714
+#: includes/admin/bulider/post-extensions-init.php:716
 msgid "Content Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:716
+#: includes/admin/bulider/post-extensions-init.php:718
 msgid "Confirm"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:722
+#: includes/admin/bulider/post-extensions-init.php:724
 msgid "Save as Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:723
+#: includes/admin/bulider/post-extensions-init.php:725
 msgid "Enter Template Name"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:735
-#: includes/admin/bulider/post-extensions-init.php:751
+#: includes/admin/bulider/post-extensions-init.php:737
+#: includes/admin/bulider/post-extensions-init.php:753
 msgid "Export"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:744
+#: includes/admin/bulider/post-extensions-init.php:746
 msgid ".xml\"</em></b>. <span style=\"color:red\">(Highest priority)</span>"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:749
+#: includes/admin/bulider/post-extensions-init.php:751
 msgid "Your current template:"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:760
-#: includes/admin/bulider/post-extensions-init.php:768
+#: includes/admin/bulider/post-extensions-init.php:762
+#: includes/admin/bulider/post-extensions-init.php:770
 msgid "Publish"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:763
+#: includes/admin/bulider/post-extensions-init.php:765
 msgid "Enter the title of the page:"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:774
+#: includes/admin/bulider/post-extensions-init.php:776
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:791
+#: includes/admin/bulider/post-extensions-init.php:793
 msgid "Add a first module here. You can also choose a template to use."
 msgstr ""
 

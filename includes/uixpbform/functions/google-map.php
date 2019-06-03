@@ -17,6 +17,14 @@ $map_name      = isset( $_GET[ 'name' ] ) && !empty( $_GET[ 'name' ] ) ? $_GET[ 
 $map_width     = isset( $_GET[ 'width' ] ) && !empty( $_GET[ 'width' ] ) ? $_GET[ 'width' ] : '100%';	 //Map width
 $map_height    = isset( $_GET[ 'height' ] ) && !empty( $_GET[ 'height' ] ) ? $_GET[ 'height' ] : '285px';	 //Map height
 $map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_GET[ 'marker' ] : esc_url( UixPBFormCore::map_marker() ); //Map marker 
+
+//API Key
+$api_key = UixPBFormCore::MAPAPI;
+if ( !empty( get_option( 'uix_pb_opt_map_api', '' ) ) ) {
+	$api_key = esc_attr( get_option( 'uix_pb_opt_map_api', '' ) );
+}
+$map_apikey    = isset( $_GET[ 'apikey' ] ) && !empty( $_GET[ 'apikey' ] ) ? $_GET[ 'apikey' ] : $api_key;	 //Map API Key
+
 ?>
 
 <!DOCTYPE html>
@@ -257,14 +265,8 @@ $map_marker    = isset( $_GET[ 'marker' ] ) && !empty( $_GET[ 'marker' ] ) ? $_G
 		</script>
 
 	 </div><!-- /.uix-pb-map-output -->
-	 
-	<?php
-	$api_key = UixPBFormCore::MAPAPI;
-	if ( !empty( get_option( 'uix_pb_opt_map_api', '' ) ) ) {
-		$api_key = esc_attr( get_option( 'uix_pb_opt_map_api', '' ) );
-	}
-	?>
-	 <script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=<?php echo $api_key; ?>&ver=2.0'></script>
+
+	 <script type='text/javascript' src='//maps.googleapis.com/maps/api/js?key=<?php echo $map_apikey; ?>&ver=2.0'></script>
 
 
 </body>

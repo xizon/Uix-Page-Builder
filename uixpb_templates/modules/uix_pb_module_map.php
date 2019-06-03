@@ -73,6 +73,22 @@ $args =
 		
 		),	
 		
+	
+		
+		array(
+
+			'id'             => 'uix_pb_map_apikey',
+			'title'          => esc_html__( 'Google API key', 'uix-page-builder' ),
+			'desc'           => wp_kses( sprintf( __( '<a href="%1$s" target="_blank">How to 
+Get an API Key?</a> If left blank, the default Key will be used, but it will have a traffic excess problem that will not display properly.', 'uix-page-builder' ), esc_url( '//developers.google.com/maps/documentation/javascript/get-api-key' ) ), wp_kses_allowed_html( 'post' ) ),
+			'value'          => esc_attr( get_option( 'uix_pb_opt_map_api', '' ) ),
+			'placeholder'    => esc_attr__( 'Your own Google API key', 'uix-page-builder' ),
+			'type'           => 'text',
+		    'callback'       => 'attr',
+		
+		),
+	
+	
 		
 	    array(
 		    /*
@@ -233,7 +249,7 @@ UixPBFormCore::form_scripts( array(
 		 */
 	    'template'              => '
 		  
-		 [uix_pb_map style=\'${uix_pb_map_style}\' width=\'${uix_pb_map_width}${uix_pb_map_width_units}\' height=\'${uix_pb_map_height}${uix_pb_map_height_units}\' latitude=\'${uix_pb_map_latitude}\' longitude=\'${uix_pb_map_longitude}\' zoom=\'${uix_pb_map_zoom}\' name=\'${uix_pb_map_name_attr}\' marker=\'${uix_pb_map_marker}\']
+		 [uix_pb_map style=\'${uix_pb_map_style}\' apikey=\'${uix_pb_map_apikey}\' width=\'${uix_pb_map_width}${uix_pb_map_width_units}\' height=\'${uix_pb_map_height}${uix_pb_map_height_units}\' latitude=\'${uix_pb_map_latitude}\' longitude=\'${uix_pb_map_longitude}\' zoom=\'${uix_pb_map_zoom}\' name=\'${uix_pb_map_name_attr}\' marker=\'${uix_pb_map_marker}\']
 	
 		'
 	

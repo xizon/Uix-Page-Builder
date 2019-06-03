@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
 Tested up to: 5.2
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,14 +147,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 == Changelog ==
 
 
-= 1.6.0 (June 1, 2019) =
+= 1.6.1 (June 1, 2019) =
 
-* New: Added PHP environment test for importing and exporting xml templates
-
-
-= 1.5.9 (May 31, 2019) =
-
+* New: Added PHP environment test for importing and exporting xml templates.
 * New: Support for adding your Google Map API Key to avoid traffic overruns on maps.
+* New: Add a module control for the map API Key.
 
 
 = 1.5.8 (February 23, 2019) =

@@ -61,7 +61,7 @@ if( isset( $_GET[ 'tab' ] ) && $_GET[ 'tab' ] == 'general-settings' ) {
 				<p>
 				<?php
 				   printf( __( '<a href="%1$s" target="_blank">How to 
-Get an API Key?</a> If left blank, the default Key will be used, but it will have a traffic excess problem that will not display properly.', 'uix-page-builder' ), esc_url( '//developers.google.com/maps/documentation/javascript/get-api-key' ) );   
+Get an API Key?</a> If left blank, the default Key will be used, but it will have a traffic excess problem that will not display properly. <br><strong>You can also specify the Key separately when using the map module.</strong>', 'uix-page-builder' ), esc_url( '//developers.google.com/maps/documentation/javascript/get-api-key' ) );   
 				   ?>
 				</p>
 

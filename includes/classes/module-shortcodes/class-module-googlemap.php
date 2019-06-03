@@ -40,6 +40,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 				'height' => '285px',
 				'latitude' => 0,
 				'longitude' => 0,
+				'apikey' => '',
 				'zoom' => 14,
 				'name' => '',
 				'marker' => '',
@@ -48,7 +49,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 			 
 			if ( empty ( $marker ) ) $marker = esc_url( UixPBFormCore::map_marker() );
 		
-			return '<div class="uix-page-builder-map-preview-tmpl"></div><div class="uix-page-builder-map-preview-container" data-width="'.esc_attr( $width ).'" data-height="'.esc_attr( $height ).'" data-style="'.esc_attr( $style ).'" data-latitude="'.floatval( $latitude ).'" data-longitude="'.floatval( $longitude ).'" data-zoom="'.floatval( $zoom ).'" data-name="'.$name.'" data-marker="'.esc_url( $marker ).'"></div>';
+			return '<div class="uix-page-builder-map-preview-tmpl"></div><div class="uix-page-builder-map-preview-container" data-apikey="'.esc_attr( $apikey ).'" data-width="'.esc_attr( $width ).'" data-height="'.esc_attr( $height ).'" data-style="'.esc_attr( $style ).'" data-latitude="'.floatval( $latitude ).'" data-longitude="'.floatval( $longitude ).'" data-zoom="'.floatval( $zoom ).'" data-name="'.$name.'" data-marker="'.esc_url( $marker ).'"></div>';
 		}
 
 		
@@ -89,6 +90,7 @@ if ( !class_exists( 'UixPB_Map' ) ) {
 									width      : $frame.data( "width" ),
 									height     : curheight,
 									style      : $frame.data( "style" ),
+									apikey     : $frame.data( "apikey" ),
 									latitude   : $frame.data( "latitude" ),
 									longitude  : $frame.data( "longitude" ),
 									zoom       : $frame.data( "zoom" ),
