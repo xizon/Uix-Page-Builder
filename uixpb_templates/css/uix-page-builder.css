@@ -688,17 +688,13 @@ img.uix-pb-img,
     padding-bottom: 1em;
 }
 
-.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-title:before {
-    content: '\f067';
-    font-family: FontAwesome;
-    display: inline-block;
-    vertical-align: middle;
+.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-icon,
+.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-closedicon {
     padding: 1px 10px 0 0;
     font-size: 11px;
 }
 
 .uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-content {
-    padding-left: 1.4em;
     display: none;
     color: #777;
     line-height: 1.5;
@@ -711,8 +707,15 @@ img.uix-pb-img,
     margin-bottom: .2em;
 }
 
-.uix-pb-accordion .uix-pb-spoiler-closed .uix-pb-spoiler-title:before {
-    content: '\f068';
+.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-closedicon {
+    display: none;
+}
+
+.uix-pb-accordion .uix-pb-spoiler.uix-pb-spoiler-closed .uix-pb-spoiler-icon {
+    display: none;
+}
+.uix-pb-accordion .uix-pb-spoiler.uix-pb-spoiler-closed .uix-pb-spoiler-closedicon {
+    display: inline-block;
 }
 
 .uix-pb-accordion .uix-pb-spoiler-closed .uix-pb-spoiler-title {
@@ -1447,8 +1450,7 @@ img.uix-pb-img,
 }
 
 .uix-pb-price2 li:before {
-    font-family: 'FontAwesome';
-    content: "\f00c";
+    content: "-";
     display: inline-block;
     margin-right: .5em;
 }

@@ -191,7 +191,7 @@ UixPBFormCore::form_scripts( array(
 						{{each '.$clone_trigger_id.'}}
 							{{if uix_pb_accordion_listitem_title != ""}}
 								<div class="uix-pb-spoiler{{if uix_pb_accordion_open_first == 1}}{{if $index == 0}} uix-pb-spoiler-closed{{/if}}{{/if}}">
-									<div class="uix-pb-spoiler-title">${uix_pb_accordion_listitem_title}</div>
+									<div class="uix-pb-spoiler-title"><span class="uix-pb-spoiler-icon"><i class="fa fa-plus"></i></span><span class="uix-pb-spoiler-closedicon"><i class="fa fa-minus"></i></span>${uix_pb_accordion_listitem_title}</div>
 									<div class="uix-pb-spoiler-content">
 										<p>${uix_pb_accordion_listitem_con}</p>
 									</div>                 

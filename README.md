@@ -120,6 +120,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+##### = 1.6.2 (September 2, 2019) =
+
+* Tweak: Upload the Documentation of this plugin to github. (https://xizon.github.io/wp-documentations/uix-page-builder/)
+* Fix:  Fixed a bug for fontawesome compatibility in some modules.
+
+
 ##### = 1.6.1 (June 1, 2019) =
 
 * New: Added PHP environment test for importing and exporting xml templates.

@@ -124,15 +124,12 @@
    4. Accordion                              
 /* ====================================================== */
 
-.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-title:before {
+.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-icon,
+.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-closedicon {
     padding: 1px 0 0 10px;
 }
 
 
-.uix-pb-accordion .uix-pb-spoiler .uix-pb-spoiler-content {
-    padding-left: auto;
-    padding-right: 1.4em;
-}
 
 
 /* ====================================================== 

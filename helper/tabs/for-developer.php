@@ -46,7 +46,7 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'for-developer' ) {
         </h3>  
    	
 	   	<p>
-	   	    <?php printf( __( '<a href="%1$s" target="_blank">Online API Documentation</a>', 'uix-page-builder' ), esc_url( 'https://uiux.cc/wp-plugins-helper/uix-page-builder' ) ); ?>
+	   	    <?php printf( __( '<a href="%1$s" target="_blank">Online API Documentation</a>', 'uix-page-builder' ), esc_url( 'https://xizon.github.io/wp-documentations/uix-page-builder/' ) ); ?>
 		</p>   
    
    
