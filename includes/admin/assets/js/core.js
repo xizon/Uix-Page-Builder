@@ -1147,6 +1147,7 @@ function gridsterAddShortcutButtons() {
 					curindex   = $(this).index(),
 					obj        = $('#uix-page-builder-gridster-widget-' + id );
 
+                $( this ).closest( '.uix-page-builder-section' ).addClass( 'admin' );
 
 				$( this ).append(  '<a data-id=\"'+id+'\" data-index=\"'+curindex+'\" class=\"uix-page-builder-editicon\" href=\"javascript:void(0);\" role=\"button\"><i class=\"fa fa-edit\"></i></a>' );
 			});

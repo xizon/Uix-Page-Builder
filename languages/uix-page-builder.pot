@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2019-06-03 01:49+0000\n"
+"POT-Creation-Date: 2019-09-23 09:01+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -152,38 +152,46 @@ msgstr ""
 msgid "<i class=\"dashicons dashicons-networking\"></i> For Theme Developer"
 msgstr ""
 
-#: includes/uixpbform/init.php:84
+#: includes/uixpbform/init.php:86
 msgid "Select Files"
 msgstr ""
 
-#: includes/uixpbform/init.php:85
+#: includes/uixpbform/init.php:87
 msgid "Insert"
 msgstr ""
 
-#: includes/uixpbform/init.php:86
+#: includes/uixpbform/init.php:88
 msgid "Insert Image"
 msgstr ""
 
-#: includes/uixpbform/init.php:87
+#: includes/uixpbform/init.php:89
 msgid "Remove link"
 msgstr ""
 
-#: includes/uixpbform/init.php:88
+#: includes/uixpbform/init.php:90
 msgid "Insert/Edit link"
 msgstr ""
 
-#: includes/uixpbform/init.php:89
+#: includes/uixpbform/init.php:91
 msgid "URL"
 msgstr ""
 
-#: includes/uixpbform/init.php:90
+#: includes/uixpbform/init.php:92
 #: uixpb_templates/modules/uix_pb_module_authorcard.php:95
 #: uixpb_templates/modules/uix_pb_module_parallax.php:209
 msgid "Link Text"
 msgstr ""
 
-#: includes/uixpbform/init.php:91
+#: includes/uixpbform/init.php:93
 msgid "Open link in a new tab"
+msgstr ""
+
+#: includes/uixpbform/init.php:94
+msgid "Syntax Highlight Code"
+msgstr ""
+
+#: includes/uixpbform/init.php:95
+msgid "Language"
 msgstr ""
 
 #: includes/classes/class-menu-onepage.php:141
@@ -2529,7 +2537,7 @@ msgstr ""
 msgid "Add a first module here. You can also choose a template to use."
 msgstr ""
 
-#: includes/admin/bulider/visual-builder-init.php:227
+#: includes/admin/bulider/visual-builder-init.php:230
 msgid "Hide Sidebar"
 msgstr ""
 

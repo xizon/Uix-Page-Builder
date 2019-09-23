@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 4.3 (January 15, 2019)
+ * @version		: 4.5 (September 18, 2019)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '4.2';	
+		const VERSION    = '4.5';	
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 		
 		/**
@@ -55,7 +55,9 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 		public static function frontpage_scripts() {
 			
 			//Add Icons
-			wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.min.css', array(), '4.5.0', 'all');
+            wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/css/all.min.css', false, '5.7.0', 'all' );
+            wp_enqueue_style( 'font-awesome-v4-shims', self::plug_directory() .'fontawesome/css/v4-shims.min.css', array( 'font-awesome' ), '5.7.0', 'all' );   
+            
 			
 	
 		}
@@ -89,12 +91,15 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 						'lang_mce_link_field_url'   => __( 'URL', 'uix-page-builder' ),
 						'lang_mce_link_field_text'  => __( 'Link Text', 'uix-page-builder' ),
 						'lang_mce_link_field_win'   => __( 'Open link in a new tab', 'uix-page-builder' ),
+						'lang_mce_hcode_title'       => __( 'Syntax Highlight Code', 'uix-page-builder' ),
+						'lang_mce_hcode_field_label' => __( 'Language', 'uix-page-builder' ),
 					 ) );	
 				 
 				    wp_enqueue_script( 'uixpbform-functions' );
 
 					//Add Icons
-					wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/font-awesome.min.css', array(), '4.5.0', 'all');
+                    wp_enqueue_style( 'font-awesome', self::plug_directory() .'fontawesome/css/all.min.css', false, '5.7.0', 'all' );
+                    wp_enqueue_style( 'font-awesome-v4-shims', self::plug_directory() .'fontawesome/css/v4-shims.min.css', array( 'font-awesome' ), '5.7.0', 'all' );   
 
 					//UixForm (Require to enqueue the script before </body> instead of in the <head>.)
 					wp_enqueue_style( 'uixpbform', self::plug_directory() .'css/uixpbform.min.css', false, self::VERSION, 'all');

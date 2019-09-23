@@ -119,6 +119,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.6.3 (September 18, 2019) =
+
+* Tweak: MCEEditor upgrade in form component.
+* Tweak: Upgrade Fontawesome to 5.0+.
+
 
 ##### = 1.6.2 (September 2, 2019) =
 

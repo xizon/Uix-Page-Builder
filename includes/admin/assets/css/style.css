@@ -587,6 +587,10 @@ ul.uix-page-builder-res-selector li.active {
 	
 }
 
+.uix-page-builder-col .img {
+    display: block;
+    padding-bottom: 15px;
+}
 
 
 

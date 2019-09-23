@@ -81,6 +81,9 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 		    display: block;
 		}
 		
+        .uix-page-builder-section.admin [class^=\"uix-pb-col-\"]:hover {
+            box-shadow: 0 0 0 1px #357797 !important;
+        }
 
 		@-webkit-keyframes pbicon {
 			0%   { 

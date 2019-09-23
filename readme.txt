@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
 Tested up to: 5.2
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+
+
+= 1.6.3 (September 18, 2019) =
+
+* Tweak: MCEEditor upgrade in form component.
+* Tweak: Upgrade Fontawesome to 5.0+.
 
 
 = 1.6.2 (September 2, 2019) =
