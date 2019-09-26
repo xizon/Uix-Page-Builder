@@ -119,6 +119,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+
+
+##### = 1.6.4 (September 24, 2019) =
+
+* Fix: Fixed a bug of imagesLoaded is not defined.
+
+
 ##### = 1.6.3 (September 18, 2019) =
 
 * Tweak: MCEEditor upgrade in form component.

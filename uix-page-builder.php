@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.6.3
+ * Version:     1.6.4
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -232,6 +232,7 @@ class UixPageBuilder {
 			wp_enqueue_script( self::PREFIX . '-page-builder-plugins' );	
 		} else {
 
+            wp_enqueue_script( 'imagesloaded' );
 			wp_enqueue_script( 'shuffle' );
 			wp_enqueue_script( 'modernizr' );
 			wp_enqueue_script( 'easypiechart' );
