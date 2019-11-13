@@ -538,6 +538,8 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 4.9.*
 - WP 5.1.*
 - WP 5.2.*
+- WP 5.3.*
+
 
 
 ### Screenshot
