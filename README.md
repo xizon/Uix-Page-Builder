@@ -121,6 +121,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 
+
+##### = 1.6.5 (November 19, 2019) =
+
+* Tweak: Optimized the visual guide for the visual editor.
+
+
 ##### = 1.6.4 (September 24, 2019) =
 
 * Fix: Fixed a bug of imagesLoaded is not defined.

@@ -81,8 +81,18 @@ if ( !function_exists( 'uix_page_builder_previewFrontend' ) ) {
 		    display: block;
 		}
 		
-        .uix-page-builder-section.admin [class^=\"uix-pb-col-\"]:hover {
-            box-shadow: 0 0 0 1px #357797 !important;
+        .uix-page-builder-section.admin > .uix-pb-row > [class^=\"uix-pb-col-\"]:hover:before {
+            box-shadow: 0 0 0 1px #357797;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            pointer-events: none;
         }
 
 		@-webkit-keyframes pbicon {

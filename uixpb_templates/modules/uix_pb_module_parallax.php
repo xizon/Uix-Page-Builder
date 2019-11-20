@@ -102,16 +102,14 @@ $args =
 	    array(
 			'id'             => 'uix_pb_parallax_speed',
 			'title'          => esc_html__( 'Parallax', 'uix-page-builder' ),
-			'desc'           => '',
+			'desc'           => esc_html__( 'Recommended value: -10.00 to 10.00', 'uix-page-builder' ),
 			'value'          => 0,
 			'placeholder'    => '',
-			'type'           => 'slider',
+			'type'           => 'short-text',
+		    'callback'       => 'number', 
 			'default'        => array(
-									'units'       => '',
-									'min'         => -10,
-									'max'         => 10,
-									'step'        => 0.1
-				                )
+									'units'  => ''
+								)
 		
 		),	
 		
