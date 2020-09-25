@@ -120,6 +120,10 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 ### Updates
 
 
+##### = 1.6.6 (September 25, 2020) =
+
+* Tweak: Compatible with WP 5.5.*.
+* Fix: Modified the style display of the module.
 
 
 ##### = 1.6.5 (November 19, 2019) =
@@ -545,7 +549,8 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 5.1.*
 - WP 5.2.*
 - WP 5.3.*
-
+- WP 5.4.*
+- WP 5.5.*
 
 
 ### Screenshot

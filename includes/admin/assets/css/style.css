@@ -554,7 +554,7 @@ ul.uix-page-builder-res-selector li.active {
 	position: relative;
 	display: block;
 	width: 100%;
-	height: 100%;
+	height: auto;
 
 }
 
