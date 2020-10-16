@@ -328,7 +328,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 			$catlist = '';
 			if ( isset( $catslist_enable ) &&  $catslist_enable == 1 ) {
 				
-				$catlist .= '<div class="uix-pb-portfolio-cat-list '.( ( isset( $catslist_filterable ) &&  $catslist_filterable == 1 ) ? 'uix-pb-filterable' : '' ).'" data-classprefix="'.esc_attr( $catslist_classprefix ).'"  data-filter-id="'.esc_attr( $catslist_id ).'" id="uix-pb-portfolio-cat-list-'.esc_attr( $catslist_id ).'">';
+				$catlist .= '<div class="uix-pb-portfolio-cat-list '.( ( isset( $catslist_filterable ) &&  $catslist_filterable == 1 ) ? 'uix-pb-filterable' : '' ).'" data-classprefix="'.esc_attr( $catslist_classprefix ).'"  id="nav-filters-uix-pb-portfolio-cat-list-'.esc_attr( $catslist_id ).'">';
 				$catlist .= '    <ul>';
 				
 				if ( isset( $catslist_filterable ) &&  $catslist_filterable == 1 ) {

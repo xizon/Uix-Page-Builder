@@ -262,3 +262,15 @@ ul.uix-bg-custom-list li {
         margin-left: -170px;
     }
 }
+
+
+/* Button */
+.button-remove {
+    background: #DD421A !important;
+    border-color: #DD421A #DD421A #DD421A !important;
+    -webkit-box-shadow: 0 1px 0 #DD421A !important;
+    box-shadow: 0 1px 0 #A10508 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    text-shadow: 0 -1px 1px #A10508,1px 0 1px #A10508,0 1px 1px #A10508,-1px 0 1px #A10508 !important;
+}

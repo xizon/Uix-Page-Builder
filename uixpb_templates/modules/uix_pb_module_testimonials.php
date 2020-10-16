@@ -83,6 +83,101 @@ $form_type = array(
 
 $args = 
 	array(
+	
+	
+		array(
+			'id'             => 'uix_pb_testimonials_list_dir',
+			'title'          => esc_html__( 'Direction', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 'horizontal',
+			'placeholder'    => '',
+			'type'           => 'radio',
+			'default'        => array(
+		                            'horizontal'  => esc_html__( 'Horizontal', 'uix-page-builder' ),
+				                    'vertical'  => esc_html__( 'Vertical', 'uix-page-builder' ),
+								)
+		),
+		
+		array(
+			'id'             => 'uix_pb_testimonials_list_auto',
+			'title'          => esc_html__( 'Automatically Transition', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 1, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		
+		
+		),
+		
+		array(
+			'id'             => 'uix_pb_testimonials_list_paging',
+			'title'          => esc_html__( 'Show Paging Navigation', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 1, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		
+		
+		),	
+		
+		
+		array(
+			'id'             => 'uix_pb_testimonials_list_arrows',
+			'title'          => esc_html__( 'Show Arrow Navigation', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 0, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		
+		
+		),	
+	
+	
+		array(
+			'id'             => 'uix_pb_testimonials_list_draggable',
+			'title'          => esc_html__( 'Draggable', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 0, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		
+		
+		),	
+	
+	
+	
+		
+		
+		array(
+			'id'             => 'uix_pb_testimonials_list_speed',
+			'title'          => esc_html__( 'Speed of Images Appereance', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 1200,
+			'placeholder'    => '',
+			'type'           => 'short-text',
+			'callback'       => 'number',
+			'default'        => array(
+									'units'  => 'ms'
+								)
+		
+		),	
+	
+	
+		
+		array(
+			'id'             => 'uix_pb_testimonials_list_timing',
+			'title'          => esc_html__( 'Delay Between Images', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 7000,
+			'placeholder'    => '',
+			'type'           => 'short-text',
+			'callback'       => 'number',
+			'default'        => array(
+									'units'  => 'ms'
+								)
+		
+		),	
+	
 		
 		//------ Clone controls list (begin)
 
@@ -161,6 +256,15 @@ $args =
  * Returns form
  * ----------------------------------------------------
  */
+
+/**
+ * 
+ * Returns the unique ID used in the frontend template
+ */
+$frontend_id = 'testimonials-' . uniqid();
+
+
+
 UixPBFormCore::form_scripts( array(
 		'clone'                    => array(
 										'trigger_id'     => $clone_trigger_id,
@@ -226,33 +330,63 @@ UixPBFormCore::form_scripts( array(
 			<div class="uix-pb-testimonials-wrapper">
 				<div class="uix-pb-testimonials">
 					<div class="uix-pb-testimonials-container">
-						<div class="flexslider">
-							<ul class="slides">
+					
+					
+					   <div data-uix-pb-hybridcontent-slider="1" role="slider" class="uix-pb-hybridcontent-slider"
+						  data-draggable="{{if uix_pb_testimonials_list_draggable == 1}}true{{else}}false{{/if}}"
+						  data-draggable-cursor="move"	 
+						  data-dir="${uix_pb_testimonials_list_dir}"
+						  data-auto="{{if uix_pb_testimonials_list_auto == 1}}true{{else}}false{{/if}}"
+						  data-loop="false"
+						  data-speed="${uix_pb_testimonials_list_speed}"
+						  data-timing="${uix_pb_testimonials_list_timing}" 
+						  data-pagination="#uix-pb-hybridcontent-slider__pagination-'.$frontend_id.'" 
+						  data-next="#uix-pb-hybridcontent-slider__controls-'.$frontend_id.' .uix-pb-hybridcontent-slider__controls--next" 
+						  data-prev="#uix-pb-hybridcontent-slider__controls-'.$frontend_id.' .uix-pb-hybridcontent-slider__controls--prev">
+						   <div class="uix-pb-hybridcontent-slider__items">
+								<!-- loop start -->
 
-							<!-- loop start -->
+									{{each '.$clone_trigger_id.'}}
+										{{if uix_pb_testimonials_listitem_intro != ""}}
+											<div class="uix-pb-hybridcontent-slider__item">
+												<div class="uix-pb-testimonials-content">${uix_pb_testimonials_listitem_intro}</div>
+												<div class="uix-pb-testimonials-signature">
+													{{if uix_pb_testimonials_listitem_avatar != ""}}
+														<img class="uix-pb-testimonials-avatar" src="${uix_pb_testimonials_listitem_avatar}" alt="" />
+													{{else}}
+														<span class="uix-pb-testimonials-no-avatar"></span>
+													{{/if}}
 
-								{{each '.$clone_trigger_id.'}}
-									{{if uix_pb_testimonials_listitem_intro != ""}}
-										<li>
-											<div class="uix-pb-testimonials-content">${uix_pb_testimonials_listitem_intro}</div>
-											<div class="uix-pb-testimonials-signature">
-												{{if uix_pb_testimonials_listitem_avatar != ""}}
-													<img class="uix-pb-testimonials-avatar" src="${uix_pb_testimonials_listitem_avatar}" alt="" />
-												{{else}}
-													<span class="uix-pb-testimonials-no-avatar"></span>
-												{{/if}}
+													<strong {{if uix_pb_testimonials_listitem_avatar == ""}}class="uix-pb-testimonials-pure-text"{{/if}}>${uix_pb_testimonials_listitem_name}</strong>
+													{{if uix_pb_testimonials_listitem_position != ""}} - ${uix_pb_testimonials_listitem_position}{{/if}}
+												</div>										                                                    
+											</div>	
+										{{/if}}	
+									{{/each}}	
 
-												<strong {{if uix_pb_testimonials_listitem_avatar == ""}}class="uix-pb-testimonials-pure-text"{{/if}}>${uix_pb_testimonials_listitem_name}</strong>
-												{{if uix_pb_testimonials_listitem_position != ""}} - ${uix_pb_testimonials_listitem_position}{{/if}}
-											</div>										                                                    
-										</li>	
-									{{/if}}	
-								{{/each}}	
+								<!-- loop end -->
+						   </div>
+						  <!-- /.uix-pb-hybridcontent-slider__items -->
 
-							<!-- loop end -->
+						</div>
+					   <!-- /.uix-pb-hybridcontent-slider -->
 
-							</ul><!-- .uix-pb-testimonials-slides -->
-						</div><!-- .flexslider -->
+
+
+						<div class="uix-pb-hybridcontent-slider__pagination" id="uix-pb-hybridcontent-slider__pagination-'.$frontend_id.'" style="{{if uix_pb_testimonials_list_paging == 0}}display:none{{/if}}"></div>
+						<!-- /.uix-pb-hybridcontent-slider__pagination -->
+
+
+						<div class="uix-pb-hybridcontent-slider__controls" id="uix-pb-hybridcontent-slider__controls-'.$frontend_id.'" style="{{if uix_pb_testimonials_list_arrows == 0}}display:none{{/if}}">
+							<a href="javascript:void(0);" class="uix-pb-hybridcontent-slider__controls--prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+							<a href="javascript:void(0);" class="uix-pb-hybridcontent-slider__controls--next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+						</div>
+						<!-- /.uix-pb-hybridcontent-slider__controls -->    
+
+
+
+
+						
 					</div><!-- .uix-pb-testimonials-container -->
 				</div><!-- /.uix-pb-testimonials -->
 			</div>	
@@ -261,5 +395,8 @@ UixPBFormCore::form_scripts( array(
 	
     )
 );
+
+
+
 
 

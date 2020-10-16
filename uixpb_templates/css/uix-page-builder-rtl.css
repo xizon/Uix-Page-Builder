@@ -29,6 +29,8 @@
     16. Contact Form 7    
     17. Sidebar
     18. Custom Menu
+    19. Image Slider
+    20. Custom Hybrid Content Slider 
 
 
 */
@@ -62,10 +64,6 @@
 }
 
 
-.flexslider,
-.uix-pb-flexslider {
-    direction: ltr !important;
-}
 
 /* ====================================================== 
    2. Section Styles                               
@@ -303,18 +301,17 @@
 /* ====================================================== 
    11. Testimonials Carousel                           
 /* ====================================================== */
-.uix-pb-testimonials .uix-pb-testimonials-content {
-    float: right;
+.uix-pb-testimonials .uix-pb-testimonials-signature {
+    text-align: left;
 }
 
 .uix-pb-testimonials .uix-pb-testimonials-signature {
-    float: left;
-    text-align: left;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAARCAYAAAAyhueAAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAP5JREFUOBFjfPv27X8G6oFTwsLC5kzUM49hzbdv3xxA5rFQw9D///93iIiIVMLMotTQX0AD04EGLoAZCKIpMfQdExNTkKCg4EFkA0FsssKUkZHxzt+/f82xGUiWoUDvHmRmZjYXExO7g+5CGJ9U7y8AJpl0oEt/wQzARhPtfaBBlUADEwkZCLKEGJd+B6qLExISWoPNVdjECBn6AhiG/sAkcwqbZlxi+Ay9DPSqD9DLj3BpxiWOK0x3AJOMFdDLJBsIsgjDpUDXTQGmvwIg/ReXSwiJIxv6Fxh+BUDvTiGkiZA8zNAvQIWhwAjZQUgDUfLA8vThu3fvdIlSTKQiAJdaQhmceTebAAAAJXRFWHRjcmVhdGUtZGF0ZQAyMDE2LTAzLTEwVDIxOjU0OjEyKzA4OjAwlYZ7KAAAAAd0SU1FB+ADChU5AgjqppsAAAIrdEVYdFJhdyBwcm9maWxlIHR5cGUgQVBQMQAKZ2VuZXJpYyBwcm9maWxlCiAgICAgMjUwCjQ1Nzg2OTY2MDAwMDRkNGQwMDJhMDAwMDAwMDgwMDA3MDExMjAwMDMwMDAwMDAwMTAwMDEwMDAwMDExYTAwMDUwMDAwMDAwMQowMDAwMDA2MjAxMWIwMDA1MDAwMDAwMDEwMDAwMDA2YTAxMjgwMDAzMDAwMDAwMDEwMDAyMDAwMDAxMzIwMDAyMDAwMDAwMTQKMDAwMDAwNzIwMjEzMDAwMzAwMDAwMDAxMDAwMTAwMDA4NzY5MDAwNDAwMDAwMDAxMDAwMDAwODYwMDAwMDAwMDAwMDAwMDQ4CjAwMDAwMDAxMDAwMDAwNDgwMDAwMDAwMTMyMzAzMTM2M2EzMDMzM2EzMTMwMjAzMjMxM2EzNTM3M2EzMDMyMDAwMDA3OTAwMAowMDA3MDAwMDAwMDQzMDMyMzMzMDkwMDQwMDAyMDAwMDAwMTQwMDAwMDBlMDkxMDEwMDA3MDAwMDAwMDQwMTAyMDMwMGEwMDAKMDAwNzAwMDAwMDA0MzAzMTMwMzBhMDAxMDAwMzAwMDAwMDAxZmZmZjAwMDBhMDAyMDAwMzAwMDAwMDAxMDAxNTAwMDBhMDAzCjAwMDMwMDAwMDAwMTAwMTEwMDAwMDAwMDAwMDAzMjMwMzEzNjNhMzAzMzNhMzEzMDIwMzIzMTNhMzUzNDNhMzEzMjAwCjAAMiAAAAgzaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pgo8eDp4bXBtZXRhIHhtbG5zOng9J2Fkb2JlOm5zOm1ldGEvJyB4OnhtcHRrPSdJbWFnZTo6RXhpZlRvb2wgMTAuMDAnPgo8cmRmOlJERiB4bWxuczpyZGY9J2h0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMnPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6ZGM9J2h0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvJz4KICA8ZGM6Zm9ybWF0PmltYWdlL3BuZzwvZGM6Zm9ybWF0PgogPC9yZGY6RGVzY3JpcHRpb24+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpwaG90b3Nob3A9J2h0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8nPgogIDxwaG90b3Nob3A6Q29sb3JNb2RlPjM8L3Bob3Rvc2hvcDpDb2xvck1vZGU+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOnRpZmY9J2h0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvJz4KICA8dGlmZjpJbWFnZUxlbmd0aD4xNzwvdGlmZjpJbWFnZUxlbmd0aD4KICA8dGlmZjpJbWFnZVdpZHRoPjIxPC90aWZmOkltYWdlV2lkdGg+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOnhtcD0naHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyc+CiAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwveG1wOkNyZWF0b3JUb29sPgogIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTYtMDMtMTBUMjE6NTc6MDIrMDg6MDA8L3htcDpNZXRhZGF0YURhdGU+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0nJwogIHhtbG5zOnN0RXZ0PSdodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMnCiAgeG1sbnM6c3RSZWY9J2h0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMnCiAgeG1sbnM6eG1wTU09J2h0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8nPgogIDx4bXBNTTpEZXJpdmVkRnJvbSByZGY6cGFyc2VUeXBlPSdSZXNvdXJjZSc+CiAgIDxzdFJlZjpkb2N1bWVudElEPnhtcC5kaWQ6OUY4QUFGOUVBQkNBMTFFMkEyRUVFMUUwREZGRDA2QTA8L3N0UmVmOmRvY3VtZW50SUQ+CiAgIDxzdFJlZjppbnN0YW5jZUlEPnhtcC5paWQ6OUY4QUFGOURBQkNBMTFFMkEyRUVFMUUwREZGRDA2QTA8L3N0UmVmOmluc3RhbmNlSUQ+CiAgPC94bXBNTTpEZXJpdmVkRnJvbT4KICA8eG1wTU06RG9jdW1lbnRJRD54bXAuZGlkOjlGOEFBRkEwQUJDQTExRTJBMkVFRTFFMERGRkQwNkEwPC94bXBNTTpEb2N1bWVudElEPgogIDx4bXBNTTpIaXN0b3J5PgogICA8cmRmOlNlcT4KICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0nUmVzb3VyY2UnPgogICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICA8c3RFdnQ6Y2hhbmdlZD4vPC9zdEV2dDpjaGFuZ2VkPgogICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6Nzk1YTMxZTQtOTM5NS00N2UxLWIyYzctYjE4NjcyMTliNTA5PC9zdEV2dDppbnN0YW5jZUlEPgogICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE1IChNYWNpbnRvc2gpPC9zdEV2dDpzb2Z0d2FyZUFnZW50PgogICAgIDxzdEV2dDp3aGVuPjIwMTYtMDMtMTBUMjE6NTc6MDIrMDg6MDA8L3N0RXZ0OndoZW4+CiAgICA8L3JkZjpsaT4KICAgPC9yZGY6U2VxPgogIDwveG1wTU06SGlzdG9yeT4KICA8eG1wTU06SW5zdGFuY2VJRD54bXAuaWlkOjc5NWEzMWU0LTkzOTUtNDdlMS1iMmM3LWIxODY3MjE5YjUwOTwveG1wTU06SW5zdGFuY2VJRD4KICA8eG1wTU06T3JpZ2luYWxEb2N1bWVudElEPnhtcC5kaWQ6OUY4QUFGQTBBQkNBMTFFMkEyRUVFMUUwREZGRDA2QTA8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4KIDwvcmRmOkRlc2NyaXB0aW9uPgo8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSdyJz8+4YSO5wAAAABJRU5ErkJggg==') no-repeat scroll 20px top transparent;
 }
 
 .uix-pb-testimonials .uix-pb-testimonials-signature img.uix-pb-testimonials-avatar {
     float: left;
-    margin: .6em 1em 1em 0;
+    margin: .6em 1em 1em 1em;
 }
 
 .uix-pb-testimonials .uix-pb-testimonials-signature .uix-pb-testimonials-no-avatar {
@@ -323,8 +320,11 @@
 
 .uix-pb-testimonials .uix-pb-testimonials-signature strong.uix-pb-testimonials-pure-text {
     padding-left: auto;
-	padding-right: 100px;
+    padding-right: auto;
+	padding: 0 !important;
 }
+	
+
 
 /* ====================================================== 
    12. Client                           
@@ -684,3 +684,83 @@ ul.uix-pb-menu-embedded > li.uix-pb-menu-mobile-icon a {
 	padding-right: auto;
 	padding-left: .5em;
 }
+
+
+
+
+/* ====================================================== 
+   19. Image Slider                
+/* ====================================================== */
+
+/*
+
+	
+	TABLE OF CONTENTS (RTL)
+	---------------------------
+	
+     1. Initialize the slider style
+     2. Pagination dots
+     3. Next/Prev buttons
+
+*/
+/*
+ ---------------------------
+ 1. Initialize the slider style
+ ---------------------------
+ */
+.rtl .uix-pb-slideshow .uix-pb-slideshow__inner .uix-pb-slideshow__item {
+    left: auto;
+    right: 0;
+}
+
+/*
+ ---------------------------
+ 2. Pagination dots
+ ---------------------------
+ */
+.rtl .uix-pb-slideshow__pagination ul {
+    left: auto;
+    right: 0;
+}
+
+/*
+ ---------------------------
+ 3. Next/Prev buttons
+ ---------------------------
+ */
+.rtl .uix-pb-slideshow__arrows .uix-pb-slideshow__arrows--prev {
+    left: auto;
+    right: 15px;
+	transform: rotate(180deg);
+}
+
+.rtl .uix-pb-slideshow__arrows .uix-pb-slideshow__arrows--next {
+    right: auto;
+    left: 15px;
+    text-align: left;
+	transform: rotate(180deg);
+}
+
+
+
+/* ====================================================== 
+   20. Custom Hybrid Content Slider      
+/* ====================================================== */
+
+
+.uix-pb-hybridcontent-slider__controls .uix-pb-hybridcontent-slider__controls--prev {
+    padding-left: auto;
+	padding-right: 2px;
+	float: right;
+	transform: rotate(180deg);
+}
+
+.uix-pb-hybridcontent-slider__controls .uix-pb-hybridcontent-slider__controls--next {
+    padding-right: auto;
+	padding-left: 2px;
+	float: left;
+	transform: rotate(180deg);
+}
+
+
+

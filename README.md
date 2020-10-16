@@ -47,7 +47,6 @@ The currently available default elements:
 * Portfolio 
 * Blog
 * Slider 
-* Instagram Feed 
 * Sidebar   
 * Uix Products (Require the WP plugin "Uix Products") 
 * Uix Slideshow (Require the WP plugin "Uix Slideshow") 
@@ -118,6 +117,18 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 ### Updates
+
+
+##### = 1.6.7 (October 13, 2020) =
+
+* New: Use `Muuri` plug-in to make filtering and masonry effects.
+* Tweak: When the editor inserts a video, it will automatically be converted into a video tag.
+* New: According to the language of the theme, the editor automatically supports multiple languages.
+* Fix: Fixed an issue where instagram images were not displayed.
+* Remove: Delete Instagram Feed module.
+* Remove: Remove Flexslider plugin.
+* Remove: Remove shuffle.js and modernizr.js.
+
 
 
 ##### = 1.6.6 (September 25, 2020) =

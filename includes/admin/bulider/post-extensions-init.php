@@ -66,9 +66,6 @@ if ( !function_exists( 'uix_page_builder_vb_script' ) ) {
 			wp_enqueue_script( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.gridster.min.js', array( 'jquery', 'uixpbform' ), '0.5.7', false );	
 			wp_enqueue_style( UixPageBuilder::PREFIX . '-gridster', UixPageBuilder::plug_directory() .'includes/admin/assets/css/jquery.gridster.min.css', false, '0.5.7', 'all' );
 
-			//jQuery Accessible Tabs
-			wp_enqueue_script( 'accTabs', UixPageBuilder::plug_directory() .'includes/admin/assets/js/jquery.accTabs.js', array( 'jquery' ), '0.1.1', true );
-		
 
 			//Main
 			wp_enqueue_style( UixPageBuilder::PREFIX . '-page-builder-admin', UixPageBuilder::plug_directory() .'includes/admin/assets/css/style.min.css', false, UixPageBuilder::ver(), 'all' );
@@ -78,8 +75,8 @@ if ( !function_exists( 'uix_page_builder_vb_script' ) ) {
 			}
 			
 			
-			//Jquery UI
-			wp_enqueue_script( 'jquery-ui' );
+			//Jquery UI sortable
+			wp_enqueue_script( 'jquery-ui-sortable' );
 			
 		
 	

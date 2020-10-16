@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
 Tested up to: 5.5.1
-Stable tag: 1.6.6
+Stable tag: 1.6.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,7 +45,6 @@ The currently available default elements:
 * Portfolio 
 * Blog
 * Slider 
-* Instagram Feed 
 * Sidebar   
 * Uix Products (Require the WP plugin "Uix Products") 
 * Uix Slideshow (Require the WP plugin "Uix Slideshow") 
@@ -145,6 +144,19 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+
+
+= 1.6.7 (October 13, 2020) =
+
+* New: Use `Muuri` plug-in to make filtering and masonry effects.
+* Tweak: When the editor inserts a video, it will automatically be converted into a video tag.
+* New: According to the language of the theme, the editor automatically supports multiple languages.
+* Fix: Fixed an issue where instagram images were not displayed.
+* Remove: Delete Instagram Feed module.
+* Remove: Remove Flexslider plugin.
+* Remove: Remove shuffle.js and modernizr.js.
+
 
 = 1.6.6 (September 25, 2020) =
 

@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.6.6
+ * Version:     1.6.7
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -162,7 +162,19 @@ class UixPageBuilder {
 	 */
 	public static function register_scripts() {
 		
-		// Core
+		
+		//Add-ons
+		//--------------------
+		// Easy Pie Chart
+		wp_register_script( 'easypiechart', self::backend_path( 'uri' ).'add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
+		
+		// Muuri
+		wp_register_script( 'muuri', self::backend_path( 'uri' ).'add-ons/muuri/muuri.min.js', false, '0.8.0', true );
+		
+		
+		
+		//Core
+		//--------------------
 		wp_register_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/'.self::frontpage_core_js_name(), array( 'jquery' ), self::ver(), true );
 		wp_register_script( self::PREFIX . '-page-builder-plugins', self::backend_path( 'uri' ).'js/uix-page-builder-plugins.js', false, self::ver(), true );
 		wp_register_style( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'css/'.self::frontpage_core_css_name(), false, self::ver(), 'all' );
@@ -172,28 +184,9 @@ class UixPageBuilder {
 		 ) );
 		
 		
-			
-
-		// Shuffle
-		wp_register_script( 'shuffle', self::plug_directory() .'includes/admin/assets/add-ons/shuffle/jquery.shuffle.js', array( 'jquery', 'modernizr' ), '3.1.1', true );
-
-		// Shuffle.js requires Modernizr..
-		if ( is_admin() ) {
-			//Use a fixed version of this, otherwise it will cause layout problems in the admin panle
-			wp_register_script( 'modernizr', self::plug_directory() .'includes/admin/assets/add-ons/HTML5/modernizr.min-3.1.1.js', false, '3.3.1', false );
-		} else {
-			wp_register_script( 'modernizr', self::plug_directory() .'includes/admin/assets/add-ons/HTML5/modernizr.min-3.5.0.js', false, '3.5.0', false );
-		}
+		wp_register_script( self::PREFIX . '-page-builder', self::backend_path( 'uri' ).'js/'.self::frontpage_core_js_name(), array( 'jquery' ), self::ver(), true );
 		
-
-		// Easy Pie Chart
-		wp_register_script( 'easypiechart', self::plug_directory() .'includes/admin/assets/add-ons/piechart/jquery.easypiechart.min.js', array( 'jquery' ), '2.1.7', true );
 		
-		//flexslider
-		wp_register_script( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/jquery.flexslider.min.js', array( 'jquery' ), '2.7.0', true );
-		wp_register_style( 'flexslider', self::plug_directory() .'includes/admin/assets/add-ons/flexslider/flexslider.min.css', false, '2.7.0', 'all' );
-		
-
 
 	}
 	
@@ -206,7 +199,24 @@ class UixPageBuilder {
 	 */
 	public static function frontpage_scripts() {
 		
+		
+		//Add-ons
+		//--------------------
+		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder-plugins.js' ) ) {
+			wp_enqueue_script( self::PREFIX . '-page-builder-plugins' );	
+		} else {
+
+			wp_enqueue_script( 'easypiechart' );
+			wp_enqueue_script( 'imagesloaded' );
+			wp_enqueue_script( 'muuri' ); //Use with `imagesloaded`
+			
+			  
+		}
+		
+		
+		
 		//Core
+		//--------------------
 		if ( 
 			file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.css' ) || 
 			file_exists( self::backend_path( 'dir' ).'css/uix-page-builder.min.css' ) 
@@ -226,22 +236,6 @@ class UixPageBuilder {
 			wp_enqueue_script( self::PREFIX . '-page-builder' );	
 		}		
 		
-		
-		//Plugins
-		if ( file_exists( self::backend_path( 'dir' ).'js/uix-page-builder-plugins.js' ) ) {
-			wp_enqueue_script( self::PREFIX . '-page-builder-plugins' );	
-		} else {
-
-            wp_enqueue_script( 'imagesloaded' );
-			wp_enqueue_script( 'shuffle' );
-			wp_enqueue_script( 'modernizr' );
-			wp_enqueue_script( 'easypiechart' );
-			wp_enqueue_script( 'flexslider' );
-			wp_enqueue_style( 'flexslider' );
-			wp_enqueue_script( 'bgParallax' );
-
-							  
-		}
 		
 
 	}

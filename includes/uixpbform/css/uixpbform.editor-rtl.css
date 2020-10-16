@@ -2,26 +2,62 @@
  * RTL
  *
  */
-.mce-content-body ol,.mce-content-body ul {
-    margin-left: auto;
-	margin-left: right;
-}
-
-.mce-content-body ol li,.mce-content-body ul li {
-    margin-left: auto;
-	margin-right: 10px;
-}
-
-
-.mce-content-body blockquote {
+blockquote {
 	border-left: none;
-	border-right: 4px solid #707070;
-	margin: 0 20px 35px 0;
 	padding-left: auto;
-	padding-right: 17px;
+	border-right: 4px solid #707070;
+	padding-right: 17px;	
+	
 }
 
-.mce-content-body pre {
-	border-left: none;
-	border-right: 5px solid #a2bf2f;
+blockquote > blockquote {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+
+blockquote {
+	border-left: 1px solid #F8F8F8;
+    border-right-color: #707070;
+	
+}
+
+blockquote:before {
+    margin-right: auto;
+	margin-left: 0.25em;
+	
+}
+
+blockquote > ul,
+blockquote > ol {
+	margin-left: auto;
+	margin-right: 28px;
+}
+
+
+table th,
+.mce-item-table th,
+table caption {
+	border-width: 0 0 1px 1px;
+	text-align: right;
+}
+
+
+.alignleft {
+	float: right;
+	margin: 7px 0 28px 28px;
+}
+
+.alignright {
+	float: left;
+	margin: 7px 28px 28px 0;
+}
+
+
+.wp-caption.alignleft {
+	margin: 7px 0 21px 28px;
+}
+
+.wp-caption.alignright {
+	margin: 7px 28px 21px 0;
 }

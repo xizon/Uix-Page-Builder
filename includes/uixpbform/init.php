@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 4.5.2 (September 25, 2020)
+ * @version		: 4.5.3 (October 14, 2020)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '4.5.2';	
+		const VERSION    = '4.5.3';	
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 		
 		/**
@@ -79,6 +79,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					////Register core functions (Require to enqueue the script before </body> instead of in the <head>.)
 				    wp_register_script( 'uixpbform-functions', self::plug_directory() .'js/uixpbform.functions.min.js', array( 'jquery', 'jquery-tmpl' ), self::VERSION, true );
 					wp_localize_script( 'uixpbform-functions',  'uix_page_builder_wp_plugin', array( 
+						'site_lang'                 => get_locale(),
 						'url'                       => self::plug_directory(),
 						'site_url'                  => site_url(),
 						'site_domain'               => parse_url( site_url(), PHP_URL_SCHEME ).'://'.parse_url( site_url(), PHP_URL_HOST ),

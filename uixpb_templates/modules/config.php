@@ -248,13 +248,7 @@ $uix_pb_config = array(
 								
 								),	
 	
-								array(
-									'title'           => esc_html__( 'Instagram Feed', 'uix-page-builder' ),
-									'id'              => 'uix_pb_module_instagram.php',
-									'thumb'           => 'instagram.jpg',
-								
-								),
-	
+						
 								array(
 									'title'           => esc_html__( 'Contact Form', 'uix-page-builder' ),
 									'id'              => 'uix_pb_module_contactform.php',

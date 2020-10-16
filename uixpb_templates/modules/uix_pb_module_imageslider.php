@@ -53,13 +53,14 @@ $args =
 			'type'           => 'radio',
 			'default'        => array(
 		                            'slide'  => esc_html__( 'Slide', 'uix-page-builder' ),
-		                            'fade'  => esc_html__( 'Fade', 'uix-page-builder' ),
+				                    'none'  => esc_html__( 'Fade', 'uix-page-builder' ),
+		                            'scale'  => esc_html__( 'Scale', 'uix-page-builder' ),
 								)
 		
 		),
 		
 		array(
-			'id'             => 'uix_pb_imageslider_list_loop',
+			'id'             => 'uix_pb_imageslider_list_auto',
 			'title'          => esc_html__( 'Automatically Transition', 'uix-page-builder' ),
 			'desc'           => '',
 			'value'          => 1, // 0:false  1:true
@@ -73,7 +74,7 @@ $args =
 			'id'             => 'uix_pb_imageslider_list_paging',
 			'title'          => esc_html__( 'Show Paging Navigation', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => 0, // 0:false  1:true
+			'value'          => 1, // 0:false  1:true
 			'placeholder'    => '',
 			'type'           => 'checkbox'
 		
@@ -85,19 +86,34 @@ $args =
 			'id'             => 'uix_pb_imageslider_list_arrows',
 			'title'          => esc_html__( 'Show Arrow Navigation', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => 1, // 0:false  1:true
+			'value'          => 0, // 0:false  1:true
 			'placeholder'    => '',
 			'type'           => 'checkbox'
 		
 		
 		),	
 		
+	
+	
+		array(
+			'id'             => 'uix_pb_imageslider_list_draggable',
+			'title'          => esc_html__( 'Draggable', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 0, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
+		
+		
+		),	
+	
+	
+		
 		
 		array(
 			'id'             => 'uix_pb_imageslider_list_speed',
 			'title'          => esc_html__( 'Speed of Images Appereance', 'uix-page-builder' ),
 			'desc'           => '',
-			'value'          => 1000,
+			'value'          => 1200,
 			'placeholder'    => '',
 			'type'           => 'short-text',
 			'callback'       => 'number',
@@ -106,7 +122,21 @@ $args =
 								)
 		
 		),	
+	
+	
+		array(
+			'id'             => 'uix_pb_imageslider_list_speed_tip',
+			'desc'           => wp_kses( sprintf( __( 'Using the CSS animation/transition duration from Uix Shortcodes stylesheets. <br>You can find this code <code>.uix-pb-slideshow { ... }</code> <br><a target="_blank" href="%1$s">click here to set speed</a>', 'uix-page-builder' ), admin_url( 'admin.php?page='.UixPageBuilder::HELPER.'&tab=custom-css' ) ), wp_kses_allowed_html( 'post' ) ),
+			'type'           => 'note',
+			'default'        => array(
+		                            'fullwidth'  => false,
+									'type'       => 'warning'  //error, success, warning, note, default
+				                ),
 		
+		
+		),	
+	
+
 		array(
 			'id'             => 'uix_pb_imageslider_list_timing',
 			'title'          => esc_html__( 'Delay Between Images', 'uix-page-builder' ),
@@ -209,6 +239,15 @@ $args =
  * Returns form
  * ----------------------------------------------------
  */
+
+/**
+ * 
+ * Returns the unique ID used in the frontend template
+ */
+$frontend_id = 'imageslider-' . uniqid();
+
+
+
 UixPBFormCore::form_scripts( array(
 	    'clone'        => array(
 							'trigger_id'     => $clone_trigger_id,
@@ -258,30 +297,66 @@ UixPBFormCore::form_scripts( array(
 			<div class="uix-pb-imageslider-wrapper">
 				<div class="uix-pb-imageslider">
 					<div class="uix-pb-imageslider-container">
-						<div class="flexslider" data-loop="${uix_pb_imageslider_list_loop}" data-speed="${uix_pb_imageslider_list_speed}" data-timing="${uix_pb_imageslider_list_timing}" data-paging="${uix_pb_imageslider_list_paging}" data-arrows="${uix_pb_imageslider_list_arrows}" data-animation="${uix_pb_imageslider_list_effect}">
-							<ul class="slides">
-							<!-- loop start -->
+				
 
-								{{each '.$clone_trigger_id.'}}
-									{{if uix_pb_imageslider_listitem_photo != ""}}
+						<div role="banner" class="uix-pb-slideshow__wrapper">
+						   <div data-uix-pb-slideshow="1" class="uix-pb-slideshow__outline uix-pb-slideshow uix-pb-slideshow--eff-${uix_pb_imageslider_list_effect}" 
+							  data-draggable="{{if uix_pb_imageslider_list_draggable == 1}}true{{else}}false{{/if}}"
+							  data-draggable-cursor="move"	 
+							  data-auto="{{if uix_pb_imageslider_list_auto == 1}}true{{else}}false{{/if}}"
+							  data-loop="false"
+							  data-speed="${uix_pb_imageslider_list_speed}"
+							  data-timing="${uix_pb_imageslider_list_timing}" 
+							  data-count-total="false"
+							  data-count-now="false"
+							  data-controls-pagination=".my-a-slider-pagination-'.$frontend_id.'" 
+							  data-controls-arrows=".my-a-slider-arrows-'.$frontend_id.'">
+							   <div class="uix-pb-slideshow__inner">
 
-										<li>
-											<img src="${uix_pb_imageslider_listitem_photo}" alt="">
 
-											{{if uix_pb_imageslider_listitem_url != ""}}<a href="${uix_pb_imageslider_listitem_url}" target="_blank">{{/if}}
-												<div class="slide-text">
-														{{if uix_pb_imageslider_listitem_title != ""}}<div class="slide-title">${uix_pb_imageslider_listitem_title}</div>{{/if}}
-														{{if uix_pb_imageslider_listitem_intro != ""}}<div class="slide-byline">${uix_pb_imageslider_listitem_intro}</div>{{/if}}
-												</div>
-											{{if uix_pb_imageslider_listitem_url != ""}}</a>{{/if}}			
-										</li>
+									<!-- loop start -->
 
-									{{/if}}
-								{{/each}}	
+										{{each '.$clone_trigger_id.'}}
+											{{if uix_pb_imageslider_listitem_photo != ""}}
 
-							<!-- loop end -->
-							</ul>
-						</div>
+											   <div class="uix-pb-slideshow__item">
+													{{if uix_pb_imageslider_listitem_url != ""}}<a href="${uix_pb_imageslider_listitem_url}" target="_blank">{{/if}}
+													<img src="${uix_pb_imageslider_listitem_photo}" alt="">
+													{{if uix_pb_imageslider_listitem_url != ""}}</a>{{/if}}
+
+													{{if uix_pb_imageslider_listitem_title != "" || uix_pb_imageslider_listitem_intro != ""}}
+														<div class="uix-pb-slideshow__txt">
+															<div>
+																{{if uix_pb_imageslider_listitem_title != ""}}<h3>${uix_pb_imageslider_listitem_title}</h3>{{/if}}
+																{{if uix_pb_imageslider_listitem_intro != ""}}<p>${uix_pb_imageslider_listitem_intro}</p>{{/if}}
+															</div>
+														</div>	
+													{{/if}}
+											   </div>
+
+											{{/if}}
+										{{/each}}	
+
+									<!-- loop end -->
+
+
+							   </div>
+							  <!-- /.uix-pb-slideshow__inner -->
+
+							</div>
+						   <!-- /.uix-pb-slideshow__outline -->
+
+
+						   <div class="uix-pb-slideshow__pagination my-a-slider-pagination-'.$frontend_id.'" style="{{if uix_pb_imageslider_list_paging == 0}}display:none{{/if}}"></div>
+						   <div class="uix-pb-slideshow__arrows my-a-slider-arrows-'.$frontend_id.'" style="{{if uix_pb_imageslider_list_arrows == 0}}display:none{{/if}}">
+								<a href="#" class="uix-pb-slideshow__arrows--prev"></a>
+								<a href="#" class="uix-pb-slideshow__arrows--next"></a>
+						   </div>
+
+					   </div>
+					   <!-- /.uix-pb-slideshow__wrapper -->	
+				
+				
 					</div>
 				</div>
 			</div>
@@ -290,3 +365,7 @@ UixPBFormCore::form_scripts( array(
 	
     )
 );
+
+
+
+	

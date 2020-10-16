@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Uix Shortcodes 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2019-09-23 09:01+0000\n"
+"POT-Creation-Date: 2020-10-16 02:27+0000\n"
 "POT-Revision-Date: Sat Apr 08 2017 15:21:04 GMT+0800 (CST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -23,83 +23,84 @@ msgstr ""
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: uix-page-builder.php:260
+#: uix-page-builder.php:255
 msgid "Primary Menu"
 msgstr ""
 
-#: uix-page-builder.php:370
+#: uix-page-builder.php:365
 msgid "Uix Page Builder Settings"
 msgstr ""
 
-#: uix-page-builder.php:371 includes/admin/bulider/post-extensions-init.php:628
+#. Name of the plugin
+#: uix-page-builder.php:366 includes/admin/bulider/post-extensions-init.php:625
 msgid "Uix Page Builder"
 msgstr ""
 
-#: uix-page-builder.php:383 uix-page-builder.php:384 uix-page-builder.php:459
+#: uix-page-builder.php:378 uix-page-builder.php:379 uix-page-builder.php:454
 #: helper/settings.php:61
 msgid "How to use?"
 msgstr ""
 
-#: uix-page-builder.php:392 uix-page-builder.php:393 uix-page-builder.php:458
+#: uix-page-builder.php:387 uix-page-builder.php:388 uix-page-builder.php:453
 #: includes/admin/bulider/components/pb-ui-gridster.php:358
 #: includes/admin/bulider/components/pb-ui-gridster.php:561
 msgid "Settings"
 msgstr ""
 
-#: uix-page-builder.php:400 uix-page-builder.php:401 helper/settings.php:71
+#: uix-page-builder.php:395 uix-page-builder.php:396 helper/settings.php:71
 msgid "Template Files"
 msgstr ""
 
-#: uix-page-builder.php:408 uix-page-builder.php:409
+#: uix-page-builder.php:403 uix-page-builder.php:404
 msgid "Custom CSS"
 msgstr ""
 
-#: uix-page-builder.php:418 uix-page-builder.php:419
+#: uix-page-builder.php:413 uix-page-builder.php:414
 msgid "For Theme Developer"
 msgstr ""
 
-#: uix-page-builder.php:428 uix-page-builder.php:429
+#: uix-page-builder.php:423 uix-page-builder.php:424
 msgid "Helper"
 msgstr ""
 
-#: uix-page-builder.php:506 uix-page-builder.php:512
+#: uix-page-builder.php:501 uix-page-builder.php:507
 #: includes/classes/class-frontend-render.php:35
 #, php-format
 msgid "Untitled-%1$s"
 msgstr ""
 
-#: uix-page-builder.php:1525
+#: uix-page-builder.php:1520
 #, php-format
 msgid ""
 "<a target=\"_blank\" href=\"%1$s\"><i class=\"dashicons dashicons-welcome-"
 "write-blog\"></i> Edit this template</a>"
 msgstr ""
 
-#: uix-page-builder.php:1643
+#: uix-page-builder.php:1638
 msgid "Operation successfully completed!"
 msgstr ""
 
-#: uix-page-builder.php:1653
+#: uix-page-builder.php:1648
 msgid ""
 "There was a problem copying your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1661
+#: uix-page-builder.php:1656
 msgid ""
 "There was a problem removing your template files:</strong> Please check your "
 "server settings. You can upload files to theme templates directory using FTP."
 msgstr ""
 
-#: uix-page-builder.php:1664
+#: uix-page-builder.php:1659
 msgid "Remove successful!"
 msgstr ""
 
-#: uix-page-builder.php:1898 uix-page-builder.php:1926
+#: uix-page-builder.php:1893 uix-page-builder.php:1921
 msgid "- All -"
 msgstr ""
 
-#: uix-page-builder.php:2011
+#: uix-page-builder.php:2006
 msgid "(no title)"
 msgstr ""
 
@@ -152,45 +153,45 @@ msgstr ""
 msgid "<i class=\"dashicons dashicons-networking\"></i> For Theme Developer"
 msgstr ""
 
-#: includes/uixpbform/init.php:86
+#: includes/uixpbform/init.php:87
 msgid "Select Files"
 msgstr ""
 
-#: includes/uixpbform/init.php:87
+#: includes/uixpbform/init.php:88
 msgid "Insert"
 msgstr ""
 
-#: includes/uixpbform/init.php:88
+#: includes/uixpbform/init.php:89
 msgid "Insert Image"
 msgstr ""
 
-#: includes/uixpbform/init.php:89
+#: includes/uixpbform/init.php:90
 msgid "Remove link"
 msgstr ""
 
-#: includes/uixpbform/init.php:90
+#: includes/uixpbform/init.php:91
 msgid "Insert/Edit link"
 msgstr ""
 
-#: includes/uixpbform/init.php:91
+#: includes/uixpbform/init.php:92
 msgid "URL"
 msgstr ""
 
-#: includes/uixpbform/init.php:92
+#: includes/uixpbform/init.php:93
 #: uixpb_templates/modules/uix_pb_module_authorcard.php:95
-#: uixpb_templates/modules/uix_pb_module_parallax.php:209
+#: uixpb_templates/modules/uix_pb_module_parallax.php:207
 msgid "Link Text"
 msgstr ""
 
-#: includes/uixpbform/init.php:93
+#: includes/uixpbform/init.php:94
 msgid "Open link in a new tab"
 msgstr ""
 
-#: includes/uixpbform/init.php:94
+#: includes/uixpbform/init.php:95
 msgid "Syntax Highlight Code"
 msgstr ""
 
-#: includes/uixpbform/init.php:95
+#: includes/uixpbform/init.php:96
 msgid "Language"
 msgstr ""
 
@@ -271,31 +272,53 @@ msgstr ""
 msgid "Fade"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:63
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:57
+msgid "Scale"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:64
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:103
 msgid "Automatically Transition"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:74
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:75
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:114
 msgid "Show Paging Navigation"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:86
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:87
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:126
 msgid "Show Arrow Navigation"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:98
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:100
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:138
+msgid "Draggable"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:114
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:153
 msgid "Speed of Images Appereance"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:112
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:129
+#, php-format
+msgid ""
+"Using the CSS animation/transition duration from Uix Shortcodes stylesheets. "
+"<br>You can find this code <code>.uix-pb-slideshow { ... }</code> <br><a "
+"target=\"_blank\" href=\"%1$s\">click here to set speed</a>"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:142
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:169
 msgid "Delay Between Images"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:130
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:160
 #: uixpb_templates/modules/uix_pb_module_tabs.php:84
 #: uixpb_templates/modules/uix_pb_module_team1.php:145
 #: uixpb_templates/modules/uix_pb_module_team2.php:161
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:92
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:187
 #: uixpb_templates/modules/uix_pb_module_sample_hello.php:566
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:147
 #: uixpb_templates/modules/uix_pb_module_features1.php:94
@@ -306,7 +329,7 @@ msgstr ""
 msgid "List Item"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:147
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:177
 #: uixpb_templates/modules/uix_pb_module_map.php:200
 #: uixpb_templates/modules/uix_pb_module_sample_hello.php:333
 #: uixpb_templates/modules/uix_pb_module_sample_hello.php:582
@@ -315,19 +338,19 @@ msgstr ""
 msgid "Image URL"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:158
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:188
 msgid "Slider title"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:173
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:203
 msgid "Slider introduction"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:188
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:218
 msgid "Destination URL and can be left blank, e.g., http://your.site.com"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_imageslider.php:230
+#: uixpb_templates/modules/uix_pb_module_imageslider.php:269
 #: uixpb_templates/modules/config.php:86
 msgid "Image Slider"
 msgstr ""
@@ -366,7 +389,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_authorcard.php:59
 #: uixpb_templates/modules/uix_pb_module_team1.php:162
 #: uixpb_templates/modules/uix_pb_module_team2.php:178
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:109
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:204
 msgid "Avatar URL"
 msgstr ""
 
@@ -730,7 +753,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:173
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:331
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:488
-#: uixpb_templates/modules/uix_pb_module_parallax.php:185
+#: uixpb_templates/modules/uix_pb_module_parallax.php:183
 msgid "Button Color"
 msgstr ""
 
@@ -765,7 +788,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:194
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:352
 #: uixpb_templates/modules/uix_pb_module_pricing1_2.php:509
-#: helper/tabs/about.php:52
+#: helper/tabs/about.php:51
 msgid "Features"
 msgstr ""
 
@@ -863,7 +886,7 @@ msgstr ""
 #: uixpb_templates/modules/uix_pb_module_team1.php:331
 #: uixpb_templates/modules/uix_pb_module_pricing2.php:719
 #: uixpb_templates/modules/uix_pb_module_team2.php:347
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:179
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:283
 #: uixpb_templates/modules/uix_pb_module_pricing2_2.php:719
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:300
 #: uixpb_templates/modules/uix_pb_module_blog.php:329
@@ -926,13 +949,13 @@ msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_team1.php:170
 #: uixpb_templates/modules/uix_pb_module_team2.php:186
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:117
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:212
 msgid "Name"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_team1.php:181
 #: uixpb_templates/modules/uix_pb_module_team2.php:197
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:128
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:223
 msgid "Position"
 msgstr ""
 
@@ -951,7 +974,7 @@ msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_team1.php:336
 #: uixpb_templates/modules/uix_pb_module_team2.php:352
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:184
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:288
 #: uixpb_templates/modules/config.php:100
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:305
 #: uixpb_templates/modules/uix_pb_module_features2.php:177
@@ -1021,7 +1044,7 @@ msgid ""
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_menu2.php:96
-#: uixpb_templates/modules/config.php:306
+#: uixpb_templates/modules/config.php:300
 msgid "Embedded Menu"
 msgstr ""
 
@@ -1097,17 +1120,29 @@ msgid "Google Map"
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_menu1.php:96
-#: uixpb_templates/modules/config.php:299
+#: uixpb_templates/modules/config.php:293
 msgid "Fixed Menu"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:138
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:90
+msgid "Direction"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:96
+msgid "Horizontal"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:97
+msgid "Vertical"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:233
 msgid ""
 "Enter some details for the customer giving this testimonial., E.g., Thank "
 "you from the bottom of our hearts."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_testimonials.php:188
+#: uixpb_templates/modules/uix_pb_module_testimonials.php:292
 #: uixpb_templates/modules/config.php:179
 msgid "Testimonials Carousel"
 msgstr ""
@@ -1260,7 +1295,7 @@ msgid ""
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_contactform.php:103
-#: uixpb_templates/modules/config.php:259
+#: uixpb_templates/modules/config.php:253
 msgid "Contact Form"
 msgstr ""
 
@@ -1276,7 +1311,7 @@ msgstr ""
 
 #: uixpb_templates/modules/config.php:63 uixpb_templates/modules/config.php:68
 #: uixpb_templates/modules/uix_pb_module_parallax.php:104
-#: uixpb_templates/modules/uix_pb_module_parallax.php:250
+#: uixpb_templates/modules/uix_pb_module_parallax.php:248
 #: helper/tabs/about.php:29
 msgid "Parallax"
 msgstr ""
@@ -1334,22 +1369,16 @@ msgstr ""
 msgid "Progress Bar"
 msgstr ""
 
-#: uixpb_templates/modules/config.php:252
-#: uixpb_templates/modules/uix_pb_module_instagram.php:119
-#: helper/tabs/about.php:43
-msgid "Instagram Feed"
-msgstr ""
-
-#: uixpb_templates/modules/config.php:275 helper/tabs/about.php:44
+#: uixpb_templates/modules/config.php:269 helper/tabs/about.php:43
 msgid "Sidebar"
 msgstr ""
 
-#: uixpb_templates/modules/config.php:280
+#: uixpb_templates/modules/config.php:274
 #: uixpb_templates/modules/uix_pb_module_sidebar.php:84
 msgid "WP Sidebar"
 msgstr ""
 
-#: uixpb_templates/modules/config.php:294
+#: uixpb_templates/modules/config.php:288
 msgid "Custom Menu"
 msgstr ""
 
@@ -1393,7 +1422,7 @@ msgid "The description of this project."
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_portfolio1.php:249
-#: uixpb_templates/modules/uix_pb_module_parallax.php:198
+#: uixpb_templates/modules/uix_pb_module_parallax.php:196
 msgid "Destination URL"
 msgstr ""
 
@@ -1495,30 +1524,6 @@ msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_features1.php:268
 msgid "Features (2 Column)"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_instagram.php:42
-msgid "User Name"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_instagram.php:54
-msgid "Number of items to show"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_instagram.php:65
-msgid "Thumbnail Size"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_instagram.php:82
-msgid "Display Your Username?"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_instagram.php:92
-msgid "Seamless Display"
-msgstr ""
-
-#: uixpb_templates/modules/uix_pb_module_instagram.php:93
-msgid "Set the instagram module top & bottom padding to be 0px for your page."
 msgstr ""
 
 #: uixpb_templates/modules/uix_pb_module_sample_hello2.php:101
@@ -1723,27 +1728,31 @@ msgstr ""
 msgid "If the value is \"0\", the height is automatically calculated."
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:120
+#: uixpb_templates/modules/uix_pb_module_parallax.php:105
+msgid "Recommended value: -10.00 to 10.00"
+msgstr ""
+
+#: uixpb_templates/modules/uix_pb_module_parallax.php:118
 msgid "Background Color"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:133
+#: uixpb_templates/modules/uix_pb_module_parallax.php:131
 msgid "Background Image"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:159
+#: uixpb_templates/modules/uix_pb_module_parallax.php:157
 msgid "Link Button"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:201
+#: uixpb_templates/modules/uix_pb_module_parallax.php:199
 msgid "http://"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:211
+#: uixpb_templates/modules/uix_pb_module_parallax.php:209
 msgid "Check Out"
 msgstr ""
 
-#: uixpb_templates/modules/uix_pb_module_parallax.php:220
+#: uixpb_templates/modules/uix_pb_module_parallax.php:218
 msgid ""
 "Valid when the value of <strong>\"Destination URL\"</strong> is not empty"
 msgstr ""
@@ -2077,18 +2086,14 @@ msgid "easy-pie-chart"
 msgstr ""
 
 #: helper/tabs/credits.php:19
-msgid "jQuery FlexSlider"
+msgid "Muuri"
 msgstr ""
 
 #: helper/tabs/credits.php:20
-msgid "Shuffle.js"
-msgstr ""
-
-#: helper/tabs/credits.php:21
 msgid "wp-color-picker-alpha"
 msgstr ""
 
-#: helper/tabs/credits.php:22
+#: helper/tabs/credits.php:21
 msgid "jQuery Templates plugin"
 msgstr ""
 
@@ -2156,83 +2161,83 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: helper/tabs/about.php:45
+#: helper/tabs/about.php:44
 msgid "Uix Products (Require the WP plugin \"Uix Products\")"
 msgstr ""
 
-#: helper/tabs/about.php:46
+#: helper/tabs/about.php:45
 msgid "Uix Slideshow (Require the WP plugin \"Uix Slideshow\")"
 msgstr ""
 
-#: helper/tabs/about.php:47
+#: helper/tabs/about.php:46
 msgid "Contact Form (Require the WP plugin \"Contact Form 7\")"
 msgstr ""
 
-#: helper/tabs/about.php:57
+#: helper/tabs/about.php:56
 msgid "Compatible with Gutenberg. (new)"
 msgstr ""
 
-#: helper/tabs/about.php:58
+#: helper/tabs/about.php:57
 msgid "A particularly simple custom form and template API."
 msgstr ""
 
-#: helper/tabs/about.php:63
+#: helper/tabs/about.php:62
 #, php-format
 msgid ""
 "Support Custom Post Types to create a portfolio list in WordPress. (Require "
 "the WP plugin <a href=\"%s\" target=\"_blank\">Uix Products</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:72
+#: helper/tabs/about.php:71
 #, php-format
 msgid ""
 "Support Custom Post Types to create a slideshow in WordPress. (Require the "
 "WP plugin <a href=\"%s\" target=\"_blank\">Uix Slideshow</a>)"
 msgstr ""
 
-#: helper/tabs/about.php:77
+#: helper/tabs/about.php:76
 msgid ""
 "You can switch between <strong>\"Visual Builder\"</strong> and <strong>"
 "\"Default Editor\"</strong> modes at any time on the Pages Add New/Edit "
 "Screen."
 msgstr ""
 
-#: helper/tabs/about.php:78
+#: helper/tabs/about.php:77
 msgid "Support to choose multiple default templates you want."
 msgstr ""
 
-#: helper/tabs/about.php:79
+#: helper/tabs/about.php:78
 msgid "Support to save custom templates and export templates."
 msgstr ""
 
-#: helper/tabs/about.php:80
+#: helper/tabs/about.php:79
 msgid ""
 "Support a key to add anchor links based Uix Page Builder to your navigation. "
 "Visit the Menus page (Appearance &laquo; Menus), choose items like \"Uix "
 "Page Builder Anchor Links\", from the left column to add to the menu."
 msgstr ""
 
-#: helper/tabs/about.php:81
+#: helper/tabs/about.php:80
 msgid "Simple operation window, support loop list items."
 msgstr ""
 
-#: helper/tabs/about.php:82
+#: helper/tabs/about.php:81
 msgid "Customizable core style sheets."
 msgstr ""
 
-#: helper/tabs/about.php:83
+#: helper/tabs/about.php:82
 msgid "Drag and Drop Responsive Website Builder."
 msgstr ""
 
-#: helper/tabs/about.php:84
+#: helper/tabs/about.php:83
 msgid "Uix Page Builder supports the automatic addition of Anchor Links."
 msgstr ""
 
-#: helper/tabs/about.php:85
+#: helper/tabs/about.php:84
 msgid "Supports Right-To-Left (RTL) direction."
 msgstr ""
 
-#: helper/tabs/about.php:92
+#: helper/tabs/about.php:91
 msgid ""
 "<strong>If you like this plug-in, you can check out my free and high-quality "
 "themes with Uix Page Builder for you to download.</strong> <h4><a "
@@ -2333,7 +2338,7 @@ msgid "Cancel"
 msgstr ""
 
 #: includes/uixpbform/components/ui-wrapper.php:45
-#: includes/admin/bulider/post-extensions-init.php:731
+#: includes/admin/bulider/post-extensions-init.php:728
 msgid "Save"
 msgstr ""
 
@@ -2368,7 +2373,7 @@ msgid "Can not be submitted in the live preview page."
 msgstr ""
 
 #: includes/admin/bulider/post-extensions-init.php:51
-#: includes/admin/bulider/post-extensions-init.php:349
+#: includes/admin/bulider/post-extensions-init.php:346
 msgid "Hmm... no templates yet."
 msgstr ""
 
@@ -2407,137 +2412,137 @@ msgid ""
 "image\"></i></a></li></ol></div>"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:356
+#: includes/admin/bulider/post-extensions-init.php:353
 msgid ""
 "<span style=\"color:red\">Fatal error: Class \"DOMDocument\" not found in "
 "your PHP environment.</span>"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:390
+#: includes/admin/bulider/post-extensions-init.php:387
 msgid "Default"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:435
+#: includes/admin/bulider/post-extensions-init.php:432
 msgid ""
 "Add a first module from the side panel. You can also choose a template to "
 "use."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:542
+#: includes/admin/bulider/post-extensions-init.php:539
 msgid ""
 "<i class=\"dashicons dashicons-editor-kitchensink\"></i>&nbsp;&nbsp;Uix Page "
 "Builder Attributes"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:569
+#: includes/admin/bulider/post-extensions-init.php:566
 msgid "Use Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:577
+#: includes/admin/bulider/post-extensions-init.php:574
 msgid "Page Builder Editor"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:582
+#: includes/admin/bulider/post-extensions-init.php:579
 msgid "Enable"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:586
+#: includes/admin/bulider/post-extensions-init.php:583
 msgid "Disable"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:596
+#: includes/admin/bulider/post-extensions-init.php:593
 msgid "Frequently Asked Questions (FAQ):"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:667
+#: includes/admin/bulider/post-extensions-init.php:664
 msgid "Desktop"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:668
+#: includes/admin/bulider/post-extensions-init.php:665
 msgid "Tablet"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:669
+#: includes/admin/bulider/post-extensions-init.php:666
 msgid "Tablet (Portrait)"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:670
+#: includes/admin/bulider/post-extensions-init.php:667
 msgid "Mobile"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:672
+#: includes/admin/bulider/post-extensions-init.php:669
 #: includes/admin/bulider/components/pb-ui-gridster.php:666
 #: includes/admin/bulider/components/pb-ui-gridster.php:683
 msgid "Saving..."
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:691
+#: includes/admin/bulider/post-extensions-init.php:688
 msgid "Add Section"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:696
+#: includes/admin/bulider/post-extensions-init.php:693
 msgid "Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:700
+#: includes/admin/bulider/post-extensions-init.php:697
 msgid "Select a Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:705
+#: includes/admin/bulider/post-extensions-init.php:702
 msgid "Page Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:707
+#: includes/admin/bulider/post-extensions-init.php:704
 msgid "Default Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:716
+#: includes/admin/bulider/post-extensions-init.php:713
 msgid "Content Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:718
+#: includes/admin/bulider/post-extensions-init.php:715
 msgid "Confirm"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:724
+#: includes/admin/bulider/post-extensions-init.php:721
 msgid "Save as Template"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:725
+#: includes/admin/bulider/post-extensions-init.php:722
 msgid "Enter Template Name"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:737
-#: includes/admin/bulider/post-extensions-init.php:753
+#: includes/admin/bulider/post-extensions-init.php:734
+#: includes/admin/bulider/post-extensions-init.php:750
 msgid "Export"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:746
+#: includes/admin/bulider/post-extensions-init.php:743
 msgid ".xml\"</em></b>. <span style=\"color:red\">(Highest priority)</span>"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:751
+#: includes/admin/bulider/post-extensions-init.php:748
 msgid "Your current template:"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:762
-#: includes/admin/bulider/post-extensions-init.php:770
+#: includes/admin/bulider/post-extensions-init.php:759
+#: includes/admin/bulider/post-extensions-init.php:767
 msgid "Publish"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:765
+#: includes/admin/bulider/post-extensions-init.php:762
 msgid "Enter the title of the page:"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:776
+#: includes/admin/bulider/post-extensions-init.php:773
 msgid "Exit Visual Builder"
 msgstr ""
 
-#: includes/admin/bulider/post-extensions-init.php:793
+#: includes/admin/bulider/post-extensions-init.php:790
 msgid "Add a first module here. You can also choose a template to use."
 msgstr ""
 
-#: includes/admin/bulider/visual-builder-init.php:230
+#: includes/admin/bulider/visual-builder-init.php:240
 msgid "Hide Sidebar"
 msgstr ""
 

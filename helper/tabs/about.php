@@ -40,7 +40,6 @@ if( !isset( $_GET[ 'tab' ] ) || $_GET[ 'tab' ] == 'about' ) {
 		    <li><?php _e( 'Portfolio', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Blog', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Slider', 'uix-page-builder' ); ?></li> 
-		    <li><?php _e( 'Instagram Feed', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Sidebar', 'uix-page-builder' ); ?></li>   
 		    <li><?php _e( 'Uix Products (Require the WP plugin "Uix Products")', 'uix-page-builder' ); ?></li> 
 		    <li><?php _e( 'Uix Slideshow (Require the WP plugin "Uix Slideshow")', 'uix-page-builder' ); ?></li> 

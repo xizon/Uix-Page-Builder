@@ -82,6 +82,23 @@ $module_config =
 		
 		
 		),	
+	
+	
+		array(
+			'id'             => 'uix_pb_portfolio1_config_layout',
+			'title'          => esc_html__( 'Layout', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 'standard',
+			'placeholder'    => '',
+			'type'           => 'radio',
+			'default'        => array(
+									'standard'  => esc_html__( 'Standard', 'uix-page-builder' ),
+									'masonry'  => esc_html__( 'Masonry', 'uix-page-builder' ),
+								)
+		
+		
+		),	
+	
 		
 		array(
 			'id'             => 'uix_pb_portfolio1_config_urlwindow',
@@ -344,17 +361,18 @@ UixPBFormCore::form_scripts( array(
 			{{/if}}	
 			
 			{{if uix_pb_portfolio1_config_filterable == 1}}
-				<div class="uix-pb-portfolio-cat-list uix-pb-filterable" data-classprefix="uix-pb-portfolio-"  data-filter-id="'.$frontend_id.'" id="uix-pb-portfolio-cat-list-'.$frontend_id.'">
+				<div class="uix-pb-portfolio-cat-list uix-pb-filterable" data-classprefix="uix-pb-portfolio-" id="nav-filters-uix-pb-portfolio-cat-list-'.$frontend_id.'">
 					<ul>
 					    <li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>
-						<span id="uix-pb-portfolio-cat-list-'.$frontend_id.'-container"></span>
+						<span id="nav-filters-uix-pb-portfolio-cat-list-'.$frontend_id.'-container"></span>
 					</ul>
 				</div>
 			{{/if}}	
 						
 			
-			<div class="uix-pb-portfolio-wrapper">
-				<div class="uix-pb-portfolio-tiles uix-pb-portfolio-col${uix_pb_portfolio1_config_grid}" id="uix-pb-portfolio-filter-stage-'.$frontend_id.'">
+			
+			<div class="uix-pb-portfolio-wrapper" data-show-type="${uix_pb_portfolio1_config_layout}{{if uix_pb_portfolio1_config_filterable == 1}}|filter{{/if}}" data-filter-id="{{if uix_pb_portfolio1_config_filterable == 1}}#nav-filters-uix-pb-portfolio-cat-list-'.$frontend_id.'{{/if}}">
+				<div class="uix-pb-portfolio-tiles uix-pb-portfolio-col${uix_pb_portfolio1_config_grid}">
 			      <!-- loop start -->
 
 						{{each '.$clone_trigger_id.'}}
