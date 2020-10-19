@@ -118,6 +118,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.6.8 (October 19, 2020) =
+
+* Fix: The portfolio module is compatible with other common themes and plugins.
+
+
 
 ##### = 1.6.7 (October 13, 2020) =
 

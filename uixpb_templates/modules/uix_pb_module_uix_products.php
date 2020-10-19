@@ -77,16 +77,36 @@ $module_config =
 		
 		),
 
-			array(
-				'id'             => 'uix_pb_uix_products_config_filterable',
-				'title'          => esc_html__( 'Filterable by Category', 'uix-page-builder' ),
-				'desc'           => '',
-				'value'          => 0, // 0:false  1:true
-				'placeholder'    => '',
-				'type'           => 'checkbox'
+		array(
+			'id'             => 'uix_pb_uix_products_config_filterable',
+			'title'          => esc_html__( 'Filterable by Category', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 0, // 0:false  1:true
+			'placeholder'    => '',
+			'type'           => 'checkbox'
 
 
-			),	
+		),	
+
+	
+		array(
+			'id'             => 'uix_pb_uix_products_config_layout',
+			'title'          => esc_html__( 'Layout', 'uix-page-builder' ),
+			'desc'           => '',
+			'value'          => 'standard',
+			'placeholder'    => '',
+			'type'           => 'radio',
+			'default'        => array(
+									'standard'  => esc_html__( 'Standard', 'uix-page-builder' ),
+									'masonry'  => esc_html__( 'Masonry', 'uix-page-builder' ),
+								)
+		
+		
+		),	
+	
+	
+	
+	
 		//------ Toggle of switch with checkbox (end)
 		
 		
@@ -407,7 +427,8 @@ UixPBFormCore::form_scripts( array(
 				<div class="uix-pb-section-desc">${uix_pb_uix_products_config_intro}</div>		
 			{{/if}}	
 			
-			[uix_pb_uix_products catslist_enable=\'${uix_pb_uix_products_config_display_cats}\' catslist_filterable=\'${uix_pb_uix_products_config_filterable}\' catslist_id=\''.$frontend_id.'\' catslist_classprefix=\'uix-pb-portfolio-\' pagination=\'${uix_pb_uix_products_pagination}\' excerpt_length=\'${uix_pb_uix_products_excerpt_length}\' readmore_enable=\'${uix_pb_uix_products_readmore_checkbox_toggle}\'  readmore_class=\'${uix_pb_uix_products_readmore_class}\' readmore_text=\'${uix_pb_uix_products_readmore_text_attr}\' order=\'${uix_pb_uix_products_order}\'  cat=\'${uix_pb_uix_products_cats}\' show=\'${uix_pb_uix_products_num}\' before=\'<div class="uix-pb-portfolio-wrapper"><div class="uix-pb-portfolio-tiles uix-pb-portfolio-col${uix_pb_uix_products_config_grid}" id="uix-pb-portfolio-filter-stage-'.$frontend_id.'">\' after=\'</div></div>\']'.$loop_template_code.'[/uix_pb_uix_products]
+			
+			[uix_pb_uix_products catslist_enable=\'${uix_pb_uix_products_config_display_cats}\' catslist_filterable=\'${uix_pb_uix_products_config_filterable}\' catslist_id=\''.$frontend_id.'\' catslist_classprefix=\'uix-pb-portfolio-\' pagination=\'${uix_pb_uix_products_pagination}\' excerpt_length=\'${uix_pb_uix_products_excerpt_length}\' readmore_enable=\'${uix_pb_uix_products_readmore_checkbox_toggle}\'  readmore_class=\'${uix_pb_uix_products_readmore_class}\' readmore_text=\'${uix_pb_uix_products_readmore_text_attr}\' order=\'${uix_pb_uix_products_order}\'  cat=\'${uix_pb_uix_products_cats}\' show=\'${uix_pb_uix_products_num}\' before=\'<div class="uix-pb-portfolio-wrapper" data-show-type="${uix_pb_uix_products_config_layout}{{if uix_pb_uix_products_config_filterable == 1}}|filter{{/if}}" data-filter-id="{{if uix_pb_uix_products_config_filterable == 1}}#nav-filters-uix-pb-portfolio-cat-list-'.$frontend_id.'{{/if}}"><div class="uix-pb-portfolio-tiles uix-pb-portfolio-col${uix_pb_uix_products_config_grid}">\' after=\'</div></div>\']'.$loop_template_code.'[/uix_pb_uix_products]
 			
 		
 		'

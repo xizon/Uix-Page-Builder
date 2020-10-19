@@ -332,7 +332,7 @@ if ( !class_exists( 'UixPB_UixProducts' ) ) {
 				$catlist .= '    <ul>';
 				
 				if ( isset( $catslist_filterable ) &&  $catslist_filterable == 1 ) {
-					$catlist .= '        <li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>';
+					$catlist .= '        <li class="current-cat"><a href="javascript:void(0)" data-normal="1" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>';
 				}
 				
 				

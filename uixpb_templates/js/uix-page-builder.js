@@ -13,7 +13,7 @@
 	3. Pricing
     4. Parallax
     5. Testimonials
-	6. Portfolio
+	6. Portfolio ( With Filterable and Masonry )
 	7. Grid
 	8. Image Slider
 	9. Custom Menu
@@ -797,7 +797,7 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 /*!
  *************************************
- * 6. Portfolio
+ * 6. Portfolio ( With Filterable and Masonry )
  *************************************
  */
 uix_pb = ( function ( uix_pb, $, window, document ) {
@@ -913,12 +913,23 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 							.toLowerCase();
 
 
-				catlistStr += '<li><a href="javascript:" data-group="'+_slug+'">'+newArr[j]+'</a></li>';
+				catlistStr += '<li><a href="javascript:void(0)" data-normal="1" data-group="'+_slug+'">'+newArr[j]+'</a></li>';
 			}
-
-			$( filterCat + '-container' ).html( catlistStr ).promise().done( function(){
-				
-				
+			
+			
+			if ( galleryType.indexOf( 'filter' ) >= 0 ) {
+				if ( $( filterCat + '-container' ).length > 0 ) {
+					$( filterCat + '-container' ).html( catlistStr ).promise().done( function(){ initFilter(); });
+				} else {
+					$( '.uix-pb-portfolio-cat-list' ).find( '> ul' ).html( '<li class="current-cat"><a href="javascript:void(0)" data-normal="1" data-group="all">All</a></li>' + catlistStr ).promise().done( function(){ initFilter(); });
+				}
+			} else {
+				initFilter();
+			}
+			
+			
+			
+			function initFilter() {
 				/* 
 				 ---------------------------
 				 Add a tagname to each list item
@@ -935,6 +946,28 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 					$( this ).addClass( 'filter-container' );
 					$( this ).find( '.uix-pb-portfolio-item' ).addClass( 'filter-item' );	
 				}	
+
+				
+
+
+				//Standard layout 
+				//--
+				// When all items have loaded refresh their
+				// dimensions and layout the grid.
+				if ( galleryType.indexOf( 'filter' ) >= 0 && galleryType.indexOf( 'standard' ) >= 0 ) {
+					imagesLoaded( $grid ).on( 'always', function() {
+						var itemH = [];
+						$allItems.each( function( index ) {
+							var tempheight = $( this ).find( '.uix-pb-portfolio-image' ).height();
+							itemH.push( tempheight );
+
+						} );
+
+						$grid.find( '.uix-pb-portfolio-image' ).css( 'height', Math.max.apply( Math, itemH ) + 'px' );
+					});	
+				}
+
+
 
 
 				if ( galleryType.indexOf( 'filter' ) >= 0 || galleryType.indexOf( 'masonry' ) >= 0 ) {
@@ -1041,13 +1074,10 @@ uix_pb = ( function ( uix_pb, $, window, document ) {
 
 					$filterOptions.find( '[data-group="all"]' ).parent( 'li' ).remove();
 				}	
-
+	
 				
-				
-			});
-			
-			
-			
+			}
+	
 
 		} );
 		
@@ -1700,7 +1730,7 @@ function uix_pb_render_trigger() {
 
                     _dotActive = ( i == 0 ) ? 'class="is-active"' : '';
 
-                    _dot += '<li><a '+_dotActive+' data-index="'+i+'" href="javascript:"></a></li>';
+                    _dot += '<li><a '+_dotActive+' data-normal="1" data-index="'+i+'" href="javascript:void(0)"></a></li>';
                 }
                 _dot += '</ul>';
 
@@ -1743,7 +1773,10 @@ function uix_pb_render_trigger() {
                 var _prev = $( arrowsID ).find( '.uix-pb-slideshow__arrows--prev' ),
                     _next = $( arrowsID ).find( '.uix-pb-slideshow__arrows--next' );
 
-                $( arrowsID ).find( 'a' ).attr( 'href', 'javascript:' );
+                $( arrowsID ).find( 'a' ).attr( {
+					'href': 'javascript:void(0)',
+					'data-normal': 1
+				} );
 
                 $( arrowsID ).find( 'a' ).removeClass( 'is-disabled' );
                 if ( !loop ) {
@@ -2408,7 +2441,7 @@ function uix_pb_render_trigger() {
 							var _dot       = '';
 							_dot += '<ul class="uix-pb-hybridcontent-slider__pagination--default">';
 							for ( var i = 0; i < itemTotal; i++ ) {
-								_dot += '<li><a data-target-index="'+i+'" href="javascript:void(0);"></a></li>';
+								_dot += '<li><a data-normal="1" data-target-index="'+i+'" href="javascript:void(0);"></a></li>';
 							}
 							_dot += '</ul>';
 

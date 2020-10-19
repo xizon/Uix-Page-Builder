@@ -2670,6 +2670,8 @@ img.uix-pb-img,
 .uix-pb-portfolio-tiles .uix-pb-portfolio-item h3 {
     margin: 1em 0 .3em;
     padding: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .uix-pb-portfolio-tiles .uix-pb-portfolio-item h3,
@@ -2691,6 +2693,7 @@ img.uix-pb-img,
     text-align: center;
     font-size: 12px;
     margin-top: .3em;
+	height: auto !important;
 }
 
 .uix-pb-portfolio-tiles .uix-pb-portfolio-item .uix-pb-portfolio-content {
@@ -2760,6 +2763,7 @@ img.uix-pb-img,
     -moz-opacity: 1;
     opacity: 1;
 }
+
 
 
 @media screen and (max-width: 1280px) {
@@ -2907,8 +2911,8 @@ img.uix-pb-img,
 }
 
 .uix-pb-portfolio-cat-list li a:hover,
-.uix-pb-portfolio-cat-list li.current > a,
-.uix-pb-portfolio-cat-list li a.current {
+.uix-pb-portfolio-cat-list li.current-cat > a,
+.uix-pb-portfolio-cat-list li a.current-cat {
     color: #000 !important;
 	text-decoration: none !important;
 	border-bottom: 1px solid #000 !important;

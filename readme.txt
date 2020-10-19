@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
 Tested up to: 5.5.1
-Stable tag: 1.6.7
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,10 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 == Changelog ==
 
+
+= 1.6.8 (October 19, 2020) =
+
+* Fix: The portfolio module is compatible with other common themes and plugins.
 
 
 = 1.6.7 (October 13, 2020) =

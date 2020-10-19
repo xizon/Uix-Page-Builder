@@ -363,7 +363,7 @@ UixPBFormCore::form_scripts( array(
 			{{if uix_pb_portfolio1_config_filterable == 1}}
 				<div class="uix-pb-portfolio-cat-list uix-pb-filterable" data-classprefix="uix-pb-portfolio-" id="nav-filters-uix-pb-portfolio-cat-list-'.$frontend_id.'">
 					<ul>
-					    <li class="current"><a href="javascript:" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>
+					    <li class="current-cat"><a href="javascript:void(0)" data-normal="1" data-group="all">'.esc_html__( 'All', 'uix-page-builder' ).'</a></li>
 						<span id="nav-filters-uix-pb-portfolio-cat-list-'.$frontend_id.'-container"></span>
 					</ul>
 				</div>

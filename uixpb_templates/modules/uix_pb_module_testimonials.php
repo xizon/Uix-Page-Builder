@@ -378,8 +378,8 @@ UixPBFormCore::form_scripts( array(
 
 
 						<div class="uix-pb-hybridcontent-slider__controls" id="uix-pb-hybridcontent-slider__controls-'.$frontend_id.'" style="{{if uix_pb_testimonials_list_arrows == 0}}display:none{{/if}}">
-							<a href="javascript:void(0);" class="uix-pb-hybridcontent-slider__controls--prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-							<a href="javascript:void(0);" class="uix-pb-hybridcontent-slider__controls--next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+							<a data-normal="1" href="javascript:void(0);" class="uix-pb-hybridcontent-slider__controls--prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+							<a data-normal="1" href="javascript:void(0);" class="uix-pb-hybridcontent-slider__controls--next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
 						</div>
 						<!-- /.uix-pb-hybridcontent-slider__controls -->    
 
