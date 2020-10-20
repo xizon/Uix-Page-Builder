@@ -6,7 +6,7 @@ Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
 Tested up to: 5.5.1
-Stable tag: 1.6.8
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+= 1.7.0 (October 20, 2020) =
+
+* Fix: Fixed the error that XML may not read data under some servers.
+
 
 
 = 1.6.8 (October 19, 2020) =

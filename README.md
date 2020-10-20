@@ -118,6 +118,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.7.0 (October 20, 2020) =
+
+* Fix: Fixed the error that XML may not read data under some servers.
+
+
 ##### = 1.6.8 (October 19, 2020) =
 
 * Fix: The portfolio module is compatible with other common themes and plugins.

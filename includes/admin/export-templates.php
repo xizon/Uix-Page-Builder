@@ -27,41 +27,56 @@ $tempdata = str_replace( '</items>', '', get_option( 'uix-page-builder-templates
 //Display the list by loading the template file (.xml)
 if ( file_exists( $xmlfile ) && class_exists(  'DOMDocument'  ) ) {
 
+	//with WordPress methord
+	$response = wp_remote_get( UixPageBuilder::tempfile_modules_path( 'uri' ) );
 
-	$xml             = new UixPB_XML;  
-	$xml -> xml_path = UixPageBuilder::tempfile_modules_path( 'uri' );
-	$xLength         = $xml -> get_xmlLength();
-	$xValue          = $xml -> xml_read();
+	if ( is_array( $response ) && ! is_wp_error( $response ) ) {
 
-	// Reading JSON data now
-	$xValue = $xml -> xml_read();
+		//get xml code
+		//--------------
+		$xmlCode = simplexml_load_string( $response['body'], "SimpleXMLElement", LIBXML_NOCDATA);
+		$jsonXml = json_encode($xmlCode);
+		$xValue = json_decode($jsonXml,TRUE);
 
-	for ( $xmli = 0; $xmli <= $xLength - 1; $xmli++ ) {
 
-		if ( isset( $xValue['item'][$xmli]['data'] ) ) { //required
-			
-			$json_data       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'save' );			
-			$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'save' );
-			$temp_name       = $xValue['item'][$xmli]['name'];
-			$tmpl_author     = $xValue['item'][$xmli]['author'];
-			$tmpl_email      = $xValue['item'][$xmli]['email'];
-			$tmpl_release    = $xValue['item'][$xmli]['release'];
+		//get length
+		//--------------
+		$xLength = count( $xValue[ 'item' ] );
 
-			if ( $temp_name != 'null' ) {
-				$tempdata     .= '
-					<item>
-						<name><![CDATA['.$temp_name.']]></name>
-						<thumb><![CDATA['.$preview_thumb.']]></thumb>
-						<author><![CDATA['.$tmpl_author.']]></author>
-						<email><![CDATA['.$tmpl_email.']]></email>
-						<release><![CDATA['.$tmpl_release.']]></release>
-						<data><![CDATA['.$json_data.']]></data>
-					</item>
-				';
-			}	
-		}
 
-	}
+		//get data
+		//--------------
+		for ( $xmli = 0; $xmli <= $xLength - 1; $xmli++ ) {
+
+			if ( isset( $xValue['item'][$xmli]['data'] ) ) { //required
+
+				$json_data       = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'save' );			
+				$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'save' );
+				$temp_name       = $xValue['item'][$xmli]['name'];
+				$tmpl_author     = $xValue['item'][$xmli]['author'];
+				$tmpl_email      = $xValue['item'][$xmli]['email'];
+				$tmpl_release    = $xValue['item'][$xmli]['release'];
+
+				if ( $temp_name != 'null' ) {
+					$tempdata     .= '
+						<item>
+							<name><![CDATA['.$temp_name.']]></name>
+							<thumb><![CDATA['.$preview_thumb.']]></thumb>
+							<author><![CDATA['.$tmpl_author.']]></author>
+							<email><![CDATA['.$tmpl_email.']]></email>
+							<release><![CDATA['.$tmpl_release.']]></release>
+							<data><![CDATA['.$json_data.']]></data>
+						</item>
+					';
+				}	
+			}//endif isset( $xValue['item'][$xmli]['data'] )
+
+		}//end for
+
+
+	}//endif $response
+	
+
 
 }
 

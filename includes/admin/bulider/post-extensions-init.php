@@ -352,48 +352,66 @@ if ( !function_exists( 'uix_page_builder_loadtemplist' ) ) {
 			//Display the list by loading the template file (.xml)
 			if (  !class_exists(  'DOMDocument'  )  )  _e( '<span style="color:red">Fatal error: Class "DOMDocument" not found in your PHP environment.</span>', 'uix-page-builder' );
 			if ( file_exists( $xmlfile ) && class_exists(  'DOMDocument'  ) ) {
+						
+				
 				
 
-				$xml             = new UixPB_XML;  
-				$xml -> xml_path = UixPageBuilder::tempfile_modules_path( 'uri' );
-				$xLength         = $xml -> get_xmlLength();
-				$xValue          = $xml -> xml_read();
+				//with WordPress methord
+				$response = wp_remote_get( UixPageBuilder::tempfile_modules_path( 'uri' ) );
+			
+				if ( is_array( $response ) && ! is_wp_error( $response ) ) {
+					
+					//get xml code
+					//--------------
+					$xmlCode = simplexml_load_string( $response['body'], "SimpleXMLElement", LIBXML_NOCDATA);
+					$jsonXml = json_encode($xmlCode);
+					$xValue = json_decode($jsonXml,TRUE);
+
 				
-				// Reading JSON data now
-				$xValue = $xml -> xml_read();
-		
-				for ( $xmli = 0; $xmli <= $xLength - 1; $xmli++ ) {
+					//get length
+					//--------------
+					$xLength = count( $xValue[ 'item' ] );
+				
+					
+					//get data
+					//--------------
+					for ( $xmli = 0; $xmli <= $xLength - 1; $xmli++ ) {
 
-					if ( isset( $xValue['item'][$xmli]['data'] ) ) { //required
-						
-						$json_data       = UixPageBuilder::format_page_final_data( UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'load' ) );			
-						$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'load' );
-						$temp_name       = $xValue['item'][$xmli]['name'];
-						$checked         = '';
+						if ( isset( $xValue['item'][$xmli]['data'] ) ) { //required
 
-
-						//The template name has been applied
-						$curtempname = UixPageBuilder::get_session_default_tempname( $post_ID );
-						if ( !empty( $curtempname ) ) {
-							if ( $temp_name == $curtempname ) $checked = 'checked';
-						}
+							$json_data       = UixPageBuilder::format_page_final_data( UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['data'], 'load' ) );			
+							$preview_thumb   = UixPageBuilder::convert_img_path( $xValue['item'][$xmli]['thumb'], 'load' );
+							$temp_name       = $xValue['item'][$xmli]['name'];
+							$checked         = '';
 
 
+							//The template name has been applied
+							$curtempname = UixPageBuilder::get_session_default_tempname( $post_ID );
+							if ( !empty( $curtempname ) ) {
+								if ( $temp_name == $curtempname ) $checked = 'checked';
+							}
 
-						if ( $temp_name != 'null' ) {
-							echo '
-							<label>
-								<input type="radio" name="temp" value="1" '.$checked.'>
-								'.$temp_name.' <span class="default">'.esc_html__( 'Default', 'uix-page-builder' ).'</span>
-								<img class="preview-thumb" style="display:none" src="'.$preview_thumb.'" alt="">
-								<textarea>'.$json_data.'</textarea>
-							</label>
-							';	
-						}	
-						
-					}
 
-				}
+
+							if ( $temp_name != 'null' ) {
+								echo '
+								<label>
+									<input type="radio" name="temp" value="1" '.$checked.'>
+									'.$temp_name.' <span class="default">'.esc_html__( 'Default', 'uix-page-builder' ).'</span>
+									<img class="preview-thumb" style="display:none" src="'.$preview_thumb.'" alt="">
+									<textarea>'.$json_data.'</textarea>
+								</label>
+								';	
+							}	
+
+						}//endif isset( $xValue['item'][$xmli]['data'] )
+
+					}//end for
+
+
+				}//endif $response
+				
+				
 
 			}
 							
