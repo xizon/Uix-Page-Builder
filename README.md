@@ -118,6 +118,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.7.1 (October 21, 2020) =
+
+* Fix: Optimized the color transparency control, compatible with WP 5.5.0 and above.
+
+
+
 ##### = 1.7.0 (October 20, 2020) =
 
 * Fix: Fixed the error that XML may not read data under some servers.

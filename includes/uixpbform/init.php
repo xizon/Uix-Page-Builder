@@ -120,7 +120,11 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 					//Colorpicker
 					wp_enqueue_style( 'wp-color-picker' );
 					wp_enqueue_script( 'wp-color-picker' );	
-				    wp_enqueue_script( 'wp-color-picker-alpha', self::plug_directory() .'js/wp-color-picker-alpha.min.js', array( 'wp-color-picker', 'uixpbform-functions' ), '2.1.2', true );
+				 
+				    //Colorpicker alpha plugin
+				    $wp_color_picker_alpha_uri_name = version_compare( get_bloginfo( 'version' ), '5.5.0', '>=' ) ? 'wp-color-picker-alpha/up-5.5.0/wp-color-picker-alpha.min.js' : 'wp-color-picker-alpha/default/wp-color-picker-alpha.min.js';
+					wp_enqueue_script( 'wp-color-picker-alpha', self::plug_directory() .'js/' . $wp_color_picker_alpha_uri_name, array( 'wp-color-picker', 'uixpbform-functions' ), '2.1.2', true );
+				 
 	
 				 
 			  }
