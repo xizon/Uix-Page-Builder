@@ -118,6 +118,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.7.2 (December 21, 2020) =
+
+* Fix: Fixed a JavaScript bug for Uix Page Builder Form in WP 5.6.
+
+
 ##### = 1.7.1 (October 21, 2020) =
 
 * Fix: Optimized the color transparency control, compatible with WP 5.5.0 and above.
@@ -578,6 +583,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 5.3.*
 - WP 5.4.*
 - WP 5.5.*
+- WP 5.6.*
 
 
 ### Screenshot
