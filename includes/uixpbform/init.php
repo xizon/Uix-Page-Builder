@@ -3,7 +3,7 @@
  * Uix Page Builder Form
  *
  * @class 		: UixPBForm
- * @version		: 4.5.5 (December 21, 2020)
+ * @version		: 4.6 (July 5, 2021)
  * @author 		: UIUX Lab
  * @author URI 	: https://uiux.cc
  *
@@ -17,7 +17,7 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 	class UixPBFormCore {
 		
 		const PREFIX     = 'uix';
-		const VERSION    = '4.5.5';	
+		const VERSION    = '4.6';	
 		const MAPAPI     = 'AIzaSyA0kxSY0g5flUWptO4ggXpjhVB-ycdqsDk';
 		
 		/**
@@ -85,7 +85,8 @@ if ( !class_exists( 'UixPBFormCore' ) ) {
 						'site_domain'               => parse_url( site_url(), PHP_URL_SCHEME ).'://'.parse_url( site_url(), PHP_URL_HOST ),
 						'upload_dir_url'            => $upload_dir_url,
 						'lang_media_title'          => __( 'Select Files', 'uix-page-builder' ),
-						'lang_media_text'           => __( 'Insert', 'uix-page-builder' ),				
+						'lang_media_text'           => __( 'Insert', 'uix-page-builder' ),			
+						'lang_mce_sourcecode_title' => __( 'Source Code', 'uix-page-builder' ),
 						'lang_mce_image'            => __( 'Insert Image', 'uix-page-builder' ),
 						'lang_mce_unlink_title'     => __( 'Remove link', 'uix-page-builder' ),
 						'lang_mce_link_title'       => __( 'Insert/Edit link', 'uix-page-builder' ),

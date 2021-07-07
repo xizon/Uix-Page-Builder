@@ -118,6 +118,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.7.3 (July 5, 2021) =
+
+* Fix: Fixed the display and escaping problem of the code block in the editor.
+
+
 ##### = 1.7.2 (December 21, 2020) =
 
 * Fix: Fixed a JavaScript bug for Uix Page Builder Form in WP 5.6.
@@ -584,6 +589,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 5.4.*
 - WP 5.5.*
 - WP 5.6.*
+- WP 5.7.*
 
 
 ### Screenshot

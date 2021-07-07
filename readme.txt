@@ -5,8 +5,8 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
-Tested up to: 5.6
-Stable tag: 1.7.2
+Tested up to: 5.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -144,6 +144,11 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+= 1.7.3 (July 5, 2021) =
+
+* Fix: Fixed the display and escaping problem of the code block in the editor.
+
 
 = 1.7.2 (December 21, 2020) =
 
