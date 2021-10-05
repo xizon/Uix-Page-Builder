@@ -590,6 +590,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 5.5.*
 - WP 5.6.*
 - WP 5.7.*
+- WP 5.8.*
 
 
 ### Screenshot
