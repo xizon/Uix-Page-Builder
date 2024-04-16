@@ -5,7 +5,7 @@ Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
 Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
 Requires at least: 4.2
-Tested up to: 6.4
+Tested up to: 6.5.2
 Requires PHP: 5.6
 Stable tag: 1.7.3
 License: GPLv2 or later
