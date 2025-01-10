@@ -24,6 +24,10 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 		 *
 		 */
 		public static function do_my_shortcodes() {
+            if ( (!is_page()) && !current_user_can('edit_posts') ) {
+                return '';
+            }
+            
 			add_shortcode( 'uix_pb_blog', array( __CLASS__, 'func' ) );
 			
 		}
@@ -179,7 +183,7 @@ if ( !class_exists( 'UixPB_Blog' ) ) {
 
 						//featured image
 						$thumbnail_src       =  wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'post-thumbnail' );
-						$post_thumbnail_src  =  $thumbnail_src[0];  
+						$post_thumbnail_src  =  $thumbnail_src ? $thumbnail_src[0] : '';  
 						$post_thumbnail      = '<img src="'.esc_url( $post_thumbnail_src ).'" alt="'.esc_attr( get_the_title() ).'">';
 						if ( empty( $post_thumbnail_src ) ) $post_thumbnail = '';
 

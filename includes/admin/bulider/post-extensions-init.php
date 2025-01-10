@@ -24,7 +24,7 @@ if ( !function_exists( 'uix_page_builder_vb_script' ) ) {
 			}
 			
 			$curid      = get_the_ID();
-			$post_id    = empty( $curid ) ? $_GET['post_id'] : $curid;
+			$post_id    = empty( $curid ) ? esc_attr($_GET['post_id']) : $curid;
 			$post_url   = esc_url( get_permalink( $post_id ) );
 			$previewURL = '';
 			
@@ -570,7 +570,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_type_opt
 	
 		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-page-builder' );
 		
-		$curid = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
+		$curid = ( property_exists( $object , 'ID' ) ) ? esc_attr($object->ID) : esc_attr($_GET['post_id']);
 		$status = get_post_meta( $curid, 'uix-page-builder-status', true );
     ?>
 
@@ -658,7 +658,7 @@ if ( !function_exists( 'uix_page_builder_page_ex_metaboxes_pagerbuilder_containe
 	
 		wp_nonce_field( basename( __FILE__ ) , 'meta-box-nonce-page-builder' );
 		
-		$curid            = ( property_exists( $object , 'ID' ) ) ? $object->ID : $_GET['post_id'];
+		$curid            = ( property_exists( $object , 'ID' ) ) ? esc_attr($object->ID) : esc_attr($_GET['post_id']);
 		$old_layoutdata   = UixPageBuilder::get_page_final_data( $curid );
 		$gridster_class   = ( UixPageBuilder::vb_mode() ) ? 'uix-page-builder-visual-builder visualBuilder' : '';
 

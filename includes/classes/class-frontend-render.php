@@ -29,7 +29,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 */
 		public static function new_class( $classes ) {
 
-			$post_ID   = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
+			$post_ID   = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : esc_attr($_GET[ 'post_id' ]);
 			$tempclass = UixPageBuilder::page_builder_array_tempattrs( UixPageBuilder::get_page_final_data( $post_ID ), true );
 			
 			if ( empty( $tempclass ) ) $tempclass = sprintf( esc_attr__( 'Untitled-%1$s', 'uix-page-builder' ), $post_ID );
@@ -49,6 +49,7 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 *
 		 */
 		public static function do_my_shortcodes() {
+
 			if ( !isset( $_GET['pb_preview'] ) ) {
 				add_shortcode( 'uix_pb_sections', array( __CLASS__, 'func_frontend' ) );
 			} else {
@@ -64,6 +65,10 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 *
 		 */
 		public static function func_backend_render( $atts, $content = null ) {
+            if ( !current_user_can('edit_posts') ) {
+                return '';
+            }
+       
 			return '<div class="uix-page-builder-themepreview-wp-shortcode"></div>';
 		}
 
@@ -73,17 +78,20 @@ if ( !class_exists( 'UixPB_SectionsOutput' ) ) {
 		 *
 		 */
 		public static function func_frontend( $atts, $content = null ) {
+                if ( (!is_page()) && !current_user_can('edit_posts') ) {
+                    return '';
+                }
+
 				extract( shortcode_atts( array( 
 					'id'            => '',
 				 ), $atts ) );
 		
 			
-			    $post_ID = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : $_GET[ 'post_id' ];
+			    $post_ID = !isset( $_GET[ 'post_id' ] ) ? get_the_ID() : esc_attr($_GET[ 'post_id' ]);
 			    if ( isset( $id ) && !empty( $id ) ) {
 					$post_ID = $id;
 				}
 
-			    
 			    $return_string     = '';
 				$builder_content   = UixPageBuilder::page_builder_array_newlist( UixPageBuilder::get_page_final_data( $post_ID ) );
 				$item              = array();

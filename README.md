@@ -118,6 +118,13 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 ### Updates
 
+##### = 1.7.5 (January 3, 2025) =
+
+* Fix: Security fixes, assign specific permissions to shortcodes.
+* Fix: Fixed a possible permission security issue with preview shortcodes.
+* Fix: Escape variables at the point of output
+
+
 ##### = 1.7.3 (July 5, 2021) =
 
 * Fix: Fixed the display and escaping problem of the code block in the editor.
@@ -596,7 +603,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 6.1.*
 - WP 6.3.*
 - WP 6.4.*
-
+- WP 6.7.*
 
 ### Screenshot
 

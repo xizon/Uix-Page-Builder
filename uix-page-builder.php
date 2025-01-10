@@ -8,7 +8,7 @@
  * Plugin name: Uix Page Builder
  * Plugin URI:  https://uiux.cc/wp-plugins/uix-page-builder/
  * Description: Uix Page Builder is a design system that it is simple content creation interface.
- * Version:     1.7.3
+ * Version:     1.7.5
  * Author:      UIUX Lab
  * Author URI:  https://uiux.cc
  * License:     GPLv2 or later
@@ -973,7 +973,13 @@ class UixPageBuilder {
 		if ( $attr == 0 ) {
 			if ( self::inc_str( $data, '"tempname"' ) ) {
 				$newstr   = json_decode( $data, true );
-				$tempattr = $newstr[0]['tempname'];
+
+                // @since 1.7.5
+                if (!is_null($newstr)) {
+                    $tempattr = $newstr[0]['tempname'];
+                } else {
+                    $tempattr  = '';
+                }
 
 			} else {
 				$tempattr  = '';

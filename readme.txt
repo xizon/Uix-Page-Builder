@@ -1,13 +1,13 @@
-=== Uix Page Builder - Compatible with Gutenberg ===
+=== Uix Page Builder ===
 Contributors: uiuxlab
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PYZLU7UZNQ6CE
 Author URI: https://uiux.cc
 Plugin URL: https://wordpress.org/plugins/uix-page-builder/
-Tags: pagebuilder, page builder, builder, blocks, front end, frontend, visual builder, visual composer, gutenberg
+Tags: pagebuilder, page builder, builder, visual builder, visual composer
 Requires at least: 4.2
-Tested up to: 6.5.2
+Tested up to: 6.7.1
 Requires PHP: 5.6
-Stable tag: 1.7.3
+Stable tag: 1.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,6 +145,12 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 
 
 == Changelog ==
+
+= 1.7.5 (January 3, 2025) =
+
+* Fix: Security fixes, assign specific permissions to shortcodes.
+* Fix: Fixed a possible permission security issue with preview shortcodes.
+* Fix: Escape variables at the point of output
 
 = 1.7.3 (July 5, 2021) =
 

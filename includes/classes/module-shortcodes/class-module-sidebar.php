@@ -24,6 +24,10 @@ if ( !class_exists( 'UixPB_Sidebar' ) ) {
 		 *
 		 */
 		public static function do_my_shortcodes() {
+            if ( (!is_page()) && !current_user_can('edit_posts') ) {
+                return '';
+            }
+
 			add_shortcode( 'uix_pb_sidebar', array( __CLASS__, 'func' ) );
 			
 		}
