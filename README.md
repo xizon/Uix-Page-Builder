@@ -604,6 +604,7 @@ Please install the plugin and check out the **"Uix Page Builder Helper » For Th
 - WP 6.3.*
 - WP 6.4.*
 - WP 6.7.*
+- WP 6.8.*
 
 ### Screenshot
 
